@@ -401,16 +401,16 @@
             .mobile-drawer-close span { display: block; width: 28px; height: 3px; background: #fff; border-radius: 2px; }
             .mobile-drawer-close span:first-child { transform: rotate(45deg) translate(1px, 1px); }
             .mobile-drawer-close span:last-child { transform: rotate(-45deg) translate(1px, -1px); }
-            /* Hero wrapper reorder: tabs below image on mobile */
-            .hero-wrapper { display: flex; flex-direction: column; }
-            .hero { order: 1; padding: 40px 0 20px; margin-top: 80px; }
-            .hero-tabs-bar { order: 2; margin-top: 0; }
+            /* Hero mobile layout */
+            .hero { padding: 40px 0 20px; margin-top: 80px; }
             .hero-inner { grid-template-columns: 1fr; }
-            .hero-image { max-width: 100%; margin: 0 auto; order: -1; }
+            .hero-image { max-width: 100%; margin: 0 auto; }
             .hero-image img { width: 100%; max-width: 420px; margin: 0 auto; }
+            /* Tabs inside hero-inner on mobile (moved by JS) */
+            .hero-inner .hero-tabs-bar { margin-top: 0; background: transparent; overflow: hidden; }
+            .hero-inner .hero-tabs-inner { padding: 8px 0; }
             .hero-buttons { flex-direction: column; align-items: stretch; }
             .hero-buttons .btn { text-align: center; justify-content: center; }
-            .hero-tabs-bar { overflow: hidden; background: var(--lime-bg); }
             .hero-tabs-inner { padding: 8px 16px; justify-content: center; }
             .hero-tabs-label { display: none; }
             .hero-tabs { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; overflow-x: hidden; }
@@ -921,6 +921,28 @@
         if (window.scrollY > 20) { header.classList.add('scrolled'); }
         else { header.classList.remove('scrolled'); }
     }, { passive: true });
+
+    // ─── MOBILE: MOVE TABS INTO HERO (above image, below text) ───
+    (function() {
+        const tabsBar = document.querySelector('.hero-tabs-bar');
+        const heroInner = document.querySelector('.hero-inner');
+        const heroImage = document.querySelector('.hero-image');
+        const heroWrapper = document.querySelector('.hero-wrapper');
+        if (!tabsBar || !heroInner || !heroImage || !heroWrapper) return;
+
+        const mql = window.matchMedia('(max-width: 768px)');
+        function handleTabs(e) {
+            if (e.matches) {
+                // Mobile: insert tabs inside hero-inner, before the image
+                heroInner.insertBefore(tabsBar, heroImage);
+            } else {
+                // Desktop: move tabs back to wrapper as first child
+                heroWrapper.insertBefore(tabsBar, heroWrapper.firstChild);
+            }
+        }
+        handleTabs(mql);
+        mql.addEventListener('change', handleTabs);
+    })();
 
     // ─── HAMBURGER MENU ───
     const hamburger = document.getElementById('hamburger');
