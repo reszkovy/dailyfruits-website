@@ -299,7 +299,7 @@
         .fruit-deco img { width: 100%; height: 100%; }
 
         /* ─── WAVE DIVIDERS ─── */
-        .wave-divider { width: 100%; overflow: hidden; line-height: 0; }
+        .wave-divider { width: 100%; overflow: hidden; line-height: 0; position: relative; z-index: 1; }
         .wave-divider svg { display: block; width: 100%; height: 60px; }
         .wave-divider.flip { transform: rotate(180deg); }
 
@@ -406,18 +406,18 @@
             .mobile-drawer-close span:first-child { transform: rotate(45deg) translate(1px, 1px); }
             .mobile-drawer-close span:last-child { transform: rotate(-45deg) translate(1px, -1px); }
             /* Hero mobile layout: tabs → image → text */
-            .hero { padding: 40px 0 20px; margin-top: 80px; }
+            .hero { padding: 20px 0 40px; margin-top: 80px; position: relative; z-index: 2; }
             .hero-inner { grid-template-columns: 1fr; }
-            .hero-text { order: 3; }
-            .hero-inner .hero-tabs-bar { order: 1; margin-top: 0; background: transparent; overflow: hidden; }
-            .hero-inner .hero-tabs-inner { padding: 8px 0; }
+            .hero-text { order: 3; position: relative; z-index: 2; }
+            .hero-inner .hero-tabs-bar { order: 1; margin-top: 0; background: transparent; overflow: visible; }
+            .hero-inner .hero-tabs-inner { padding: 8px 4px; }
             .hero-image { order: 2; max-width: 100%; margin: 0 auto; }
             .hero-image img { width: 100%; max-width: 420px; margin: 0 auto; }
-            .hero-buttons { flex-direction: column; align-items: stretch; }
-            .hero-buttons .btn { text-align: center; justify-content: center; }
+            .hero-buttons { display: flex; flex-direction: column; align-items: stretch; gap: 12px; padding-bottom: 10px; }
+            .hero-buttons .btn { text-align: center; justify-content: center; width: 100%; }
             .hero-tabs-inner { padding: 8px 16px; justify-content: center; }
             .hero-tabs-label { display: none; }
-            .hero-tabs { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; overflow-x: hidden; }
+            .hero-tabs { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; overflow: visible; }
             .hero-tab { padding: 9px 16px; font-size: 14px; flex-shrink: 0; }
             .hero-tab .tab-icon { font-size: 15px; }
             .hero-tab .tab-icon img { height: 18px !important; width: auto !important; }
@@ -531,8 +531,8 @@
                     <div style="display:flex;align-items:center;gap:8px;"><span style="font-family:var(--font-fun);font-size:38px;color:var(--lime);line-height:1;">2000+</span><span style="font-size:13px;font-weight:700;color:var(--green-dark);opacity:0.6;line-height:1.2;">firm<br>nam zaufało</span></div>
                 </div>
                 <div class="hero-buttons">
-                    <a href="zapytanie.html" class="btn btn-red-solid btn-arrow">Bezpłatna wycena</a>
-                    <a href="oferta.html" class="btn btn-outline">Zobacz ofertę →</a>
+                    <a href="zapytanie.html" class="btn btn-red-solid btn-arrow">Zamów bezpłatną wycenę</a>
+                    <a href="oferta.html" class="btn btn-outline">Zobacz pełną ofertę →</a>
                 </div>
             </div>
             <div class="hero-image scale-in">
