@@ -401,14 +401,14 @@
             .mobile-drawer-close span { display: block; width: 28px; height: 3px; background: #fff; border-radius: 2px; }
             .mobile-drawer-close span:first-child { transform: rotate(45deg) translate(1px, 1px); }
             .mobile-drawer-close span:last-child { transform: rotate(-45deg) translate(1px, -1px); }
-            /* Hero mobile layout */
+            /* Hero mobile layout: tabs → image → text */
             .hero { padding: 40px 0 20px; margin-top: 80px; }
             .hero-inner { grid-template-columns: 1fr; }
-            .hero-image { max-width: 100%; margin: 0 auto; }
-            .hero-image img { width: 100%; max-width: 420px; margin: 0 auto; }
-            /* Tabs inside hero-inner on mobile (moved by JS) */
-            .hero-inner .hero-tabs-bar { margin-top: 0; background: transparent; overflow: hidden; }
+            .hero-text { order: 3; }
+            .hero-inner .hero-tabs-bar { order: 1; margin-top: 0; background: transparent; overflow: hidden; }
             .hero-inner .hero-tabs-inner { padding: 8px 0; }
+            .hero-image { order: 2; max-width: 100%; margin: 0 auto; }
+            .hero-image img { width: 100%; max-width: 420px; margin: 0 auto; }
             .hero-buttons { flex-direction: column; align-items: stretch; }
             .hero-buttons .btn { text-align: center; justify-content: center; }
             .hero-tabs-inner { padding: 8px 16px; justify-content: center; }
