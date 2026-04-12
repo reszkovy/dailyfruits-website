@@ -299,12 +299,12 @@
         .fruit-deco img { width: 100%; height: 100%; }
 
         /* ─── WAVE DIVIDERS ─── */
-        .wave-divider { width: 100%; overflow: hidden; line-height: 0; position: relative; z-index: 1; }
+        .wave-divider { width: 100%; overflow: hidden; line-height: 0; position: relative; z-index: 1; margin-top: -2px; margin-bottom: -2px; }
         .wave-divider svg { display: block; width: 100%; height: 60px; }
         .wave-divider.flip { transform: rotate(180deg); }
 
         /* ─── APPLE DECO ON WAVES ─── */
-        .wave-wrap { position: relative; overflow: hidden; z-index: 3; }
+        .wave-wrap { position: relative; overflow: visible; z-index: 3; margin-top: -2px; margin-bottom: -2px; }
         .wave-wrap .wave-divider { position: relative; z-index: 1; }
         .apple-deco { position: absolute; z-index: 2; pointer-events: none; }
         .apple-deco img { width: 100%; height: 100%; }
@@ -448,6 +448,7 @@
             .cta-btns .btn-outline { background: var(--red); color: #fff; border-color: var(--red); }
             .btn { white-space: normal; padding: 14px 24px; }
 
+            .apple-deco { width: 80px !important; height: 94px !important; }
             .floating-badge { bottom: 16px; right: 16px; }
             .floating-badge img { height: 48px; }
             .delivery-bg-text { font-size: clamp(80px, 20vw, 180px); }
@@ -546,7 +547,7 @@
 </div><!-- /hero-wrapper -->
 
 <!-- WAVE: hero → features -->
-<div class="wave-divider" style="margin-top:-2px;background:var(--cream)">
+<div class="wave-divider" style="background:var(--cream)">
     <svg viewBox="0 0 1440 60" preserveAspectRatio="none"><path d="M0,0 C240,50 480,10 720,40 C960,70 1200,10 1440,30 L1440,60 L0,60Z" fill="#FFFFFF"/></svg>
 </div>
 
@@ -1199,13 +1200,15 @@
             el.style.transform = decoBaseTransforms[i] + ` translate(${x}px, ${y}px) scale(${s})`;
         });
 
-        // Hero ATF parallax
-        if (heroText && scrollY < window.innerHeight) {
-            heroText.style.transform = `translateY(${scrollY * 0.06}px)`;
-            heroText.style.opacity = Math.max(0, 1 - scrollY * 0.0012);
+        // Hero ATF parallax (slower fade on mobile)
+        const fadeRate = window.innerWidth <= 768 ? 0.0006 : 0.0012;
+        const moveRate = window.innerWidth <= 768 ? 0.03 : 0.06;
+        if (heroText && scrollY < window.innerHeight * 1.5) {
+            heroText.style.transform = `translateY(${scrollY * moveRate}px)`;
+            heroText.style.opacity = Math.max(0, 1 - scrollY * fadeRate);
         }
-        if (heroImage && scrollY < window.innerHeight) {
-            heroImage.style.transform = `translateY(${scrollY * 0.1}px)`;
+        if (heroImage && scrollY < window.innerHeight * 1.5) {
+            heroImage.style.transform = `translateY(${scrollY * 0.05}px)`;
         }
     }
     window.addEventListener('scroll', updateParallax, { passive: true });
