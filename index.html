@@ -136,10 +136,10 @@
         .hero-sticker { position: absolute; bottom: -16px; right: 24px; z-index: 3; }
 
         /* ─── HERO CATEGORY TABS (full-width bar) ─── */
-        .hero-tabs-bar { background: var(--cream); border-bottom: none; margin-top: 108px; overflow: hidden; }
+        .hero-tabs-bar { background: var(--cream); border-bottom: none; margin-top: 108px; overflow: visible; }
         .hero-tabs-inner { display: flex; align-items: center; justify-content: center; padding: 14px 48px; max-width: 1440px; margin: 0 auto; }
         .hero-tabs-label { font-size: 13px; font-weight: 700; color: var(--green-dark); opacity: 0.5; line-height: 1.35; flex-shrink: 0; margin-right: 16px; }
-        .hero-tabs { display: flex; justify-content: center; gap: 4px; overflow: hidden; }
+        .hero-tabs { display: flex; justify-content: center; gap: 4px; overflow: visible; }
         .hero-tab { display: inline-flex; align-items: center; gap: 6px; padding: 10px 22px; border-radius: var(--radius-pill); font-family: var(--font-fun); font-size: 16px; font-weight: 400; color: var(--green-dark); background: transparent; border: 2px solid transparent; cursor: pointer; transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1); white-space: nowrap; position: relative; }
         .hero-tab:hover { background: rgba(141,198,63,0.12); transform: translateY(-2px) scale(1.04); box-shadow: 0 4px 12px rgba(27,94,58,0.08); }
         .hero-tab:hover .tab-icon { transform: scale(1.2) rotate(-8deg); }
@@ -406,11 +406,11 @@
             .hero { order: 1; padding: 40px 0 20px; margin-top: 80px; }
             .hero-tabs-bar { order: 2; margin-top: 0; }
             .hero-inner { grid-template-columns: 1fr; }
-            .hero-image { max-width: 320px; margin: 0 auto; }
-            .hero-image img { width: 100%; margin-left: 0; }
+            .hero-image { max-width: 100%; margin: 0 auto; order: -1; }
+            .hero-image img { width: 100%; max-width: 420px; margin: 0 auto; }
             .hero-buttons { flex-direction: column; align-items: stretch; }
             .hero-buttons .btn { text-align: center; justify-content: center; }
-            .hero-tabs-bar { overflow-x: hidden; background: var(--lime-bg); }
+            .hero-tabs-bar { overflow: hidden; background: var(--lime-bg); }
             .hero-tabs-inner { padding: 8px 16px; justify-content: center; }
             .hero-tabs-label { display: none; }
             .hero-tabs { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; overflow-x: hidden; }
