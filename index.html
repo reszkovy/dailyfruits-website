@@ -421,14 +421,22 @@
             .loader-fruit:nth-child(1) { top: 5%; left: 50%; width: 200px; transform: translateX(-50%) rotate(-12deg); }
             .loader-fruit:nth-child(2) { top: auto; bottom: 5%; right: 50%; width: 200px; transform: translateX(50%) rotate(12deg); }
             @keyframes loader-float { 0%, 100% { transform: translateX(-50%) rotate(var(--r, 0deg)); } 50% { transform: translateX(-50%) translateY(-18px) rotate(var(--r, 0deg)); } }
-            .how-grid, .offer-grid, .benefits-grid-six, .eco-grid, .stats-grid { grid-template-columns: 1fr; }
+            .how-grid, .offer-grid, .eco-grid, .stats-grid { grid-template-columns: 1fr; }
+            /* Benefits: horizontal snap carousel on mobile */
+            .benefits-grid-six { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; gap: 14px; padding-bottom: 16px; scrollbar-width: none; }
+            .benefits-grid-six::-webkit-scrollbar { display: none; }
+            .benefit-card { flex-shrink: 0; width: 78vw; max-width: 300px; scroll-snap-align: start; }
+            /* Testimonials: swipeable snap carousel on mobile */
+            .test-slider { animation: none !important; overflow-x: auto; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; scrollbar-width: none; padding-bottom: 12px; }
+            .test-slider::-webkit-scrollbar { display: none; }
+            .test-card { scroll-snap-align: start; width: 85vw; max-width: 320px; }
             .how-section, .offer-section, .benefits-six, .testimonials, .delivery, .faq-section, .cta, .ecosystem { padding: 72px 0; }
             .cities-grid { grid-template-columns: repeat(2, 1fr); }
             .footer-grid { grid-template-columns: 1fr; gap: 28px; }
             .cta-card { padding: 48px 24px; border-radius: 0; }
             .cta-btns { flex-direction: column; }
             .btn { white-space: normal; padding: 14px 24px; }
-            .test-card { width: 280px; }
+
             .floating-badge { bottom: 16px; right: 16px; }
             .floating-badge img { height: 48px; }
             .delivery-bg-text { font-size: clamp(80px, 20vw, 180px); }
