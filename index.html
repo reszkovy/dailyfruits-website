@@ -154,7 +154,7 @@
         .hero-tab.hero-tab--red:hover { background: rgba(228,48,32,0.08); border-color: var(--red); }
         .hero-tab.hero-tab--red.active { background: var(--red); color: #fff; border-color: var(--red); }
         .hero-tab.hero-tab--red.active .tab-icon img { filter: brightness(0) invert(1); }
-        .hero-trial-cta { display: inline-flex; align-items: center; font-family: var(--font); font-size: 13px; font-weight: 800; color: var(--red); text-decoration: underline; text-underline-offset: 3px; line-height: 1.3; padding: 0 8px; white-space: nowrap; transition: opacity 0.3s ease; opacity: 0.85; }
+        .hero-trial-cta { display: inline-flex; align-items: center; font-family: var(--font); font-size: 13px; font-weight: 800; color: var(--red); text-decoration: underline; text-underline-offset: 3px; text-align: right; line-height: 1.3; padding: 0 8px; white-space: nowrap; transition: opacity 0.3s ease; opacity: 0.85; margin-left: auto; }
         .hero-trial-cta:hover { opacity: 1; }
         .hero-image img { transition: opacity 0.4s ease, transform 0.4s ease; }
         .hero-image img.switching { opacity: 0; transform: scale(0.95); }
@@ -424,7 +424,8 @@
             .hero-tab .tab-icon { font-size: 14px; }
             .hero-tab .tab-icon img { height: 16px !important; width: auto !important; }
             .hero-tabs-inner { flex-wrap: wrap; }
-            .hero-trial-cta { order: -1; width: 100%; justify-content: center; text-align: center; font-size: 11px; padding: 0; margin-bottom: 6px; }
+            .hero-trial-cta { order: -1; width: 100%; justify-content: center; text-align: center; font-size: 11px; padding: 0; margin-bottom: 6px; margin-left: 0; }
+            .trial-br { display: none; }
             /* Loader apples: one top, one bottom */
             .loader-fruit:nth-child(1) { top: 5%; left: 50%; width: 200px; transform: translateX(-50%) rotate(-12deg); }
             .loader-fruit:nth-child(2) { top: auto; bottom: 5%; right: 50%; width: 200px; transform: translateX(50%) rotate(12deg); }
@@ -521,7 +522,7 @@
             <button class="hero-tab" data-img="box bakalie1.webp" data-alt="Bakalie i suszone owoce"><span class="tab-icon"><img src="icon-bakalie.svg" alt="" style="height:20px;width:auto;vertical-align:-3px;"></span> Bakalie</button>
             <button class="hero-tab hero-tab--red" data-img="box lody.webp" data-alt="Lody do biura"><span class="tab-icon"><img src="icon-lody.svg" alt="" style="height:22px;width:auto;vertical-align:-4px;"></span> Lody</button>
         </div>
-        <a href="zapytanie.html" class="hero-trial-cta">Sprawdz darmowy<br>dzien probny!</a>
+        <a href="zapytanie.html" class="hero-trial-cta">Sprawdz darmowy <span class="trial-br"><br></span>dzien probny!</a>
     </div>
 </div>
 
