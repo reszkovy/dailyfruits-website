@@ -1,0 +1,1136 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DailyFruits - Zdrowsze jedzenie, lepsza praca.</title>
+    <meta name="description" content="Dostawy świeżych owoców, kanapek, soków i zdrowych przekąsek do biur w 13 miastach Polski. Dostawa w 24h. Zaufało nam ponad 2000 firm.">
+    <meta property="og:title" content="DailyFruits – Zdrowsze jedzenie, lepsza praca.">
+    <meta property="og:description" content="Owoce, kanapki, kawa, soki – wszystko w jednej dostawie do Twojego biura. 13 miast, 24h dostawa, 2000+ firm.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://dailyfruits.pl">
+    <meta property="og:image" content="https://dailyfruits.pl/HORIZONTAL.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="DailyFruits – Zdrowsze jedzenie, lepsza praca.">
+    <meta name="twitter:description" content="Dostawy owoców i zdrowych przekąsek do biur w 13 miastach Polski. Bezpłatna wycena.">
+    <meta name="twitter:image" content="https://dailyfruits.pl/HORIZONTAL.png">
+    <link rel="icon" type="image/png" href="favicon_.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        @font-face {
+            font-family: 'Achiko';
+            src: url('Achiko.woff2') format('woff2'), url('Achiko.ttf') format('truetype');
+            font-weight: 400;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --green-dark: #1B5E3A;
+            --green-mid: #347550;
+            --olive: #526B08;
+            --lime: #8DC63F;
+            --lime-light: #A4C348;
+            --lime-pale: #D5E8A0;
+            --lime-bg: #FFF9E0;
+            --yellow: #FFF200;
+            --yellow-light: #FFF566;
+            --yellow-bg: #FFF8D8;
+            --red: #E43020;
+            --coral: #F06878;
+            --cream: #FFF9E0;
+            --white: #FFFFFF;
+            --gray: #3D5A1E;
+            --dark: #1B5E3A;
+            --radius: 20px;
+            --radius-lg: 28px;
+            --radius-pill: 100px;
+            --font: 'DM Sans', sans-serif;
+            --font-display: 'DM Sans', sans-serif;
+            --font-fun: 'Achiko', 'Lobster', cursive;
+        }
+
+        html { scroll-behavior: auto; }
+        html.lenis, html.lenis body { height: auto; }
+        .lenis.lenis-smooth { scroll-behavior: auto; }
+        .lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+        body { font-family: var(--font); color: var(--dark); background: var(--cream); overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+        img { max-width: 100%; height: auto; display: block; }
+        a { text-decoration: none; color: inherit; }
+        .container { max-width: 1240px; margin: 0 auto; padding: 0 48px; }
+
+        /* ─── TYPO ─── */
+        h1 { font-family: var(--font-display); font-weight: 900; font-size: clamp(38px, 5.5vw, 68px); line-height: 1.08; color: var(--green-dark); letter-spacing: -0.03em; }
+        h1 .hero-line1 { display: block; font-size: 0.62em; letter-spacing: -0.05em; line-height: 1.2; }
+        h1 .fun { font-family: var(--font-fun); font-weight: 400; color: var(--lime); font-size: 1.1em; letter-spacing: 0; }
+        h2 { font-family: var(--font); font-weight: 900; font-size: clamp(28px, 3.5vw, 44px); line-height: 1.15; color: var(--green-dark); }
+        h2 .fun { font-family: var(--font-fun); font-weight: 400; color: var(--lime); font-size: 1.05em; }
+        h3 { font-weight: 700; font-size: 18px; color: var(--green-dark); }
+        p { font-size: 16px; line-height: 1.7; color: var(--gray); }
+
+        /* ─── STICKER ─── */
+        .sticker { display: inline-flex; align-items: center; gap: 6px; padding: 8px 18px; border-radius: var(--radius-pill); font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; transform: rotate(-2deg); box-shadow: 2px 3px 0 rgba(0,0,0,0.08); }
+        .sticker-lime { background: var(--lime-light); color: var(--green-dark); }
+        .sticker-yellow { background: var(--yellow); color: var(--green-dark); }
+        .sticker-red { background: var(--red); color: #fff; }
+        .sticker-coral { background: var(--coral); color: #fff; }
+        .sticker-green { background: var(--green-dark); color: #fff; }
+
+        /* ─── BUTTONS ─── */
+        .btn { display: inline-flex; align-items: center; gap: 8px; padding: 14px 32px; border-radius: var(--radius-pill); font-family: var(--font); font-weight: 700; font-size: 15px; border: 2px solid transparent; cursor: pointer; transition: all 0.2s; white-space: nowrap; }
+        .btn-green { background: var(--green-dark); color: #fff; }
+        .btn-green:hover { background: #144A2B; transform: translateY(-2px); box-shadow: 0 6px 20px rgba(27,94,58,0.3); }
+        .btn-yellow { background: var(--yellow); color: var(--green-dark); font-weight: 900; }
+        .btn-yellow:hover { background: #E6DA00; transform: translateY(-2px); box-shadow: 0 6px 20px rgba(255,242,0,0.4); }
+        .btn-red-solid { background: var(--red); color: #fff; font-weight: 900; }
+        .btn-red-solid:hover { background: #C42818; transform: translateY(-2px); box-shadow: 0 6px 20px rgba(228,48,32,0.35); }
+        .btn-outline { background: transparent; color: var(--red); border-color: var(--red); }
+        .btn-outline:hover { background: var(--red); color: #fff; }
+        .btn-arrow::after { content: ' →'; transition: transform 0.2s; }
+
+        /* ─── FLOATING BADGE ─── */
+        .floating-badge { position: fixed; bottom: 28px; right: 28px; z-index: 999; transition: opacity 0.4s, transform 0.4s; }
+        .floating-badge img { height: 60px; filter: drop-shadow(0 4px 12px rgba(228,48,32,0.3)); transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), filter 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
+        .floating-badge:hover img { transform: scale(1.1) rotate(-3deg); filter: drop-shadow(0 6px 18px rgba(27,94,58,0.4)) hue-rotate(90deg) saturate(1.4); }
+
+        /* ─── NAV ─── */
+        header { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: #1B5E3A; border-bottom: none; overflow: visible; transition: box-shadow 0.3s ease; }
+        header.scrolled { box-shadow: 0 8px 30px rgba(27,94,58,0.25); }
+        header::after { content: ''; position: absolute; bottom: -19px; left: 0; right: 0; height: 20px; background: url("data:image/svg+xml,%3Csvg viewBox='0 0 1505 20' preserveAspectRatio='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0H1505V4C1505 4 1380 20 1120 16C860 12 720 19 480 14C240 9 80 18 0 12V0Z' fill='%231B5E3A'/%3E%3C/svg%3E") no-repeat bottom / 100% 100%; pointer-events: none; z-index: 100; transition: filter 0.3s ease; }
+        header.scrolled::after { filter: drop-shadow(0 6px 12px rgba(27,94,58,0.15)); }
+        .nav-inner { display: flex; align-items: center; justify-content: space-between; padding: 10px 48px; max-width: 1440px; margin: 0 auto; }
+        .logo-wrap { display: flex; align-items: center; gap: 10px; }
+        .logo-img { height: 64px; }
+        .logo-sub { font-size: 9px; font-weight: 700; color: #fff; opacity: 0.5; letter-spacing: 0.3px; white-space: nowrap; text-decoration: none; border-left: 1px solid rgba(255,255,255,0.2); padding-left: 10px; align-self: flex-end; margin-bottom: 18px; }
+        .nav-links { display: flex; gap: 36px; list-style: none; }
+        .nav-links a { font-weight: 700; font-size: 15px; color: var(--yellow); position: relative; padding-bottom: 4px; }
+        .nav-links a::after { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 3px; background: #fff; border-radius: 2px; opacity: 0; transform: scaleX(0.3) translateY(4px); transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1), transform 0.35s cubic-bezier(0.16, 1, 0.3, 1); }
+        .nav-links a:hover::after, .nav-links a.active::after { opacity: 1; transform: scaleX(1) translateY(0); }
+        .nav-buttons { display: flex; gap: 12px; align-items: center; }
+        .nav-buttons .btn { padding: 10px 22px; font-size: 14px; }
+        .nav-trust { font-size: 13px; font-weight: 700; color: rgba(255,255,255,0.5); letter-spacing: 0.3px; text-align: right; line-height: 1.35; }
+        .btn-red { background: transparent; color: #fff; position: relative; z-index: 1; border: none; }
+        .btn-red::before { content: ''; position: absolute; inset: -4px -8px; z-index: -1; background: url("data:image/svg+xml,%3Csvg width='152' height='38' viewBox='0 0 152 38' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M6.3464e-06 32.3938L3.36296 0.0002526C34.5933 3.00978 65.8237 6.01933 97.1433 5.18082C114.244 4.72298 131.127 3.30956 148.187 1.31457L151.944 33.902C133.923 35.9228 116.079 37.3619 98.0178 37.8454C65.1611 38.7251 32.5857 35.7516 6.3464e-06 32.3938Z' fill='%23E43020'/%3E%3C/svg%3E") no-repeat center / 100% 100%; transition: filter 0.3s, transform 0.3s; }
+        .btn-red:hover { transform: translateY(-2px); }
+        .btn-red:hover::before { filter: brightness(0.85); transform: scale(1.03); }
+
+        /* ─── HERO ─── */
+        .hero { padding: 10px 0 0; background: var(--lime-bg); position: relative; overflow: visible; }
+        .hero-inner { display: grid; grid-template-columns: 1fr 1.2fr; gap: 24px; align-items: center; }
+        .hero-text { position: relative; z-index: 2; will-change: transform, opacity; }
+        .hero h1 { margin: 10px 0 12px; }
+        .hero p { font-size: 18px; max-width: 480px; margin-bottom: 20px; line-height: 1.45; }
+        .hero-buttons { display: flex; gap: 14px; flex-wrap: nowrap; }
+        .hero-image { position: relative; z-index: 2; display: flex; align-items: center; justify-content: center; will-change: transform; }
+        .hero-image img { width: 190%; max-width: none; max-height: 55vh; object-fit: contain; border-radius: 0; box-shadow: none; background: transparent; margin-left: 5%; }
+        .hero-sticker { position: absolute; bottom: -16px; right: 24px; z-index: 3; }
+
+        /* ─── HERO CATEGORY TABS (full-width bar) ─── */
+        .hero-tabs-bar { background: var(--cream); border-bottom: none; margin-top: 108px; overflow: visible; }
+        .hero-tabs-inner { display: flex; align-items: center; justify-content: center; padding: 14px 48px; max-width: 1440px; margin: 0 auto; }
+        .hero-tabs-label { font-size: 13px; font-weight: 700; color: var(--green-dark); opacity: 0.5; line-height: 1.35; flex-shrink: 0; margin-right: 16px; }
+        .hero-tabs { display: flex; justify-content: center; gap: 4px; overflow: visible; }
+        .hero-tab { display: inline-flex; align-items: center; gap: 6px; padding: 10px 22px; border-radius: var(--radius-pill); font-family: var(--font-fun); font-size: 16px; font-weight: 400; color: var(--green-dark); background: transparent; border: 2px solid transparent; cursor: pointer; transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1); white-space: nowrap; position: relative; }
+        .hero-tab:hover { background: rgba(141,198,63,0.12); transform: translateY(-2px) scale(1.04); box-shadow: 0 4px 12px rgba(27,94,58,0.08); }
+        .hero-tab:hover .tab-icon { transform: scale(1.2) rotate(-8deg); }
+        .hero-tab:active { transform: translateY(0) scale(0.97); }
+        .hero-tab.active { background: rgba(141,198,63,0.15); border-color: var(--green-mid); color: var(--green-dark); transform: translateY(-1px); box-shadow: 0 3px 10px rgba(27,94,58,0.1); }
+        .hero-tab .tab-icon { font-size: 16px; transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1); }
+        .hero-tab.hero-tab--red { border: 2px solid var(--red); color: var(--red); }
+        .hero-tab.hero-tab--red:hover { background: rgba(228,48,32,0.08); border-color: var(--red); }
+        .hero-tab.hero-tab--red.active { background: var(--red); color: #fff; border-color: var(--red); }
+        .hero-tab.hero-tab--red.active .tab-icon img { filter: brightness(0) invert(1); }
+        .hero-image img { transition: opacity 0.4s ease, transform 0.4s ease; }
+        .hero-image img.switching { opacity: 0; transform: scale(0.95); }
+
+        /* ─── FEATURES STRIP ─── */
+        .features { padding: 60px 0; background: var(--white); }
+        .features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
+        .feature-item { display: flex; gap: 16px; align-items: flex-start; }
+        .feature-icon { width: 80px; height: 80px; border-radius: 20px; display: flex; align-items: center; justify-content: center; font-size: 24px; flex-shrink: 0; overflow: hidden; background: transparent; }
+        .feature-icon img { width: 100%; height: 100%; object-fit: contain; border-radius: 0; }
+        .feature-item h3 { margin-bottom: 4px; font-size: 16px; }
+        .feature-item p { font-size: 14px; margin: 0; }
+
+        /* ─── HOW ─── */
+        .how-section { padding: 120px 0; background: var(--white); }
+        .section-top { text-align: center; margin-bottom: 64px; }
+        .section-top p { max-width: 520px; margin: 12px auto 0; }
+        .how-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 20px; }
+        .how-card { background: var(--yellow-bg); border-radius: 0; padding: 32px 24px; text-align: center; transition: transform 0.3s, box-shadow 0.3s; }
+        .how-card:hover { transform: translateY(-6px); box-shadow: 0 16px 48px rgba(27,94,58,0.1); }
+        .how-num { font-family: var(--font-fun); font-size: 52px; color: var(--green-dark); line-height: 1; margin-bottom: 12px; }
+        .how-card h3 { margin-bottom: 8px; font-size: 17px; }
+        .how-card p { font-size: 13px; margin: 0; }
+        .how-buttons { text-align: center; margin-top: 48px; display: flex; gap: 14px; justify-content: center; }
+
+        /* ─── STATS ─── */
+        .stats { background: var(--green-dark); padding: 72px 0; color: #fff; }
+        .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; text-align: center; }
+        .stat-num { font-family: var(--font-fun); font-size: 56px; line-height: 1; margin-bottom: 8px; color: var(--yellow); }
+        .stat-label { font-size: 14px; opacity: 0.8; text-transform: uppercase; letter-spacing: 1px; }
+
+        /* ─── 6 BENEFITS ─── */
+        .benefits-six { padding: 120px 0; background: var(--yellow-bg); position: relative; overflow: hidden; }
+        .benefits-grid-six { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+        .benefit-card { background: var(--yellow-bg); padding: 40px 32px; border-radius: 0; transition: transform 0.4s cubic-bezier(0.16,1,0.3,1), box-shadow 0.4s cubic-bezier(0.16,1,0.3,1); border: none; position: relative; overflow: hidden; }
+        .benefit-card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 5px; background: var(--lime); }
+        .benefit-card:nth-child(2)::before { background: var(--green-dark); }
+        .benefit-card:nth-child(3)::before { background: var(--red); }
+        .benefit-card:nth-child(4)::before { background: var(--red); }
+        .benefit-card:nth-child(5)::before { background: var(--green-dark); }
+        .benefit-card:nth-child(6)::before { background: var(--lime); }
+        .benefit-card:hover { transform: translateY(-8px) rotate(-1deg); box-shadow: 0 20px 50px rgba(27,94,58,0.12); }
+        .benefit-emoji { width: 60px; height: 60px; background: rgba(141,198,63,0.12); border: 2px solid rgba(141,198,63,0.25); border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 28px; margin-bottom: 20px; }
+        .benefit-card:nth-child(2) .benefit-emoji { background: rgba(27,94,58,0.1); border-color: rgba(27,94,58,0.25); }
+        .benefit-card:nth-child(3) .benefit-emoji { background: rgba(228,48,32,0.08); border-color: rgba(228,48,32,0.2); }
+        .benefit-card:nth-child(4) .benefit-emoji { background: rgba(228,48,32,0.08); border-color: rgba(228,48,32,0.2); }
+        .benefit-card:nth-child(5) .benefit-emoji { background: rgba(27,94,58,0.1); border-color: rgba(27,94,58,0.25); }
+        .benefit-card h3 { margin-bottom: 8px; font-size: 24px; letter-spacing: -0.05em; }
+        .benefit-card p { font-size: 14px; margin: 0; }
+        .benefit-stat { font-family: var(--font-fun); font-size: 36px; color: var(--lime); margin-top: 14px; display: block; }
+        .benefit-card:nth-child(2) .benefit-stat { color: var(--green-dark); }
+        .benefit-card:nth-child(3) .benefit-stat { color: var(--red); }
+
+        /* ─── OFFER ─── */
+        .offer-section { padding: 120px 0; background: var(--white); position: relative; overflow: hidden; }
+        .offer-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+        .offer-card { border-radius: 0; overflow: visible; background: var(--cream); transition: transform 0.3s, box-shadow 0.3s, background 0.35s; position: relative; padding-top: 80px; margin-top: 60px; }
+        .offer-card:hover { transform: translateY(-6px) rotate(-0.5deg); box-shadow: 0 16px 48px rgba(27,94,58,0.12); background: var(--green-dark); }
+        .offer-card:hover .offer-card-body h3 { color: #fff; }
+        .offer-card:hover .offer-card-body p { color: rgba(255,255,255,0.75); }
+        .offer-card:hover .offer-link { color: var(--yellow); }
+        .offer-card img { width: 80%; height: auto; object-fit: contain; margin: -100px auto 0; display: block; position: relative; z-index: 2; filter: drop-shadow(0 8px 20px rgba(0,0,0,0.1)); }
+        .offer-card-body { padding: 24px; }
+        .offer-card-body h3 { margin-bottom: 6px; transition: color 0.35s; }
+        .offer-card-body p { font-size: 14px; margin-bottom: 16px; transition: color 0.35s; }
+        .offer-link { font-weight: 700; font-size: 14px; color: var(--lime); display: inline-flex; align-items: center; gap: 4px; transition: color 0.35s; }
+        .offer-link:hover { color: var(--green-dark); }
+
+        /* ─── ECOSYSTEM ─── */
+        .ecosystem { padding: 100px 0; background: var(--green-dark); color: #fff; position: relative; overflow: hidden; }
+        .ecosystem h2 { color: #fff; }
+        .ecosystem h2 .fun { color: var(--yellow); }
+        .ecosystem p { color: rgba(255,255,255,0.7); }
+        .ecosystem .section-top { margin-bottom: 48px; }
+        .btn-eco-cta:hover { transform: translateY(-3px) scale(1.04); box-shadow: 0 8px 30px rgba(0,0,0,0.25) !important; background: #fff !important; }
+        .eco-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+        .eco-card { background: transparent; border: none; padding: 36px 28px; border-radius: 0; text-align: center; transition: transform 0.3s; }
+        .eco-card:hover { transform: translateY(-4px); }
+        .eco-icon { font-size: 36px; margin-bottom: 16px; display: block; }
+        .eco-card h3 { color: var(--yellow); margin-bottom: 8px; font-size: 20px; font-family: var(--font-fun); }
+        .eco-card p { font-size: 14px; margin: 0; }
+        .eco-tag { display: inline-block; margin-top: 12px; padding: 4px 12px; border-radius: var(--radius-pill); font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; background: rgba(255,255,255,0.1); color: var(--lime-light); }
+
+        /* ─── TESTIMONIALS ─── */
+        .testimonials { padding: 120px 0; background: var(--cream); position: relative; overflow: hidden; }
+        .test-track { overflow: hidden; }
+        .test-slider { display: flex; gap: 24px; animation: slide 55s linear infinite; padding: 16px 0; }
+        @keyframes slide { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+        .test-card { flex-shrink: 0; width: 380px; background: rgba(141,198,63,0.15); padding: 32px; border-radius: 0; border: none; display: flex; flex-direction: column; justify-content: space-between; }
+        .test-card blockquote { font-size: 14px; line-height: 1.8; color: var(--green-dark); font-style: italic; margin-bottom: 20px; flex-grow: 1; }
+        .test-card blockquote::before { content: '\201C'; font-family: var(--font-fun); font-size: 48px; color: var(--lime); display: block; line-height: 0.6; margin-bottom: 12px; }
+        .test-author { display: flex; gap: 12px; align-items: center; }
+        .test-avatar { width: 42px; height: 42px; border-radius: 50%; overflow: hidden; flex-shrink: 0; border: 2px solid var(--lime-bg); }
+        .test-avatar img { width: 100%; height: 100%; object-fit: contain; background: var(--lime-bg); }
+        .test-meta h4 { font-size: 14px; font-weight: 700; color: var(--green-dark); }
+        .test-meta p { font-size: 12px; margin: 0; }
+
+        /* ─── DELIVERY (LIGHT MAP) ─── */
+        .delivery { padding: 100px 0 120px; background: var(--cream); position: relative; overflow: hidden; }
+        .delivery-car { position: absolute; bottom: 0; z-index: 2; pointer-events: none; will-change: transform; }
+        .delivery-car img { height: 80px; width: auto; }
+        .delivery-bg-text { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); white-space: nowrap; font-family: var(--font-fun); font-weight: 400; font-size: clamp(180px,27vw,420px); color: rgba(255,255,255,0.5); letter-spacing: -4px; pointer-events: none; z-index: 0; line-height: 1; width: 100%; text-align: center; }
+        .delivery-inner { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 48px; align-items: center; position: relative; z-index: 1; }
+        .delivery h2 { margin-bottom: 12px; }
+        .delivery p { color: var(--gray); }
+        .delivery-map-wrap { position: relative; width: 100%; max-width: 560px; margin: 0 auto; }
+        .cities-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 24px; }
+        .city-pill { background: var(--white); padding: 10px 14px; border-radius: var(--radius-pill); font-size: 13px; font-weight: 700; text-align: center; color: var(--green-dark); border: 2px solid rgba(27,94,58,0.08); transition: all 0.2s; }
+        .city-pill:hover { background: var(--lime); color: var(--green-dark); border-color: var(--lime); }
+
+        /* ─── FAQ ─── */
+        .faq-section { padding: 120px 0; background: var(--white); }
+        .faq-list { max-width: 760px; margin: 0 auto; }
+        .faq-item { border-bottom: 2px solid var(--lime-bg); }
+        .faq-q { width: 100%; background: none; border: none; padding: 22px 0; display: flex; justify-content: space-between; align-items: center; cursor: pointer; font-family: var(--font); font-size: 16px; font-weight: 700; color: var(--green-dark); text-align: left; }
+        .faq-q:hover { color: var(--lime); }
+        .faq-icon { width: 36px; height: 36px; border-radius: 50%; background: rgba(141,198,63,0.15); display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: all 0.4s cubic-bezier(0.16,1,0.3,1); font-size: 0; }
+        .faq-icon::after { content: ''; display: block; width: 16px; height: 14px; background: url("data:image/svg+xml,%3Csvg viewBox='0 0 219 191' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M209.884 59.0475C214.187 60.2087 217.232 64.0499 217.341 68.5054L218.469 114.758C218.574 119.061 215.914 122.949 211.864 124.409L39.139 186.699C33.9498 188.571 28.2252 185.886 26.3452 180.7L15.9853 152.121C14.0709 146.84 16.881 141.018 22.2069 139.232L127.617 103.879C136.827 100.79 136.664 87.7222 127.368 84.8975C88.237 73.0061 48.9383 61.5681 9.47212 51.7133C4.20737 50.3987 0.917487 45.1492 2.06756 39.8461L8.53735 10.0131C9.72811 4.52238 15.2089 1.08528 20.653 2.4737C84.568 18.774 146.42 41.9206 209.884 59.0475Z' fill='%231B5E3A'/%3E%3C/svg%3E") no-repeat center / contain; transition: transform 0.4s cubic-bezier(0.16,1,0.3,1); transform: rotate(90deg); }
+        .faq-item.open .faq-icon { background: var(--lime); }
+        .faq-item.open .faq-icon::after { filter: brightness(0) invert(1); transform: rotate(-90deg); }
+        .faq-a { max-height: 0; overflow: hidden; transition: max-height 0.35s ease; }
+        .faq-a-inner { padding: 0 0 22px; font-size: 15px; line-height: 1.8; color: var(--gray); }
+
+        /* ─── CTA ─── */
+        .cta { padding: 64px 0; background: var(--cream); text-align: center; position: relative; overflow: hidden; }
+        .cta-card { background: transparent; border-radius: 0; padding: 32px 56px; max-width: 880px; margin: 0 auto; position: relative; overflow: hidden; }
+        .cta-card h2 { color: var(--green-dark); margin-bottom: 12px; position: relative; z-index: 2; }
+        .cta-card h2 .fun { color: var(--lime); }
+        .cta-card p { color: var(--gray); opacity: 1; max-width: 480px; margin: 0 auto 32px; position: relative; z-index: 2; }
+        .cta-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; position: relative; z-index: 2; }
+
+        /* ─── FOOTER ─── */
+        footer { background: var(--green-dark); color: #fff; padding: 72px 0 36px; }
+        .footer-grid { display: grid; grid-template-columns: 1.5fr repeat(3, 1fr); gap: 48px; margin-bottom: 48px; }
+        .footer-brand p { font-size: 14px; color: rgba(255,255,255,0.5); max-width: 280px; margin-top: 12px; }
+        .footer-col h4 { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 16px; }
+        .footer-col ul { list-style: none; }
+        .footer-col a, .footer-col p { display: block; font-size: 14px; color: rgba(255,255,255,0.5); margin-bottom: 8px; transition: color 0.2s; }
+        .footer-col a:hover { color: var(--lime-light); }
+        .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 28px; text-align: center; font-size: 13px; color: rgba(255,255,255,0.35); }
+
+        /* ─── FRUIT DECO ─── */
+        .fruit-deco { position: absolute; pointer-events: none; z-index: 1; opacity: 0.15; will-change: transform; }
+        .fruit-deco img { width: 100%; height: 100%; }
+
+        /* ─── WAVE DIVIDERS ─── */
+        .wave-divider { width: 100%; overflow: hidden; line-height: 0; }
+        .wave-divider svg { display: block; width: 100%; height: 60px; }
+        .wave-divider.flip { transform: rotate(180deg); }
+
+        /* ─── APPLE DECO ON WAVES ─── */
+        .wave-wrap { position: relative; overflow: visible; z-index: 3; }
+        .wave-wrap .wave-divider { position: relative; z-index: 1; }
+        .apple-deco { position: absolute; z-index: 2; pointer-events: none; }
+        .apple-deco img { width: 100%; height: 100%; }
+
+        /* ─── REVEAL (r352-style smooth) ─── */
+        .reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
+        .reveal.vis { opacity: 1; transform: translateY(0); }
+        .reveal[data-delay="1"] { transition-delay: 0.1s; }
+        .reveal[data-delay="2"] { transition-delay: 0.2s; }
+        .reveal[data-delay="3"] { transition-delay: 0.3s; }
+        .reveal[data-delay="4"] { transition-delay: 0.4s; }
+        .reveal[data-delay="5"] { transition-delay: 0.5s; }
+
+        /* ─── TEXT SPLIT ANIMATION ─── */
+        .split-heading .word { display: inline-block; opacity: 0; transform: translateY(30px); transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
+        .split-heading.vis .word { opacity: 1; transform: translateY(0); }
+
+        /* ─── SCALE-IN for images ─── */
+        .scale-in { opacity: 0; transform: scale(0.92); transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1); }
+        .scale-in.vis { opacity: 1; transform: scale(1); }
+
+        /* ─── SLIDE-IN from sides ─── */
+        .slide-left { opacity: 0; transform: translateX(-40px); transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
+        .slide-left.vis { opacity: 1; transform: translateX(0); }
+        .slide-right { opacity: 0; transform: translateX(40px); transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
+        .slide-right.vis { opacity: 1; transform: translateX(0); }
+
+        /* ─── MARQUEE TICKER (r352-style) ─── */
+        .marquee-section { padding: 28px 0; background: var(--green-dark); overflow: hidden; }
+        .marquee-track { display: flex; width: max-content; animation: marquee-slide 20s linear infinite; }
+        .marquee-track:hover { animation-play-state: paused; }
+        .marquee-item { display: flex; align-items: center; gap: 32px; padding: 0 32px; font-family: var(--font); font-weight: 900; font-size: 18px; text-transform: uppercase; letter-spacing: 3px; color: rgba(255,255,255,0.25); white-space: nowrap; }
+        .marquee-item .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--lime); flex-shrink: 0; }
+        .marquee-item .highlight { color: var(--lime); }
+        @keyframes marquee-slide { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+        /* ─── LOADING SCREEN ─── */
+        .loader { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: var(--green-dark); display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 9999; transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1); overflow: hidden; }
+        .loader img.loader-logo { height: 80px; opacity: 0; transform: scale(0.8); animation: loader-pop 0.6s 0.2s cubic-bezier(0.16, 1, 0.3, 1) forwards; position: relative; z-index: 2; }
+        .loader-text { margin-top: 20px; font-family: var(--font); font-weight: 700; font-size: 14px; letter-spacing: 3px; color: var(--lime); opacity: 0; animation: loader-pop 0.5s 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards; text-align: center; line-height: 1.6; text-transform: uppercase; position: relative; z-index: 2; }
+        .loader-fruit { position: absolute; opacity: 0.08; pointer-events: none; z-index: 1; }
+        .loader-fruit img { width: 100%; height: 100%; filter: brightness(0) invert(1); }
+        .loader-fruit:nth-child(1) { top: 50%; left: 5%; width: 440px; transform: translateY(-50%) rotate(-12deg); animation: loader-float 1.6s ease-in-out infinite; }
+        .loader-fruit:nth-child(2) { top: 50%; right: 5%; width: 440px; transform: translateY(-50%) rotate(12deg); animation: loader-float 1.6s 0.5s ease-in-out infinite; }
+        .loader.done { opacity: 0; transform: scale(1.05); pointer-events: none; }
+        @keyframes loader-pop { to { opacity: 1; transform: scale(1); } }
+        @keyframes loader-float { 0%, 100% { transform: translateY(-50%) rotate(var(--r, 0deg)); } 50% { transform: translateY(calc(-50% - 18px)) rotate(var(--r, 0deg)); } }
+
+        /* ─── ENHANCED CARD HOVERS ─── */
+        .offer-card, .how-card, .benefit-card, .eco-card { transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
+        .offer-card:hover { transform: translateY(-8px); box-shadow: 0 20px 50px rgba(27,94,58,0.15); }
+        .benefit-card:hover { transform: translateY(-6px); box-shadow: 0 16px 40px rgba(27,94,58,0.12); }
+        .eco-card:hover { transform: translateY(-6px); box-shadow: 0 16px 40px rgba(27,94,58,0.12); }
+
+        /* ─── SMOOTH BUTTON TRANSITIONS ─── */
+        .btn { transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1); }
+
+        /* ─── COUNTER ANIMATION ─── */
+        .stat-number { display: inline-block; }
+
+        /* ─── RESPONSIVE ─── */
+        @media (max-width: 1024px) {
+            .container { padding: 0 36px; }
+            .nav-inner { padding: 14px 36px; }
+            .hero-inner { grid-template-columns: 1fr; gap: 40px; }
+            .delivery-inner { grid-template-columns: 1fr; gap: 40px; }
+            .delivery-map-wrap { max-width: 400px; }
+            .hero { padding: 60px 0 80px; }
+            .how-grid { grid-template-columns: repeat(3, 1fr); }
+            .offer-grid, .benefits-grid-six, .eco-grid { grid-template-columns: repeat(2, 1fr); }
+            .features-grid { grid-template-columns: 1fr; gap: 24px; }
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
+            .footer-grid { grid-template-columns: repeat(2, 1fr); gap: 36px; }
+        }
+        /* ─── HAMBURGER ─── */
+        .hamburger { display: none; background: none; border: none; cursor: pointer; padding: 8px; z-index: 201; position: relative; }
+        .hamburger span { display: block; width: 24px; height: 2px; background: #fff; border-radius: 2px; transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1); }
+        .hamburger span + span { margin-top: 6px; }
+        .hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(4px, 4px); }
+        .hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+        .hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+        .mobile-drawer { display: none; }
+
+        @media (max-width: 768px) {
+            .container { padding: 0 20px; }
+            .nav-inner { padding: 12px 20px; }
+            .nav-links { display: none; }
+            .nav-buttons .btn-outline { display: none; }
+            .nav-trust { display: none; }
+            .hamburger { display: flex; flex-direction: column; align-items: center; justify-content: center; }
+            .mobile-drawer { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: var(--green-dark); z-index: 200; flex-direction: column; align-items: center; justify-content: center; gap: 0; opacity: 0; transform: translateY(-20px); transition: opacity 0.4s cubic-bezier(0.16,1,0.3,1), transform 0.4s cubic-bezier(0.16,1,0.3,1); pointer-events: none; }
+            .mobile-drawer.open { display: flex; opacity: 1; transform: translateY(0); pointer-events: all; }
+            .mobile-drawer a { font-family: var(--font); font-weight: 700; font-size: 22px; color: #fff; padding: 16px 0; text-decoration: none; opacity: 0.8; transition: opacity 0.2s, color 0.2s; }
+            .mobile-drawer a:hover { opacity: 1; color: var(--yellow); }
+            .mobile-drawer .mobile-cta { margin-top: 24px; padding: 14px 40px; background: var(--red); color: #fff; border-radius: var(--radius-pill); font-weight: 900; font-size: 16px; opacity: 1; }
+            .hero { padding: 40px 0 60px; }
+            .hero-image { max-width: 380px; margin: 0 auto; }
+            .hero-image img { width: 100%; margin-left: 0; }
+            .hero-tabs-inner { padding: 10px 20px; }
+            .hero-tabs-label { display: none; }
+            .hero-tabs { justify-content: flex-start; gap: 4px; }
+            .hero-tab { padding: 7px 14px; font-size: 12px; }
+            .hero-tab .tab-icon { font-size: 13px; }
+            .how-grid, .offer-grid, .benefits-grid-six, .eco-grid, .stats-grid { grid-template-columns: 1fr; }
+            .how-section, .offer-section, .benefits-six, .testimonials, .delivery, .faq-section, .cta, .ecosystem { padding: 72px 0; }
+            .cities-grid { grid-template-columns: repeat(2, 1fr); }
+            .footer-grid { grid-template-columns: 1fr; gap: 28px; }
+            .cta-card { padding: 48px 24px; border-radius: 0; }
+            .cta-btns { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- LOADING SCREEN -->
+<div class="loader" id="loader">
+    <div class="loader-fruit" style="--r:-12deg;"><img src="apple-deco.svg" alt=""></div>
+    <div class="loader-fruit" style="--r:12deg;"><img src="apple-deco.svg" alt=""></div>
+    <img src="fruitttt.svg" alt="DailyFruits" class="loader-logo">
+    <div class="loader-text">Zdrowsze jedzenie,<br>lepsza praca.</div>
+</div>
+
+<!-- NAV -->
+<header>
+    <div class="nav-inner">
+        <div class="logo-wrap">
+            <a href="index.html"><img src="fruitttt.svg" alt="DailyFruits" class="logo-img"></a>
+            <a href="https://betterworkplace.pl" target="_blank" class="logo-sub">by BetterWorkplace</a>
+        </div>
+        <ul class="nav-links">
+            <li><a href="oferta.html">Oferta</a></li>
+            <li><a href="#benefits">Korzyści</a></li>
+            <li><a href="#how">Jak to działa</a></li>
+            <li><a href="#opinions">Opinie</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="#faq">FAQ</a></li>
+            <li><a href="zapytanie.html">Kontakt</a></li>
+        </ul>
+        <div class="nav-buttons">
+            <span class="nav-trust">Zaufało nam ponad<br>2 000 firm w Polsce</span>
+            <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+        </div>
+    </div>
+</header>
+
+<!-- MOBILE DRAWER -->
+<div class="mobile-drawer" id="mobileDrawer">
+    <a href="oferta.html">Oferta</a>
+    <a href="#benefits" class="mobile-nav-link">Korzyści</a>
+    <a href="#how" class="mobile-nav-link">Jak to działa</a>
+    <a href="#opinions" class="mobile-nav-link">Opinie</a>
+    <a href="#faq" class="mobile-nav-link">FAQ</a>
+    <a href="zapytanie.html" class="mobile-cta">Bezpłatna wycena →</a>
+</div>
+
+<!-- HERO CATEGORY TABS BAR -->
+<div class="hero-tabs-bar">
+    <div class="hero-tabs-inner">
+        <span class="hero-tabs-label">Dopasuj zamówienie<br>do potrzeb biura:</span>
+        <div class="hero-tabs">
+            <button class="hero-tab active" data-img="box_owoce_2.png" data-alt="Owoce do biura"><span class="tab-icon"><img src="icon-owoce.svg" alt="" style="height:22px;width:22px;vertical-align:-3px;"></span> Owoce</button>
+            <button class="hero-tab" data-img="box kanapki1.png" data-alt="Kanapki dla pracowników"><span class="tab-icon"><img src="icon-kanapki.svg" alt="" style="height:15px;width:auto;vertical-align:-2px;"></span> Kanapki</button>
+            <button class="hero-tab" data-img="BOX SNIADANIOWE.png" data-alt="Produkty śniadaniowe"><span class="tab-icon"><img src="icon-sniadania.svg" alt="" style="height:20px;width:auto;vertical-align:-3px;"></span> Sniadania</button>
+            <button class="hero-tab" data-img="box soki1.png" data-alt="Świeże soki"><span class="tab-icon"><img src="icon-soki.svg" alt="" style="height:24px;width:auto;vertical-align:-4px;margin-right:-2px;"></span> Soki</button>
+            <button class="hero-tab" data-img="box kawki.png" data-alt="Kawa do biura"><span class="tab-icon"><img src="icon-kawa.svg" alt="" style="height:18px;width:18px;vertical-align:-2px;"></span> Kawa</button>
+            <button class="hero-tab" data-img="box bakalie1.png" data-alt="Bakalie i suszone owoce"><span class="tab-icon"><img src="icon-bakalie.svg" alt="" style="height:20px;width:auto;vertical-align:-3px;"></span> Bakalie</button>
+            <button class="hero-tab hero-tab--red" data-img="box lody.png" data-alt="Lody do biura"><span class="tab-icon"><img src="icon-lody.svg" alt="" style="height:22px;width:auto;vertical-align:-4px;"></span> Lody</button>
+        </div>
+    </div>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+    <div class="container">
+        <div class="hero-inner">
+            <div class="hero-text">
+                <h1 class="split-heading"><span class="hero-line1">Zdrowsze jedzenie,</span> <span class="fun">lepsza praca.</span></h1>
+                <p>Nie jesteśmy dostawcą owoców.<br>Budujemy kulturę zdrowia w&nbsp;Twojej firmie<br>– zaczynając od&nbsp;kuchni. Świeże owoce,<br>zdrowe przekąski i&nbsp;rytuały, które łączą zespół.</p>
+                <div style="display:flex;gap:24px;margin-bottom:20px;flex-wrap:wrap;">
+                    <div style="display:flex;align-items:center;gap:8px;"><span style="font-family:var(--font-fun);font-size:38px;color:var(--lime);line-height:1;">24h</span><span style="font-size:13px;font-weight:700;color:var(--green-dark);opacity:0.6;line-height:1.2;">czas<br>dostawy</span></div>
+                    <div style="display:flex;align-items:center;gap:8px;"><span style="font-family:var(--font-fun);font-size:38px;color:var(--lime);line-height:1;">13</span><span style="font-size:13px;font-weight:700;color:var(--green-dark);opacity:0.6;line-height:1.2;">miast<br>w Polsce</span></div>
+                    <div style="display:flex;align-items:center;gap:8px;"><span style="font-family:var(--font-fun);font-size:38px;color:var(--lime);line-height:1;">2000+</span><span style="font-size:13px;font-weight:700;color:var(--green-dark);opacity:0.6;line-height:1.2;">firm<br>nam zaufało</span></div>
+                </div>
+                <div class="hero-buttons">
+                    <a href="zapytanie.html" class="btn btn-red-solid btn-arrow">Bezpłatna wycena</a>
+                    <a href="oferta.html" class="btn btn-outline">Zobacz ofertę →</a>
+                </div>
+            </div>
+            <div class="hero-image scale-in">
+                <img id="hero-product-img" src="box_owoce_2.png" alt="Owoce do biura">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- WAVE: hero → features -->
+<div class="wave-divider" style="margin-top:-2px;background:var(--cream)">
+    <svg viewBox="0 0 1440 60" preserveAspectRatio="none"><path d="M0,0 C240,50 480,10 720,40 C960,70 1200,10 1440,30 L1440,60 L0,60Z" fill="#FFFFFF"/></svg>
+</div>
+
+<!-- FEATURES STRIP -->
+<section class="features">
+    <div class="container">
+        <div class="features-grid">
+            <div class="feature-item reveal">
+                <div class="feature-icon"><img src="ikona 3.png" alt="Partner" loading="lazy"></div>
+                <div>
+                    <h3>Jeden partner, zero chaosu</h3>
+                    <p>Owoce, kawa, kanapki, soki –<br>wszystko&nbsp;z&nbsp;jednego miejsca</p>
+                </div>
+            </div>
+            <div class="feature-item reveal">
+                <div class="feature-icon"><img src="ikona 2.png" alt="Elastyczny" loading="lazy"></div>
+                <div>
+                    <h3>Elastyczny abonament</h3>
+                    <p>Subskrypcja, nie kontrakt.<br>Zmień lub anuluj, kiedy chcesz</p>
+                </div>
+            </div>
+            <div class="feature-item reveal">
+                <div class="feature-icon"><img src="ikona 1.png" alt="Benefit" loading="lazy"></div>
+                <div>
+                    <h3>Benefit, który czuć codziennie</h3>
+                    <p>Wellbeing żywieniowy&nbsp;w&nbsp;biurze –<br>realny wpływ na energię, zdrowie&nbsp;i&nbsp;satysfakcję zespołu</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- WAVE: features → how -->
+<div class="wave-divider" style="background:var(--white)">
+    <svg viewBox="0 0 1440 60" preserveAspectRatio="none"><path d="M0,40 C360,0 720,60 1080,20 C1260,5 1380,30 1440,15 L1440,60 L0,60Z" fill="#FFFFFF"/></svg>
+</div>
+
+<!-- HOW IT WORKS -->
+<section class="how-section" id="how" style="position:relative;overflow:hidden;">
+    <div class="container">
+        <div class="section-top reveal">
+            <div class="sticker sticker-lime" style="transform:rotate(-1deg)">Jak to działa</div>
+            <h2 style="margin-top:20px">Od zapytania do <span class="fun">kuchni</span><br>w kilku prostych krokach</h2>
+            <p>Zajmiemy się wszystkim. Ty cieszysz się efektami.</p>
+        </div>
+        <div class="how-grid">
+            <div class="how-card reveal"><div class="how-num">1</div><h3>Zapytanie</h3><p>Powiedz nam ile macie osób i czego potrzebujecie.</p></div>
+            <div class="how-card reveal"><div class="how-num">2</div><h3>Propozycja</h3><p>Dobieramy produkty i harmonogram dopasowany do Waszego biura.</p></div>
+            <div class="how-card reveal"><div class="how-num">3</div><h3>Wybieramy</h3><p>Selekcjonujemy najlepsze owoce i produkty od sprawdzonych dostawców.</p></div>
+            <div class="how-card reveal"><div class="how-num">4</div><h3>Dostarczamy</h3><p>Do biura lub do domu. Sterylnie, na czas, bez wysiłku z Waszej strony.</p></div>
+            <div class="how-card reveal"><div class="how-num">5</div><h3>Smakujecie</h3><p>Zespół cieszy się rytuałem. Owocowe Czwartki startują!</p></div>
+        </div>
+        <div class="how-buttons">
+            <a href="zapytanie.html" class="btn btn-red-solid btn-arrow">Zamów bezpłatną wycenę</a>
+            <a href="oferta.html" class="btn btn-outline">Zobacz pełną ofertę</a>
+        </div>
+    </div>
+</section>
+
+<!-- WAVE: how → stats -->
+<div class="wave-wrap">
+    <div class="apple-deco" style="width:140px;height:164px;left:5%;bottom:-80px;">
+        <img src="apple-deco.svg" alt="">
+    </div>
+    <div class="wave-divider" style="background:var(--white)">
+        <svg viewBox="0 0 1440 60" preserveAspectRatio="none"><path d="M0,30 C320,60 640,0 960,40 C1120,55 1300,10 1440,25 L1440,60 L0,60Z" fill="#1B5E3A"/></svg>
+    </div>
+</div>
+
+<!-- STATS -->
+<section class="stats">
+    <div class="container">
+        <div class="stats-grid">
+            <div class="reveal"><div class="stat-num stat-number">11+</div><div class="stat-label">Lat doświadczenia</div></div>
+            <div class="reveal" data-delay="1"><div class="stat-num stat-number">2000+</div><div class="stat-label">Firm w Polsce</div></div>
+            <div class="reveal" data-delay="2"><div class="stat-num stat-number">13</div><div class="stat-label">Miast dostawy</div></div>
+            <div class="reveal" data-delay="3"><div class="stat-num stat-number">81%</div><div class="stat-label">Poprawa wellbeingu</div></div>
+        </div>
+    </div>
+</section>
+
+<!-- MARQUEE TICKER (r352-style) -->
+<section class="marquee-section">
+    <div class="marquee-track">
+        <div class="marquee-item"><span class="dot"></span><span class="highlight">Owoce</span></div>
+        <div class="marquee-item"><span class="dot"></span>Kanapki</div>
+        <div class="marquee-item"><span class="dot"></span><span class="highlight">Bakalie</span></div>
+        <div class="marquee-item"><span class="dot"></span>Soki</div>
+        <div class="marquee-item"><span class="dot"></span><span class="highlight">Sniadania</span></div>
+        <div class="marquee-item"><span class="dot"></span>Wellbeing</div>
+        <div class="marquee-item"><span class="dot"></span><span class="highlight">Zdrowie</span></div>
+        <div class="marquee-item"><span class="dot"></span>Energia</div>
+        <div class="marquee-item"><span class="dot"></span><span class="highlight">Owoce</span></div>
+        <div class="marquee-item"><span class="dot"></span>Kanapki</div>
+        <div class="marquee-item"><span class="dot"></span><span class="highlight">Bakalie</span></div>
+        <div class="marquee-item"><span class="dot"></span>Soki</div>
+        <div class="marquee-item"><span class="dot"></span><span class="highlight">Sniadania</span></div>
+        <div class="marquee-item"><span class="dot"></span>Wellbeing</div>
+        <div class="marquee-item"><span class="dot"></span><span class="highlight">Zdrowie</span></div>
+        <div class="marquee-item"><span class="dot"></span>Energia</div>
+    </div>
+</section>
+
+<!-- WAVE: stats → benefits -->
+<div class="wave-wrap">
+    <div class="wave-divider" style="background:var(--green-dark)">
+        <svg viewBox="0 0 1440 60" preserveAspectRatio="none"><path d="M0,20 C480,60 960,0 1440,35 L1440,60 L0,60Z" fill="#FFF8D8"/></svg>
+    </div>
+</div>
+
+<!-- 6 BENEFITS -->
+<section class="benefits-six" id="benefits">
+    <div class="container">
+        <div class="section-top reveal">
+            <div class="sticker sticker-green" style="transform:rotate(1deg)">Dlaczego owoce w biurze</div>
+            <h2 style="margin-top:20px"><span class="fun">6 powodów,</span> by zacząć dzisiaj</h2>
+            <p>Dane mówią same za siebie. Owoce w biurze to nie koszt – to inwestycja z mierzalnym zwrotem.</p>
+        </div>
+        <div class="benefits-grid-six">
+            <div class="benefit-card reveal">
+                <div class="benefit-emoji">💪</div>
+                <h3>Zdrowie</h3>
+                <p>Pracownicy mają lepszą odporność, więcej energii i mniejszą absencję chorobową.</p>
+                <span class="benefit-stat">81%</span>
+                <p style="font-size:12px;margin-top:4px;color:var(--olive)">pracowników potwierdza poprawę wellbeingu</p>
+            </div>
+            <div class="benefit-card reveal">
+                <div class="benefit-emoji">😊</div>
+                <h3>Satysfakcja</h3>
+                <p>Prosty gest w kuchni daje poczucie, że firma dba o ludzi, nie tylko o KPI.</p>
+                <span class="benefit-stat">70%</span>
+                <p style="font-size:12px;margin-top:4px;color:var(--olive)">deklaruje wyższą satysfakcję z pracy</p>
+            </div>
+            <div class="benefit-card reveal">
+                <div class="benefit-emoji">🏢</div>
+                <h3>Wizerunek firmy</h3>
+                <p>Owoce w biurze budują wizerunek nowoczesnego, dbającego pracodawcy.</p>
+                <span class="benefit-stat">70%</span>
+                <p style="font-size:12px;margin-top:4px;color:var(--olive)">uważa, że owoce poprawiają postrzeganie firmy</p>
+            </div>
+            <div class="benefit-card reveal">
+                <div class="benefit-emoji">⚡</div>
+                <h3>Produktywność</h3>
+                <p>Zdrowe przekąski zamiast sugar crashy. Mierzalny wpływ na koncentrację i efektywność.</p>
+            </div>
+            <div class="benefit-card reveal">
+                <div class="benefit-emoji">↻</div>
+                <h3>Elastyczność</h3>
+                <p>Subskrypcja, nie kontrakt. Zmień skład i częstotliwość kiedy chcesz, bez kar i zobowiązań.</p>
+            </div>
+            <div class="benefit-card reveal">
+                <div class="benefit-emoji">🧘</div>
+                <h3>Wellbeing</h3>
+                <p>Kompleksowe podejście do zdrowia pracowników przez codzienne nawyki żywieniowe.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FULL-WIDTH PHOTO BREAK -->
+<section class="photo-break reveal" style="width:100%;padding:0;margin:0;overflow:hidden;line-height:0;">
+    <img src="HORIZONTAL.png" alt="DailyFruits box w biurze" loading="lazy" style="width:100%;height:auto;display:block;object-fit:cover;max-height:50vh;">
+</section>
+
+<!-- OFFER -->
+<section class="offer-section">
+    <div class="container">
+        <div class="section-top reveal">
+            <div class="sticker sticker-yellow" style="transform:rotate(2deg)">Co dostarczamy</div>
+            <h2 style="margin-top:20px">Jedno miejsce, <span class="fun">cała oferta</span></h2>
+            <p>Owoce, warzywa, kanapki, kawa, soki – wszystko w jednej dostawie, od jednego partnera.</p>
+        </div>
+        <div class="offer-grid">
+            <div class="offer-card reveal" data-delay="1">
+                <img src="box_owoce_2.png" alt="Owoce do biura" loading="lazy">
+                <div class="offer-card-body"><h3>Owoce do biura</h3><p>Selekcjonowane owoce, zawsze świeże i dojrzałe. Podstawa Owocowych Czwartków.</p><a href="oferta.html" class="offer-link">Zobacz więcej →</a></div>
+            </div>
+            <div class="offer-card reveal" data-delay="2">
+                <img src="box kanapki1.png" alt="Kanapki i lunche" loading="lazy">
+                <div class="offer-card-body"><h3>Kanapki i lunche</h3><p>Zdrowe zestawy z najlepszych składników. Kanapkowe Wtorki w Twoim biurze.</p><a href="oferta.html" class="offer-link">Zobacz więcej →</a></div>
+            </div>
+            <div class="offer-card reveal" data-delay="3">
+                <img src="box kawki.png" alt="Kawa do firmy" loading="lazy">
+                <div class="offer-card-body"><h3>Kawa do firmy</h3><p>Kawa z Małej Palarni w ziarnach. Świeża, lokalna, z charakterem.</p><a href="oferta.html" class="offer-link">Zobacz więcej →</a></div>
+            </div>
+            <div class="offer-card reveal" data-delay="1">
+                <img src="BOX SNIADANIOWE.png" alt="Produkty śniadaniowe" loading="lazy">
+                <div class="offer-card-body"><h3>Produkty śniadaniowe</h3><p>Musli, jogurty, granola. Poranny rytuał dla całego zespołu.</p><a href="oferta.html" class="offer-link">Zobacz więcej →</a></div>
+            </div>
+            <div class="offer-card reveal" data-delay="2">
+                <img src="box bakalie1.png" alt="Bakalie i suszone" loading="lazy">
+                <div class="offer-card-body"><h3>Bakalie i suszone</h3><p>Orzechy, suszone owoce i zdrowe przekąski na cały tydzień.</p><a href="oferta.html" class="offer-link">Zobacz więcej →</a></div>
+            </div>
+            <div class="offer-card reveal" data-delay="3">
+                <img src="box soki1.png" alt="Świeże soki" loading="lazy">
+                <div class="offer-card-body"><h3>Świeże soki</h3><p>Tłoczone na zimno ze świeżych owoców i warzyw. Smoothie Monday ready.</p><a href="oferta.html" class="offer-link">Zobacz więcej →</a></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- WAVE: offer → ecosystem -->
+<div class="wave-wrap">
+    <div class="apple-deco" style="width:150px;height:175px;right:12%;bottom:-85px;">
+        <img src="apple-deco.svg" alt="">
+    </div>
+    <div class="wave-divider" style="background:var(--white)">
+        <svg viewBox="0 0 1440 60" preserveAspectRatio="none"><path d="M0,40 C360,0 720,55 1080,15 C1260,5 1380,35 1440,20 L1440,60 L0,60Z" fill="#1B5E3A"/></svg>
+    </div>
+</div>
+
+<!-- ECOSYSTEM -->
+<section class="ecosystem" id="ecosystem">
+    <div class="container">
+        <div class="section-top reveal">
+            <div class="sticker sticker-lime" style="transform:rotate(-1deg)">Ekosystem BetterWorkplace</div>
+            <h2 style="margin-top:20px;color:#fff">Jeden partner do <span class="fun">całego wellbeingu</span></h2>
+            <p style="max-width:560px;margin:12px auto 0">Zamiast czterech dostawców i&nbsp;dziesięciu faktur – jeden ekosystem, który ogarnia jedzenie, budżety, biuro i&nbsp;prezenty.</p>
+        </div>
+        <div class="eco-grid">
+            <div class="eco-card reveal">
+                <span class="eco-icon">🍎🥪</span>
+                <h3>DailyFruits + DailyFoods</h3>
+                <p>Owoce, kanapki, kawa, snacki – wszystko w&nbsp;jednym zamówieniu. Jedno konto, jedna faktura, zero komplikacji dla biura.</p>
+            </div>
+            <div class="eco-card reveal">
+                <span class="eco-icon">💳</span>
+                <h3>TeamBudget</h3>
+                <p>Budżet żywieniowy dla każdego pracownika. Zamiast zgadywać co zamówić – dajesz zespołowi wybór, a&nbsp;Ty trzymasz kontrolę nad kosztami.</p>
+            </div>
+            <div class="eco-card reveal">
+                <span class="eco-icon">🏢</span>
+                <h3>BetterOffice</h3>
+                <p>Wszystko czego potrzebuje dobrze funkcjonujące biuro – od&nbsp;kawy po środki czystości. Mniej dostawców, mniej faktur, więcej porządku.</p>
+            </div>
+            <div class="eco-card reveal">
+                <span class="eco-icon">🎁</span>
+                <h3>SendGift</h3>
+                <p>Welcome packi, zestawy świąteczne, podziękowania dla klientów. Gotowe paczki, które wysyłasz jednym kliknięciem.</p>
+            </div>
+        </div>
+        <div class="reveal" style="text-align:center;margin-top:48px;">
+            <a href="https://betterworkplace.pl" target="_blank" class="btn-eco-cta" style="display:inline-block;padding:16px 40px;background:var(--yellow);color:var(--green-dark);font-weight:900;font-size:16px;border-radius:60px;text-decoration:none;transition:transform 0.3s, box-shadow 0.3s, background 0.3s;box-shadow:0 4px 20px rgba(0,0,0,0.15);">Poznaj ekosystem BetterWorkplace →</a>
+        </div>
+    </div>
+</section>
+
+<!-- WAVE: ecosystem → testimonials -->
+<div class="wave-wrap">
+    <div class="wave-divider" style="background:var(--green-dark)">
+        <svg viewBox="0 0 1440 60" preserveAspectRatio="none"><path d="M0,15 C240,55 480,0 720,40 C960,65 1200,10 1440,30 L1440,60 L0,60Z" fill="#FFF9E0"/></svg>
+    </div>
+</div>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials" id="opinions">
+    <div class="container">
+        <div class="section-top reveal">
+            <div class="sticker sticker-coral" style="transform:rotate(-1deg)">Opinie</div>
+            <h2 style="margin-top:20px">Co mowia nasi <span class="fun">klienci</span></h2>
+        </div>
+    </div>
+    <div class="test-track">
+        <div class="test-slider">
+            <div class="test-card"><blockquote>Od ponad trzech lat pracujemy z firmą Dailyfruits. Dzisiaj owoce w charakterystycznej drewnianej skrzynce to nieodłączny element naszego biurowego krajobrazu. Jakość? Niezmiennie wysoka.</blockquote><div class="test-author"><div class="test-avatar"><img loading="lazy" src="https://dailyfruits.pl/app/uploads/2015/11/embs-e1453994818624.jpg" alt="EMBS"></div><div class="test-meta"><h4>Stathis Karaplios</h4><p>Managing Director, EMBS</p></div></div></div>
+            <div class="test-card"><blockquote>Fruit Day jako dodatkowy benefit sprawdził się u nas świetnie. Firma Dailyfruits od samego początku była strzałem w dziesiątkę. Świeże owoce dostarczane o umówionych porach.</blockquote><div class="test-author"><div class="test-avatar"><img loading="lazy" src="https://dailyfruits.pl/app/uploads/2015/11/4F-e1453995146523.jpg" alt="OTCF"></div><div class="test-meta"><h4>Barbara Fitowska</h4><p>Office Manager, OTCF</p></div></div></div>
+            <div class="test-card"><blockquote>Jestem bardzo zadowolona ze współpracy z firmą Dailyfruits. Od samego początku miałam bardzo dobry kontakt z Przedstawicielem Firmy. Zawsze mogę liczyć na elastyczność.</blockquote><div class="test-author"><div class="test-avatar"><img loading="lazy" src="https://dailyfruits.pl/app/uploads/2021/01/enea3mini.png" alt="Enea"></div><div class="test-meta"><h4>Hanna Gałązka</h4><p>Dyrektor Departamentu, Enea Centrum</p></div></div></div>
+            <div class="test-card"><blockquote>Pracownicy Dailyfruits wykazują się profesjonalizmem. Dostarczane owoce są zawsze najwyższej jakości. To nie tylko zdrowa przekąska, ale sposób dbania o komfort pracowników.</blockquote><div class="test-author"><div class="test-avatar"><img loading="lazy" src="https://dailyfruits.pl/app/uploads/2021/01/synevo2mini.jpg" alt="Synevo"></div><div class="test-meta"><h4>Szymon Demmer</h4><p>HR Business Partner, Synevo</p></div></div></div>
+            <div class="test-card"><blockquote>Gorąco polecam współpracę z firmą Dailyfruits. To godny zaufania partner, który dostarcza świeże produkty wysokiej jakości na terenie całego kraju.</blockquote><div class="test-author"><div class="test-avatar"><img loading="lazy" src="https://dailyfruits.pl/app/uploads/2020/07/smsapi2020-1.png" alt="SMS API"></div><div class="test-meta"><h4>Samanta Folwaczny</h4><p>HR Specialist, SMS API</p></div></div></div>
+            <div class="test-card"><blockquote>Firma Dailyfruits wyszła naprzeciw oczekiwaniom i przygotowała pięknie wyglądające, zdrowe paczki świąteczne, które dostarczyła do domów pracowników.</blockquote><div class="test-author"><div class="test-avatar"><img loading="lazy" src="https://dailyfruits.pl/app/uploads/2015/11/pobrane-e1451465436746.jpg" alt="Lasy Państwowe"></div><div class="test-meta"><h4>Stanisław Sennik</h4><p>Dyrektor, Lasy Państwowe</p></div></div></div>
+            <!-- dup for loop -->
+            <div class="test-card"><blockquote>Od ponad trzech lat pracujemy z firmą Dailyfruits. Jakość? Niezmiennie wysoka. Owoce w charakterystycznej drewnianej skrzynce to element naszego biurowego krajobrazu.</blockquote><div class="test-author"><div class="test-avatar"><img loading="lazy" src="https://dailyfruits.pl/app/uploads/2015/11/embs-e1453994818624.jpg" alt="EMBS"></div><div class="test-meta"><h4>Stathis Karaplios</h4><p>Managing Director, EMBS</p></div></div></div>
+            <div class="test-card"><blockquote>Fruit Day jako dodatkowy benefit sprawdził się u nas świetnie. Firma Dailyfruits od samego początku była strzałem w dziesiątkę.</blockquote><div class="test-author"><div class="test-avatar"><img loading="lazy" src="https://dailyfruits.pl/app/uploads/2015/11/4F-e1453995146523.jpg" alt="OTCF"></div><div class="test-meta"><h4>Barbara Fitowska</h4><p>Office Manager, OTCF</p></div></div></div>
+            <div class="test-card"><blockquote>Jestem bardzo zadowolona ze współpracy. Obietnice składane w czasie negocjacji sprawdzają się każdego dnia.</blockquote><div class="test-author"><div class="test-avatar"><img loading="lazy" src="https://dailyfruits.pl/app/uploads/2021/01/enea3mini.png" alt="Enea"></div><div class="test-meta"><h4>Hanna Gałązka</h4><p>Dyrektor Departamentu, Enea Centrum</p></div></div></div>
+            <div class="test-card"><blockquote>Pracownicy Dailyfruits wykazują się profesjonalizmem. Dostarczane owoce są zawsze najwyższej jakości.</blockquote><div class="test-author"><div class="test-avatar"><img loading="lazy" src="https://dailyfruits.pl/app/uploads/2021/01/synevo2mini.jpg" alt="Synevo"></div><div class="test-meta"><h4>Szymon Demmer</h4><p>HR Business Partner, Synevo</p></div></div></div>
+            <div class="test-card"><blockquote>Gorąco polecam współpracę z firmą Dailyfruits. Godny zaufania partner na terenie całego kraju.</blockquote><div class="test-author"><div class="test-avatar"><img loading="lazy" src="https://dailyfruits.pl/app/uploads/2020/07/smsapi2020-1.png" alt="SMS API"></div><div class="test-meta"><h4>Samanta Folwaczny</h4><p>HR Specialist, SMS API</p></div></div></div>
+            <div class="test-card"><blockquote>Dailyfruits przygotowała piękne, zdrowe paczki świąteczne dostarczone do domów pracowników.</blockquote><div class="test-author"><div class="test-avatar"><img loading="lazy" src="https://dailyfruits.pl/app/uploads/2015/11/pobrane-e1451465436746.jpg" alt="Lasy Państwowe"></div><div class="test-meta"><h4>Stanisław Sennik</h4><p>Dyrektor, Lasy Państwowe</p></div></div></div>
+        </div>
+    </div>
+</section>
+
+<!-- DELIVERY (DARK MAP) -->
+<section class="delivery" id="delivery">
+    <!-- Scrolling car -->
+    <div class="delivery-car" id="delivery-car">
+        <img src="autkonowe.png" alt="Samochód dostawczy DailyFruits" loading="lazy">
+    </div>
+    <!-- Background repeating text -->
+    <div class="delivery-bg-text">dailyfruits</div>
+    <div class="container">
+        <div class="delivery-inner">
+            <!-- MAP IMAGE -->
+            <div class="delivery-map-wrap reveal">
+                <img src="mapa.png" alt="Mapa dostaw DailyFruits w Polsce" loading="lazy" style="width:100%;height:auto;border-radius:12px;">
+            </div>
+
+            <!-- TEXT COLUMN -->
+            <div class="reveal">
+                <div class="sticker sticker-lime" style="transform:rotate(-2deg);margin-bottom:20px">Dostawa w całej Polsce</div>
+                <h2>Dostarczamy<br>w <span class="fun">13 miastach</span></h2>
+                <p style="margin-bottom:24px">Jesteśmy tam, gdzie Twoje biura. Sterylnie, na czas, bez wysiłku z Waszej strony.</p>
+                <div class="cities-grid">
+                    <div class="city-pill">Warszawa</div>
+                    <div class="city-pill">Kraków</div>
+                    <div class="city-pill">Wrocław</div>
+                    <div class="city-pill">Poznań</div>
+                    <div class="city-pill">Katowice</div>
+                    <div class="city-pill">Łódź</div>
+                    <div class="city-pill">Gdańsk</div>
+                    <div class="city-pill">Szczecin</div>
+                    <div class="city-pill">Lublin</div>
+                    <div class="city-pill">Rzeszów</div>
+                    <div class="city-pill">Gdynia</div>
+                    <div class="city-pill">Bydgoszcz</div>
+                    <div class="city-pill">Gliwice</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-section" id="faq" style="position:relative;overflow:hidden;">
+    <div class="container">
+        <div class="section-top reveal">
+            <div class="sticker sticker-lime" style="transform:rotate(1deg)">FAQ</div>
+            <h2 style="margin-top:20px">Pytania i <span class="fun">odpowiedzi</span></h2>
+        </div>
+        <div class="faq-list">
+            <div class="faq-item"><button class="faq-q"><span>Czym DailyFruits różni się od zwykłego dostawcy owoców?</span><span class="faq-icon"></span></button><div class="faq-a"><div class="faq-a-inner">Nie jesteśmy hurtownią – budujemy kulturę zdrowia w biurze. Owocowe Czwartki, Kanapkowe Wtorki, kompletna oferta żywieniowa z jednego miejsca. Jesteśmy częścią ekosystemu BetterWorkplace – wellbeing żywieniowy jako codzienny benefit dla zespołu.</div></div></div>
+            <div class="faq-item"><button class="faq-q"><span>Czy pierwsza dostawa jest naprawdę gratis?</span><span class="faq-icon"></span></button><div class="faq-a"><div class="faq-a-inner">Tak! Pierwsza dostawa jest bezpłatna i może być pełnym zestawem do przetestowania. Bez zobowiązań – dopiero po degustacji decydujesz o stałej współpracy.</div></div></div>
+            <div class="faq-item"><button class="faq-q"><span>Jak szybko mogę zacząć dostawy?</span><span class="faq-icon"></span></button><div class="faq-a"><div class="faq-a-inner">W ciągu 3–5 dni roboczych od zapytania. Dobieramy ofertę, ustalamy harmonogram i ruszamy. Możesz zmienić skład, częstotliwość lub anulować w dowolnym momencie.</div></div></div>
+            <div class="faq-item"><button class="faq-q"><span>Czy to się opłaca? Jaki jest ROI?</span><span class="faq-icon"></span></button><div class="faq-a"><div class="faq-a-inner">81% pracowników potwierdza poprawę wellbeingu, 70% wyższą satysfakcję z pracy, a firmy notują nawet 30% mniej absencji chorobowych. To nie koszt – to inwestycja w benefity z mierzalnym zwrotem, wpisana w politykę HR.</div></div></div>
+            <div class="faq-item"><button class="faq-q"><span>Czy mogę zamawiać nie tylko owoce?</span><span class="faq-icon"></span></button><div class="faq-a"><div class="faq-a-inner">Oczywiście! W ramach ekosystemu DailyFruits i DailyFoods oferujemy owoce, warzywa, kanapki, produkty śniadaniowe, bakalie, soki, kawę i wiele więcej. Jeden partner zamiast trzech dostawców.</div></div></div>
+            <div class="faq-item"><button class="faq-q"><span>Gdzie dostarczacie?</span><span class="faq-icon"></span></button><div class="faq-a"><div class="faq-a-inner">Dostarczamy do 13 miast w Polsce: Warszawa, Kraków, Wrocław, Poznań, Katowice, Łódź, Gdańsk, Szczecin, Lublin, Rzeszów, Gdynia, Bydgoszcz i Gliwice. Zarówno do biura, jak i do domu w modelu home office.</div></div></div>
+        </div>
+    </div>
+</section>
+
+<!-- WAVE: faq → cta -->
+<div class="wave-divider" style="background:var(--white)">
+    <svg viewBox="0 0 1440 60" preserveAspectRatio="none"><path d="M0,20 C360,55 720,0 1080,40 C1260,55 1380,25 1440,30 L1440,60 L0,60Z" fill="#FFF9E0"/></svg>
+</div>
+
+<!-- CTA -->
+<section class="cta">
+    <div class="container">
+        <div class="cta-card reveal">
+            <h2>Zacznij od <span class="fun">kuchni</span></h2>
+            <p>Sprawdź jak owoce i zdrowe rytuały mogą zmienić kulturę Twojej firmy. Pierwsza dostawa gratis!</p>
+            <div class="cta-btns">
+                <a href="zapytanie.html" class="btn btn-red-solid btn-arrow">Złóż zapytanie</a>
+                <a href="zapytanie.html" class="btn btn-outline">Porozmawiaj z nami</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- WAVE: cta → footer -->
+<div class="wave-wrap">
+    <div class="wave-divider" style="background:var(--cream)">
+        <svg viewBox="0 0 1440 60" preserveAspectRatio="none"><path d="M0,15 C240,50 480,5 720,35 C960,60 1200,10 1440,25 L1440,60 L0,60Z" fill="#1B5E3A"/></svg>
+    </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <div style="display:flex;align-items:center;gap:16px;">
+                    <img src="fruitttt.svg" alt="DailyFruits" style="height:56px;filter:brightness(10);">
+                    <img src="dailyfoods-logo.svg" alt="DailyFoods" style="height:56px;">
+                </div>
+                <p>Zdrowsze jedzenie, lepsza praca – zaczynając od kuchni. Część ekosystemu BetterWorkplace.</p>
+            </div>
+            <div class="footer-col"><h4>Nawigacja</h4><ul><li><a href="index.html">Start</a></li><li><a href="oferta.html">Oferta</a></li><li><a href="blog.html">Blog</a></li><li><a href="zapytanie.html">Kontakt</a></li><li><a href="#faq">FAQ</a></li></ul></div>
+            <div class="footer-col"><h4>Ekosystem</h4><ul><li><a href="oferta.html">DailyFruits</a></li><li><a href="oferta.html">DailyFoods</a></li><li><a href="#">SendGift</a></li><li><a href="#">TeamBudget</a></li></ul></div>
+            <div class="footer-col"><h4>Dostawa</h4><ul><li><p>Warszawa, Kraków, Wrocław</p></li><li><p>Poznań, Katowice, Łódź</p></li><li><p>Gdańsk, Szczecin, Lublin</p></li><li><p>i 4 dodatkowe miasta</p></li></ul></div>
+        </div>
+        <div class="footer-bottom">&copy; 2026 DailyFruits by BetterWorkplace. Wszystkie prawa zastrzeżone.</div>
+    </div>
+</footer>
+
+<!-- Lenis Smooth Scroll (r352-style) -->
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
+<script>
+    // ─── HEADER SCROLL SHADOW ───
+    const header = document.querySelector('header');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 20) { header.classList.add('scrolled'); }
+        else { header.classList.remove('scrolled'); }
+    }, { passive: true });
+
+    // ─── HAMBURGER MENU ───
+    const hamburger = document.getElementById('hamburger');
+    const mobileDrawer = document.getElementById('mobileDrawer');
+    hamburger.addEventListener('click', () => {
+        hamburger.classList.toggle('open');
+        mobileDrawer.classList.toggle('open');
+        document.body.style.overflow = mobileDrawer.classList.contains('open') ? 'hidden' : '';
+    });
+    document.querySelectorAll('.mobile-nav-link').forEach(link => {
+        link.addEventListener('click', () => {
+            hamburger.classList.remove('open');
+            mobileDrawer.classList.remove('open');
+            document.body.style.overflow = '';
+        });
+    });
+
+    // ─── LOADING SCREEN ───
+    function hideLoader() {
+        const loader = document.getElementById('loader');
+        if (!loader || loader.classList.contains('done')) return;
+        loader.classList.add('done');
+        setTimeout(() => { loader.style.display = 'none'; }, 700);
+    }
+    window.addEventListener('load', () => { setTimeout(hideLoader, 900); });
+    // Fallback: hide loader after 3s even if resources fail to load
+    setTimeout(hideLoader, 3000);
+
+    // ─── LENIS SMOOTH SCROLL ───
+    let lenis;
+    try {
+        lenis = new Lenis({
+            duration: 1.2,
+            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+            smoothWheel: true,
+            wheelMultiplier: 1,
+            touchMultiplier: 2,
+        });
+        function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
+        requestAnimationFrame(raf);
+    } catch(e) {
+        console.warn('Lenis not loaded, using native scroll');
+        document.documentElement.style.scrollBehavior = 'smooth';
+    }
+
+    // ─── ENHANCED REVEAL OBSERVER ───
+    const revealObs = new IntersectionObserver(entries => {
+        entries.forEach(e => {
+            if (e.isIntersecting) { e.target.classList.add('vis'); revealObs.unobserve(e.target); }
+        });
+    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.reveal, .scale-in, .slide-left, .slide-right').forEach(el => revealObs.observe(el));
+
+    // ─── TEXT SPLIT ANIMATION ───
+    document.querySelectorAll('.split-heading').forEach(heading => {
+        const html = heading.innerHTML;
+        // Wrap each word in a span, preserving inner HTML like <span class="fun">
+        const tempDiv = document.createElement('div');
+        tempDiv.innerHTML = html;
+
+        function wrapWords(node) {
+            if (node.nodeType === 3) { // text node
+                const words = node.textContent.split(/(\s+)/);
+                const frag = document.createDocumentFragment();
+                words.forEach(w => {
+                    if (w.trim()) {
+                        const span = document.createElement('span');
+                        span.className = 'word';
+                        span.textContent = w;
+                        frag.appendChild(span);
+                        frag.appendChild(document.createTextNode(' '));
+                    }
+                });
+                node.parentNode.replaceChild(frag, node);
+            } else if (node.nodeType === 1) {
+                // For <span class="fun"> etc., wrap the whole element
+                if (node.tagName === 'SPAN' && node.classList.contains('fun')) {
+                    const wrapper = document.createElement('span');
+                    wrapper.className = 'word';
+                    node.parentNode.insertBefore(wrapper, node);
+                    wrapper.appendChild(node);
+                } else if (node.tagName === 'SPAN' && node.classList.contains('hero-line1')) {
+                    Array.from(node.childNodes).forEach(child => {
+                        if (child.nodeType === 3) {
+                            const words = child.textContent.split(/(\s+)/);
+                            const frag = document.createDocumentFragment();
+                            words.forEach(w => {
+                                if (w.trim()) {
+                                    const span = document.createElement('span');
+                                    span.className = 'word';
+                                    span.textContent = w;
+                                    frag.appendChild(span);
+                                    frag.appendChild(document.createTextNode(' '));
+                                }
+                            });
+                            child.parentNode.replaceChild(frag, child);
+                        }
+                    });
+                } else {
+                    Array.from(node.childNodes).forEach(wrapWords);
+                }
+            }
+        }
+        Array.from(tempDiv.childNodes).forEach(wrapWords);
+        heading.innerHTML = tempDiv.innerHTML;
+
+        // Stagger delays
+        heading.querySelectorAll('.word').forEach((w, i) => {
+            w.style.transitionDelay = `${i * 0.08}s`;
+        });
+
+        // Observe
+        const splitObs = new IntersectionObserver(entries => {
+            entries.forEach(e => {
+                if (e.isIntersecting) { e.target.classList.add('vis'); splitObs.unobserve(e.target); }
+            });
+        }, { threshold: 0.2 });
+        splitObs.observe(heading);
+    });
+
+    // ─── COUNTER ANIMATION ───
+    const counterObs = new IntersectionObserver(entries => {
+        entries.forEach(e => {
+            if (e.isIntersecting) {
+                const el = e.target;
+                const text = el.textContent.trim();
+                const match = text.match(/^([\d\s]+)(.*)/);
+                if (match) {
+                    const target = parseInt(match[1].replace(/\s/g, ''));
+                    const suffix = match[2];
+                    const duration = 1800;
+                    const start = performance.now();
+                    function step(now) {
+                        const progress = Math.min((now - start) / duration, 1);
+                        const eased = 1 - Math.pow(1 - progress, 3);
+                        const current = Math.floor(target * eased);
+                        el.textContent = current.toLocaleString('pl-PL').replace(/,/g, ' ') + suffix;
+                        if (progress < 1) requestAnimationFrame(step);
+                    }
+                    requestAnimationFrame(step);
+                }
+                counterObs.unobserve(el);
+            }
+        });
+    }, { threshold: 0.5 });
+    document.querySelectorAll('.stat-number').forEach(el => counterObs.observe(el));
+
+    // ─── PARALLAX on decorative fruit elements ───
+    const fruitDecos = document.querySelectorAll('.fruit-deco');
+    const decoBaseTransforms = Array.from(fruitDecos).map(el => el.style.transform || '');
+    const decoSpeeds = Array.from(fruitDecos).map((_, i) => 0.02 + (i % 3) * 0.015);
+    const decoXSpeeds = Array.from(fruitDecos).map((_, i) => (i % 2 === 0 ? 0.008 : -0.008));
+
+    // ─── PARALLAX on hero ATF elements ───
+    const heroText = document.querySelector('.hero-text');
+    const heroImage = document.querySelector('.hero-image');
+    const heroDecos = document.querySelectorAll('.hero .fruit-deco');
+
+    function updateParallax() {
+        const scrollY = window.scrollY;
+
+        // Fruit deco parallax – each element at different speed
+        fruitDecos.forEach((el, i) => {
+            const rect = el.closest('section, .hero, .delivery, .benefits-six, .faq-section, .cta');
+            const parentTop = rect ? rect.offsetTop : 0;
+            const relScroll = scrollY - parentTop;
+            const y = -(relScroll * decoSpeeds[i]);
+            const x = relScroll * decoXSpeeds[i];
+            const s = 1 + relScroll * 0.00005;
+            el.style.transform = decoBaseTransforms[i] + ` translate(${x}px, ${y}px) scale(${s})`;
+        });
+
+        // Hero ATF parallax
+        if (heroText && scrollY < window.innerHeight) {
+            heroText.style.transform = `translateY(${scrollY * 0.06}px)`;
+            heroText.style.opacity = Math.max(0, 1 - scrollY * 0.0012);
+        }
+        if (heroImage && scrollY < window.innerHeight) {
+            heroImage.style.transform = `translateY(${scrollY * 0.1}px)`;
+        }
+    }
+    window.addEventListener('scroll', updateParallax, { passive: true });
+
+    // ─── DELIVERY CAR scroll animation ───
+    const deliveryCar = document.getElementById('delivery-car');
+    const deliverySection = document.getElementById('delivery');
+    if (deliveryCar && deliverySection) {
+        function updateCar() {
+            const rect = deliverySection.getBoundingClientRect();
+            const sectionH = deliverySection.offsetHeight;
+            const winH = window.innerHeight;
+            const progress = 1 - (rect.bottom / (sectionH + winH * 1));
+            const clamped = Math.max(0, Math.min(1, progress));
+            const eased = clamped * clamped * (3 - 2 * clamped);
+            const startX = window.innerWidth + 100;
+            const endX = -250;
+            const x = startX + (endX - startX) * eased;
+            deliveryCar.style.transform = `translateX(${x}px)`;
+        }
+        window.addEventListener('scroll', updateCar, { passive: true });
+        updateCar();
+    }
+
+    // ─── HEADER SHADOW on scroll (Lenis-aware) ───
+    // header already declared above, reuse it
+
+    // ─── FAQ ───
+    document.querySelectorAll('.faq-q').forEach(b => {
+        b.addEventListener('click', () => {
+            const item = b.parentElement;
+            const a = b.nextElementSibling;
+            const open = item.classList.contains('open');
+            document.querySelectorAll('.faq-item').forEach(i => { i.classList.remove('open'); i.querySelector('.faq-a').style.maxHeight = null; });
+            if (!open) { item.classList.add('open'); a.style.maxHeight = a.scrollHeight + 'px'; }
+        });
+    });
+
+    // ─── HERO CATEGORY TABS ───
+    const heroImg = document.getElementById('hero-product-img');
+    document.querySelectorAll('.hero-tab').forEach(tab => {
+        tab.addEventListener('click', () => {
+            if (tab.classList.contains('active')) return;
+            document.querySelectorAll('.hero-tab').forEach(t => t.classList.remove('active'));
+            tab.classList.add('active');
+            heroImg.classList.add('switching');
+            setTimeout(() => {
+                heroImg.src = tab.dataset.img;
+                heroImg.alt = tab.dataset.alt;
+                heroImg.classList.remove('switching');
+            }, 300);
+        });
+    });
+
+    // ─── SMOOTH ANCHOR SCROLLING with Lenis ───
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', e => {
+            const target = document.querySelector(anchor.getAttribute('href'));
+            if (target) { e.preventDefault(); if (lenis) { lenis.scrollTo(target, { offset: -100 }); } else { target.scrollIntoView({ behavior: 'smooth' }); } }
+        });
+    });
+</script>
+
+<!-- FLOATING BADGE -->
+<a href="zapytanie.html" class="floating-badge">
+    <img src="badge-trust.svg" alt="Zaufało nam ponad 2000 firm w Polsce">
+</a>
+
+</body>
+</html>
