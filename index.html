@@ -121,6 +121,10 @@
         .btn-red:hover { transform: translateY(-2px); }
         .btn-red:hover::before { filter: brightness(0.85); transform: scale(1.03); }
 
+        /* ─── CAROUSEL NAV (mobile only) ─── */
+        .carousel-nav { display: none; }
+        .carousel-counter { display: none; }
+
         /* ─── HERO WRAPPER ─── */
         .hero-wrapper { display: block; }
 
@@ -422,6 +426,11 @@
             .loader-fruit:nth-child(2) { top: auto; bottom: 5%; right: 50%; width: 200px; transform: translateX(50%) rotate(12deg); }
             @keyframes loader-float { 0%, 100% { transform: translateX(-50%) rotate(var(--r, 0deg)); } 50% { transform: translateX(-50%) translateY(-18px) rotate(var(--r, 0deg)); } }
             .how-grid, .offer-grid, .eco-grid, .stats-grid { grid-template-columns: 1fr; }
+            /* Carousel navigation arrows */
+            .carousel-nav { display: flex; align-items: center; justify-content: center; gap: 16px; margin-top: 16px; }
+            .carousel-btn { width: 44px; height: 44px; border-radius: 50%; border: 2px solid var(--green-dark); background: transparent; color: var(--green-dark); font-size: 20px; font-weight: 700; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.2s; flex-shrink: 0; }
+            .carousel-btn:active { background: var(--green-dark); color: #fff; }
+            .carousel-counter { display: flex; align-items: center; font-size: 14px; font-weight: 700; color: var(--green-dark); opacity: 0.5; min-width: 40px; justify-content: center; }
             /* Benefits: horizontal snap carousel on mobile */
             .benefits-grid-six { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; gap: 14px; padding-bottom: 16px; scrollbar-width: none; }
             .benefits-grid-six::-webkit-scrollbar { display: none; }
@@ -430,6 +439,7 @@
             .test-slider { animation: none !important; overflow-x: auto; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; scrollbar-width: none; padding-bottom: 12px; }
             .test-slider::-webkit-scrollbar { display: none; }
             .test-card { scroll-snap-align: start; width: 85vw; max-width: 320px; }
+            .test-slider .test-card:nth-child(n+7) { display: none; }
             .how-section, .offer-section, .benefits-six, .testimonials, .delivery, .faq-section, .cta, .ecosystem { padding: 72px 0; }
             .cities-grid { grid-template-columns: repeat(2, 1fr); }
             .footer-grid { grid-template-columns: 1fr; gap: 28px; }
@@ -692,6 +702,11 @@
                 <p>Kompleksowe podejście do zdrowia pracowników przez codzienne nawyki żywieniowe.</p>
             </div>
         </div>
+        <div class="carousel-nav" id="benefitsNav">
+            <button class="carousel-btn" data-dir="prev" aria-label="Poprzedni">&#8592;</button>
+            <span class="carousel-counter"><span class="carousel-current">1</span> / <span class="carousel-total">6</span></span>
+            <button class="carousel-btn" data-dir="next" aria-label="Następny">&#8594;</button>
+        </div>
     </div>
 </section>
 
@@ -813,6 +828,13 @@
             <div class="test-card"><blockquote>Pracownicy Dailyfruits wykazują się profesjonalizmem. Dostarczane owoce są zawsze najwyższej jakości.</blockquote><div class="test-author"><div class="test-avatar"><img loading="lazy" src="https://dailyfruits.pl/app/uploads/2021/01/synevo2mini.jpg" alt="Synevo"></div><div class="test-meta"><h4>Szymon Demmer</h4><p>HR Business Partner, Synevo</p></div></div></div>
             <div class="test-card"><blockquote>Gorąco polecam współpracę z firmą Dailyfruits. Godny zaufania partner na terenie całego kraju.</blockquote><div class="test-author"><div class="test-avatar"><img loading="lazy" src="https://dailyfruits.pl/app/uploads/2020/07/smsapi2020-1.png" alt="SMS API"></div><div class="test-meta"><h4>Samanta Folwaczny</h4><p>HR Specialist, SMS API</p></div></div></div>
             <div class="test-card"><blockquote>Dailyfruits przygotowała piękne, zdrowe paczki świąteczne dostarczone do domów pracowników.</blockquote><div class="test-author"><div class="test-avatar"><img loading="lazy" src="https://dailyfruits.pl/app/uploads/2015/11/pobrane-e1451465436746.jpg" alt="Lasy Państwowe"></div><div class="test-meta"><h4>Stanisław Sennik</h4><p>Dyrektor, Lasy Państwowe</p></div></div></div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="carousel-nav" id="testimonialsNav">
+            <button class="carousel-btn" data-dir="prev" aria-label="Poprzedni">&#8592;</button>
+            <span class="carousel-counter"><span class="carousel-current">1</span> / <span class="carousel-total">6</span></span>
+            <button class="carousel-btn" data-dir="next" aria-label="Następny">&#8594;</button>
         </div>
     </div>
 </section>
@@ -985,6 +1007,52 @@
     window.addEventListener('load', () => { setTimeout(hideLoader, 900); });
     // Fallback: hide loader after 3s even if resources fail to load
     setTimeout(hideLoader, 3000);
+
+    // ─── CAROUSEL ARROWS (mobile) ───
+    function initCarousel(navId, scrollEl, cardSelector) {
+        const nav = document.getElementById(navId);
+        if (!nav || !scrollEl) return;
+        const cards = scrollEl.querySelectorAll(cardSelector);
+        const total = cards.length;
+        const counterCurrent = nav.querySelector('.carousel-current');
+        const counterTotal = nav.querySelector('.carousel-total');
+        if (counterTotal) counterTotal.textContent = total;
+        let idx = 0;
+
+        function updateCounter() {
+            if (counterCurrent) counterCurrent.textContent = idx + 1;
+        }
+
+        nav.querySelectorAll('.carousel-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                if (btn.dataset.dir === 'next') idx = Math.min(idx + 1, total - 1);
+                else idx = Math.max(idx - 1, 0);
+                cards[idx].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
+                updateCounter();
+            });
+        });
+
+        // Update counter on manual swipe
+        let scrollTimeout;
+        scrollEl.addEventListener('scroll', () => {
+            clearTimeout(scrollTimeout);
+            scrollTimeout = setTimeout(() => {
+                const scrollLeft = scrollEl.scrollLeft;
+                let closest = 0, minDist = Infinity;
+                cards.forEach((c, i) => {
+                    const dist = Math.abs(c.offsetLeft - scrollEl.offsetLeft - scrollLeft);
+                    if (dist < minDist) { minDist = dist; closest = i; }
+                });
+                idx = closest;
+                updateCounter();
+            }, 100);
+        }, { passive: true });
+    }
+
+    if (window.matchMedia('(max-width: 768px)').matches) {
+        initCarousel('benefitsNav', document.querySelector('.benefits-grid-six'), '.benefit-card');
+        initCarousel('testimonialsNav', document.querySelector('.test-slider'), '.test-card');
+    }
 
     // ─── LENIS SMOOTH SCROLL ───
     let lenis;
