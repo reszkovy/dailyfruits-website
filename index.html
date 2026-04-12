@@ -121,6 +121,9 @@
         .btn-red:hover { transform: translateY(-2px); }
         .btn-red:hover::before { filter: brightness(0.85); transform: scale(1.03); }
 
+        /* ─── HERO WRAPPER ─── */
+        .hero-wrapper { display: block; }
+
         /* ─── HERO ─── */
         .hero { padding: 10px 0 0; background: var(--lime-bg); position: relative; overflow: hidden; }
         .hero-inner { display: grid; grid-template-columns: 1fr 1.2fr; gap: 24px; align-items: center; }
@@ -398,18 +401,26 @@
             .mobile-drawer-close span { display: block; width: 28px; height: 3px; background: #fff; border-radius: 2px; }
             .mobile-drawer-close span:first-child { transform: rotate(45deg) translate(1px, 1px); }
             .mobile-drawer-close span:last-child { transform: rotate(-45deg) translate(1px, -1px); }
-            .hero { padding: 40px 0 60px; }
-            .hero-image { max-width: 380px; margin: 0 auto; }
+            /* Hero wrapper reorder: tabs below image on mobile */
+            .hero-wrapper { display: flex; flex-direction: column; }
+            .hero { order: 1; padding: 40px 0 20px; margin-top: 80px; }
+            .hero-tabs-bar { order: 2; margin-top: 0; }
+            .hero-inner { grid-template-columns: 1fr; }
+            .hero-image { max-width: 320px; margin: 0 auto; }
             .hero-image img { width: 100%; margin-left: 0; }
             .hero-buttons { flex-direction: column; align-items: stretch; }
             .hero-buttons .btn { text-align: center; justify-content: center; }
-            .hero-tabs-bar { overflow-x: hidden; }
-            .hero-tabs-inner { padding: 12px 16px; justify-content: center; }
+            .hero-tabs-bar { overflow-x: hidden; background: var(--lime-bg); }
+            .hero-tabs-inner { padding: 8px 16px; justify-content: center; }
             .hero-tabs-label { display: none; }
             .hero-tabs { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; overflow-x: hidden; }
             .hero-tab { padding: 9px 16px; font-size: 14px; flex-shrink: 0; }
             .hero-tab .tab-icon { font-size: 15px; }
             .hero-tab .tab-icon img { height: 18px !important; width: auto !important; }
+            /* Loader apples: one top, one bottom */
+            .loader-fruit:nth-child(1) { top: 5%; left: 50%; width: 200px; transform: translateX(-50%) rotate(-12deg); }
+            .loader-fruit:nth-child(2) { top: auto; bottom: 5%; right: 50%; width: 200px; transform: translateX(50%) rotate(12deg); }
+            @keyframes loader-float { 0%, 100% { transform: translateX(-50%) rotate(var(--r, 0deg)); } 50% { transform: translateX(-50%) translateY(-18px) rotate(var(--r, 0deg)); } }
             .how-grid, .offer-grid, .benefits-grid-six, .eco-grid, .stats-grid { grid-template-columns: 1fr; }
             .how-section, .offer-section, .benefits-six, .testimonials, .delivery, .faq-section, .cta, .ecosystem { padding: 72px 0; }
             .cities-grid { grid-template-columns: repeat(2, 1fr); }
@@ -423,7 +434,6 @@
             .delivery-bg-text { font-size: clamp(80px, 20vw, 180px); }
             .nav-inner { padding: 12px 16px; }
             .container { padding: 0 16px; }
-            .hero-tabs-bar { margin-top: 80px; }
         }
     </style>
 </head>
@@ -471,6 +481,9 @@
     <a href="zapytanie.html" class="mobile-cta">Bezpłatna wycena →</a>
 </div>
 
+<!-- HERO WRAPPER (for mobile reorder) -->
+<div class="hero-wrapper">
+
 <!-- HERO CATEGORY TABS BAR -->
 <div class="hero-tabs-bar">
     <div class="hero-tabs-inner">
@@ -510,6 +523,8 @@
         </div>
     </div>
 </section>
+
+</div><!-- /hero-wrapper -->
 
 <!-- WAVE: hero → features -->
 <div class="wave-divider" style="margin-top:-2px;background:var(--cream)">
