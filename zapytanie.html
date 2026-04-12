@@ -151,9 +151,18 @@
 
         @media (max-width: 1024px) { .container { padding: 0 36px; } .form-layout { grid-template-columns: 1fr; } .info-card-wrap { position: static; } .footer-grid { grid-template-columns: repeat(2, 1fr); } }
         @media (max-width: 768px) { .form-row { grid-template-columns: 1fr; } .container { padding: 0 20px; } .nav-links { display: none; } .nav-buttons .btn-outline { display: none; } .nav-trust { display: none; } .form-card, .info-card { padding: 28px 20px; } .checkbox-grid { grid-template-columns: 1fr; } .footer-grid { grid-template-columns: 1fr; } .btn { white-space: normal; } .hamburger { display: flex; flex-direction: column; align-items: center; justify-content: center; } .mobile-drawer { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: var(--green-dark); z-index: 200; flex-direction: column; align-items: center; justify-content: center; gap: 0; opacity: 0; transform: translateY(-20px); transition: opacity 0.4s cubic-bezier(0.16,1,0.3,1), transform 0.4s cubic-bezier(0.16,1,0.3,1); pointer-events: none; } .mobile-drawer.open { display: flex; opacity: 1; transform: translateY(0); pointer-events: all; } .mobile-drawer a { font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 22px; color: #fff; padding: 16px 0; text-decoration: none; opacity: 0.8; transition: opacity 0.2s, color 0.2s; } .mobile-drawer a:hover { opacity: 1; color: #FFF200; } .mobile-drawer .mobile-cta { margin-top: 24px; padding: 14px 40px; background: #E43020; color: #fff; border-radius: 100px; font-weight: 900; font-size: 16px; opacity: 1; } .mobile-drawer-close { position: absolute; top: 20px; right: 20px; background: none; border: none; cursor: pointer; padding: 12px; z-index: 210; } .mobile-drawer-close span { display: block; width: 28px; height: 3px; background: #fff; border-radius: 2px; } .mobile-drawer-close span:first-child { transform: rotate(45deg) translate(1px, 1px); } .mobile-drawer-close span:last-child { transform: rotate(-45deg) translate(1px, -1px); } }
+        .loader { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: var(--green-dark); display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 9999; transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1); overflow: hidden; }
+        .loader img.loader-logo { height: 80px; opacity: 0; transform: scale(0.8); animation: loader-pop 0.6s 0.2s cubic-bezier(0.16, 1, 0.3, 1) forwards; position: relative; z-index: 2; }
+        .loader-text { margin-top: 20px; font-family: var(--font); font-weight: 700; font-size: 14px; letter-spacing: 3px; color: var(--lime); opacity: 0; animation: loader-pop 0.5s 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards; text-align: center; line-height: 1.6; text-transform: uppercase; position: relative; z-index: 2; }
+        .loader.done { opacity: 0; transform: scale(1.05); pointer-events: none; }
+        @keyframes loader-pop { to { opacity: 1; transform: scale(1); } }
     </style>
 </head>
 <body>
+<div class="loader" id="loader">
+    <img src="fruitttt.svg" alt="DailyFruits" class="loader-logo">
+    <div class="loader-text">Zdrowsze jedzenie,<br>lepsza praca.</div>
+</div>
 
 <a href="zapytanie.html" class="floating-badge"><img src="badge-trust.svg" alt="Zaufało nam ponad 2000 firm w Polsce"></a>
 
@@ -271,6 +280,40 @@
 </footer>
 
 <script>
+    // ─── LOADING SCREEN ───
+    function hideLoader() {
+        const loader = document.getElementById('loader');
+        if (!loader || loader.classList.contains('done')) return;
+        loader.classList.add('done');
+        setTimeout(() => { loader.style.display = 'none'; }, 700);
+    }
+    window.addEventListener('load', () => { setTimeout(hideLoader, 600); });
+    setTimeout(hideLoader, 2500);
+
+    // ─── PAGE TRANSITION (exit) ───
+    document.querySelectorAll('a[href]').forEach(link => {
+        const href = link.getAttribute('href');
+        if (!href || href.startsWith('#') || href.startsWith('http') || href.startsWith('mailto') || href.startsWith('tel') || link.getAttribute('target') === '_blank') return;
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const loader = document.getElementById('loader');
+            if (loader) {
+                loader.style.display = 'flex';
+                loader.classList.remove('done');
+                loader.style.opacity = '0';
+                loader.style.transform = 'scale(1.05)';
+                requestAnimationFrame(() => {
+                    loader.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
+                    loader.style.opacity = '1';
+                    loader.style.transform = 'scale(1)';
+                });
+                setTimeout(() => { window.location.href = href; }, 450);
+            } else {
+                window.location.href = href;
+            }
+        });
+    });
+
     // Scroll shadow
     const header = document.querySelector('header');
     window.addEventListener('scroll', () => {
