@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 400" width="320" height="400">
+  <!-- Stem -->
+  <path d="M157 52 Q155 28, 164 8" stroke="#8DB62E" stroke-width="9" fill="none" stroke-linecap="round"/>
+  <!-- Leaf 1 -->
+  <path d="M164 20 Q190 0, 225 6 Q200 6, 174 30Z" fill="#8DB62E"/>
+  <!-- Leaf vein -->
+  <path d="M168 24 Q192 8, 216 10" stroke="#7AA526" stroke-width="1.5" fill="none"/>
+
+  <!-- Apple TOP half -->
+  <path d="M160 190
+    C100 190, 55 188, 35 155
+    C10 112, 18 60, 70 35
+    C105 18, 138 28, 160 55
+    C182 28, 215 18, 250 35
+    C302 60, 310 112, 285 155
+    C265 188, 220 190, 160 190Z" fill="#8DB62E"/>
+
+  <!-- Apple BOTTOM half -->
+  <path d="M160 206
+    C95 206, 48 210, 32 255
+    C14 305, 48 360, 115 374
+    C140 380, 153 365, 160 348
+    C167 365, 180 380, 205 374
+    C272 360, 306 305, 288 255
+    C272 210, 225 206, 160 206Z" fill="#8DB62E"/>
+
+  <!-- "daily" text -->
+  <text x="160" y="148" text-anchor="middle"
+    font-family="'Baloo 2','Fredoka One','Luckiest Guy','Comic Sans MS',cursive"
+    font-size="76" font-weight="800" fill="#3D5A1E" letter-spacing="-2">daily</text>
+
+  <!-- "fruits" text -->
+  <text x="160" y="310" text-anchor="middle"
+    font-family="'Baloo 2','Fredoka One','Luckiest Guy','Comic Sans MS',cursive"
+    font-size="76" font-weight="800" fill="#3D5A1E" letter-spacing="-2">fruits</text>
+
+  <!-- Tagline -->
+  <text x="160" y="398" text-anchor="middle"
+    font-family="'Lato','Helvetica Neue',sans-serif"
+    font-size="22" font-weight="400" fill="#6B8C2B" letter-spacing="1.5">by betterworkplace</text>
+</svg>
