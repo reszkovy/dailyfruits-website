@@ -210,6 +210,11 @@
     { "source": "/dailyfruits-home-homeoffice-copy/", "destination": "/", "permanent": true },
     { "source": "/dailyfruits-home-homeoffice-copy", "destination": "/", "permanent": true },
 
+    { "source": "/wpis-przerwa", "destination": "/blog", "permanent": true },
+    { "source": "/wpis-lato", "destination": "/blog", "permanent": true },
+    { "source": "/wpis-kawa", "destination": "/blog", "permanent": true },
+    { "source": "/wpis", "destination": "/blog", "permanent": true },
+
     { "source": "/:year(\\d{4})/:month(\\d{2})/:day(\\d{2})/:slug*", "destination": "/blog", "permanent": true },
 
     { "source": "/app/uploads/:path*", "destination": "/", "permanent": false }

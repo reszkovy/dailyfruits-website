@@ -14,12 +14,8 @@
   <url><loc>https://dailyfruits.pl/programy-zywieniowe</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
 
   <!-- Blog posts -->
-  <url><loc>https://dailyfruits.pl/wpis</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://dailyfruits.pl/wpis-fakty-mity</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://dailyfruits.pl/wpis-esg</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://dailyfruits.pl/wpis-lato</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://dailyfruits.pl/wpis-kawa</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://dailyfruits.pl/wpis-przerwa</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://dailyfruits.pl/wpis-ile-owocow</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://dailyfruits.pl/wpis-witamina-d</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://dailyfruits.pl/wpis-cisnienie</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>

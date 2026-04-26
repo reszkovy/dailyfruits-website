@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 – Strona nie istnieje | DailyFruits</title>
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="icon" type="image/png" href="favicon_.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        @font-face { font-family: 'Achiko'; src: url('Achiko.woff2') format('woff2'), url('Achiko.ttf') format('truetype'); font-weight: 400; font-style: normal; font-display: swap; }
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --green-dark: #1B5E3A; --lime: #8DC63F; --lime-light: #A4C348;
+            --yellow: #FFF200; --red: #E43020; --cream: #FFF9E0;
+            --white: #FFFFFF; --gray: #3D5A1E; --dark: #1B5E3A;
+            --radius-pill: 100px; --font: 'DM Sans', sans-serif; --font-fun: 'Achiko', cursive;
+        }
+        html, body { height: 100%; }
+        body { font-family: var(--font); color: var(--dark); background: var(--cream); display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 48px; }
+        .error-code { font-family: var(--font-fun); font-size: clamp(80px, 15vw, 160px); color: var(--lime); line-height: 1; margin-bottom: 8px; }
+        h1 { font-weight: 900; font-size: clamp(24px, 3vw, 36px); color: var(--green-dark); margin-bottom: 12px; }
+        p { font-size: 16px; line-height: 1.7; color: var(--gray); max-width: 440px; margin-bottom: 32px; }
+        .btn { display: inline-flex; align-items: center; gap: 8px; padding: 14px 32px; border-radius: var(--radius-pill); font-family: var(--font); font-weight: 700; font-size: 15px; border: 2px solid transparent; cursor: pointer; transition: all 0.2s; text-decoration: none; }
+        .btn-green { background: var(--green-dark); color: #fff; }
+        .btn-green:hover { background: #144A2B; transform: translateY(-2px); box-shadow: 0 6px 20px rgba(27,94,58,0.3); }
+        .btn-outline { background: transparent; color: var(--red); border-color: var(--red); margin-left: 12px; }
+        .btn-outline:hover { background: var(--red); color: #fff; }
+        .links { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
+        .quick-links { margin-top: 48px; display: flex; gap: 24px; flex-wrap: wrap; justify-content: center; }
+        .quick-links a { font-size: 14px; font-weight: 700; color: var(--lime); transition: color 0.2s; }
+        .quick-links a:hover { color: var(--green-dark); }
+    </style>
+</head>
+<body>
+    <div class="error-code">404</div>
+    <h1>Tej strony już nie ma</h1>
+    <p>Przebudowaliśmy naszą witrynę i ta strona nie istnieje w nowej wersji. Ale mamy dużo ciekawego do pokazania!</p>
+    <div class="links">
+        <a href="index.html" class="btn btn-green">Strona główna →</a>
+        <a href="oferta.html" class="btn btn-outline">Zobacz ofertę</a>
+    </div>
+    <div class="quick-links">
+        <a href="dostawa.html">Dostawa</a>
+        <a href="o-nas.html">O nas</a>
+        <a href="kanapki-do-biura.html">Kanapki</a>
+        <a href="catering-firmowy.html">Catering</a>
+        <a href="blog.html">Blog</a>
+        <a href="zapytanie.html">Kontakt</a>
+    </div>
+</body>
+</html>
