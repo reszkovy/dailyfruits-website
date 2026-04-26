@@ -1259,8 +1259,11 @@
         entries.forEach(e => {
             if (e.isIntersecting) { e.target.classList.add('vis'); revealObs.unobserve(e.target); }
         });
-    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
-    document.querySelectorAll('.reveal, .scale-in, .slide-left, .slide-right').forEach(el => revealObs.observe(el));
+    }, { threshold: 0.05, rootMargin: '0px 0px -20px 0px' });
+    const revealEls = document.querySelectorAll('.reveal, .scale-in, .slide-left, .slide-right');
+    revealEls.forEach(el => revealObs.observe(el));
+    // Fallback: force-show all reveals after 4s in case Lenis blocks observer
+    setTimeout(() => { revealEls.forEach(el => el.classList.add('vis')); }, 4000);
 
     // ─── TEXT SPLIT ANIMATION ───
     document.querySelectorAll('.split-heading').forEach(heading => {
