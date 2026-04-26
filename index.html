@@ -397,12 +397,6 @@
         }
         /* ─── HAMBURGER ─── */
         .hamburger { display: none; background: none; border: none; cursor: pointer; padding: 8px; z-index: 201; position: relative; }
-            /* === MOBILE FIX: Nav bar overlap === */
-            .logo-sub { display: none; }
-            .logo-img { height: 44px; }
-            .btn-nav-cta { padding: 8px 16px; font-size: 13px; }
-            .nav-buttons { gap: 8px; }
-
         .hamburger span { display: block; width: 24px; height: 2px; background: #fff; border-radius: 2px; transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1); }
         .hamburger span + span { margin-top: 6px; }
         .hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(4px, 4px); }
@@ -417,6 +411,12 @@
             .nav-buttons .btn-outline { display: none; }
             .nav-trust { display: none; }
             .hamburger { display: flex; flex-direction: column; align-items: center; justify-content: center; }
+            /* Nav mobile: stack logo + BetterWorkplace vertically */
+            .logo-wrap { flex-direction: column; gap: 2px; align-items: flex-start; }
+            .logo-img { height: 40px; }
+            .logo-sub { border-left: none; padding-left: 0; margin-bottom: 0; font-size: 8px; opacity: 0.6; align-self: flex-start; }
+            .btn-nav-cta { padding: 8px 16px; font-size: 13px; }
+            .nav-buttons { gap: 8px; }
             .mobile-drawer { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: var(--green-dark); z-index: 200; flex-direction: column; align-items: center; justify-content: center; gap: 0; opacity: 0; transform: translateY(-20px); transition: opacity 0.4s cubic-bezier(0.16,1,0.3,1), transform 0.4s cubic-bezier(0.16,1,0.3,1); pointer-events: none; }
             .mobile-drawer.open { display: flex; opacity: 1; transform: translateY(0); pointer-events: all; }
             .mobile-drawer a { font-family: var(--font); font-weight: 700; font-size: 22px; color: #fff; padding: 16px 0; text-decoration: none; opacity: 0.8; transition: opacity 0.2s, color 0.2s; }
