@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>O nas – DailyFruits by BetterWorkplace | Owoce do biura od 2015</title>
+    <meta name="description" content="Poznaj DailyFruits — dostawcę owoców i zdrowych przekąsek do biur w 13 miastach Polski. Ponad 2000 firm nam zaufało. Część ekosystemu BetterWorkplace.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://dailyfruits.pl/o-nas">
+    <meta property="og:title" content="O nas – DailyFruits by BetterWorkplace | Owoce do biura od 2015">
+    <meta property="og:description" content="Poznaj DailyFruits — dostawcę owoców i zdrowych przekąsek do biur w 13 miastach Polski. Ponad 2000 firm nam zaufało. Część ekosystemu BetterWorkplace.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://dailyfruits.pl/o-nas">
+    <meta property="og:image" content="https://dailyfruits.pl/HORIZONTAL.webp">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="icon" type="image/png" href="favicon_.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        @font-face { font-family: 'Achiko'; src: url('Achiko.woff2') format('woff2'), url('Achiko.ttf') format('truetype'); font-weight: 400; font-style: normal; font-display: swap; }
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --green-dark: #1B5E3A; --green-mid: #347550; --olive: #526B08;
+            --lime: #8DC63F; --lime-light: #A4C348; --lime-pale: #D5E8A0; --lime-bg: #FFF9E0;
+            --yellow: #FFF200; --yellow-light: #FFF566; --yellow-bg: #FFF8D8;
+            --red: #E43020; --coral: #F06878;
+            --cream: #FFF9E0; --white: #FFFFFF; --gray: #3D5A1E; --dark: #1B5E3A;
+            --radius: 20px; --radius-lg: 28px; --radius-pill: 100px;
+            --font: 'DM Sans', sans-serif; --font-display: 'DM Sans', sans-serif; --font-fun: 'Achiko', 'Lobster', cursive;
+        }
+        html { scroll-behavior: smooth; overflow-x: hidden; }
+        body { font-family: var(--font); color: var(--dark); background: var(--cream); overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+        img { max-width: 100%; height: auto; display: block; }
+        a { text-decoration: none; color: inherit; }
+        .container { max-width: 1240px; margin: 0 auto; padding: 0 48px; }
+        h1 { font-family: var(--font-display); font-weight: 900; font-size: clamp(32px, 4.5vw, 56px); line-height: 1.12; color: var(--green-dark); letter-spacing: -0.02em; }
+        h1 .fun { font-family: var(--font-fun); font-weight: 400; color: var(--lime); font-size: 1.08em; }
+        h2 { font-weight: 900; font-size: clamp(26px, 3vw, 40px); line-height: 1.15; color: var(--green-dark); }
+        h2 .fun { font-family: var(--font-fun); font-weight: 400; color: var(--lime); font-size: 1.05em; }
+        h3 { font-weight: 700; font-size: 18px; color: var(--green-dark); }
+        p { font-size: 16px; line-height: 1.7; color: var(--gray); }
+        .btn { display: inline-flex; align-items: center; gap: 8px; padding: 14px 32px; border-radius: var(--radius-pill); font-family: var(--font); font-weight: 700; font-size: 15px; border: 2px solid transparent; cursor: pointer; transition: all 0.2s; white-space: nowrap; }
+        .btn-green { background: var(--green-dark); color: #fff; }
+        .btn-green:hover { background: #144A2B; transform: translateY(-2px); box-shadow: 0 6px 20px rgba(27,94,58,0.3); }
+        .btn-yellow { background: var(--yellow); color: var(--green-dark); font-weight: 900; }
+        .btn-yellow:hover { background: #E6DA00; transform: translateY(-2px); box-shadow: 0 6px 20px rgba(255,242,0,0.4); }
+        .btn-outline { background: transparent; color: var(--red); border-color: var(--red); }
+        .btn-outline:hover { background: var(--red); color: #fff; }
+
+        header { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: #1B5E3A; transition: box-shadow 0.3s ease; }
+        header.scrolled { box-shadow: 0 8px 30px rgba(27,94,58,0.25); }
+        header::after { content: ''; position: absolute; bottom: -39px; left: 0; right: 0; height: 40px; background: url("data:image/svg+xml,%3Csvg viewBox='0 0 1440 40' preserveAspectRatio='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0H1440V8C1440 8 1320 32 1080 26C840 20 720 38 480 28C240 18 120 36 0 24V0Z' fill='%231B5E3A'/%3E%3C/svg%3E") no-repeat bottom / 100% 100%; pointer-events: none; z-index: 100; }
+        .nav-inner { display: flex; align-items: center; justify-content: space-between; padding: 10px 48px; max-width: 1440px; margin: 0 auto; }
+        .logo-wrap { display: flex; align-items: center; gap: 10px; }
+        .logo-img { height: 64px; }
+        .logo-sub { font-size: 9px; font-weight: 700; color: #fff; opacity: 0.5; letter-spacing: 0.3px; white-space: nowrap; text-decoration: none; border-left: 1px solid rgba(255,255,255,0.2); padding-left: 10px; align-self: flex-end; margin-bottom: 18px; }
+        .nav-links { display: flex; gap: 36px; list-style: none; }
+        .nav-links a { font-weight: 700; font-size: 15px; color: var(--yellow); position: relative; padding-bottom: 4px; }
+        .nav-links a::after { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 3px; background: #fff; border-radius: 2px; opacity: 0; transform: scaleX(0.3) translateY(4px); transition: opacity 0.35s, transform 0.35s; }
+        .nav-links a:hover::after { opacity: 1; transform: scaleX(1) translateY(0); }
+        .nav-buttons { display: flex; gap: 12px; align-items: center; }
+        .nav-buttons .btn { padding: 10px 22px; font-size: 14px; }
+        .nav-trust { font-size: 13px; font-weight: 700; color: rgba(255,255,255,0.5); letter-spacing: 0.3px; text-align: right; line-height: 1.35; }
+        .hamburger { display: none; background: none; border: none; cursor: pointer; padding: 8px; z-index: 201; }
+        .hamburger span { display: block; width: 24px; height: 2px; background: #fff; border-radius: 2px; transition: all 0.3s; }
+        .hamburger span + span { margin-top: 6px; }
+        .mobile-drawer { display: none; }
+
+        .city-hero { padding: 140px 0 80px; background: var(--lime-bg); }
+        .city-hero-inner { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 48px; align-items: center; }
+        .city-hero-text h1 { margin-bottom: 20px; }
+        .city-hero-text p { font-size: 17px; max-width: 540px; margin-bottom: 28px; }
+        .city-hero-buttons { display: flex; gap: 14px; align-items: center; }
+        .city-hero-stat { display: flex; align-items: center; gap: 16px; margin-top: 32px; padding-top: 24px; border-top: 2px solid rgba(27,94,58,0.1); }
+        .city-stat-num { font-family: var(--font-fun); font-size: 48px; color: var(--lime); line-height: 1; }
+        .city-stat-label { font-size: 14px; font-weight: 700; color: var(--green-dark); opacity: 0.6; }
+
+        .city-offer { padding: 80px 0; background: var(--white); }
+        .city-offer .section-top { text-align: center; margin-bottom: 48px; }
+        .city-offer .section-top p { max-width: 520px; margin: 12px auto 0; }
+        .offer-mini-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+        .offer-mini-card { background: var(--cream); padding: 28px 20px; text-align: center; transition: transform 0.3s, box-shadow 0.3s; }
+        .offer-mini-card:hover { transform: translateY(-4px); box-shadow: 0 12px 36px rgba(27,94,58,0.1); }
+        .offer-mini-icon { font-size: 36px; margin-bottom: 12px; }
+        .offer-mini-card h3 { font-size: 15px; margin-bottom: 4px; }
+        .offer-mini-card p { font-size: 13px; margin: 0; }
+
+        .city-how { padding: 80px 0; background: var(--cream); }
+        .how-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; text-align: center; }
+        .how-step-num { font-family: var(--font-fun); font-size: 48px; color: var(--green-dark); margin-bottom: 8px; }
+        .how-step h3 { margin-bottom: 6px; }
+        .how-step p { font-size: 14px; }
+
+        .city-cta { padding: 80px 0; background: var(--green-dark); text-align: center; color: #fff; }
+        .city-cta h2 { color: #fff; margin-bottom: 12px; }
+        .city-cta h2 .fun { color: var(--yellow); }
+        .city-cta p { color: rgba(255,255,255,0.7); max-width: 480px; margin: 0 auto 32px; }
+        .city-cta-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+
+        /* About page specific styles */
+        .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin-bottom: 48px; }
+        .stat-block { background: var(--white); padding: 32px 28px; text-align: center; border-radius: var(--radius); box-shadow: 0 4px 16px rgba(27,94,58,0.08); }
+        .stat-block-num { font-family: var(--font-fun); font-size: clamp(36px, 5vw, 56px); color: var(--lime); line-height: 1; margin-bottom: 8px; }
+        .stat-block-label { font-size: 14px; font-weight: 700; color: var(--green-dark); }
+
+        .timeline-section { padding: 80px 0; background: var(--white); }
+        .timeline { position: relative; margin-top: 48px; }
+        .timeline-item { display: grid; grid-template-columns: 140px 1fr; gap: 40px; margin-bottom: 48px; position: relative; }
+        .timeline-year { font-family: var(--font-fun); font-size: 28px; color: var(--lime); font-weight: bold; }
+        .timeline-content h3 { font-size: 16px; margin-bottom: 8px; }
+        .timeline-content p { font-size: 15px; }
+
+        .ecosystem-section { padding: 80px 0; background: var(--cream); }
+        .ecosystem-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; margin-top: 48px; }
+        .ecosystem-card { background: var(--white); padding: 40px 32px; border-radius: var(--radius); text-align: center; }
+        .ecosystem-icon { font-size: 56px; margin-bottom: 16px; }
+        .ecosystem-card h3 { margin-bottom: 12px; color: var(--green-dark); font-size: 18px; }
+        .ecosystem-card p { font-size: 14px; line-height: 1.6; }
+
+        .values-section { padding: 80px 0; background: var(--white); }
+        .values-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 28px; margin-top: 48px; }
+        .value-card { background: var(--lime-bg); padding: 32px 28px; border-radius: var(--radius); text-align: center; }
+        .value-card h3 { margin-bottom: 12px; color: var(--green-dark); }
+        .value-card p { font-size: 14px; line-height: 1.6; }
+
+        .faq-section { padding: 80px 0; background: var(--cream); }
+        .faq-grid { max-width: 800px; margin: 48px auto 0; }
+        .faq-item { background: var(--white); margin-bottom: 16px; border-radius: var(--radius); overflow: hidden; }
+        .faq-question { padding: 20px 28px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-weight: 700; color: var(--green-dark); user-select: none; transition: background 0.2s; }
+        .faq-question:hover { background: var(--lime-bg); }
+        .faq-toggle { font-family: var(--font-fun); font-size: 24px; color: var(--lime); }
+        .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; }
+        .faq-answer-content { padding: 0 28px; padding-bottom: 20px; font-size: 15px; line-height: 1.7; color: var(--gray); }
+        .faq-item.open .faq-answer { max-height: 500px; }
+        .faq-item.open .faq-question { background: var(--lime-bg); }
+
+        footer { background: var(--green-dark); color: #fff; padding: 72px 0 36px; }
+        .footer-grid { display: grid; grid-template-columns: 1.5fr repeat(3, 1fr); gap: 48px; margin-bottom: 48px; }
+        .footer-brand p { font-size: 14px; color: rgba(255,255,255,0.5); max-width: 280px; margin-top: 12px; }
+        .footer-col h4 { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 16px; }
+        .footer-col ul { list-style: none; }
+        .footer-col a, .footer-col p { display: block; font-size: 14px; color: rgba(255,255,255,0.5); margin-bottom: 8px; transition: color 0.2s; }
+        .footer-col a:hover { color: var(--lime-light); }
+        .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 28px; text-align: center; font-size: 13px; color: rgba(255,255,255,0.35); }
+
+        .reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
+        .reveal.vis { opacity: 1; transform: translateY(0); }
+
+        @media (max-width: 1024px) {
+            .container { padding: 0 36px; }
+            .nav-inner { padding: 14px 36px; }
+            .city-hero-inner { grid-template-columns: 1fr; }
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
+            .values-grid { grid-template-columns: repeat(2, 1fr); }
+            .ecosystem-grid { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: repeat(2, 1fr); gap: 36px; }
+        }
+        @media (max-width: 768px) {
+            .container { padding: 0 16px; }
+            .nav-inner { padding: 12px 16px; }
+            .nav-links { display: none; }
+            .nav-trust { display: none; }
+            .hamburger { display: flex; flex-direction: column; align-items: center; justify-content: center; }
+            .mobile-drawer { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: var(--green-dark); z-index: 200; flex-direction: column; align-items: center; justify-content: center; gap: 0; opacity: 0; transform: translateY(-20px); transition: opacity 0.4s, transform 0.4s; pointer-events: none; }
+            .mobile-drawer.open { display: flex; opacity: 1; transform: translateY(0); pointer-events: all; }
+            .mobile-drawer a { font-family: var(--font); font-weight: 700; font-size: 22px; color: #fff; padding: 16px 0; opacity: 0.8; transition: opacity 0.2s, color 0.2s; }
+            .mobile-drawer a:hover { opacity: 1; color: var(--yellow); }
+            .mobile-drawer .mobile-cta { margin-top: 24px; padding: 14px 40px; background: var(--red); color: #fff; border-radius: var(--radius-pill); font-weight: 900; font-size: 16px; opacity: 1; }
+            .city-hero { padding: 100px 0 60px; }
+            .city-hero-inner { grid-template-columns: 1fr; gap: 32px; }
+            .city-hero-buttons { flex-direction: column; }
+            .city-hero-buttons .btn { text-align: center; justify-content: center; width: 100%; }
+            .stats-grid { grid-template-columns: 1fr; }
+            .values-grid { grid-template-columns: 1fr; }
+            .timeline-item { grid-template-columns: 1fr; gap: 20px; }
+            .timeline-year { font-size: 24px; margin-bottom: 8px; }
+            .city-cta-btns { flex-direction: column; align-items: center; }
+            .footer-grid { grid-template-columns: 1fr; gap: 28px; }
+        }
+    </style>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "DailyFruits by BetterWorkplace",
+        "legalName": "Betterworkplace Sp. z o.o.",
+        "description": "Dostawca owoców, warzyw i zdrowych przekąsek do biur w Polsce. Działa od 2015 roku. Część ekosystemu BetterWorkplace.",
+        "url": "https://dailyfruits.pl",
+        "telephone": "+48228680499",
+        "email": "kontakt@dailyfruits.pl",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "ul. Modułowa 3",
+            "addressLocality": "Raszyn",
+            "postalCode": "05-090",
+            "addressCountry": "PL"
+        },
+        "founded": "2015",
+        "areaServed": [
+            { "@type": "City", "name": "Warszawa" },
+            { "@type": "City", "name": "Kraków" },
+            { "@type": "City", "name": "Wrocław" },
+            { "@type": "City", "name": "Poznań" },
+            { "@type": "City", "name": "Katowice" },
+            { "@type": "City", "name": "Łódź" },
+            { "@type": "City", "name": "Gdańsk" },
+            { "@type": "City", "name": "Szczecin" },
+            { "@type": "City", "name": "Lublin" },
+            { "@type": "City", "name": "Wrocław" },
+            { "@type": "City", "name": "Bydgoszcz" },
+            { "@type": "City", "name": "Toruń" },
+            { "@type": "City", "name": "Gdynia" }
+        ],
+        "taxID": "6793077034",
+        "identifier": "122432943",
+        "sameAs": ["https://betterworkplace.pl"],
+        "contactPoint": {
+            "@type": "ContactPoint",
+            "contactType": "customer support",
+            "telephone": "+48228680499",
+            "email": "kontakt@dailyfruits.pl"
+        }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "Kim jest DailyFruits?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Jesteśmy częścią ekosystemu BetterWorkplace — dostarczamy owoce, kanapki i zdrowe przekąski do biur w 13 miastach Polski."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Czy DailyFruits to polska firma?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Tak. Betterworkplace Sp. z o.o. z siedzibą w Raszynie. Działamy od 2015 roku."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Ile firm korzysta z DailyFruits?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Ponad 2000 firm w całej Polsce — od startupów po korporacje."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Czym różni się DailyFruits od DailyFoods?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "DailyFruits to owoce, warzywa i bakalie. DailyFoods to kanapki, kawa, lunche i snacki. Oba działają w jednym abonamencie."
+                }
+            }
+        ]
+    }
+    </script>
+</head>
+<body>
+
+<header>
+    <div class="nav-inner">
+        <div class="logo-wrap">
+            <a href="index.html"><img src="fruitttt.svg" alt="DailyFruits" class="logo-img"></a>
+            <a href="https://betterworkplace.pl" target="_blank" class="logo-sub">by BetterWorkplace</a>
+        </div>
+        <ul class="nav-links">
+            <li><a href="oferta.html">Oferta</a></li>
+            <li><a href="index.html#benefits">Korzyści</a></li>
+            <li><a href="index.html#how">Jak to działa</a></li>
+            <li><a href="o-nas.html">O nas</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="index.html#faq">FAQ</a></li>
+            <li><a href="zapytanie.html">Kontakt</a></li>
+        </ul>
+        <div class="nav-buttons">
+            <span class="nav-trust">Zaufało nam ponad<br>2 000 firm w Polsce</span>
+            <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+        </div>
+    </div>
+</header>
+
+<div class="mobile-drawer" id="mobileDrawer">
+    <button class="mobile-drawer-close" id="drawerClose" aria-label="Zamknij"><span></span><span></span></button>
+    <a href="index.html">Start</a>
+    <a href="oferta.html">Oferta</a>
+    <a href="o-nas.html">O nas</a>
+    <a href="blog.html">Blog</a>
+    <a href="index.html#faq">FAQ</a>
+    <a href="zapytanie.html" class="mobile-cta">Zapytaj o ofertę</a>
+</div>
+
+<section class="city-hero">
+    <div class="container">
+        <div class="city-hero-inner">
+            <div class="city-hero-text reveal">
+                <h1>Zdrowsze biura <span class="fun">od 2015</span></h1>
+                <p>DailyFruits zrodził się z prostej idei: zdrowe jedzenie w pracy nie powinno być skomplikowane. Zamiast gadać o zmianach, zaczęliśmy je wdrażać — dostarczając świeże owoce i zdrowe przekąski do biur, gdzie mogą naprawdę coś zmienić.</p>
+                <div class="city-hero-buttons">
+                    <a href="zapytanie.html" class="btn btn-green">Zapytaj o ofertę →</a>
+                    <a href="dostawa.html" class="btn btn-outline">Gdzie dostarczamy</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="city-offer">
+    <div class="container">
+        <div class="section-top reveal">
+            <h2>Liczby, które <span class="fun">mówią</span> za nas</h2>
+        </div>
+        <div class="stats-grid">
+            <div class="stat-block reveal">
+                <div class="stat-block-num">2000+</div>
+                <div class="stat-block-label">firm w całej Polsce</div>
+            </div>
+            <div class="stat-block reveal">
+                <div class="stat-block-num">13</div>
+                <div class="stat-block-label">miast z regularnymi dostawami</div>
+            </div>
+            <div class="stat-block reveal">
+                <div class="stat-block-num">10+</div>
+                <div class="stat-block-label">lat doświadczenia</div>
+            </div>
+            <div class="stat-block reveal">
+                <div class="stat-block-num">24h</div>
+                <div class="stat-block-label">czas dostawy od zamówienia</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="timeline-section">
+    <div class="container">
+        <div class="section-top reveal">
+            <h2>Nasza <span class="fun">historia</span></h2>
+            <p>Od małego pomysłu dla 5 biur w Warszawie do ekosystemu, któremu zaufało ponad 2000 firm.</p>
+        </div>
+        <div class="timeline">
+            <div class="timeline-item reveal">
+                <div class="timeline-year">2015</div>
+                <div class="timeline-content">
+                    <h3>Początek przygody</h3>
+                    <p>Zaczynaliśmy od skrzynek z owocami dla 5 biur w Warszawie. Proste, świeże, skuteczne.</p>
+                </div>
+            </div>
+            <div class="timeline-item reveal">
+                <div class="timeline-year">2017</div>
+                <div class="timeline-content">
+                    <h3>Rozszerzenie sieci</h3>
+                    <p>Rozszerzyliśmy dostawy na Kraków i Wrocław. Zaczęliśmy jeździć dalej, bo okazało się, że biura wszędzie chcą zdrowo jeść.</p>
+                </div>
+            </div>
+            <div class="timeline-item reveal">
+                <div class="timeline-year">2019</div>
+                <div class="timeline-content">
+                    <h3>Nowe produkty</h3>
+                    <p>Ponad 500 firm już nas zaufało. Dodaliśmy kanapki, bakalie, soki — pełna oferta food delivery do biura.</p>
+                </div>
+            </div>
+            <div class="timeline-item reveal">
+                <div class="timeline-year">2021</div>
+                <div class="timeline-content">
+                    <h3>Home office edition</h3>
+                    <p>Pandemia nie zatrzymała nas — ruszyliśmy z dostawami do home office. Ludzie pracowali z domu, a my przychodzili z owocami.</p>
+                </div>
+            </div>
+            <div class="timeline-item reveal">
+                <div class="timeline-year">2023</div>
+                <div class="timeline-content">
+                    <h3>Ekosystem BetterWorkplace</h3>
+                    <p>1000+ firm, ekosystem w pełnym rozkwicie: DailyFruits + DailyFoods + SendGift. Jeden partner dla całego wellbeing'u biura.</p>
+                </div>
+            </div>
+            <div class="timeline-item reveal">
+                <div class="timeline-year">2025</div>
+                <div class="timeline-content">
+                    <h3>Skalowanie dalej</h3>
+                    <p>2000+ firm w 13 miastach, pełna oferta food & beverage do biur. Zdrowiej, lepiej, razem.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="ecosystem-section">
+    <div class="container">
+        <div class="section-top reveal">
+            <h2>Ekosystem <span class="fun">BetterWorkplace</span></h2>
+            <p>Jeden partner, jedna faktura, pełna oferta wellbeing'u biurowego.</p>
+        </div>
+        <div class="ecosystem-grid">
+            <div class="ecosystem-card reveal">
+                <div class="ecosystem-icon">🍎</div>
+                <h3>DailyFruits</h3>
+                <p>Owoce, warzywa, bakalie — codzienne dostawy świeżych produktów prosto do biurowej kuchni.</p>
+            </div>
+            <div class="ecosystem-card reveal">
+                <div class="ecosystem-icon">🥪</div>
+                <h3>DailyFoods</h3>
+                <p>Kanapki, kawa, lunche, snacki — pełne żywienie biurowe dla zespołu, który nie ma czasu na obiady.</p>
+            </div>
+            <div class="ecosystem-card reveal">
+                <div class="ecosystem-icon">🎁</div>
+                <h3>SendGift</h3>
+                <p>Welcome packi, gift boxy, paczki świąteczne — personalizowane prezenty dla zespołów i klientów.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="values-section">
+    <div class="container">
+        <div class="section-top reveal">
+            <h2>W co <span class="fun">wierzymy</span></h2>
+        </div>
+        <div class="values-grid">
+            <div class="value-card reveal">
+                <h3>Prostota</h3>
+                <p>Jedno zamówienie, jeden partner, jedna faktura. Biuro nie powinno się męczyć administracją.</p>
+            </div>
+            <div class="value-card reveal">
+                <h3>Świeżość</h3>
+                <p>Owoce wybieramy dzień przed dostawą, nie tydzień. Świeżość widać i czuć.</p>
+            </div>
+            <div class="value-card reveal">
+                <h3>Elastyczność</h3>
+                <p>Zmień, pauzuj, anuluj — to subskrypcja, nie kontrakt. Biuro powinno mieć kontrolę.</p>
+            </div>
+            <div class="value-card reveal">
+                <h3>Wpływ</h3>
+                <p>Mierzymy nasz impact: mniej absencji, więcej energii, lepszy wellbeing zespołu.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="faq-section">
+    <div class="container">
+        <div class="section-top reveal">
+            <h2><span class="fun">FAQ</span> — Pytania i odpowiedzi</h2>
+        </div>
+        <div class="faq-grid">
+            <div class="faq-item reveal">
+                <div class="faq-question">
+                    <span>Kim jest DailyFruits?</span>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">Jesteśmy częścią ekosystemu BetterWorkplace — dostarczamy owoce, kanapki i zdrowe przekąski do biur w 13 miastach Polski. Zaufało nam ponad 2000 firm, od startupów po duże korporacje.</div>
+                </div>
+            </div>
+            <div class="faq-item reveal">
+                <div class="faq-question">
+                    <span>Czy DailyFruits to polska firma?</span>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">Tak. Betterworkplace Sp. z o.o. z siedzibą w Raszynie (05-090, ul. Modułowa 3). Działamy od 2015 roku, kiedy to wszystko się zaczęło od kilku skrzynek owoców dla warszawskich biur.</div>
+                </div>
+            </div>
+            <div class="faq-item reveal">
+                <div class="faq-question">
+                    <span>Ile firm korzysta z DailyFruits?</span>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">Ponad 2000 firm w całej Polsce — od małych startup'ów po korporacje z tysiącami pracowników. Nasza sieć obejmuje 13 miast: Warszawę, Kraków, Wrocław, Poznań, Katowice, Łódź, Gdańsk, Szczecin, Lublin i inne.</div>
+                </div>
+            </div>
+            <div class="faq-item reveal">
+                <div class="faq-question">
+                    <span>Czym różni się DailyFruits od DailyFoods?</span>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">DailyFruits to owoce, warzywa i bakalie — produkty dla zdrowszych przerw w pracy. DailyFoods to kanapki, kawa, lunche i snacki — pełne posiłki. Oba działają w jednym abonamencie, z jednym partnerem, jedną fakturą.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="city-cta">
+    <div class="container reveal">
+        <h2>Dołącz do 2000+ <span class="fun">firm</span></h2>
+        <p>Bezpłatna wycena w 2h. Elastyczny abonament. Dostawa w 24h. Zero zobowiązań.</p>
+        <div class="city-cta-btns">
+            <a href="zapytanie.html" class="btn btn-yellow">Zapytaj o ofertę →</a>
+            <a href="tel:+48228680499" class="btn" style="color:#fff;border-color:rgba(255,255,255,0.3);">Zadzwoń: 22 868 04 99</a>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <div style="display:flex;align-items:center;gap:16px;">
+                    <img src="fruitttt.svg" alt="DailyFruits" style="height:56px;filter:brightness(10);">
+                    <img src="dailyfoods-logo.svg" alt="DailyFoods" style="height:56px;">
+                </div>
+                <p>Zdrowsze jedzenie, lepsza praca – zaczynając od kuchni. Część ekosystemu BetterWorkplace.</p>
+            </div>
+            <div class="footer-col"><h4>Nawigacja</h4><ul><li><a href="index.html">Start</a></li><li><a href="oferta.html">Oferta</a></li><li><a href="o-nas.html">O nas</a></li><li><a href="dostawa.html">Dostawy</a></li><li><a href="blog.html">Blog</a></li><li><a href="zapytanie.html">Kontakt</a></li><li><a href="index.html#faq">FAQ</a></li></ul></div>
+            <div class="footer-col"><h4>Ekosystem</h4><ul><li><a href="oferta.html">DailyFruits</a></li><li><a href="oferta.html">DailyFoods</a></li><li><a href="#">SendGift</a></li><li><a href="#">TeamBudget</a></li></ul></div>
+            <div class="footer-col"><h4>Kontakt</h4><ul><li><a href="mailto:kontakt@dailyfruits.pl">kontakt@dailyfruits.pl</a></li><li><p>tel: 22 868 04 99</p></li></ul><h4 style="margin-top:20px;">Dane firmy</h4><ul><li><p>Betterworkplace Sp. z o.o.</p></li><li><p>ul. Modułowa 3, 05-090 Raszyn</p></li><li><p>NIP: 6793077034</p></li><li><p>REGON: 122432943</p></li></ul></div>
+        </div>
+        <div class="footer-bottom">
+            <p style="margin-bottom:8px;">Dostawy: Warszawa, Kraków, Wrocław, Poznań, Katowice, Łódź, Gdańsk, Szczecin, Lublin i 4 dodatkowe miasta</p>
+            <p>&copy; 2026 DailyFruits by BetterWorkplace Sp. z o.o. Wszystkie prawa zastrzeżone.</p>
+        </div>
+    </div>
+</footer>
+
+<script>
+// Header scroll
+window.addEventListener('scroll', () => { document.querySelector('header').classList.toggle('scrolled', window.scrollY > 20); });
+// Hamburger
+const hamburger = document.getElementById('hamburger');
+const drawer = document.getElementById('mobileDrawer');
+const drawerClose = document.getElementById('drawerClose');
+if (hamburger && drawer) {
+    hamburger.addEventListener('click', () => { drawer.classList.add('open'); hamburger.classList.add('open'); });
+    drawerClose?.addEventListener('click', () => { drawer.classList.remove('open'); hamburger.classList.remove('open'); });
+    drawer.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { drawer.classList.remove('open'); hamburger.classList.remove('open'); }));
+}
+// Reveal
+const obs = new IntersectionObserver((entries) => { entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('vis'); obs.unobserve(e.target); } }); }, { threshold: 0.15 });
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+// Fallback reveal timer
+setTimeout(() => { document.querySelectorAll('.reveal:not(.vis)').forEach(el => el.classList.add('vis')); }, 4000);
+// FAQ accordion
+document.querySelectorAll('.faq-question').forEach(q => {
+    q.addEventListener('click', () => {
+        const item = q.parentElement;
+        item.classList.toggle('open');
+    });
+});
+</script>
+
+</body>
+</html>

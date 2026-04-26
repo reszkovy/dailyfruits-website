@@ -6,6 +6,13 @@
   <url><loc>https://dailyfruits.pl/zapytanie</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://dailyfruits.pl/blog</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
 
+  <!-- New content pages -->
+  <url><loc>https://dailyfruits.pl/dostawa</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://dailyfruits.pl/o-nas</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://dailyfruits.pl/kanapki-do-biura</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://dailyfruits.pl/catering-firmowy</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://dailyfruits.pl/programy-zywieniowe</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+
   <!-- Blog posts -->
   <url><loc>https://dailyfruits.pl/wpis</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://dailyfruits.pl/wpis-fakty-mity</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
