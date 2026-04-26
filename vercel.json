@@ -95,7 +95,7 @@
     { "source": "/blog/jakie-owoce-i-warzywa-podnosza-cisnienie", "destination": "/wpis-cisnienie", "permanent": true },
     { "source": "/blog/w-jakich-warzywach-i-owocach-jest-kolagen/", "destination": "/wpis-kolagen", "permanent": true },
     { "source": "/blog/w-jakich-warzywach-i-owocach-jest-kolagen", "destination": "/wpis-kolagen", "permanent": true },
-    { "source": "/blog/:slug*", "destination": "/blog", "permanent": true },
+    { "source": "/blog/:slug+", "destination": "/blog", "permanent": true },
 
     { "source": "/dostawa-owocow-w-krakowie/", "destination": "/owoce-do-biura-krakow", "permanent": true },
     { "source": "/dostawa-owocow-w-krakowie", "destination": "/owoce-do-biura-krakow", "permanent": true },
