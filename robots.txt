@@ -1,5 +1,8 @@
 User-agent: *
 Allow: /
 Disallow: /app/uploads/
+Disallow: /*.json$
 
 Sitemap: https://dailyfruits.pl/sitemap.xml
+
+# DailyFruits - owoce i zdrowe przekąski do biura
