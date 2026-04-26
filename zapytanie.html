@@ -97,6 +97,10 @@
         }
         .form-group input:focus, .form-group select:focus, .form-group textarea:focus { box-shadow: 0 0 0 2px var(--lime); }
         .form-group textarea { height: 110px; resize: vertical; border-radius: 20px !important; }
+        .form-progress { display: flex; align-items: center; gap: 12px; margin-bottom: 24px; }
+        .form-progress-bar { flex: 1; height: 6px; background: rgba(27,94,58,0.1); border-radius: 3px; overflow: hidden; }
+        .form-progress-fill { height: 100%; background: var(--lime); border-radius: 3px; transition: width 0.4s cubic-bezier(0.16,1,0.3,1); width: 0%; }
+        .form-progress-text { font-size: 12px; font-weight: 700; color: var(--lime); white-space: nowrap; min-width: 36px; text-align: right; }
         .form-group select {
             appearance: none; -webkit-appearance: none;
             background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%231B5E3A' stroke-width='2' fill='none'/%3E%3C/svg%3E");
@@ -157,6 +161,8 @@
         .loader.done { opacity: 0; transform: scale(1.05); pointer-events: none; }
         @keyframes loader-pop { to { opacity: 1; transform: scale(1); } }
     </style>
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://dailyfruits.pl/zapytanie">
 </head>
 <body>
 <div class="loader" id="loader">
@@ -202,6 +208,12 @@
         <div class="breadcrumb"><a href="index.html">Strona główna</a> → Zapytanie ofertowe</div>
         <h1>Zacznij od <span class="fun">kuchni</span></h1>
         <p>Wypełnij formularz, a nasz konsultant skontaktuje się w ciągu 24 godzin z propozycją dopasowaną do Twojego biura.</p>
+        <div style="display:flex;gap:24px;flex-wrap:wrap;margin-top:16px;font-size:13px;font-weight:600;color:var(--green-dark);opacity:0.5;">
+            <span>✓ Bez zobowiązań</span>
+            <span>✓ Wycena w 2h</span>
+            <span>✓ Darmowy dzień próbny</span>
+            <span>✓ Zmień lub anuluj kiedy chcesz</span>
+        </div>
     </div>
 </section>
 
@@ -210,6 +222,10 @@
         <div class="form-layout">
             <div class="form-card reveal">
                 <form id="contactForm">
+                    <div class="form-progress">
+                        <div class="form-progress-bar"><div class="form-progress-fill" id="progressFill"></div></div>
+                        <span class="form-progress-text" id="progressText">0%</span>
+                    </div>
                     <div class="form-row">
                         <div class="form-group"><label for="firstname"><span class="required-star">*</span> Imię</label><input type="text" id="firstname" name="firstname" required placeholder="np. Jan"></div>
                         <div class="form-group"><label for="lastname"><span class="required-star">*</span> Nazwisko</label><input type="text" id="lastname" name="lastname" required placeholder="np. Kowalski"></div>
@@ -228,7 +244,17 @@
                         <div class="form-group"><label for="department"><span class="required-star">*</span> Dział</label><input type="text" id="department" name="department" required placeholder="Reprezentowany Dział"></div>
                     </div>
                     <div class="form-group"><label for="message">Wiadomość</label><textarea id="message" name="message" placeholder="Dodatkowe informacje o potrzebach Twojego biura..."></textarea></div>
-                    <div class="form-submit"><button type="submit" class="btn btn-red-solid">Wyślij zapytanie →</button></div>
+                    <div class="form-submit">
+                        <button type="submit" class="btn btn-red-solid">Wyślij zapytanie →</button>
+                        <div style="margin-top:14px;display:flex;align-items:center;gap:12px;justify-content:center;">
+                            <div style="display:flex;align-items:center;gap:4px;">
+                                <span style="color:#FFC107;font-size:14px;">★★★★★</span>
+                                <span style="font-size:12px;color:var(--green-dark);opacity:0.5;font-weight:600;">4.9/5</span>
+                            </div>
+                            <span style="font-size:12px;color:var(--green-dark);opacity:0.4;">|</span>
+                            <span style="font-size:12px;color:var(--green-dark);opacity:0.5;font-weight:600;">2000+ firm nam zaufało</span>
+                        </div>
+                    </div>
                 </form>
                 <div class="form-success" id="formSuccess"><div class="success-icon">✓</div><h2>Dziękujemy!</h2><p>Twoje zapytanie zostało wysłane. Skontaktujemy się w ciągu 24 godzin z propozycją dopasowaną do Twojego biura.</p></div>
             </div>
@@ -323,8 +349,23 @@
     // Reveal
     const obs = new IntersectionObserver(es => { es.forEach(e => { if(e.isIntersecting) { e.target.classList.add('vis'); obs.unobserve(e.target); } }); }, { threshold: 0.12 });
     document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+    // Form progress bar
+    const form = document.getElementById('contactForm');
+    const requiredFields = form.querySelectorAll('[required]');
+    const progressFill = document.getElementById('progressFill');
+    const progressText = document.getElementById('progressText');
+    function updateProgress() {
+        let filled = 0;
+        requiredFields.forEach(f => { if (f.value.trim()) filled++; });
+        const pct = Math.round((filled / requiredFields.length) * 100);
+        progressFill.style.width = pct + '%';
+        progressText.textContent = pct + '%';
+        if (pct === 100) { progressFill.style.background = '#8DC63F'; progressText.style.color = '#8DC63F'; }
+        else { progressFill.style.background = ''; progressText.style.color = ''; }
+    }
+    requiredFields.forEach(f => { f.addEventListener('input', updateProgress); f.addEventListener('change', updateProgress); });
     // Form submit
-    document.getElementById('contactForm').addEventListener('submit', e => { e.preventDefault(); document.getElementById('contactForm').style.display = 'none'; document.getElementById('formSuccess').classList.add('show'); });
+    form.addEventListener('submit', e => { e.preventDefault(); form.style.display = 'none'; document.getElementById('formSuccess').classList.add('show'); });
     // ─── HAMBURGER MENU ───
     const hamburger = document.getElementById('hamburger');
     const mobileDrawer = document.getElementById('mobileDrawer');

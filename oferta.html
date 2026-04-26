@@ -129,12 +129,12 @@
 
         .pdf-cta { padding: 0 0 80px; text-align: center; }
         .pdf-cta-card { background: var(--green-dark); border-radius: var(--radius-lg); padding: 56px 48px; max-width: 880px; margin: 0 auto; position: relative; overflow: hidden; }
-        .pdf-cta-card::before { content: ""; position: absolute; top: -60px; right: -60px; width: 200px; height: 200px; background: var(--lime); border-radius: 50%; opacity: 0.08; }
-        .pdf-cta-card::after { content: ""; position: absolute; bottom: -40px; left: -40px; width: 160px; height: 160px; background: var(--yellow); border-radius: 50%; opacity: 0.06; }
+        .pdf-cta-card::before { content: ''; position: absolute; top: -60px; right: -60px; width: 200px; height: 200px; background: var(--lime); border-radius: 50%; opacity: 0.08; }
+        .pdf-cta-card::after { content: ''; position: absolute; bottom: -40px; left: -40px; width: 160px; height: 160px; background: var(--yellow); border-radius: 50%; opacity: 0.06; }
         .pdf-cta-card h2 { color: #fff; margin-bottom: 10px; position: relative; z-index: 2; }
         .pdf-cta-card h2 .fun { color: var(--lime); }
         .pdf-cta-card p { color: rgba(255,255,255,0.6); font-size: 15px; max-width: 480px; margin: 0 auto 28px; position: relative; z-index: 2; }
-        .btn-pdf { display: inline-flex; align-items: center; gap: 12px; padding: 18px 40px; border-radius: var(--radius-pill); background: var(--yellow); color: var(--green-dark); font-family: var(--font); font-weight: 900; font-size: 17px; border: none; cursor: pointer; transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1); position: relative; z-index: 2; box-shadow: 0 4px 20px rgba(255,242,0,0.3); text-decoration: none; }
+        .btn-pdf { display: inline-flex; align-items: center; gap: 12px; padding: 18px 40px; border-radius: var(--radius-pill); background: var(--yellow); color: var(--green-dark); font-family: var(--font); font-weight: 900; font-size: 17px; border: none; cursor: pointer; transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1); position: relative; z-index: 2; box-shadow: 0 4px 20px rgba(255,242,0,0.3); }
         .btn-pdf:hover { background: #E6DA00; transform: translateY(-3px) scale(1.02); box-shadow: 0 8px 32px rgba(255,242,0,0.4); }
         .btn-pdf svg { width: 22px; height: 22px; flex-shrink: 0; }
 
@@ -150,6 +150,8 @@
         .loader.done { opacity: 0; transform: scale(1.05); pointer-events: none; }
         @keyframes loader-pop { to { opacity: 1; transform: scale(1); } }
     </style>
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://dailyfruits.pl/oferta">
 </head>
 <body>
 <div class="loader" id="loader">
@@ -272,11 +274,11 @@
 <section class="pdf-cta">
     <div class="container">
         <div class="pdf-cta-card reveal">
-            <h2><span class="fun">Pobierz</span> pelna oferte</h2>
-            <p>Wszystkie produkty, warianty i cenniki w jednym dokumencie. Idealne do przeslania decydentom w firmie.</p>
+            <h2><span class="fun">Pobierz</span> pełną ofertę</h2>
+            <p>Wszystkie produkty, warianty i cenniki w jednym dokumencie. Idealne do przesłania decydentom w firmie.</p>
             <a href="#" class="btn-pdf" target="_blank">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><polyline points="9 15 12 18 15 15"/></svg>
-                Zobacz oferte w PDF
+                Zobacz ofertę w PDF
             </a>
         </div>
     </div>
@@ -390,4 +392,4 @@
     }
 </script>
 </body>
-</html>
+</html><!-- sync-test -->

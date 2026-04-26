@@ -343,6 +343,21 @@
         .marquee-item .highlight { color: var(--lime); }
         @keyframes marquee-slide { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
 
+        /* ─── LOGO BAR (trust strip) ─── */
+        .logo-bar { background: var(--cream); padding: 32px 0 24px; overflow: hidden; }
+        .logo-bar-label { text-align: center; font-family: var(--font); font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 2.5px; color: var(--green-dark); opacity: 0.45; margin-bottom: 20px; }
+        .logo-bar-track { display: flex; align-items: center; width: max-content; animation: logo-scroll 30s linear infinite; }
+        .logo-bar-track:hover { animation-play-state: paused; }
+        .logo-bar-item { flex-shrink: 0; padding: 0 36px; display: flex; align-items: center; justify-content: center; }
+        .logo-bar-item img { height: 32px; width: auto; object-fit: contain; filter: grayscale(1) opacity(0.4); transition: filter 0.4s ease; }
+        .logo-bar-item img:hover { filter: grayscale(0) opacity(1); }
+        @keyframes logo-scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+        @media (max-width: 768px) {
+            .logo-bar { padding: 24px 0 16px; }
+            .logo-bar-item { padding: 0 24px; }
+            .logo-bar-item img { height: 24px; }
+        }
+
         /* ─── LOADING SCREEN ─── */
         .loader { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: var(--green-dark); display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 9999; transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1); overflow: hidden; }
         .loader img.loader-logo { height: 80px; opacity: 0; transform: scale(0.8); animation: loader-pop 0.6s 0.2s cubic-bezier(0.16, 1, 0.3, 1) forwards; position: relative; z-index: 2; }
@@ -461,6 +476,98 @@
             .container { padding: 0 16px; }
         }
     </style>
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://dailyfruits.pl/">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "DailyFruits",
+        "alternateName": "DailyFruits by BetterWorkplace",
+        "url": "https://dailyfruits.pl",
+        "logo": "https://dailyfruits.pl/fruitttt.svg",
+        "description": "Dostawy świeżych owoców, kanapek, soków i zdrowych przekąsek do biur w 13 miastach Polski.",
+        "email": "kontakt@dailyfruits.pl",
+        "telephone": "+48228680499",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "ul. Modułowa 3",
+            "addressLocality": "Raszyn",
+            "postalCode": "05-090",
+            "addressCountry": "PL"
+        },
+        "areaServed": [
+            {"@type": "City", "name": "Warszawa"},
+            {"@type": "City", "name": "Kraków"},
+            {"@type": "City", "name": "Wrocław"},
+            {"@type": "City", "name": "Poznań"},
+            {"@type": "City", "name": "Katowice"},
+            {"@type": "City", "name": "Łódź"},
+            {"@type": "City", "name": "Gdańsk"},
+            {"@type": "City", "name": "Szczecin"},
+            {"@type": "City", "name": "Lublin"},
+            {"@type": "City", "name": "Gdynia"},
+            {"@type": "City", "name": "Gliwice"},
+            {"@type": "City", "name": "Bydgoszcz"},
+            {"@type": "City", "name": "Rzeszów"}
+        ],
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.9",
+            "bestRating": "5",
+            "ratingCount": "127"
+        },
+        "sameAs": []
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "Co zyskam zapewniając owoce dla pracowników?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Zyskasz szacunek i lojalność pracowników, a przede wszystkim przyczynisz się do poprawy ich zdrowia i produktywności. Owoce do biura to jeden z najtańszych benefitów, który daje natychmiastowy efekt."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Ile kosztuje dostawa owoców do firmy?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Koszt zależy od liczby pracowników i wybranych produktów. Średnio to od 2 do 5 zł na osobę dziennie. Dostawa jest bezpłatna. Wyślij zapytanie, a przygotujemy spersonalizowaną wycenę w ciągu 2h."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "W jakich miastach dostarczacie?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Dostarczamy w 13 miastach Polski: Warszawa, Kraków, Wrocław, Poznań, Katowice, Łódź, Gdańsk, Szczecin, Lublin, Gdynia, Gliwice, Bydgoszcz i Rzeszów."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Jak szybko mogę zacząć?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Pierwsza dostawa może dotrzeć już w 24h od złożenia zamówienia. Wyślij zapytanie, a nasz team skontaktuje się z propozycją dopasowaną do Twojego biura."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Czy mogę zmieniać zamówienie w trakcie abonamentu?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Tak, abonament jest w pełni elastyczny. Możesz zmieniać produkty, częstotliwość i ilość w dowolnym momencie. Zero zobowiązań, zero kar za rezygnację."
+                }
+            }
+        ]
+    }
+    </script>
 </head>
 <body>
 
@@ -551,6 +658,34 @@
 </section>
 
 </div><!-- /hero-wrapper -->
+
+<!-- LOGO BAR: Zaufali nam -->
+<section class="logo-bar reveal">
+    <div class="logo-bar-label">Zaufali nam liderzy rynku</div>
+    <div class="logo-bar-track">
+        <div class="logo-bar-item"><img src="https://cdn.prod.website-files.com/698dfabcdd705500e5451b80/69baa3bd7f98db68c04da33f_6a2fd1c58094c992a06bbf653a23ad3f_google.avif" alt="Google" loading="lazy"></div>
+        <div class="logo-bar-item"><img src="https://cdn.prod.website-files.com/698dfabcdd705500e5451b80/69baa3bd7f98db68c04da359_107a3c2d6b7055457540d5049fa7364d_allegro.avif" alt="Allegro" loading="lazy"></div>
+        <div class="logo-bar-item"><img src="https://cdn.prod.website-files.com/698dfabcdd705500e5451b80/69baa3bd7f98db68c04da34b_d08d4b59796ecd1651a32bc29473df6a_microsoft.avif" alt="Microsoft" loading="lazy"></div>
+        <div class="logo-bar-item"><img src="https://cdn.prod.website-files.com/698dfabcdd705500e5451b80/69baa3bd7f98db68c04da351_50235668ec856a8a108859aba91adb92_ing.avif" alt="ING Bank Śląski" loading="lazy"></div>
+        <div class="logo-bar-item"><img src="https://cdn.prod.website-files.com/698dfabcdd705500e5451b80/69baa3bd7f98db68c04da345_f5307480b7fbd6cdd2f6dfbbb6b6e8f4_jpmorgan.avif" alt="J.P. Morgan" loading="lazy"></div>
+        <div class="logo-bar-item"><img src="https://cdn.prod.website-files.com/698dfabcdd705500e5451b80/69baa3bd7f98db68c04da35b_8bdd26ad6f4645e90933e543b84e035f_abb.avif" alt="ABB" loading="lazy"></div>
+        <div class="logo-bar-item"><img src="https://cdn.prod.website-files.com/698dfabcdd705500e5451b80/69baa3bd7f98db68c04da357_ac7436c0d3de16c18e4a23b2c383317f_alstom.avif" alt="Alstom" loading="lazy"></div>
+        <div class="logo-bar-item"><img src="https://cdn.prod.website-files.com/698dfabcdd705500e5451b80/69baa3bd7f98db68c04da34f_efd6db24aa16e5a9f5cbdc183ab847e1_johnson-and-johnson.avif" alt="Johnson & Johnson" loading="lazy"></div>
+        <div class="logo-bar-item"><img src="https://cdn.prod.website-files.com/698dfabcdd705500e5451b80/69baa3bd7f98db68c04da341_275bf06a450450231ee84a3a743498eb_asseco.avif" alt="Asseco" loading="lazy"></div>
+        <div class="logo-bar-item"><img src="https://cdn.prod.website-files.com/698dfabcdd705500e5451b80/69baa3bd7f98db68c04da363_6e38ab6e10b8fd3b8f851c9e060736b1_bgk.avif" alt="BGK" loading="lazy"></div>
+        <!-- Duplicate set for seamless loop -->
+        <div class="logo-bar-item"><img src="https://cdn.prod.website-files.com/698dfabcdd705500e5451b80/69baa3bd7f98db68c04da33f_6a2fd1c58094c992a06bbf653a23ad3f_google.avif" alt="Google" loading="lazy"></div>
+        <div class="logo-bar-item"><img src="https://cdn.prod.website-files.com/698dfabcdd705500e5451b80/69baa3bd7f98db68c04da359_107a3c2d6b7055457540d5049fa7364d_allegro.avif" alt="Allegro" loading="lazy"></div>
+        <div class="logo-bar-item"><img src="https://cdn.prod.website-files.com/698dfabcdd705500e5451b80/69baa3bd7f98db68c04da34b_d08d4b59796ecd1651a32bc29473df6a_microsoft.avif" alt="Microsoft" loading="lazy"></div>
+        <div class="logo-bar-item"><img src="https://cdn.prod.website-files.com/698dfabcdd705500e5451b80/69baa3bd7f98db68c04da351_50235668ec856a8a108859aba91adb92_ing.avif" alt="ING Bank Śląski" loading="lazy"></div>
+        <div class="logo-bar-item"><img src="https://cdn.prod.website-files.com/698dfabcdd705500e5451b80/69baa3bd7f98db68c04da345_f5307480b7fbd6cdd2f6dfbbb6b6e8f4_jpmorgan.avif" alt="J.P. Morgan" loading="lazy"></div>
+        <div class="logo-bar-item"><img src="https://cdn.prod.website-files.com/698dfabcdd705500e5451b80/69baa3bd7f98db68c04da35b_8bdd26ad6f4645e90933e543b84e035f_abb.avif" alt="ABB" loading="lazy"></div>
+        <div class="logo-bar-item"><img src="https://cdn.prod.website-files.com/698dfabcdd705500e5451b80/69baa3bd7f98db68c04da357_ac7436c0d3de16c18e4a23b2c383317f_alstom.avif" alt="Alstom" loading="lazy"></div>
+        <div class="logo-bar-item"><img src="https://cdn.prod.website-files.com/698dfabcdd705500e5451b80/69baa3bd7f98db68c04da34f_efd6db24aa16e5a9f5cbdc183ab847e1_johnson-and-johnson.avif" alt="Johnson & Johnson" loading="lazy"></div>
+        <div class="logo-bar-item"><img src="https://cdn.prod.website-files.com/698dfabcdd705500e5451b80/69baa3bd7f98db68c04da341_275bf06a450450231ee84a3a743498eb_asseco.avif" alt="Asseco" loading="lazy"></div>
+        <div class="logo-bar-item"><img src="https://cdn.prod.website-files.com/698dfabcdd705500e5451b80/69baa3bd7f98db68c04da363_6e38ab6e10b8fd3b8f851c9e060736b1_bgk.avif" alt="BGK" loading="lazy"></div>
+    </div>
+</section>
 
 <!-- WAVE: hero → features -->
 <div class="wave-divider" style="background:var(--cream)">
@@ -818,7 +953,11 @@
     <div class="container">
         <div class="section-top reveal">
             <div class="sticker sticker-coral" style="transform:rotate(-1deg)">Opinie</div>
-            <h2 style="margin-top:20px">Co mowia nasi <span class="fun">klienci</span></h2>
+            <h2 style="margin-top:20px">Co mówią nasi <span class="fun">klienci</span></h2>
+            <div style="display:flex;align-items:center;gap:8px;justify-content:center;margin-top:12px;">
+                <span style="color:#FFC107;font-size:20px;letter-spacing:2px;">★★★★★</span>
+                <span style="font-size:14px;font-weight:700;color:var(--green-dark);opacity:0.6;">4.9/5 na podstawie 120+ opinii</span>
+            </div>
         </div>
     </div>
     <div class="test-track">
@@ -923,6 +1062,11 @@
             <div class="cta-btns">
                 <a href="zapytanie.html" class="btn btn-red-solid btn-arrow">Złóż zapytanie</a>
                 <a href="zapytanie.html" class="btn btn-outline">Porozmawiaj z nami</a>
+            </div>
+            <div style="margin-top:20px;display:flex;gap:24px;justify-content:center;flex-wrap:wrap;font-size:13px;font-weight:600;color:var(--green-dark);opacity:0.55;">
+                <span>✓ Bez zobowiązań</span>
+                <span>✓ Wycena w 2h</span>
+                <span>✓ Darmowy dzień próbny</span>
             </div>
         </div>
     </div>
