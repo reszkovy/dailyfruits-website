@@ -92,10 +92,6 @@
         .btn-outline:hover { background: var(--red); color: #fff; }
         .btn-arrow::after { content: ' →'; transition: transform 0.2s; }
 
-        /* ─── FLOATING BADGE ─── */
-        .floating-badge { position: fixed; bottom: 28px; right: 28px; z-index: 999; transition: opacity 0.4s, transform 0.4s; }
-        .floating-badge img { height: 60px; filter: drop-shadow(0 4px 12px rgba(228,48,32,0.3)); transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), filter 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
-        .floating-badge:hover img { transform: scale(1.1) rotate(-3deg); filter: drop-shadow(0 6px 18px rgba(27,94,58,0.4)) hue-rotate(90deg) saturate(1.4); }
 
         /* ─── NAV ─── */
         header { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: #1B5E3A; border-bottom: none; overflow-x: hidden; overflow-y: visible; transition: box-shadow 0.3s ease; }
@@ -464,8 +460,6 @@
             .btn { white-space: normal; padding: 14px 24px; }
 
             .apple-deco { width: 80px !important; height: 94px !important; }
-            .floating-badge { bottom: 16px; right: 16px; }
-            .floating-badge img { height: 48px; }
             .delivery-bg-text { font-size: clamp(80px, 20vw, 180px); }
             .nav-inner { padding: 12px 16px; }
             .container { padding: 0 16px; }
@@ -1449,10 +1443,6 @@
     });
 </script>
 
-<!-- FLOATING BADGE -->
-<a href="zapytanie.html" class="floating-badge">
-    <img src="badge-trust.svg" alt="Zaufało nam ponad 2000 firm w Polsce">
-</a>
 
 </body>
 </html>
