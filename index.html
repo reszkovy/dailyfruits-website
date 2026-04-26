@@ -56,9 +56,6 @@
 
         html { scroll-behavior: auto; }
         html { overflow-x: hidden; }
-        html.lenis, html.lenis body { height: auto; }
-        .lenis.lenis-smooth { scroll-behavior: auto; }
-        .lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
         *, *::before, *::after { box-sizing: border-box; }
         body { font-family: var(--font); color: var(--dark); background: var(--cream); overflow-x: hidden; -webkit-font-smoothing: antialiased; }
         img { max-width: 100%; height: auto; display: block; }
@@ -1114,8 +1111,6 @@
     </div>
 </footer>
 
-<!-- Lenis Smooth Scroll (r352-style) -->
-<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
 <script>
     // ─── HEADER SCROLL SHADOW ───
     const header = document.querySelector('header');
@@ -1250,22 +1245,7 @@
         initCarousel('testimonialsNav', document.querySelector('.test-slider'), '.test-card');
     }
 
-    // ─── LENIS SMOOTH SCROLL ───
-    let lenis;
-    try {
-        lenis = new Lenis({
-            duration: 1.2,
-            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-            smoothWheel: true,
-            wheelMultiplier: 1,
-            touchMultiplier: 2,
-        });
-        function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
-        requestAnimationFrame(raf);
-    } catch(e) {
-        console.warn('Lenis not loaded, using native scroll');
-        document.documentElement.style.scrollBehavior = 'smooth';
-    }
+
 
     // ─── ENHANCED REVEAL OBSERVER ───
     const revealObs = new IntersectionObserver(entries => {
@@ -1275,8 +1255,8 @@
     }, { threshold: 0.05, rootMargin: '0px 0px -20px 0px' });
     const revealEls = document.querySelectorAll('.reveal, .scale-in, .slide-left, .slide-right');
     revealEls.forEach(el => revealObs.observe(el));
-    // Fallback: force-show all reveals after 4s in case Lenis blocks observer
-    setTimeout(() => { revealEls.forEach(el => el.classList.add('vis')); }, 4000);
+    // Fallback: force-show all reveals after 4s
+    setTimeout(() => { revealEls.forEach(el => el.classList.add('vis')); }, 2000);
 
     // ─── TEXT SPLIT ANIMATION ───
     document.querySelectorAll('.split-heading').forEach(heading => {
@@ -1430,7 +1410,7 @@
         updateCar();
     }
 
-    // ─── HEADER SHADOW on scroll (Lenis-aware) ───
+    // ─── HEADER SHADOW on scroll ───
     // header already declared above, reuse it
 
     // ─── FAQ ───
@@ -1460,11 +1440,11 @@
         });
     });
 
-    // ─── SMOOTH ANCHOR SCROLLING with Lenis ───
+    // ─── SMOOTH ANCHOR SCROLLING ───
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', e => {
             const target = document.querySelector(anchor.getAttribute('href'));
-            if (target) { e.preventDefault(); if (lenis) { lenis.scrollTo(target, { offset: -100 }); } else { target.scrollIntoView({ behavior: 'smooth' }); } }
+            if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
         });
     });
 </script>

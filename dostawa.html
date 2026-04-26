@@ -542,7 +542,7 @@ document.querySelectorAll('.faq-header').forEach(header => {
 const obs = new IntersectionObserver((entries) => { entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('vis'); obs.unobserve(e.target); } }); }, { threshold: 0.15 });
 document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 // Fallback reveal timer
-setTimeout(() => { document.querySelectorAll('.reveal').forEach(el => el.classList.add('vis')); }, 4000);
+setTimeout(() => { document.querySelectorAll('.reveal').forEach(el => el.classList.add('vis')); }, 2000);
 </script>
 
 </body>
