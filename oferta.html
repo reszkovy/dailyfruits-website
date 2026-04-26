@@ -166,7 +166,7 @@
 <body>
 <header>
     <div class="nav-inner">
-        <a href="index.html"><img src="fruitttt.svg" alt="DailyFruits" style="height:48px;filter:brightness(10);"></a>
+        <div class="logo-wrap"><a href="index.html"><img src="fruitttt.svg" alt="DailyFruits" class="logo-img" loading="lazy"></a><a href="https://betterworkplace.pl" target="_blank" class="logo-sub">by BetterWorkplace</a></div>
         <ul class="nav-links">
             <li><a href="oferta.html" class="active">Oferta</a></li>
             <li><a href="dostawa.html">Dostawa</a></li>
@@ -174,7 +174,8 @@
             <li><a href="blog.html">Blog</a></li>
         </ul>
         <div class="nav-buttons">
-            <a href="zapytanie.html" class="btn-nav-cta">Bezpłatna wycena</a>
+            <span class="nav-trust">Zaufało nam ponad<br>2 000 firm w Polsce</span>
+            <a href="zapytanie.html" class="btn btn-nav-cta">Bezpłatna wycena</a>
         </div>
         <button class="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
     </div>
@@ -302,7 +303,6 @@
     // Reveal
     const obs = new IntersectionObserver(es => { es.forEach(e => { if(e.isIntersecting) { e.target.classList.add('vis'); obs.unobserve(e.target); } }); }, { threshold: 0.12 });
     document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
-     });
 
     
 
