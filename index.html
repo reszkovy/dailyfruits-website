@@ -15,6 +15,7 @@
     <meta name="twitter:description" content="Dostawy owoców i zdrowych przekąsek do biur w 13 miastach Polski. Bezpłatna wycena.">
     <meta name="twitter:image" content="https://dailyfruits.pl/HORIZONTAL.webp">
     <link rel="icon" type="image/png" href="favicon_.png">
+    <link rel="preload" as="image" href="box_owoce_2.webp" type="image/webp">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700;900&display=swap" rel="stylesheet">
@@ -164,7 +165,7 @@
         .section-top { text-align: center; margin-bottom: 64px; }
         .section-top p { max-width: 520px; margin: 12px auto 0; }
         .how-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 20px; }
-        .how-card { background: var(--yellow-bg); border-radius: 0; padding: 32px 24px; text-align: center; transition: transform 0.3s, box-shadow 0.3s; }
+        .how-card { background: var(--yellow-bg); border-radius: 16px; padding: 32px 24px; text-align: center; transition: transform 0.3s, box-shadow 0.3s; }
         .how-card:hover { transform: translateY(-6px); box-shadow: 0 16px 48px rgba(27,94,58,0.1); }
         .how-num { font-family: var(--font-fun); font-size: 52px; color: var(--green-dark); line-height: 1; margin-bottom: 12px; }
         .how-card h3 { margin-bottom: 8px; font-size: 17px; }
@@ -180,7 +181,7 @@
         /* ─── 6 BENEFITS ─── */
         .benefits-six { padding: 80px 0; background: var(--yellow-bg); position: relative; overflow: hidden; }
         .benefits-grid-six { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
-        .benefit-card { background: var(--yellow-bg); padding: 40px 32px; border-radius: 0; transition: transform 0.4s cubic-bezier(0.16,1,0.3,1), box-shadow 0.4s cubic-bezier(0.16,1,0.3,1); border: none; position: relative; overflow: hidden; }
+        .benefit-card { background: var(--yellow-bg); padding: 40px 32px; border-radius: 16px; transition: transform 0.4s cubic-bezier(0.16,1,0.3,1), box-shadow 0.4s cubic-bezier(0.16,1,0.3,1); border: none; position: relative; overflow: hidden; }
         .benefit-card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 5px; background: var(--lime); }
         .benefit-card:nth-child(2)::before { background: var(--green-dark); }
         .benefit-card:nth-child(3)::before { background: var(--red); }
@@ -198,6 +199,9 @@
         .benefit-stat { font-family: var(--font-fun); font-size: 36px; color: var(--lime); margin-top: 14px; display: block; }
         .benefit-card:nth-child(2) .benefit-stat { color: var(--green-dark); }
         .benefit-card:nth-child(3) .benefit-stat { color: var(--red); }
+        .benefit-card:nth-child(4) .benefit-stat { color: var(--red); }
+        .benefit-card:nth-child(5) .benefit-stat { color: var(--green-dark); }
+        .benefit-card:nth-child(6) .benefit-stat { color: var(--lime); }
 
         /* ─── DEEP OFFER CARDS ─── */
         .deep-offer-card { display: flex; align-items: center; gap: 16px; padding: 20px 24px; background: var(--green-dark); border-radius: 16px; text-decoration: none; color: #fff; transition: transform 0.35s cubic-bezier(0.16,1,0.3,1), box-shadow 0.35s cubic-bezier(0.16,1,0.3,1), background 0.35s; position: relative; overflow: hidden; }
@@ -214,7 +218,7 @@
         /* ─── OFFER ─── */
         .offer-section { padding: 80px 0; background: var(--white); position: relative; overflow: hidden; }
         .offer-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-        .offer-card { border-radius: 0; overflow: visible; background: var(--cream); transition: transform 0.3s, box-shadow 0.3s, background 0.35s; position: relative; padding-top: 80px; margin-top: 60px; }
+        .offer-card { border-radius: 16px; overflow: visible; background: var(--cream); transition: transform 0.3s, box-shadow 0.3s, background 0.35s; position: relative; padding-top: 80px; margin-top: 60px; }
         .offer-card:hover { transform: translateY(-6px) rotate(-0.5deg); box-shadow: 0 16px 48px rgba(27,94,58,0.12); background: var(--green-dark); }
         .offer-card:hover .offer-card-body h3 { color: #fff; }
         .offer-card:hover .offer-card-body p { color: rgba(255,255,255,0.75); }
@@ -234,7 +238,7 @@
         .ecosystem .section-top { margin-bottom: 48px; }
         .btn-eco-cta:hover { transform: translateY(-3px) scale(1.04); box-shadow: 0 8px 30px rgba(0,0,0,0.25) !important; background: #fff !important; }
         .eco-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
-        .eco-card { background: transparent; border: none; padding: 36px 28px; border-radius: 0; text-align: center; transition: transform 0.3s; }
+        .eco-card { background: transparent; border: none; padding: 36px 28px; border-radius: 16px; text-align: center; transition: transform 0.3s; }
         .eco-card:hover { transform: translateY(-4px); }
         .eco-icon { font-size: 36px; margin-bottom: 16px; display: block; }
         .eco-card h3 { color: var(--yellow); margin-bottom: 8px; font-size: 20px; font-family: var(--font-fun); }
@@ -246,7 +250,7 @@
         .test-track { overflow: hidden; }
         .test-slider { display: flex; gap: 24px; animation: slide 55s linear infinite; padding: 16px 0; }
         @keyframes slide { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
-        .test-card { flex-shrink: 0; width: 380px; background: rgba(141,198,63,0.15); padding: 32px; border-radius: 0; border: none; display: flex; flex-direction: column; justify-content: space-between; }
+        .test-card { flex-shrink: 0; width: 380px; background: rgba(141,198,63,0.15); padding: 32px; border-radius: 16px; border: none; display: flex; flex-direction: column; justify-content: space-between; }
         .test-card blockquote { font-size: 14px; line-height: 1.8; color: var(--green-dark); font-style: italic; margin-bottom: 20px; flex-grow: 1; }
         .test-card blockquote::before { content: '\201C'; font-family: var(--font-fun); font-size: 48px; color: var(--lime); display: block; line-height: 0.6; margin-bottom: 12px; }
         .test-author { display: flex; gap: 12px; align-items: center; }
@@ -283,7 +287,7 @@
 
         /* ─── CTA ─── */
         .cta { padding: 64px 0; background: var(--cream); text-align: center; position: relative; overflow: hidden; }
-        .cta-card { background: transparent; border-radius: 0; padding: 32px 56px; max-width: 880px; margin: 0 auto; position: relative; overflow: hidden; }
+        .cta-card { background: transparent; border-radius: 16px; padding: 32px 56px; max-width: 880px; margin: 0 auto; position: relative; overflow: hidden; }
         .cta-card h2 { color: var(--green-dark); margin-bottom: 12px; position: relative; z-index: 2; }
         .cta-card h2 .fun { color: var(--lime); }
         .cta-card p { color: var(--gray); opacity: 1; max-width: 480px; margin: 0 auto 32px; position: relative; z-index: 2; }
@@ -455,7 +459,7 @@
             .how-section, .offer-section, .benefits-six, .testimonials, .delivery, .faq-section, .cta, .ecosystem { padding: 72px 0; }
             .cities-grid { grid-template-columns: repeat(2, 1fr); }
             .footer-grid { grid-template-columns: 1fr; gap: 28px; }
-            .cta-card { padding: 48px 24px; border-radius: 0; }
+            .cta-card { padding: 48px 24px; border-radius: 16px; }
             .cta-btns { flex-direction: column; }
             .cta-btns .btn-outline { background: var(--red); color: #fff; border-color: var(--red); }
             .btn { white-space: normal; padding: 14px 24px; }
@@ -604,7 +608,7 @@
         <div class="hero-tabs">
             <button class="hero-tab active" data-img="box_owoce_2.webp" data-alt="Owoce do biura"><span class="tab-icon"><img src="icon-owoce.svg" alt="" style="height:22px;width:22px;vertical-align:-3px;"></span> Owoce</button>
             <button class="hero-tab" data-img="box kanapki1.webp" data-alt="Kanapki dla pracowników"><span class="tab-icon"><img src="icon-kanapki.svg" alt="" style="height:15px;width:auto;vertical-align:-2px;"></span> Kanapki</button>
-            <button class="hero-tab" data-img="BOX SNIADANIOWE.webp" data-alt="Produkty śniadaniowe"><span class="tab-icon"><img src="icon-sniadania.svg" alt="" style="height:20px;width:auto;vertical-align:-3px;"></span> Sniadania</button>
+            <button class="hero-tab" data-img="BOX SNIADANIOWE.webp" data-alt="Produkty śniadaniowe"><span class="tab-icon"><img src="icon-sniadania.svg" alt="" style="height:20px;width:auto;vertical-align:-3px;"></span> Śniadania</button>
             <button class="hero-tab" data-img="box soki1.webp" data-alt="Świeże soki"><span class="tab-icon"><img src="icon-soki.svg" alt="" style="height:24px;width:auto;vertical-align:-4px;margin-right:-2px;"></span> Soki</button>
             <button class="hero-tab" data-img="box kawki.webp" data-alt="Kawa do biura"><span class="tab-icon"><img src="icon-kawa.svg" alt="" style="height:18px;width:18px;vertical-align:-2px;"></span> Kawa</button>
             <button class="hero-tab" data-img="box bakalie1.webp" data-alt="Bakalie i suszone owoce"><span class="tab-icon"><img src="icon-bakalie.svg" alt="" style="height:20px;width:auto;vertical-align:-3px;"></span> Bakalie</button>
@@ -632,7 +636,7 @@
                 </div>
             </div>
             <div class="hero-image scale-in">
-                <img id="hero-product-img" src="box_owoce_2.webp" alt="Owoce do biura">
+                <img id="hero-product-img" src="box_owoce_2.webp" alt="Owoce do biura" fetchpriority="high">
             </div>
         </div>
     </div>
@@ -814,16 +818,22 @@
                 <div class="benefit-emoji">⚡</div>
                 <h3>Produktywność</h3>
                 <p>Zdrowe przekąski zamiast sugar crashy. Mierzalny wpływ na koncentrację i efektywność.</p>
+                <span class="benefit-stat">25%</span>
+                <p style="font-size:12px;margin-top:4px;color:var(--olive)">wzrost produktywności przy zdrowej diecie w biurze</p>
             </div>
             <div class="benefit-card reveal">
                 <div class="benefit-emoji">↻</div>
                 <h3>Elastyczność</h3>
                 <p>Subskrypcja, nie kontrakt. Zmień skład i częstotliwość kiedy chcesz, bez kar i zobowiązań.</p>
+                <span class="benefit-stat">0 zł</span>
+                <p style="font-size:12px;margin-top:4px;color:var(--olive)">kar za zmianę lub rezygnację z abonamentu</p>
             </div>
             <div class="benefit-card reveal">
                 <div class="benefit-emoji">🧘</div>
                 <h3>Wellbeing</h3>
                 <p>Kompleksowe podejście do zdrowia pracowników przez codzienne nawyki żywieniowe. <a href="programy-zywieniowe.html" style="color:var(--lime);font-weight:700;">Sprawdź programy →</a></p>
+                <span class="benefit-stat">4x</span>
+                <p style="font-size:12px;margin-top:4px;color:var(--olive)">wyższy ROI niż tradycyjne benefity pracownicze</p>
             </div>
         </div>
         <div class="carousel-nav" id="benefitsNav">
