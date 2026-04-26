@@ -397,6 +397,12 @@
         }
         /* ─── HAMBURGER ─── */
         .hamburger { display: none; background: none; border: none; cursor: pointer; padding: 8px; z-index: 201; position: relative; }
+            /* === MOBILE FIX: Nav bar overlap === */
+            .logo-sub { display: none; }
+            .logo-img { height: 44px; }
+            .btn-nav-cta { padding: 8px 16px; font-size: 13px; }
+            .nav-buttons { gap: 8px; }
+
         .hamburger span { display: block; width: 24px; height: 2px; background: #fff; border-radius: 2px; transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1); }
         .hamburger span + span { margin-top: 6px; }
         .hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(4px, 4px); }
@@ -474,6 +480,22 @@
             .nav-inner { padding: 12px 16px; }
             .container { padding: 0 16px; }
         }
+    
+        @media (max-width: 480px) {
+            /* Nav extra-small */
+            .logo-img { height: 40px; }
+            .btn-nav-cta { padding: 7px 14px; font-size: 12px; }
+            .nav-inner { gap: 8px; }
+            /* Hero stats: prevent overflow */
+            .hero-stats { flex-wrap: wrap; gap: 16px 24px; }
+            .hero-stat { min-width: auto; }
+            /* Hero buttons: full-width stack */
+            .hero-buttons { flex-direction: column; }
+            .hero-buttons .btn { width: 100%; text-align: center; justify-content: center; }
+            /* Footer: tighter padding */
+            footer .container { padding: 0 16px; }
+        }
+
     </style>
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://dailyfruits.pl/">

@@ -63,6 +63,12 @@
         .nav-buttons .btn { padding: 10px 22px; font-size: 14px; }
         .nav-trust { font-size: 13px; font-weight: 700; color: rgba(255,255,255,0.5); letter-spacing: 0.3px; text-align: right; line-height: 1.35; }
         .hamburger { display: none; background: none; border: none; cursor: pointer; padding: 8px; z-index: 201; }
+            /* === MOBILE FIX: Nav bar overlap === */
+            .logo-sub { display: none; }
+            .logo-img { height: 44px; }
+            .btn-nav-cta { padding: 8px 16px; font-size: 13px; }
+            .nav-buttons { gap: 8px; }
+
         .hamburger span { display: block; width: 24px; height: 2px; background: #fff; border-radius: 2px; transition: all 0.3s; }
         .hamburger span + span { margin-top: 6px; }
         .mobile-drawer { display: none; }
@@ -155,6 +161,22 @@
             .city-cta-btns { flex-direction: column; align-items: center; }
             .footer-grid { grid-template-columns: 1fr; gap: 28px; }
         }
+    
+        @media (max-width: 480px) {
+            /* Nav extra-small */
+            .logo-img { height: 40px; }
+            .btn-nav-cta { padding: 7px 14px; font-size: 12px; }
+            .nav-inner { gap: 8px; }
+            /* Hero stats: prevent overflow */
+            .hero-stats { flex-wrap: wrap; gap: 16px 24px; }
+            .hero-stat { min-width: auto; }
+            /* Hero buttons: full-width stack */
+            .hero-buttons { flex-direction: column; }
+            .hero-buttons .btn { width: 100%; text-align: center; justify-content: center; }
+            /* Footer: tighter padding */
+            footer .container { padding: 0 16px; }
+        }
+
     </style>
     <script type="application/ld+json">
     {

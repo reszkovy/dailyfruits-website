@@ -32,6 +32,22 @@
         .quick-links { margin-top: 48px; display: flex; gap: 24px; flex-wrap: wrap; justify-content: center; }
         .quick-links a { font-size: 14px; font-weight: 700; color: var(--lime); transition: color 0.2s; }
         .quick-links a:hover { color: var(--green-dark); }
+    
+        @media (max-width: 480px) {
+            /* Nav extra-small */
+            .logo-img { height: 40px; }
+            .btn-nav-cta { padding: 7px 14px; font-size: 12px; }
+            .nav-inner { gap: 8px; }
+            /* Hero stats: prevent overflow */
+            .hero-stats { flex-wrap: wrap; gap: 16px 24px; }
+            .hero-stat { min-width: auto; }
+            /* Hero buttons: full-width stack */
+            .hero-buttons { flex-direction: column; }
+            .hero-buttons .btn { width: 100%; text-align: center; justify-content: center; }
+            /* Footer: tighter padding */
+            footer .container { padding: 0 16px; }
+        }
+
     </style>
 </head>
 <body>
