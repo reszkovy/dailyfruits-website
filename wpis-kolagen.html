@@ -358,9 +358,13 @@
 </footer>
 
 <script>
-     });
+    // ─── REVEAL ANIMATIONS ───
+    document.querySelectorAll('.reveal').forEach(el => {
+        new IntersectionObserver(([entry], obs) => {
+            if (entry.isIntersecting) { el.classList.add('vis'); obs.unobserve(el); }
+        }, { threshold: 0.15 }).observe(el);
+    });
 
-    
     // ─── HAMBURGER MENU ───
     const hamburger = document.getElementById('hamburger');
     const mobileDrawer = document.getElementById('mobileDrawer');
