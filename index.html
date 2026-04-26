@@ -354,18 +354,18 @@
         @keyframes marquee-slide { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
 
         /* ─── LOGO BAR (trust strip) ─── */
-        .logo-bar { background: var(--cream); padding: 32px 0 24px; overflow: hidden; }
+        .logo-bar { background: #fff; padding: 32px 0 24px; overflow: hidden; }
         .logo-bar-label { text-align: center; font-family: var(--font); font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 2.5px; color: var(--green-dark); opacity: 0.45; margin-bottom: 20px; }
         .logo-bar-track { display: flex; align-items: center; width: max-content; animation: logo-scroll 30s linear infinite; }
         .logo-bar-track:hover { animation-play-state: paused; }
         .logo-bar-item { flex-shrink: 0; padding: 0 36px; display: flex; align-items: center; justify-content: center; }
-        .logo-bar-item img { height: 32px; width: auto; object-fit: contain; filter: grayscale(1) opacity(0.4); transition: filter 0.4s ease; }
+        .logo-bar-item img { height: 48px; width: auto; object-fit: contain; filter: grayscale(1) opacity(0.4); transition: filter 0.4s ease; }
         .logo-bar-item img:hover { filter: grayscale(0) opacity(1); }
         @keyframes logo-scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
         @media (max-width: 768px) {
             .logo-bar { padding: 24px 0 16px; }
             .logo-bar-item { padding: 0 24px; }
-            .logo-bar-item img { height: 24px; }
+            .logo-bar-item img { height: 36px; }
         }
 
         /* ─── ENHANCED CARD HOVERS ─── */
@@ -708,6 +708,11 @@
 
 </div><!-- /hero-wrapper -->
 
+<!-- WAVE: hero → features -->
+<div class="wave-divider" style="background:var(--cream)">
+    <svg viewBox="0 0 1440 60" preserveAspectRatio="none"><path d="M0,0 C240,50 480,10 720,40 C960,70 1200,10 1440,30 L1440,60 L0,60Z" fill="#FFFFFF"/></svg>
+</div>
+
 <!-- LOGO BAR: Zaufali nam -->
 <section class="logo-bar reveal">
     <div class="logo-bar-label">Zaufali nam liderzy rynku</div>
@@ -735,11 +740,6 @@
         <div class="logo-bar-item"><img src="https://cdn.prod.website-files.com/698dfabcdd705500e5451b80/69baa3bd7f98db68c04da363_6e38ab6e10b8fd3b8f851c9e060736b1_bgk.avif" alt="BGK" loading="lazy"></div>
     </div>
 </section>
-
-<!-- WAVE: hero → features -->
-<div class="wave-divider" style="background:var(--cream)">
-    <svg viewBox="0 0 1440 60" preserveAspectRatio="none"><path d="M0,0 C240,50 480,10 720,40 C960,70 1200,10 1440,30 L1440,60 L0,60Z" fill="#FFFFFF"/></svg>
-</div>
 
 <!-- FEATURES STRIP -->
 <section class="features">
