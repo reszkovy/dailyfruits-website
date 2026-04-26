@@ -1249,7 +1249,7 @@
     }, { threshold: 0.05, rootMargin: '0px 0px -20px 0px' });
     const revealEls = document.querySelectorAll('.reveal, .scale-in, .slide-left, .slide-right');
     revealEls.forEach(el => revealObs.observe(el));
-    // Fallback: force-show all reveals after 4s
+    // Fallback: force-show all reveals after 2s
     setTimeout(() => { revealEls.forEach(el => el.classList.add('vis')); }, 2000);
 
     // ─── TEXT SPLIT ANIMATION ───
