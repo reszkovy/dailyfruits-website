@@ -136,21 +136,23 @@
         .hero-sticker { position: absolute; bottom: -16px; right: 24px; z-index: 3; }
 
         /* ─── HERO CATEGORY TABS (full-width bar) ─── */
-        .hero-tabs-bar { background: var(--cream); border-bottom: none; margin-top: 108px; overflow: visible; }
+        .hero-tabs-bar { background: var(--green-dark); border-bottom: none; margin-top: 108px; overflow: visible; position: relative; }
+        .hero-tabs-bar::after { content: ''; position: absolute; bottom: -39px; left: 0; right: 0; height: 40px; background: url("data:image/svg+xml,%3Csvg viewBox='0 0 1440 40' preserveAspectRatio='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0H1440V8C1440 8 1320 32 1080 26C840 20 720 38 480 28C240 18 120 36 0 24V0Z' fill='%231B5E3A'/%3E%3C/svg%3E") no-repeat bottom / 100% 100%; pointer-events: none; z-index: 10; }
         .hero-tabs-inner { display: flex; align-items: center; justify-content: center; padding: 14px 48px; max-width: 1440px; margin: 0 auto; position: relative; }
-        .hero-tabs-label { position: absolute; left: 48px; font-size: 13px; font-weight: 700; color: var(--green-dark); opacity: 0.5; line-height: 1.35; flex-shrink: 0; }
+        .hero-tabs-label { position: absolute; left: 48px; font-size: 13px; font-weight: 700; color: #fff; opacity: 0.5; line-height: 1.35; flex-shrink: 0; }
         .hero-tabs { display: flex; justify-content: center; gap: 4px; overflow: visible; }
-        .hero-tab { display: inline-flex; align-items: center; gap: 6px; padding: 10px 22px; border-radius: var(--radius-pill); font-family: var(--font-fun); font-size: 16px; font-weight: 400; color: var(--green-dark); background: transparent; border: 2px solid transparent; cursor: pointer; transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1); white-space: nowrap; position: relative; }
-        .hero-tab:hover { background: rgba(141,198,63,0.12); transform: translateY(-2px) scale(1.04); box-shadow: 0 4px 12px rgba(27,94,58,0.08); }
+        .hero-tab { display: inline-flex; align-items: center; gap: 6px; padding: 10px 22px; border-radius: var(--radius-pill); font-family: var(--font-fun); font-size: 16px; font-weight: 400; color: var(--yellow); background: transparent; border: 2px solid transparent; cursor: pointer; transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1); white-space: nowrap; position: relative; }
+        .hero-tab:hover { background: rgba(141,198,63,0.2); transform: translateY(-2px) scale(1.04); box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
         .hero-tab:hover .tab-icon { transform: scale(1.2) rotate(-8deg); }
         .hero-tab:active { transform: translateY(0) scale(0.97); }
-        .hero-tab.active { background: rgba(141,198,63,0.15); border-color: var(--green-mid); color: var(--green-dark); transform: translateY(-1px); box-shadow: 0 3px 10px rgba(27,94,58,0.1); }
+        .hero-tab.active { background: rgba(141,198,63,0.25); border-color: var(--lime); color: #fff; transform: translateY(-1px); box-shadow: 0 3px 10px rgba(0,0,0,0.15); }
         .hero-tab .tab-icon { font-size: 16px; transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1); }
+        .hero-tab .tab-icon img { filter: brightness(0) invert(1); }
         .hero-tab.hero-tab--red { border: 2px solid var(--red); color: var(--red); }
-        .hero-tab.hero-tab--red:hover { background: rgba(228,48,32,0.08); border-color: var(--red); }
+        .hero-tab.hero-tab--red:hover { background: rgba(228,48,32,0.15); border-color: var(--red); }
         .hero-tab.hero-tab--red.active { background: var(--red); color: #fff; border-color: var(--red); }
         .hero-tab.hero-tab--red.active .tab-icon img { filter: brightness(0) invert(1); }
-        .hero-trial-cta { position: absolute; right: 48px; display: inline-flex; align-items: flex-end; flex-direction: column; font-family: var(--font); font-size: 13px; font-weight: 800; color: var(--red); text-decoration: underline; text-underline-offset: 3px; text-align: right; line-height: 0.75; padding: 0; transition: opacity 0.3s ease; opacity: 0.85; }
+        .hero-trial-cta { position: absolute; right: 48px; display: inline-flex; align-items: flex-end; flex-direction: column; font-family: var(--font); font-size: 13px; font-weight: 800; color: var(--yellow); text-decoration: underline; text-underline-offset: 3px; text-align: right; line-height: 0.75; padding: 0; transition: opacity 0.3s ease; opacity: 0.85; }
         .hero-trial-cta:hover { opacity: 1; }
         .hero-image img { transition: opacity 0.4s ease, transform 0.4s ease; }
         .hero-image img.switching { opacity: 0; transform: scale(0.95); }
