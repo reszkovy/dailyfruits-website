@@ -131,10 +131,8 @@
     { "source": "/dostawa-owocow-do-biura-trojmiasto", "destination": "/", "permanent": true },
     { "source": "/dostawa-owocow-do-biura-lodz/", "destination": "/", "permanent": true },
     { "source": "/dostawa-owocow-do-biura-lodz", "destination": "/", "permanent": true },
-    { "source": "/owoce-do-biura-lodz/", "destination": "/", "permanent": true },
-    { "source": "/owoce-do-biura-lodz", "destination": "/", "permanent": true },
-    { "source": "/owoce-do-biura-trojmiasto/", "destination": "/", "permanent": true },
-    { "source": "/owoce-do-biura-trojmiasto", "destination": "/", "permanent": true },
+    { "source": "/owoce-do-biura-lodz/", "destination": "/owoce-do-biura-lodz", "permanent": true },
+    { "source": "/owoce-do-biura-trojmiasto/", "destination": "/owoce-do-biura-trojmiasto", "permanent": true },
 
     { "source": "/upominki/", "destination": "/oferta", "permanent": true },
     { "source": "/upominki", "destination": "/oferta", "permanent": true },
