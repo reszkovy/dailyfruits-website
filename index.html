@@ -93,6 +93,10 @@
         .btn-outline:hover { background: var(--red); color: #fff; }
         .btn-arrow::after { content: ' →'; transition: transform 0.2s; }
 
+        /* ─── FLOATING CTA BADGE ─── */
+        .floating-badge { position: fixed; bottom: 28px; right: 28px; z-index: 999; background: var(--red); color: #fff; font-family: var(--font); font-size: 14px; font-weight: 800; text-decoration: none; padding: 16px 24px; border-radius: 50px; box-shadow: 0 4px 16px rgba(228,48,32,0.35); transition: transform 0.3s cubic-bezier(0.16,1,0.3,1), box-shadow 0.3s ease; line-height: 1.3; text-align: center; }
+        .floating-badge:hover { transform: scale(1.05) translateY(-2px); box-shadow: 0 8px 24px rgba(228,48,32,0.45); }
+        .floating-badge span { display: block; font-size: 11px; font-weight: 600; opacity: 0.85; margin-top: 2px; }
 
         /* ─── NAV ─── */
         header { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: #1B5E3A; border-bottom: none; overflow-x: hidden; overflow-y: visible; transition: box-shadow 0.3s ease; }
@@ -146,7 +150,7 @@
         .hero-tab.hero-tab--red:hover { background: rgba(228,48,32,0.08); border-color: var(--red); }
         .hero-tab.hero-tab--red.active { background: var(--red); color: #fff; border-color: var(--red); }
         .hero-tab.hero-tab--red.active .tab-icon img { filter: brightness(0) invert(1); }
-        .hero-trial-cta { position: absolute; right: 48px; display: inline-flex; align-items: flex-end; flex-direction: column; font-family: var(--font); font-size: 13px; font-weight: 800; color: var(--red); text-decoration: underline; text-underline-offset: 3px; text-align: right; line-height: 1.3; padding: 0; transition: opacity 0.3s ease; opacity: 0.85; }
+        .hero-trial-cta { position: absolute; right: 48px; display: inline-flex; align-items: flex-end; flex-direction: column; font-family: var(--font); font-size: 13px; font-weight: 800; color: var(--red); text-decoration: underline; text-underline-offset: 3px; text-align: right; line-height: 1.35; padding: 0; transition: opacity 0.3s ease; opacity: 0.85; }
         .hero-trial-cta:hover { opacity: 1; }
         .hero-image img { transition: opacity 0.4s ease, transform 0.4s ease; }
         .hero-image img.switching { opacity: 0; transform: scale(0.95); }
@@ -476,6 +480,7 @@
 
             .wave-divider svg { height: 30px; }
             .apple-deco { width: 80px !important; height: 94px !important; }
+            .floating-badge { bottom: 16px; right: 16px; padding: 12px 20px; font-size: 13px; }
             .delivery-bg-text { font-size: clamp(80px, 20vw, 180px); }
             .nav-inner { padding: 12px 16px; }
             .container { padding: 0 16px; }
@@ -1498,6 +1503,10 @@
     });
 </script>
 
+<!-- FLOATING CTA BADGE -->
+<a href="zapytanie.html" class="floating-badge">
+    Bezpłatna wycena →<span>Zaufało nam 2000+ firm</span>
+</a>
 
 </body>
 </html>
