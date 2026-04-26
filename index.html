@@ -361,18 +361,6 @@
             .logo-bar-item img { height: 24px; }
         }
 
-        /* ─── LOADING SCREEN ─── */
-        .loader { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: var(--green-dark); display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 9999; transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1); overflow: hidden; }
-        .loader img.loader-logo { height: 80px; opacity: 0; transform: scale(0.8); animation: loader-pop 0.6s 0.2s cubic-bezier(0.16, 1, 0.3, 1) forwards; position: relative; z-index: 2; }
-        .loader-text { margin-top: 20px; font-family: var(--font); font-weight: 700; font-size: 14px; letter-spacing: 3px; color: var(--lime); opacity: 0; animation: loader-pop 0.5s 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards; text-align: center; line-height: 1.6; text-transform: uppercase; position: relative; z-index: 2; }
-        .loader-fruit { position: absolute; opacity: 0.08; pointer-events: none; z-index: 1; }
-        .loader-fruit img { width: 100%; height: 100%; filter: brightness(0) invert(1); }
-        .loader-fruit:nth-child(1) { top: 50%; left: 5%; width: 440px; transform: translateY(-50%) rotate(-12deg); animation: loader-float 1.6s ease-in-out infinite; }
-        .loader-fruit:nth-child(2) { top: 50%; right: 5%; width: 440px; transform: translateY(-50%) rotate(12deg); animation: loader-float 1.6s 0.5s ease-in-out infinite; }
-        .loader.done { opacity: 0; transform: scale(1.05); pointer-events: none; }
-        @keyframes loader-pop { to { opacity: 1; transform: scale(1); } }
-        @keyframes loader-float { 0%, 100% { transform: translateY(-50%) rotate(var(--r, 0deg)); } 50% { transform: translateY(calc(-50% - 18px)) rotate(var(--r, 0deg)); } }
-
         /* ─── ENHANCED CARD HOVERS ─── */
         .offer-card, .how-card, .benefit-card, .eco-card { transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
         .offer-card:hover { transform: translateY(-8px); box-shadow: 0 20px 50px rgba(27,94,58,0.15); }
@@ -449,9 +437,6 @@
             .deep-offer-content p { font-size: 12px; }
             .trial-br { display: none; }
             /* Loader apples: one top, one bottom */
-            .loader-fruit:nth-child(1) { top: 5%; left: 50%; width: 200px; transform: translateX(-50%) rotate(-12deg); }
-            .loader-fruit:nth-child(2) { top: auto; bottom: 5%; right: 50%; width: 200px; transform: translateX(50%) rotate(12deg); }
-            @keyframes loader-float { 0%, 100% { transform: translateX(-50%) rotate(var(--r, 0deg)); } 50% { transform: translateX(-50%) translateY(-18px) rotate(var(--r, 0deg)); } }
             .how-grid, .offer-grid, .eco-grid, .stats-grid { grid-template-columns: 1fr; }
             /* Carousel navigation arrows */
             .carousel-nav { display: flex; align-items: center; justify-content: center; gap: 16px; margin-top: 16px; }
@@ -576,12 +561,6 @@
 </head>
 <body>
 
-<!-- LOADING SCREEN -->
-<div class="loader" id="loader">
-    <div class="loader-fruit" style="--r:-12deg;"><img src="apple-deco.svg" alt=""></div>
-    <div class="loader-fruit" style="--r:12deg;"><img src="apple-deco.svg" alt=""></div>
-    <img src="fruitttt.svg" alt="DailyFruits" class="loader-logo">
-    <div class="loader-text">Zdrowsze jedzenie,<br>lepsza praca.</div>
 </div>
 
 <!-- NAV -->
@@ -1184,41 +1163,6 @@
         });
     });
 
-    // ─── LOADING SCREEN ───
-    function hideLoader() {
-        const loader = document.getElementById('loader');
-        if (!loader || loader.classList.contains('done')) return;
-        loader.classList.add('done');
-        setTimeout(() => { loader.style.display = 'none'; }, 700);
-    }
-    window.addEventListener('load', () => { setTimeout(hideLoader, 900); });
-    // Fallback: hide loader after 3s even if resources fail to load
-    setTimeout(hideLoader, 3000);
-
-    // ─── PAGE TRANSITION (exit) ───
-    document.querySelectorAll('a[href]').forEach(link => {
-        const href = link.getAttribute('href');
-        if (!href || href.startsWith('#') || href.startsWith('http') || href.startsWith('mailto') || href.startsWith('tel') || link.getAttribute('target') === '_blank') return;
-        link.addEventListener('click', function(e) {
-            e.preventDefault();
-            const loader = document.getElementById('loader');
-            if (loader) {
-                loader.style.display = 'flex';
-                loader.classList.remove('done');
-                loader.style.opacity = '0';
-                loader.style.transform = 'scale(1.05)';
-                requestAnimationFrame(() => {
-                    loader.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
-                    loader.style.opacity = '1';
-                    loader.style.transform = 'scale(1)';
-                });
-                setTimeout(() => { window.location.href = href; }, 450);
-            } else {
-                window.location.href = href;
-            }
-        });
-    });
-
     // ─── CAROUSEL ARROWS (mobile) ───
     function initCarousel(navId, scrollEl, cardSelector) {
         const nav = document.getElementById(navId);
@@ -1264,7 +1208,6 @@
         initCarousel('benefitsNav', document.querySelector('.benefits-grid-six'), '.benefit-card');
         initCarousel('testimonialsNav', document.querySelector('.test-slider'), '.test-card');
     }
-
 
 
     // ─── ENHANCED REVEAL OBSERVER ───

@@ -149,125 +149,12 @@
 
         @media (max-width: 1024px) { .container { padding: 0 36px; } .form-layout { grid-template-columns: 1fr; } .info-card-wrap { position: static; } .footer-grid { grid-template-columns: repeat(2, 1fr); } }
         @media (max-width: 768px) { .form-row { grid-template-columns: 1fr; } .container { padding: 0 20px; } .nav-links { display: none; } .nav-buttons .btn-outline { display: none; } .nav-trust { display: none; } .form-card, .info-card { padding: 28px 20px; } .checkbox-grid { grid-template-columns: 1fr; } .footer-grid { grid-template-columns: 1fr; } .btn { white-space: normal; } .hamburger { display: flex; flex-direction: column; align-items: center; justify-content: center; } .mobile-drawer { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: var(--green-dark); z-index: 200; flex-direction: column; align-items: center; justify-content: center; gap: 0; opacity: 0; transform: translateY(-20px); transition: opacity 0.4s cubic-bezier(0.16,1,0.3,1), transform 0.4s cubic-bezier(0.16,1,0.3,1); pointer-events: none; } .mobile-drawer.open { display: flex; opacity: 1; transform: translateY(0); pointer-events: all; } .mobile-drawer a { font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 22px; color: #fff; padding: 16px 0; text-decoration: none; opacity: 0.8; transition: opacity 0.2s, color 0.2s; } .mobile-drawer a:hover { opacity: 1; color: #FFF200; } .mobile-drawer .mobile-cta { margin-top: 24px; padding: 14px 40px; background: #E43020; color: #fff; border-radius: 100px; font-weight: 900; font-size: 16px; opacity: 1; } .mobile-drawer-close { position: absolute; top: 20px; right: 20px; background: none; border: none; cursor: pointer; padding: 12px; z-index: 210; } .mobile-drawer-close span { display: block; width: 28px; height: 3px; background: #fff; border-radius: 2px; } .mobile-drawer-close span:first-child { transform: rotate(45deg) translate(1px, 1px); } .mobile-drawer-close span:last-child { transform: rotate(-45deg) translate(1px, -1px); } }
-        .loader { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: var(--green-dark); display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 9999; transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1); overflow: hidden; }
-        .loader img.loader-logo { height: 80px; opacity: 0; transform: scale(0.8); animation: loader-pop 0.6s 0.2s cubic-bezier(0.16, 1, 0.3, 1) forwards; position: relative; z-index: 2; }
-        .loader-text { margin-top: 20px; font-family: var(--font); font-weight: 700; font-size: 14px; letter-spacing: 3px; color: var(--lime); opacity: 0; animation: loader-pop 0.5s 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards; text-align: center; line-height: 1.6; text-transform: uppercase; position: relative; z-index: 2; }
-        .loader.done { opacity: 0; transform: scale(1.05); pointer-events: none; }
-        @keyframes loader-pop { to { opacity: 1; transform: scale(1); } }
     </style>
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://dailyfruits.pl/zapytanie">
 </head>
 <body>
-<div class="loader" id="loader">
-    <img src="fruitttt.svg" alt="DailyFruits" class="loader-logo">
-    <div class="loader-text">Zdrowsze jedzenie,<br>lepsza praca.</div>
 </div>
-
-
-<header>
-    <div class="nav-inner">
-        <div class="logo-wrap"><a href="index.html"><img src="fruitttt.svg" alt="DailyFruits" class="logo-img"></a><a href="https://betterworkplace.pl" target="_blank" class="logo-sub">by BetterWorkplace</a></div>
-        <nav><ul class="nav-links">
-            <li><a href="oferta.html">Oferta</a></li>
-            <li><a href="dostawa.html">Dostawa</a></li>
-            <li><a href="o-nas.html">O nas</a></li>
-            <li><a href="blog.html">Blog</a></li>
-        </ul></nav>
-        <div class="nav-buttons">
-            <span class="nav-trust">Zaufało nam ponad<br>2 000 firm w Polsce</span>
-            <a href="zapytanie.html" class="btn btn-nav-cta">Bezpłatna wycena</a>
-            <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
-        </div>
-    </div>
-</header>
-
-<!-- MOBILE DRAWER -->
-<div class="mobile-drawer" id="mobileDrawer">
-    <button class="mobile-drawer-close" id="drawerClose" aria-label="Zamknij menu"><span></span><span></span></button>
-    <a href="oferta.html">Oferta</a>
-    <a href="dostawa.html">Dostawa</a>
-    <a href="o-nas.html">O nas</a>
-    <a href="kanapki-do-biura.html">Kanapki</a>
-    <a href="catering-firmowy.html">Catering</a>
-    <a href="programy-zywieniowe.html">Programy</a>
-    <a href="blog.html">Blog</a>
-    <a href="zapytanie.html" class="mobile-cta">Bezpłatna wycena →</a>
-</div>
-
-<section class="page-hero">
-    <div class="container">
-        <div class="breadcrumb"><a href="index.html">Strona główna</a> → Zapytanie ofertowe</div>
-        <h1>Zacznij od <span class="fun">kuchni</span></h1>
-        <p>Wypełnij formularz, a nasz konsultant skontaktuje się w ciągu 24 godzin z propozycją dopasowaną do Twojego biura.</p>
-        <div style="display:flex;gap:24px;flex-wrap:wrap;margin-top:16px;font-size:13px;font-weight:600;color:var(--green-dark);opacity:0.5;">
-            <span>✓ Bez zobowiązań</span>
-            <span>✓ Wycena w 2h</span>
-            <span>✓ Darmowy dzień próbny</span>
-            <span>✓ Zmień lub anuluj kiedy chcesz</span>
-        </div>
-    </div>
-</section>
-
-<section class="form-section">
-    <div class="container">
-        <div class="form-layout">
-            <div class="form-card reveal">
-                <form id="contactForm">
-                    <div class="form-progress">
-                        <div class="form-progress-bar"><div class="form-progress-fill" id="progressFill"></div></div>
-                        <span class="form-progress-text" id="progressText">0%</span>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group"><label for="firstname"><span class="required-star">*</span> Imię</label><input type="text" id="firstname" name="firstname" required placeholder="np. Jan"></div>
-                        <div class="form-group"><label for="lastname"><span class="required-star">*</span> Nazwisko</label><input type="text" id="lastname" name="lastname" required placeholder="np. Kowalski"></div>
-                    </div>
-                    <div class="form-group"><label for="phone"><span class="required-star">*</span> Numer telefonu</label><input type="tel" id="phone" name="phone" required placeholder="np. 600 XXX XXX"></div>
-                    <div class="form-row">
-                        <div class="form-group"><label for="email"><span class="required-star">*</span> Email służbowy</label><input type="email" id="email" name="email" required placeholder="np. jan.kowalski@nazwafirmy.pl"></div>
-                        <div class="form-group"><label for="nip"><span class="required-star">*</span> NIP</label><input type="text" id="nip" name="nip" required placeholder="PL 757 XXX XX XX" inputmode="numeric"></div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group"><label for="company"><span class="required-star">*</span> Nazwa firmy</label><input type="text" id="company" name="company" required placeholder="np. Polnex"></div>
-                        <div class="form-group"><label for="city"><span class="required-star">*</span> Miejscowość</label><input type="text" id="city" name="city" required placeholder="np. Warszawa"></div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group"><label for="employees"><span class="required-star">*</span> Liczba pracowników</label><input type="text" id="employees" name="employees" required placeholder="Liczba pracowników" inputmode="numeric"></div>
-                        <div class="form-group"><label for="department"><span class="required-star">*</span> Dział</label><input type="text" id="department" name="department" required placeholder="Reprezentowany Dział"></div>
-                    </div>
-                    <div class="form-group"><label for="message">Wiadomość</label><textarea id="message" name="message" placeholder="Dodatkowe informacje o potrzebach Twojego biura..."></textarea></div>
-                    <div class="form-submit">
-                        <button type="submit" class="btn btn-red-solid">Wyślij zapytanie →</button>
-                        <div style="margin-top:14px;display:flex;align-items:center;gap:12px;justify-content:center;">
-                            <div style="display:flex;align-items:center;gap:4px;">
-                                <span style="color:#FFC107;font-size:14px;">★★★★★</span>
-                                <span style="font-size:12px;color:var(--green-dark);opacity:0.5;font-weight:600;">4.9/5</span>
-                            </div>
-                            <span style="font-size:12px;color:var(--green-dark);opacity:0.4;">|</span>
-                            <span style="font-size:12px;color:var(--green-dark);opacity:0.5;font-weight:600;">2000+ firm nam zaufało</span>
-                        </div>
-                    </div>
-                </form>
-                <div class="form-success" id="formSuccess"><div class="success-icon">✓</div><h2>Dziękujemy!</h2><p>Twoje zapytanie zostało wysłane. Skontaktujemy się w ciągu 24 godzin z propozycją dopasowaną do Twojego biura.</p></div>
-            </div>
-
-            <div class="info-card-wrap reveal">
-            <img src="owocz.png" alt="DailyFruits maskotka" class="info-hero-img" loading="lazy">
-            <div class="info-card">
-                <h2>Dlaczego warto?</h2>
-                <p>Nie jesteśmy hurtownią – budujemy kulturę zdrowia w biurze.</p>
-                <div class="info-item"><div class="info-icon">✓</div><div><h3>Pierwsza dostawa gratis</h3><p>Bez zobowiązań – testuj i decyduj</p></div></div>
-                <div class="info-item"><div class="info-icon">⚡</div><div><h3>Start w 3–5 dni</h3><p>Szybko, bezproblemowo, bez formalności</p></div></div>
-                <div class="info-item"><div class="info-icon">↻</div><div><h3>Pełna elastyczność</h3><p>Zmień lub anuluj kiedy chcesz</p></div></div>
-                <div class="info-item"><div class="info-icon">🏆</div><div><h3>Trzeci filar benefitów</h3><p>Obok Multisportu i Medicoveru – wellbeing żywieniowy</p></div></div>
-
-                <div class="audience-hint">
-                    <h3>📋 Dla HR i Office Managerów</h3>
-                    <p>81% pracowników potwierdza poprawę wellbeingu. 70% wyższą satysfakcję z pracy. Owoce w biurze to nie koszt – to inwestycja w retencję i employer branding.</p>
-                </div>
-            </div>
-            </div>
-        </div>
     </div>
 </section>
 
@@ -298,66 +185,9 @@
 </footer>
 
 <script>
-    // ─── LOADING SCREEN ───
-    function hideLoader() {
-        const loader = document.getElementById('loader');
-        if (!loader || loader.classList.contains('done')) return;
-        loader.classList.add('done');
-        setTimeout(() => { loader.style.display = 'none'; }, 700);
-    }
-    window.addEventListener('load', () => { setTimeout(hideLoader, 600); });
-    setTimeout(hideLoader, 2500);
+     });
 
-    // ─── PAGE TRANSITION (exit) ───
-    document.querySelectorAll('a[href]').forEach(link => {
-        const href = link.getAttribute('href');
-        if (!href || href.startsWith('#') || href.startsWith('http') || href.startsWith('mailto') || href.startsWith('tel') || link.getAttribute('target') === '_blank') return;
-        link.addEventListener('click', function(e) {
-            e.preventDefault();
-            const loader = document.getElementById('loader');
-            if (loader) {
-                loader.style.display = 'flex';
-                loader.classList.remove('done');
-                loader.style.opacity = '0';
-                loader.style.transform = 'scale(1.05)';
-                requestAnimationFrame(() => {
-                    loader.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
-                    loader.style.opacity = '1';
-                    loader.style.transform = 'scale(1)';
-                });
-                setTimeout(() => { window.location.href = href; }, 450);
-            } else {
-                window.location.href = href;
-            }
-        });
-    });
-
-    // Scroll shadow
-    const header = document.querySelector('header');
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 20) { header.classList.add('scrolled'); }
-        else { header.classList.remove('scrolled'); }
-    }, { passive: true });
-    // Reveal
-    const obs = new IntersectionObserver(es => { es.forEach(e => { if(e.isIntersecting) { e.target.classList.add('vis'); obs.unobserve(e.target); } }); }, { threshold: 0.12 });
-    document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
-    // Form progress bar
-    const form = document.getElementById('contactForm');
-    const requiredFields = form.querySelectorAll('[required]');
-    const progressFill = document.getElementById('progressFill');
-    const progressText = document.getElementById('progressText');
-    function updateProgress() {
-        let filled = 0;
-        requiredFields.forEach(f => { if (f.value.trim()) filled++; });
-        const pct = Math.round((filled / requiredFields.length) * 100);
-        progressFill.style.width = pct + '%';
-        progressText.textContent = pct + '%';
-        if (pct === 100) { progressFill.style.background = '#8DC63F'; progressText.style.color = '#8DC63F'; }
-        else { progressFill.style.background = ''; progressText.style.color = ''; }
-    }
-    requiredFields.forEach(f => { f.addEventListener('input', updateProgress); f.addEventListener('change', updateProgress); });
-    // Form submit
-    form.addEventListener('submit', e => { e.preventDefault(); form.style.display = 'none'; document.getElementById('formSuccess').classList.add('show'); });
+    
     // ─── HAMBURGER MENU ───
     const hamburger = document.getElementById('hamburger');
     const mobileDrawer = document.getElementById('mobileDrawer');
