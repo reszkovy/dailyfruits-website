@@ -73,7 +73,7 @@
 
         .city-hero { padding: 140px 0 80px; background: var(--lime-bg); position: relative; overflow: hidden; }
         .city-hero-inner { display: grid; grid-template-columns: 1fr; gap: 48px; align-items: center; position: relative; z-index: 2; }
-        .delivery-van { position: absolute; right: -5%; bottom: 10%; width: 55%; max-width: 750px; z-index: 1; transform: translateX(45%); will-change: transform, opacity; opacity: 0; }
+        .delivery-van { position: absolute; right: -5%; bottom: 10%; width: 55%; max-width: 750px; z-index: 1; transform: translateX(80%); will-change: transform, opacity; opacity: 0; }
         .delivery-van img { width: 100%; height: auto; }
         .city-hero .city-hero-text { max-width: 55%; }
         .city-hero-text h1 { margin-bottom: 20px; }
@@ -594,8 +594,8 @@ if (van) {
     // progress 0 → 1 as hero scrolls through viewport
     const raw = 1 - (rect.bottom / (viewH + heroH));
     const p = Math.max(0, Math.min(1, raw));
-    // translateX: 45% → -8% (drives past center toward buttons)
-    const tx = 45 - (p * 53);
+    // translateX: 80% → -10% (starts further right, bigger travel range)
+    const tx = 80 - (p * 90);
     van.style.transform = 'translateX(' + tx + '%)';
     van.style.opacity = Math.min(1, p * 2.5);
   }
