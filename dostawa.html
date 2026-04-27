@@ -73,8 +73,7 @@
 
         .city-hero { padding: 140px 0 80px; background: var(--lime-bg); position: relative; overflow: hidden; }
         .city-hero-inner { display: grid; grid-template-columns: 1fr; gap: 48px; align-items: center; position: relative; z-index: 2; }
-        .delivery-van { position: absolute; right: -5%; bottom: 10%; width: 55%; max-width: 750px; z-index: 1; transform: translateX(60%); opacity: 0; transition: transform 1s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.6s ease; }
-        .delivery-van.visible { transform: translateX(0); opacity: 1; }
+        .delivery-van { position: absolute; right: -5%; bottom: 10%; width: 55%; max-width: 750px; z-index: 1; transform: translateX(45%); will-change: transform, opacity; opacity: 0; }
         .delivery-van img { width: 100%; height: auto; }
         .city-hero .city-hero-text { max-width: 55%; }
         .city-hero-text h1 { margin-bottom: 20px; }
@@ -584,15 +583,24 @@ const obs = new IntersectionObserver((entries) => { entries.forEach(e => { if (e
 document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 // Fallback reveal timer
 setTimeout(() => { document.querySelectorAll('.reveal').forEach(el => el.classList.add('vis')); }, 2000);
-// Delivery van drive-in on scroll
+// Delivery van parallax — slides left as user scrolls
 const van = document.querySelector('.delivery-van');
 if (van) {
-  const vanObs = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if (e.isIntersecting) { van.classList.add('visible'); vanObs.unobserve(van); } });
-  }, { threshold: 0.1 });
-  vanObs.observe(van);
-  // Fallback
-  setTimeout(() => { van.classList.add('visible'); }, 2500);
+  const hero = document.querySelector('.city-hero');
+  function updateVan() {
+    const rect = hero.getBoundingClientRect();
+    const heroH = hero.offsetHeight;
+    const viewH = window.innerHeight;
+    // progress 0 → 1 as hero scrolls through viewport
+    const raw = 1 - (rect.bottom / (viewH + heroH));
+    const p = Math.max(0, Math.min(1, raw));
+    // translateX: 45% → -8% (drives past center toward buttons)
+    const tx = 45 - (p * 53);
+    van.style.transform = 'translateX(' + tx + '%)';
+    van.style.opacity = Math.min(1, p * 2.5);
+  }
+  window.addEventListener('scroll', updateVan, { passive: true });
+  updateVan();
 }
 </script>
 
