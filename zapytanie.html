@@ -218,6 +218,50 @@
 <section class="form-section">
     <div class="container">
         <div class="form-layout">
+            <div class="form-card reveal">
+                <form id="contactForm">
+                    <div class="form-group"><label for="fullname">Imię i nazwisko</label><input type="text" id="fullname" name="fullname" required placeholder="Jan Kowalski"></div>
+                    <div class="form-group"><label for="email">Email</label><input type="email" id="email" name="email" required placeholder="jan.kowalski@firma.pl"></div>
+                    <div class="form-group"><label for="phone">Telefon</label><input type="tel" id="phone" name="phone" required placeholder="+48 123 456 789"></div>
+                    <div class="form-group"><label for="company">Nazwa firmy</label><input type="text" id="company" name="company" required placeholder="ABC sp. z o.o."></div>
+                    <div class="form-group"><label for="role">Twoja rola</label><select id="role" name="role"><option value="">Wybierz</option><option>Office Manager</option><option>HR Manager / HR Director</option><option>Facility Manager</option><option>CEO / Zarząd</option><option>Inna</option></select></div>
+                    <div class="form-group"><label for="employees">Liczba pracowników</label><select id="employees" name="employees" required><option value="">Wybierz</option><option value="1-20">1–20</option><option value="21-50">21–50</option><option value="51-100">51–100</option><option value="101-250">101–250</option><option value="251-500">251–500</option><option value="500+">500+</option></select></div>
+                    <div class="form-group"><label for="city">Miasto</label><select id="city" name="city" required><option value="">Wybierz miasto</option><option>Warszawa</option><option>Kraków</option><option>Wrocław</option><option>Poznań</option><option>Katowice</option><option>Łódź</option><option>Gdańsk</option><option>Szczecin</option><option>Lublin</option><option>Rzeszów</option><option>Gdynia</option><option>Bydgoszcz</option><option>Gliwice</option></select></div>
+                    <div style="margin-bottom:22px">
+                        <span class="checkbox-label">Interesujące produkty</span>
+                        <div class="checkbox-grid">
+                            <label class="checkbox-item"><input type="checkbox" name="products" value="owoce"> 🍎 Owoce do biura</label>
+                            <label class="checkbox-item"><input type="checkbox" name="products" value="warzywa"> 🥕 Warzywa do biura</label>
+                            <label class="checkbox-item"><input type="checkbox" name="products" value="kanapki"> 🥪 Kanapki i lunche</label>
+                            <label class="checkbox-item"><input type="checkbox" name="products" value="sniadania"> 🥣 Produkty śniadaniowe</label>
+                            <label class="checkbox-item"><input type="checkbox" name="products" value="bakalie"> 🥜 Bakalie i suszone</label>
+                            <label class="checkbox-item"><input type="checkbox" name="products" value="soki"> 🧃 Świeże soki</label>
+                            <label class="checkbox-item"><input type="checkbox" name="products" value="kawa"> ☕ Kawa do firmy</label>
+                            <label class="checkbox-item"><input type="checkbox" name="products" value="paczki"> 🎁 Paczki i eventy</label>
+                        </div>
+                    </div>
+                    <div class="form-group"><label for="message">Dodatkowe informacje</label><textarea id="message" name="message" placeholder="Opowiedz nam o potrzebach Twojego biura..."></textarea></div>
+                    <div class="form-submit"><button type="submit" class="btn btn-red-solid">Wyślij zapytanie →</button></div>
+                </form>
+                <div class="form-success" id="formSuccess"><div class="success-icon">✓</div><h2>Dziękujemy!</h2><p>Twoje zapytanie zostało wysłane. Skontaktujemy się w ciągu 24 godzin z propozycją dopasowaną do Twojego biura.</p></div>
+            </div>
+
+            <div class="info-card reveal">
+                <h2>Dlaczego warto?</h2>
+                <p>Nie jesteśmy hurtownią – budujemy kulturę zdrowia w biurze.</p>
+                <div class="info-item"><div class="info-icon">✓</div><div><h3>Pierwsza dostawa gratis</h3><p>Bez zobowiązań – testuj i decyduj</p></div></div>
+                <div class="info-item"><div class="info-icon">⚡</div><div><h3>Start w 3–5 dni</h3><p>Szybko, bezproblemowo, bez formalności</p></div></div>
+                <div class="info-item"><div class="info-icon">↻</div><div><h3>Pełna elastyczność</h3><p>Zmień lub anuluj kiedy chcesz</p></div></div>
+                <div class="info-item"><div class="info-icon">🏆</div><div><h3>Trzeci filar benefitów</h3><p>Obok Multisportu i Medicoveru – wellbeing żywieniowy</p></div></div>
+
+                <div class="audience-hint">
+                    <h3>📋 Dla HR i Office Managerów</h3>
+                    <p>81% pracowników potwierdza poprawę wellbeingu. 70% wyższą satysfakcję z pracy. Owoce w biurze to nie koszt – to inwestycja w retencję i employer branding.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
 <!-- WAVE: form → footer -->
 <div style="width:100%;overflow:hidden;line-height:0;background:var(--cream);">
@@ -252,6 +296,9 @@
             if (entry.isIntersecting) { el.classList.add('vis'); obs.unobserve(el); }
         }, { threshold: 0.15 }).observe(el);
     });
+
+    // ─── FORM SUBMIT ───
+    document.getElementById('contactForm').addEventListener('submit', e => { e.preventDefault(); document.getElementById('contactForm').style.display = 'none'; document.getElementById('formSuccess').classList.add('show'); });
 
     // ─── HAMBURGER MENU ───
     const hamburger = document.getElementById('hamburger');
