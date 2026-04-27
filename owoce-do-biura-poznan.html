@@ -66,7 +66,6 @@
         .btn-nav-cta { background: var(--lime); color: var(--green-dark); font-weight: 800; border-radius: 60px; border: none; padding: 10px 24px; font-size: 14px; transition: transform 0.3s, box-shadow 0.3s, background 0.3s; }
         .btn-nav-cta:hover { transform: translateY(-2px); box-shadow: 0 4px 16px rgba(141,198,63,0.4); background: #7db835; }
         .hamburger { display: none; background: none; border: none; cursor: pointer; padding: 8px; z-index: 201; }
-
         .hamburger span { display: block; width: 24px; height: 2px; background: #fff; border-radius: 2px; transition: all 0.3s; }
         .hamburger span + span { margin-top: 6px; }
         .mobile-drawer { display: none; }
@@ -90,11 +89,33 @@
         .offer-mini-card h3 { font-size: 15px; margin-bottom: 4px; }
         .offer-mini-card p { font-size: 13px; margin: 0; }
 
-        .city-how { padding: 80px 0; background: var(--cream); }
+        .city-local { padding: 80px 0; background: var(--cream); }
+        .city-local-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
+        .city-local-text h2 { margin-bottom: 20px; }
+        .city-local-text p { margin-bottom: 16px; }
+        .district-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; }
+        .district-tag { background: var(--white); padding: 8px 16px; border-radius: var(--radius-pill); font-size: 13px; font-weight: 600; color: var(--green-dark); }
+        .city-local-benefits { background: var(--white); padding: 36px; border-radius: var(--radius); }
+        .city-local-benefits h3 { margin-bottom: 12px; font-size: 20px; }
+        .city-local-benefits p { font-size: 15px; }
+
+        .city-how { padding: 80px 0; background: var(--white); }
         .how-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; text-align: center; }
         .how-step-num { font-family: var(--font-fun); font-size: 48px; color: var(--green-dark); margin-bottom: 8px; }
         .how-step h3 { margin-bottom: 6px; }
         .how-step p { font-size: 14px; }
+
+        .city-faq { padding: 80px 0; background: var(--cream); }
+        .city-faq .section-top { text-align: center; margin-bottom: 48px; }
+        .faq-list { max-width: 760px; margin: 0 auto; }
+        .faq-item { background: var(--white); margin-bottom: 12px; border-radius: var(--radius); overflow: hidden; }
+        .faq-header { display: flex; justify-content: space-between; align-items: center; padding: 20px 28px; cursor: pointer; gap: 16px; }
+        .faq-header h3 { font-size: 16px; margin: 0; }
+        .faq-icon { font-size: 24px; color: var(--lime); font-weight: 700; transition: transform 0.3s; flex-shrink: 0; }
+        .faq-item.open .faq-icon { transform: rotate(45deg); }
+        .faq-body { max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.3s ease; padding: 0 28px; }
+        .faq-item.open .faq-body { max-height: 300px; padding: 0 28px 20px; }
+        .faq-body p { font-size: 15px; }
 
         .city-cta { padding: 80px 0; background: var(--green-dark); text-align: center; color: #fff; }
         .city-cta h2 { color: #fff; margin-bottom: 12px; }
@@ -118,6 +139,7 @@
             .container { padding: 0 36px; }
             .nav-inner { padding: 14px 36px; }
             .city-hero-inner { grid-template-columns: 1fr; }
+            .city-local-inner { grid-template-columns: 1fr; }
             .offer-mini-grid { grid-template-columns: repeat(2, 1fr); }
             .footer-grid { grid-template-columns: repeat(2, 1fr); gap: 36px; }
         }
@@ -141,22 +163,16 @@
             .city-cta-btns { flex-direction: column; align-items: center; }
             .footer-grid { grid-template-columns: 1fr; gap: 28px; }
         }
-    
         @media (max-width: 480px) {
-            /* Nav extra-small */
             .logo-img { height: 40px; }
             .btn-nav-cta { padding: 7px 14px; font-size: 12px; }
             .nav-inner { gap: 8px; }
-            /* Hero stats: prevent overflow */
             .hero-stats { flex-wrap: wrap; gap: 16px 24px; }
             .hero-stat { min-width: auto; }
-            /* Hero buttons: full-width stack */
             .hero-buttons { flex-direction: column; }
             .hero-buttons .btn { width: 100%; text-align: center; justify-content: center; }
-            /* Footer: tighter padding */
             footer .container { padding: 0 16px; }
         }
-
     </style>
     <script type="application/ld+json">
     {
@@ -183,16 +199,23 @@
         }
     }
     </script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    {"@type": "ListItem", "position": 1, "name": "Strona główna", "item": "https://dailyfruits.pl/"},
-    {"@type": "ListItem", "position": 2, "name": "Owoce do biura Poznań", "item": "https://dailyfruits.pl/owoce-do-biura-poznan"}
-  ]
-}
-</script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "Strona główna", "item": "https://dailyfruits.pl/"},
+            {"@type": "ListItem", "position": 2, "name": "Owoce do biura Poznań", "item": "https://dailyfruits.pl/owoce-do-biura-poznan"}
+        ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [{"@type":"Question","name":"Czy DailyFruits dostarcza owoce do biur w całym Poznaniu?","acceptedAnswer":{"@type":"Answer","text":"Tak — obsługujemy cały Poznań i okolice, w tym Stare Miasto, Jeżyce, Grunwald, Piątkowo, Rataje i Nowe Miasto."}},{"@type":"Question","name":"Ile kosztuje dostawa owoców do biura w Poznaniu?","acceptedAnswer":{"@type":"Answer","text":"Dostawa jest wliczona w cenę abonamentu. Bezpłatną wycenę dopasowaną do wielkości zespołu otrzymasz w ciągu 2h."}},{"@type":"Question","name":"Do jakich biurowców dostarczacie w Poznaniu?","acceptedAnswer":{"@type":"Answer","text":"Dostarczamy do wszystkich głównych kompleksów — Business Garden, Nowy Rynek, Bałtyk, Pixel i wielu innych."}},{"@type":"Question","name":"Jak szybko mogę otrzymać pierwszą dostawę w Poznaniu?","acceptedAnswer":{"@type":"Answer","text":"Pierwsza dostawa jest możliwa w ciągu 24-48h od złożenia zamówienia."}},{"@type":"Question","name":"Czy oferujecie catering owocowy na eventy w Poznaniu?","acceptedAnswer":{"@type":"Answer","text":"Tak — realizujemy jednorazowe zamówienia na spotkania firmowe, konferencje i imprezy w całym Poznaniu."}}]
+    }
+    </script>
 </head>
 <body>
 
@@ -230,13 +253,13 @@
         <div class="city-hero-inner">
             <div class="city-hero-text reveal">
                 <h1><span class="fun">Owoce</span> i zdrowe przekąski do biura w Poznaniu</h1>
-                <p>Poznań rośnie w siłę — biurowce przy Starym Browarze, na Wildzie i Jeżycach zamawiają u nas regularnie. Dostarczamy od poniedziałku do piątku, zawsze na rano, zanim zespół dotrze do kuchni.</p>
+                <p>Poznań to miasto z silną tradycją biznesową i rosnącym sektorem IT. Dostarczamy owoce i przekąski do biurowców w centrum, na Grunwaldzie i w strefie biznesowej Piątkowo.</p>
                 <div class="city-hero-buttons">
                     <a href="zapytanie.html" class="btn btn-green">Zapytaj o ofertę →</a>
                     <a href="oferta.html" class="btn btn-outline">Zobacz pełną ofertę</a>
                 </div>
                 <div class="city-hero-stat">
-                    <span class="city-stat-num">180+</span>
+                    <span class="city-stat-num">200+</span>
                     <span class="city-stat-label">firm w Poznaniu</span>
                 </div>
             </div>
@@ -247,49 +270,36 @@
 <section class="city-offer">
     <div class="container">
         <div class="section-top reveal">
-            <h2>Co dostarczamy w <span class="fun">Poznaniu</span>?</h2>
+            <h2>Co dostarczamy do <span class="fun">Poznaniu</span>?</h2>
             <p>Jeden partner, jedna faktura — pełna oferta food delivery do biura.</p>
         </div>
         <div class="offer-mini-grid">
-            <div class="offer-mini-card reveal">
-                <div class="offer-mini-icon">🍎</div>
-                <h3>Owoce świeże</h3>
-                <p>Selekcjonowane, dojrzałe owoce prosto do biurowej kuchni</p>
+            <div class="offer-mini-card reveal"><div class="offer-mini-icon">🍎</div><h3>Owoce świeże</h3><p>Selekcjonowane, dojrzałe owoce prosto do biurowej kuchni</p></div>
+            <div class="offer-mini-card reveal"><div class="offer-mini-icon">🥪</div><h3>Kanapki i lunche</h3><p>Świeże kanapki i zestawy lunchowe na każdy dzień roboczy</p></div>
+            <div class="offer-mini-card reveal"><div class="offer-mini-icon">🥤</div><h3>Soki i smoothie</h3><p>Wyciskane na zimno soki i smoothie prosto z owoców</p></div>
+            <div class="offer-mini-card reveal"><div class="offer-mini-icon">☕</div><h3>Kawa do firmy</h3><p>Specialty coffee w ziarnach i kapsułkach od polskich palarni</p></div>
+            <div class="offer-mini-card reveal"><div class="offer-mini-icon">🥜</div><h3>Bakalie i snacki</h3><p>Orzechy, suszone owoce i zdrowe przekąski na biurko</p></div>
+            <div class="offer-mini-card reveal"><div class="offer-mini-icon">🥐</div><h3>Zestawy śniadaniowe</h3><p>Croissanty, granola, jogurty — śniadanie czeka w kuchni</p></div>
+            <div class="offer-mini-card reveal"><div class="offer-mini-icon">🎉</div><h3>Eventy i meetingi</h3><p>Catering owocowy i zdrowy na firmowe spotkania</p></div>
+            <div class="offer-mini-card reveal"><div class="offer-mini-icon">🎁</div><h3>Paczki prezentowe</h3><p>Zdrowe welcome packi i gift boxy dla pracowników</p></div>
+        </div>
+    </div>
+</section>
+
+<section class="city-local">
+    <div class="container">
+        <div class="city-local-inner">
+            <div class="city-local-text reveal">
+                <h2>Dostawy do <span class="fun">Poznaniu</span> — lokalnie i na czas</h2>
+                <p>Poznański rynek biurowy to ponad 620 tys. m² nowoczesnej powierzchni. DailyFruits dostarcza do kluczowych lokalizacji — od Nowego Rynku po Business Garden Poznań. Wielkopolska jakość i świeżość owoców to nasz priorytet.</p>
+                <h3>Obsługiwane dzielnice i obszary:</h3>
+                <div class="district-tags">
+                    <span class="district-tag">Stare Miasto</span><span class="district-tag">Jeżyce</span><span class="district-tag">Grunwald</span><span class="district-tag">Nowe Miasto</span><span class="district-tag">Wilda</span><span class="district-tag">Rataje</span><span class="district-tag">Piątkowo</span><span class="district-tag">Winogrady</span>
+                </div>
             </div>
-            <div class="offer-mini-card reveal">
-                <div class="offer-mini-icon">🥪</div>
-                <h3>Kanapki i lunche</h3>
-                <p>Świeże kanapki i zestawy lunchowe na każdy dzień roboczy</p>
-            </div>
-            <div class="offer-mini-card reveal">
-                <div class="offer-mini-icon">🥤</div>
-                <h3>Soki i smoothie</h3>
-                <p>Wyciskane na zimno soki i smoothie prosto z owoców</p>
-            </div>
-            <div class="offer-mini-card reveal">
-                <div class="offer-mini-icon">☕</div>
-                <h3>Kawa do firmy</h3>
-                <p>Specialty coffee w ziarnach i kapsułkach od polskich palarni</p>
-            </div>
-            <div class="offer-mini-card reveal">
-                <div class="offer-mini-icon">🥜</div>
-                <h3>Bakalie i snacki</h3>
-                <p>Orzechy, suszone owoce i zdrowe przekąski na biurko</p>
-            </div>
-            <div class="offer-mini-card reveal">
-                <div class="offer-mini-icon">🥐</div>
-                <h3>Zestawy śniadaniowe</h3>
-                <p>Croissanty, granola, jogurty — śniadanie czeka w kuchni</p>
-            </div>
-            <div class="offer-mini-card reveal">
-                <div class="offer-mini-icon">🎉</div>
-                <h3>Eventy i meetingi</h3>
-                <p>Catering owocowy i zdrowy na firmowe spotkania</p>
-            </div>
-            <div class="offer-mini-card reveal">
-                <div class="offer-mini-icon">🎁</div>
-                <h3>Paczki prezentowe</h3>
-                <p>Zdrowe welcome packi i gift boxy dla pracowników</p>
+            <div class="city-local-benefits reveal">
+                <h3>Dlaczego Poznań?</h3>
+                <p>W Poznaniu współpracujemy z wielkopolskimi sadownikami, co gwarantuje najkrótszy czas od zbioru do biura. Dostawy realizujemy codziennie, a nasi kurierzy znają układ miasta jak własną kieszeń.</p>
             </div>
         </div>
     </div>
@@ -301,20 +311,39 @@
             <h2>Jak zacząć w <span class="fun">Poznaniu</span>?</h2>
         </div>
         <div class="how-steps">
-            <div class="how-step reveal">
-                <div class="how-step-num">1</div>
-                <h3>Wyślij zapytanie</h3>
-                <p>Powiedz nam ile macie osób i czego szukacie — odpowiemy w ciągu 2h.</p>
+            <div class="how-step reveal"><div class="how-step-num">1</div><h3>Wyślij zapytanie</h3><p>Powiedz nam ile macie osób i czego szukacie — odpowiemy w ciągu 2h.</p></div>
+            <div class="how-step reveal"><div class="how-step-num">2</div><h3>Dostosujemy ofertę</h3><p>Dopasujemy produkty, częstotliwość i budżet do Waszych potrzeb.</p></div>
+            <div class="how-step reveal"><div class="how-step-num">3</div><h3>Dostarczamy</h3><p>Owoce i przekąski czekają w kuchni zanim zespół dotrze do biura.</p></div>
+        </div>
+    </div>
+</section>
+
+<section class="city-faq">
+    <div class="container">
+        <div class="section-top reveal">
+            <h2>Najczęstsze pytania</h2>
+            <p>Odpowiedzi na pytania o dostawy owoców do biur w Poznaniu.</p>
+        </div>
+        <div class="faq-list">
+            <div class="faq-item reveal">
+                <div class="faq-header"><h3>Czy DailyFruits dostarcza owoce do biur w całym Poznaniu?</h3><span class="faq-icon">+</span></div>
+                <div class="faq-body"><p>Tak — obsługujemy cały Poznań i okolice, w tym Stare Miasto, Jeżyce, Grunwald, Piątkowo, Rataje i Nowe Miasto.</p></div>
             </div>
-            <div class="how-step reveal">
-                <div class="how-step-num">2</div>
-                <h3>Dostosujemy ofertę</h3>
-                <p>Dopasujemy produkty, częstotliwość i budżet do Waszych potrzeb.</p>
+            <div class="faq-item reveal">
+                <div class="faq-header"><h3>Ile kosztuje dostawa owoców do biura w Poznaniu?</h3><span class="faq-icon">+</span></div>
+                <div class="faq-body"><p>Dostawa jest wliczona w cenę abonamentu. Bezpłatną wycenę dopasowaną do wielkości zespołu otrzymasz w ciągu 2h.</p></div>
             </div>
-            <div class="how-step reveal">
-                <div class="how-step-num">3</div>
-                <h3>Dostarczamy</h3>
-                <p>Owoce i przekąski czekają w kuchni zanim zespół dotrze do biura.</p>
+            <div class="faq-item reveal">
+                <div class="faq-header"><h3>Do jakich biurowców dostarczacie w Poznaniu?</h3><span class="faq-icon">+</span></div>
+                <div class="faq-body"><p>Dostarczamy do wszystkich głównych kompleksów — Business Garden, Nowy Rynek, Bałtyk, Pixel i wielu innych.</p></div>
+            </div>
+            <div class="faq-item reveal">
+                <div class="faq-header"><h3>Jak szybko mogę otrzymać pierwszą dostawę w Poznaniu?</h3><span class="faq-icon">+</span></div>
+                <div class="faq-body"><p>Pierwsza dostawa jest możliwa w ciągu 24-48h od złożenia zamówienia.</p></div>
+            </div>
+            <div class="faq-item reveal">
+                <div class="faq-header"><h3>Czy oferujecie catering owocowy na eventy w Poznaniu?</h3><span class="faq-icon">+</span></div>
+                <div class="faq-body"><p>Tak — realizujemy jednorazowe zamówienia na spotkania firmowe, konferencje i imprezy w całym Poznaniu.</p></div>
             </div>
         </div>
     </div>
@@ -346,16 +375,14 @@
             <div class="footer-col"><h4>Kontakt</h4><ul><li><a href="mailto:kontakt@dailyfruits.pl">kontakt@dailyfruits.pl</a></li><li><p>tel: <a href="tel:+48228680499">22 868 04 99</a></p></li></ul><h4 style="margin-top:20px;">Dane firmy</h4><ul><li><p>Betterworkplace Sp. z o.o.</p></li><li><p>ul. Modułowa 3, 05-090 Raszyn</p></li><li><p>NIP: 6793077034</p></li><li><p>REGON: 122432943</p></li></ul></div>
         </div>
         <div class="footer-bottom">
-            <p style="margin-bottom:8px;">Dostawy: Warszawa, Kraków, Wrocław, Poznań, Katowice, Łódź, Gdańsk, Szczecin, Lublin i 4 dodatkowe miasta</p>
+            <p style="margin-bottom:8px;">Dostawy: Warszawa, Kraków, Wrocław, Poznań, Katowice, Łódź, Gdańsk, Szczecin, Lublin, Bydgoszcz, Białystok, Rzeszów, Kielce</p>
             <p>&copy; 2026 DailyFruits by BetterWorkplace Sp. z o.o. Wszystkie prawa zastrzeżone.</p>
         </div>
     </div>
 </footer>
 
 <script>
-// Header scroll
 window.addEventListener('scroll', () => { document.querySelector('header').classList.toggle('scrolled', window.scrollY > 20); });
-// Hamburger
 const hamburger = document.getElementById('hamburger');
 const drawer = document.getElementById('mobileDrawer');
 const drawerClose = document.getElementById('drawerClose');
@@ -364,9 +391,12 @@ if (hamburger && drawer) {
     drawerClose?.addEventListener('click', () => { drawer.classList.remove('open'); hamburger.classList.remove('open'); });
     drawer.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { drawer.classList.remove('open'); hamburger.classList.remove('open'); }));
 }
-// Reveal
+document.querySelectorAll('.faq-header').forEach(header => {
+    header.addEventListener('click', () => { header.closest('.faq-item').classList.toggle('open'); });
+});
 const obs = new IntersectionObserver((entries) => { entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('vis'); obs.unobserve(e.target); } }); }, { threshold: 0.15 });
 document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+setTimeout(() => { document.querySelectorAll('.reveal').forEach(el => el.classList.add('vis')); }, 2000);
 </script>
 
 </body>
