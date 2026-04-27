@@ -50,7 +50,7 @@
         .btn-outline:hover { background: var(--red); color: #fff; }
         .btn-arrow::after { content: ' →'; }
 
-        header { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: #1B5E3A; border-bottom: none; overflow: visible; transition: box-shadow 0.3s ease; }
+        header { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: #1B5E3A; border-bottom: none; overflow-x: hidden; overflow-y: visible; transition: box-shadow 0.3s ease; }
         header.scrolled { box-shadow: 0 8px 30px rgba(27,94,58,0.25); }
         header::after { content: ''; position: absolute; bottom: -59px; left: 0; right: 0; height: 60px; background: url("data:image/svg+xml,%3Csvg viewBox='0 0 1440 60' preserveAspectRatio='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0H1440V12C1440 12 1380 48 1200 38C1020 28 900 55 720 42C540 29 360 52 180 40C90 34 0 50 0 50V0Z' fill='%231B5E3A'/%3E%3C/svg%3E") no-repeat bottom / 100% 100%; pointer-events: none; z-index: 100; transition: filter 0.3s ease; }
         header.scrolled::after { filter: drop-shadow(0 6px 12px rgba(27,94,58,0.15)); }
