@@ -92,10 +92,11 @@
         .cat-tab:hover { background: rgba(141,198,63,0.2); transform: translateY(-2px) scale(1.04); box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
         .cat-tab:hover img { transform: scale(1.2) rotate(-8deg); }
         .cat-tab:active { transform: translateY(0) scale(0.97); }
-        .cat-tab.active { background: var(--yellow); color: var(--green-dark); border-color: var(--yellow); transform: translateY(-1px); box-shadow: 0 3px 10px rgba(255,242,0,0.35); }
+        .cat-tab.active { background: var(--green-dark); border-color: var(--green-dark); color: #fff; transform: translateY(-1px); box-shadow: 0 3px 10px rgba(27,94,58,0.25); }
+        .cat-tab.active img { filter: brightness(0) invert(1); }
         .cat-tab img { height: 18px; width: auto; transition: transform 0.35s cubic-bezier(0.16,1,0.3,1); }
         .cat-count { font-size: 11px; background: rgba(27,94,58,0.08); padding: 2px 7px; border-radius: 10px; font-weight: 600; }
-        .cat-tab.active .cat-count { background: rgba(27,94,58,0.15); color: var(--green-dark); }
+        .cat-tab.active .cat-count { background: rgba(255,255,255,0.2); color: #fff; }
 
         /* ─── PRODUCT BROWSER ─── */
         .cat-panel { display: none; animation: fadeSlide 0.35s ease; }
@@ -256,7 +257,7 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
     <div class="cat-tabs" role="tablist" aria-label="Kategorie produktów">
         <button class="cat-tab active" role="tab" aria-selected="true" data-cat="owoce"><img src="icon-owoce.svg" alt="" style="height:18px"> Owoce <span class="cat-count">6</span></button>
         <button class="cat-tab" role="tab" aria-selected="false" data-cat="kanapki"><img src="icon-kanapki.svg" alt="" style="height:14px"> Kanapki <span class="cat-count">4</span></button>
-        <button class="cat-tab" role="tab" aria-selected="false" data-cat="sniadania"><img src="icon-sniadania.svg" alt="" style="height:18px"> Śniadania <span class="cat-count">3</span></button>
+        <button class="cat-tab" role="tab" aria-selected="false" data-cat="sniadania"><img src="icon-sniadania.svg" alt="" style="height:18px"> Sniadania <span class="cat-count">3</span></button>
         <button class="cat-tab" role="tab" aria-selected="false" data-cat="soki"><img src="icon-soki.svg" alt="" style="height:20px"> Soki <span class="cat-count">3</span></button>
         <button class="cat-tab" role="tab" aria-selected="false" data-cat="bakalie"><img src="icon-bakalie.svg" alt="" style="height:18px"> Bakalie <span class="cat-count">3</span></button>
         <button class="cat-tab" role="tab" aria-selected="false" data-cat="lody"><img src="icon-lody.svg" alt="" style="height:20px"> Lody <span class="cat-count">2</span></button>
