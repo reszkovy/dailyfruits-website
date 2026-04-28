@@ -122,16 +122,16 @@
         .carousel-counter { display: none; }
 
         /* ─── HERO WRAPPER ─── */
-        .hero-wrapper { display: block; }
+        .hero-wrapper { display: block; position: relative; z-index: 3; }
 
         /* ─── HERO ─── */
-        .hero { padding: 10px 0 140px; background: var(--lime-bg); position: relative; overflow: hidden; }
+        .hero { padding: 10px 0 140px; background: var(--lime-bg); position: relative; overflow: clip; overflow-y: visible; }
         .hero-inner { display: grid; grid-template-columns: 1fr 1.2fr; gap: 24px; align-items: center; }
         .hero-text { position: relative; z-index: 2; will-change: transform, opacity; }
         .hero h1 { margin: 10px 0 12px; }
         .hero p { font-size: 18px; max-width: 480px; margin-bottom: 20px; line-height: 1.45; }
         .hero-buttons { display: flex; gap: 14px; align-items: center; }
-        .hero-image { position: relative; z-index: 2; display: flex; align-items: center; justify-content: center; will-change: transform; }
+        .hero-image { position: relative; z-index: 2; display: flex; align-items: center; justify-content: center; will-change: transform; margin-bottom: -80px; }
         .hero-image img { width: 195%; max-width: none; max-height: 62vh; object-fit: contain; border-radius: 0; box-shadow: none; background: transparent; margin-left: -5%; }
         .hero-sticker { position: absolute; bottom: -16px; right: 24px; z-index: 3; }
 
@@ -446,7 +446,7 @@
             .hero-text { order: 3; position: relative; z-index: 2; }
             .hero-inner .hero-tabs-bar { order: 1; margin-top: 0; background: transparent; overflow: visible; }
             .hero-inner .hero-tabs-inner { padding: 8px 4px; }
-            .hero-image { order: 2; max-width: 100%; margin: 0 auto; }
+            .hero-image { order: 2; max-width: 100%; margin: 0 auto; margin-bottom: 0; }
             .hero-image img { width: 100%; max-width: 420px; margin: 0 auto; }
             .hero-buttons { display: flex; flex-direction: column; align-items: stretch; gap: 12px; padding-bottom: 10px; }
             .hero-buttons .btn { text-align: center; justify-content: center; width: 100%; }
