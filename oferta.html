@@ -20,7 +20,9 @@
     <link rel="icon" type="image/png" href="favicon_.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700;900&display=swap">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700;900&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700;900&display=swap" rel="stylesheet"></noscript>
     <link rel="stylesheet" href="shared.css">
 <style>
         @font-face { font-family: 'Achiko'; src: url('Achiko.woff2') format('woff2'), url('Achiko.ttf') format('truetype'); font-weight: 400; font-style: normal; font-display: swap; }
@@ -172,8 +174,8 @@
         .trust-logos img { height: 28px; filter: brightness(0) invert(1); }
         @media (max-width: 768px) { .trust-stats { grid-template-columns: repeat(2, 1fr); gap: 20px; } }
 
-        .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.5s, transform 0.5s; }
-        .reveal.vis { opacity: 1; transform: translateY(0); }
+        .reveal { opacity: 0; transition: opacity 0.5s; will-change: opacity; }
+        .reveal.vis { opacity: 1; }
 
         @media (max-width: 1280px) { .products-grid { grid-template-columns: repeat(4, 1fr); } }
         @media (max-width: 1024px) { .container { padding: 0 36px; } .products-grid { grid-template-columns: repeat(3, 1fr); } .footer-grid { grid-template-columns: repeat(2, 1fr); } }
@@ -301,7 +303,7 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
 <a href="#main" class="skip-link">Przejdź do treści</a>
 <header>
     <div class="nav-inner">
-        <div class="logo-wrap"><a href="index.html"><img src="fruitttt.svg" alt="DailyFruits" class="logo-img" loading="lazy"></a><a href="https://betterworkplace.pl" target="_blank" rel="noopener noreferrer" class="logo-sub">by BetterWorkplace</a></div>
+        <div class="logo-wrap"><a href="index.html"><img src="fruitttt.svg" alt="DailyFruits" class="logo-img" loading="lazy" width="64" height="64"></a><a href="https://betterworkplace.pl" target="_blank" rel="noopener noreferrer" class="logo-sub">by BetterWorkplace</a></div>
         <nav><ul class="nav-links">
             <li><a href="oferta.html" class="active">Oferta</a></li>
             <li><a href="dostawa.html">Dostawa</a></li>
@@ -324,13 +326,13 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
 <!-- ═══ CATEGORY TABS (straight into browser) ═══ -->
 <div class="cat-tabs-wrap" id="catTabs" style="margin-top:108px;">
     <div class="cat-tabs" role="tablist" aria-label="Kategorie produktów">
-        <button class="cat-tab active" role="tab" aria-selected="true" data-cat="owoce"><img src="icon-owoce.svg" alt="" style="height:18px" loading="lazy"> Owoce <span class="cat-count">6</span></button>
-        <button class="cat-tab" role="tab" aria-selected="false" data-cat="kanapki"><img src="icon-kanapki.svg" alt="" style="height:14px" loading="lazy"> Kanapki <span class="cat-count">4</span></button>
-        <button class="cat-tab" role="tab" aria-selected="false" data-cat="sniadania"><img src="icon-sniadania.svg" alt="" style="height:18px" loading="lazy"> Sniadania <span class="cat-count">3</span></button>
-        <button class="cat-tab" role="tab" aria-selected="false" data-cat="soki"><img src="icon-soki.svg" alt="" style="height:20px" loading="lazy"> Soki <span class="cat-count">3</span></button>
-        <button class="cat-tab" role="tab" aria-selected="false" data-cat="bakalie"><img src="icon-bakalie.svg" alt="" style="height:18px" loading="lazy"> Bakalie <span class="cat-count">3</span></button>
-        <button class="cat-tab" role="tab" aria-selected="false" data-cat="lody"><img src="icon-lody.svg" alt="" style="height:20px" loading="lazy"> Lody <span class="cat-count">2</span></button>
-        <button class="cat-tab" role="tab" aria-selected="false" data-cat="extra"><img src="icon-extra.svg" alt="" style="height:18px" loading="lazy"> Paczki <span class="cat-count">3</span></button>
+        <button class="cat-tab active" role="tab" aria-selected="true" data-cat="owoce"><img src="icon-owoce.svg" alt="" style="height:18px" loading="lazy" width="48" height="48"> Owoce <span class="cat-count">6</span></button>
+        <button class="cat-tab" role="tab" aria-selected="false" data-cat="kanapki"><img src="icon-kanapki.svg" alt="" style="height:14px" loading="lazy" width="48" height="48"> Kanapki <span class="cat-count">4</span></button>
+        <button class="cat-tab" role="tab" aria-selected="false" data-cat="sniadania"><img src="icon-sniadania.svg" alt="" style="height:18px" loading="lazy" width="48" height="48"> Sniadania <span class="cat-count">3</span></button>
+        <button class="cat-tab" role="tab" aria-selected="false" data-cat="soki"><img src="icon-soki.svg" alt="" style="height:20px" loading="lazy" width="48" height="48"> Soki <span class="cat-count">3</span></button>
+        <button class="cat-tab" role="tab" aria-selected="false" data-cat="bakalie"><img src="icon-bakalie.svg" alt="" style="height:18px" loading="lazy" width="48" height="48"> Bakalie <span class="cat-count">3</span></button>
+        <button class="cat-tab" role="tab" aria-selected="false" data-cat="lody"><img src="icon-lody.svg" alt="" style="height:20px" loading="lazy" width="48" height="48"> Lody <span class="cat-count">2</span></button>
+        <button class="cat-tab" role="tab" aria-selected="false" data-cat="extra"><img src="icon-extra.svg" alt="" style="height:18px" loading="lazy" width="48" height="48"> Paczki <span class="cat-count">3</span></button>
     </div>
 </div>
 
@@ -342,27 +344,27 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
     <div class="cat-panel active" data-cat="owoce" role="tabpanel">
         <div class="products-grid">
             <div class="product-card">
-                <div class="product-card-img"><span class="product-badge badge-popular">Low cost</span><img src="box_owoce_2.webp" alt="Zestaw Standard MIX" loading="lazy"></div>
+                <div class="product-card-img"><span class="product-badge badge-popular">Low cost</span><img src="box_owoce_2.webp" alt="Zestaw Standard MIX" loading="lazy" width="400" height="300"></div>
                 <div class="product-card-body"><h3>Zestaw Standard MIX</h3><p>5 kg jabłek, 2 kg bananów, 2 kg owoców sezonowych – idealne na start</p><a href="zapytanie.html" class="btn-sm">Złóż zapytanie →</a></div>
             </div>
             <div class="product-card">
-                <div class="product-card-img"><span class="product-badge badge-bestseller">Bestseller</span><img src="owoce-product-01.png" alt="Zestaw Premium MIX 1" loading="lazy"></div>
+                <div class="product-card-img"><span class="product-badge badge-bestseller">Bestseller</span><img src="owoce-product-01.png" alt="Zestaw Premium MIX 1" loading="lazy" width="400" height="300"></div>
                 <div class="product-card-body"><h3>Zestaw Premium MIX 1</h3><p>3 kg jabłek, 3 kg bananów, 3 kg owoców sezonowych. Nasz najczęściej zamawiany</p><a href="zapytanie.html" class="btn-sm">Złóż zapytanie →</a></div>
             </div>
             <div class="product-card">
-                <div class="product-card-img"><span class="product-badge badge-bestseller">Bestseller</span><img src="owoce-product-02.png" alt="Zestaw Premium MIX 2" loading="lazy"></div>
+                <div class="product-card-img"><span class="product-badge badge-bestseller">Bestseller</span><img src="owoce-product-02.png" alt="Zestaw Premium MIX 2" loading="lazy" width="400" height="300"></div>
                 <div class="product-card-body"><h3>Zestaw Premium MIX 2</h3><p>2 kg jabłek, 3 kg bananów, 4 kg owoców sezonowych + owoce egzotyczne</p><a href="zapytanie.html" class="btn-sm">Złóż zapytanie →</a></div>
             </div>
             <div class="product-card">
-                <div class="product-card-img"><img src="owoce-product-03.png" alt="Zestawy indywidualne" loading="lazy"></div>
+                <div class="product-card-img"><img src="owoce-product-03.png" alt="Zestawy indywidualne" loading="lazy" width="400" height="300"></div>
                 <div class="product-card-body"><h3>Zestawy indywidualne</h3><p>Porcje owoców dla każdego pracownika. Personalizowane zestawy na biurko</p><a href="zapytanie.html" class="btn-sm">Złóż zapytanie →</a></div>
             </div>
             <div class="product-card">
-                <div class="product-card-img"><img src="owoce-product-05.png" alt="Przekąski warzywne" loading="lazy"></div>
+                <div class="product-card-img"><img src="owoce-product-05.png" alt="Przekąski warzywne" loading="lazy" width="400" height="300"></div>
                 <div class="product-card-body"><h3>Przekąski warzywne</h3><p>Marchewki, papryka, pomidorki cherry – zdrowa alternatywa dla chipsów</p><a href="zapytanie.html" class="btn-sm">Złóż zapytanie →</a></div>
             </div>
             <div class="product-card">
-                <div class="product-card-img"><span class="product-badge badge-new">Nowość</span><img src="owoce-product-06.png" alt="Zestaw Eco" loading="lazy"></div>
+                <div class="product-card-img"><span class="product-badge badge-new">Nowość</span><img src="owoce-product-06.png" alt="Zestaw Eco" loading="lazy" width="400" height="300"></div>
                 <div class="product-card-body"><h3>Zestaw Eco</h3><p>Owoce ekologiczne z certyfikatem. Premium jakość dla firm dbających o ESG</p><a href="zapytanie.html" class="btn-sm">Złóż zapytanie →</a></div>
             </div>
         </div>
@@ -372,19 +374,19 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
     <div class="cat-panel" data-cat="kanapki" role="tabpanel">
         <div class="products-grid">
             <div class="product-card">
-                <div class="product-card-img"><span class="product-badge badge-bestseller">Bestseller</span><img src="kanapki-biuro-product-02.png" alt="Kanapki klasyczne" loading="lazy"></div>
+                <div class="product-card-img"><span class="product-badge badge-bestseller">Bestseller</span><img src="kanapki-biuro-product-02.png" alt="Kanapki klasyczne" loading="lazy" width="400" height="300"></div>
                 <div class="product-card-body"><h3>Kanapki klasyczne</h3><p>Świeże bagietki, ciabatty i croissanty. Różne warianty – mięsne, wegetariańskie i wegańskie</p><a href="zapytanie.html" class="btn-sm">Złóż zapytanie →</a></div>
             </div>
             <div class="product-card">
-                <div class="product-card-img"><img src="kanapki-fabryka-product-03.png" alt="Wrapy i tortille" loading="lazy"></div>
+                <div class="product-card-img"><img src="kanapki-fabryka-product-03.png" alt="Wrapy i tortille" loading="lazy" width="400" height="300"></div>
                 <div class="product-card-body"><h3>Wrapy i tortille</h3><p>Lekkie i sycące wrapy z kurczakiem, falafelem lub łososiem. Idealne na lunch</p><a href="zapytanie.html" class="btn-sm">Złóż zapytanie →</a></div>
             </div>
             <div class="product-card">
-                <div class="product-card-img"><img src="kanapki-fabryka-product-04.png" alt="Zestawy lunchowe" loading="lazy"></div>
+                <div class="product-card-img"><img src="kanapki-fabryka-product-04.png" alt="Zestawy lunchowe" loading="lazy" width="400" height="300"></div>
                 <div class="product-card-body"><h3>Zestawy lunchowe</h3><p>Kompletny lunch: kanapka + sałatka + napój. Gotowy do podania na spotkanie</p><a href="zapytanie.html" class="btn-sm">Złóż zapytanie →</a></div>
             </div>
             <div class="product-card">
-                <div class="product-card-img"><span class="product-badge badge-popular">Popularne</span><img src="kanapki-biuro-circle-05.png" alt="Zestawy na spotkania" loading="lazy"></div>
+                <div class="product-card-img"><span class="product-badge badge-popular">Popularne</span><img src="kanapki-biuro-circle-05.png" alt="Zestawy na spotkania" loading="lazy" width="400" height="300"></div>
                 <div class="product-card-body"><h3>Zestawy na spotkania</h3><p>Tace z mini kanapkami, finger food i przekąskami na firmowe meetingi</p><a href="zapytanie.html" class="btn-sm">Złóż zapytanie →</a></div>
             </div>
         </div>
@@ -394,15 +396,15 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
     <div class="cat-panel" data-cat="sniadania" role="tabpanel">
         <div class="products-grid">
             <div class="product-card">
-                <div class="product-card-img"><span class="product-badge badge-bestseller">Bestseller</span><img src="box-sniadaniowe.webp" alt="Zestaw śniadaniowy" loading="lazy"></div>
+                <div class="product-card-img"><span class="product-badge badge-bestseller">Bestseller</span><img src="box-sniadaniowe.webp" alt="Zestaw śniadaniowy" loading="lazy" width="400" height="300"></div>
                 <div class="product-card-body"><h3>Zestaw śniadaniowy</h3><p>Musli, granola, jogurty, dżemy, masło orzechowe – kompletny kącik śniadaniowy</p><a href="zapytanie.html" class="btn-sm">Złóż zapytanie →</a></div>
             </div>
             <div class="product-card">
-                <div class="product-card-img"><img src="owoce-product-03.png" alt="Owsianka i toppings" loading="lazy"></div>
+                <div class="product-card-img"><img src="owoce-product-03.png" alt="Owsianka i toppings" loading="lazy" width="400" height="300"></div>
                 <div class="product-card-body"><h3>Owsianka i toppings</h3><p>Płatki owsiane, nasiona chia, orzechy i suszone owoce do przygotowania na miejscu</p><a href="zapytanie.html" class="btn-sm">Złóż zapytanie →</a></div>
             </div>
             <div class="product-card">
-                <div class="product-card-img"><img src="owoce-product-04.png" alt="Pieczywo i dodatki" loading="lazy"></div>
+                <div class="product-card-img"><img src="owoce-product-04.png" alt="Pieczywo i dodatki" loading="lazy" width="400" height="300"></div>
                 <div class="product-card-body"><h3>Pieczywo i dodatki</h3><p>Świeże pieczywo, masło, sery i wędliny premium – codzienne dostawy</p><a href="zapytanie.html" class="btn-sm">Złóż zapytanie →</a></div>
             </div>
         </div>
@@ -412,15 +414,15 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
     <div class="cat-panel" data-cat="soki" role="tabpanel">
         <div class="products-grid">
             <div class="product-card">
-                <div class="product-card-img"><span class="product-badge badge-bestseller">Bestseller</span><img src="box-soki1.webp" alt="Soki świeżo wyciskane" loading="lazy"></div>
+                <div class="product-card-img"><span class="product-badge badge-bestseller">Bestseller</span><img src="box-soki1.webp" alt="Soki świeżo wyciskane" loading="lazy" width="400" height="300"></div>
                 <div class="product-card-body"><h3>Soki świeżo wyciskane</h3><p>Pomarańcza, jabłko-marchew, burak-imbir – codziennie tłoczone, bez dodatków</p><a href="zapytanie.html" class="btn-sm">Złóż zapytanie →</a></div>
             </div>
             <div class="product-card">
-                <div class="product-card-img"><img src="soki-i-napoje.png" alt="Syropy i lemoniady" loading="lazy"></div>
+                <div class="product-card-img"><img src="soki-i-napoje.png" alt="Syropy i lemoniady" loading="lazy" width="400" height="300"></div>
                 <div class="product-card-body"><h3>Syropy i lemoniady</h3><p>Domowe syropy, lemoniady na bazie owoców i ziół. Orzeźwienie na lato</p><a href="zapytanie.html" class="btn-sm">Złóż zapytanie →</a></div>
             </div>
             <div class="product-card">
-                <div class="product-card-img"><span class="product-badge badge-new">Nowość</span><img src="kawa-product-02.png" alt="Kombucha i cold brew" loading="lazy"></div>
+                <div class="product-card-img"><span class="product-badge badge-new">Nowość</span><img src="kawa-product-02.png" alt="Kombucha i cold brew" loading="lazy" width="400" height="300"></div>
                 <div class="product-card-body"><h3>Kombucha i cold brew</h3><p>Fermentowana herbata, cold brew coffee i mleka roślinne. Zdrowy energy boost</p><a href="zapytanie.html" class="btn-sm">Złóż zapytanie →</a></div>
             </div>
         </div>
@@ -430,15 +432,15 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
     <div class="cat-panel" data-cat="bakalie" role="tabpanel">
         <div class="products-grid">
             <div class="product-card">
-                <div class="product-card-img"><span class="product-badge badge-bestseller">Bestseller</span><img src="box-bakalie1.webp" alt="Bakalie mix" loading="lazy"></div>
+                <div class="product-card-img"><span class="product-badge badge-bestseller">Bestseller</span><img src="box-bakalie1.webp" alt="Bakalie mix" loading="lazy" width="400" height="300"></div>
                 <div class="product-card-body"><h3>Bakalie mix</h3><p>Orzechy nerkowca, migdały, orzechy włoskie i laskowe – premium jakość</p><a href="zapytanie.html" class="btn-sm">Złóż zapytanie →</a></div>
             </div>
             <div class="product-card">
-                <div class="product-card-img"><img src="kawa-cta-alt.png" alt="Zdrowe batony i ciastka" loading="lazy"></div>
+                <div class="product-card-img"><img src="kawa-cta-alt.png" alt="Zdrowe batony i ciastka" loading="lazy" width="400" height="300"></div>
                 <div class="product-card-body"><h3>Batony i ciastka</h3><p>Batony proteinowe, energy balls, ciastka owsiane – bez cukru rafinowanego</p><a href="zapytanie.html" class="btn-sm">Złóż zapytanie →</a></div>
             </div>
             <div class="product-card">
-                <div class="product-card-img"><img src="owoce-product-06.png" alt="Suszone owoce premium" loading="lazy"></div>
+                <div class="product-card-img"><img src="owoce-product-06.png" alt="Suszone owoce premium" loading="lazy" width="400" height="300"></div>
                 <div class="product-card-body"><h3>Suszone owoce</h3><p>Mango, ananas, żurawina, morele – naturalnie suszone, bez siarki</p><a href="zapytanie.html" class="btn-sm">Złóż zapytanie →</a></div>
             </div>
         </div>
@@ -448,11 +450,11 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
     <div class="cat-panel" data-cat="lody" role="tabpanel">
         <div class="products-grid">
             <div class="product-card">
-                <div class="product-card-img"><span class="product-badge badge-popular">Popularne</span><img src="box-lody.webp" alt="Lody rzemieślnicze" loading="lazy"></div>
+                <div class="product-card-img"><span class="product-badge badge-popular">Popularne</span><img src="box-lody.webp" alt="Lody rzemieślnicze" loading="lazy" width="400" height="300"></div>
                 <div class="product-card-body"><h3>Lody rzemieślnicze</h3><p>Lody od lokalnych rzemieślników. Smaki klasyczne i sezonowe – dostawa w suchym lodzie</p><a href="zapytanie.html" class="btn-sm">Złóż zapytanie →</a></div>
             </div>
             <div class="product-card">
-                <div class="product-card-img"><img src="owoce-product-05.png" alt="Sorbety owocowe" loading="lazy"></div>
+                <div class="product-card-img"><img src="owoce-product-05.png" alt="Sorbety owocowe" loading="lazy" width="400" height="300"></div>
                 <div class="product-card-body"><h3>Sorbety owocowe</h3><p>100% owoców, bez mleka. Mango, malina, passion fruit – wegańska alternatywa</p><a href="zapytanie.html" class="btn-sm">Złóż zapytanie →</a></div>
             </div>
         </div>
@@ -462,15 +464,15 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
     <div class="cat-panel" data-cat="extra" role="tabpanel">
         <div class="products-grid">
             <div class="product-card">
-                <div class="product-card-img"><span class="product-badge badge-popular">Popularne</span><img src="owoce-product-04.png" alt="Welcome Pack" loading="lazy"></div>
+                <div class="product-card-img"><span class="product-badge badge-popular">Popularne</span><img src="owoce-product-04.png" alt="Welcome Pack" loading="lazy" width="400" height="300"></div>
                 <div class="product-card-body"><h3>Welcome Pack</h3><p>Zestaw powitalny dla nowych pracowników – owoce, kawa, przekąski i gadżety. Via SendGift</p><a href="zapytanie.html" class="btn-sm">Złóż zapytanie →</a></div>
             </div>
             <div class="product-card">
-                <div class="product-card-img"><img src="owoce-product-01.png" alt="Catering na eventy" loading="lazy"></div>
+                <div class="product-card-img"><img src="owoce-product-01.png" alt="Catering na eventy" loading="lazy" width="400" height="300"></div>
                 <div class="product-card-body"><h3>Catering na eventy</h3><p>Zestawy na spotkania, warsztaty i konferencje. Mini kanapki, owoce, napoje</p><a href="zapytanie.html" class="btn-sm">Złóż zapytanie →</a></div>
             </div>
             <div class="product-card">
-                <div class="product-card-img"><img src="kawa-product-04.png" alt="Paczki świąteczne" loading="lazy"></div>
+                <div class="product-card-img"><img src="kawa-product-04.png" alt="Paczki świąteczne" loading="lazy" width="400" height="300"></div>
                 <div class="product-card-body"><h3>Paczki świąteczne</h3><p>Zestawy okolicznościowe na Boże Narodzenie, Wielkanoc i Dzień Kobiet</p><a href="zapytanie.html" class="btn-sm">Złóż zapytanie →</a></div>
             </div>
         </div>
@@ -495,11 +497,11 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
             <div class="trust-stat reveal"><div class="trust-stat-num">24h</div><div class="trust-stat-label">od zapytania do dostawy</div></div>
         </div>
         <div class="trust-logos">
-            <img src="https://dailyfruits.pl/app/uploads/2015/11/embs-e1453994818624.jpg" alt="EMBS" loading="lazy">
-            <img src="https://dailyfruits.pl/app/uploads/2015/11/4F-e1453995146523.jpg" alt="OTCF" loading="lazy">
-            <img src="https://dailyfruits.pl/app/uploads/2021/01/enea3mini.png" alt="Enea" loading="lazy">
-            <img src="https://dailyfruits.pl/app/uploads/2021/01/synevo2mini.jpg" alt="Synevo" loading="lazy">
-            <img src="https://dailyfruits.pl/app/uploads/2020/07/smsapi2020-1.png" alt="SMS API" loading="lazy">
+            <img src="https://dailyfruits.pl/app/uploads/2015/11/embs-e1453994818624.jpg" alt="EMBS" loading="lazy" width="400" height="300">
+            <img src="https://dailyfruits.pl/app/uploads/2015/11/4F-e1453995146523.jpg" alt="OTCF" loading="lazy" width="400" height="300">
+            <img src="https://dailyfruits.pl/app/uploads/2021/01/enea3mini.png" alt="Enea" loading="lazy" width="400" height="300">
+            <img src="https://dailyfruits.pl/app/uploads/2021/01/synevo2mini.jpg" alt="Synevo" loading="lazy" width="400" height="300">
+            <img src="https://dailyfruits.pl/app/uploads/2020/07/smsapi2020-1.png" alt="SMS API" loading="lazy" width="400" height="300">
         </div>
     </div>
 </section>
@@ -615,8 +617,8 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
         <div class="footer-grid">
             <div class="footer-brand">
                 <div style="display:flex;align-items:center;gap:16px;">
-                    <img src="fruitttt.svg" alt="DailyFruits" style="height:56px;filter:brightness(10);" loading="lazy">
-                    <img src="dailyfoods-logo.svg" alt="DailyFoods" style="height:56px;" loading="lazy">
+                    <img src="fruitttt.svg" alt="DailyFruits" style="height:56px;filter:brightness(10);" loading="lazy" width="56" height="56">
+                    <img src="dailyfoods-logo.svg" alt="DailyFoods" style="height:56px;" loading="lazy" width="64" height="64">
                 </div>
                 <p>Zdrowsze jedzenie, lepsza praca – zaczynając od kuchni. Część ekosystemu BetterWorkplace.</p>
             </div>

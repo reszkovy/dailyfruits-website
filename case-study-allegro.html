@@ -17,7 +17,9 @@
     <link rel="icon" type="image/png" href="favicon_.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700;900&display=swap">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700;900&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700;900&display=swap" rel="stylesheet"></noscript>
     <link rel="stylesheet" href="shared.css">
     <style>
         .cs-hero { padding: 140px 0 80px; background: var(--green-dark); color: #fff; position: relative; overflow: hidden; }
@@ -97,7 +99,7 @@
 <header>
     <nav class="nav-inner">
         <div class="logo-wrap">
-            <a href="index.html"><img src="fruitttt.svg" alt="DailyFruits" class="logo-img"></a>
+            <a href="index.html"><img src="fruitttt.svg" alt="DailyFruits" class="logo-img" width="64" height="64"></a>
             <a href="o-nas.html" class="logo-sub">by BetterWorkplace</a>
         </div>
         <ul class="nav-links">
@@ -223,8 +225,8 @@
         <div class="footer-grid">
             <div class="footer-brand">
                 <div style="display:flex;align-items:center;gap:16px;">
-                    <img src="fruitttt.svg" alt="DailyFruits" style="height:56px;filter:brightness(10);" loading="lazy">
-                    <img src="dailyfoods-logo.svg" alt="DailyFoods" style="height:56px;" loading="lazy">
+                    <img src="fruitttt.svg" alt="DailyFruits" style="height:56px;filter:brightness(10);" loading="lazy" width="56" height="56">
+                    <img src="dailyfoods-logo.svg" alt="DailyFoods" style="height:56px;" loading="lazy" width="64" height="64">
                 </div>
                 <p>Zdrowsze jedzenie, lepsza praca – zaczynając od kuchni. Część ekosystemu BetterWorkplace.</p>
             </div>

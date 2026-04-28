@@ -21,7 +21,9 @@
     <link rel="preload" as="image" href="box_owoce_2.webp" type="image/webp">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700;900&display=swap">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700;900&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700;900&display=swap" rel="stylesheet"></noscript>
     <link rel="stylesheet" href="shared.css">
 <style>
         @font-face {
@@ -359,8 +361,8 @@
         .apple-deco img { width: 100%; height: 100%; }
 
         /* ─── REVEAL (r352-style smooth) ─── */
-        .reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
-        .reveal.vis { opacity: 1; transform: translateY(0); }
+        .reveal { opacity: 0; transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1); will-change: opacity; }
+        .reveal.vis { opacity: 1; }
         .reveal[data-delay="1"] { transition-delay: 0.1s; }
         .reveal[data-delay="2"] { transition-delay: 0.2s; }
         .reveal[data-delay="3"] { transition-delay: 0.3s; }
@@ -727,7 +729,7 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
 <!-- NAV -->
 <header>
     <div class="nav-inner">
-        <div class="logo-wrap"><a href="index.html"><img src="fruitttt.svg" alt="DailyFruits" class="logo-img" loading="lazy"></a><a href="https://betterworkplace.pl" target="_blank" rel="noopener noreferrer" class="logo-sub">by BetterWorkplace</a></div>
+        <div class="logo-wrap"><a href="index.html"><img src="fruitttt.svg" alt="DailyFruits" class="logo-img" loading="lazy" width="64" height="64"></a><a href="https://betterworkplace.pl" target="_blank" rel="noopener noreferrer" class="logo-sub">by BetterWorkplace</a></div>
         <nav><ul class="nav-links">
             <li><a href="oferta.html">Oferta</a></li>
             <li><a href="dostawa.html">Dostawa</a></li>
@@ -763,12 +765,12 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
     <div class="hero-tabs-inner">
         <span class="hero-tabs-label">Dopasuj zamówienie<br>do potrzeb firmy:</span>
         <div class="hero-tabs">
-            <a href="oferta.html" class="hero-tab active" data-img="box_owoce_2.webp" data-alt="Owoce do biura" onclick="event.preventDefault();heroTabClick(this)"><span class="tab-icon"><img src="icon-owoce.svg" alt="Ikona owoców" style="height:22px;width:22px;vertical-align:-3px;" loading="lazy"></span> Owoce</a>
-            <a href="kanapki-do-biura.html" class="hero-tab" data-img="box-kanapki1.webp" data-alt="Kanapki dla pracowników" onclick="event.preventDefault();heroTabClick(this)"><span class="tab-icon"><img src="icon-kanapki.svg" alt="Ikona kanapek" style="height:15px;width:auto;vertical-align:-2px;" loading="lazy"></span> Kanapki</a>
-            <a href="oferta.html" class="hero-tab" data-img="box-sniadaniowe.webp" data-alt="Produkty śniadaniowe" onclick="event.preventDefault();heroTabClick(this)"><span class="tab-icon"><img src="icon-sniadania.svg" alt="Ikona śniadań" style="height:20px;width:auto;vertical-align:-3px;" loading="lazy"></span> Śniadania</a>
-            <a href="oferta.html" class="hero-tab" data-img="box-soki1.webp" data-alt="Świeże soki" onclick="event.preventDefault();heroTabClick(this)"><span class="tab-icon"><img src="icon-soki.svg" alt="Ikona soków" style="height:24px;width:auto;vertical-align:-4px;margin-right:-2px;" loading="lazy"></span> Soki</a>
-            <a href="oferta.html" class="hero-tab" data-img="box-bakalie1.webp" data-alt="Bakalie i suszone owoce" onclick="event.preventDefault();heroTabClick(this)"><span class="tab-icon"><img src="icon-bakalie.svg" alt="Ikona bakalii" style="height:20px;width:auto;vertical-align:-3px;" loading="lazy"></span> Bakalie</a>
-            <a href="oferta.html" class="hero-tab hero-tab--red" data-img="box-lody.webp" data-alt="Lody do biura" onclick="event.preventDefault();heroTabClick(this)"><span class="tab-icon"><img src="icon-lody.svg" alt="Ikona lodów" style="height:22px;width:auto;vertical-align:-4px;" loading="lazy"></span> Lody</a>
+            <a href="oferta.html" class="hero-tab active" data-img="box_owoce_2.webp" data-alt="Owoce do biura" onclick="event.preventDefault();heroTabClick(this)"><span class="tab-icon"><img src="icon-owoce.svg" alt="Ikona owoców" style="height:22px;width:22px;vertical-align:-3px;" loading="lazy" width="48" height="48"></span> Owoce</a>
+            <a href="kanapki-do-biura.html" class="hero-tab" data-img="box-kanapki1.webp" data-alt="Kanapki dla pracowników" onclick="event.preventDefault();heroTabClick(this)"><span class="tab-icon"><img src="icon-kanapki.svg" alt="Ikona kanapek" style="height:15px;width:auto;vertical-align:-2px;" loading="lazy" width="48" height="48"></span> Kanapki</a>
+            <a href="oferta.html" class="hero-tab" data-img="box-sniadaniowe.webp" data-alt="Produkty śniadaniowe" onclick="event.preventDefault();heroTabClick(this)"><span class="tab-icon"><img src="icon-sniadania.svg" alt="Ikona śniadań" style="height:20px;width:auto;vertical-align:-3px;" loading="lazy" width="48" height="48"></span> Śniadania</a>
+            <a href="oferta.html" class="hero-tab" data-img="box-soki1.webp" data-alt="Świeże soki" onclick="event.preventDefault();heroTabClick(this)"><span class="tab-icon"><img src="icon-soki.svg" alt="Ikona soków" style="height:24px;width:auto;vertical-align:-4px;margin-right:-2px;" loading="lazy" width="48" height="48"></span> Soki</a>
+            <a href="oferta.html" class="hero-tab" data-img="box-bakalie1.webp" data-alt="Bakalie i suszone owoce" onclick="event.preventDefault();heroTabClick(this)"><span class="tab-icon"><img src="icon-bakalie.svg" alt="Ikona bakalii" style="height:20px;width:auto;vertical-align:-3px;" loading="lazy" width="48" height="48"></span> Bakalie</a>
+            <a href="oferta.html" class="hero-tab hero-tab--red" data-img="box-lody.webp" data-alt="Lody do biura" onclick="event.preventDefault();heroTabClick(this)"><span class="tab-icon"><img src="icon-lody.svg" alt="Ikona lodów" style="height:22px;width:auto;vertical-align:-4px;" loading="lazy" width="48" height="48"></span> Lody</a>
         </div>
         <a href="zapytanie.html" class="hero-trial-cta">Sprawdź darmowy <span class="trial-br"><br></span>dzień próbny!</a>
     </div>
@@ -793,7 +795,7 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
                 <p style="font-size:13px;color:rgba(27,94,58,0.5);margin-top:10px;">Odpowiadamy w ciągu 2h · Bez zobowiązań · Darmowa dostawa próbna</p>
             </div>
             <div class="hero-image scale-in">
-                <img id="hero-product-img" src="box_owoce_2.webp" alt="Owoce do biura" fetchpriority="high">
+                <img id="hero-product-img" src="box_owoce_2.webp" alt="Owoce do biura" fetchpriority="high" width="800" height="600">
             </div>
         </div>
     </div>
@@ -810,27 +812,27 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
 <section class="logo-bar reveal">
     <div class="logo-bar-label">Zaufali nam liderzy rynku</div>
     <div class="logo-bar-track">
-        <div class="logo-bar-item"><img src="https://cdn.prod.website-files.com/698dfabcdd705500e5451b80/69baa3bd7f98db68c04da33f_6a2fd1c58094c992a06bbf653a23ad3f_google.avif" alt="Google" loading="lazy"></div>
-        <div class="logo-bar-item"><img src="https://cdn.prod.website-files.com/698dfabcdd705500e5451b80/69baa3bd7f98db68c04da359_107a3c2d6b7055457540d5049fa7364d_allegro.avif" alt="Allegro" loading="lazy"></div>
-        <div class="logo-bar-item"><img src="https://cdn.prod.website-files.com/698dfabcdd705500e5451b80/69baa3bd7f98db68c04da34b_d08d4b59796ecd1651a32bc29473df6a_microsoft.avif" alt="Microsoft" loading="lazy"></div>
-        <div class="logo-bar-item"><img src="https://cdn.prod.website-files.com/698dfabcdd705500e5451b80/69baa3bd7f98db68c04da351_50235668ec856a8a108859aba91adb92_ing.avif" alt="ING Bank Śląski" loading="lazy"></div>
-        <div class="logo-bar-item"><img src="https://cdn.prod.website-files.com/698dfabcdd705500e5451b80/69baa3bd7f98db68c04da345_f5307480b7fbd6cdd2f6dfbbb6b6e8f4_jpmorgan.avif" alt="J.P. Morgan" loading="lazy"></div>
-        <div class="logo-bar-item"><img src="https://cdn.prod.website-files.com/698dfabcdd705500e5451b80/69baa3bd7f98db68c04da35b_8bdd26ad6f4645e90933e543b84e035f_abb.avif" alt="ABB" loading="lazy"></div>
-        <div class="logo-bar-item"><img src="https://cdn.prod.website-files.com/698dfabcdd705500e5451b80/69baa3bd7f98db68c04da357_ac7436c0d3de16c18e4a23b2c383317f_alstom.avif" alt="Alstom" loading="lazy"></div>
-        <div class="logo-bar-item"><img src="https://cdn.prod.website-files.com/698dfabcdd705500e5451b80/69baa3bd7f98db68c04da34f_efd6db24aa16e5a9f5cbdc183ab847e1_johnson-and-johnson.avif" alt="Johnson & Johnson" loading="lazy"></div>
-        <div class="logo-bar-item"><img src="https://cdn.prod.website-files.com/698dfabcdd705500e5451b80/69baa3bd7f98db68c04da341_275bf06a450450231ee84a3a743498eb_asseco.avif" alt="Asseco" loading="lazy"></div>
-        <div class="logo-bar-item"><img src="https://cdn.prod.website-files.com/698dfabcdd705500e5451b80/69baa3bd7f98db68c04da363_6e38ab6e10b8fd3b8f851c9e060736b1_bgk.avif" alt="BGK" loading="lazy"></div>
+        <div class="logo-bar-item"><img src="https://cdn.prod.website-files.com/698dfabcdd705500e5451b80/69baa3bd7f98db68c04da33f_6a2fd1c58094c992a06bbf653a23ad3f_google.avif" alt="Google" loading="lazy" width="400" height="300"></div>
+        <div class="logo-bar-item"><img src="https://cdn.prod.website-files.com/698dfabcdd705500e5451b80/69baa3bd7f98db68c04da359_107a3c2d6b7055457540d5049fa7364d_allegro.avif" alt="Allegro" loading="lazy" width="400" height="300"></div>
+        <div class="logo-bar-item"><img src="https://cdn.prod.website-files.com/698dfabcdd705500e5451b80/69baa3bd7f98db68c04da34b_d08d4b59796ecd1651a32bc29473df6a_microsoft.avif" alt="Microsoft" loading="lazy" width="400" height="300"></div>
+        <div class="logo-bar-item"><img src="https://cdn.prod.website-files.com/698dfabcdd705500e5451b80/69baa3bd7f98db68c04da351_50235668ec856a8a108859aba91adb92_ing.avif" alt="ING Bank Śląski" loading="lazy" width="400" height="300"></div>
+        <div class="logo-bar-item"><img src="https://cdn.prod.website-files.com/698dfabcdd705500e5451b80/69baa3bd7f98db68c04da345_f5307480b7fbd6cdd2f6dfbbb6b6e8f4_jpmorgan.avif" alt="J.P. Morgan" loading="lazy" width="400" height="300"></div>
+        <div class="logo-bar-item"><img src="https://cdn.prod.website-files.com/698dfabcdd705500e5451b80/69baa3bd7f98db68c04da35b_8bdd26ad6f4645e90933e543b84e035f_abb.avif" alt="ABB" loading="lazy" width="400" height="300"></div>
+        <div class="logo-bar-item"><img src="https://cdn.prod.website-files.com/698dfabcdd705500e5451b80/69baa3bd7f98db68c04da357_ac7436c0d3de16c18e4a23b2c383317f_alstom.avif" alt="Alstom" loading="lazy" width="400" height="300"></div>
+        <div class="logo-bar-item"><img src="https://cdn.prod.website-files.com/698dfabcdd705500e5451b80/69baa3bd7f98db68c04da34f_efd6db24aa16e5a9f5cbdc183ab847e1_johnson-and-johnson.avif" alt="Johnson & Johnson" loading="lazy" width="400" height="300"></div>
+        <div class="logo-bar-item"><img src="https://cdn.prod.website-files.com/698dfabcdd705500e5451b80/69baa3bd7f98db68c04da341_275bf06a450450231ee84a3a743498eb_asseco.avif" alt="Asseco" loading="lazy" width="400" height="300"></div>
+        <div class="logo-bar-item"><img src="https://cdn.prod.website-files.com/698dfabcdd705500e5451b80/69baa3bd7f98db68c04da363_6e38ab6e10b8fd3b8f851c9e060736b1_bgk.avif" alt="BGK" loading="lazy" width="400" height="300"></div>
         <!-- Duplicate set for seamless loop -->
-        <div class="logo-bar-item"><img src="https://cdn.prod.website-files.com/698dfabcdd705500e5451b80/69baa3bd7f98db68c04da33f_6a2fd1c58094c992a06bbf653a23ad3f_google.avif" alt="Google" loading="lazy"></div>
-        <div class="logo-bar-item"><img src="https://cdn.prod.website-files.com/698dfabcdd705500e5451b80/69baa3bd7f98db68c04da359_107a3c2d6b7055457540d5049fa7364d_allegro.avif" alt="Allegro" loading="lazy"></div>
-        <div class="logo-bar-item"><img src="https://cdn.prod.website-files.com/698dfabcdd705500e5451b80/69baa3bd7f98db68c04da34b_d08d4b59796ecd1651a32bc29473df6a_microsoft.avif" alt="Microsoft" loading="lazy"></div>
-        <div class="logo-bar-item"><img src="https://cdn.prod.website-files.com/698dfabcdd705500e5451b80/69baa3bd7f98db68c04da351_50235668ec856a8a108859aba91adb92_ing.avif" alt="ING Bank Śląski" loading="lazy"></div>
-        <div class="logo-bar-item"><img src="https://cdn.prod.website-files.com/698dfabcdd705500e5451b80/69baa3bd7f98db68c04da345_f5307480b7fbd6cdd2f6dfbbb6b6e8f4_jpmorgan.avif" alt="J.P. Morgan" loading="lazy"></div>
-        <div class="logo-bar-item"><img src="https://cdn.prod.website-files.com/698dfabcdd705500e5451b80/69baa3bd7f98db68c04da35b_8bdd26ad6f4645e90933e543b84e035f_abb.avif" alt="ABB" loading="lazy"></div>
-        <div class="logo-bar-item"><img src="https://cdn.prod.website-files.com/698dfabcdd705500e5451b80/69baa3bd7f98db68c04da357_ac7436c0d3de16c18e4a23b2c383317f_alstom.avif" alt="Alstom" loading="lazy"></div>
-        <div class="logo-bar-item"><img src="https://cdn.prod.website-files.com/698dfabcdd705500e5451b80/69baa3bd7f98db68c04da34f_efd6db24aa16e5a9f5cbdc183ab847e1_johnson-and-johnson.avif" alt="Johnson & Johnson" loading="lazy"></div>
-        <div class="logo-bar-item"><img src="https://cdn.prod.website-files.com/698dfabcdd705500e5451b80/69baa3bd7f98db68c04da341_275bf06a450450231ee84a3a743498eb_asseco.avif" alt="Asseco" loading="lazy"></div>
-        <div class="logo-bar-item"><img src="https://cdn.prod.website-files.com/698dfabcdd705500e5451b80/69baa3bd7f98db68c04da363_6e38ab6e10b8fd3b8f851c9e060736b1_bgk.avif" alt="BGK" loading="lazy"></div>
+        <div class="logo-bar-item"><img src="https://cdn.prod.website-files.com/698dfabcdd705500e5451b80/69baa3bd7f98db68c04da33f_6a2fd1c58094c992a06bbf653a23ad3f_google.avif" alt="Google" loading="lazy" width="400" height="300"></div>
+        <div class="logo-bar-item"><img src="https://cdn.prod.website-files.com/698dfabcdd705500e5451b80/69baa3bd7f98db68c04da359_107a3c2d6b7055457540d5049fa7364d_allegro.avif" alt="Allegro" loading="lazy" width="400" height="300"></div>
+        <div class="logo-bar-item"><img src="https://cdn.prod.website-files.com/698dfabcdd705500e5451b80/69baa3bd7f98db68c04da34b_d08d4b59796ecd1651a32bc29473df6a_microsoft.avif" alt="Microsoft" loading="lazy" width="400" height="300"></div>
+        <div class="logo-bar-item"><img src="https://cdn.prod.website-files.com/698dfabcdd705500e5451b80/69baa3bd7f98db68c04da351_50235668ec856a8a108859aba91adb92_ing.avif" alt="ING Bank Śląski" loading="lazy" width="400" height="300"></div>
+        <div class="logo-bar-item"><img src="https://cdn.prod.website-files.com/698dfabcdd705500e5451b80/69baa3bd7f98db68c04da345_f5307480b7fbd6cdd2f6dfbbb6b6e8f4_jpmorgan.avif" alt="J.P. Morgan" loading="lazy" width="400" height="300"></div>
+        <div class="logo-bar-item"><img src="https://cdn.prod.website-files.com/698dfabcdd705500e5451b80/69baa3bd7f98db68c04da35b_8bdd26ad6f4645e90933e543b84e035f_abb.avif" alt="ABB" loading="lazy" width="400" height="300"></div>
+        <div class="logo-bar-item"><img src="https://cdn.prod.website-files.com/698dfabcdd705500e5451b80/69baa3bd7f98db68c04da357_ac7436c0d3de16c18e4a23b2c383317f_alstom.avif" alt="Alstom" loading="lazy" width="400" height="300"></div>
+        <div class="logo-bar-item"><img src="https://cdn.prod.website-files.com/698dfabcdd705500e5451b80/69baa3bd7f98db68c04da34f_efd6db24aa16e5a9f5cbdc183ab847e1_johnson-and-johnson.avif" alt="Johnson & Johnson" loading="lazy" width="400" height="300"></div>
+        <div class="logo-bar-item"><img src="https://cdn.prod.website-files.com/698dfabcdd705500e5451b80/69baa3bd7f98db68c04da341_275bf06a450450231ee84a3a743498eb_asseco.avif" alt="Asseco" loading="lazy" width="400" height="300"></div>
+        <div class="logo-bar-item"><img src="https://cdn.prod.website-files.com/698dfabcdd705500e5451b80/69baa3bd7f98db68c04da363_6e38ab6e10b8fd3b8f851c9e060736b1_bgk.avif" alt="BGK" loading="lazy" width="400" height="300"></div>
     </div>
 </section>
 
@@ -839,21 +841,21 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
     <div class="container">
         <div class="features-grid">
             <div class="feature-item reveal">
-                <div class="feature-icon"><img src="ikona-3.webp" alt="Partner" loading="lazy"></div>
+                <div class="feature-icon"><img src="ikona-3.webp" alt="Partner" loading="lazy" width="400" height="300"></div>
                 <div>
                     <h3>Jeden partner, zero chaosu</h3>
                     <p>Owoce, kawa, kanapki, soki –<br>wszystko&nbsp;z&nbsp;jednego miejsca</p>
                 </div>
             </div>
             <div class="feature-item reveal">
-                <div class="feature-icon"><img src="ikona-2.webp" alt="Elastyczny" loading="lazy"></div>
+                <div class="feature-icon"><img src="ikona-2.webp" alt="Elastyczny" loading="lazy" width="400" height="300"></div>
                 <div>
                     <h3>Elastyczny abonament</h3>
                     <p>Subskrypcja, nie kontrakt.<br>Zmień lub anuluj, kiedy chcesz</p>
                 </div>
             </div>
             <div class="feature-item reveal">
-                <div class="feature-icon"><img src="ikona-1.webp" alt="Benefit" loading="lazy"></div>
+                <div class="feature-icon"><img src="ikona-1.webp" alt="Benefit" loading="lazy" width="400" height="300"></div>
                 <div>
                     <h3>Benefit, który czuć codziennie</h3>
                     <p>Wellbeing żywieniowy&nbsp;w&nbsp;biurze –<br>realny wpływ na energię, zdrowie&nbsp;i&nbsp;satysfakcję zespołu</p>
@@ -893,7 +895,7 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
 <!-- WAVE: how → stats -->
 <div class="wave-wrap">
     <div class="apple-deco" style="width:140px;height:164px;left:5%;bottom:-80px;">
-        <img src="apple-deco.svg" alt="Dekoracja jabłko DailyFruits" loading="lazy">
+        <img src="apple-deco.svg" alt="Dekoracja jabłko DailyFruits" loading="lazy" width="400" height="300">
     </div>
     <div class="wave-divider" style="background:var(--white)">
         <svg viewBox="0 0 1440 60" preserveAspectRatio="none"><path d="M0,30 C320,60 640,0 960,40 C1120,55 1300,10 1440,25 L1440,60 L0,60Z" fill="#1B5E3A"/></svg>
@@ -1003,7 +1005,7 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
 
 <!-- FULL-WIDTH PHOTO BREAK -->
 <section class="photo-break reveal" style="width:100%;padding:0;margin:0;overflow:hidden;line-height:0;">
-    <img src="HORIZONTAL.webp" alt="DailyFruits box w biurze" loading="lazy" style="width:100%;height:auto;display:block;object-fit:contain;">
+    <img src="HORIZONTAL.webp" alt="DailyFruits box w biurze" loading="lazy" style="width:100%;height:auto;display:block;object-fit:contain;" width="400" height="300">
 </section>
 
 <!-- OFFER -->
@@ -1016,27 +1018,27 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
         </div>
         <div class="offer-grid">
             <div class="offer-card reveal" data-delay="1">
-                <img src="box_owoce_2.webp" alt="Owoce do biura" loading="lazy">
+                <img src="box_owoce_2.webp" alt="Owoce do biura" loading="lazy" width="400" height="300">
                 <div class="offer-card-body"><h3>Owoce do biura</h3><p>Selekcjonowane owoce, zawsze świeże i dojrzałe. Podstawa Owocowych Czwartków.</p><a href="oferta.html" class="offer-link">Zobacz więcej →</a></div>
             </div>
             <div class="offer-card reveal" data-delay="2">
-                <img src="box-kanapki1.webp" alt="Kanapki i lunche" loading="lazy">
+                <img src="box-kanapki1.webp" alt="Kanapki i lunche" loading="lazy" width="400" height="300">
                 <div class="offer-card-body"><h3>Kanapki i lunche</h3><p>Zdrowe zestawy z najlepszych składników. Kanapkowe Wtorki w Twoim biurze.</p><a href="kanapki-do-biura.html" class="offer-link">Zobacz więcej →</a></div>
             </div>
             <div class="offer-card reveal" data-delay="3">
-                <img src="box-kawki.webp" alt="Kawa do firmy" loading="lazy">
+                <img src="box-kawki.webp" alt="Kawa do firmy" loading="lazy" width="400" height="300">
                 <div class="offer-card-body"><h3>Kawa do firmy</h3><p>Kawa z Małej Palarni w ziarnach. Świeża, lokalna, z charakterem.</p><a href="oferta.html" class="offer-link">Zobacz więcej →</a></div>
             </div>
             <div class="offer-card reveal" data-delay="1">
-                <img src="box-sniadaniowe.webp" alt="Produkty śniadaniowe" loading="lazy">
+                <img src="box-sniadaniowe.webp" alt="Produkty śniadaniowe" loading="lazy" width="400" height="300">
                 <div class="offer-card-body"><h3>Produkty śniadaniowe</h3><p>Musli, jogurty, granola. Poranny rytuał dla całego zespołu.</p><a href="oferta.html" class="offer-link">Zobacz więcej →</a></div>
             </div>
             <div class="offer-card reveal" data-delay="2">
-                <img src="box-bakalie1.webp" alt="Bakalie i suszone" loading="lazy">
+                <img src="box-bakalie1.webp" alt="Bakalie i suszone" loading="lazy" width="400" height="300">
                 <div class="offer-card-body"><h3>Bakalie i suszone</h3><p>Orzechy, suszone owoce i zdrowe przekąski na cały tydzień.</p><a href="oferta.html" class="offer-link">Zobacz więcej →</a></div>
             </div>
             <div class="offer-card reveal" data-delay="3">
-                <img src="box-soki1.webp" alt="Świeże soki" loading="lazy">
+                <img src="box-soki1.webp" alt="Świeże soki" loading="lazy" width="400" height="300">
                 <div class="offer-card-body"><h3>Świeże soki</h3><p>Tłoczone na zimno ze świeżych owoców i warzyw. Smoothie Monday ready.</p><a href="oferta.html" class="offer-link">Zobacz więcej →</a></div>
             </div>
         </div>
@@ -1074,7 +1076,7 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
 <!-- WAVE: offer → ecosystem -->
 <div class="wave-wrap">
     <div class="apple-deco" style="width:150px;height:175px;right:12%;bottom:-85px;">
-        <img src="apple-deco.svg" alt="Dekoracja jabłko DailyFruits" loading="lazy">
+        <img src="apple-deco.svg" alt="Dekoracja jabłko DailyFruits" loading="lazy" width="400" height="300">
     </div>
     <div class="wave-divider" style="background:var(--white)">
         <svg viewBox="0 0 1440 60" preserveAspectRatio="none"><path d="M0,40 C360,0 720,55 1080,15 C1260,5 1380,35 1440,20 L1440,60 L0,60Z" fill="#1B5E3A"/></svg>
@@ -1142,19 +1144,19 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
     </div>
     <div class="test-track">
         <div class="test-slider">
-            <div class="test-card"><blockquote>Od ponad trzech lat pracujemy z firmą Dailyfruits. Dzisiaj owoce w charakterystycznej drewnianej skrzynce to nieodłączny element naszego biurowego krajobrazu. Jakość? Niezmiennie wysoka.</blockquote><div class="test-author"><div class="test-avatar"><img loading="lazy" src="https://dailyfruits.pl/app/uploads/2015/11/embs-e1453994818624.jpg" alt="EMBS"></div><div class="test-meta"><h4>Stathis Karaplios</h4><p>Managing Director, EMBS</p></div></div></div>
-            <div class="test-card"><blockquote>Fruit Day jako dodatkowy benefit sprawdził się u nas świetnie. Firma Dailyfruits od samego początku była strzałem w dziesiątkę. Świeże owoce dostarczane o umówionych porach.</blockquote><div class="test-author"><div class="test-avatar"><img loading="lazy" src="https://dailyfruits.pl/app/uploads/2015/11/4F-e1453995146523.jpg" alt="OTCF"></div><div class="test-meta"><h4>Barbara Fitowska</h4><p>Office Manager, OTCF</p></div></div></div>
-            <div class="test-card"><blockquote>Jestem bardzo zadowolona ze współpracy z firmą Dailyfruits. Od samego początku miałam bardzo dobry kontakt z Przedstawicielem Firmy. Zawsze mogę liczyć na elastyczność.</blockquote><div class="test-author"><div class="test-avatar"><img loading="lazy" src="https://dailyfruits.pl/app/uploads/2021/01/enea3mini.png" alt="Enea"></div><div class="test-meta"><h4>Hanna Gałązka</h4><p>Dyrektor Departamentu, Enea Centrum</p></div></div></div>
-            <div class="test-card"><blockquote>Pracownicy Dailyfruits wykazują się profesjonalizmem. Dostarczane owoce są zawsze najwyższej jakości. To nie tylko zdrowa przekąska, ale sposób dbania o komfort pracowników.</blockquote><div class="test-author"><div class="test-avatar"><img loading="lazy" src="https://dailyfruits.pl/app/uploads/2021/01/synevo2mini.jpg" alt="Synevo"></div><div class="test-meta"><h4>Szymon Demmer</h4><p>HR Business Partner, Synevo</p></div></div></div>
-            <div class="test-card"><blockquote>Gorąco polecam współpracę z firmą Dailyfruits. To godny zaufania partner, który dostarcza świeże produkty wysokiej jakości na terenie całego kraju.</blockquote><div class="test-author"><div class="test-avatar"><img loading="lazy" src="https://dailyfruits.pl/app/uploads/2020/07/smsapi2020-1.png" alt="SMS API"></div><div class="test-meta"><h4>Samanta Folwaczny</h4><p>HR Specialist, SMS API</p></div></div></div>
-            <div class="test-card"><blockquote>Firma Dailyfruits wyszła naprzeciw oczekiwaniom i przygotowała pięknie wyglądające, zdrowe paczki świąteczne, które dostarczyła do domów pracowników.</blockquote><div class="test-author"><div class="test-avatar"><img loading="lazy" src="https://dailyfruits.pl/app/uploads/2015/11/pobrane-e1451465436746.jpg" alt="Lasy Państwowe"></div><div class="test-meta"><h4>Stanisław Sennik</h4><p>Dyrektor, Lasy Państwowe</p></div></div></div>
+            <div class="test-card"><blockquote>Od ponad trzech lat pracujemy z firmą Dailyfruits. Dzisiaj owoce w charakterystycznej drewnianej skrzynce to nieodłączny element naszego biurowego krajobrazu. Jakość? Niezmiennie wysoka.</blockquote><div class="test-author"><div class="test-avatar"><img loading="lazy" src="https://dailyfruits.pl/app/uploads/2015/11/embs-e1453994818624.jpg" alt="EMBS" width="400" height="300"></div><div class="test-meta"><h4>Stathis Karaplios</h4><p>Managing Director, EMBS</p></div></div></div>
+            <div class="test-card"><blockquote>Fruit Day jako dodatkowy benefit sprawdził się u nas świetnie. Firma Dailyfruits od samego początku była strzałem w dziesiątkę. Świeże owoce dostarczane o umówionych porach.</blockquote><div class="test-author"><div class="test-avatar"><img loading="lazy" src="https://dailyfruits.pl/app/uploads/2015/11/4F-e1453995146523.jpg" alt="OTCF" width="400" height="300"></div><div class="test-meta"><h4>Barbara Fitowska</h4><p>Office Manager, OTCF</p></div></div></div>
+            <div class="test-card"><blockquote>Jestem bardzo zadowolona ze współpracy z firmą Dailyfruits. Od samego początku miałam bardzo dobry kontakt z Przedstawicielem Firmy. Zawsze mogę liczyć na elastyczność.</blockquote><div class="test-author"><div class="test-avatar"><img loading="lazy" src="https://dailyfruits.pl/app/uploads/2021/01/enea3mini.png" alt="Enea" width="400" height="300"></div><div class="test-meta"><h4>Hanna Gałązka</h4><p>Dyrektor Departamentu, Enea Centrum</p></div></div></div>
+            <div class="test-card"><blockquote>Pracownicy Dailyfruits wykazują się profesjonalizmem. Dostarczane owoce są zawsze najwyższej jakości. To nie tylko zdrowa przekąska, ale sposób dbania o komfort pracowników.</blockquote><div class="test-author"><div class="test-avatar"><img loading="lazy" src="https://dailyfruits.pl/app/uploads/2021/01/synevo2mini.jpg" alt="Synevo" width="400" height="300"></div><div class="test-meta"><h4>Szymon Demmer</h4><p>HR Business Partner, Synevo</p></div></div></div>
+            <div class="test-card"><blockquote>Gorąco polecam współpracę z firmą Dailyfruits. To godny zaufania partner, który dostarcza świeże produkty wysokiej jakości na terenie całego kraju.</blockquote><div class="test-author"><div class="test-avatar"><img loading="lazy" src="https://dailyfruits.pl/app/uploads/2020/07/smsapi2020-1.png" alt="SMS API" width="400" height="300"></div><div class="test-meta"><h4>Samanta Folwaczny</h4><p>HR Specialist, SMS API</p></div></div></div>
+            <div class="test-card"><blockquote>Firma Dailyfruits wyszła naprzeciw oczekiwaniom i przygotowała pięknie wyglądające, zdrowe paczki świąteczne, które dostarczyła do domów pracowników.</blockquote><div class="test-author"><div class="test-avatar"><img loading="lazy" src="https://dailyfruits.pl/app/uploads/2015/11/pobrane-e1451465436746.jpg" alt="Lasy Państwowe" width="400" height="300"></div><div class="test-meta"><h4>Stanisław Sennik</h4><p>Dyrektor, Lasy Państwowe</p></div></div></div>
             <!-- dup for loop -->
-            <div class="test-card"><blockquote>Od ponad trzech lat pracujemy z firmą Dailyfruits. Jakość? Niezmiennie wysoka. Owoce w charakterystycznej drewnianej skrzynce to element naszego biurowego krajobrazu.</blockquote><div class="test-author"><div class="test-avatar"><img loading="lazy" src="https://dailyfruits.pl/app/uploads/2015/11/embs-e1453994818624.jpg" alt="EMBS"></div><div class="test-meta"><h4>Stathis Karaplios</h4><p>Managing Director, EMBS</p></div></div></div>
-            <div class="test-card"><blockquote>Fruit Day jako dodatkowy benefit sprawdził się u nas świetnie. Firma Dailyfruits od samego początku była strzałem w dziesiątkę.</blockquote><div class="test-author"><div class="test-avatar"><img loading="lazy" src="https://dailyfruits.pl/app/uploads/2015/11/4F-e1453995146523.jpg" alt="OTCF"></div><div class="test-meta"><h4>Barbara Fitowska</h4><p>Office Manager, OTCF</p></div></div></div>
-            <div class="test-card"><blockquote>Jestem bardzo zadowolona ze współpracy. Obietnice składane w czasie negocjacji sprawdzają się każdego dnia.</blockquote><div class="test-author"><div class="test-avatar"><img loading="lazy" src="https://dailyfruits.pl/app/uploads/2021/01/enea3mini.png" alt="Enea"></div><div class="test-meta"><h4>Hanna Gałązka</h4><p>Dyrektor Departamentu, Enea Centrum</p></div></div></div>
-            <div class="test-card"><blockquote>Pracownicy Dailyfruits wykazują się profesjonalizmem. Dostarczane owoce są zawsze najwyższej jakości.</blockquote><div class="test-author"><div class="test-avatar"><img loading="lazy" src="https://dailyfruits.pl/app/uploads/2021/01/synevo2mini.jpg" alt="Synevo"></div><div class="test-meta"><h4>Szymon Demmer</h4><p>HR Business Partner, Synevo</p></div></div></div>
-            <div class="test-card"><blockquote>Gorąco polecam współpracę z firmą Dailyfruits. Godny zaufania partner na terenie całego kraju.</blockquote><div class="test-author"><div class="test-avatar"><img loading="lazy" src="https://dailyfruits.pl/app/uploads/2020/07/smsapi2020-1.png" alt="SMS API"></div><div class="test-meta"><h4>Samanta Folwaczny</h4><p>HR Specialist, SMS API</p></div></div></div>
-            <div class="test-card"><blockquote>Dailyfruits przygotowała piękne, zdrowe paczki świąteczne dostarczone do domów pracowników.</blockquote><div class="test-author"><div class="test-avatar"><img loading="lazy" src="https://dailyfruits.pl/app/uploads/2015/11/pobrane-e1451465436746.jpg" alt="Lasy Państwowe"></div><div class="test-meta"><h4>Stanisław Sennik</h4><p>Dyrektor, Lasy Państwowe</p></div></div></div>
+            <div class="test-card"><blockquote>Od ponad trzech lat pracujemy z firmą Dailyfruits. Jakość? Niezmiennie wysoka. Owoce w charakterystycznej drewnianej skrzynce to element naszego biurowego krajobrazu.</blockquote><div class="test-author"><div class="test-avatar"><img loading="lazy" src="https://dailyfruits.pl/app/uploads/2015/11/embs-e1453994818624.jpg" alt="EMBS" width="400" height="300"></div><div class="test-meta"><h4>Stathis Karaplios</h4><p>Managing Director, EMBS</p></div></div></div>
+            <div class="test-card"><blockquote>Fruit Day jako dodatkowy benefit sprawdził się u nas świetnie. Firma Dailyfruits od samego początku była strzałem w dziesiątkę.</blockquote><div class="test-author"><div class="test-avatar"><img loading="lazy" src="https://dailyfruits.pl/app/uploads/2015/11/4F-e1453995146523.jpg" alt="OTCF" width="400" height="300"></div><div class="test-meta"><h4>Barbara Fitowska</h4><p>Office Manager, OTCF</p></div></div></div>
+            <div class="test-card"><blockquote>Jestem bardzo zadowolona ze współpracy. Obietnice składane w czasie negocjacji sprawdzają się każdego dnia.</blockquote><div class="test-author"><div class="test-avatar"><img loading="lazy" src="https://dailyfruits.pl/app/uploads/2021/01/enea3mini.png" alt="Enea" width="400" height="300"></div><div class="test-meta"><h4>Hanna Gałązka</h4><p>Dyrektor Departamentu, Enea Centrum</p></div></div></div>
+            <div class="test-card"><blockquote>Pracownicy Dailyfruits wykazują się profesjonalizmem. Dostarczane owoce są zawsze najwyższej jakości.</blockquote><div class="test-author"><div class="test-avatar"><img loading="lazy" src="https://dailyfruits.pl/app/uploads/2021/01/synevo2mini.jpg" alt="Synevo" width="400" height="300"></div><div class="test-meta"><h4>Szymon Demmer</h4><p>HR Business Partner, Synevo</p></div></div></div>
+            <div class="test-card"><blockquote>Gorąco polecam współpracę z firmą Dailyfruits. Godny zaufania partner na terenie całego kraju.</blockquote><div class="test-author"><div class="test-avatar"><img loading="lazy" src="https://dailyfruits.pl/app/uploads/2020/07/smsapi2020-1.png" alt="SMS API" width="400" height="300"></div><div class="test-meta"><h4>Samanta Folwaczny</h4><p>HR Specialist, SMS API</p></div></div></div>
+            <div class="test-card"><blockquote>Dailyfruits przygotowała piękne, zdrowe paczki świąteczne dostarczone do domów pracowników.</blockquote><div class="test-author"><div class="test-avatar"><img loading="lazy" src="https://dailyfruits.pl/app/uploads/2015/11/pobrane-e1451465436746.jpg" alt="Lasy Państwowe" width="400" height="300"></div><div class="test-meta"><h4>Stanisław Sennik</h4><p>Dyrektor, Lasy Państwowe</p></div></div></div>
         </div>
     </div>
     <div class="container">
@@ -1176,17 +1178,17 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
         </div>
         <div class="video-grid">
             <div class="video-card reveal" data-yt="YOUTUBE_ID_1">
-                <img src="https://dailyfruits.pl/app/uploads/2015/11/embs-e1453994818624.jpg" alt="EMBS – video testimonial" loading="lazy">
+                <img src="https://dailyfruits.pl/app/uploads/2015/11/embs-e1453994818624.jpg" alt="EMBS – video testimonial" loading="lazy" width="400" height="300">
                 <div class="video-play"><svg viewBox="0 0 80 80" fill="none"><circle cx="40" cy="40" r="38" fill="rgba(255,255,255,0.95)"/><polygon points="33,24 33,56 58,40" fill="#1B5E3A"/></svg></div>
                 <div class="video-label"><h4>EMBS</h4><p>Stathis Karaplios, Managing Director</p></div>
             </div>
             <div class="video-card reveal" data-yt="YOUTUBE_ID_2">
-                <img src="https://dailyfruits.pl/app/uploads/2021/01/enea3mini.png" alt="Enea – video testimonial" loading="lazy">
+                <img src="https://dailyfruits.pl/app/uploads/2021/01/enea3mini.png" alt="Enea – video testimonial" loading="lazy" width="400" height="300">
                 <div class="video-play"><svg viewBox="0 0 80 80" fill="none"><circle cx="40" cy="40" r="38" fill="rgba(255,255,255,0.95)"/><polygon points="33,24 33,56 58,40" fill="#1B5E3A"/></svg></div>
                 <div class="video-label"><h4>Enea Centrum</h4><p>Hanna Gałązka, Dyrektor Departamentu</p></div>
             </div>
             <div class="video-card reveal" data-yt="YOUTUBE_ID_3">
-                <img src="https://dailyfruits.pl/app/uploads/2021/01/synevo2mini.jpg" alt="Synevo – video testimonial" loading="lazy">
+                <img src="https://dailyfruits.pl/app/uploads/2021/01/synevo2mini.jpg" alt="Synevo – video testimonial" loading="lazy" width="400" height="300">
                 <div class="video-play"><svg viewBox="0 0 80 80" fill="none"><circle cx="40" cy="40" r="38" fill="rgba(255,255,255,0.95)"/><polygon points="33,24 33,56 58,40" fill="#1B5E3A"/></svg></div>
                 <div class="video-label"><h4>Synevo</h4><p>Szymon Demmer, HR Business Partner</p></div>
             </div>
@@ -1198,7 +1200,7 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
 <section class="delivery" id="delivery">
     <!-- Scrolling car -->
     <div class="delivery-car" id="delivery-car">
-        <img src="autkonowe.webp" alt="Samochód dostawczy DailyFruits" loading="lazy">
+        <img src="autkonowe.webp" alt="Samochód dostawczy DailyFruits" loading="lazy" width="200" height="80">
     </div>
     <!-- Background repeating text -->
     <div class="delivery-bg-text">dailyfruits</div>
@@ -1206,7 +1208,7 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
         <div class="delivery-inner">
             <!-- MAP IMAGE -->
             <div class="delivery-map-wrap reveal">
-                <img src="mapa.webp" alt="Mapa dostaw DailyFruits w Polsce" loading="lazy" style="width:100%;height:auto;border-radius:12px;">
+                <img src="mapa.webp" alt="Mapa dostaw DailyFruits w Polsce" loading="lazy" style="width:100%;height:auto;border-radius:12px;" width="560" height="420">
             </div>
 
             <!-- TEXT COLUMN -->
@@ -1296,8 +1298,8 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
         <div class="footer-grid">
             <div class="footer-brand">
                 <div style="display:flex;align-items:center;gap:16px;">
-                    <img src="fruitttt.svg" alt="DailyFruits" style="height:56px;filter:brightness(10);" loading="lazy">
-                    <img src="dailyfoods-logo.svg" alt="DailyFoods" style="height:56px;" loading="lazy">
+                    <img src="fruitttt.svg" alt="DailyFruits" style="height:56px;filter:brightness(10);" loading="lazy" width="56" height="56">
+                    <img src="dailyfoods-logo.svg" alt="DailyFoods" style="height:56px;" loading="lazy" width="64" height="64">
                 </div>
                 <p>Zdrowsze jedzenie, lepsza praca – zaczynając od kuchni. Część ekosystemu BetterWorkplace.</p>
             </div>
@@ -1664,7 +1666,7 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
 
 <!-- FLOATING BADGE -->
 <a href="zapytanie.html" class="floating-badge">
-    <img src="badge-trust.svg" alt="Zaufało nam ponad 2000 firm w Polsce" loading="lazy">
+    <img src="badge-trust.svg" alt="Zaufało nam ponad 2000 firm w Polsce" loading="lazy" width="48" height="48">
 </a>
 
 

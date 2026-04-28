@@ -20,7 +20,9 @@
     <link rel="icon" type="image/png" href="favicon_.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700;900&display=swap">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700;900&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700;900&display=swap" rel="stylesheet"></noscript>
     <link rel="stylesheet" href="shared.css">
 <style>
         @font-face { font-family: 'Achiko'; src: url('Achiko.woff2') format('woff2'), url('Achiko.ttf') format('truetype'); font-weight: 400; font-style: normal; font-display: swap; }
@@ -142,8 +144,8 @@
         .footer-col a:hover { color: var(--lime-light); }
         .footer-bottom { padding-top: 28px; text-align: center; font-size: 13px; color: rgba(255,255,255,0.35); }
 
-        .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.5s, transform 0.5s; }
-        .reveal.vis { opacity: 1; transform: translateY(0); }
+        .reveal { opacity: 0; transition: opacity 0.5s; will-change: opacity; }
+        .reveal.vis { opacity: 1; }
 
         @media (max-width: 1024px) { .container { padding: 0 36px; } .footer-grid { grid-template-columns: repeat(2, 1fr); } .related-grid { grid-template-columns: repeat(2, 1fr); } }
         @media (max-width: 768px) { .container { padding: 0 20px; } .nav-links { display: none; } .nav-buttons .btn-outline { display: none; } .nav-trust { display: none; } .related-grid { grid-template-columns: 1fr; } .footer-grid { grid-template-columns: 1fr; } .btn { white-space: normal; } .hamburger { display: flex; flex-direction: column; align-items: center; justify-content: center; } .mobile-drawer { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: var(--green-dark); z-index: 200; flex-direction: column; align-items: center; justify-content: center; gap: 0; opacity: 0; transform: translateY(-20px); transition: opacity 0.4s cubic-bezier(0.16,1,0.3,1), transform 0.4s cubic-bezier(0.16,1,0.3,1); pointer-events: none; } .mobile-drawer.open { display: flex; opacity: 1; transform: translateY(0); pointer-events: all; } .mobile-drawer a { font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 22px; color: #fff; padding: 16px 0; text-decoration: none; opacity: 0.8; transition: opacity 0.2s, color 0.2s; } .mobile-drawer a:hover { opacity: 1; color: #FFF200; } .mobile-drawer .mobile-cta { margin-top: 24px; padding: 14px 40px; background: #E43020; color: #fff; border-radius: 100px; font-weight: 900; font-size: 16px; opacity: 1; } .mobile-drawer-close { position: absolute; top: 20px; right: 20px; background: none; border: none; cursor: pointer; padding: 12px; z-index: 210; } .mobile-drawer-close span { display: block; width: 28px; height: 3px; background: #fff; border-radius: 2px; } .mobile-drawer-close span:first-child { transform: rotate(45deg) translate(1px, 1px); } .mobile-drawer-close span:last-child { transform: rotate(-45deg) translate(1px, -1px); } }
@@ -227,7 +229,7 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
 
 <header>
     <div class="nav-inner">
-        <div class="logo-wrap"><a href="index.html"><img src="fruitttt.svg" alt="DailyFruits" class="logo-img" loading="lazy"></a><a href="https://betterworkplace.pl" target="_blank" rel="noopener noreferrer" class="logo-sub">by BetterWorkplace</a></div>
+        <div class="logo-wrap"><a href="index.html"><img src="fruitttt.svg" alt="DailyFruits" class="logo-img" loading="lazy" width="64" height="64"></a><a href="https://betterworkplace.pl" target="_blank" rel="noopener noreferrer" class="logo-sub">by BetterWorkplace</a></div>
         <nav><ul class="nav-links">
             <li><a href="oferta.html">Oferta</a></li>
             <li><a href="dostawa.html">Dostawa</a></li>
@@ -269,7 +271,7 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
                 <span class="article-date">28 kwietnia 2026</span>
                 <span class="article-tag">Poradnik</span>
             </div>
-            <img src="HORIZONTAL.webp" alt="Owoce do biura przewodnik" class="article-hero-img" loading="lazy">
+            <img src="HORIZONTAL.webp" alt="Owoce do biura przewodnik" class="article-hero-img" loading="lazy" width="800" height="600">
 
             <h2>Owoce do biura — kompletny przewodnik dla Office Managerów (2026)</h2>
 
@@ -372,7 +374,7 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
         <div class="related-grid">
 
             <a href="wpis-benefity.html" class="related-card reveal">
-                <img src="HORIZONTAL.webp" alt="10 benefitów pracowniczych" class="related-card-img" loading="lazy">
+                <img src="HORIZONTAL.webp" alt="10 benefitów pracowniczych" class="related-card-img" loading="lazy" width="400" height="300">
                 <div class="related-card-body">
                     <span class="related-card-date">28 kwietnia 2026</span>
                     <h3>10&nbsp;benefitów pracowniczych, które naprawdę działają</h3>
@@ -382,7 +384,7 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
             </a>
 
             <a href="wpis-kanapki-biuro.html" class="related-card reveal">
-                <img src="HORIZONTAL.webp" alt="Kanapki do biura" class="related-card-img" loading="lazy">
+                <img src="HORIZONTAL.webp" alt="Kanapki do biura" class="related-card-img" loading="lazy" width="400" height="300">
                 <div class="related-card-body">
                     <span class="related-card-date">28 kwietnia 2026</span>
                     <h3>Kanapki do biura — jak zaplanować catering</h3>
@@ -392,7 +394,7 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
             </a>
 
             <a href="wpis-wellness-biuro.html" class="related-card reveal">
-                <img src="HORIZONTAL.webp" alt="Program wellness w biurze" class="related-card-img" loading="lazy">
+                <img src="HORIZONTAL.webp" alt="Program wellness w biurze" class="related-card-img" loading="lazy" width="400" height="300">
                 <div class="related-card-body">
                     <span class="related-card-date">28 kwietnia 2026</span>
                     <h3>Jak wdrożyć program wellness w&nbsp;biurze</h3>
@@ -417,8 +419,8 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
         <div class="footer-grid">
             <div class="footer-brand">
                 <div style="display:flex;align-items:center;gap:16px;">
-                    <img src="fruitttt.svg" alt="DailyFruits" style="height:56px;filter:brightness(10);" loading="lazy">
-                    <img src="dailyfoods-logo.svg" alt="DailyFoods" style="height:56px;" loading="lazy">
+                    <img src="fruitttt.svg" alt="DailyFruits" style="height:56px;filter:brightness(10);" loading="lazy" width="56" height="56">
+                    <img src="dailyfoods-logo.svg" alt="DailyFoods" style="height:56px;" loading="lazy" width="64" height="64">
                 </div>
                 <p>Zdrowsze jedzenie, lepsza praca – zaczynając od kuchni. Część ekosystemu BetterWorkplace.</p>
             </div>
