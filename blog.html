@@ -78,13 +78,22 @@
 
 
         /* ─── PAGE HERO ─── */
-        .page-hero { padding: 72px 0 40px; text-align: center; background: var(--lime-bg); margin-top: 108px; }
-        .breadcrumb { font-size: 14px; color: var(--gray); margin-bottom: 16px; }
+        .page-hero { padding: 36px 0 28px; text-align: center; background: var(--lime-bg); margin-top: 108px; }
+        .breadcrumb { font-size: 14px; color: var(--gray); margin-bottom: 10px; }
         .breadcrumb a { color: var(--lime); font-weight: 700; }
-        .page-hero p { max-width: 520px; margin: 12px auto 0; }
+        .page-hero h1 { font-size: clamp(28px, 3.5vw, 44px); }
+        .page-hero p { max-width: 520px; margin: 8px auto 0; font-size: 15px; }
+
+        /* ─── CATEGORY FILTERS ─── */
+        .blog-filters { display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; padding: 24px 0 0; }
+        .filter-btn { display: inline-flex; align-items: center; gap: 6px; padding: 8px 20px; border-radius: var(--radius-pill); font-family: var(--font); font-weight: 700; font-size: 13px; border: 2px solid rgba(27,94,58,0.15); background: transparent; color: var(--green-dark); cursor: pointer; transition: all 0.25s cubic-bezier(0.16,1,0.3,1); text-transform: uppercase; letter-spacing: 0.5px; }
+        .filter-btn:hover { border-color: var(--lime); background: rgba(141,198,63,0.08); }
+        .filter-btn.active { background: var(--green-dark); color: #fff; border-color: var(--green-dark); }
+        .filter-btn .count { font-weight: 400; opacity: 0.5; font-size: 12px; }
 
         /* ─── BLOG GRID ─── */
-        .blog-section { padding: 60px 0 80px; }
+        .blog-section { padding: 40px 0 80px; }
+        .blog-card.hidden { display: none; }
         .blog-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 32px; }
         .blog-card { background: var(--white); border-radius: 0; overflow: hidden; transition: transform 0.3s, box-shadow 0.3s; display: flex; flex-direction: column; }
         .blog-card:hover { transform: translateY(-6px); box-shadow: 0 16px 48px rgba(27,94,58,0.1); }
@@ -211,7 +220,13 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
     <div class="container">
         <div class="breadcrumb"><a href="index.html">Strona główna</a> → Blog</div>
         <h1>Wiedza i <span class="fun">inspiracje</span></h1>
-        <p>Artykuły o zdrowiu w&nbsp;biurze, owocach, wellbeingu pracowników i&nbsp;kulturze zdrowego jedzenia w&nbsp;firmie.</p>
+        <p>Artykuły o zdrowiu w&nbsp;biurze, owocach, wellbeingu i&nbsp;kulturze zdrowego jedzenia w&nbsp;firmie.</p>
+        <div class="blog-filters">
+            <button class="filter-btn active" data-filter="all">Wszystkie <span class="count">6</span></button>
+            <button class="filter-btn" data-filter="Zdrowie">Zdrowie <span class="count">4</span></button>
+            <button class="filter-btn" data-filter="Edukacja">Edukacja <span class="count">1</span></button>
+            <button class="filter-btn" data-filter="ESG">ESG <span class="count">1</span></button>
+        </div>
     </div>
 </section>
 
@@ -219,7 +234,7 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
     <div class="container">
         <div class="blog-grid">
 
-            <a href="wpis-fakty-mity.html" class="blog-card reveal">
+            <a href="wpis-fakty-mity.html" class="blog-card reveal" data-category="Edukacja">
                 <img src="0_0-(10).webp" alt="Fakty i mity o owocowych dostawach" class="blog-card-img" loading="lazy">
                 <div class="blog-card-body">
                     <span class="blog-card-date">2 kwietnia 2025</span>
@@ -230,7 +245,7 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
                 </div>
             </a>
 
-            <a href="wpis-esg.html" class="blog-card reveal">
+            <a href="wpis-esg.html" class="blog-card reveal" data-category="ESG">
                 <img src="0_2-(6).webp" alt="ESG dzieki ofercie DailyFruits" class="blog-card-img" loading="lazy">
                 <div class="blog-card-body">
                     <span class="blog-card-date">23 stycznia 2025</span>
@@ -241,7 +256,7 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
                 </div>
             </a>
 
-            <a href="wpis-ile-owocow.html" class="blog-card reveal">
+            <a href="wpis-ile-owocow.html" class="blog-card reveal" data-category="Zdrowie">
                 <img src="0_0-(8).webp" alt="Ile owocow jesc dziennie" class="blog-card-img" loading="lazy">
                 <div class="blog-card-body">
                     <span class="blog-card-date">1 czerwca 2021</span>
@@ -252,7 +267,7 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
                 </div>
             </a>
 
-            <a href="wpis-witamina-d.html" class="blog-card reveal">
+            <a href="wpis-witamina-d.html" class="blog-card reveal" data-category="Zdrowie">
                 <img src="0_2-(6).webp" alt="Witaminy w owocach" class="blog-card-img" loading="lazy">
                 <div class="blog-card-body">
                     <span class="blog-card-date">24 lutego 2022</span>
@@ -263,7 +278,7 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
                 </div>
             </a>
 
-            <a href="wpis-cisnienie.html" class="blog-card reveal">
+            <a href="wpis-cisnienie.html" class="blog-card reveal" data-category="Zdrowie">
                 <img src="0_0-(10).webp" alt="Owoce a cisnienie krwi" class="blog-card-img" loading="lazy">
                 <div class="blog-card-body">
                     <span class="blog-card-date">10 marca 2022</span>
@@ -274,7 +289,7 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
                 </div>
             </a>
 
-            <a href="wpis-kolagen.html" class="blog-card reveal">
+            <a href="wpis-kolagen.html" class="blog-card reveal" data-category="Zdrowie">
                 <img src="0_2-(5).webp" alt="Kolagen w owocach i warzywach" class="blog-card-img" loading="lazy">
                 <div class="blog-card-body">
                     <span class="blog-card-date">15 stycznia 2022</span>
@@ -339,6 +354,23 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
 
 
 <script>
+    // ─── CATEGORY FILTERS ───
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            const filter = btn.dataset.filter;
+            document.querySelectorAll('.blog-card').forEach(card => {
+                if (filter === 'all' || card.dataset.category === filter) {
+                    card.classList.remove('hidden');
+                    card.classList.add('vis');
+                } else {
+                    card.classList.add('hidden');
+                }
+            });
+        });
+    });
+
     // ─── REVEAL ANIMATIONS ───
     document.querySelectorAll('.reveal').forEach(el => {
         new IntersectionObserver(([entry], obs) => {
