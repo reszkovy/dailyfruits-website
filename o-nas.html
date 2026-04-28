@@ -35,9 +35,9 @@
         a { text-decoration: none; color: inherit; }
         .container { max-width: 1240px; margin: 0 auto; padding: 0 48px; }
         h1 { font-family: var(--font-display); font-weight: 900; font-size: clamp(32px, 4.5vw, 56px); line-height: 1.12; color: var(--green-dark); letter-spacing: -0.02em; }
-        h1 .fun { font-family: var(--font-fun); font-weight: 400; color: var(--lime); font-size: 1.08em; }
+        h1 .fun { font-family: var(--font-fun); font-weight: 400; color: #4A7A1B; font-size: 1.08em; }
         h2 { font-weight: 900; font-size: clamp(26px, 3vw, 40px); line-height: 1.15; color: var(--green-dark); }
-        h2 .fun { font-family: var(--font-fun); font-weight: 400; color: var(--lime); font-size: 1.05em; }
+        h2 .fun { font-family: var(--font-fun); font-weight: 400; color: #4A7A1B; font-size: 1.05em; }
         h3 { font-weight: 700; font-size: 18px; color: var(--green-dark); }
         p { font-size: 16px; line-height: 1.7; color: var(--gray); }
         .btn { display: inline-flex; align-items: center; gap: 8px; padding: 14px 32px; border-radius: var(--radius-pill); font-family: var(--font); font-weight: 700; font-size: 15px; border: 2px solid transparent; cursor: pointer; transition: all 0.2s; white-space: nowrap; }
@@ -128,7 +128,7 @@
         .marquee-track:hover { animation-play-state: paused; }
         .marquee-item { display: flex; align-items: center; gap: 32px; padding: 0 32px; font-family: var(--font); font-weight: 900; font-size: 18px; text-transform: uppercase; letter-spacing: 3px; color: rgba(255,255,255,0.25); white-space: nowrap; }
         .marquee-item .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--lime); flex-shrink: 0; }
-        .marquee-item .highlight { color: var(--lime); }
+        .marquee-item .highlight { color: #4A7A1B; }
         @keyframes marquee-slide { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
 
         /* Timeline + Values combined 2-col */
@@ -550,6 +550,11 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
         </div>
     </div>
 </section>
+
+<!-- WAVE: faq → cta -->
+<div class="wave-divider" style="background:var(--white)">
+    <svg viewBox="0 0 1440 60" preserveAspectRatio="none"><path d="M0,30 C360,0 720,55 1080,15 C1260,5 1380,40 1440,25 L1440,60 L0,60Z" fill="#1B5E3A"/></svg>
+</div>
 
 <section class="city-cta">
     <div class="container reveal">
