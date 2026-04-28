@@ -71,9 +71,9 @@
         .hamburger span + span { margin-top: 6px; }
         .mobile-drawer { display: none; }
 
-        .city-hero { padding: 140px 0 80px; background: var(--lime-bg); position: relative; overflow: visible; z-index: 2; }
+        .city-hero { padding: 140px 0 140px; background: var(--lime-bg); position: relative; overflow: clip; overflow-y: visible; z-index: 2; }
         .city-hero-inner { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 48px; align-items: center; }
-        .hanging-crate { position: absolute; top: -20px; right: 18%; width: 360px; z-index: 10; animation: sway 4s ease-in-out infinite; transform-origin: top center; }
+        .hanging-crate { position: absolute; bottom: -100px; right: 8%; width: 320px; z-index: 10; animation: sway 4s ease-in-out infinite; transform-origin: top center; }
         .hanging-crate img { width: 100%; height: auto; filter: drop-shadow(0 20px 40px rgba(27,94,58,0.25)); }
         @keyframes sway { 0%,100% { transform: rotate(-1.5deg); } 50% { transform: rotate(1.5deg); } }
         .city-hero-text h1 { margin-bottom: 20px; }
@@ -193,7 +193,7 @@
             .ecosystem-grid { grid-template-columns: 1fr; }
             .footer-grid { grid-template-columns: repeat(2, 1fr); gap: 36px; }
         }
-        @media (max-width: 1024px) { .hanging-crate { width: 200px; right: 4%; } }
+        @media (max-width: 1024px) { .hanging-crate { width: 200px; right: 4%; bottom: -60px; } }
         @media (max-width: 768px) {
             .hanging-crate { display: none; }
             .container { padding: 0 16px; }
