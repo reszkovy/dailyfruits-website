@@ -84,10 +84,8 @@
         .hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
         .mobile-drawer { display: none; }
 
-        .page-hero { padding: 72px 0 40px; text-align: center; background: var(--lime-bg); margin-top: 108px; }
-        .breadcrumb { font-size: 14px; color: var(--gray); margin-bottom: 16px; }
+        .breadcrumb { font-size: 13px; color: var(--gray); margin-bottom: 0; }
         .breadcrumb a { color: var(--lime); font-weight: 700; }
-        .page-hero p { max-width: 520px; margin: 12px auto 0; }
 
         /* ─── CATEGORY TABS ─── */
         .cat-tabs-wrap { position: sticky; top: 108px; z-index: 50; background: var(--cream); padding: 16px 0; border-bottom: 1px solid rgba(27,94,58,0.08); }
@@ -254,16 +252,11 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
     <a href="zapytanie.html" class="mobile-cta">Bezpłatna wycena</a>
 </div>
 
-<section id="main" class="page-hero">
-    <div class="container">
-        <nav class="breadcrumb" aria-label="breadcrumb"><a href="index.html">DailyFruits</a> › Oferta</nav>
-        <h1>Pełna oferta <span class="fun">DailyFruits</span> & DailyFoods</h1>
-        <p>Owoce, kanapki, kawa, soki, bakalie – wszystko w jednej dostawie do Twojego biura. Jeden partner, jedna faktura.</p>
+<!-- ═══ CATEGORY TABS (straight into browser) ═══ -->
+<div class="cat-tabs-wrap" id="catTabs" style="margin-top:108px; padding-top:20px;">
+    <div style="max-width:1240px;margin:0 auto;padding:0 48px 12px;display:flex;align-items:center;justify-content:space-between;">
+        <nav class="breadcrumb" aria-label="breadcrumb"><a href="index.html">DailyFruits</a> › <strong style="color:var(--green-dark)">Oferta</strong></nav>
     </div>
-</section>
-
-<!-- ═══ CATEGORY TABS ═══ -->
-<div class="cat-tabs-wrap" id="catTabs">
     <div class="cat-tabs" role="tablist" aria-label="Kategorie produktów">
         <button class="cat-tab active" role="tab" aria-selected="true" data-cat="owoce"><img src="icon-owoce.svg" alt="" style="height:18px"> Owoce <span class="cat-count">6</span></button>
         <button class="cat-tab" role="tab" aria-selected="false" data-cat="kanapki"><img src="icon-kanapki.svg" alt="" style="height:14px"> Kanapki <span class="cat-count">4</span></button>
