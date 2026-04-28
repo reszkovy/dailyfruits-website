@@ -89,23 +89,39 @@
         .breadcrumb a { color: var(--lime); font-weight: 700; }
         .page-hero p { max-width: 520px; margin: 12px auto 0; }
 
-        /* ─── BRAND TABS ─── */
-        .brand-tabs { display: flex; gap: 12px; justify-content: center; margin-top: 28px; }
-        .brand-tab { padding: 10px 24px; border-radius: var(--radius-pill); font-weight: 700; font-size: 14px; cursor: pointer; border: 2px solid rgba(27,94,58,0.1); background: var(--white); color: var(--green-dark); transition: all 0.2s; }
-        .brand-tab.active, .brand-tab:hover { background: var(--lime); color: #fff; border-color: var(--lime); }
+        /* ─── CATEGORY TABS ─── */
+        .cat-tabs-wrap { position: sticky; top: 108px; z-index: 50; background: var(--cream); padding: 16px 0; border-bottom: 1px solid rgba(27,94,58,0.08); }
+        .cat-tabs { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; max-width: 1240px; margin: 0 auto; padding: 0 48px; }
+        .cat-tab { display: inline-flex; align-items: center; gap: 6px; padding: 10px 20px; border-radius: var(--radius-pill); font-weight: 700; font-size: 14px; cursor: pointer; border: 2px solid rgba(27,94,58,0.1); background: var(--white); color: var(--green-dark); transition: all 0.25s cubic-bezier(0.16,1,0.3,1); white-space: nowrap; }
+        .cat-tab:hover { border-color: var(--lime); background: rgba(141,198,63,0.08); }
+        .cat-tab.active { background: var(--green-dark); color: #fff; border-color: var(--green-dark); }
+        .cat-tab img { height: 18px; width: auto; }
+        .cat-count { font-size: 11px; background: rgba(27,94,58,0.08); padding: 2px 7px; border-radius: 10px; font-weight: 600; }
+        .cat-tab.active .cat-count { background: rgba(255,255,255,0.2); color: #fff; }
 
-        .products-section { padding: 60px 0 80px; position: relative; overflow: hidden; }
-        .fruit-deco { position: absolute; pointer-events: none; z-index: 1; opacity: 0.12; }
-        .fruit-deco img { width: 100%; height: 100%; }
+        /* ─── PRODUCT BROWSER ─── */
+        .cat-panel { display: none; animation: fadeSlide 0.35s ease; }
+        .cat-panel.active { display: block; }
+        @keyframes fadeSlide { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+
+        .products-section { padding: 48px 0 80px; position: relative; overflow: hidden; }
         .section-label { text-align: center; margin-bottom: 40px; }
         .section-label h2 { margin-top: 12px; }
-        .products-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
-        .product-card { background: var(--white); border-radius: 0; overflow: hidden; transition: transform 0.3s, box-shadow 0.3s; }
-        .product-card:hover { transform: translateY(-6px) rotate(-0.5deg); box-shadow: 0 16px 48px rgba(27,94,58,0.1); }
-        .product-card img { width: 75%; height: 200px; object-fit: contain; margin: 16px auto 0; }
-        .product-card-body { padding: 20px; }
-        .product-card-body h3 { font-size: 16px; margin-bottom: 4px; }
-        .product-card-body p { font-size: 13px; margin: 0; }
+
+        .products-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+        .product-card { background: var(--white); border-radius: var(--radius); overflow: hidden; transition: transform 0.3s, box-shadow 0.3s; display: flex; flex-direction: column; }
+        .product-card:hover { transform: translateY(-6px); box-shadow: 0 16px 48px rgba(27,94,58,0.1); }
+        .product-card-img { position: relative; background: #f8f7f0; padding: 20px; display: flex; align-items: center; justify-content: center; min-height: 200px; }
+        .product-card-img img { width: 80%; height: 180px; object-fit: contain; }
+        .product-badge { position: absolute; top: 12px; left: 12px; padding: 4px 12px; border-radius: var(--radius-pill); font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+        .badge-bestseller { background: var(--red); color: #fff; }
+        .badge-new { background: var(--lime); color: var(--green-dark); }
+        .badge-popular { background: var(--yellow); color: var(--green-dark); }
+        .product-card-body { padding: 20px; flex: 1; display: flex; flex-direction: column; }
+        .product-card-body h3 { font-size: 17px; margin-bottom: 6px; }
+        .product-card-body p { font-size: 13px; margin: 0 0 16px; flex: 1; }
+        .product-card-body .btn-sm { display: inline-flex; align-items: center; gap: 6px; padding: 10px 20px; border-radius: var(--radius-pill); background: var(--green-dark); color: #fff; font-size: 13px; font-weight: 700; transition: all 0.2s; align-self: flex-start; }
+        .product-card-body .btn-sm:hover { background: #144A2B; transform: translateY(-1px); }
         .product-brand { display: inline-block; padding: 3px 10px; border-radius: var(--radius-pill); font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px; }
         .brand-df { background: var(--lime-bg); color: var(--green-dark); }
         .brand-dfo { background: var(--yellow-bg); color: var(--olive); }
@@ -140,9 +156,9 @@
         .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.5s, transform 0.5s; }
         .reveal.vis { opacity: 1; transform: translateY(0); }
 
-        @media (max-width: 1024px) { .container { padding: 0 36px; } .products-grid { grid-template-columns: repeat(3, 1fr); } .footer-grid { grid-template-columns: repeat(2, 1fr); } }
-        @media (max-width: 768px) { .container { padding: 0 20px; } .nav-links { display: none; } .nav-buttons .btn-outline { display: none; } .nav-trust { display: none; } .products-grid { grid-template-columns: repeat(2, 1fr); } .footer-grid { grid-template-columns: 1fr; } .cta-card { padding: 48px 24px; } .brand-tabs { flex-wrap: wrap; } .cta-btns { flex-direction: column; align-items: center; } .cta-btns .btn { text-align: center; justify-content: center; width: 100%; } .hamburger { display: flex; flex-direction: column; align-items: center; justify-content: center; } .mobile-drawer { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: var(--green-dark); z-index: 200; flex-direction: column; align-items: center; justify-content: center; gap: 0; opacity: 0; transform: translateY(-20px); transition: opacity 0.4s cubic-bezier(0.16,1,0.3,1), transform 0.4s cubic-bezier(0.16,1,0.3,1); pointer-events: none; } .mobile-drawer.open { display: flex; opacity: 1; transform: translateY(0); pointer-events: all; } .mobile-drawer a { font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 22px; color: #fff; padding: 16px 0; text-decoration: none; opacity: 0.8; transition: opacity 0.2s, color 0.2s; } .mobile-drawer a:hover { opacity: 1; color: #FFF200; } .mobile-drawer .mobile-cta { margin-top: 24px; padding: 14px 40px; background: #E43020; color: #fff; border-radius: 100px; font-weight: 900; font-size: 16px; opacity: 1; } .mobile-drawer-close { position: absolute; top: 20px; right: 20px; background: none; border: none; cursor: pointer; padding: 12px; z-index: 210; } .mobile-drawer-close span { display: block; width: 28px; height: 3px; background: #fff; border-radius: 2px; } .mobile-drawer-close span:first-child { transform: rotate(45deg) translate(1px, 1px); } .mobile-drawer-close span:last-child { transform: rotate(-45deg) translate(1px, -1px); } }
-        @media (max-width: 480px) { .products-grid { grid-template-columns: 1fr; } }
+        @media (max-width: 1024px) { .container { padding: 0 36px; } .products-grid { grid-template-columns: repeat(2, 1fr); } .footer-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 768px) { .container { padding: 0 20px; } .nav-links { display: none; } .nav-buttons .btn-outline { display: none; } .nav-trust { display: none; } .products-grid { grid-template-columns: repeat(2, 1fr); } .footer-grid { grid-template-columns: 1fr; } .cta-card { padding: 48px 24px; } .cta-btns { flex-direction: column; align-items: center; } .cta-btns .btn { text-align: center; justify-content: center; width: 100%; } .cat-tabs-wrap { top: 64px; } .cat-tabs { padding: 0 16px; gap: 6px; justify-content: flex-start; flex-wrap: nowrap; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; } .cat-tabs::-webkit-scrollbar { display: none; } .cat-tab { font-size: 13px; padding: 8px 14px; flex-shrink: 0; } .hamburger { display: flex; flex-direction: column; align-items: center; justify-content: center; } .mobile-drawer { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: var(--green-dark); z-index: 200; flex-direction: column; align-items: center; justify-content: center; gap: 0; opacity: 0; transform: translateY(-20px); transition: opacity 0.4s cubic-bezier(0.16,1,0.3,1), transform 0.4s cubic-bezier(0.16,1,0.3,1); pointer-events: none; } .mobile-drawer.open { display: flex; opacity: 1; transform: translateY(0); pointer-events: all; } .mobile-drawer a { font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 22px; color: #fff; padding: 16px 0; text-decoration: none; opacity: 0.8; transition: opacity 0.2s, color 0.2s; } .mobile-drawer a:hover { opacity: 1; color: #FFF200; } .mobile-drawer .mobile-cta { margin-top: 24px; padding: 14px 40px; background: #E43020; color: #fff; border-radius: 100px; font-weight: 900; font-size: 16px; opacity: 1; } .mobile-drawer-close { position: absolute; top: 20px; right: 20px; background: none; border: none; cursor: pointer; padding: 12px; z-index: 210; } .mobile-drawer-close span { display: block; width: 28px; height: 3px; background: #fff; border-radius: 2px; } .mobile-drawer-close span:first-child { transform: rotate(45deg) translate(1px, 1px); } .mobile-drawer-close span:last-child { transform: rotate(-45deg) translate(1px, -1px); } }
+        @media (max-width: 480px) { .products-grid { grid-template-columns: 1fr; } .product-card-img img { height: 140px; } }
     
 /* ─── CITY INDEX ─── */
 .city-index { background: #163D28; padding: 48px 0 40px; }
@@ -246,49 +262,219 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
     </div>
 </section>
 
-<section style="padding:60px 0 0;">
+<!-- ═══ CATEGORY TABS ═══ -->
+<div class="cat-tabs-wrap" id="catTabs">
+    <div class="cat-tabs" role="tablist" aria-label="Kategorie produktów">
+        <button class="cat-tab active" role="tab" aria-selected="true" data-cat="owoce"><img src="icon-owoce.svg" alt="" style="height:18px"> Owoce <span class="cat-count">6</span></button>
+        <button class="cat-tab" role="tab" aria-selected="false" data-cat="kanapki"><img src="icon-kanapki.svg" alt="" style="height:14px"> Kanapki <span class="cat-count">4</span></button>
+        <button class="cat-tab" role="tab" aria-selected="false" data-cat="sniadania"><img src="icon-sniadania.svg" alt="" style="height:18px"> Śniadania <span class="cat-count">3</span></button>
+        <button class="cat-tab" role="tab" aria-selected="false" data-cat="soki"><img src="icon-soki.svg" alt="" style="height:20px"> Soki <span class="cat-count">3</span></button>
+        <button class="cat-tab" role="tab" aria-selected="false" data-cat="bakalie"><img src="icon-bakalie.svg" alt="" style="height:18px"> Bakalie <span class="cat-count">3</span></button>
+        <button class="cat-tab" role="tab" aria-selected="false" data-cat="lody"><img src="icon-lody.svg" alt="" style="height:20px"> Lody <span class="cat-count">2</span></button>
+        <button class="cat-tab" role="tab" aria-selected="false" data-cat="kawa">☕ Kawa <span class="cat-count">3</span></button>
+        <button class="cat-tab" role="tab" aria-selected="false" data-cat="extra">🎁 Paczki & Eventy <span class="cat-count">3</span></button>
+    </div>
+</div>
+
+<!-- ═══ PRODUCT PANELS ═══ -->
+<section class="products-section">
     <div class="container">
 
-<!-- DailyFoods products -->
-        <div class="section-label reveal">
+    <!-- ── OWOCE ── -->
+    <div class="cat-panel active" data-cat="owoce" role="tabpanel">
+        <div class="section-label">
+            <div class="sticker sticker-lime" style="transform:rotate(-1deg)">🍎 DailyFruits</div>
+            <h2 style="margin-top:12px">Owoce i warzywa <span class="fun">do biura</span></h2>
+            <p style="max-width:520px;margin:10px auto 0;">Skrzynki abonamentowe, zestawy indywidualne i przekąski warzywne. Dostarczyliśmy ponad 2 000 000 od 2011 roku.</p>
+        </div>
+        <div class="products-grid">
+            <div class="product-card">
+                <div class="product-card-img"><span class="product-badge badge-popular">Low cost</span><img src="box_owoce_2.webp" alt="Zestaw Standard MIX" loading="lazy"></div>
+                <div class="product-card-body"><span class="product-brand brand-df">DailyFruits</span><h3>Zestaw Standard MIX</h3><p>5 kg jabłek, 2 kg bananów, 2 kg owoców sezonowych – idealne na start</p><a href="zapytanie.html" class="btn-sm">Złóż zapytanie →</a></div>
+            </div>
+            <div class="product-card">
+                <div class="product-card-img"><span class="product-badge badge-bestseller">Bestseller</span><img src="owoce-product-01.png" alt="Zestaw Premium MIX 1" loading="lazy"></div>
+                <div class="product-card-body"><span class="product-brand brand-df">DailyFruits</span><h3>Zestaw Premium MIX 1</h3><p>3 kg jabłek, 3 kg bananów, 3 kg owoców sezonowych. Nasz najczęściej zamawiany</p><a href="zapytanie.html" class="btn-sm">Złóż zapytanie →</a></div>
+            </div>
+            <div class="product-card">
+                <div class="product-card-img"><span class="product-badge badge-bestseller">Bestseller</span><img src="owoce-product-02.png" alt="Zestaw Premium MIX 2" loading="lazy"></div>
+                <div class="product-card-body"><span class="product-brand brand-df">DailyFruits</span><h3>Zestaw Premium MIX 2</h3><p>2 kg jabłek, 3 kg bananów, 4 kg owoców sezonowych + owoce egzotyczne</p><a href="zapytanie.html" class="btn-sm">Złóż zapytanie →</a></div>
+            </div>
+            <div class="product-card">
+                <div class="product-card-img"><img src="owoce-product-03.png" alt="Zestawy indywidualne" loading="lazy"></div>
+                <div class="product-card-body"><span class="product-brand brand-df">DailyFruits</span><h3>Zestawy indywidualne</h3><p>Porcje owoców dla każdego pracownika. Personalizowane zestawy na biurko</p><a href="zapytanie.html" class="btn-sm">Złóż zapytanie →</a></div>
+            </div>
+            <div class="product-card">
+                <div class="product-card-img"><img src="owoce-product-05.png" alt="Przekąski warzywne" loading="lazy"></div>
+                <div class="product-card-body"><span class="product-brand brand-df">DailyFruits</span><h3>Przekąski warzywne</h3><p>Marchewki, papryka, pomidorki cherry – zdrowa alternatywa dla chipsów</p><a href="zapytanie.html" class="btn-sm">Złóż zapytanie →</a></div>
+            </div>
+            <div class="product-card">
+                <div class="product-card-img"><span class="product-badge badge-new">Nowość</span><img src="owoce-product-06.png" alt="Zestaw Eco" loading="lazy"></div>
+                <div class="product-card-body"><span class="product-brand brand-df">DailyFruits</span><h3>Zestaw Eco</h3><p>Owoce ekologiczne z certyfikatem. Premium jakość dla firm dbających o ESG</p><a href="zapytanie.html" class="btn-sm">Złóż zapytanie →</a></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ── KANAPKI ── -->
+    <div class="cat-panel" data-cat="kanapki" role="tabpanel">
+        <div class="section-label">
             <div class="sticker sticker-yellow" style="transform:rotate(1deg)">🥪 DailyFoods</div>
-            <h2 style="margin-top:12px">Kawa, kanapki, <span class="fun">lunche</span></h2>
-            <p style="max-width:480px;margin:10px auto 0;">Pełne żywienie biurowe – zdrowe, wygodne, z jednego miejsca.</p>
+            <h2 style="margin-top:12px">Kanapki i <span class="fun">lunche</span></h2>
+            <p style="max-width:520px;margin:10px auto 0;">Świeże kanapki, wrapy i zestawy lunchowe z dostawą codziennie rano. Idealne na spotkania i Kanapkowe Wtorki.</p>
         </div>
-        <div class="products-grid" style="margin-bottom:80px;">
-            <div class="product-card reveal">
-                <img src="kanapki-biuro-product-02.png" alt="Kanapki i lunche" loading="lazy">
-                <div class="product-card-body"><span class="product-brand brand-dfo">DailyFoods</span><h3>Kanapki i lunche</h3><p>Zdrowe zestawy. Kanapkowe Wtorki dla zespołu</p></div>
+        <div class="products-grid">
+            <div class="product-card">
+                <div class="product-card-img"><span class="product-badge badge-bestseller">Bestseller</span><img src="kanapki-biuro-product-02.png" alt="Kanapki klasyczne" loading="lazy"></div>
+                <div class="product-card-body"><span class="product-brand brand-dfo">DailyFoods</span><h3>Kanapki klasyczne</h3><p>Świeże bagietki, ciabatty i croissanty. Różne warianty – mięsne, wegetariańskie i wegańskie</p><a href="zapytanie.html" class="btn-sm">Złóż zapytanie →</a></div>
             </div>
-            <div class="product-card reveal">
-                <img src="owoce-product-03.png" alt="Produkty śniadaniowe" loading="lazy">
-                <div class="product-card-body"><span class="product-brand brand-dfo">DailyFoods</span><h3>Produkty śniadaniowe</h3><p>Musli, jogurty, granola – poranny rytuał w biurze</p></div>
+            <div class="product-card">
+                <div class="product-card-img"><img src="kanapki-fabryka-product-03.png" alt="Wrapy i tortille" loading="lazy"></div>
+                <div class="product-card-body"><span class="product-brand brand-dfo">DailyFoods</span><h3>Wrapy i tortille</h3><p>Lekkie i sycące wrapy z kurczakiem, falafelem lub łososiem. Idealne na lunch</p><a href="zapytanie.html" class="btn-sm">Złóż zapytanie →</a></div>
             </div>
-            <div class="product-card reveal">
-                <img src="kawa-product-04.png" alt="Kawa do firmy" loading="lazy">
-                <div class="product-card-body"><span class="product-brand brand-dfo">DailyFoods</span><h3>Kawa do firmy</h3><p>Z Małej Palarni, w ziarnach. Świeża i lokalna</p></div>
+            <div class="product-card">
+                <div class="product-card-img"><img src="kanapki-fabryka-product-04.png" alt="Zestawy lunchowe" loading="lazy"></div>
+                <div class="product-card-body"><span class="product-brand brand-dfo">DailyFoods</span><h3>Zestawy lunchowe</h3><p>Kompletny lunch: kanapka + sałatka + napój. Gotowy do podania na spotkanie</p><a href="zapytanie.html" class="btn-sm">Złóż zapytanie →</a></div>
             </div>
-            <div class="product-card reveal">
-                <img src="kawa-cta-alt.png" alt="Zdrowe snacki" loading="lazy">
-                <div class="product-card-body"><span class="product-brand brand-dfo">DailyFoods</span><h3>Zdrowe snacki</h3><p>Batony, chipsy warzywne, zdrowe przekąski biurowe</p></div>
-            </div>
-            <div class="product-card reveal">
-                <img src="owoce-product-01.png" alt="Zestawy na eventy" loading="lazy">
-                <div class="product-card-body"><span class="product-brand brand-dfo">DailyFoods</span><h3>Zestawy na eventy</h3><p>Catering na spotkania, warsztaty i firmowe eventy</p></div>
-            </div>
-            <div class="product-card reveal">
-                <img src="kawa-product-02.png" alt="Napoje i smoothie" loading="lazy">
-                <div class="product-card-body"><span class="product-brand brand-dfo">DailyFoods</span><h3>Napoje i smoothie</h3><p>Wody, kombucha, mleka roślinne i cold brew</p></div>
-            </div>
-            <div class="product-card reveal">
-                <img src="kawa-product-03.png" alt="Automaty zdrowe" loading="lazy">
-                <div class="product-card-body"><span class="product-brand brand-dfo">DailyFoods</span><h3>Automaty zdrowe</h3><p>Automaty vendingowe ze zdrowymi opcjami 24/7</p></div>
-            </div>
-            <div class="product-card reveal">
-                <img src="owoce-product-04.png" alt="Paczki prezentowe" loading="lazy">
-                <div class="product-card-body"><span class="product-brand brand-dfo">DailyFoods</span><h3>Paczki prezentowe</h3><p>Welcome packi, świąteczne zestawy – via SendGift</p></div>
+            <div class="product-card">
+                <div class="product-card-img"><span class="product-badge badge-popular">Popularne</span><img src="kanapki-biuro-circle-05.png" alt="Zestawy na spotkania" loading="lazy"></div>
+                <div class="product-card-body"><span class="product-brand brand-dfo">DailyFoods</span><h3>Zestawy na spotkania</h3><p>Tace z mini kanapkami, finger food i przekąskami na firmowe meetingi</p><a href="zapytanie.html" class="btn-sm">Złóż zapytanie →</a></div>
             </div>
         </div>
+    </div>
+
+    <!-- ── ŚNIADANIA ── -->
+    <div class="cat-panel" data-cat="sniadania" role="tabpanel">
+        <div class="section-label">
+            <div class="sticker sticker-yellow" style="transform:rotate(-1deg)">🥣 DailyFoods</div>
+            <h2 style="margin-top:12px">Produkty <span class="fun">śniadaniowe</span></h2>
+            <p style="max-width:520px;margin:10px auto 0;">Musli, jogurty, granola, dżemy i pieczywo – wszystko czego potrzeba do zdrowego śniadania w biurze.</p>
+        </div>
+        <div class="products-grid">
+            <div class="product-card">
+                <div class="product-card-img"><span class="product-badge badge-bestseller">Bestseller</span><img src="box-sniadaniowe.webp" alt="Zestaw śniadaniowy" loading="lazy"></div>
+                <div class="product-card-body"><span class="product-brand brand-dfo">DailyFoods</span><h3>Zestaw śniadaniowy</h3><p>Musli, granola, jogurty, dżemy, masło orzechowe – kompletny kącik śniadaniowy</p><a href="zapytanie.html" class="btn-sm">Złóż zapytanie →</a></div>
+            </div>
+            <div class="product-card">
+                <div class="product-card-img"><img src="owoce-product-03.png" alt="Owsianka i toppings" loading="lazy"></div>
+                <div class="product-card-body"><span class="product-brand brand-dfo">DailyFoods</span><h3>Owsianka i toppings</h3><p>Płatki owsiane, nasiona chia, orzechy i suszone owoce do przygotowania na miejscu</p><a href="zapytanie.html" class="btn-sm">Złóż zapytanie →</a></div>
+            </div>
+            <div class="product-card">
+                <div class="product-card-img"><img src="owoce-product-04.png" alt="Pieczywo i dodatki" loading="lazy"></div>
+                <div class="product-card-body"><span class="product-brand brand-dfo">DailyFoods</span><h3>Pieczywo i dodatki</h3><p>Świeże pieczywo, masło, sery i wędliny premium – codzienne dostawy</p><a href="zapytanie.html" class="btn-sm">Złóż zapytanie →</a></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ── SOKI ── -->
+    <div class="cat-panel" data-cat="soki" role="tabpanel">
+        <div class="section-label">
+            <div class="sticker sticker-lime" style="transform:rotate(1deg)">🧃 DailyFruits</div>
+            <h2 style="margin-top:12px">Soki i <span class="fun">napoje</span></h2>
+            <p style="max-width:520px;margin:10px auto 0;">Świeżo wyciskane soki, smoothie, kombucha i napoje zdrowotne. Bez cukru, bez konserwantów.</p>
+        </div>
+        <div class="products-grid">
+            <div class="product-card">
+                <div class="product-card-img"><span class="product-badge badge-bestseller">Bestseller</span><img src="box-soki1.webp" alt="Soki świeżo wyciskane" loading="lazy"></div>
+                <div class="product-card-body"><span class="product-brand brand-df">DailyFruits</span><h3>Soki świeżo wyciskane</h3><p>Pomarańcza, jabłko-marchew, burak-imbir – codziennie tłoczone, bez dodatków</p><a href="zapytanie.html" class="btn-sm">Złóż zapytanie →</a></div>
+            </div>
+            <div class="product-card">
+                <div class="product-card-img"><img src="soki-i-napoje.png" alt="Syropy i lemoniady" loading="lazy"></div>
+                <div class="product-card-body"><span class="product-brand brand-df">DailyFruits</span><h3>Syropy i lemoniady</h3><p>Domowe syropy, lemoniady na bazie owoców i ziół. Orzeźwienie na lato</p><a href="zapytanie.html" class="btn-sm">Złóż zapytanie →</a></div>
+            </div>
+            <div class="product-card">
+                <div class="product-card-img"><span class="product-badge badge-new">Nowość</span><img src="kawa-product-02.png" alt="Kombucha i cold brew" loading="lazy"></div>
+                <div class="product-card-body"><span class="product-brand brand-dfo">DailyFoods</span><h3>Kombucha i cold brew</h3><p>Fermentowana herbata, cold brew coffee i mleka roślinne. Zdrowy energy boost</p><a href="zapytanie.html" class="btn-sm">Złóż zapytanie →</a></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ── BAKALIE ── -->
+    <div class="cat-panel" data-cat="bakalie" role="tabpanel">
+        <div class="section-label">
+            <div class="sticker sticker-lime" style="transform:rotate(-1deg)">🥜 DailyFruits</div>
+            <h2 style="margin-top:12px">Bakalie i owoce <span class="fun">suszone</span></h2>
+            <p style="max-width:520px;margin:10px auto 0;">Orzechy, migdały, suszone mango, żurawina i mieszanki trail mix. Zdrowe przekąski na każdą porę dnia.</p>
+        </div>
+        <div class="products-grid">
+            <div class="product-card">
+                <div class="product-card-img"><span class="product-badge badge-bestseller">Bestseller</span><img src="box-bakalie1.webp" alt="Bakalie mix" loading="lazy"></div>
+                <div class="product-card-body"><span class="product-brand brand-df">DailyFruits</span><h3>Bakalie mix</h3><p>Orzechy nerkowca, migdały, orzechy włoskie i laskowe – premium jakość</p><a href="zapytanie.html" class="btn-sm">Złóż zapytanie →</a></div>
+            </div>
+            <div class="product-card">
+                <div class="product-card-img"><img src="kawa-cta-alt.png" alt="Zdrowe batony i ciastka" loading="lazy"></div>
+                <div class="product-card-body"><span class="product-brand brand-dfo">DailyFoods</span><h3>Batony i ciastka</h3><p>Batony proteinowe, energy balls, ciastka owsiane – bez cukru rafinowanego</p><a href="zapytanie.html" class="btn-sm">Złóż zapytanie →</a></div>
+            </div>
+            <div class="product-card">
+                <div class="product-card-img"><img src="owoce-product-06.png" alt="Suszone owoce premium" loading="lazy"></div>
+                <div class="product-card-body"><span class="product-brand brand-df">DailyFruits</span><h3>Suszone owoce</h3><p>Mango, ananas, żurawina, morele – naturalnie suszone, bez siarki</p><a href="zapytanie.html" class="btn-sm">Złóż zapytanie →</a></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ── LODY ── -->
+    <div class="cat-panel" data-cat="lody" role="tabpanel">
+        <div class="section-label">
+            <div class="sticker sticker-coral" style="transform:rotate(1deg)">🍦 DailyFruits</div>
+            <h2 style="margin-top:12px">Lody <span class="fun">do biura</span></h2>
+            <p style="max-width:520px;margin:10px auto 0;">Rzemieślnicze lody w porach letnich. Idealne na team building i firmowe piątki.</p>
+        </div>
+        <div class="products-grid">
+            <div class="product-card">
+                <div class="product-card-img"><span class="product-badge badge-popular">Popularne</span><img src="box-lody.webp" alt="Lody rzemieślnicze" loading="lazy"></div>
+                <div class="product-card-body"><span class="product-brand brand-df">DailyFruits</span><h3>Lody rzemieślnicze</h3><p>Lody od lokalnych rzemieślników. Smaki klasyczne i sezonowe – dostawa w suchym lodzie</p><a href="zapytanie.html" class="btn-sm">Złóż zapytanie →</a></div>
+            </div>
+            <div class="product-card">
+                <div class="product-card-img"><img src="owoce-product-05.png" alt="Sorbety owocowe" loading="lazy"></div>
+                <div class="product-card-body"><span class="product-brand brand-df">DailyFruits</span><h3>Sorbety owocowe</h3><p>100% owoców, bez mleka. Mango, malina, passion fruit – wegańska alternatywa</p><a href="zapytanie.html" class="btn-sm">Złóż zapytanie →</a></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ── KAWA ── -->
+    <div class="cat-panel" data-cat="kawa" role="tabpanel">
+        <div class="section-label">
+            <div class="sticker sticker-yellow" style="transform:rotate(-1deg)">☕ DailyFoods</div>
+            <h2 style="margin-top:12px">Kawa <span class="fun">do firmy</span></h2>
+            <p style="max-width:520px;margin:10px auto 0;">Kawa w ziarnach z Małej Palarni, ekspresy, mleka roślinne i akcesoria baristyczne. Pełny kącik kawowy.</p>
+        </div>
+        <div class="products-grid">
+            <div class="product-card">
+                <div class="product-card-img"><span class="product-badge badge-bestseller">Bestseller</span><img src="box-kawki.webp" alt="Kawa ziarnista" loading="lazy"></div>
+                <div class="product-card-body"><span class="product-brand brand-dfo">DailyFoods</span><h3>Kawa ziarnista</h3><p>Z Małej Palarni – 100% Arabica i blendy Arabica/Robusta. Świeżo palona</p><a href="zapytanie.html" class="btn-sm">Złóż zapytanie →</a></div>
+            </div>
+            <div class="product-card">
+                <div class="product-card-img"><img src="kawa-product-03.png" alt="Ekspresy do biura" loading="lazy"></div>
+                <div class="product-card-body"><span class="product-brand brand-dfo">DailyFoods</span><h3>Ekspresy do biura</h3><p>Wynajem ekspresów automatycznych i kolbowych. Serwis i ziarna w pakiecie</p><a href="zapytanie.html" class="btn-sm">Złóż zapytanie →</a></div>
+            </div>
+            <div class="product-card">
+                <div class="product-card-img"><img src="kawa-product-01.png" alt="Akcesoria kawowe" loading="lazy"></div>
+                <div class="product-card-body"><span class="product-brand brand-dfo">DailyFoods</span><h3>Akcesoria i mleka</h3><p>Mleka roślinne (owsiane, migdałowe), kubki eco i filtry – kompletny kącik</p><a href="zapytanie.html" class="btn-sm">Złóż zapytanie →</a></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ── PACZKI & EVENTY ── -->
+    <div class="cat-panel" data-cat="extra" role="tabpanel">
+        <div class="section-label">
+            <div class="sticker sticker-yellow" style="transform:rotate(1deg)">🎁 DailyFoods</div>
+            <h2 style="margin-top:12px">Paczki, eventy, <span class="fun">upominki</span></h2>
+            <p style="max-width:520px;margin:10px auto 0;">Welcome packi dla nowych pracowników, zestawy świąteczne i catering na firmowe wydarzenia.</p>
+        </div>
+        <div class="products-grid">
+            <div class="product-card">
+                <div class="product-card-img"><span class="product-badge badge-popular">Popularne</span><img src="owoce-product-04.png" alt="Welcome Pack" loading="lazy"></div>
+                <div class="product-card-body"><span class="product-brand brand-dfo">DailyFoods</span><h3>Welcome Pack</h3><p>Zestaw powitalny dla nowych pracowników – owoce, kawa, przekąski i gadżety. Via SendGift</p><a href="zapytanie.html" class="btn-sm">Złóż zapytanie →</a></div>
+            </div>
+            <div class="product-card">
+                <div class="product-card-img"><img src="owoce-product-01.png" alt="Catering na eventy" loading="lazy"></div>
+                <div class="product-card-body"><span class="product-brand brand-dfo">DailyFoods</span><h3>Catering na eventy</h3><p>Zestawy na spotkania, warsztaty i konferencje. Mini kanapki, owoce, napoje</p><a href="zapytanie.html" class="btn-sm">Złóż zapytanie →</a></div>
+            </div>
+            <div class="product-card">
+                <div class="product-card-img"><img src="kawa-product-04.png" alt="Paczki świąteczne" loading="lazy"></div>
+                <div class="product-card-body"><span class="product-brand brand-dfo">DailyFoods</span><h3>Paczki świąteczne</h3><p>Zestawy okolicznościowe na Boże Narodzenie, Wielkanoc i Dzień Kobiet</p><a href="zapytanie.html" class="btn-sm">Złóż zapytanie →</a></div>
+            </div>
+        </div>
+    </div>
 
     </div>
 </section>
@@ -379,7 +565,34 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
     const obs = new IntersectionObserver(es => { es.forEach(e => { if(e.isIntersecting) { e.target.classList.add('vis'); obs.unobserve(e.target); } }); }, { threshold: 0.12 });
     document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 
-    
+    // ─── CATEGORY TAB SWITCHER ───
+    const catTabs = document.querySelectorAll('.cat-tab');
+    const catPanels = document.querySelectorAll('.cat-panel');
+    catTabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            const cat = tab.dataset.cat;
+            catTabs.forEach(t => { t.classList.remove('active'); t.setAttribute('aria-selected', 'false'); });
+            catPanels.forEach(p => p.classList.remove('active'));
+            tab.classList.add('active');
+            tab.setAttribute('aria-selected', 'true');
+            const panel = document.querySelector(`.cat-panel[data-cat="${cat}"]`);
+            if (panel) panel.classList.add('active');
+            // Scroll to product section smoothly
+            const section = document.querySelector('.products-section');
+            if (section) {
+                const top = section.getBoundingClientRect().top + window.scrollY - 180;
+                window.scrollTo({ top: Math.max(top, 0), behavior: 'smooth' });
+            }
+        });
+    });
+    // Support URL hash for direct category links
+    if (window.location.hash) {
+        const hashCat = window.location.hash.replace('#', '');
+        const matchTab = document.querySelector(`.cat-tab[data-cat="${hashCat}"]`);
+        if (matchTab) matchTab.click();
+    }
+
+
 
     // ─── HAMBURGER MENU ───
     const hamburger = document.getElementById('hamburger');
