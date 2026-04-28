@@ -84,18 +84,16 @@
         .hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
         .mobile-drawer { display: none; }
 
-        .breadcrumb { font-size: 13px; color: var(--gray); margin-bottom: 0; }
-        .breadcrumb a { color: var(--lime); font-weight: 700; }
 
         /* ─── CATEGORY TABS ─── */
         .cat-tabs-wrap { position: sticky; top: 108px; z-index: 50; background: var(--cream); padding: 16px 0; border-bottom: 1px solid rgba(27,94,58,0.08); }
         .cat-tabs { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; max-width: 1240px; margin: 0 auto; padding: 0 48px; }
         .cat-tab { display: inline-flex; align-items: center; gap: 6px; padding: 10px 20px; border-radius: var(--radius-pill); font-weight: 700; font-size: 14px; cursor: pointer; border: 2px solid rgba(27,94,58,0.1); background: var(--white); color: var(--green-dark); transition: all 0.25s cubic-bezier(0.16,1,0.3,1); white-space: nowrap; }
         .cat-tab:hover { border-color: var(--lime); background: rgba(141,198,63,0.08); }
-        .cat-tab.active { background: var(--green-dark); color: #fff; border-color: var(--green-dark); }
+        .cat-tab.active { background: var(--yellow); color: var(--green-dark); border-color: var(--yellow); font-weight: 900; }
         .cat-tab img { height: 18px; width: auto; }
         .cat-count { font-size: 11px; background: rgba(27,94,58,0.08); padding: 2px 7px; border-radius: 10px; font-weight: 600; }
-        .cat-tab.active .cat-count { background: rgba(255,255,255,0.2); color: #fff; }
+        .cat-tab.active .cat-count { background: rgba(27,94,58,0.15); color: var(--green-dark); }
 
         /* ─── PRODUCT BROWSER ─── */
         .cat-panel { display: none; animation: fadeSlide 0.35s ease; }
@@ -252,10 +250,7 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
 </div>
 
 <!-- ═══ CATEGORY TABS (straight into browser) ═══ -->
-<div class="cat-tabs-wrap" id="catTabs" style="margin-top:108px; padding-top:20px;">
-    <div style="max-width:1240px;margin:0 auto;padding:0 48px 12px;display:flex;align-items:center;justify-content:space-between;">
-        <nav class="breadcrumb" aria-label="breadcrumb"><a href="index.html">DailyFruits</a> › <strong style="color:var(--green-dark)">Oferta</strong></nav>
-    </div>
+<div class="cat-tabs-wrap" id="catTabs" style="margin-top:108px;">
     <div class="cat-tabs" role="tablist" aria-label="Kategorie produktów">
         <button class="cat-tab active" role="tab" aria-selected="true" data-cat="owoce"><img src="icon-owoce.svg" alt="" style="height:18px"> Owoce <span class="cat-count">6</span></button>
         <button class="cat-tab" role="tab" aria-selected="false" data-cat="kanapki"><img src="icon-kanapki.svg" alt="" style="height:14px"> Kanapki <span class="cat-count">4</span></button>
@@ -263,7 +258,6 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
         <button class="cat-tab" role="tab" aria-selected="false" data-cat="soki"><img src="icon-soki.svg" alt="" style="height:20px"> Soki <span class="cat-count">3</span></button>
         <button class="cat-tab" role="tab" aria-selected="false" data-cat="bakalie"><img src="icon-bakalie.svg" alt="" style="height:18px"> Bakalie <span class="cat-count">3</span></button>
         <button class="cat-tab" role="tab" aria-selected="false" data-cat="lody"><img src="icon-lody.svg" alt="" style="height:20px"> Lody <span class="cat-count">2</span></button>
-        <button class="cat-tab" role="tab" aria-selected="false" data-cat="kawa">☕ Kawa <span class="cat-count">3</span></button>
         <button class="cat-tab" role="tab" aria-selected="false" data-cat="extra">🎁 Paczki & Eventy <span class="cat-count">3</span></button>
     </div>
 </div>
@@ -388,24 +382,6 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
             <div class="product-card">
                 <div class="product-card-img"><img src="owoce-product-05.png" alt="Sorbety owocowe" loading="lazy"></div>
                 <div class="product-card-body"><span class="product-brand brand-df">DailyFruits</span><h3>Sorbety owocowe</h3><p>100% owoców, bez mleka. Mango, malina, passion fruit – wegańska alternatywa</p><a href="zapytanie.html" class="btn-sm">Złóż zapytanie →</a></div>
-            </div>
-        </div>
-    </div>
-
-    <!-- ── KAWA ── -->
-    <div class="cat-panel" data-cat="kawa" role="tabpanel">
-        <div class="products-grid">
-            <div class="product-card">
-                <div class="product-card-img"><span class="product-badge badge-bestseller">Bestseller</span><img src="box-kawki.webp" alt="Kawa ziarnista" loading="lazy"></div>
-                <div class="product-card-body"><span class="product-brand brand-dfo">DailyFoods</span><h3>Kawa ziarnista</h3><p>Z Małej Palarni – 100% Arabica i blendy Arabica/Robusta. Świeżo palona</p><a href="zapytanie.html" class="btn-sm">Złóż zapytanie →</a></div>
-            </div>
-            <div class="product-card">
-                <div class="product-card-img"><img src="kawa-product-03.png" alt="Ekspresy do biura" loading="lazy"></div>
-                <div class="product-card-body"><span class="product-brand brand-dfo">DailyFoods</span><h3>Ekspresy do biura</h3><p>Wynajem ekspresów automatycznych i kolbowych. Serwis i ziarna w pakiecie</p><a href="zapytanie.html" class="btn-sm">Złóż zapytanie →</a></div>
-            </div>
-            <div class="product-card">
-                <div class="product-card-img"><img src="kawa-product-01.png" alt="Akcesoria kawowe" loading="lazy"></div>
-                <div class="product-card-body"><span class="product-brand brand-dfo">DailyFoods</span><h3>Akcesoria i mleka</h3><p>Mleka roślinne (owsiane, migdałowe), kubki eco i filtry – kompletny kącik</p><a href="zapytanie.html" class="btn-sm">Złóż zapytanie →</a></div>
             </div>
         </div>
     </div>
