@@ -102,23 +102,21 @@
         .cat-panel.active { display: block; }
         @keyframes fadeSlide { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
 
-        .products-section { padding: 48px 0 80px; position: relative; overflow: hidden; }
-        .section-label { text-align: center; margin-bottom: 40px; }
-        .section-label h2 { margin-top: 12px; }
+        .products-section { padding: 24px 0 80px; position: relative; overflow: hidden; }
 
-        .products-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+        .products-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 14px; }
         .product-card { background: var(--white); border-radius: var(--radius); overflow: hidden; transition: transform 0.3s, box-shadow 0.3s; display: flex; flex-direction: column; }
         .product-card:hover { transform: translateY(-6px); box-shadow: 0 16px 48px rgba(27,94,58,0.1); }
-        .product-card-img { position: relative; background: #f8f7f0; padding: 20px; display: flex; align-items: center; justify-content: center; min-height: 200px; }
-        .product-card-img img { width: 80%; height: 180px; object-fit: contain; }
-        .product-badge { position: absolute; top: 12px; left: 12px; padding: 4px 12px; border-radius: var(--radius-pill); font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+        .product-card-img { position: relative; background: #f8f7f0; padding: 12px; display: flex; align-items: center; justify-content: center; min-height: 140px; }
+        .product-card-img img { width: 85%; height: 120px; object-fit: contain; }
+        .product-badge { position: absolute; top: 8px; left: 8px; padding: 3px 8px; border-radius: var(--radius-pill); font-size: 9px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
         .badge-bestseller { background: var(--red); color: #fff; }
         .badge-new { background: var(--lime); color: var(--green-dark); }
         .badge-popular { background: var(--yellow); color: var(--green-dark); }
-        .product-card-body { padding: 20px; flex: 1; display: flex; flex-direction: column; }
-        .product-card-body h3 { font-size: 17px; margin-bottom: 6px; }
-        .product-card-body p { font-size: 13px; margin: 0 0 16px; flex: 1; }
-        .product-card-body .btn-sm { display: inline-flex; align-items: center; gap: 6px; padding: 10px 20px; border-radius: var(--radius-pill); background: var(--green-dark); color: #fff; font-size: 13px; font-weight: 700; transition: all 0.2s; align-self: flex-start; }
+        .product-card-body { padding: 14px; flex: 1; display: flex; flex-direction: column; }
+        .product-card-body h3 { font-size: 13px; margin-bottom: 4px; line-height: 1.3; }
+        .product-card-body p { font-size: 11px; margin: 0 0 10px; flex: 1; line-height: 1.5; }
+        .product-card-body .btn-sm { display: inline-flex; align-items: center; gap: 4px; padding: 7px 14px; border-radius: var(--radius-pill); background: var(--green-dark); color: #fff; font-size: 11px; font-weight: 700; transition: all 0.2s; align-self: flex-start; }
         .product-card-body .btn-sm:hover { background: #144A2B; transform: translateY(-1px); }
         .product-brand { display: inline-block; padding: 3px 10px; border-radius: var(--radius-pill); font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px; }
         .brand-df { background: var(--lime-bg); color: var(--green-dark); }
@@ -154,9 +152,10 @@
         .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.5s, transform 0.5s; }
         .reveal.vis { opacity: 1; transform: translateY(0); }
 
-        @media (max-width: 1024px) { .container { padding: 0 36px; } .products-grid { grid-template-columns: repeat(2, 1fr); } .footer-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 1280px) { .products-grid { grid-template-columns: repeat(4, 1fr); } }
+        @media (max-width: 1024px) { .container { padding: 0 36px; } .products-grid { grid-template-columns: repeat(3, 1fr); } .footer-grid { grid-template-columns: repeat(2, 1fr); } }
         @media (max-width: 768px) { .container { padding: 0 20px; } .nav-links { display: none; } .nav-buttons .btn-outline { display: none; } .nav-trust { display: none; } .products-grid { grid-template-columns: repeat(2, 1fr); } .footer-grid { grid-template-columns: 1fr; } .cta-card { padding: 48px 24px; } .cta-btns { flex-direction: column; align-items: center; } .cta-btns .btn { text-align: center; justify-content: center; width: 100%; } .cat-tabs-wrap { top: 64px; } .cat-tabs { padding: 0 16px; gap: 6px; justify-content: flex-start; flex-wrap: nowrap; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; } .cat-tabs::-webkit-scrollbar { display: none; } .cat-tab { font-size: 13px; padding: 8px 14px; flex-shrink: 0; } .hamburger { display: flex; flex-direction: column; align-items: center; justify-content: center; } .mobile-drawer { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: var(--green-dark); z-index: 200; flex-direction: column; align-items: center; justify-content: center; gap: 0; opacity: 0; transform: translateY(-20px); transition: opacity 0.4s cubic-bezier(0.16,1,0.3,1), transform 0.4s cubic-bezier(0.16,1,0.3,1); pointer-events: none; } .mobile-drawer.open { display: flex; opacity: 1; transform: translateY(0); pointer-events: all; } .mobile-drawer a { font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 22px; color: #fff; padding: 16px 0; text-decoration: none; opacity: 0.8; transition: opacity 0.2s, color 0.2s; } .mobile-drawer a:hover { opacity: 1; color: #FFF200; } .mobile-drawer .mobile-cta { margin-top: 24px; padding: 14px 40px; background: #E43020; color: #fff; border-radius: 100px; font-weight: 900; font-size: 16px; opacity: 1; } .mobile-drawer-close { position: absolute; top: 20px; right: 20px; background: none; border: none; cursor: pointer; padding: 12px; z-index: 210; } .mobile-drawer-close span { display: block; width: 28px; height: 3px; background: #fff; border-radius: 2px; } .mobile-drawer-close span:first-child { transform: rotate(45deg) translate(1px, 1px); } .mobile-drawer-close span:last-child { transform: rotate(-45deg) translate(1px, -1px); } }
-        @media (max-width: 480px) { .products-grid { grid-template-columns: 1fr; } .product-card-img img { height: 140px; } }
+        @media (max-width: 480px) { .products-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; } .product-card-img img { height: 90px; } .product-card-body h3 { font-size: 12px; } .product-card-body p { display: none; } .product-card-body .btn-sm { font-size: 10px; padding: 6px 10px; } }
     
 /* ─── CITY INDEX ─── */
 .city-index { background: #163D28; padding: 48px 0 40px; }
@@ -275,11 +274,6 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
 
     <!-- ── OWOCE ── -->
     <div class="cat-panel active" data-cat="owoce" role="tabpanel">
-        <div class="section-label">
-            <div class="sticker sticker-lime" style="transform:rotate(-1deg)">🍎 DailyFruits</div>
-            <h2 style="margin-top:12px">Owoce i warzywa <span class="fun">do biura</span></h2>
-            <p style="max-width:520px;margin:10px auto 0;">Skrzynki abonamentowe, zestawy indywidualne i przekąski warzywne. Dostarczyliśmy ponad 2 000 000 od 2011 roku.</p>
-        </div>
         <div class="products-grid">
             <div class="product-card">
                 <div class="product-card-img"><span class="product-badge badge-popular">Low cost</span><img src="box_owoce_2.webp" alt="Zestaw Standard MIX" loading="lazy"></div>
@@ -310,11 +304,6 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
 
     <!-- ── KANAPKI ── -->
     <div class="cat-panel" data-cat="kanapki" role="tabpanel">
-        <div class="section-label">
-            <div class="sticker sticker-yellow" style="transform:rotate(1deg)">🥪 DailyFoods</div>
-            <h2 style="margin-top:12px">Kanapki i <span class="fun">lunche</span></h2>
-            <p style="max-width:520px;margin:10px auto 0;">Świeże kanapki, wrapy i zestawy lunchowe z dostawą codziennie rano. Idealne na spotkania i Kanapkowe Wtorki.</p>
-        </div>
         <div class="products-grid">
             <div class="product-card">
                 <div class="product-card-img"><span class="product-badge badge-bestseller">Bestseller</span><img src="kanapki-biuro-product-02.png" alt="Kanapki klasyczne" loading="lazy"></div>
@@ -337,11 +326,6 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
 
     <!-- ── ŚNIADANIA ── -->
     <div class="cat-panel" data-cat="sniadania" role="tabpanel">
-        <div class="section-label">
-            <div class="sticker sticker-yellow" style="transform:rotate(-1deg)">🥣 DailyFoods</div>
-            <h2 style="margin-top:12px">Produkty <span class="fun">śniadaniowe</span></h2>
-            <p style="max-width:520px;margin:10px auto 0;">Musli, jogurty, granola, dżemy i pieczywo – wszystko czego potrzeba do zdrowego śniadania w biurze.</p>
-        </div>
         <div class="products-grid">
             <div class="product-card">
                 <div class="product-card-img"><span class="product-badge badge-bestseller">Bestseller</span><img src="box-sniadaniowe.webp" alt="Zestaw śniadaniowy" loading="lazy"></div>
@@ -360,11 +344,6 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
 
     <!-- ── SOKI ── -->
     <div class="cat-panel" data-cat="soki" role="tabpanel">
-        <div class="section-label">
-            <div class="sticker sticker-lime" style="transform:rotate(1deg)">🧃 DailyFruits</div>
-            <h2 style="margin-top:12px">Soki i <span class="fun">napoje</span></h2>
-            <p style="max-width:520px;margin:10px auto 0;">Świeżo wyciskane soki, smoothie, kombucha i napoje zdrowotne. Bez cukru, bez konserwantów.</p>
-        </div>
         <div class="products-grid">
             <div class="product-card">
                 <div class="product-card-img"><span class="product-badge badge-bestseller">Bestseller</span><img src="box-soki1.webp" alt="Soki świeżo wyciskane" loading="lazy"></div>
@@ -383,11 +362,6 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
 
     <!-- ── BAKALIE ── -->
     <div class="cat-panel" data-cat="bakalie" role="tabpanel">
-        <div class="section-label">
-            <div class="sticker sticker-lime" style="transform:rotate(-1deg)">🥜 DailyFruits</div>
-            <h2 style="margin-top:12px">Bakalie i owoce <span class="fun">suszone</span></h2>
-            <p style="max-width:520px;margin:10px auto 0;">Orzechy, migdały, suszone mango, żurawina i mieszanki trail mix. Zdrowe przekąski na każdą porę dnia.</p>
-        </div>
         <div class="products-grid">
             <div class="product-card">
                 <div class="product-card-img"><span class="product-badge badge-bestseller">Bestseller</span><img src="box-bakalie1.webp" alt="Bakalie mix" loading="lazy"></div>
@@ -406,11 +380,6 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
 
     <!-- ── LODY ── -->
     <div class="cat-panel" data-cat="lody" role="tabpanel">
-        <div class="section-label">
-            <div class="sticker sticker-coral" style="transform:rotate(1deg)">🍦 DailyFruits</div>
-            <h2 style="margin-top:12px">Lody <span class="fun">do biura</span></h2>
-            <p style="max-width:520px;margin:10px auto 0;">Rzemieślnicze lody w porach letnich. Idealne na team building i firmowe piątki.</p>
-        </div>
         <div class="products-grid">
             <div class="product-card">
                 <div class="product-card-img"><span class="product-badge badge-popular">Popularne</span><img src="box-lody.webp" alt="Lody rzemieślnicze" loading="lazy"></div>
@@ -425,11 +394,6 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
 
     <!-- ── KAWA ── -->
     <div class="cat-panel" data-cat="kawa" role="tabpanel">
-        <div class="section-label">
-            <div class="sticker sticker-yellow" style="transform:rotate(-1deg)">☕ DailyFoods</div>
-            <h2 style="margin-top:12px">Kawa <span class="fun">do firmy</span></h2>
-            <p style="max-width:520px;margin:10px auto 0;">Kawa w ziarnach z Małej Palarni, ekspresy, mleka roślinne i akcesoria baristyczne. Pełny kącik kawowy.</p>
-        </div>
         <div class="products-grid">
             <div class="product-card">
                 <div class="product-card-img"><span class="product-badge badge-bestseller">Bestseller</span><img src="box-kawki.webp" alt="Kawa ziarnista" loading="lazy"></div>
@@ -448,11 +412,6 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
 
     <!-- ── PACZKI & EVENTY ── -->
     <div class="cat-panel" data-cat="extra" role="tabpanel">
-        <div class="section-label">
-            <div class="sticker sticker-yellow" style="transform:rotate(1deg)">🎁 DailyFoods</div>
-            <h2 style="margin-top:12px">Paczki, eventy, <span class="fun">upominki</span></h2>
-            <p style="max-width:520px;margin:10px auto 0;">Welcome packi dla nowych pracowników, zestawy świąteczne i catering na firmowe wydarzenia.</p>
-        </div>
         <div class="products-grid">
             <div class="product-card">
                 <div class="product-card-img"><span class="product-badge badge-popular">Popularne</span><img src="owoce-product-04.png" alt="Welcome Pack" loading="lazy"></div>
