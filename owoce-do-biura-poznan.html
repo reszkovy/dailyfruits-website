@@ -476,8 +476,6 @@ if (hamburger && drawer) {
     drawerClose?.addEventListener('click', () => { drawer.classList.remove('open'); hamburger.classList.remove('open'); });
     drawer.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { drawer.classList.remove('open'); hamburger.classList.remove('open'); }));
 }
-document.querySelectorAll(');
-});
 const obs = new IntersectionObserver((entries) => { entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('vis'); obs.unobserve(e.target); } }); }, { threshold: 0.15 });
 document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 setTimeout(() => { document.querySelectorAll('.reveal').forEach(el => el.classList.add('vis')); }, 2000);
