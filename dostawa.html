@@ -141,17 +141,6 @@
         .marquee-item .highlight { color: var(--lime); }
         @keyframes marquee-slide { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
 
-        .faq-section { padding: 80px 0; background: var(--white); }
-        .faq-grid { display: grid; grid-template-columns: 1fr; gap: 16px; margin-top: 48px; }
-        .faq-item { background: var(--cream); border-radius: var(--radius); overflow: hidden; transition: all 0.3s; }
-        .faq-header { padding: 28px 32px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-weight: 700; color: var(--green-dark); }
-        .faq-header:hover { background: var(--lime-bg); }
-        .faq-toggle { font-size: 24px; transition: transform 0.3s; }
-        .faq-item.open .faq-toggle { transform: rotate(45deg); }
-        .faq-content { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; }
-        .faq-item.open .faq-content { max-height: 500px; }
-        .faq-text { padding: 0 32px 28px 32px; color: var(--gray); line-height: 1.7; }
-
         .city-cta { padding: 80px 0; background: var(--green-dark); text-align: center; color: #fff; }
         .city-cta h2 { color: #fff; margin-bottom: 12px; }
         .city-cta h2 .fun { color: var(--yellow); }
@@ -238,7 +227,26 @@
 .mobile-sticky-cta .cta-primary{background:#E43020;color:#fff}
 .mobile-sticky-cta .cta-secondary{background:transparent;color:#fff;border:1px solid rgba(255,255,255,0.3)}
 @media(max-width:768px){.mobile-sticky-cta{display:block}}
-section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px}.logo-bar,.city-index,footer{content-visibility:auto;contain-intrinsic-size:auto 200px}</style>
+section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px}.logo-bar,.city-index,footer{content-visibility:auto;contain-intrinsic-size:auto 200px}
+        /* Nav hide on scroll */
+        header { transition: transform 0.35s cubic-bezier(0.16,1,0.3,1); }
+        header.nav-hidden { transform: translateY(-100%); }
+
+        
+        /* ─── FAQ (homepage style) ─── */
+        .faq-section { padding: 80px 0; background: var(--white); }
+        .faq-list { max-width: 760px; margin: 0 auto; }
+        .faq-item { border-bottom: 2px solid var(--lime-bg); }
+        .faq-q { width: 100%; background: none; border: none; padding: 22px 0; display: flex; justify-content: space-between; align-items: center; cursor: pointer; font-family: var(--font); font-size: 16px; font-weight: 700; color: var(--green-dark); text-align: left; }
+        .faq-q:hover { color: var(--lime); }
+        .faq-icon { width: 36px; height: 36px; border-radius: 50%; background: rgba(141,198,63,0.15); display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: all 0.4s cubic-bezier(0.16,1,0.3,1); font-size: 0; }
+        .faq-icon::after { content: ''; display: block; width: 16px; height: 14px; background: url("data:image/svg+xml,%3Csvg viewBox='0 0 219 191' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M209.884 59.0475C214.187 60.2087 217.232 64.0499 217.341 68.5054L218.469 114.758C218.574 119.061 215.914 122.949 211.864 124.409L39.139 186.699C33.9498 188.571 28.2252 185.886 26.3452 180.7L15.9853 152.121C14.0709 146.84 16.881 141.018 22.2069 139.232L127.617 103.879C136.827 100.79 136.664 87.7222 127.368 84.8975C88.237 73.0061 48.9383 61.5681 9.47212 51.7133C4.20737 50.3987 0.917487 45.1492 2.06756 39.8461L8.53735 10.0131C9.72811 4.52238 15.2089 1.08528 20.653 2.4737C84.568 18.774 146.42 41.9206 209.884 59.0475Z' fill='%231B5E3A'/%3E%3C/svg%3E") no-repeat center / contain; transition: transform 0.4s cubic-bezier(0.16,1,0.3,1); transform: rotate(90deg); }
+        .faq-item.open .faq-icon { background: var(--lime); }
+        .faq-item.open .faq-icon::after { filter: brightness(0) invert(1); transform: rotate(-90deg); }
+        .faq-a { max-height: 0; overflow: hidden; transition: max-height 0.35s ease; }
+        .faq-a-inner { padding: 0 0 22px; font-size: 15px; line-height: 1.8; color: var(--gray); }
+
+        </style>
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -545,65 +553,17 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
 <section class="faq-section">
     <div class="container">
         <div class="section-top reveal">
-            <div class="sticker sticker-red" style="transform:rotate(1deg)">Masz pytania?</div>
+            <div class="sticker sticker-lime" style="transform:rotate(1deg)">FAQ</div>
             <h2 style="margin-top:20px">Najczęstsze <span class="fun">pytania</span></h2>
             <p>Wszystko co powinieneś wiedzieć o dostawie</p>
         </div>
-        <div class="faq-grid">
-            <div class="faq-item reveal">
-                <div class="faq-header">
-                    <span>O której dostarczacie?</span>
-                    <span class="faq-toggle">+</span>
-                </div>
-                <div class="faq-content">
-                    <div class="faq-text">Dowozimy rano, między 6:00 a 9:00, tak aby owoce czekały na zespół zanim dotarcie do biura. Harmonogram dostosowujemy do Waszych potrzeb — jeśli pracujecie w innym czasie, umawiamy się na inne godziny.</div>
-                </div>
-            </div>
-            <div class="faq-item reveal">
-                <div class="faq-header">
-                    <span>Czy mogę zmienić dzień dostawy?</span>
-                    <span class="faq-toggle">+</span>
-                </div>
-                <div class="faq-content">
-                    <div class="faq-text">Tak, wystarczy poinformować nas do 12:00 dnia poprzedniego. Elastyczność to fundament naszego modelu — zmieniaj harmonogram bez kar, bez dodatkowych kosztów. Wiem, że w biurze nie zawsze wszystko jest planowalne.</div>
-                </div>
-            </div>
-            <div class="faq-item reveal">
-                <div class="faq-header">
-                    <span>Co jeśli owoce nie są świeże?</span>
-                    <span class="faq-toggle">+</span>
-                </div>
-                <div class="faq-content">
-                    <div class="faq-text">Wymieniamy w ciągu 24 godzin, bez dodatkowych kosztów. Jakość jest naszym priorytetem — każdą reklamację obsługujemy szybko i bez dyskusji. Jeśli coś się nie podoba, daj nam znać jeszcze w dzień dostawy.</div>
-                </div>
-            </div>
-            <div class="faq-item reveal">
-                <div class="faq-header">
-                    <span>Czy jest minimalny okres umowy?</span>
-                    <span class="faq-toggle">+</span>
-                </div>
-                <div class="faq-content">
-                    <div class="faq-text">Nie. Subskrypcja bez zobowiązań — anuluj kiedy chcesz. Brak ukrytych kosztów, brak kar za rezygnację. Płacisz za miesiąc, który wykorzystujesz. Chcemy, abyś pracował z nami dlatego że chcesz, nie dlatego że musisz.</div>
-                </div>
-            </div>
-            <div class="faq-item reveal">
-                <div class="faq-header">
-                    <span>Ile kosztuje dostawa?</span>
-                    <span class="faq-toggle">+</span>
-                </div>
-                <div class="faq-content">
-                    <div class="faq-text">Dostawa jest wliczona w cenę abonamentu. Brak ukrytych kosztów, brak dodatkowych opłat za zmianę harmonogramu. Wszystko jest jasne od początku — cena którą widzisz to cena którą płacisz.</div>
-                </div>
-            </div>
-            <div class="faq-item reveal">
-                <div class="faq-header">
-                    <span>Czy dostarczacie w weekendy?</span>
-                    <span class="faq-toggle">+</span>
-                </div>
-                <div class="faq-content">
-                    <div class="faq-text">Standardowo dostarczamy w dni robocze (poniedziałek–piątek). Eventy, spotkania i konferencje realizujemy też w weekendy — wystarczy nas o tym poinformować z odpowiednim wyprzedzeniem.</div>
-                </div>
-            </div>
+        <div class="faq-list">
+            <div class="faq-item"><button class="faq-q"><span>O której dostarczacie?</span><span class="faq-icon"></span></button><div class="faq-a"><div class="faq-a-inner">Dowozimy rano, między 6:00 a 9:00, tak aby owoce czekały na zespół zanim dotarcie do biura. Harmonogram dostosowujemy do Waszych potrzeb — jeśli pracujecie w innym czasie, umawiamy się na inne godziny.</div></div></div>
+            <div class="faq-item"><button class="faq-q"><span>Czy mogę zmienić dzień dostawy?</span><span class="faq-icon"></span></button><div class="faq-a"><div class="faq-a-inner">Tak, wystarczy poinformować nas do 12:00 dnia poprzedniego. Elastyczność to fundament naszego modelu — zmieniaj harmonogram bez kar, bez dodatkowych kosztów. Wiem, że w biurze nie zawsze wszystko jest planowalne.</div></div></div>
+            <div class="faq-item"><button class="faq-q"><span>Co jeśli owoce nie są świeże?</span><span class="faq-icon"></span></button><div class="faq-a"><div class="faq-a-inner">Wymieniamy w ciągu 24 godzin, bez dodatkowych kosztów. Jakość jest naszym priorytetem — każdą reklamację obsługujemy szybko i bez dyskusji. Jeśli coś się nie podoba, daj nam znać jeszcze w dzień dostawy.</div></div></div>
+            <div class="faq-item"><button class="faq-q"><span>Czy jest minimalny okres umowy?</span><span class="faq-icon"></span></button><div class="faq-a"><div class="faq-a-inner">Nie. Subskrypcja bez zobowiązań — anuluj kiedy chcesz. Brak ukrytych kosztów, brak kar za rezygnację. Płacisz za miesiąc, który wykorzystujesz. Chcemy, abyś pracował z nami dlatego że chcesz, nie dlatego że musisz.</div></div></div>
+            <div class="faq-item"><button class="faq-q"><span>Ile kosztuje dostawa?</span><span class="faq-icon"></span></button><div class="faq-a"><div class="faq-a-inner">Dostawa jest wliczona w cenę abonamentu. Brak ukrytych kosztów, brak dodatkowych opłat za zmianę harmonogramu. Wszystko jest jasne od początku — cena którą widzisz to cena którą płacisz.</div></div></div>
+            <div class="faq-item"><button class="faq-q"><span>Czy dostarczacie w weekendy?</span><span class="faq-icon"></span></button><div class="faq-a"><div class="faq-a-inner">Standardowo dostarczamy w dni robocze (poniedziałek–piątek). Eventy, spotkania i konferencje realizujemy też w weekendy — wystarczy nas o tym poinformować z odpowiednim wyprzedzeniem.</div></div></div>
         </div>
     </div>
 </section>
@@ -676,11 +636,7 @@ if (hamburger && drawer) {
     drawer.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { drawer.classList.remove('open'); hamburger.classList.remove('open'); }));
 }
 // FAQ accordion
-document.querySelectorAll('.faq-header').forEach(header => {
-    header.addEventListener('click', () => {
-        const item = header.closest('.faq-item');
-        item.classList.toggle('open');
-    });
+document.querySelectorAll(');
 });
 // Reveal
 const obs = new IntersectionObserver((entries) => { entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('vis'); obs.unobserve(e.target); } }); }, { threshold: 0.15 });
@@ -718,6 +674,46 @@ if (van) {
 
 <script>
 (function(){var c=document.getElementById('mobileCta');if(!c)return;var shown=false;window.addEventListener('scroll',function(){if(window.scrollY>600&&!shown){c.classList.add('visible');shown=true}else if(window.scrollY<=600&&shown){c.classList.remove('visible');shown=false}},{passive:true})})();
+
+    // Nav hide on scroll down, show on scroll up
+    (function() {
+        const header = document.querySelector('header');
+        if (!header) return;
+        let lastY = window.scrollY;
+        let ticking = false;
+        window.addEventListener('scroll', () => {
+            if (!ticking) {
+                window.requestAnimationFrame(() => {
+                    const y = window.scrollY;
+                    if (y > 120 && y > lastY) {
+                        header.classList.add('nav-hidden');
+                    } else {
+                        header.classList.remove('nav-hidden');
+                    }
+                    lastY = y;
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        });
+    })();
+
+
+    // FAQ toggle
+    document.querySelectorAll('.faq-q').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const item = btn.closest('.faq-item');
+            const wasOpen = item.classList.contains('open');
+            // Close all
+            document.querySelectorAll('.faq-item').forEach(i => { i.classList.remove('open'); i.querySelector('.faq-a').style.maxHeight = null; });
+            if (!wasOpen) {
+                item.classList.add('open');
+                const answer = item.querySelector('.faq-a');
+                answer.style.maxHeight = answer.scrollHeight + 'px';
+            }
+        });
+    });
+
 </script>
 </body>
 </html>

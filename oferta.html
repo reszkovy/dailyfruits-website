@@ -170,7 +170,12 @@
 .mobile-sticky-cta .cta-primary{background:#E43020;color:#fff}
 .mobile-sticky-cta .cta-secondary{background:transparent;color:#fff;border:1px solid rgba(255,255,255,0.3)}
 @media(max-width:768px){.mobile-sticky-cta{display:block}}
-section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px}.logo-bar,.city-index,footer{content-visibility:auto;contain-intrinsic-size:auto 200px}</style>
+section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px}.logo-bar,.city-index,footer{content-visibility:auto;contain-intrinsic-size:auto 200px}
+        /* Nav hide on scroll */
+        header { transition: transform 0.35s cubic-bezier(0.16,1,0.3,1); }
+        header.nav-hidden { transform: translateY(-100%); }
+
+        </style>
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://dailyfruits.pl/oferta">
 <script type="application/ld+json">
@@ -556,6 +561,30 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
 
 <script>
 (function(){var c=document.getElementById('mobileCta');if(!c)return;var shown=false;window.addEventListener('scroll',function(){if(window.scrollY>600&&!shown){c.classList.add('visible');shown=true}else if(window.scrollY<=600&&shown){c.classList.remove('visible');shown=false}},{passive:true})})();
+
+    // Nav hide on scroll down, show on scroll up
+    (function() {
+        const header = document.querySelector('header');
+        if (!header) return;
+        let lastY = window.scrollY;
+        let ticking = false;
+        window.addEventListener('scroll', () => {
+            if (!ticking) {
+                window.requestAnimationFrame(() => {
+                    const y = window.scrollY;
+                    if (y > 120 && y > lastY) {
+                        header.classList.add('nav-hidden');
+                    } else {
+                        header.classList.remove('nav-hidden');
+                    }
+                    lastY = y;
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        });
+    })();
+
 </script>
 </body>
 </html><!-- sync-test -->

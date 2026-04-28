@@ -102,16 +102,6 @@
         .benefit-card h3 { margin-bottom: 12px; }
         .benefit-card p { font-size: 15px; }
 
-        .faq-section { padding: 80px 0; background: var(--cream); }
-        .faq-content { max-width: 720px; margin: 0 auto; }
-        .faq-item { margin-bottom: 20px; background: var(--white); border-radius: var(--radius); overflow: hidden; }
-        .faq-question { padding: 24px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-weight: 700; user-select: none; transition: background 0.2s; }
-        .faq-question:hover { background: var(--lime-bg); }
-        .faq-question::after { content: '+'; font-size: 24px; color: var(--lime); transition: transform 0.3s; }
-        .faq-item.open .faq-question::after { transform: rotate(45deg); }
-        .faq-answer { display: none; padding: 0 24px 24px; color: var(--gray); line-height: 1.7; }
-        .faq-item.open .faq-answer { display: block; }
-
         .city-cta { padding: 80px 0; background: var(--green-dark); text-align: center; color: #fff; }
         .city-cta h2 { color: #fff; margin-bottom: 12px; }
         .city-cta h2 .fun { color: var(--yellow); }
@@ -191,7 +181,26 @@
 .mobile-sticky-cta .cta-primary{background:#E43020;color:#fff}
 .mobile-sticky-cta .cta-secondary{background:transparent;color:#fff;border:1px solid rgba(255,255,255,0.3)}
 @media(max-width:768px){.mobile-sticky-cta{display:block}}
-section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px}.logo-bar,.city-index,footer{content-visibility:auto;contain-intrinsic-size:auto 200px}</style>
+section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px}.logo-bar,.city-index,footer{content-visibility:auto;contain-intrinsic-size:auto 200px}
+        /* Nav hide on scroll */
+        header { transition: transform 0.35s cubic-bezier(0.16,1,0.3,1); }
+        header.nav-hidden { transform: translateY(-100%); }
+
+        
+        /* ─── FAQ (homepage style) ─── */
+        .faq-section { padding: 80px 0; background: var(--white); }
+        .faq-list { max-width: 760px; margin: 0 auto; }
+        .faq-item { border-bottom: 2px solid var(--lime-bg); }
+        .faq-q { width: 100%; background: none; border: none; padding: 22px 0; display: flex; justify-content: space-between; align-items: center; cursor: pointer; font-family: var(--font); font-size: 16px; font-weight: 700; color: var(--green-dark); text-align: left; }
+        .faq-q:hover { color: var(--lime); }
+        .faq-icon { width: 36px; height: 36px; border-radius: 50%; background: rgba(141,198,63,0.15); display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: all 0.4s cubic-bezier(0.16,1,0.3,1); font-size: 0; }
+        .faq-icon::after { content: ''; display: block; width: 16px; height: 14px; background: url("data:image/svg+xml,%3Csvg viewBox='0 0 219 191' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M209.884 59.0475C214.187 60.2087 217.232 64.0499 217.341 68.5054L218.469 114.758C218.574 119.061 215.914 122.949 211.864 124.409L39.139 186.699C33.9498 188.571 28.2252 185.886 26.3452 180.7L15.9853 152.121C14.0709 146.84 16.881 141.018 22.2069 139.232L127.617 103.879C136.827 100.79 136.664 87.7222 127.368 84.8975C88.237 73.0061 48.9383 61.5681 9.47212 51.7133C4.20737 50.3987 0.917487 45.1492 2.06756 39.8461L8.53735 10.0131C9.72811 4.52238 15.2089 1.08528 20.653 2.4737C84.568 18.774 146.42 41.9206 209.884 59.0475Z' fill='%231B5E3A'/%3E%3C/svg%3E") no-repeat center / contain; transition: transform 0.4s cubic-bezier(0.16,1,0.3,1); transform: rotate(90deg); }
+        .faq-item.open .faq-icon { background: var(--lime); }
+        .faq-item.open .faq-icon::after { filter: brightness(0) invert(1); transform: rotate(-90deg); }
+        .faq-a { max-height: 0; overflow: hidden; transition: max-height 0.35s ease; }
+        .faq-a-inner { padding: 0 0 22px; font-size: 15px; line-height: 1.8; color: var(--gray); }
+
+        </style>
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -420,29 +429,15 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
 <section class="faq-section">
     <div class="container">
         <div class="section-top reveal">
-            <h2>Najczęściej <span class="fun">pytane</span></h2>
+            <div class="sticker sticker-lime" style="transform:rotate(1deg)">FAQ</div>
+            <h2 style="margin-top:20px">Najczęściej <span class="fun">pytane</span></h2>
         </div>
-        <div class="faq-content">
-            <div class="faq-item">
-                <div class="faq-question">Ile kosztują kanapki do biura?</div>
-                <div class="faq-answer">Cena zależy od wielkości zamówienia. Od ok. 12 PLN/kanapka przy regularnej subskrypcji. Im częściej zamawiasz, tym niższa cena jednostkowa. Oferujemy też zniżki dla dużych zespołów (20+ osób).</div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-question">Czy mogę wybrać skład kanapek?</div>
-                <div class="faq-answer">Tak, dopasowujemy menu do preferencji zespołu. Obsługujemy diety wegetariańskie, bezglutenowe, wegańskie i allergenem-free. Możesz wybrać kanapki klasyczne lub premium, a my budujemy menu pod Wasze potrzeby.</div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-question">Jak świeże są kanapki?</div>
-                <div class="faq-answer">Przygotowywane tego samego dnia rano, dostarczane przed 9:00. Używamy świeżych składników, chlebów od lokalnych piekarni i opakowań biodegradowalnych, aby zapewniać świeżość i jakość.</div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-question">Czy muszę zamawiać co tydzień?</div>
-                <div class="faq-answer">Nie. Wybierz częstotliwość: codziennie, 2x/tydzień, 1x/tydzień lub Kanapkowe Wtorki co drugi wtorek. Elastyczne umowy bez zobowiązań długoterminowych — zmieniaj plan kiedy chcesz.</div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-question">Czy mogę zamówić na spotkanie firmowe?</div>
-                <div class="faq-answer">Tak, realizujemy także jednorazowe zamówienia na eventy, spotkania i konferencje. Minimum 48h notice. Dostarczamy z naczyniami i serwetkami, a my zajmujemy się wszystkim.</div>
-            </div>
+        <div class="faq-list">
+            <div class="faq-item"><button class="faq-q"><span>Ile kosztują kanapki do biura?</span><span class="faq-icon"></span></button><div class="faq-a"><div class="faq-a-inner">Cena zależy od wielkości zamówienia. Od ok. 12 PLN/kanapka przy regularnej subskrypcji. Im częściej zamawiasz, tym niższa cena jednostkowa. Oferujemy też zniżki dla dużych zespołów (20+ osób).</div></div></div>
+            <div class="faq-item"><button class="faq-q"><span>Czy mogę wybrać skład kanapek?</span><span class="faq-icon"></span></button><div class="faq-a"><div class="faq-a-inner">Tak, dopasowujemy menu do preferencji zespołu. Obsługujemy diety wegetariańskie, bezglutenowe, wegańskie i allergenem-free. Możesz wybrać kanapki klasyczne lub premium, a my budujemy menu pod Wasze potrzeby.</div></div></div>
+            <div class="faq-item"><button class="faq-q"><span>Jak świeże są kanapki?</span><span class="faq-icon"></span></button><div class="faq-a"><div class="faq-a-inner">Przygotowywane tego samego dnia rano, dostarczane przed 9:00. Używamy świeżych składników, chlebów od lokalnych piekarni i opakowań biodegradowalnych, aby zapewniać świeżość i jakość.</div></div></div>
+            <div class="faq-item"><button class="faq-q"><span>Czy muszę zamawiać co tydzień?</span><span class="faq-icon"></span></button><div class="faq-a"><div class="faq-a-inner">Nie. Wybierz częstotliwość: codziennie, 2x/tydzień, 1x/tydzień lub Kanapkowe Wtorki co drugi wtorek. Elastyczne umowy bez zobowiązań długoterminowych — zmieniaj plan kiedy chcesz.</div></div></div>
+            <div class="faq-item"><button class="faq-q"><span>Czy mogę zamówić na spotkanie firmowe?</span><span class="faq-icon"></span></button><div class="faq-a"><div class="faq-a-inner">Tak, realizujemy także jednorazowe zamówienia na eventy, spotkania i konferencje. Minimum 48h notice. Dostarczamy z naczyniami i serwetkami, a my zajmujemy się wszystkim.</div></div></div>
         </div>
     </div>
 </section>
@@ -520,11 +515,7 @@ document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 // Fallback reveal timer
 setTimeout(() => { document.querySelectorAll('.reveal:not(.vis)').forEach(el => el.classList.add('vis')); }, 2000);
 // FAQ accordion
-document.querySelectorAll('.faq-question').forEach(q => {
-    q.addEventListener('click', function() {
-        const item = this.parentElement;
-        item.classList.toggle('open');
-    });
+document.querySelectorAll(');
 });
 </script>
 
@@ -538,6 +529,46 @@ document.querySelectorAll('.faq-question').forEach(q => {
 
 <script>
 (function(){var c=document.getElementById('mobileCta');if(!c)return;var shown=false;window.addEventListener('scroll',function(){if(window.scrollY>600&&!shown){c.classList.add('visible');shown=true}else if(window.scrollY<=600&&shown){c.classList.remove('visible');shown=false}},{passive:true})})();
+
+    // Nav hide on scroll down, show on scroll up
+    (function() {
+        const header = document.querySelector('header');
+        if (!header) return;
+        let lastY = window.scrollY;
+        let ticking = false;
+        window.addEventListener('scroll', () => {
+            if (!ticking) {
+                window.requestAnimationFrame(() => {
+                    const y = window.scrollY;
+                    if (y > 120 && y > lastY) {
+                        header.classList.add('nav-hidden');
+                    } else {
+                        header.classList.remove('nav-hidden');
+                    }
+                    lastY = y;
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        });
+    })();
+
+
+    // FAQ toggle
+    document.querySelectorAll('.faq-q').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const item = btn.closest('.faq-item');
+            const wasOpen = item.classList.contains('open');
+            // Close all
+            document.querySelectorAll('.faq-item').forEach(i => { i.classList.remove('open'); i.querySelector('.faq-a').style.maxHeight = null; });
+            if (!wasOpen) {
+                item.classList.add('open');
+                const answer = item.querySelector('.faq-a');
+                answer.style.maxHeight = answer.scrollHeight + 'px';
+            }
+        });
+    });
+
 </script>
 </body>
 </html>
