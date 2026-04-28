@@ -167,7 +167,7 @@
 .mobile-sticky-cta .cta-primary{background:#E43020;color:#fff}
 .mobile-sticky-cta .cta-secondary{background:transparent;color:#fff;border:1px solid rgba(255,255,255,0.3)}
 @media(max-width:768px){.mobile-sticky-cta{display:block}}
-section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px}.logo-bar,.city-index,footer{content-visibility:auto;contain-intrinsic-size:auto 200px}</style>
+section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px}.logo-bar,.city-index,footer{content-visibility:auto;contain-intrinsic-size:auto 200px}.blog-filters-bar{position:fixed;bottom:0;left:0;right:0;z-index:90;background:#1B5E3A;padding:12px 0;box-shadow:0 -4px 20px rgba(27,94,58,0.25)}.blog-filters{display:flex;justify-content:center;gap:8px;flex-wrap:wrap}.filter-btn{display:inline-flex;align-items:center;gap:6px;padding:7px 18px;border-radius:100px;font-family:"DM Sans",sans-serif;font-weight:700;font-size:12px;border:2px solid rgba(255,255,255,0.2);background:transparent;color:rgba(255,255,255,0.7);cursor:pointer;transition:all 0.25s;text-transform:uppercase;letter-spacing:0.5px;text-decoration:none}.filter-btn:hover{border-color:#8DC63F;color:#fff;background:rgba(141,198,63,0.15)}.filter-btn.active{background:#8DC63F;color:#1B5E3A;border-color:#8DC63F}.filter-btn .count{font-weight:400;opacity:0.6;font-size:11px}</style>
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://dailyfruits.pl/wpis-witamina-d">
     <script type="application/ld+json">
@@ -436,5 +436,6 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
 <script>
 (function(){var c=document.getElementById('mobileCta');if(!c)return;var shown=false;window.addEventListener('scroll',function(){if(window.scrollY>600&&!shown){c.classList.add('visible');shown=true}else if(window.scrollY<=600&&shown){c.classList.remove('visible');shown=false}},{passive:true})})();
 </script>
+<div class="blog-filters-bar"><div style="max-width:1240px;margin:0 auto;padding:0 48px"><div class="blog-filters"><a href="blog.html" class="filter-btn active">Wszystkie <span class="count">6</span></a><a href="blog.html?cat=Zdrowie" class="filter-btn">Zdrowie <span class="count">4</span></a><a href="blog.html?cat=Edukacja" class="filter-btn">Edukacja <span class="count">1</span></a><a href="blog.html?cat=ESG" class="filter-btn">ESG <span class="count">1</span></a></div></div></div>
 </body>
 </html>
