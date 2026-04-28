@@ -209,7 +209,6 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
         .faq-item { border-bottom: 2px solid var(--lime-bg); }
         .faq-q { width: 100%; background: none; border: none; padding: 22px 0; display: flex; justify-content: space-between; align-items: center; cursor: pointer; font-family: var(--font); font-size: 16px; font-weight: 700; color: var(--green-dark); text-align: left; }
         .faq-q:hover { color: var(--lime); }
-        .faq-icon { width: 36px; height: 36px; border-radius: 50%; background: rgba(141,198,63,0.15); display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: all 0.4s cubic-bezier(0.16,1,0.3,1); font-size: 0; }
         .faq-icon::after { content: ''; display: block; width: 16px; height: 14px; background: url("data:image/svg+xml,%3Csvg viewBox='0 0 219 191' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M209.884 59.0475C214.187 60.2087 217.232 64.0499 217.341 68.5054L218.469 114.758C218.574 119.061 215.914 122.949 211.864 124.409L39.139 186.699C33.9498 188.571 28.2252 185.886 26.3452 180.7L15.9853 152.121C14.0709 146.84 16.881 141.018 22.2069 139.232L127.617 103.879C136.827 100.79 136.664 87.7222 127.368 84.8975C88.237 73.0061 48.9383 61.5681 9.47212 51.7133C4.20737 50.3987 0.917487 45.1492 2.06756 39.8461L8.53735 10.0131C9.72811 4.52238 15.2089 1.08528 20.653 2.4737C84.568 18.774 146.42 41.9206 209.884 59.0475Z' fill='%231B5E3A'/%3E%3C/svg%3E") no-repeat center / contain; transition: transform 0.4s cubic-bezier(0.16,1,0.3,1); transform: rotate(90deg); }
         .faq-item.open .faq-icon { background: var(--lime); }
         .faq-item.open .faq-icon::after { filter: brightness(0) invert(1); transform: rotate(-90deg); }
@@ -399,27 +398,12 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
             <h2>Najczęstsze pytania</h2>
             <p>Odpowiedzi na pytania o dostawy owoców do biur w Bydgoszczy.</p>
         </div>
-        <div class="faq-list">
-            <div class="faq-item reveal">
-                <div class="faq-header"><h3>Czy DailyFruits dostarcza owoce do biur w Bydgoszczy?</h3><span class="faq-icon">+</span></div>
-                <div class="faq-body"><p>Tak — obsługujemy całą Bydgoszcz, w tym centrum, Fordon, Bartodzieje i inne dzielnice.</p></div>
-            </div>
-            <div class="faq-item reveal">
-                <div class="faq-header"><h3>Ile kosztuje dostawa owoców do biura w Bydgoszczy?</h3><span class="faq-icon">+</span></div>
-                <div class="faq-body"><p>Dostawa jest bezpłatna w ramach abonamentu. Wycenę dopasowaną do zespołu otrzymasz w ciągu 2h.</p></div>
-            </div>
-            <div class="faq-item reveal">
-                <div class="faq-header"><h3>Czy obsługujecie też Toruń?</h3><span class="faq-icon">+</span></div>
-                <div class="faq-body"><p>Tak — oprócz Bydgoszczy dostarczamy również do biur w Toruniu i okolicznych miastach.</p></div>
-            </div>
-            <div class="faq-item reveal">
-                <div class="faq-header"><h3>Jak szybko mogę otrzymać pierwszą dostawę w Bydgoszczy?</h3><span class="faq-icon">+</span></div>
-                <div class="faq-body"><p>Pierwsza dostawa jest możliwa w 24-48h od złożenia zamówienia.</p></div>
-            </div>
-            <div class="faq-item reveal">
-                <div class="faq-header"><h3>Jakie produkty dostarczacie do biur w Bydgoszczy?</h3><span class="faq-icon">+</span></div>
-                <div class="faq-body"><p>Oferujemy pełną gamę: owoce, kanapki, soki, kawę, bakalie, zestawy śniadaniowe i catering na eventy.</p></div>
-            </div>
+        <div class="faq-list" role="region" aria-label="Często zadawane pytania">
+            <div class="faq-item"><button class="faq-q" aria-expanded="false" aria-controls="faq_owoce_do_biura_bydgoszcz_0"><span>Czy DailyFruits dostarcza owoce do biur w Bydgoszczy?</span><span class="faq-icon"></span></button><div class="faq-a" id="faq_owoce_do_biura_bydgoszcz_0" role="region"><div class="faq-a-inner">Tak — obsługujemy całą Bydgoszcz, w tym centrum, Fordon, Bartodzieje i inne dzielnice.</div></div></div>
+            <div class="faq-item"><button class="faq-q" aria-expanded="false" aria-controls="faq_owoce_do_biura_bydgoszcz_1"><span>Ile kosztuje dostawa owoców do biura w Bydgoszczy?</span><span class="faq-icon"></span></button><div class="faq-a" id="faq_owoce_do_biura_bydgoszcz_1" role="region"><div class="faq-a-inner">Dostawa jest bezpłatna w ramach abonamentu. Wycenę dopasowaną do zespołu otrzymasz w ciągu 2h.</div></div></div>
+            <div class="faq-item"><button class="faq-q" aria-expanded="false" aria-controls="faq_owoce_do_biura_bydgoszcz_2"><span>Czy obsługujecie też Toruń?</span><span class="faq-icon"></span></button><div class="faq-a" id="faq_owoce_do_biura_bydgoszcz_2" role="region"><div class="faq-a-inner">Tak — oprócz Bydgoszczy dostarczamy również do biur w Toruniu i okolicznych miastach.</div></div></div>
+            <div class="faq-item"><button class="faq-q" aria-expanded="false" aria-controls="faq_owoce_do_biura_bydgoszcz_3"><span>Jak szybko mogę otrzymać pierwszą dostawę w Bydgoszczy?</span><span class="faq-icon"></span></button><div class="faq-a" id="faq_owoce_do_biura_bydgoszcz_3" role="region"><div class="faq-a-inner">Pierwsza dostawa jest możliwa w 24-48h od złożenia zamówienia.</div></div></div>
+            <div class="faq-item"><button class="faq-q" aria-expanded="false" aria-controls="faq_owoce_do_biura_bydgoszcz_4"><span>Jakie produkty dostarczacie do biur w Bydgoszczy?</span><span class="faq-icon"></span></button><div class="faq-a" id="faq_owoce_do_biura_bydgoszcz_4" role="region"><div class="faq-a-inner">Oferujemy pełną gamę: owoce, kanapki, soki, kawę, bakalie, zestawy śniadaniowe i catering na eventy.</div></div></div>
         </div>
     </div>
 </section>
@@ -454,6 +438,7 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
             <div class="footer-col"><h4>Kontakt</h4><ul><li><a href="mailto:kontakt@dailyfruits.pl">kontakt@dailyfruits.pl</a></li><li><p>tel: <a href="tel:+48228680499">22 868 04 99</a></p></li></ul><h4 style="margin-top:20px;">Dane firmy</h4><ul><li><p>Betterworkplace Sp. z o.o.</p></li><li><p>ul. Modułowa 3, 05-090 Raszyn</p></li><li><p>NIP: 6793077034</p></li><li><p>REGON: 122432943</p></li></ul></div>
         </div>
         <div class="footer-bottom">
+            <p style="margin-bottom:8px;"><a href="polityka-prywatnosci.html" style="color:rgba(255,255,255,0.5);text-decoration:underline;">Polityka prywatności</a> · <a href="regulamin.html" style="color:rgba(255,255,255,0.5);text-decoration:underline;">Regulamin</a></p>
             <p>&copy; 2026 DailyFruits by BetterWorkplace Sp. z o.o. Wszystkie prawa zastrzeżone.</p>
         </div>
     </div>
@@ -538,12 +523,12 @@ setTimeout(() => { document.querySelectorAll('.reveal').forEach(el => el.classLi
         btn.addEventListener('click', () => {
             const item = btn.closest('.faq-item');
             const wasOpen = item.classList.contains('open');
-            // Close all
-            document.querySelectorAll('.faq-item').forEach(i => { i.classList.remove('open'); i.querySelector('.faq-a').style.maxHeight = null; });
+            document.querySelectorAll('.faq-item').forEach(i => { i.classList.remove('open'); i.querySelector('.faq-a').style.maxHeight = null; const b = i.querySelector('.faq-q'); if(b) b.setAttribute('aria-expanded','false'); });
             if (!wasOpen) {
                 item.classList.add('open');
                 const answer = item.querySelector('.faq-a');
                 answer.style.maxHeight = answer.scrollHeight + 'px';
+                btn.setAttribute('aria-expanded', 'true');
             }
         });
     });

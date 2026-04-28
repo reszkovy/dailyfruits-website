@@ -175,6 +175,26 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
         header { transition: transform 0.35s cubic-bezier(0.16,1,0.3,1); }
         header.nav-hidden { transform: translateY(-100%); }
 
+        
+        /* ─── PRICING SECTION ─── */
+        .pricing-section { padding: 0 0 80px; }
+        .pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; max-width: 1000px; margin: 0 auto; }
+        .pricing-card { background: var(--white); border-radius: var(--radius); padding: 32px 28px; text-align: center; border: 2px solid transparent; transition: all 0.3s; position: relative; }
+        .pricing-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(27,94,58,0.1); }
+        .pricing-card.featured { border-color: var(--lime); }
+        .pricing-card.featured::before { content: 'Najpopularniejszy'; position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: var(--lime); color: var(--green-dark); padding: 4px 16px; border-radius: var(--radius-pill); font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+        .pricing-card h3 { font-size: 20px; color: var(--green-dark); margin-bottom: 8px; }
+        .pricing-price { font-size: 14px; color: var(--gray); margin-bottom: 4px; }
+        .pricing-price strong { font-size: 36px; color: var(--green-dark); font-weight: 900; }
+        .pricing-price .unit { font-size: 14px; color: var(--gray); }
+        .pricing-note { font-size: 12px; color: var(--gray); opacity: 0.7; margin-bottom: 16px; }
+        .pricing-features { list-style: none; text-align: left; margin-bottom: 24px; }
+        .pricing-features li { font-size: 13px; color: var(--gray); padding: 6px 0; border-bottom: 1px solid rgba(27,94,58,0.06); display: flex; align-items: center; gap: 8px; }
+        .pricing-features li::before { content: '\2713'; color: var(--lime); font-weight: 700; font-size: 14px; }
+        .pricing-card .btn { width: 100%; justify-content: center; padding: 12px 24px; font-size: 14px; }
+        .pricing-disclaimer { text-align: center; font-size: 13px; color: var(--gray); opacity: 0.6; margin-top: 20px; max-width: 600px; margin-left: auto; margin-right: auto; }
+        @media (max-width: 768px) { .pricing-grid { grid-template-columns: 1fr; max-width: 400px; } }
+
         </style>
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://dailyfruits.pl/oferta">
@@ -425,6 +445,58 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
     </div>
 </section>
 
+
+<section class="pricing-section" id="cennik">
+    <div class="container">
+        <div class="section-top reveal" style="text-align:center;margin-bottom:40px;">
+            <div class="sticker sticker-yellow" style="transform:rotate(-2deg)">Cennik</div>
+            <h2 style="margin-top:20px">Orientacyjne <span class="fun">widełki</span></h2>
+            <p style="max-width:520px;margin:12px auto 0;">Każda wycena jest indywidualna — zależy od liczby pracowników, częstotliwości i wybranego pakietu. Poniżej orientacyjne zakresy.</p>
+        </div>
+        <div class="pricing-grid">
+            <div class="pricing-card reveal">
+                <h3>Start</h3>
+                <div class="pricing-price">od <strong>12</strong> <span class="unit">zł / os. / tydzień</span></div>
+                <p class="pricing-note">dla biur 10–30 osób</p>
+                <ul class="pricing-features">
+                    <li>Owoce sezonowe MIX</li>
+                    <li>Dostawa 1–2x / tydzień</li>
+                    <li>Bez zobowiązań</li>
+                    <li>Faktura miesięczna</li>
+                </ul>
+                <a href="zapytanie.html" class="btn btn-green">Bezpłatna wycena</a>
+            </div>
+            <div class="pricing-card featured reveal">
+                <h3>Premium</h3>
+                <div class="pricing-price">od <strong>18</strong> <span class="unit">zł / os. / tydzień</span></div>
+                <p class="pricing-note">dla biur 30–100 osób</p>
+                <ul class="pricing-features">
+                    <li>Owoce premium + egzotyczne</li>
+                    <li>Kanapki i przekąski</li>
+                    <li>Dostawa 2–3x / tydzień</li>
+                    <li>Dedykowany opiekun</li>
+                    <li>Elastyczne zmiany</li>
+                </ul>
+                <a href="zapytanie.html" class="btn btn-red-solid">Bezpłatna wycena</a>
+            </div>
+            <div class="pricing-card reveal">
+                <h3>Enterprise</h3>
+                <div class="pricing-price">od <strong>15</strong> <span class="unit">zł / os. / tydzień</span></div>
+                <p class="pricing-note">dla biur 100+ osób</p>
+                <ul class="pricing-features">
+                    <li>Pełna oferta food & drinks</li>
+                    <li>Codzienna dostawa</li>
+                    <li>SLA i raportowanie</li>
+                    <li>Multi-lokalizacja</li>
+                    <li>Indywidualne menu</li>
+                </ul>
+                <a href="zapytanie.html" class="btn btn-green">Bezpłatna wycena</a>
+            </div>
+        </div>
+        <p class="pricing-disclaimer">* Podane ceny są orientacyjne i mogą się różnić w zależności od lokalizacji i konfiguracji. Dokładną wycenę otrzymasz w ciągu 2h od złożenia zapytania. Dostawa wliczona w cenę.</p>
+    </div>
+</section>
+
 <section class="cta-section">
     <div class="container">
         <div class="cta-card reveal">
@@ -460,6 +532,7 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
             <div class="footer-col"><h4>Kontakt</h4><ul><li><a href="mailto:kontakt@dailyfruits.pl">kontakt@dailyfruits.pl</a></li><li><p>tel: <a href="tel:+48228680499">22 868 04 99</a></p></li></ul><h4 style="margin-top:20px;">Dane firmy</h4><ul><li><p>Betterworkplace Sp. z o.o.</p></li><li><p>ul. Modułowa 3, 05-090 Raszyn</p></li><li><p>NIP: 6793077034</p></li><li><p>REGON: 122432943</p></li></ul></div>
         </div>
         <div class="footer-bottom">
+            <p style="margin-bottom:8px;"><a href="polityka-prywatnosci.html" style="color:rgba(255,255,255,0.5);text-decoration:underline;">Polityka prywatności</a> · <a href="regulamin.html" style="color:rgba(255,255,255,0.5);text-decoration:underline;">Regulamin</a></p>
             <p>&copy; 2026 DailyFruits by BetterWorkplace Sp. z o.o. Wszystkie prawa zastrzeżone.</p>
         </div>
     </div>
