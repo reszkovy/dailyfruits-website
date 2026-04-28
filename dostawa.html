@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-XXXXXXX');</script>
+<!-- End Google Tag Manager -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jak działa dostawa owoców do biura? Proces i harmonogram | DailyFruits</title>
@@ -246,7 +249,26 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
         .faq-a { max-height: 0; overflow: hidden; transition: max-height 0.35s ease; }
         .faq-a-inner { padding: 0 0 22px; font-size: 15px; line-height: 1.8; color: var(--gray); }
 
-        </style>
+        
+/* ─── EXIT-INTENT POPUP ─── */
+.exit-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.6); backdrop-filter: blur(4px); z-index: 9999; display: none; align-items: center; justify-content: center; padding: 24px; opacity: 0; transition: opacity 0.3s ease; }
+.exit-overlay.show { display: flex; opacity: 1; }
+.exit-popup { background: var(--white); border-radius: var(--radius-lg); max-width: 480px; width: 100%; padding: 48px 40px 40px; position: relative; text-align: center; box-shadow: 0 24px 80px rgba(0,0,0,0.25); transform: translateY(20px); transition: transform 0.3s ease; }
+.exit-overlay.show .exit-popup { transform: translateY(0); }
+.exit-close { position: absolute; top: 16px; right: 16px; width: 36px; height: 36px; border-radius: 50%; border: none; background: var(--cream); cursor: pointer; font-size: 18px; display: flex; align-items: center; justify-content: center; color: var(--green-dark); transition: background 0.2s; }
+.exit-close:hover { background: #eee; }
+.exit-popup h3 { font-size: 24px; color: var(--green-dark); margin-bottom: 12px; line-height: 1.3; }
+.exit-popup h3 .fun { font-family: var(--font-fun); color: var(--lime); }
+.exit-popup p { font-size: 15px; color: var(--gray); margin-bottom: 24px; }
+.exit-form { display: flex; gap: 8px; }
+.exit-form input { flex: 1; padding: 14px 18px; border-radius: var(--radius-pill); border: 2px solid #e0e0e0; font-size: 15px; font-family: var(--font); outline: none; transition: border-color 0.2s; }
+.exit-form input:focus { border-color: var(--lime); }
+.exit-form button { padding: 14px 24px; border-radius: var(--radius-pill); background: var(--red); color: #fff; font-weight: 800; font-size: 14px; border: none; cursor: pointer; white-space: nowrap; transition: background 0.2s, transform 0.2s; }
+.exit-form button:hover { background: #C42818; transform: translateY(-1px); }
+.exit-note { font-size: 12px; color: #999; margin-top: 12px; }
+@media (max-width: 600px) { .exit-popup { padding: 36px 24px 28px; } .exit-form { flex-direction: column; } }
+
+</style>
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -346,6 +368,9 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
 </script>
 </head>
 <body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-XXXXXXX" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
 <a href="#main" class="skip-link">Przejdź do treści</a>
 
 <header>
@@ -723,6 +748,95 @@ if (van) {
         });
     });
 
+</script>
+<script>
+// ─── GA4 Event Tracking via dataLayer ───
+window.dataLayer = window.dataLayer || [];
+document.addEventListener('DOMContentLoaded', function() {
+    // Track CTA clicks
+    document.querySelectorAll('a[href*="zapytanie"], .btn-red-solid, .btn-green, .cta-primary').forEach(function(el) {
+        el.addEventListener('click', function() {
+            dataLayer.push({ event: 'cta_click', cta_text: this.textContent.trim().slice(0,50), cta_url: this.href, page: location.pathname });
+        });
+    });
+    // Track phone clicks
+    document.querySelectorAll('a[href^="tel:"]').forEach(function(el) {
+        el.addEventListener('click', function() {
+            dataLayer.push({ event: 'phone_click', page: location.pathname });
+        });
+    });
+    // Track email clicks
+    document.querySelectorAll('a[href^="mailto:"]').forEach(function(el) {
+        el.addEventListener('click', function() {
+            dataLayer.push({ event: 'email_click', page: location.pathname });
+        });
+    });
+    // Track scroll depth (25%, 50%, 75%, 100%)
+    var scrollMarks = [25, 50, 75, 100], fired = {};
+    window.addEventListener('scroll', function() {
+        var pct = Math.round((window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100);
+        scrollMarks.forEach(function(m) { if (pct >= m && !fired[m]) { fired[m] = true; dataLayer.push({ event: 'scroll_depth', depth: m, page: location.pathname }); }});
+    }, { passive: true });
+    // Track FAQ opens
+    document.querySelectorAll('.faq-q, details summary').forEach(function(el) {
+        el.addEventListener('click', function() {
+            dataLayer.push({ event: 'faq_click', question: this.textContent.trim().slice(0,80), page: location.pathname });
+        });
+    });
+    // Track calculator interaction
+    var calcSliders = document.querySelectorAll('.calc-slider');
+    if (calcSliders.length) {
+        var calcFired = false;
+        calcSliders.forEach(function(s) { s.addEventListener('input', function() { if (!calcFired) { calcFired = true; dataLayer.push({ event: 'calculator_used', page: location.pathname }); }});});
+    }
+});
+</script>
+
+<!-- EXIT-INTENT POPUP -->
+<div class="exit-overlay" id="exitOverlay">
+    <div class="exit-popup">
+        <button class="exit-close" id="exitClose" aria-label="Zamknij">&times;</button>
+        <h3>Zanim wyjdziesz —<br>pobierz <span class="fun">darmowy</span> checklist!</h3>
+        <p>„10 kroków do zdrowszego biura" — sprawdzona lista, którą wdrożyło 200+ firm.</p>
+        <div class="exit-form">
+            <input type="email" id="exitEmail" placeholder="Twój e-mail firmowy" required>
+            <button id="exitSubmit">Pobierz PDF →</button>
+        </div>
+        <p class="exit-note">Zero spamu. Wypisz się w dowolnym momencie.</p>
+    </div>
+</div>
+<script>
+// ─── EXIT-INTENT POPUP ───
+(function() {
+    var overlay = document.getElementById('exitOverlay');
+    if (!overlay) return;
+    var shown = false, timer = null;
+    function showPopup() {
+        if (shown) return;
+        shown = true;
+        overlay.classList.add('show');
+        sessionStorage.setItem('exitShown', '1');
+        if (window.dataLayer) dataLayer.push({ event: 'exit_popup_shown', page: location.pathname });
+    }
+    // Don't show if already shown this session
+    if (sessionStorage.getItem('exitShown')) return;
+    // Desktop: mouse leaves viewport top
+    document.addEventListener('mouseout', function(e) {
+        if (e.clientY < 5 && !e.relatedTarget && !e.toElement) showPopup();
+    });
+    // Mobile: show after 45s on page
+    if ('ontouchstart' in window) { timer = setTimeout(showPopup, 45000); }
+    // Close
+    document.getElementById('exitClose').addEventListener('click', function() { overlay.classList.remove('show'); });
+    overlay.addEventListener('click', function(e) { if (e.target === overlay) overlay.classList.remove('show'); });
+    // Submit
+    document.getElementById('exitSubmit').addEventListener('click', function() {
+        var email = document.getElementById('exitEmail').value;
+        if (!email || email.indexOf('@') < 1) { document.getElementById('exitEmail').style.borderColor = 'var(--red)'; return; }
+        if (window.dataLayer) dataLayer.push({ event: 'lead_magnet_submit', email_domain: email.split('@')[1], page: location.pathname });
+        overlay.querySelector('.exit-popup').innerHTML = '<h3 style="margin-bottom:16px">Gotowe! 🎉</h3><p>Checklist leci na <strong>' + email + '</strong>.<br>Sprawdź skrzynkę (i spam).</p><button class="exit-close" onclick="document.getElementById(\'exitOverlay\').classList.remove(\'show\')" style="position:static;width:auto;height:auto;border-radius:var(--radius-pill);padding:12px 28px;margin-top:20px;background:var(--green-dark);color:#fff;font-weight:700">Zamknij</button>';
+    });
+})();
 </script>
 </body>
 </html>

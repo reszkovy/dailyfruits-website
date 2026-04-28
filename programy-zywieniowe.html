@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-XXXXXXX');</script>
+<!-- End Google Tag Manager -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Programy żywieniowe dla firm – edukacja i wellbeing | DailyFruits</title>
@@ -302,6 +305,9 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
 </script>
 </head>
 <body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-XXXXXXX" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
 <a href="#main" class="skip-link">Przejdź do treści</a>
 
 <header>
@@ -599,6 +605,48 @@ setTimeout(() => { document.querySelectorAll('.reveal:not(.vis)').forEach(el => 
         });
     });
 
+</script>
+<script>
+// ─── GA4 Event Tracking via dataLayer ───
+window.dataLayer = window.dataLayer || [];
+document.addEventListener('DOMContentLoaded', function() {
+    // Track CTA clicks
+    document.querySelectorAll('a[href*="zapytanie"], .btn-red-solid, .btn-green, .cta-primary').forEach(function(el) {
+        el.addEventListener('click', function() {
+            dataLayer.push({ event: 'cta_click', cta_text: this.textContent.trim().slice(0,50), cta_url: this.href, page: location.pathname });
+        });
+    });
+    // Track phone clicks
+    document.querySelectorAll('a[href^="tel:"]').forEach(function(el) {
+        el.addEventListener('click', function() {
+            dataLayer.push({ event: 'phone_click', page: location.pathname });
+        });
+    });
+    // Track email clicks
+    document.querySelectorAll('a[href^="mailto:"]').forEach(function(el) {
+        el.addEventListener('click', function() {
+            dataLayer.push({ event: 'email_click', page: location.pathname });
+        });
+    });
+    // Track scroll depth (25%, 50%, 75%, 100%)
+    var scrollMarks = [25, 50, 75, 100], fired = {};
+    window.addEventListener('scroll', function() {
+        var pct = Math.round((window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100);
+        scrollMarks.forEach(function(m) { if (pct >= m && !fired[m]) { fired[m] = true; dataLayer.push({ event: 'scroll_depth', depth: m, page: location.pathname }); }});
+    }, { passive: true });
+    // Track FAQ opens
+    document.querySelectorAll('.faq-q, details summary').forEach(function(el) {
+        el.addEventListener('click', function() {
+            dataLayer.push({ event: 'faq_click', question: this.textContent.trim().slice(0,80), page: location.pathname });
+        });
+    });
+    // Track calculator interaction
+    var calcSliders = document.querySelectorAll('.calc-slider');
+    if (calcSliders.length) {
+        var calcFired = false;
+        calcSliders.forEach(function(s) { s.addEventListener('input', function() { if (!calcFired) { calcFired = true; dataLayer.push({ event: 'calculator_used', page: location.pathname }); }});});
+    }
+});
 </script>
 </body>
 </html>
