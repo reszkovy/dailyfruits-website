@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>O nas – DailyFruits by BetterWorkplace | Owoce do biura od 2015</title>
-    <meta name="description" content="Poznaj DailyFruits — dostawcę owoców i zdrowych przekąsek do biur w 13 miastach Polski. Ponad 2000 firm nam zaufało. Część ekosystemu BetterWorkplace.">
+    <title>O nas – DailyFruits | Owoce do biura od 2015</title>
+    <meta name="description" content="Poznaj DailyFruits — dostawcę owoców i zdrowych przekąsek do biur w 13 miastach Polski. Ponad 2000 firm nam zaufało.">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://dailyfruits.pl/o-nas">
-    <meta property="og:title" content="O nas – DailyFruits by BetterWorkplace | Owoce do biura od 2015">
-    <meta property="og:description" content="Poznaj DailyFruits — dostawcę owoców i zdrowych przekąsek do biur w 13 miastach Polski. Ponad 2000 firm nam zaufało. Część ekosystemu BetterWorkplace.">
+    <meta property="og:title" content="O nas – DailyFruits | Owoce do biura od 2015">
+    <meta property="og:description" content="Poznaj DailyFruits — dostawcę owoców i zdrowych przekąsek do biur w 13 miastach Polski. Ponad 2000 firm nam zaufało.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://dailyfruits.pl/o-nas">
     <meta property="og:image" content="https://dailyfruits.pl/HORIZONTAL.webp">
@@ -131,15 +131,23 @@
         .marquee-item .highlight { color: var(--lime); }
         @keyframes marquee-slide { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
 
-        /* Timeline — improved with vertical line */
+        /* Timeline + Values combined 2-col */
         .timeline-section { padding: 80px 0; background: var(--white); }
-        .timeline { position: relative; margin-top: 48px; padding-left: 40px; }
+        .timeline-values-grid { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 64px; margin-top: 48px; align-items: start; }
+        .timeline { position: relative; padding-left: 40px; }
         .timeline::before { content: ''; position: absolute; left: 8px; top: 0; bottom: 0; width: 3px; background: linear-gradient(to bottom, var(--lime), var(--green-dark)); border-radius: 2px; }
-        .timeline-item { position: relative; margin-bottom: 40px; padding-left: 40px; }
+        .timeline-item { position: relative; margin-bottom: 32px; padding-left: 40px; }
         .timeline-item::before { content: ''; position: absolute; left: -36px; top: 8px; width: 14px; height: 14px; border-radius: 50%; background: var(--lime); border: 3px solid var(--white); box-shadow: 0 0 0 3px var(--lime); z-index: 2; }
-        .timeline-year { font-family: var(--font-fun); font-size: 32px; color: var(--lime); line-height: 1; margin-bottom: 6px; }
-        .timeline-content h3 { font-size: 17px; margin-bottom: 6px; }
-        .timeline-content p { font-size: 15px; }
+        .timeline-year { font-family: var(--font-fun); font-size: 28px; color: var(--lime); line-height: 1; margin-bottom: 4px; }
+        .timeline-content h3 { font-size: 16px; margin-bottom: 4px; }
+        .timeline-content p { font-size: 14px; }
+        .values-sidebar { display: flex; flex-direction: column; gap: 16px; }
+        .values-sidebar-header { margin-bottom: 8px; }
+        .values-sidebar-header h2 { font-size: clamp(22px, 2.5vw, 32px); }
+        .value-card-side { background: var(--lime-bg); padding: 24px 20px; border-radius: var(--radius); transition: transform 0.3s, box-shadow 0.3s; }
+        .value-card-side:hover { transform: translateY(-4px); box-shadow: 0 12px 36px rgba(27,94,58,0.08); }
+        .value-card-side h3 { font-size: 16px; margin-bottom: 6px; }
+        .value-card-side p { font-size: 13px; line-height: 1.6; }
 
         /* Ecosystem */
         .ecosystem-section { padding: 80px 0; background: var(--cream); }
@@ -189,7 +197,7 @@
             .nav-inner { padding: 14px 36px; }
             .city-hero-inner { grid-template-columns: 1fr; }
             .stats-bar .stats-grid { grid-template-columns: repeat(2, 1fr); }
-            .values-grid { grid-template-columns: repeat(2, 1fr); }
+            .timeline-values-grid { grid-template-columns: 1fr; gap: 48px; }
             .ecosystem-grid { grid-template-columns: 1fr; }
             .footer-grid { grid-template-columns: repeat(2, 1fr); gap: 36px; }
         }
@@ -257,7 +265,7 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
         "@type": "Organization",
         "name": "DailyFruits by BetterWorkplace",
         "legalName": "Betterworkplace Sp. z o.o.",
-        "description": "Dostawca owoców, warzyw i zdrowych przekąsek do biur w Polsce. Działa od 2015 roku. Część ekosystemu BetterWorkplace.",
+        "description": "Dostawca owoców, warzyw i zdrowych przekąsek do biur w Polsce. Działa od 2015 roku w 13 miastach.",
         "url": "https://dailyfruits.pl",
         "telephone": "+48228680499",
         "email": "kontakt@dailyfruits.pl",
@@ -305,7 +313,7 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
                 "name": "Kim jest DailyFruits?",
                 "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "Jesteśmy częścią ekosystemu BetterWorkplace — dostarczamy owoce, kanapki i zdrowe przekąski do biur w 13 miastach Polski."
+                    "text": "Dostarczamy owoce, kanapki i zdrowe przekąski do biur w 13 miastach Polski. Zaufało nam ponad 2000 firm."
                 }
             },
             {
@@ -313,7 +321,7 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
                 "name": "Czy DailyFruits to polska firma?",
                 "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "Tak. Betterworkplace Sp. z o.o. z siedzibą w Raszynie. Działamy od 2015 roku."
+                    "text": "Tak. Jesteśmy oficjalnie zarejestrowani z siedzibą w Raszynie. Działamy od 2015 roku."
                 }
             },
             {
@@ -424,36 +432,60 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
             <h2 style="margin-top:20px">Nasza <span class="fun">historia</span></h2>
             <p>Od małego pomysłu dla 5 biur w Warszawie do ekosystemu, któremu zaufało ponad 2000 firm.</p>
         </div>
-        <div class="timeline">
-            <div class="timeline-item reveal">
-                <div class="timeline-year">2015</div>
-                <h3>Początek przygody</h3>
-                <p>Zaczynaliśmy od skrzynek z owocami dla 5 biur w Warszawie. Proste, świeże, skuteczne.</p>
+        <div class="timeline-values-grid">
+            <div class="timeline">
+                <div class="timeline-item reveal">
+                    <div class="timeline-year">2015</div>
+                    <h3>Początek przygody</h3>
+                    <p>Zaczynaliśmy od skrzynek z owocami dla 5 biur w Warszawie. Proste, świeże, skuteczne.</p>
+                </div>
+                <div class="timeline-item reveal">
+                    <div class="timeline-year">2017</div>
+                    <h3>Rozszerzenie sieci</h3>
+                    <p>Rozszerzyliśmy dostawy na Kraków i Wrocław. Zaczęliśmy jeździć dalej, bo okazało się, że biura wszędzie chcą zdrowo jeść.</p>
+                </div>
+                <div class="timeline-item reveal">
+                    <div class="timeline-year">2019</div>
+                    <h3>Nowe produkty</h3>
+                    <p>Ponad 500 firm już nam zaufało. Dodaliśmy kanapki, bakalie, soki — pełna oferta food delivery do biura.</p>
+                </div>
+                <div class="timeline-item reveal">
+                    <div class="timeline-year">2021</div>
+                    <h3>Home office edition</h3>
+                    <p>Pandemia nie zatrzymała nas — ruszyliśmy z dostawami do home office. Ludzie pracowali z domu, a my przychodzili z owocami.</p>
+                </div>
+                <div class="timeline-item reveal">
+                    <div class="timeline-year">2023</div>
+                    <h3>Pełny ekosystem</h3>
+                    <p>1000+ firm, ekosystem w pełnym rozkwicie: DailyFruits + DailyFoods + SendGift. Jeden partner dla całego wellbeing'u biura.</p>
+                </div>
+                <div class="timeline-item reveal">
+                    <div class="timeline-year">2025</div>
+                    <h3>Skalowanie dalej</h3>
+                    <p>2000+ firm w 13 miastach, pełna oferta food & beverage do biur. Zdrowiej, lepiej, razem.</p>
+                </div>
             </div>
-            <div class="timeline-item reveal">
-                <div class="timeline-year">2017</div>
-                <h3>Rozszerzenie sieci</h3>
-                <p>Rozszerzyliśmy dostawy na Kraków i Wrocław. Zaczęliśmy jeździć dalej, bo okazało się, że biura wszędzie chcą zdrowo jeść.</p>
-            </div>
-            <div class="timeline-item reveal">
-                <div class="timeline-year">2019</div>
-                <h3>Nowe produkty</h3>
-                <p>Ponad 500 firm już nam zaufało. Dodaliśmy kanapki, bakalie, soki — pełna oferta food delivery do biura.</p>
-            </div>
-            <div class="timeline-item reveal">
-                <div class="timeline-year">2021</div>
-                <h3>Home office edition</h3>
-                <p>Pandemia nie zatrzymała nas — ruszyliśmy z dostawami do home office. Ludzie pracowali z domu, a my przychodzili z owocami.</p>
-            </div>
-            <div class="timeline-item reveal">
-                <div class="timeline-year">2023</div>
-                <h3>Ekosystem BetterWorkplace</h3>
-                <p>1000+ firm, ekosystem w pełnym rozkwicie: DailyFruits + DailyFoods + SendGift. Jeden partner dla całego wellbeing'u biura.</p>
-            </div>
-            <div class="timeline-item reveal">
-                <div class="timeline-year">2025</div>
-                <h3>Skalowanie dalej</h3>
-                <p>2000+ firm w 13 miastach, pełna oferta food & beverage do biur. Zdrowiej, lepiej, razem.</p>
+            <div class="values-sidebar">
+                <div class="values-sidebar-header">
+                    <div class="sticker sticker-yellow" style="transform:rotate(-1.5deg);display:inline-block;margin-bottom:12px">DNA marki</div>
+                    <h2>W co <span class="fun">wierzymy</span></h2>
+                </div>
+                <div class="value-card-side reveal">
+                    <h3>Prostota</h3>
+                    <p>Jedno zamówienie, jeden partner, jedna faktura. Biuro nie powinno się męczyć administracją.</p>
+                </div>
+                <div class="value-card-side reveal">
+                    <h3>Świeżość</h3>
+                    <p>Owoce wybieramy dzień przed dostawą, nie tydzień. Świeżość widać i czuć.</p>
+                </div>
+                <div class="value-card-side reveal">
+                    <h3>Elastyczność</h3>
+                    <p>Zmień, pauzuj, anuluj — to subskrypcja, nie kontrakt. Biuro powinno mieć kontrolę.</p>
+                </div>
+                <div class="value-card-side reveal">
+                    <h3>Wpływ</h3>
+                    <p>Mierzymy nasz impact: mniej absencji, więcej energii, lepszy wellbeing zespołu.</p>
+                </div>
             </div>
         </div>
     </div>
@@ -468,7 +500,7 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
     <div class="container">
         <div class="section-top reveal">
             <div class="sticker sticker-green" style="transform:rotate(1deg)">Jeden partner</div>
-            <h2 style="margin-top:20px">Ekosystem <span class="fun">BetterWorkplace</span></h2>
+            <h2 style="margin-top:20px">Nasz <span class="fun">ekosystem</span></h2>
             <p>Jeden partner, jedna faktura, pełna oferta wellbeing'u biurowego.</p>
         </div>
         <div class="ecosystem-grid">
@@ -491,56 +523,7 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
     </div>
 </section>
 
-<!-- MARQUEE TICKER -->
-<section class="marquee-section">
-    <div class="marquee-track">
-        <div class="marquee-item"><span class="dot"></span><span class="highlight">Owoce</span></div>
-        <div class="marquee-item"><span class="dot"></span>Kanapki</div>
-        <div class="marquee-item"><span class="dot"></span><span class="highlight">Bakalie</span></div>
-        <div class="marquee-item"><span class="dot"></span>Soki</div>
-        <div class="marquee-item"><span class="dot"></span><span class="highlight">Śniadania</span></div>
-        <div class="marquee-item"><span class="dot"></span>Lody</div>
-        <div class="marquee-item"><span class="dot"></span><span class="highlight">Gift boxy</span></div>
-        <div class="marquee-item"><span class="dot"></span>Kawa</div>
-        <div class="marquee-item"><span class="dot"></span><span class="highlight">Owoce</span></div>
-        <div class="marquee-item"><span class="dot"></span>Kanapki</div>
-        <div class="marquee-item"><span class="dot"></span><span class="highlight">Bakalie</span></div>
-        <div class="marquee-item"><span class="dot"></span>Soki</div>
-        <div class="marquee-item"><span class="dot"></span><span class="highlight">Śniadania</span></div>
-        <div class="marquee-item"><span class="dot"></span>Lody</div>
-        <div class="marquee-item"><span class="dot"></span><span class="highlight">Gift boxy</span></div>
-        <div class="marquee-item"><span class="dot"></span>Kawa</div>
-    </div>
-</section>
-
-<section class="values-section">
-    <div class="container">
-        <div class="section-top reveal">
-            <div class="sticker sticker-yellow" style="transform:rotate(-1.5deg)">DNA marki</div>
-            <h2 style="margin-top:20px">W co <span class="fun">wierzymy</span></h2>
-        </div>
-        <div class="values-grid">
-            <div class="value-card reveal">
-                <h3>Prostota</h3>
-                <p>Jedno zamówienie, jeden partner, jedna faktura. Biuro nie powinno się męczyć administracją.</p>
-            </div>
-            <div class="value-card reveal">
-                <h3>Świeżość</h3>
-                <p>Owoce wybieramy dzień przed dostawą, nie tydzień. Świeżość widać i czuć.</p>
-            </div>
-            <div class="value-card reveal">
-                <h3>Elastyczność</h3>
-                <p>Zmień, pauzuj, anuluj — to subskrypcja, nie kontrakt. Biuro powinno mieć kontrolę.</p>
-            </div>
-            <div class="value-card reveal">
-                <h3>Wpływ</h3>
-                <p>Mierzymy nasz impact: mniej absencji, więcej energii, lepszy wellbeing zespołu.</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- WAVE: values → faq -->
+<!-- WAVE: ecosystem → faq -->
 <div class="wave-divider" style="background:var(--white)">
     <svg viewBox="0 0 1440 60" preserveAspectRatio="none"><path d="M0,30 C320,60 640,0 960,40 C1120,55 1300,10 1440,25 L1440,60 L0,60Z" fill="#FFF9E0"/></svg>
 </div>
@@ -558,7 +541,7 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
                     <span class="faq-toggle">+</span>
                 </div>
                 <div class="faq-answer">
-                    <div class="faq-answer-content">Jesteśmy częścią ekosystemu BetterWorkplace — dostarczamy owoce, kanapki i zdrowe przekąski do biur w 13 miastach Polski. Zaufało nam ponad 2000 firm, od startupów po duże korporacje.</div>
+                    <div class="faq-answer-content">Dostarczamy owoce, kanapki i zdrowe przekąski do biur w 13 miastach Polski. Zaufało nam ponad 2000 firm, od startupów po duże korporacje.</div>
                 </div>
             </div>
             <div class="faq-item reveal">
@@ -567,7 +550,7 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
                     <span class="faq-toggle">+</span>
                 </div>
                 <div class="faq-answer">
-                    <div class="faq-answer-content">Tak. Betterworkplace Sp. z o.o. z siedzibą w Raszynie (05-090, ul. Modułowa 3). Działamy od 2015 roku, kiedy to wszystko się zaczęło od kilku skrzynek owoców dla warszawskich biur.</div>
+                    <div class="faq-answer-content">Tak. Jesteśmy oficjalnie zarejestrowaną firmą z siedzibą w Raszynie (05-090, ul. Modułowa 3). Działamy od 2015 roku, kiedy to wszystko się zaczęło od kilku skrzynek owoców dla warszawskich biur.</div>
                 </div>
             </div>
             <div class="faq-item reveal">
@@ -613,7 +596,7 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
                     <img src="fruitttt.svg" alt="DailyFruits" style="height:56px;filter:brightness(10);" loading="lazy">
                     <img src="dailyfoods-logo.svg" alt="DailyFoods" style="height:56px;" loading="lazy">
                 </div>
-                <p>Zdrowsze jedzenie, lepsza praca – zaczynając od kuchni. Część ekosystemu BetterWorkplace.</p>
+                <p>Zdrowsze jedzenie, lepsza praca – zaczynając od kuchni biurowej.</p>
             </div>
             <div class="footer-col"><h4>Nawigacja</h4><ul><li><a href="index.html">Start</a></li><li><a href="oferta.html">Oferta</a></li><li><a href="dostawa.html">Dostawa</a></li><li><a href="o-nas.html">O nas</a></li><li><a href="blog.html">Blog</a></li><li><a href="zapytanie.html">Zapytanie</a></li></ul></div>
             <div class="footer-col"><h4>Oferta</h4><ul><li><a href="kanapki-do-biura.html">Kanapki do biura</a></li><li><a href="catering-firmowy.html">Catering firmowy</a></li><li><a href="programy-zywieniowe.html">Programy żywieniowe</a></li><li><a href="oferta.html">DailyFruits</a></li><li><a href="oferta.html">DailyFoods</a></li></ul></div>
