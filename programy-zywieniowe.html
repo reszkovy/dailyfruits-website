@@ -192,7 +192,15 @@
 .city-index-links a { font-size: 14px; color: rgba(255,255,255,0.6); transition: color 0.2s; }
 .city-index-links a:hover { color: #8DC63F; }
 
-    </style>
+    .skip-link{position:absolute;top:-100%;left:50%;transform:translateX(-50%);background:#1B5E3A;color:#fff;padding:10px 24px;border-radius:0 0 8px 8px;font-size:14px;font-weight:600;z-index:10000;text-decoration:none;transition:top 0.2s}.skip-link:focus{top:0}:focus-visible{outline:3px solid #8DC63F;outline-offset:2px;border-radius:4px}
+.mobile-sticky-cta{display:none;position:fixed;bottom:0;left:0;right:0;background:#1B5E3A;padding:12px 16px;z-index:9990;transform:translateY(100%);transition:transform 0.3s ease;box-shadow:0 -2px 12px rgba(0,0,0,0.15)}
+.mobile-sticky-cta.visible{transform:translateY(0)}
+.mobile-sticky-cta-inner{display:flex;gap:10px;align-items:center;max-width:600px;margin:0 auto}
+.mobile-sticky-cta a{flex:1;text-align:center;padding:11px 16px;border-radius:8px;font-size:14px;font-weight:700;text-decoration:none}
+.mobile-sticky-cta .cta-primary{background:#E43020;color:#fff}
+.mobile-sticky-cta .cta-secondary{background:transparent;color:#fff;border:1px solid rgba(255,255,255,0.3)}
+@media(max-width:768px){.mobile-sticky-cta{display:block}}
+section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px}.logo-bar,.city-index,footer{content-visibility:auto;contain-intrinsic-size:auto 200px}</style>
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -285,10 +293,11 @@
 </script>
 </head>
 <body>
+<a href="#main" class="skip-link">Przejdź do treści</a>
 
 <header>
     <div class="nav-inner">
-        <div class="logo-wrap"><a href="index.html"><img src="fruitttt.svg" alt="DailyFruits" class="logo-img" loading="lazy"></a><a href="https://betterworkplace.pl" target="_blank" class="logo-sub">by BetterWorkplace</a></div>
+        <div class="logo-wrap"><a href="index.html"><img src="fruitttt.svg" alt="DailyFruits" class="logo-img" loading="lazy"></a><a href="https://betterworkplace.pl" target="_blank" rel="noopener noreferrer" class="logo-sub">by BetterWorkplace</a></div>
         <nav><ul class="nav-links">
             <li><a href="oferta.html">Oferta</a></li>
             <li><a href="dostawa.html">Dostawa</a></li>
@@ -315,7 +324,7 @@
     <a href="zapytanie.html" class="mobile-cta">Bezpłatna wycena →</a>
 </div>
 
-<section class="city-hero">
+<section id="main" class="city-hero">
     <div class="container">
         <div class="city-hero-inner">
             <div class="city-hero-text reveal">
@@ -545,5 +554,16 @@ document.querySelectorAll('.faq-question').forEach(q => {
 });
 </script>
 
+
+<div class="mobile-sticky-cta" id="mobileCta">
+    <div class="mobile-sticky-cta-inner">
+        <a href="zapytanie.html" class="cta-primary">Bezpłatna wycena</a>
+        <a href="tel:+48228680499" class="cta-secondary">Zadzwoń</a>
+    </div>
+</div>
+
+<script>
+(function(){var c=document.getElementById('mobileCta');if(!c)return;var shown=false;window.addEventListener('scroll',function(){if(window.scrollY>600&&!shown){c.classList.add('visible');shown=true}else if(window.scrollY<=600&&shown){c.classList.remove('visible');shown=false}},{passive:true})})();
+</script>
 </body>
 </html>

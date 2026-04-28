@@ -512,7 +512,15 @@
             footer .container { padding: 0 16px; }
         }
 
-    </style>
+    .skip-link{position:absolute;top:-100%;left:50%;transform:translateX(-50%);background:#1B5E3A;color:#fff;padding:10px 24px;border-radius:0 0 8px 8px;font-size:14px;font-weight:600;z-index:10000;text-decoration:none;transition:top 0.2s}.skip-link:focus{top:0}:focus-visible{outline:3px solid #8DC63F;outline-offset:2px;border-radius:4px}
+.mobile-sticky-cta{display:none;position:fixed;bottom:0;left:0;right:0;background:#1B5E3A;padding:12px 16px;z-index:9990;transform:translateY(100%);transition:transform 0.3s ease;box-shadow:0 -2px 12px rgba(0,0,0,0.15)}
+.mobile-sticky-cta.visible{transform:translateY(0)}
+.mobile-sticky-cta-inner{display:flex;gap:10px;align-items:center;max-width:600px;margin:0 auto}
+.mobile-sticky-cta a{flex:1;text-align:center;padding:11px 16px;border-radius:8px;font-size:14px;font-weight:700;text-decoration:none}
+.mobile-sticky-cta .cta-primary{background:#E43020;color:#fff}
+.mobile-sticky-cta .cta-secondary{background:transparent;color:#fff;border:1px solid rgba(255,255,255,0.3)}
+@media(max-width:768px){.mobile-sticky-cta{display:block}}
+section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px}.logo-bar,.city-index,footer{content-visibility:auto;contain-intrinsic-size:auto 200px}</style>
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://dailyfruits.pl/">
     <script type="application/ld+json">
@@ -554,7 +562,25 @@
             "bestRating": "5",
             "ratingCount": "127"
         },
-        "sameAs": []
+        "sameAs": [
+            "https://www.facebook.com/dailyfruits.pl",
+            "https://www.instagram.com/dailyfruits.pl",
+            "https://www.linkedin.com/company/dailyfruits"
+        ],
+        "contactPoint": {
+            "@type": "ContactPoint",
+            "telephone": "+48228680499",
+            "contactType": "sales",
+            "email": "kontakt@dailyfruits.pl",
+            "areaServed": "PL",
+            "availableLanguage": "Polish"
+        },
+        "foundingDate": "2018",
+        "numberOfEmployees": {
+            "@type": "QuantitativeValue",
+            "minValue": 10,
+            "maxValue": 50
+        }
     }
     </script>
     <script type="application/ld+json">
@@ -644,13 +670,14 @@
 </script>
 </head>
 <body>
+<a href="#main" class="skip-link">Przejdź do treści</a>
 
 </div>
 
 <!-- NAV -->
 <header>
     <div class="nav-inner">
-        <div class="logo-wrap"><a href="index.html"><img src="fruitttt.svg" alt="DailyFruits" class="logo-img" loading="lazy"></a><a href="https://betterworkplace.pl" target="_blank" class="logo-sub">by BetterWorkplace</a></div>
+        <div class="logo-wrap"><a href="index.html"><img src="fruitttt.svg" alt="DailyFruits" class="logo-img" loading="lazy"></a><a href="https://betterworkplace.pl" target="_blank" rel="noopener noreferrer" class="logo-sub">by BetterWorkplace</a></div>
         <nav><ul class="nav-links">
             <li><a href="oferta.html">Oferta</a></li>
             <li><a href="dostawa.html">Dostawa</a></li>
@@ -686,20 +713,19 @@
     <div class="hero-tabs-inner">
         <span class="hero-tabs-label">Dopasuj zamówienie<br>do potrzeb firmy:</span>
         <div class="hero-tabs">
-            <button class="hero-tab active" data-img="box_owoce_2.webp" data-alt="Owoce do biura"><span class="tab-icon"><img src="icon-owoce.svg" alt="" style="height:22px;width:22px;vertical-align:-3px;" loading="lazy"></span> Owoce</button>
-            <button class="hero-tab" data-img="box-kanapki1.webp" data-alt="Kanapki dla pracowników"><span class="tab-icon"><img src="icon-kanapki.svg" alt="" style="height:15px;width:auto;vertical-align:-2px;" loading="lazy"></span> Kanapki</button>
-            <button class="hero-tab" data-img="box-sniadaniowe.webp" data-alt="Produkty śniadaniowe"><span class="tab-icon"><img src="icon-sniadania.svg" alt="" style="height:20px;width:auto;vertical-align:-3px;" loading="lazy"></span> Sniadania</button>
-            <button class="hero-tab" data-img="box-soki1.webp" data-alt="Świeże soki"><span class="tab-icon"><img src="icon-soki.svg" alt="" style="height:24px;width:auto;vertical-align:-4px;margin-right:-2px;" loading="lazy"></span> Soki</button>
-
-            <button class="hero-tab" data-img="box-bakalie1.webp" data-alt="Bakalie i suszone owoce"><span class="tab-icon"><img src="icon-bakalie.svg" alt="" style="height:20px;width:auto;vertical-align:-3px;" loading="lazy"></span> Bakalie</button>
-            <button class="hero-tab hero-tab--red" data-img="box-lody.webp" data-alt="Lody do biura"><span class="tab-icon"><img src="icon-lody.svg" alt="" style="height:22px;width:auto;vertical-align:-4px;" loading="lazy"></span> Lody</button>
+            <a href="oferta.html" class="hero-tab active" data-img="box_owoce_2.webp" data-alt="Owoce do biura" onclick="event.preventDefault();heroTabClick(this)"><span class="tab-icon"><img src="icon-owoce.svg" alt="Ikona owoców" style="height:22px;width:22px;vertical-align:-3px;" loading="lazy"></span> Owoce</a>
+            <a href="kanapki-do-biura.html" class="hero-tab" data-img="box-kanapki1.webp" data-alt="Kanapki dla pracowników" onclick="event.preventDefault();heroTabClick(this)"><span class="tab-icon"><img src="icon-kanapki.svg" alt="Ikona kanapek" style="height:15px;width:auto;vertical-align:-2px;" loading="lazy"></span> Kanapki</a>
+            <a href="oferta.html" class="hero-tab" data-img="box-sniadaniowe.webp" data-alt="Produkty śniadaniowe" onclick="event.preventDefault();heroTabClick(this)"><span class="tab-icon"><img src="icon-sniadania.svg" alt="Ikona śniadań" style="height:20px;width:auto;vertical-align:-3px;" loading="lazy"></span> Śniadania</a>
+            <a href="oferta.html" class="hero-tab" data-img="box-soki1.webp" data-alt="Świeże soki" onclick="event.preventDefault();heroTabClick(this)"><span class="tab-icon"><img src="icon-soki.svg" alt="Ikona soków" style="height:24px;width:auto;vertical-align:-4px;margin-right:-2px;" loading="lazy"></span> Soki</a>
+            <a href="oferta.html" class="hero-tab" data-img="box-bakalie1.webp" data-alt="Bakalie i suszone owoce" onclick="event.preventDefault();heroTabClick(this)"><span class="tab-icon"><img src="icon-bakalie.svg" alt="Ikona bakalii" style="height:20px;width:auto;vertical-align:-3px;" loading="lazy"></span> Bakalie</a>
+            <a href="oferta.html" class="hero-tab hero-tab--red" data-img="box-lody.webp" data-alt="Lody do biura" onclick="event.preventDefault();heroTabClick(this)"><span class="tab-icon"><img src="icon-lody.svg" alt="Ikona lodów" style="height:22px;width:auto;vertical-align:-4px;" loading="lazy"></span> Lody</a>
         </div>
         <a href="zapytanie.html" class="hero-trial-cta">Sprawdź darmowy <span class="trial-br"><br></span>dzień próbny!</a>
     </div>
 </div>
 
 <!-- HERO -->
-<section class="hero">
+<section id="main" class="hero">
     <div class="container">
         <div class="hero-inner">
             <div class="hero-text">
@@ -714,6 +740,7 @@
                     <a href="zapytanie.html" class="btn btn-red-solid btn-arrow">Zamów bezpłatną wycenę</a>
                     <a href="oferta.html" class="btn btn-outline">Zobacz pełną ofertę →</a>
                 </div>
+                <p style="font-size:13px;color:rgba(27,94,58,0.5);margin-top:10px;">Odpowiadamy w ciągu 2h · Bez zobowiązań · Darmowa dostawa próbna</p>
             </div>
             <div class="hero-image scale-in">
                 <img id="hero-product-img" src="box_owoce_2.webp" alt="Owoce do biura" fetchpriority="high">
@@ -816,7 +843,7 @@
 <!-- WAVE: how → stats -->
 <div class="wave-wrap">
     <div class="apple-deco" style="width:140px;height:164px;left:5%;bottom:-80px;">
-        <img src="apple-deco.svg" alt="" loading="lazy">
+        <img src="apple-deco.svg" alt="Dekoracja jabłko DailyFruits" loading="lazy">
     </div>
     <div class="wave-divider" style="background:var(--white)">
         <svg viewBox="0 0 1440 60" preserveAspectRatio="none"><path d="M0,30 C320,60 640,0 960,40 C1120,55 1300,10 1440,25 L1440,60 L0,60Z" fill="#1B5E3A"/></svg>
@@ -997,7 +1024,7 @@
 <!-- WAVE: offer → ecosystem -->
 <div class="wave-wrap">
     <div class="apple-deco" style="width:150px;height:175px;right:12%;bottom:-85px;">
-        <img src="apple-deco.svg" alt="" loading="lazy">
+        <img src="apple-deco.svg" alt="Dekoracja jabłko DailyFruits" loading="lazy">
     </div>
     <div class="wave-divider" style="background:var(--white)">
         <svg viewBox="0 0 1440 60" preserveAspectRatio="none"><path d="M0,40 C360,0 720,55 1080,15 C1260,5 1380,35 1440,20 L1440,60 L0,60Z" fill="#1B5E3A"/></svg>
@@ -1035,7 +1062,7 @@
             </div>
         </div>
         <div class="reveal" style="text-align:center;margin-top:48px;">
-            <a href="https://betterworkplace.pl" target="_blank" class="btn-eco-cta" style="display:inline-block;padding:16px 40px;background:var(--yellow);color:var(--green-dark);font-weight:900;font-size:16px;border-radius:60px;text-decoration:none;transition:transform 0.3s, box-shadow 0.3s, background 0.3s;box-shadow:0 4px 20px rgba(0,0,0,0.15);">Poznaj ekosystem BetterWorkplace →</a>
+            <a href="https://betterworkplace.pl" target="_blank" rel="noopener noreferrer" class="btn-eco-cta" style="display:inline-block;padding:16px 40px;background:var(--yellow);color:var(--green-dark);font-weight:900;font-size:16px;border-radius:60px;text-decoration:none;transition:transform 0.3s, box-shadow 0.3s, background 0.3s;box-shadow:0 4px 20px rgba(0,0,0,0.15);">Poznaj ekosystem BetterWorkplace →</a>
         </div>
     </div>
 </section>
@@ -1514,18 +1541,19 @@
 
     // ─── HERO CATEGORY TABS ───
     const heroImg = document.getElementById('hero-product-img');
+    window.heroTabClick = function(tab) {
+        if (tab.classList.contains('active')) return;
+        document.querySelectorAll('.hero-tab').forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+        heroImg.classList.add('switching');
+        setTimeout(() => {
+            heroImg.src = tab.dataset.img;
+            heroImg.alt = tab.dataset.alt;
+            heroImg.classList.remove('switching');
+        }, 300);
+    };
     document.querySelectorAll('.hero-tab').forEach(tab => {
-        tab.addEventListener('click', () => {
-            if (tab.classList.contains('active')) return;
-            document.querySelectorAll('.hero-tab').forEach(t => t.classList.remove('active'));
-            tab.classList.add('active');
-            heroImg.classList.add('switching');
-            setTimeout(() => {
-                heroImg.src = tab.dataset.img;
-                heroImg.alt = tab.dataset.alt;
-                heroImg.classList.remove('switching');
-            }, 300);
-        });
+        tab.addEventListener('dblclick', () => { window.location.href = tab.href; });
     });
 
     // ─── SMOOTH ANCHOR SCROLLING ───
@@ -1542,5 +1570,16 @@
     <img src="badge-trust.svg" alt="Zaufało nam ponad 2000 firm w Polsce">
 </a>
 
+
+<div class="mobile-sticky-cta" id="mobileCta">
+    <div class="mobile-sticky-cta-inner">
+        <a href="zapytanie.html" class="cta-primary">Bezpłatna wycena</a>
+        <a href="tel:+48228680499" class="cta-secondary">Zadzwoń</a>
+    </div>
+</div>
+
+<script>
+(function(){var c=document.getElementById('mobileCta');if(!c)return;var shown=false;window.addEventListener('scroll',function(){if(window.scrollY>600&&!shown){c.classList.add('visible');shown=true}else if(window.scrollY<=600&&shown){c.classList.remove('visible');shown=false}},{passive:true})})();
+</script>
 </body>
 </html>
