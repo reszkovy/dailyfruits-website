@@ -150,16 +150,23 @@
         .value-card-side p { font-size: 13px; line-height: 1.6; }
 
         /* Ecosystem */
-        .ecosystem-section { padding: 80px 0; background: var(--cream); }
-        .ecosystem-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; margin-top: 48px; }
-        .ecosystem-card { background: var(--white); padding: 40px 32px; border-radius: var(--radius); text-align: center; transition: transform 0.3s, box-shadow 0.3s; }
-        .ecosystem-card:hover { transform: translateY(-6px); box-shadow: 0 16px 48px rgba(27,94,58,0.1); }
-        .ecosystem-card.card-highlight { background: var(--green-dark); color: #fff; }
-        .ecosystem-card.card-highlight h3 { color: var(--yellow); }
-        .ecosystem-card.card-highlight p { color: rgba(255,255,255,0.7); }
-        .ecosystem-icon { font-size: 56px; margin-bottom: 16px; }
-        .ecosystem-card h3 { margin-bottom: 12px; color: var(--green-dark); font-size: 18px; }
-        .ecosystem-card p { font-size: 14px; line-height: 1.6; }
+        .ecosystem-section { padding: 80px 0; background: var(--green-dark); position: relative; overflow: hidden; }
+        .ecosystem-section::before { content: ''; position: absolute; top: -40%; right: -10%; width: 500px; height: 500px; border-radius: 50%; background: radial-gradient(circle, rgba(141,198,63,0.06) 0%, transparent 70%); pointer-events: none; }
+        .ecosystem-section .section-top h2 { color: #fff; }
+        .ecosystem-section .section-top h2 .fun { color: var(--yellow); }
+        .ecosystem-section .section-top p { color: rgba(255,255,255,0.6); }
+        .ecosystem-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; margin-top: 48px; }
+        .ecosystem-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(141,198,63,0.15); padding: 40px 28px 36px; border-radius: 20px; text-align: center; transition: transform 0.4s cubic-bezier(0.16,1,0.3,1), border-color 0.4s, background 0.4s, box-shadow 0.4s; position: relative; overflow: hidden; backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); }
+        .ecosystem-card::before { content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 60%; height: 1px; background: linear-gradient(90deg, transparent, rgba(141,198,63,0.4), transparent); }
+        .ecosystem-card:hover { transform: translateY(-6px); border-color: rgba(141,198,63,0.35); background: rgba(255,255,255,0.07); box-shadow: 0 20px 50px rgba(0,0,0,0.2), 0 0 30px rgba(141,198,63,0.08); }
+        .ecosystem-card.card-highlight { background: rgba(141,198,63,0.08); border-color: rgba(141,198,63,0.3); }
+        .ecosystem-card.card-highlight h3 { color: var(--lime); }
+        .ecosystem-card.card-highlight p { color: rgba(255,255,255,0.6); }
+        .eco-icon-wrap { width: 52px; height: 52px; margin: 0 auto 20px; display: flex; align-items: center; justify-content: center; border-radius: 14px; background: linear-gradient(135deg, rgba(141,198,63,0.12), rgba(255,193,7,0.08)); border: 1px solid rgba(141,198,63,0.2); }
+        .ecosystem-card h3 { margin-bottom: 10px; color: #fff; font-size: 18px; font-weight: 800; letter-spacing: -0.2px; }
+        .ecosystem-card h3 .eco-hl { color: var(--lime); }
+        .ecosystem-card p { font-size: 14px; line-height: 1.6; color: rgba(255,255,255,0.55); }
+        .ecosystem-tag { display: inline-block; margin-top: 14px; padding: 5px 14px; border-radius: var(--radius-pill); font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; background: rgba(141,198,63,0.1); color: var(--lime); border: 1px solid rgba(141,198,63,0.2); }
 
         /* Values */
         .values-section { padding: 80px 0; background: var(--white); }
@@ -501,39 +508,42 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
 
 <!-- WAVE: timeline → ecosystem -->
 <div class="wave-divider" style="background:var(--white)">
-    <svg viewBox="0 0 1440 60" preserveAspectRatio="none"><path d="M0,30 C320,60 640,0 960,40 C1120,55 1300,10 1440,25 L1440,60 L0,60Z" fill="#FFF9E0"/></svg>
+    <svg viewBox="0 0 1440 60" preserveAspectRatio="none"><path d="M0,30 C320,60 640,0 960,40 C1120,55 1300,10 1440,25 L1440,60 L0,60Z" fill="#1B5E3A"/></svg>
 </div>
 
 <section class="ecosystem-section">
     <div class="container">
         <div class="section-top reveal">
-            <div class="sticker sticker-green" style="transform:rotate(1deg)">Jeden partner</div>
-            <h2 style="margin-top:20px">Nasz <span class="fun">ekosystem</span></h2>
-            <p>Jeden partner, jedna faktura, pełna oferta wellbeing'u biurowego.</p>
+            <div class="sticker sticker-lime" style="transform:rotate(1deg)">Ekosystem</div>
+            <h2 style="margin-top:20px">Jeden partner do <span class="fun">całego wellbeingu</span></h2>
+            <p style="max-width:520px;margin:12px auto 0">Jedna faktura, jeden opiekun, pełna oferta — od owoców po prezenty firmowe.</p>
         </div>
         <div class="ecosystem-grid">
             <div class="ecosystem-card card-highlight reveal">
-                <div class="ecosystem-icon">🍎</div>
-                <h3>DailyFruits</h3>
-                <p>Owoce, warzywa, bakalie — codzienne dostawy świeżych produktów prosto do biurowej kuchni.</p>
+                <div class="eco-icon-wrap"><svg width="26" height="26" viewBox="0 0 28 28" fill="none"><path d="M14 3c-1.5 0-3 .8-3 2.5C11 7.5 14 9 14 9s3-1.5 3-3.5C17 3.8 15.5 3 14 3z" fill="var(--lime)" opacity="0.8"/><path d="M6 12a8 8 0 0 0 16 0" stroke="var(--lime)" stroke-width="1.8" stroke-linecap="round"/><path d="M4 12h20" stroke="rgba(255,255,255,0.4)" stroke-width="1.5" stroke-linecap="round"/><path d="M9 16v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2v-5" stroke="var(--lime)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                <h3><span class="eco-hl">Daily</span>Fruits</h3>
+                <p>Owoce, warzywa, bakalie — codzienne dostawy prosto do biurowej kuchni.</p>
+                <span class="ecosystem-tag">Owoce</span>
             </div>
             <div class="ecosystem-card reveal">
-                <div class="ecosystem-icon">🥪</div>
-                <h3>DailyFoods</h3>
-                <p>Kanapki, kawa, lunche, snacki — pełne żywienie biurowe dla zespołu, który nie ma czasu na obiady.</p>
+                <div class="eco-icon-wrap"><svg width="26" height="26" viewBox="0 0 28 28" fill="none"><path d="M5 14h18M5 14l1-3h16l1 3M7 14v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6" stroke="var(--lime)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M10 11V9a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v2" stroke="rgba(255,255,255,0.3)" stroke-width="1.5" stroke-linecap="round"/><circle cx="14" cy="18" r="1.5" fill="var(--yellow)" opacity="0.6"/></svg></div>
+                <h3><span class="eco-hl">Daily</span>Foods</h3>
+                <p>Kanapki, kawa, lunche, snacki — pełne żywienie dla zespołu.</p>
+                <span class="ecosystem-tag">Catering</span>
             </div>
             <div class="ecosystem-card reveal">
-                <div class="ecosystem-icon">🎁</div>
-                <h3>SendGift</h3>
-                <p>Welcome packi, gift boxy, paczki świąteczne — personalizowane prezenty dla zespołów i klientów.</p>
+                <div class="eco-icon-wrap"><svg width="26" height="26" viewBox="0 0 28 28" fill="none"><path d="M14 4l-2 4h-5l4 3.5-1.5 5L14 13.5l4.5 3-1.5-5 4-3.5h-5L14 4z" stroke="var(--yellow)" stroke-width="1.8" stroke-linejoin="round" fill="none"/><path d="M8 20l-1 4h14l-1-4" stroke="var(--lime)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                <h3><span class="eco-hl">Send</span>Gift</h3>
+                <p>Welcome packi, gift boxy, paczki świąteczne — jednym kliknięciem.</p>
+                <span class="ecosystem-tag">Prezenty</span>
             </div>
         </div>
     </div>
 </section>
 
 <!-- WAVE: ecosystem → faq -->
-<div class="wave-divider" style="background:var(--white)">
-    <svg viewBox="0 0 1440 60" preserveAspectRatio="none"><path d="M0,30 C320,60 640,0 960,40 C1120,55 1300,10 1440,25 L1440,60 L0,60Z" fill="#FFF9E0"/></svg>
+<div class="wave-divider" style="background:var(--green-dark)">
+    <svg viewBox="0 0 1440 60" preserveAspectRatio="none"><path d="M0,30 C320,60 640,0 960,40 C1120,55 1300,10 1440,25 L1440,60 L0,60Z" fill="#FFFFFF"/></svg>
 </div>
 
 <section class="faq-section">
