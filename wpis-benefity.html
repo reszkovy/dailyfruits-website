@@ -430,16 +430,6 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
     });
 
     // ─── HAMBURGER MENU ───
-    // ─── MOBILE NAV v2 ───
-    (function(){
-        var burger = document.getElementById('mnBurger');
-        var overlay = document.getElementById('mnOverlay');
-        if(!burger || !overlay) return;
-        function openMenu(){ burger.classList.add('active'); overlay.classList.add('active'); document.body.style.overflow='hidden'; }
-        function closeMenu(){ burger.classList.remove('active'); overlay.classList.remove('active'); document.body.style.overflow=''; }
-        burger.addEventListener('click', function(){ overlay.classList.contains('active') ? closeMenu() : openMenu(); });
-        overlay.querySelectorAll('.mn-link, .mn-cta').forEach(function(a){ a.addEventListener('click', closeMenu); });
-    })();
     }
 </script>
 
@@ -496,5 +486,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 </script>
+<script src="mn.js"></script>
 </body>
 </html>

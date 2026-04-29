@@ -74,6 +74,8 @@ header.nav-hidden{transform:translateY(-100%)}
 .mobile-sticky-cta .cta-primary{flex:1;text-align:center;padding:14px;border-radius:var(--radius-pill);background:var(--red);color:#fff;font-weight:800;font-size:15px}
 .mobile-sticky-cta .cta-secondary{padding:14px 20px;border-radius:var(--radius-pill);background:transparent;border:2px solid rgba(255,255,255,.3);color:#fff;font-weight:700;font-size:14px;text-align:center}
 /* ══ MOBILE NAV v2 — built fresh, .mn- prefix ══ */
+body.mn-open{overflow:hidden}
+body.mn-open header{z-index:9050!important}
 .mn-burger{display:none;align-items:center;justify-content:center;width:44px;height:44px;cursor:pointer;padding:0;z-index:9100;background:none;border:none;position:relative;-webkit-tap-highlight-color:transparent}
 .mn-burger i{display:block;width:26px;height:3px;background:var(--yellow);border-radius:3px;position:absolute;left:9px;transition:transform .5s cubic-bezier(.77,0,.175,1),opacity .3s ease}
 .mn-burger i:nth-child(1){top:13px}

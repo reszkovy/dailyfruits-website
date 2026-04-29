@@ -631,13 +631,6 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
 // Header scroll
 window.addEventListener('scroll', () => { document.querySelector('header').classList.toggle('scrolled', window.scrollY > 20); });
 // Hamburger
-const hamburger = document.getElementById('hamburger');
-const drawer = document.getElementById('mobileDrawer');
-const drawerClose = document.getElementById('drawerClose');
-if (hamburger && drawer) {
-    hamburger.addEventListener('click', () => { drawer.classList.add('open'); hamburger.classList.add('open'); });
-    drawerClose?.addEventListener('click', () => { drawer.classList.remove('open'); hamburger.classList.remove('open'); });
-    drawer.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { drawer.classList.remove('open'); hamburger.classList.remove('open'); }));
 }
 // Reveal
 const obs = new IntersectionObserver((entries) => { entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('vis'); obs.unobserve(e.target); } }); }, { threshold: 0.15 });
@@ -790,5 +783,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 })();
 </script>
+<script src="mn.js"></script>
 </body>
 </html>

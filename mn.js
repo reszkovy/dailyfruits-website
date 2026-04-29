@@ -1,0 +1,28 @@
+/* Mobile Nav v2 — standalone, zero dependencies */
+(function(){
+  var burger = document.getElementById('mnBurger');
+  var overlay = document.getElementById('mnOverlay');
+  if(!burger || !overlay) return;
+
+  function open(){
+    burger.classList.add('active');
+    overlay.classList.add('active');
+    document.body.classList.add('mn-open');
+  }
+  function close(){
+    burger.classList.remove('active');
+    overlay.classList.remove('active');
+    document.body.classList.remove('mn-open');
+  }
+
+  burger.addEventListener('click', function(){ overlay.classList.contains('active') ? close() : open(); });
+
+  // Close when any link is tapped
+  var links = overlay.querySelectorAll('.mn-link, .mn-cta');
+  for(var i=0; i<links.length; i++){
+    links[i].addEventListener('click', close);
+  }
+
+  // Close on Escape key
+  document.addEventListener('keydown', function(e){ if(e.key==='Escape' && overlay.classList.contains('active')) close(); });
+})();
