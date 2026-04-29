@@ -125,6 +125,15 @@
         .floating-badge img { height: 120px; filter: drop-shadow(0 4px 12px rgba(228,48,32,0.3)); transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), filter 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
         .floating-badge:hover img { transform: scale(1.1) rotate(-3deg); filter: drop-shadow(0 6px 18px rgba(27,94,58,0.4)) hue-rotate(90deg) saturate(1.4); }
 
+        /* ─── FAQ ─── */
+        .faq-a-inner { padding: 0 0 22px; font-size: 15px; line-height: 1.8; color: var(--gray); }
+        .faq-item { border-bottom: 1px solid rgba(27,94,58,0.1); }
+        .faq-q { width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 20px 0; background: none; border: none; cursor: pointer; font-family: var(--font); font-size: 16px; font-weight: 700; color: var(--green-dark); text-align: left; gap: 16px; }
+        .faq-q svg { flex-shrink: 0; transition: transform 0.3s; }
+        .faq-q[aria-expanded="true"] svg { transform: rotate(180deg); }
+        .faq-a { overflow: hidden; max-height: 0; transition: max-height 0.4s ease; }
+        .faq-a[hidden] { display: block; max-height: 0; }
+
         @media (max-width: 1024px) {
             .container { padding: 0 36px; }
             .nav-inner { padding: 14px 36px; }
@@ -198,6 +207,19 @@
         "itemListElement": [
             {"@type": "ListItem", "position": 1, "name": "Strona główna", "item": "https://dailyfruits.pl/"},
             {"@type": "ListItem", "position": 2, "name": "Pomagamy", "item": "https://dailyfruits.pl/pomagamy"}
+        ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {"@type": "Question", "name": "Jakie organizacje wspiera DailyFruits?", "acceptedAnswer": {"@type": "Answer", "text": "Wspolpracujemy z 11 organizacjami, w tym WOSP, Fundacja Inna Przestrzen, Stowarzyszenie UNICORN, Fundacja NEBO, ZOO Warszawa i Krakow, Fundacja Centaurus, PCK i Szlachetna Paczka."}},
+            {"@type": "Question", "name": "Ile owocow przekazal DailyFruits potrzebujacym?", "acceptedAnswer": {"@type": "Answer", "text": "Podczas pandemii przekazalismy ponad 80 ton swiezych owocow do szpitali i Bankow Zywnosci. Codziennie dostarczamy rowniez owoce do fundacji i ogrodow zoologicznych."}},
+            {"@type": "Question", "name": "Jak DailyFruits wspiera WOSP?", "acceptedAnswer": {"@type": "Answer", "text": "Od 24. finalu jestesmy stalym partnerem WOSP. Dostarczamy ponad 2000 jablek do sztabu glownego i organizujemy bezplatne porady dietetyczne."}},
+            {"@type": "Question", "name": "Czy zamawiajac w DailyFruits wspieramy dzialania spoleczne?", "acceptedAnswer": {"@type": "Answer", "text": "Tak — czesc naszych przychodow i produktow jest regularnie przekazywana na cele spoleczne. Owoce z drobnymi skazami trafiaja do ZOO i Bankow Zywnosci."}},
+            {"@type": "Question", "name": "Co to jest akcja wspieram?", "acceptedAnswer": {"@type": "Answer", "text": "Akcja wspieram to inicjatywa uruchomiona podczas pandemii COVID-19, w ramach ktorej klienci DailyFruits mogli przekierowac zamowienia biurowe do szpitali i organizacji pomocowych. Przekazalismy 80 ton owocow."}}
         ]
     }
     </script>
@@ -358,7 +380,56 @@
     </div>
 </section>
 
-<!-- WAVE: initiatives → cta -->
+<!-- SEO: CSR philosophy -->
+<section style="padding:80px 0;background:var(--cream)">
+    <div class="container" style="max-width:800px">
+        <div class="reveal">
+            <h2 style="text-align:center;margin-bottom:32px">Spoleczna odpowiedzialnosc <span class="fun">w praktyce</span></h2>
+            <p style="margin-bottom:20px">DailyFruits nie traktuje CSR jako dzialu marketingu. Od 2015 roku aktywnie przekazujemy owoce, produkty spozywcze i wsparcie finansowe organizacjom, ktore dzialaja lokalnie — tam, gdzie robia realna roznice.</p>
+            <p style="margin-bottom:20px">Podczas pandemii COVID-19 w ramach akcji #wspieram nasi klienci przekierowali zamowienia biurowe do szpitali i Bankow Zywnosci. W pierwszym miesiacu przekazalismy ponad 80 ton swiezych owocow. Ta akcja pokazala, ze lancuch dostaw moze sluzyc nie tylko firmom, ale calym spolecznosciom.</p>
+            <p style="margin-bottom:20px">Od 24. finalu Wielkiej Orkiestry Swiatecznej Pomocy jestesmy stalym partnerem — dostarczamy tysiace jablek do sztabu glownego, organizujemy bezplatne porady dietetyczne i wspieramy przychodnie we wspolpracy ze ZnanyLekarz.</p>
+            <p>Wierzymy, ze firma cateringowa obslugujaca 2000+ biur w Polsce ma obowiazek dzielenia sie z tymi, ktorzy tego potrzebuja. Kazde zamowienie w DailyFruits posrednio wspiera nasze inicjatywy spoleczne.</p>
+        </div>
+    </div>
+</section>
+
+<!-- WAVE: philosophy → FAQ -->
+<div class="wave-divider" style="background:var(--cream)">
+    <svg viewBox="0 0 1440 60" preserveAspectRatio="none"><path d="M0,30 C320,60 640,0 960,40 C1120,55 1300,10 1440,25 L1440,60 L0,60Z" fill="#FFFFFF"/></svg>
+</div>
+
+<!-- FAQ Section -->
+<section style="padding:80px 0;background:var(--white)">
+    <div class="container" style="max-width:800px">
+        <div class="section-top reveal" style="text-align:center;margin-bottom:48px">
+            <h2>Pytania o nasze <span class="fun">dzialania</span></h2>
+        </div>
+        <div class="faq-list" role="list">
+            <div class="faq-item reveal" role="listitem">
+                <button class="faq-q" aria-expanded="false"><span>Jakie organizacje wspiera DailyFruits?</span><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+                <div class="faq-a" hidden><div class="faq-a-inner">Wspolpracujemy z 11 organizacjami, w tym WOSP, Fundacja Inna Przestrzen, Stowarzyszenie UNICORN, Fundacja NEBO, Teatr za Jeden Usmiech, ZOO Warszawa i Krakow, Fundacja Centaurus, PCK, Fundacja Dziecieca Fantazja i Szlachetna Paczka.</div></div>
+            </div>
+            <div class="faq-item reveal" role="listitem">
+                <button class="faq-q" aria-expanded="false"><span>Ile owocow przekazal DailyFruits potrzebujacym?</span><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+                <div class="faq-a" hidden><div class="faq-a-inner">Podczas pandemii w ramach akcji #wspieram przekazalismy ponad 80 ton swiezych owocow do szpitali i Bankow Zywnosci. Codziennie dostarczamy rowniez owoce do fundacji, ogrodow zoologicznych i osrodkow wychowawczych.</div></div>
+            </div>
+            <div class="faq-item reveal" role="listitem">
+                <button class="faq-q" aria-expanded="false"><span>Jak DailyFruits wspiera WOSP?</span><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+                <div class="faq-a" hidden><div class="faq-a-inner">Od 24. finalu jestesmy stalym partnerem WOSP. Dostarczamy ponad 2000 jablek do sztabu glownego, organizujemy bezplatne porady dietetyczne i wspieramy przychodnie we wspolpracy ze ZnanyLekarz.</div></div>
+            </div>
+            <div class="faq-item reveal" role="listitem">
+                <button class="faq-q" aria-expanded="false"><span>Czy zamawiajac w DailyFruits wspieramy dzialania spoleczne?</span><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+                <div class="faq-a" hidden><div class="faq-a-inner">Tak — czesc naszych przychodow i produktow jest regularnie przekazywana na cele spoleczne. Owoce z drobnymi skazami estetycznymi trafiaja do ZOO i Bankow Zywnosci zamiast na smieci. Kazde zamowienie posrednio wspiera nasze inicjatywy.</div></div>
+            </div>
+            <div class="faq-item reveal" role="listitem">
+                <button class="faq-q" aria-expanded="false"><span>Co to jest akcja #wspieram?</span><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+                <div class="faq-a" hidden><div class="faq-a-inner">Akcja #wspieram to inicjatywa uruchomiona podczas pandemii COVID-19, w ramach ktorej klienci DailyFruits mogli przekierowac swoje zamowienia biurowe do szpitali, Bankow Zywnosci i organizacji pomocowych. W pierwszym miesiacu przekazalismy 80 ton owocow.</div></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- WAVE: faq → cta -->
 <div class="wave-divider" style="background:var(--white)">
     <svg viewBox="0 0 1440 60" preserveAspectRatio="none"><path d="M0,30 C360,0 720,55 1080,15 C1260,5 1380,40 1440,25 L1440,60 L0,60Z" fill="#1B5E3A"/></svg>
 </div>
@@ -542,6 +613,26 @@ document.addEventListener('DOMContentLoaded', function() {
         overlay.querySelector('.exit-popup').innerHTML = '<h3 style="margin-bottom:16px">Gotowe!</h3><p>Checklist leci na <strong>' + email + '</strong>.<br>Sprawdź skrzynkę (i spam).</p><button class="exit-close" onclick="document.getElementById(\'exitOverlay\').classList.remove(\'show\')" style="position:static;width:auto;height:auto;border-radius:var(--radius-pill);padding:12px 28px;margin-top:20px;background:var(--green-dark);color:#fff;font-weight:700">Zamknij</button>';
     });
 })();
+</script>
+
+<script>
+// FAQ accordion
+document.querySelectorAll('.faq-q').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+        var expanded = this.getAttribute('aria-expanded') === 'true';
+        document.querySelectorAll('.faq-q').forEach(function(b) {
+            b.setAttribute('aria-expanded', 'false');
+            var a = b.nextElementSibling;
+            a.style.maxHeight = null;
+        });
+        if (!expanded) {
+            this.setAttribute('aria-expanded', 'true');
+            var answer = this.nextElementSibling;
+            answer.removeAttribute('hidden');
+            answer.style.maxHeight = answer.scrollHeight + 'px';
+        }
+    });
+});
 </script>
 
 <script src="mn.js?v=4"></script>

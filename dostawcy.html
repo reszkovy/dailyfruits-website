@@ -260,6 +260,12 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
 
         /* ─── FAQ ─── */
         .faq-a-inner { padding: 0 0 22px; font-size: 15px; line-height: 1.8; color: var(--gray); }
+        .faq-item { border-bottom: 1px solid rgba(27,94,58,0.1); }
+        .faq-q { width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 20px 0; background: none; border: none; cursor: pointer; font-family: var(--font); font-size: 16px; font-weight: 700; color: var(--green-dark); text-align: left; gap: 16px; }
+        .faq-q svg { flex-shrink: 0; transition: transform 0.3s; }
+        .faq-q[aria-expanded="true"] svg { transform: rotate(180deg); }
+        .faq-a { overflow: hidden; max-height: 0; transition: max-height 0.4s ease; }
+        .faq-a[hidden] { display: block; max-height: 0; }
 
 
 /* ─── EXIT-INTENT POPUP ─── */
@@ -305,6 +311,19 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
         "itemListElement": [
             {"@type": "ListItem", "position": 1, "name": "Strona główna", "item": "https://dailyfruits.pl/"},
             {"@type": "ListItem", "position": 2, "name": "Dostawcy", "item": "https://dailyfruits.pl/dostawcy"}
+        ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {"@type": "Question", "name": "Skad pochodza owoce dostarczane do biur?", "acceptedAnswer": {"@type": "Answer", "text": "Wspolpracujemy z 12 certyfikowanymi dostawcami — od rodzinnych sadownikow z Mazowsza po najwiekszych importerow cytrusow w Polsce. Owoce krajowe pochodza z sadow prowadzonych w systemie Integrowanej Produkcji, a tropikalne od partnerow z certyfikatem Rainforest Alliance i Fair Trade."}},
+            {"@type": "Question", "name": "Jakie certyfikaty posiadaja dostawcy DailyFruits?", "acceptedAnswer": {"@type": "Answer", "text": "Wymagamy co najmniej jednego z czterech standardow: Fair Trade, GlobalG.A.P., Rainforest Alliance lub Integrowana Produkcja. Wiekszosc naszych partnerow spelnia dwa lub wiecej standardow jednoczesnie."}},
+            {"@type": "Question", "name": "Ile owocow miesiecznie dostarcza DailyFruits?", "acceptedAnswer": {"@type": "Answer", "text": "Nasz lancuch dostaw obsluguje ponad 200 ton owocow miesiecznie, dostarczanych do biur w 13 miastach Polski."}},
+            {"@type": "Question", "name": "Co sie dzieje z owocami ktore nie spelniaja standardow jakosci?", "acceptedAnswer": {"@type": "Answer", "text": "Owoce z drobnymi skazami estetycznymi przekazujemy do wspolpracujacych ogrodow zoologicznych (ZOO Warszawa i Krakow) oraz Bankow Zywnosci. Nic sie nie marnuje."}},
+            {"@type": "Question", "name": "Czy moge zostac dostawca DailyFruits?", "acceptedAnswer": {"@type": "Answer", "text": "Tak — szukamy certyfikowanych sadownikow i dystrybutorów, ktorzy moga zapewnic regularne dostawy w najwyzszej jakosci. Wyslij zapytanie przez formularz kontaktowy."}}
         ]
     }
     </script>
@@ -461,7 +480,56 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
     </div>
 </section>
 
-<!-- WAVE: suppliers → cta -->
+<!-- SEO: Supply chain philosophy -->
+<section style="padding:80px 0;background:var(--white)">
+    <div class="container" style="max-width:800px">
+        <div class="reveal">
+            <h2 style="text-align:center;margin-bottom:32px">Jak dobieramy <span class="fun">dostawcow?</span></h2>
+            <p style="margin-bottom:20px">Kazdy dostawca w sieci DailyFruits przechodzi wieloetapowy proces weryfikacji. Nie wystarczy zaoferowac dobrej ceny — liczy sie powtarzalnosc jakosci, certyfikacja i gotowsc do codziennych dostaw na terenie calej Polski.</p>
+            <p style="margin-bottom:20px">Wspolpracujemy z sadownikami, ktorzy prowadza uprawy w systemie Integrowanej Produkcji, importerami posiadajacymi certyfikat GlobalG.A.P. oraz dystrybutorami z akredytacja Fair Trade. Dla owocow tropikalnych wymagamy potwierdzenia Rainforest Alliance — gwarancji, ze produkcja nie niszczy ekosystemow.</p>
+            <p style="margin-bottom:20px">Nasz lancuch dostaw obejmuje ponad 200 ton owocow miesiecznie dostarczanych do biur w 13 miastach Polski. Kazda partia jest kontrolowana pod katem swiezosci, dojrzalosci i warunkow transportu. Owoce, ktore nie spelniaja naszych standardow, trafiaja do wspolpracujacych ogrodow zoologicznych i bankow zywnosci.</p>
+            <p>Transparentnosc lancucha dostaw to nie trend — to fundament naszego modelu biznesowego. Dlatego publikujemy liste dostawcow i nie ukrywamy, skad pochodza Twoje owoce.</p>
+        </div>
+    </div>
+</section>
+
+<!-- WAVE: philosophy → FAQ -->
+<div class="wave-divider" style="background:var(--white)">
+    <svg viewBox="0 0 1440 60" preserveAspectRatio="none"><path d="M0,30 C320,60 640,0 960,40 C1120,55 1300,10 1440,25 L1440,60 L0,60Z" fill="#FFF9E0"/></svg>
+</div>
+
+<!-- FAQ Section -->
+<section style="padding:80px 0;background:var(--lime-bg)">
+    <div class="container" style="max-width:800px">
+        <div class="section-top reveal" style="text-align:center;margin-bottom:48px">
+            <h2>Najczesciej zadawane <span class="fun">pytania</span></h2>
+        </div>
+        <div class="faq-list" role="list">
+            <div class="faq-item reveal" role="listitem">
+                <button class="faq-q" aria-expanded="false"><span>Skad pochodza owoce dostarczane do biur?</span><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+                <div class="faq-a" hidden><div class="faq-a-inner">Wspolpracujemy z 12 certyfikowanymi dostawcami — od rodzinnych sadownikow z Mazowsza po najwiekszych importerow cytrusow w Polsce. Owoce krajowe pochodza z sadow prowadzonych w systemie Integrowanej Produkcji, a tropikalne — od partnerow z certyfikatem Rainforest Alliance i Fair Trade.</div></div>
+            </div>
+            <div class="faq-item reveal" role="listitem">
+                <button class="faq-q" aria-expanded="false"><span>Jakie certyfikaty posiadaja dostawcy DailyFruits?</span><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+                <div class="faq-a" hidden><div class="faq-a-inner">Wymagamy co najmniej jednego z czterech standardow: Fair Trade (sprawiedliwy handel), GlobalG.A.P. (bezpieczenstwo zywnosci od pola do stolu), Rainforest Alliance (ochrona ekosystemow) lub Integrowana Produkcja (krajowy certyfikat jakosci). Wiekszosc naszych partnerow spelnia dwa lub wiecej standardow jednoczesnie.</div></div>
+            </div>
+            <div class="faq-item reveal" role="listitem">
+                <button class="faq-q" aria-expanded="false"><span>Ile owocow miesiecznie dostarcza DailyFruits?</span><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+                <div class="faq-a" hidden><div class="faq-a-inner">Nasz lancuch dostaw obsluguje ponad 200 ton owocow miesiecznie, dostarczanych do biur w 13 miastach Polski. Obejmuje to owoce swieze, bakalie, soki i przekaski zdrowotne.</div></div>
+            </div>
+            <div class="faq-item reveal" role="listitem">
+                <button class="faq-q" aria-expanded="false"><span>Co sie dzieje z owocami, ktore nie spelniaja standardow jakosci?</span><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+                <div class="faq-a" hidden><div class="faq-a-inner">Owoce z drobnymi skazami estetycznymi przekazujemy do wspolpracujacych ogrodow zoologicznych (ZOO Warszawa i Krakow) oraz Bankow Zywnosci. Nic sie nie marnuje — to czesc naszej polityki zero waste i spolecznej odpowiedzialnosci.</div></div>
+            </div>
+            <div class="faq-item reveal" role="listitem">
+                <button class="faq-q" aria-expanded="false"><span>Czy moge zostac dostawca DailyFruits?</span><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+                <div class="faq-a" hidden><div class="faq-a-inner">Tak — szukamy certyfikowanych sadownikow i dystryutorow, ktorzy moga zapewnic regularne dostawy w najwyzszej jakosci. Wyslij zapytanie przez formularz kontaktowy, a nasz zespol zakupow skonatktuje sie w ciagu 48 godzin.</div></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- WAVE: faq → cta -->
 <div class="wave-divider" style="background:var(--lime-bg)">
     <svg viewBox="0 0 1440 60" preserveAspectRatio="none"><path d="M0,30 C360,0 720,55 1080,15 C1260,5 1380,40 1440,25 L1440,60 L0,60Z" fill="#1B5E3A"/></svg>
 </div>
@@ -645,6 +713,28 @@ document.addEventListener('DOMContentLoaded', function() {
         overlay.querySelector('.exit-popup').innerHTML = '<h3 style="margin-bottom:16px">Gotowe! 🎉</h3><p>Checklist leci na <strong>' + email + '</strong>.<br>Sprawdź skrzynkę (i spam).</p><button class="exit-close" onclick="document.getElementById(\'exitOverlay\').classList.remove(\'show\')" style="position:static;width:auto;height:auto;border-radius:var(--radius-pill);padding:12px 28px;margin-top:20px;background:var(--green-dark);color:#fff;font-weight:700">Zamknij</button>';
     });
 })();
+</script>
+
+<script>
+// FAQ accordion
+document.querySelectorAll('.faq-q').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+        var expanded = this.getAttribute('aria-expanded') === 'true';
+        // Close all
+        document.querySelectorAll('.faq-q').forEach(function(b) {
+            b.setAttribute('aria-expanded', 'false');
+            var a = b.nextElementSibling;
+            a.style.maxHeight = null;
+        });
+        // Open clicked (if was closed)
+        if (!expanded) {
+            this.setAttribute('aria-expanded', 'true');
+            var answer = this.nextElementSibling;
+            answer.removeAttribute('hidden');
+            answer.style.maxHeight = answer.scrollHeight + 'px';
+        }
+    });
+});
 </script>
 
 <script src="mn.js?v=4"></script>

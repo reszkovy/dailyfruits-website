@@ -319,6 +319,9 @@
 .city-index-links a { font-size: 14px; color: rgba(255,255,255,0.6); transition: color 0.2s; }
 .city-index-links a:hover { color: #8DC63F; }
 
+/* Trust strip */
+.trust-strip-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; max-width: 900px; margin: 0 auto; }
+
         /* ─── FOOTER ─── */
         footer { background: var(--green-dark); color: #fff; padding: 72px 0 36px; }
         .footer-grid { display: grid; grid-template-columns: 1.5fr repeat(3, 1fr); gap: 48px; margin-bottom: 48px; }
@@ -472,6 +475,7 @@
             .test-card { scroll-snap-align: start; width: 85vw; max-width: 320px; }
             .test-slider .test-card:nth-child(n+7) { display: none; }
             .how-section, .offer-section, .benefits-six, .testimonials, .delivery, .faq-section, .cta, .ecosystem { padding: 72px 0; }
+            .trust-strip-grid { grid-template-columns: 1fr !important; }
             .cities-grid { grid-template-columns: repeat(2, 1fr); }
             .footer-grid { grid-template-columns: 1fr; gap: 28px; }
             .cta-card { padding: 48px 24px; border-radius: 16px; }
@@ -1131,6 +1135,30 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
             <button class="carousel-btn" data-dir="prev" aria-label="Poprzedni">&#8592;</button>
             <span class="carousel-counter"><span class="carousel-current">1</span> / <span class="carousel-total">6</span></span>
             <button class="carousel-btn" data-dir="next" aria-label="Następny">&#8594;</button>
+        </div>
+    </div>
+</section>
+
+<!-- TRUST STRIP: Dostawcy + CSR -->
+<section style="padding:48px 0;background:var(--cream)">
+    <div class="container">
+        <div class="trust-strip-grid reveal">
+            <a href="dostawcy.html" style="display:flex;align-items:center;gap:16px;padding:24px 28px;background:var(--white);border-radius:var(--radius);transition:transform 0.3s,box-shadow 0.3s;text-decoration:none;border:1px solid rgba(27,94,58,0.08);" onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 8px 24px rgba(27,94,58,0.1)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
+                <span style="font-size:32px;flex-shrink:0">🤝</span>
+                <div>
+                    <h3 style="font-size:15px;font-weight:800;color:var(--green-dark);margin-bottom:4px">Certyfikowani dostawcy</h3>
+                    <p style="font-size:13px;line-height:1.5;color:var(--gray);margin:0">Fair Trade, GlobalG.A.P., Rainforest Alliance — poznaj nasz lancuch dostaw</p>
+                </div>
+                <span style="font-size:18px;color:var(--lime);flex-shrink:0;margin-left:auto">→</span>
+            </a>
+            <a href="pomagamy.html" style="display:flex;align-items:center;gap:16px;padding:24px 28px;background:var(--white);border-radius:var(--radius);transition:transform 0.3s,box-shadow 0.3s;text-decoration:none;border:1px solid rgba(27,94,58,0.08);" onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 8px 24px rgba(27,94,58,0.1)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
+                <span style="font-size:32px;flex-shrink:0">💚</span>
+                <div>
+                    <h3 style="font-size:15px;font-weight:800;color:var(--green-dark);margin-bottom:4px">Pomagamy lokalnie</h3>
+                    <p style="font-size:13px;line-height:1.5;color:var(--gray);margin:0">WOSP, fundacje, ZOO — 80 ton owocow przekazanych potrzebujacym</p>
+                </div>
+                <span style="font-size:18px;color:var(--lime);flex-shrink:0;margin-left:auto">→</span>
+            </a>
         </div>
     </div>
 </section>
