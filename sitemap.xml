@@ -8,6 +8,8 @@
 
   <!-- New content pages -->
   <url><loc>https://dailyfruits.pl/dostawa</loc><lastmod>2026-04-26</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://dailyfruits.pl/dostawcy</loc><lastmod>2026-04-29</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://dailyfruits.pl/pomagamy</loc><lastmod>2026-04-29</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://dailyfruits.pl/o-nas</loc><lastmod>2026-04-26</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://dailyfruits.pl/kanapki-do-biura</loc><lastmod>2026-04-26</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://dailyfruits.pl/catering-firmowy</loc><lastmod>2026-04-26</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
