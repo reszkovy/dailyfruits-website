@@ -126,29 +126,6 @@
         .product-card-body .btn-sm { display: inline-flex; align-items: center; gap: 4px; padding: 7px 14px; border-radius: var(--radius-pill); background: var(--green-dark); color: #fff; font-size: 11px; font-weight: 700; transition: all 0.2s; align-self: flex-start; }
         .product-card-body .btn-sm:hover { background: #144A2B; transform: translateY(-1px); }
 
-        .calc-section { padding: 60px 0 80px; }
-        .calc-card { background: var(--white); border-radius: var(--radius-lg); padding: 48px; max-width: 680px; margin: 0 auto; box-shadow: 0 4px 24px rgba(27,94,58,0.06); border: 1px solid rgba(27,94,58,0.06); }
-        .calc-card h3 { text-align: center; font-size: 22px; margin-bottom: 8px; }
-        .calc-card > p { text-align: center; font-size: 14px; color: var(--gray); margin-bottom: 36px; }
-        .calc-row { margin-bottom: 28px; }
-        .calc-label { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 10px; }
-        .calc-label span:first-child { font-size: 14px; font-weight: 700; color: var(--green-dark); }
-        .calc-label .calc-val { font-size: 18px; font-weight: 900; color: var(--green-dark); min-width: 60px; text-align: right; }
-        .calc-slider { -webkit-appearance: none; appearance: none; width: 100%; height: 6px; border-radius: 3px; background: var(--lime-pale); outline: none; }
-        .calc-slider::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 24px; height: 24px; border-radius: 50%; background: var(--lime); cursor: pointer; box-shadow: 0 2px 8px rgba(141,198,63,0.3); }
-        .calc-slider::-moz-range-thumb { width: 24px; height: 24px; border-radius: 50%; background: var(--lime); cursor: pointer; border: none; }
-        .calc-result { text-align: center; padding: 28px 0 24px; border-top: 1px solid rgba(27,94,58,0.08); margin-top: 32px; }
-        .calc-result-label { font-size: 13px; color: var(--gray); margin-bottom: 6px; }
-        .calc-result-price { font-size: 42px; font-weight: 900; color: var(--green-dark); line-height: 1; }
-        .calc-result-price span { font-size: 16px; font-weight: 500; color: var(--gray); }
-        .calc-result-note { font-size: 12px; color: var(--gray); opacity: 0.7; margin-top: 8px; }
-        .calc-cta { text-align: center; margin-top: 24px; }
-        .cta-section { padding: 0 0 80px; text-align: center; position: relative; overflow: hidden; }
-        .cta-card { background: transparent; border-radius: 0; padding: 32px 56px; max-width: 880px; margin: 0 auto; position: relative; overflow: hidden; }
-        .cta-card h2 { color: var(--green-dark); margin-bottom: 12px; }
-        .cta-card h2 .fun { color: var(--lime); }
-        .cta-card p { color: var(--gray); opacity: 1; max-width: 480px; margin: 0 auto 32px; }
-        .cta-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
 
         footer { background: var(--green-dark); color: #fff; padding: 72px 0 36px; }
         .footer-grid { display: grid; grid-template-columns: 1.5fr repeat(3, 1fr); gap: 48px; margin-bottom: 48px; }
@@ -190,23 +167,88 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
 
         
         /* ─── PRICING SECTION ─── */
-        .pricing-section { padding: 0 0 80px; }
-        .pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; max-width: 1000px; margin: 0 auto; }
-        .pricing-card { background: var(--white); border-radius: var(--radius); padding: 32px 28px; text-align: center; border: 2px solid transparent; transition: all 0.3s; position: relative; }
-        .pricing-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(27,94,58,0.1); }
-        .pricing-card.featured { border-color: var(--lime); }
-        .pricing-card.featured::before { content: 'Najpopularniejszy'; position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: var(--lime); color: var(--green-dark); padding: 4px 16px; border-radius: var(--radius-pill); font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
-        .pricing-card h3 { font-size: 20px; color: var(--green-dark); margin-bottom: 8px; }
-        .pricing-price { font-size: 14px; color: var(--gray); margin-bottom: 4px; }
-        .pricing-price strong { font-size: 36px; color: var(--green-dark); font-weight: 900; }
-        .pricing-price .unit { font-size: 14px; color: var(--gray); }
-        .pricing-note { font-size: 12px; color: var(--gray); opacity: 0.7; margin-bottom: 16px; }
-        .pricing-features { list-style: none; text-align: left; margin-bottom: 24px; }
-        .pricing-features li { font-size: 13px; color: var(--gray); padding: 6px 0; border-bottom: 1px solid rgba(27,94,58,0.06); display: flex; align-items: center; gap: 8px; }
-        .pricing-features li::before { content: '\2713'; color: var(--lime); font-weight: 700; font-size: 14px; }
-        .pricing-card .btn { width: 100%; justify-content: center; padding: 12px 24px; font-size: 14px; }
-        .pricing-disclaimer { text-align: center; font-size: 13px; color: var(--gray); opacity: 0.6; margin-top: 20px; max-width: 600px; margin-left: auto; margin-right: auto; }
-        @media (max-width: 768px) { .pricing-grid { grid-template-columns: 1fr; max-width: 400px; } }
+        /* ─── SLIDER ─── */
+        .calc-slider { -webkit-appearance: none; appearance: none; width: 100%; height: 6px; border-radius: 3px; background: var(--lime-pale); outline: none; }
+        .calc-slider::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 24px; height: 24px; border-radius: 50%; background: var(--lime); cursor: pointer; box-shadow: 0 2px 8px rgba(141,198,63,0.3); }
+        .calc-slider::-moz-range-thumb { width: 24px; height: 24px; border-radius: 50%; background: var(--lime); cursor: pointer; border: none; }
+
+        /* ─── QUOTE BUILDER ─── */
+        .qb-section { padding: 60px 0 80px; }
+        .qb-wrap { max-width: 780px; margin: 0 auto; }
+        .qb-progress { display: flex; gap: 4px; margin-bottom: 40px; }
+        .qb-progress-step { flex: 1; height: 4px; border-radius: 2px; background: rgba(27,94,58,0.1); transition: background 0.4s; }
+        .qb-progress-step.done { background: var(--lime); }
+        .qb-progress-step.active { background: var(--green-dark); }
+        .qb-step { display: none; }
+        .qb-step.active { display: block; animation: fadeSlide 0.35s ease; }
+        .qb-step-label { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--lime); margin-bottom: 8px; }
+        .qb-step-title { font-size: 24px; font-weight: 900; color: var(--green-dark); margin-bottom: 6px; }
+        .qb-step-desc { font-size: 14px; color: var(--gray); margin-bottom: 32px; }
+        .qb-slider-row { margin-bottom: 28px; }
+        .qb-slider-label { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 10px; }
+        .qb-slider-label span:first-child { font-size: 14px; font-weight: 700; color: var(--green-dark); }
+        .qb-slider-label .qb-val { font-size: 20px; font-weight: 900; color: var(--green-dark); }
+        .qb-pills { display: flex; gap: 8px; flex-wrap: wrap; }
+        .qb-pill { padding: 10px 20px; border-radius: var(--radius-pill); border: 2px solid rgba(27,94,58,0.15); font-size: 14px; font-weight: 700; color: var(--green-dark); cursor: pointer; transition: all 0.2s; background: var(--white); }
+        .qb-pill:hover { border-color: var(--lime); }
+        .qb-pill.active { background: var(--green-dark); border-color: var(--green-dark); color: #fff; }
+        .qb-city-select { width: 100%; padding: 12px 16px; border-radius: var(--radius); border: 2px solid rgba(27,94,58,0.15); font-size: 14px; font-weight: 600; color: var(--green-dark); background: var(--white); cursor: pointer; appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%231B5E3A' stroke-width='2' fill='none'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 16px center; }
+        .qb-pkg-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+        .qb-pkg { background: var(--white); border-radius: var(--radius); padding: 28px 24px; text-align: center; border: 2px solid rgba(27,94,58,0.1); cursor: pointer; transition: all 0.25s; position: relative; }
+        .qb-pkg:hover { border-color: var(--lime); transform: translateY(-2px); box-shadow: 0 8px 28px rgba(27,94,58,0.08); }
+        .qb-pkg.active { border-color: var(--green-dark); box-shadow: 0 8px 28px rgba(27,94,58,0.12); }
+        .qb-pkg.active::after { content: '\2713'; position: absolute; top: 12px; right: 14px; width: 24px; height: 24px; border-radius: 50%; background: var(--lime); color: var(--green-dark); font-size: 14px; font-weight: 900; display: flex; align-items: center; justify-content: center; }
+        .qb-pkg-badge { display: inline-block; padding: 3px 12px; border-radius: var(--radius-pill); font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 10px; background: var(--lime); color: var(--green-dark); }
+        .qb-pkg h4 { font-size: 18px; color: var(--green-dark); margin-bottom: 4px; }
+        .qb-pkg-price { font-size: 14px; color: var(--gray); margin-bottom: 12px; }
+        .qb-pkg-price strong { font-size: 32px; color: var(--green-dark); font-weight: 900; }
+        .qb-pkg-list { list-style: none; text-align: left; }
+        .qb-pkg-list li { font-size: 12px; color: var(--gray); padding: 4px 0; display: flex; align-items: center; gap: 6px; }
+        .qb-pkg-list li::before { content: '\2713'; color: var(--lime); font-weight: 700; font-size: 12px; }
+        .qb-addon-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+        .qb-addon { display: flex; align-items: center; gap: 14px; padding: 16px 20px; border-radius: var(--radius); border: 2px solid rgba(27,94,58,0.1); cursor: pointer; transition: all 0.2s; background: var(--white); }
+        .qb-addon:hover { border-color: var(--lime); }
+        .qb-addon.active { border-color: var(--green-dark); background: rgba(27,94,58,0.03); }
+        .qb-addon-toggle { width: 44px; height: 24px; border-radius: 12px; background: rgba(27,94,58,0.15); position: relative; flex-shrink: 0; transition: background 0.2s; }
+        .qb-addon.active .qb-addon-toggle { background: var(--lime); }
+        .qb-addon-toggle::after { content: ''; position: absolute; top: 3px; left: 3px; width: 18px; height: 18px; border-radius: 50%; background: white; transition: transform 0.2s; box-shadow: 0 1px 3px rgba(0,0,0,0.15); }
+        .qb-addon.active .qb-addon-toggle::after { transform: translateX(20px); }
+        .qb-addon-info h5 { font-size: 14px; font-weight: 700; color: var(--green-dark); margin: 0 0 2px; }
+        .qb-addon-info p { font-size: 12px; color: var(--gray); margin: 0; }
+        .qb-addon-price { margin-left: auto; font-size: 14px; font-weight: 800; color: var(--green-dark); flex-shrink: 0; }
+        .qb-live-price { background: var(--green-dark); border-radius: var(--radius); padding: 20px 28px; display: flex; justify-content: space-between; align-items: center; margin-top: 32px; }
+        .qb-live-label { font-size: 13px; color: rgba(255,255,255,0.6); }
+        .qb-live-amount { font-size: 28px; font-weight: 900; color: #fff; }
+        .qb-live-amount span { font-size: 14px; font-weight: 400; color: rgba(255,255,255,0.5); }
+        .qb-live-per { font-size: 12px; color: rgba(255,255,255,0.4); margin-top: 2px; }
+        .qb-nav { display: flex; justify-content: space-between; margin-top: 24px; gap: 12px; }
+        .qb-nav .btn { min-width: 160px; justify-content: center; }
+        .qb-back { background: transparent; border: 2px solid rgba(27,94,58,0.2); color: var(--green-dark); padding: 12px 28px; border-radius: var(--radius-pill); font-weight: 700; font-size: 14px; cursor: pointer; transition: all 0.2s; }
+        .qb-back:hover { border-color: var(--green-dark); }
+        .qb-summary { background: var(--white); border-radius: var(--radius); padding: 28px; border: 1px solid rgba(27,94,58,0.08); margin-bottom: 24px; }
+        .qb-summary-row { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid rgba(27,94,58,0.06); font-size: 14px; }
+        .qb-summary-row:last-child { border-bottom: none; }
+        .qb-summary-row .label { color: var(--gray); }
+        .qb-summary-row .value { font-weight: 700; color: var(--green-dark); }
+        .qb-summary-total { display: flex; justify-content: space-between; padding: 16px 0 0; margin-top: 8px; border-top: 2px solid var(--green-dark); font-size: 18px; font-weight: 900; color: var(--green-dark); }
+        .qb-form { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 20px; }
+        .qb-form input, .qb-form textarea { width: 100%; padding: 14px 16px; border: 2px solid rgba(27,94,58,0.12); border-radius: var(--radius); font-size: 14px; font-family: var(--font); color: var(--green-dark); transition: border-color 0.2s; }
+        .qb-form input:focus, .qb-form textarea:focus { outline: none; border-color: var(--lime); }
+        .qb-form .full { grid-column: 1 / -1; }
+        .qb-form textarea { min-height: 80px; resize: vertical; }
+        .qb-submit-wrap { text-align: center; }
+        .qb-submit { display: inline-flex; align-items: center; gap: 8px; padding: 16px 40px; border-radius: var(--radius-pill); background: var(--red); color: #fff; font-size: 16px; font-weight: 800; border: none; cursor: pointer; transition: all 0.2s; }
+        .qb-submit:hover { background: #c4281a; transform: translateY(-2px); box-shadow: 0 6px 24px rgba(228,48,32,0.3); }
+        .qb-success { display: none; text-align: center; padding: 40px 20px; }
+        .qb-success h3 { font-size: 24px; color: var(--green-dark); margin-bottom: 8px; }
+        .qb-success p { font-size: 14px; color: var(--gray); }
+        @media (max-width: 768px) {
+            .qb-pkg-grid { grid-template-columns: 1fr; max-width: 360px; margin: 0 auto; }
+            .qb-addon-grid { grid-template-columns: 1fr; }
+            .qb-form { grid-template-columns: 1fr; }
+            .qb-pills { justify-content: center; }
+            .qb-live-price { flex-direction: column; text-align: center; gap: 4px; }
+        }
 
         
 /* ─── EXIT-INTENT POPUP ─── */
@@ -470,95 +512,200 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
 <!-- WAVE: white → trust band -->
 
 
-<section class="pricing-section" id="cennik">
+<section class="qb-section" id="cennik">
     <div class="container">
-        <div class="section-top reveal" style="text-align:center;margin-bottom:40px;">
-            <div class="sticker sticker-yellow" style="transform:rotate(-2deg)">Cennik</div>
-            <h2 style="margin-top:20px">Orientacyjne <span class="fun">widełki</span></h2>
-            <p style="max-width:520px;margin:12px auto 0;">Każda wycena jest indywidualna — zależy od liczby pracowników, częstotliwości i wybranego pakietu. Poniżej orientacyjne zakresy.</p>
-        </div>
-        <div class="pricing-grid">
-            <div class="pricing-card reveal">
-                <h3>Start</h3>
-                <div class="pricing-price">od <strong>12</strong> <span class="unit">zł / os. / tydzień</span></div>
-                <p class="pricing-note">dla biur 10–30 osób</p>
-                <ul class="pricing-features">
-                    <li>Owoce sezonowe MIX</li>
-                    <li>Dostawa 1–2x / tydzień</li>
-                    <li>Bez zobowiązań</li>
-                    <li>Faktura miesięczna</li>
-                </ul>
-                <a href="zapytanie.html" class="btn btn-green">Bezpłatna wycena</a>
+        <div class="qb-wrap">
+            <div style="text-align:center;margin-bottom:40px;" class="reveal">
+                <div class="sticker sticker-yellow" style="transform:rotate(-2deg)">Konfigurator</div>
+                <h2 style="margin-top:20px">Skonfiguruj <span class="fun">wycene</span></h2>
+                <p style="max-width:520px;margin:12px auto 0;">Wybierz parametry, sprawdz orientacyjna cene i wyslij zapytanie — wszystko w 60 sekund.</p>
             </div>
-            <div class="pricing-card featured reveal">
-                <h3>Premium</h3>
-                <div class="pricing-price">od <strong>18</strong> <span class="unit">zł / os. / tydzień</span></div>
-                <p class="pricing-note">dla biur 30–100 osób</p>
-                <ul class="pricing-features">
-                    <li>Owoce premium + egzotyczne</li>
-                    <li>Kanapki i przekąski</li>
-                    <li>Dostawa 2–3x / tydzień</li>
-                    <li>Dedykowany opiekun</li>
-                    <li>Elastyczne zmiany</li>
-                </ul>
-                <a href="zapytanie.html" class="btn btn-red-solid">Bezpłatna wycena</a>
-            </div>
-            <div class="pricing-card reveal">
-                <h3>Enterprise</h3>
-                <div class="pricing-price">od <strong>15</strong> <span class="unit">zł / os. / tydzień</span></div>
-                <p class="pricing-note">dla biur 100+ osób</p>
-                <ul class="pricing-features">
-                    <li>Pełna oferta food & drinks</li>
-                    <li>Codzienna dostawa</li>
-                    <li>SLA i raportowanie</li>
-                    <li>Multi-lokalizacja</li>
-                    <li>Indywidualne menu</li>
-                </ul>
-                <a href="zapytanie.html" class="btn btn-green">Bezpłatna wycena</a>
-            </div>
-        </div>
-        <p class="pricing-disclaimer">* Podane ceny są orientacyjne i mogą się różnić w zależności od lokalizacji i konfiguracji. Dokładną wycenę otrzymasz w ciągu 2h od złożenia zapytania. Dostawa wliczona w cenę.</p>
-    </div>
-</section>
 
-<section class="calc-section" id="kalkulator">
-    <div class="container">
-        <div class="calc-card reveal">
-            <h3>Oblicz orientacyjny koszt</h3>
-            <p>Przesuń suwaki, żeby zobaczyć szacunkowy koszt dla Twojego biura.</p>
-            <div class="calc-row">
-                <div class="calc-label"><span>Liczba pracowników</span><span class="calc-val" id="calcPeople">30</span></div>
-                <input type="range" class="calc-slider" id="sliderPeople" min="5" max="500" value="30" step="5">
+            <div class="qb-progress" role="progressbar">
+                <div class="qb-progress-step active" data-step="1"></div>
+                <div class="qb-progress-step" data-step="2"></div>
+                <div class="qb-progress-step" data-step="3"></div>
+                <div class="qb-progress-step" data-step="4"></div>
             </div>
-            <div class="calc-row">
-                <div class="calc-label"><span>Dostawy na tydzień</span><span class="calc-val" id="calcFreq">2</span></div>
-                <input type="range" class="calc-slider" id="sliderFreq" min="1" max="5" value="2" step="1">
-            </div>
-            <div class="calc-row">
-                <div class="calc-label"><span>Pakiet</span><span class="calc-val" id="calcPkg">Premium</span></div>
-                <input type="range" class="calc-slider" id="sliderPkg" min="1" max="3" value="2" step="1">
-            </div>
-            <div class="calc-result">
-                <div class="calc-result-label">Szacunkowy koszt miesięczny (netto)</div>
-                <div class="calc-result-price" id="calcPrice">2 160 <span>zł</span></div>
-                <div class="calc-result-note">~ <span id="calcPerPerson">18</span> zł / os. / tydzień · dostawa wliczona w cenę</div>
-            </div>
-            <div class="calc-cta">
-                <a href="zapytanie.html" class="btn btn-green">Zamów dokładną wycenę →</a>
-            </div>
-        </div>
-    </div>
-</section>
 
-<section class="cta-section">
-    <div class="container">
-        <div class="cta-card reveal">
-            <h2>Jeden partner zamiast<br><span class="fun">trzech dostawców</span></h2>
-            <p>Owoce, kawa, kanapki i więcej – z jednego miejsca. Pierwsza dostawa gratis!</p>
-            <div class="cta-btns">
-                <a href="zapytanie.html" class="btn btn-red-solid btn-arrow">Złóż zapytanie</a>
-                <a href="index.html#benefits" class="btn btn-outline">Zobacz korzyści</a>
+            <!-- ═══ STEP 1: BIURO ═══ -->
+            <div class="qb-step active" data-step="1">
+                <div class="qb-step-label">Krok 1 z 4</div>
+                <div class="qb-step-title">Opowiedz nam o swoim biurze</div>
+                <div class="qb-step-desc">Ustaw liczbe pracownikow i czestotliwosc dostaw.</div>
+
+                <div class="qb-slider-row">
+                    <div class="qb-slider-label"><span>Liczba pracownikow</span><span class="qb-val" id="qbPeopleVal">30</span></div>
+                    <input type="range" class="calc-slider" id="qbPeople" min="5" max="500" value="30" step="5">
+                </div>
+
+                <div class="qb-slider-row">
+                    <div class="qb-slider-label"><span>Miasto dostawy</span></div>
+                    <select class="qb-city-select" id="qbCity">
+                        <option value="warszawa">Warszawa</option>
+                        <option value="krakow">Krakow</option>
+                        <option value="wroclaw">Wroclaw</option>
+                        <option value="poznan">Poznan</option>
+                        <option value="katowice">Katowice</option>
+                        <option value="lodz">Lodz</option>
+                        <option value="trojmiasto">Trojmiasto</option>
+                        <option value="szczecin">Szczecin</option>
+                        <option value="lublin">Lublin</option>
+                        <option value="bydgoszcz">Bydgoszcz</option>
+                        <option value="bialystok">Bialystok</option>
+                        <option value="rzeszow">Rzeszow</option>
+                        <option value="kielce">Kielce</option>
+                    </select>
+                </div>
+
+                <div class="qb-slider-row" style="margin-top:24px;">
+                    <div class="qb-slider-label"><span>Dostawy na tydzien</span></div>
+                    <div class="qb-pills" id="qbFreqPills">
+                        <div class="qb-pill" data-val="1">1x</div>
+                        <div class="qb-pill active" data-val="2">2x</div>
+                        <div class="qb-pill" data-val="3">3x</div>
+                        <div class="qb-pill" data-val="5">5x</div>
+                    </div>
+                </div>
+
+                <div class="qb-live-price" id="qbLivePrice">
+                    <div><div class="qb-live-label">Szacunkowy koszt miesiecznie (netto)</div><div class="qb-live-per" id="qbLivePer">~ 18 zl / os. / tydzien</div></div>
+                    <div class="qb-live-amount" id="qbLiveAmount">2 340 <span>zl</span></div>
+                </div>
+
+                <div class="qb-nav" style="justify-content:flex-end;">
+                    <a class="btn btn-green qb-next" data-to="2">Dalej: wybierz pakiet &rarr;</a>
+                </div>
             </div>
+
+            <!-- ═══ STEP 2: PAKIET ═══ -->
+            <div class="qb-step" data-step="2">
+                <div class="qb-step-label">Krok 2 z 4</div>
+                <div class="qb-step-title">Wybierz pakiet</div>
+                <div class="qb-step-desc">Kliknij pakiet, ktory najlepiej pasuje do Twojego biura.</div>
+
+                <div class="qb-pkg-grid">
+                    <div class="qb-pkg" data-pkg="start">
+                        <h4>Start</h4>
+                        <div class="qb-pkg-price">od <strong>12</strong> zl / os. / tydz.</div>
+                        <ul class="qb-pkg-list">
+                            <li>Owoce sezonowe MIX</li>
+                            <li>Dostawa 1-2x / tydzien</li>
+                            <li>Bez zobowiazan</li>
+                            <li>Faktura miesieczna</li>
+                        </ul>
+                    </div>
+                    <div class="qb-pkg active" data-pkg="premium">
+                        <div class="qb-pkg-badge">Najpopularniejszy</div>
+                        <h4>Premium</h4>
+                        <div class="qb-pkg-price">od <strong>18</strong> zl / os. / tydz.</div>
+                        <ul class="qb-pkg-list">
+                            <li>Owoce premium + egzotyczne</li>
+                            <li>Kanapki i przekaski</li>
+                            <li>Dostawa 2-3x / tydzien</li>
+                            <li>Dedykowany opiekun</li>
+                            <li>Elastyczne zmiany</li>
+                        </ul>
+                    </div>
+                    <div class="qb-pkg" data-pkg="enterprise">
+                        <h4>Enterprise</h4>
+                        <div class="qb-pkg-price">od <strong>15</strong> zl / os. / tydz.</div>
+                        <ul class="qb-pkg-list">
+                            <li>Pelna oferta food & drinks</li>
+                            <li>Codzienna dostawa</li>
+                            <li>SLA i raportowanie</li>
+                            <li>Multi-lokalizacja</li>
+                            <li>Indywidualne menu</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="qb-live-price">
+                    <div><div class="qb-live-label">Szacunkowy koszt miesiecznie (netto)</div><div class="qb-live-per" id="qbLivePer2"></div></div>
+                    <div class="qb-live-amount" id="qbLiveAmount2"></div>
+                </div>
+
+                <div class="qb-nav">
+                    <button class="qb-back qb-prev" data-to="1">&larr; Wstecz</button>
+                    <a class="btn btn-green qb-next" data-to="3">Dalej: dodatki &rarr;</a>
+                </div>
+            </div>
+
+            <!-- ═══ STEP 3: DODATKI ═══ -->
+            <div class="qb-step" data-step="3">
+                <div class="qb-step-label">Krok 3 z 4</div>
+                <div class="qb-step-title">Dodaj extras</div>
+                <div class="qb-step-desc">Opcjonalnie — rozszerz pakiet o dodatkowe produkty.</div>
+
+                <div class="qb-addon-grid">
+                    <div class="qb-addon" data-addon="kanapki" data-price="8">
+                        <div class="qb-addon-toggle"></div>
+                        <div class="qb-addon-info"><h5>Kanapki</h5><p>Swieże kanapki codziennie</p></div>
+                        <div class="qb-addon-price">+8 zl/os.</div>
+                    </div>
+                    <div class="qb-addon" data-addon="soki" data-price="4">
+                        <div class="qb-addon-toggle"></div>
+                        <div class="qb-addon-info"><h5>Soki NFC</h5><p>Tloczony sok 100% owocow</p></div>
+                        <div class="qb-addon-price">+4 zl/os.</div>
+                    </div>
+                    <div class="qb-addon" data-addon="warzywa" data-price="5">
+                        <div class="qb-addon-toggle"></div>
+                        <div class="qb-addon-info"><h5>Warzywa krojone</h5><p>Marchewka, papryka, seler</p></div>
+                        <div class="qb-addon-price">+5 zl/os.</div>
+                    </div>
+                    <div class="qb-addon" data-addon="kawa" data-price="6">
+                        <div class="qb-addon-toggle"></div>
+                        <div class="qb-addon-info"><h5>Kawa i herbata</h5><p>Ziarnista kawa + herbaty premium</p></div>
+                        <div class="qb-addon-price">+6 zl/os.</div>
+                    </div>
+                </div>
+
+                <div class="qb-live-price">
+                    <div><div class="qb-live-label">Szacunkowy koszt miesiecznie (netto)</div><div class="qb-live-per" id="qbLivePer3"></div></div>
+                    <div class="qb-live-amount" id="qbLiveAmount3"></div>
+                </div>
+
+                <div class="qb-nav">
+                    <button class="qb-back qb-prev" data-to="2">&larr; Wstecz</button>
+                    <a class="btn btn-green qb-next" data-to="4">Dalej: wycena &rarr;</a>
+                </div>
+            </div>
+
+            <!-- ═══ STEP 4: WYCENA + FORMULARZ ═══ -->
+            <div class="qb-step" data-step="4">
+                <div class="qb-step-label">Krok 4 z 4</div>
+                <div class="qb-step-title">Twoja wycena</div>
+                <div class="qb-step-desc">Sprawdz podsumowanie i wyslij zapytanie — odezwiemy sie w 2h.</div>
+
+                <div class="qb-summary" id="qbSummary">
+                    <!-- filled by JS -->
+                </div>
+
+                <div class="qb-form" id="qbForm">
+                    <input type="text" name="firma" placeholder="Nazwa firmy" required>
+                    <input type="text" name="imie" placeholder="Imie i nazwisko">
+                    <input type="email" name="email" placeholder="Adres e-mail" required>
+                    <input type="tel" name="telefon" placeholder="Numer telefonu">
+                    <textarea name="uwagi" class="full" placeholder="Dodatkowe uwagi (opcjonalnie)"></textarea>
+                </div>
+
+                <div class="qb-submit-wrap">
+                    <button class="qb-submit" id="qbSubmit">Wyslij zapytanie &rarr;</button>
+                    <p style="font-size:12px;color:var(--gray);opacity:0.6;margin-top:10px;">* Ceny orientacyjne netto. Dokladna wycena w ciagu 2h. Dostawa wliczona.</p>
+                </div>
+
+                <div class="qb-success" id="qbSuccess">
+                    <h3>Dziekujemy!</h3>
+                    <p>Twoje zapytanie zostalo wyslane. Odezwiemy sie w ciagu 2 godzin z dokladna wycena.</p>
+                    <a href="index.html" class="btn btn-green" style="margin-top:20px;">Wróc na strone glowna</a>
+                </div>
+
+                <div class="qb-nav" id="qbStep4Nav">
+                    <button class="qb-back qb-prev" data-to="3">&larr; Wstecz</button>
+                    <div></div>
+                </div>
+            </div>
+
         </div>
     </div>
 </section>
@@ -651,52 +798,182 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
         if (matchTab) matchTab.click();
     }
 
-    // ─── COST CALCULATOR ───
+    // ─── QUOTE BUILDER ───
     (function() {
-        const sPeople = document.getElementById('sliderPeople');
-        const sFreq   = document.getElementById('sliderFreq');
-        const sPkg    = document.getElementById('sliderPkg');
-        if (!sPeople || !sFreq || !sPkg) return;
+        const state = { people: 30, city: 'warszawa', freq: 2, pkg: 'premium', addons: {} };
+        const pkgs = { start: { name: 'Start', ppw: 12 }, premium: { name: 'Premium', ppw: 18 }, enterprise: { name: 'Enterprise', ppw: 15 } };
+        const addonNames = { kanapki: 'Kanapki', soki: 'Soki NFC', warzywa: 'Warzywa krojone', kawa: 'Kawa i herbata' };
 
-        const dPeople    = document.getElementById('calcPeople');
-        const dFreq      = document.getElementById('calcFreq');
-        const dPkg       = document.getElementById('calcPkg');
-        const dPrice     = document.getElementById('calcPrice');
-        const dPerPerson = document.getElementById('calcPerPerson');
+        function calcPrice() {
+            const pkg = pkgs[state.pkg];
+            const weeklyBase = (pkg.ppw / 2) * state.freq;
+            let addonWeekly = 0;
+            document.querySelectorAll('.qb-addon.active').forEach(a => {
+                addonWeekly += parseInt(a.dataset.price) || 0;
+            });
+            const weeklyTotal = weeklyBase + (addonWeekly / 2) * state.freq;
+            const monthly = Math.round(state.people * weeklyTotal * 4.33);
+            const perPerson = Math.round(weeklyTotal);
+            return { monthly, perPerson, weeklyBase, addonWeekly };
+        }
 
-        const packages = {
-            1: { name: 'Start',      ppw: 12 },
-            2: { name: 'Premium',    ppw: 18 },
-            3: { name: 'Enterprise', ppw: 15 }
-        };
-
-        function calc() {
-            const people = parseInt(sPeople.value);
-            const freq   = parseInt(sFreq.value);
-            const pkg    = packages[parseInt(sPkg.value)];
-
-            dPeople.textContent = people;
-            dFreq.textContent   = freq;
-            dPkg.textContent    = pkg.name;
-
-            // cost = people × price_per_person_per_week × 4.33 (weeks/month)
-            // price_per_person_per_week scales with frequency:
-            //   base ppw assumes ~2 deliveries; adjust proportionally
-            const weeklyPerPerson = (pkg.ppw / 2) * freq;
-            const monthly = Math.round(people * weeklyPerPerson * 4.33);
-
-            dPrice.innerHTML = monthly.toLocaleString('pl-PL') + ' <span>zł</span>';
-            dPerPerson.textContent = Math.round(weeklyPerPerson);
-
-            // Update slider track fills via CSS gradient
-            [sPeople, sFreq, sPkg].forEach(s => {
-                const pct = ((s.value - s.min) / (s.max - s.min)) * 100;
-                s.style.background = `linear-gradient(90deg, var(--lime) ${pct}%, rgba(27,94,58,0.25) ${pct}%)`;
+        function updateAllPrices() {
+            const p = calcPrice();
+            const html = p.monthly.toLocaleString('pl-PL') + ' <span>zl</span>';
+            const perHtml = '~ ' + p.perPerson + ' zl / os. / tydzien';
+            ['', '2', '3'].forEach(s => {
+                const amt = document.getElementById('qbLiveAmount' + s);
+                const per = document.getElementById('qbLivePer' + s);
+                if (amt) amt.innerHTML = html;
+                if (per) per.textContent = perHtml;
             });
         }
 
-        [sPeople, sFreq, sPkg].forEach(s => s.addEventListener('input', calc));
-        calc(); // init
+        function updateSliderTrack(slider) {
+            const pct = ((slider.value - slider.min) / (slider.max - slider.min)) * 100;
+            slider.style.background = 'linear-gradient(90deg, var(--lime) ' + pct + '%, rgba(27,94,58,0.25) ' + pct + '%)';
+        }
+
+        // People slider
+        const sPeople = document.getElementById('qbPeople');
+        if (sPeople) {
+            sPeople.addEventListener('input', function() {
+                state.people = parseInt(this.value);
+                document.getElementById('qbPeopleVal').textContent = state.people;
+                updateSliderTrack(this);
+                updateAllPrices();
+            });
+            updateSliderTrack(sPeople);
+        }
+
+        // City
+        const sCity = document.getElementById('qbCity');
+        if (sCity) sCity.addEventListener('change', function() { state.city = this.value; });
+
+        // Frequency pills
+        document.querySelectorAll('#qbFreqPills .qb-pill').forEach(pill => {
+            pill.addEventListener('click', function() {
+                document.querySelectorAll('#qbFreqPills .qb-pill').forEach(p => p.classList.remove('active'));
+                this.classList.add('active');
+                state.freq = parseInt(this.dataset.val);
+                updateAllPrices();
+            });
+        });
+
+        // Package cards
+        document.querySelectorAll('.qb-pkg').forEach(card => {
+            card.addEventListener('click', function() {
+                document.querySelectorAll('.qb-pkg').forEach(c => c.classList.remove('active'));
+                this.classList.add('active');
+                state.pkg = this.dataset.pkg;
+                updateAllPrices();
+            });
+        });
+
+        // Addon toggles
+        document.querySelectorAll('.qb-addon').forEach(addon => {
+            addon.addEventListener('click', function() {
+                this.classList.toggle('active');
+                const key = this.dataset.addon;
+                if (this.classList.contains('active')) {
+                    state.addons[key] = parseInt(this.dataset.price);
+                } else {
+                    delete state.addons[key];
+                }
+                updateAllPrices();
+            });
+        });
+
+        // Step navigation
+        function goToStep(n) {
+            document.querySelectorAll('.qb-step').forEach(s => s.classList.remove('active'));
+            document.querySelector('.qb-step[data-step="' + n + '"]').classList.add('active');
+            document.querySelectorAll('.qb-progress-step').forEach(s => {
+                const sn = parseInt(s.dataset.step);
+                s.classList.remove('active', 'done');
+                if (sn < n) s.classList.add('done');
+                if (sn === n) s.classList.add('active');
+            });
+            // Scroll to top of builder
+            const section = document.querySelector('.qb-section');
+            if (section) {
+                const top = section.getBoundingClientRect().top + window.scrollY - 100;
+                window.scrollTo({ top: top, behavior: 'smooth' });
+            }
+            // Build summary on step 4
+            if (n === 4) buildSummary();
+            // GA4 event
+            if (window.dataLayer) {
+                window.dataLayer.push({ event: 'quote_step', step: n, package: state.pkg, people: state.people });
+            }
+        }
+
+        document.querySelectorAll('.qb-next').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                goToStep(parseInt(this.dataset.to));
+            });
+        });
+        document.querySelectorAll('.qb-prev').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                goToStep(parseInt(this.dataset.to));
+            });
+        });
+
+        function buildSummary() {
+            const p = calcPrice();
+            const pkg = pkgs[state.pkg];
+            let rows = '';
+            rows += '<div class="qb-summary-row"><span class="label">Pracownicy</span><span class="value">' + state.people + ' osob</span></div>';
+            rows += '<div class="qb-summary-row"><span class="label">Miasto</span><span class="value">' + state.city.charAt(0).toUpperCase() + state.city.slice(1) + '</span></div>';
+            rows += '<div class="qb-summary-row"><span class="label">Dostawy</span><span class="value">' + state.freq + 'x / tydzien</span></div>';
+            rows += '<div class="qb-summary-row"><span class="label">Pakiet</span><span class="value">' + pkg.name + ' (' + pkg.ppw + ' zl/os./tydz.)</span></div>';
+            const activeAddons = Object.keys(state.addons);
+            if (activeAddons.length > 0) {
+                const names = activeAddons.map(k => addonNames[k] || k).join(', ');
+                const addonTotal = activeAddons.reduce((s, k) => s + state.addons[k], 0);
+                rows += '<div class="qb-summary-row"><span class="label">Dodatki</span><span class="value">' + names + ' (+' + addonTotal + ' zl/os.)</span></div>';
+            }
+            rows += '<div class="qb-summary-total"><span>Szacunkowo miesiecznie (netto)</span><span>' + p.monthly.toLocaleString('pl-PL') + ' zl</span></div>';
+            document.getElementById('qbSummary').innerHTML = rows;
+        }
+
+        // Submit
+        const submitBtn = document.getElementById('qbSubmit');
+        if (submitBtn) {
+            submitBtn.addEventListener('click', function() {
+                const form = document.getElementById('qbForm');
+                const email = form.querySelector('[name="email"]');
+                const firma = form.querySelector('[name="firma"]');
+                if (!email.value || !firma.value) {
+                    if (!firma.value) firma.style.borderColor = 'var(--red)';
+                    if (!email.value) email.style.borderColor = 'var(--red)';
+                    return;
+                }
+                // GA4
+                if (window.dataLayer) {
+                    window.dataLayer.push({
+                        event: 'quote_completed',
+                        package: state.pkg,
+                        people: state.people,
+                        city: state.city,
+                        frequency: state.freq,
+                        addons: Object.keys(state.addons).join(','),
+                        estimated_monthly: calcPrice().monthly
+                    });
+                }
+                // Show success
+                document.getElementById('qbForm').style.display = 'none';
+                document.getElementById('qbStep4Nav').style.display = 'none';
+                this.style.display = 'none';
+                this.parentElement.querySelector('p').style.display = 'none';
+                document.getElementById('qbSuccess').style.display = 'block';
+            });
+        }
+
+        // Init prices
+        updateAllPrices();
     })();
 
     // ─── HAMBURGER MENU ───
