@@ -101,7 +101,7 @@
 
         /* ─── FLOATING BADGE ─── */
         .floating-badge { position: fixed; bottom: 28px; right: 28px; z-index: 999; transition: opacity 0.4s, transform 0.4s; }
-        .floating-badge img { height: 60px; filter: drop-shadow(0 4px 12px rgba(228,48,32,0.3)); transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), filter 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
+        .floating-badge img { height: 90px; filter: drop-shadow(0 4px 12px rgba(228,48,32,0.3)); transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), filter 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
         .floating-badge:hover img { transform: scale(1.1) rotate(-3deg); filter: drop-shadow(0 6px 18px rgba(27,94,58,0.4)) hue-rotate(90deg) saturate(1.4); }
 
         /* ─── NAV ─── */
@@ -309,6 +309,7 @@
         .faq-item { border-bottom: 2px solid var(--lime-bg); }
         .faq-q { width: 100%; background: none; border: none; padding: 22px 0; display: flex; justify-content: space-between; align-items: center; cursor: pointer; font-family: var(--font); font-size: 16px; font-weight: 700; color: var(--green-dark); text-align: left; }
         .faq-q:hover { color: var(--lime); }
+        .faq-q::after { display: none; }
         .faq-icon { width: 36px; height: 36px; border-radius: 50%; background: rgba(141,198,63,0.15); display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: all 0.4s cubic-bezier(0.16,1,0.3,1); font-size: 0; }
         .faq-icon::after { content: ''; display: block; width: 16px; height: 14px; background: url("data:image/svg+xml,%3Csvg viewBox='0 0 219 191' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M209.884 59.0475C214.187 60.2087 217.232 64.0499 217.341 68.5054L218.469 114.758C218.574 119.061 215.914 122.949 211.864 124.409L39.139 186.699C33.9498 188.571 28.2252 185.886 26.3452 180.7L15.9853 152.121C14.0709 146.84 16.881 141.018 22.2069 139.232L127.617 103.879C136.827 100.79 136.664 87.7222 127.368 84.8975C88.237 73.0061 48.9383 61.5681 9.47212 51.7133C4.20737 50.3987 0.917487 45.1492 2.06756 39.8461L8.53735 10.0131C9.72811 4.52238 15.2089 1.08528 20.653 2.4737C84.568 18.774 146.42 41.9206 209.884 59.0475Z' fill='%231B5E3A'/%3E%3C/svg%3E") no-repeat center / contain; transition: transform 0.4s cubic-bezier(0.16,1,0.3,1); transform: rotate(90deg); }
         .faq-item.open .faq-icon { background: var(--lime); }
@@ -516,7 +517,7 @@
             .wave-divider svg { height: 30px; }
             .apple-deco { width: 80px !important; height: 94px !important; }
             .floating-badge { bottom: 16px; right: 16px; }
-            .floating-badge img { height: 48px; }
+            .floating-badge img { height: 64px; }
             .delivery-bg-text { font-size: clamp(80px, 20vw, 180px); }
             .nav-inner { padding: 12px 16px; }
             .container { padding: 0 16px; }
@@ -1666,7 +1667,7 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
 
 <!-- FLOATING BADGE -->
 <a href="zapytanie.html" class="floating-badge">
-    <img src="badge-trust.svg" alt="Zaufało nam ponad 2000 firm w Polsce" loading="lazy" width="48" height="48">
+    <img src="badge-trust.svg" alt="Zaufało nam ponad 2000 firm w Polsce" loading="lazy" width="90" height="90">
 </a>
 
 
