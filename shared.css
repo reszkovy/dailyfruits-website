@@ -60,8 +60,8 @@ header.nav-hidden{transform:translateY(-100%)}
 .faq-list{max-width:720px;margin:0 auto}
 .faq-item{border-bottom:1px solid rgba(27,94,58,.1);overflow:hidden}
 .faq-q{display:flex;align-items:center;justify-content:space-between;padding:20px 0;cursor:pointer;gap:16px;font-weight:700;font-size:16px;color:var(--green-dark);background:none;border:none;width:100%;text-align:left;font-family:var(--font)}
-.faq-q::after{content:'+';font-size:24px;font-weight:300;color:var(--lime);transition:transform .3s}
-.faq-item.open .faq-q::after{transform:rotate(45deg)}
+.faq-q::after{content:'';display:inline-block;width:10px;height:10px;border-right:2.5px solid var(--lime);border-bottom:2.5px solid var(--lime);transform:rotate(45deg);transition:transform .3s;flex-shrink:0}
+.faq-item.open .faq-q::after{transform:rotate(-135deg)}
 .faq-a{max-height:0;overflow:hidden;transition:max-height .4s ease,padding .4s ease}
 .faq-item.open .faq-a{max-height:600px;padding-bottom:20px}
 .faq-a p{font-size:15px;line-height:1.8;color:var(--gray)}
