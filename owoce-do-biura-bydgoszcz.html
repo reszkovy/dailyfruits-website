@@ -71,11 +71,6 @@
         .nav-trust { font-size: 13px; font-weight: 700; color: rgba(255,255,255,0.5); letter-spacing: 0.3px; text-align: right; line-height: 1.35; }
         .btn-nav-cta { background: var(--lime); color: var(--green-dark); font-weight: 800; border-radius: 60px; border: none; padding: 10px 24px; font-size: 14px; transition: transform 0.3s, box-shadow 0.3s, background 0.3s; }
         .btn-nav-cta:hover { transform: translateY(-2px); box-shadow: 0 4px 16px rgba(141,198,63,0.4); background: #7db835; }
-        .hamburger { display: none; background: none; border: none; cursor: pointer; padding: 8px; z-index: 201; }
-        .hamburger span { display: block; width: 24px; height: 2px; background: #fff; border-radius: 2px; transition: all 0.3s; }
-        .hamburger span + span { margin-top: 6px; }
-        .mobile-drawer { display: none; }
-
         .city-hero { padding: 140px 0 80px; background: var(--lime-bg); }
         .city-hero-inner { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 48px; align-items: center; }
         
@@ -160,12 +155,6 @@
             .nav-inner { padding: 12px 16px; }
             .nav-links { display: none; }
             .nav-trust { display: none; }
-            .hamburger { display: flex; flex-direction: column; align-items: center; justify-content: center; }
-            .mobile-drawer { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: var(--green-dark); z-index: 200; flex-direction: column; align-items: center; justify-content: center; gap: 0; opacity: 0; transform: translateY(-20px); transition: opacity 0.4s, transform 0.4s; pointer-events: none; }
-            .mobile-drawer.open { display: flex; opacity: 1; transform: translateY(0); pointer-events: all; }
-            .mobile-drawer a { font-family: var(--font); font-weight: 700; font-size: 22px; color: #fff; padding: 16px 0; opacity: 0.8; transition: opacity 0.2s, color 0.2s; }
-            .mobile-drawer a:hover { opacity: 1; color: var(--yellow); }
-            .mobile-drawer .mobile-cta { margin-top: 24px; padding: 14px 40px; background: var(--red); color: #fff; border-radius: var(--radius-pill); font-weight: 900; font-size: 16px; opacity: 1; }
             .city-hero { padding: 100px 0 60px; }
             .city-hero-inner { grid-template-columns: 1fr; gap: 32px; }
             .city-hero-buttons { flex-direction: column; }
@@ -359,7 +348,6 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
     </div>
 </section>
 
-
 <section class="city-proof">
     <div class="container">
         <div class="city-proof-inner">
@@ -408,7 +396,6 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
     </div>
 </section>
 
-
 <section class="city-cta">
     <div class="container reveal">
         <h2>Zamów dostawę do biura w <span class="fun">Bydgoszczy</span></h2>
@@ -420,8 +407,6 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
         <p style="font-size:12px;color:rgba(255,255,255,0.4);margin-top:8px;">Odpowiadamy w ciągu 2h · Bez zobowiązań</p>
     </div>
 </section>
-
-
 
 <footer>
     <div class="container">
@@ -465,7 +450,6 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
     </div>
 </section>
 
-
 <script>
 window.addEventListener('scroll', () => { document.querySelector('header').classList.toggle('scrolled', window.scrollY > 20); });
 const hamburger = document.getElementById('hamburger');
@@ -480,7 +464,6 @@ const obs = new IntersectionObserver((entries) => { entries.forEach(e => { if (e
 document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 setTimeout(() => { document.querySelectorAll('.reveal').forEach(el => el.classList.add('vis')); }, 2000);
 </script>
-
 
 <div class="mobile-sticky-cta" id="mobileCta">
     <div class="mobile-sticky-cta-inner">
@@ -514,7 +497,6 @@ setTimeout(() => { document.querySelectorAll('.reveal').forEach(el => el.classLi
             }
         });
     })();
-
 
     // FAQ toggle
     document.querySelectorAll('.faq-q').forEach(btn => {
