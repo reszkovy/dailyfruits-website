@@ -7,11 +7,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nasi dostawcy – certyfikowani sadownicy i dystrybutorzy | DailyFruits</title>
-    <meta name="description" content="Poznaj dostawców DailyFruits — certyfikowani sadownicy i importerzy z Fair Trade, GlobalG.A.P. i Rainforest Alliance. 200 ton owoców miesięcznie.">
+    <meta name="description" content="Poznaj dostawców DailyFruits — 12 certyfikowanych sadowników i importerów z Fair Trade, GlobalG.A.P. i Rainforest Alliance. 200 ton owoców miesięcznie do biur w 13 miastach Polski.">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://dailyfruits.pl/dostawcy">
     <meta property="og:title" content="Nasi dostawcy – certyfikowani sadownicy i dystrybutorzy | DailyFruits">
-    <meta property="og:description" content="Poznaj dostawców DailyFruits — certyfikowani sadownicy i importerzy z Fair Trade, GlobalG.A.P. i Rainforest Alliance. 200 ton owoców miesięcznie.">
+    <meta property="og:description" content="Poznaj dostawców DailyFruits — 12 certyfikowanych sadowników i importerów z Fair Trade, GlobalG.A.P. i Rainforest Alliance. 200 ton owoców miesięcznie.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://dailyfruits.pl/dostawcy">
     <meta property="og:image" content="https://dailyfruits.pl/HORIZONTAL.webp">
@@ -46,6 +46,8 @@
         h2 .fun { font-family: var(--font-fun); font-weight: 400; color: var(--lime); font-size: 1.05em; }
         h3 { font-weight: 700; font-size: 18px; color: var(--green-dark); }
         p { font-size: 16px; line-height: 1.7; color: var(--gray); }
+        .section-top { text-align: center; margin-bottom: 48px; }
+        .section-top p { max-width: 520px; margin: 12px auto 0; }
         .btn { display: inline-flex; align-items: center; gap: 8px; padding: 14px 32px; border-radius: var(--radius-pill); font-family: var(--font); font-weight: 700; font-size: 15px; border: 2px solid transparent; cursor: pointer; transition: all 0.2s; white-space: nowrap; }
         .btn-green { background: var(--green-dark); color: #fff; }
         .btn-green:hover { background: #144A2B; transform: translateY(-2px); box-shadow: 0 6px 20px rgba(27,94,58,0.3); }
@@ -54,10 +56,11 @@
         .btn-outline { background: transparent; color: var(--red); border-color: var(--red); }
         .btn-outline:hover { background: var(--red); color: #fff; }
 
-        header { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: #1B5E3A; border-bottom: none; overflow: clip; overflow-y: visible; transition: box-shadow 0.3s ease; }
+        header { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: #1B5E3A; border-bottom: none; overflow: clip; overflow-y: visible; transition: box-shadow 0.3s ease, transform 0.35s cubic-bezier(0.16,1,0.3,1); }
         header.scrolled { box-shadow: 0 8px 30px rgba(27,94,58,0.25); }
         header::after { content: ''; position: absolute; bottom: 73px; left: 0; right: 0; height: 60px; background: url("data:image/svg+xml,%3Csvg viewBox='0 0 1440 60' preserveAspectRatio='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0H1440V12C1440 12 1380 48 1200 38C1020 28 900 55 720 42C540 29 360 52 180 40C90 34 0 50 0 50V0Z' fill='%231B5E3A'/%3E%3C/svg%3E") no-repeat bottom / 100% 100%; pointer-events: none; z-index: 100; transition: filter 0.3s ease; }
         header.scrolled::after { filter: drop-shadow(0 6px 12px rgba(27,94,58,0.15)); }
+        header.nav-hidden { transform: translateY(-100%); }
         .nav-inner { display: flex; align-items: center; justify-content: space-between; padding: 10px 48px; max-width: 1440px; margin: 0 auto; }
         .logo-wrap { display: flex; align-items: center; gap: 10px; }
         .logo-img { height: 64px; }
@@ -71,110 +74,107 @@
         .nav-trust { font-size: 13px; font-weight: 700; color: rgba(255,255,255,0.5); letter-spacing: 0.3px; text-align: right; line-height: 1.35; }
         .btn-nav-cta { background: var(--lime); color: var(--green-dark); font-weight: 800; border-radius: 60px; border: none; padding: 10px 24px; font-size: 14px; transition: transform 0.3s, box-shadow 0.3s, background 0.3s; }
         .btn-nav-cta:hover { transform: translateY(-2px); box-shadow: 0 4px 16px rgba(141,198,63,0.4); background: #7db835; }
-        .city-hero { padding: 140px 0 140px; background: var(--lime-bg); position: relative; overflow: clip; overflow-y: visible; z-index: 2; }
+
+        /* ─── HERO ─── */
+        .city-hero { padding: 140px 0 100px; background: var(--lime-bg); position: relative; overflow: clip; overflow-y: visible; z-index: 2; }
         .city-hero-inner { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 48px; align-items: center; }
-        .hanging-crate { position: absolute; bottom: 100px; right: 8%; width: 320px; z-index: 10; animation: sway 4s ease-in-out infinite; transform-origin: top center; }
-        .hanging-crate img { width: 100%; height: auto; }
-        @keyframes sway { 0%,100% { transform: rotate(-1.5deg); } 50% { transform: rotate(1.5deg); } }
         .city-hero-text h1 { margin-bottom: 20px; }
         .city-hero-text p { font-size: 17px; max-width: 540px; margin-bottom: 28px; }
         .city-hero-buttons { display: flex; gap: 14px; align-items: center; }
-        .city-hero-stat { display: flex; align-items: center; gap: 16px; margin-top: 32px; padding-top: 24px; border-top: 2px solid rgba(27,94,58,0.1); }
-        .city-stat-num { font-family: var(--font-fun); font-size: 48px; color: var(--lime); line-height: 1; }
-        .city-stat-label { font-size: 14px; font-weight: 700; color: var(--green-dark); opacity: 0.6; }
+        .hero-trust-badges { display: flex; gap: 12px; margin-top: 32px; flex-wrap: wrap; }
+        .hero-badge { display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px; background: rgba(27,94,58,0.06); border-radius: var(--radius-pill); font-size: 13px; font-weight: 700; color: var(--green-dark); }
+        .hero-badge svg { flex-shrink: 0; }
+        .hero-visual { display: flex; flex-direction: column; align-items: center; gap: 20px; }
+        .hero-stat-ring { width: 220px; height: 220px; border-radius: 50%; background: linear-gradient(135deg, rgba(27,94,58,0.06), rgba(141,198,63,0.12)); display: flex; flex-direction: column; align-items: center; justify-content: center; border: 3px solid rgba(141,198,63,0.2); }
+        .hero-stat-ring .big-num { font-family: var(--font-fun); font-size: 64px; color: var(--lime); line-height: 1; }
+        .hero-stat-ring .big-label { font-size: 13px; font-weight: 700; color: var(--green-dark); opacity: 0.6; margin-top: 4px; text-align: center; line-height: 1.3; }
+        .hero-mini-stats { display: flex; gap: 24px; }
+        .hero-mini-stat { text-align: center; }
+        .hero-mini-stat .num { font-family: var(--font-fun); font-size: 32px; color: var(--green-dark); line-height: 1; }
+        .hero-mini-stat .label { font-size: 12px; font-weight: 700; color: var(--gray); opacity: 0.6; margin-top: 2px; }
 
-        .city-offer { padding: 80px 0; background: var(--white); position: relative; z-index: 1; }
-        .city-offer .section-top { text-align: center; margin-bottom: 48px; }
-        .city-offer .section-top p { max-width: 520px; margin: 12px auto 0; }
-        .offer-mini-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
-        .offer-mini-card { background: var(--cream); padding: 28px 20px; text-align: center; transition: transform 0.3s, box-shadow 0.3s; }
-        .offer-mini-card:hover { transform: translateY(-4px); box-shadow: 0 12px 36px rgba(27,94,58,0.1); }
-        .offer-mini-icon { font-size: 36px; margin-bottom: 12px; }
-        .offer-mini-card h3 { font-size: 15px; margin-bottom: 4px; }
-        .offer-mini-card p { font-size: 13px; margin: 0; }
-
-        .city-how { padding: 80px 0; background: var(--cream); }
-        .how-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; text-align: center; }
-        .how-step-num { font-family: var(--font-fun); font-size: 48px; color: var(--green-dark); margin-bottom: 8px; }
-        .how-step h3 { margin-bottom: 6px; }
-        .how-step p { font-size: 14px; }
-
-        .city-cta { padding: 80px 0; background: var(--green-dark); text-align: center; color: #fff; }
-        .city-cta h2 { color: #fff; margin-bottom: 12px; }
-        .city-cta h2 .fun { color: var(--yellow); }
-        .city-cta p { color: rgba(255,255,255,0.7); max-width: 480px; margin: 0 auto 32px; }
-        .city-cta-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
-
-        /* Stickers (from homepage) */
+        /* ─── STICKERS ─── */
         .sticker { display: inline-flex; align-items: center; gap: 6px; padding: 8px 18px; border-radius: var(--radius-pill); font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; transform: rotate(-2deg); box-shadow: 2px 3px 0 rgba(0,0,0,0.08); }
         .sticker-lime { background: var(--lime-light); color: var(--green-dark); }
         .sticker-yellow { background: var(--yellow); color: var(--green-dark); }
         .sticker-green { background: var(--green-dark); color: #fff; }
         .sticker-red { background: var(--red); color: #fff; }
 
-        /* Wave dividers */
+        /* ─── WAVE DIVIDERS ─── */
         .wave-divider { width: 100%; overflow: hidden; line-height: 0; position: relative; z-index: 1; margin-top: -2px; margin-bottom: -2px; }
         .wave-divider svg { display: block; width: 100%; height: 40px; }
 
-        /* Dark stats bar (like homepage) */
-        .stats-bar { background: var(--green-dark); padding: 64px 0; color: #fff; position: relative; z-index: 1; }
-        .stats-bar .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; text-align: center; }
-        .stats-bar .stat-num { font-family: var(--font-fun); font-size: clamp(36px, 5vw, 56px); color: var(--yellow); line-height: 1; margin-bottom: 8px; }
-        .stats-bar .stat-label { font-size: 14px; font-weight: 700; color: rgba(255,255,255,0.6); }
-
-        /* Marquee ticker */
-        .marquee-section { padding: 24px 0; background: var(--green-dark); overflow: hidden; }
-        .marquee-track { display: flex; width: max-content; animation: marquee-slide 20s linear infinite; }
-        .marquee-track:hover { animation-play-state: paused; }
-        .marquee-item { display: flex; align-items: center; gap: 32px; padding: 0 32px; font-family: var(--font); font-weight: 900; font-size: 18px; text-transform: uppercase; letter-spacing: 3px; color: rgba(255,255,255,0.25); white-space: nowrap; }
-        .marquee-item .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--lime); flex-shrink: 0; }
-        .marquee-item .highlight { color: var(--lime); }
-        @keyframes marquee-slide { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
-
-        /* Timeline + Values combined 2-col */
-        .timeline-section { padding: 80px 0; background: var(--white); }
-        .timeline-values-grid { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 64px; margin-top: 48px; align-items: start; }
-        .timeline { position: relative; padding-left: 40px; }
-        .timeline::before { content: ''; position: absolute; left: 8px; top: 0; bottom: 0; width: 3px; background: linear-gradient(to bottom, var(--lime), var(--green-dark)); border-radius: 2px; }
-        .timeline-item { position: relative; margin-bottom: 32px; padding-left: 40px; }
-        .timeline-item::before { content: ''; position: absolute; left: -36px; top: 8px; width: 14px; height: 14px; border-radius: 50%; background: var(--lime); border: 3px solid var(--white); box-shadow: 0 0 0 3px var(--lime); z-index: 2; }
-        .timeline-year { font-family: var(--font-fun); font-size: 28px; color: var(--lime); line-height: 1; margin-bottom: 4px; }
-        .timeline-content h3 { font-size: 16px; margin-bottom: 4px; }
-        .timeline-content p { font-size: 14px; }
-        .values-sidebar { display: flex; flex-direction: column; gap: 16px; }
-        .values-sidebar-header { margin-bottom: 8px; }
-        .values-sidebar-header h2 { font-size: clamp(22px, 2.5vw, 32px); }
-        .value-card-side { background: var(--lime-bg); padding: 24px 20px; border-radius: var(--radius); transition: transform 0.3s, box-shadow 0.3s; }
-        .value-card-side:hover { transform: translateY(-4px); box-shadow: 0 12px 36px rgba(27,94,58,0.08); }
-        .value-card-side h3 { font-size: 16px; margin-bottom: 6px; }
-        .value-card-side p { font-size: 13px; line-height: 1.6; }
-
-        /* Ecosystem */
+        /* ─── ECOSYSTEM (dark glassmorphism cards) ─── */
         .ecosystem-section { padding: 80px 0; background: var(--green-dark); position: relative; overflow: hidden; }
         .ecosystem-section::before { content: ''; position: absolute; top: -40%; right: -10%; width: 500px; height: 500px; border-radius: 50%; background: radial-gradient(circle, rgba(141,198,63,0.06) 0%, transparent 70%); pointer-events: none; }
         .ecosystem-section .section-top h2 { color: #fff; }
         .ecosystem-section .section-top h2 .fun { color: var(--yellow); }
         .ecosystem-section .section-top p { color: rgba(255,255,255,0.6); }
-        .ecosystem-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; margin-top: 48px; }
-        .ecosystem-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(141,198,63,0.15); padding: 40px 28px 36px; border-radius: 20px; text-align: center; transition: transform 0.4s cubic-bezier(0.16,1,0.3,1), border-color 0.4s, background 0.4s, box-shadow 0.4s; position: relative; overflow: hidden; backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); }
+        .ecosystem-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+        .ecosystem-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(141,198,63,0.15); padding: 36px 24px 32px; border-radius: 20px; text-align: center; transition: transform 0.4s cubic-bezier(0.16,1,0.3,1), border-color 0.4s, background 0.4s, box-shadow 0.4s; position: relative; overflow: hidden; backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); }
         .ecosystem-card::before { content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 60%; height: 1px; background: linear-gradient(90deg, transparent, rgba(141,198,63,0.4), transparent); }
         .ecosystem-card:hover { transform: translateY(-6px); border-color: rgba(141,198,63,0.35); background: rgba(255,255,255,0.07); box-shadow: 0 20px 50px rgba(0,0,0,0.2), 0 0 30px rgba(141,198,63,0.08); }
-        .ecosystem-card.card-highlight { background: rgba(141,198,63,0.08); border-color: rgba(141,198,63,0.3); }
-        .ecosystem-card.card-highlight h3 { color: var(--lime); }
-        .ecosystem-card.card-highlight p { color: rgba(255,255,255,0.6); }
         .eco-icon-wrap { width: 52px; height: 52px; margin: 0 auto 20px; display: flex; align-items: center; justify-content: center; border-radius: 14px; background: linear-gradient(135deg, rgba(141,198,63,0.12), rgba(255,193,7,0.08)); border: 1px solid rgba(141,198,63,0.2); }
-        .ecosystem-card h3 { margin-bottom: 10px; color: #fff; font-size: 18px; font-weight: 800; letter-spacing: -0.2px; }
-        .ecosystem-card h3 .eco-hl { color: var(--lime); }
+        .ecosystem-card h3 { margin-bottom: 10px; color: #fff; font-size: 17px; font-weight: 800; letter-spacing: -0.2px; }
         .ecosystem-card p { font-size: 14px; line-height: 1.6; color: rgba(255,255,255,0.55); }
         .ecosystem-tag { display: inline-block; margin-top: 14px; padding: 5px 14px; border-radius: var(--radius-pill); font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; background: rgba(141,198,63,0.1); color: var(--lime); border: 1px solid rgba(141,198,63,0.2); }
 
-        /* Values */
-        .values-section { padding: 80px 0; background: var(--white); }
-        .values-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 28px; margin-top: 48px; }
-        .value-card { background: var(--lime-bg); padding: 32px 28px; border-radius: var(--radius); text-align: center; transition: transform 0.3s, box-shadow 0.3s; }
-        .value-card:hover { transform: translateY(-4px); box-shadow: 0 12px 36px rgba(27,94,58,0.08); }
-        .value-card h3 { margin-bottom: 12px; color: var(--green-dark); }
-        .value-card p { font-size: 14px; line-height: 1.6; }
+        /* ─── STATS BAR ─── */
+        .stats-bar { background: var(--green-dark); padding: 64px 0; color: #fff; position: relative; z-index: 1; }
+        .stats-bar .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; text-align: center; }
+        .stats-bar .stat-num { font-family: var(--font-fun); font-size: clamp(36px, 5vw, 56px); color: var(--yellow); line-height: 1; margin-bottom: 8px; }
+        .stats-bar .stat-label { font-size: 14px; font-weight: 700; color: rgba(255,255,255,0.6); }
+
+        /* ─── MARQUEE ─── */
+        .marquee-section { padding: 20px 0; background: var(--green-dark); overflow: hidden; border-top: 1px solid rgba(255,255,255,0.06); }
+        .marquee-track { display: flex; width: max-content; animation: marquee-slide 25s linear infinite; }
+        .marquee-track:hover { animation-play-state: paused; }
+        .marquee-item { display: flex; align-items: center; gap: 32px; padding: 0 32px; font-family: var(--font); font-weight: 900; font-size: 16px; text-transform: uppercase; letter-spacing: 3px; color: rgba(255,255,255,0.15); white-space: nowrap; }
+        .marquee-item .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--lime); flex-shrink: 0; }
+        .marquee-item .highlight { color: var(--lime); }
+        @keyframes marquee-slide { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+        /* ─── TIMELINE + VALUES ─── */
+        .timeline-section { padding: 80px 0; background: var(--white); }
+        .timeline-values-grid { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 64px; margin-top: 48px; align-items: start; }
+        .timeline { position: relative; padding-left: 40px; }
+        .timeline::before { content: ''; position: absolute; left: 8px; top: 0; bottom: 0; width: 3px; background: linear-gradient(to bottom, var(--lime), var(--green-dark)); border-radius: 2px; }
+        .timeline-item { position: relative; margin-bottom: 28px; padding-left: 40px; }
+        .timeline-item::before { content: ''; position: absolute; left: -36px; top: 8px; width: 14px; height: 14px; border-radius: 50%; background: var(--lime); border: 3px solid var(--white); box-shadow: 0 0 0 3px var(--lime); z-index: 2; }
+        .timeline-year { font-family: var(--font-fun); font-size: 24px; color: var(--lime); line-height: 1; margin-bottom: 4px; }
+        .timeline-content h3 { font-size: 16px; margin-bottom: 4px; }
+        .timeline-content p { font-size: 14px; line-height: 1.6; }
+        .values-sidebar { display: flex; flex-direction: column; gap: 16px; }
+        .values-sidebar-header { margin-bottom: 8px; }
+        .values-sidebar-header h2 { font-size: clamp(22px, 2.5vw, 32px); }
+        .value-card-side { background: var(--lime-bg); padding: 24px 20px; border-radius: var(--radius); transition: transform 0.3s, box-shadow 0.3s; }
+        .value-card-side:hover { transform: translateY(-4px); box-shadow: 0 12px 36px rgba(27,94,58,0.08); }
+        .value-card-side h3 { font-size: 16px; margin-bottom: 6px; display: flex; align-items: center; gap: 10px; }
+        .value-card-side h3 svg { flex-shrink: 0; }
+        .value-card-side p { font-size: 13px; line-height: 1.6; }
+
+        /* ─── PROSE SECTION ─── */
+        .prose-section { padding: 80px 0; }
+        .prose-container { max-width: 800px; margin: 0 auto; }
+        .prose-container h2 { text-align: center; margin-bottom: 40px; }
+        .prose-container p { margin-bottom: 20px; }
+        .prose-highlight { background: var(--green-dark); border-radius: var(--radius); padding: 32px 36px; margin: 32px 0; }
+        .prose-highlight p { color: rgba(255,255,255,0.8); font-size: 17px; font-weight: 500; margin: 0; }
+        .prose-highlight strong { color: var(--yellow); }
+
+        /* ─── CTA ─── */
+        .city-cta { padding: 80px 0; background: var(--green-dark); text-align: center; color: #fff; }
+        .city-cta h2 { color: #fff; margin-bottom: 12px; }
+        .city-cta h2 .fun { color: var(--yellow); }
+        .city-cta p { color: rgba(255,255,255,0.7); max-width: 480px; margin: 0 auto 32px; }
+        .city-cta-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+
+        /* ─── FAQ ─── */
+        .faq-a-inner { padding: 0 0 22px; font-size: 15px; line-height: 1.8; color: var(--gray); }
+        .faq-item { border-bottom: 1px solid rgba(27,94,58,0.1); }
+        .faq-q { width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 20px 0; background: none; border: none; cursor: pointer; font-family: var(--font); font-size: 16px; font-weight: 700; color: var(--green-dark); text-align: left; gap: 16px; }
+        .faq-a { overflow: hidden; max-height: 0; transition: max-height 0.4s ease; }
+        .faq-a[hidden] { display: block; max-height: 0; }
 
         footer { background: var(--green-dark); color: #fff; padding: 72px 0 36px; }
         .footer-grid { display: grid; grid-template-columns: 1.5fr repeat(3, 1fr); gap: 48px; margin-bottom: 48px; }
@@ -188,126 +188,89 @@
         .reveal { opacity: 0; transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1); will-change: opacity; }
         .reveal.vis { opacity: 1; }
 
+        .floating-badge { position: fixed; bottom: 28px; right: 28px; z-index: 999; transition: opacity 0.4s, transform 0.4s; }
+        .floating-badge img { height: 120px; filter: drop-shadow(0 4px 12px rgba(228,48,32,0.3)); transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), filter 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
+        .floating-badge:hover img { transform: scale(1.1) rotate(-3deg); filter: drop-shadow(0 6px 18px rgba(27,94,58,0.4)) hue-rotate(90deg) saturate(1.4); }
+
+        .skip-link{position:absolute;top:-100%;left:50%;transform:translateX(-50%);background:#1B5E3A;color:#fff;padding:10px 24px;border-radius:0 0 8px 8px;font-size:14px;font-weight:600;z-index:10000;text-decoration:none;transition:top 0.2s}.skip-link:focus{top:0}:focus-visible{outline:3px solid #8DC63F;outline-offset:2px;border-radius:4px}
+        .mobile-sticky-cta{display:none;position:fixed;bottom:0;left:0;right:0;background:#1B5E3A;padding:12px 16px;z-index:9990;transform:translateY(100%);transition:transform 0.3s ease;box-shadow:0 -2px 12px rgba(0,0,0,0.15)}
+        .mobile-sticky-cta.visible{transform:translateY(0)}
+        .mobile-sticky-cta-inner{display:flex;gap:10px;align-items:center;max-width:600px;margin:0 auto}
+        .mobile-sticky-cta a{flex:1;text-align:center;padding:11px 16px;border-radius:8px;font-size:14px;font-weight:700;text-decoration:none}
+        .mobile-sticky-cta .cta-primary{background:#E43020;color:#fff}
+        .mobile-sticky-cta .cta-secondary{background:transparent;color:#fff;border:1px solid rgba(255,255,255,0.3)}
+        @media(max-width:768px){.mobile-sticky-cta{display:block}}
+        section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px}.logo-bar,.city-index,footer{content-visibility:auto;contain-intrinsic-size:auto 200px}
+
+        .city-index { background: #163D28; padding: 48px 0 40px; }
+        .city-index h3 { font-size: 15px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: #8DC63F; margin-bottom: 20px; text-align: center; }
+        .city-index-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 20px; }
+        .city-index-links a { font-size: 14px; color: rgba(255,255,255,0.6); transition: color 0.2s; }
+        .city-index-links a:hover { color: #8DC63F; }
+
+        /* ─── EXIT-INTENT POPUP ─── */
+        .exit-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.6); backdrop-filter: blur(4px); z-index: 9999; display: none; align-items: center; justify-content: center; padding: 24px; opacity: 0; transition: opacity 0.3s ease; }
+        .exit-overlay.show { display: flex; opacity: 1; }
+        .exit-popup { background: var(--white); border-radius: var(--radius-lg); max-width: 480px; width: 100%; padding: 48px 40px 40px; position: relative; text-align: center; box-shadow: 0 24px 80px rgba(0,0,0,0.25); transform: translateY(20px); transition: transform 0.3s ease; }
+        .exit-overlay.show .exit-popup { transform: translateY(0); }
+        .exit-close { position: absolute; top: 16px; right: 16px; width: 36px; height: 36px; border-radius: 50%; border: none; background: var(--cream); cursor: pointer; font-size: 18px; display: flex; align-items: center; justify-content: center; color: var(--green-dark); transition: background 0.2s; }
+        .exit-close:hover { background: #eee; }
+        .exit-popup h3 { font-size: 24px; color: var(--green-dark); margin-bottom: 12px; line-height: 1.3; }
+        .exit-popup h3 .fun { font-family: var(--font-fun); color: var(--lime); }
+        .exit-popup p { font-size: 15px; color: var(--gray); margin-bottom: 24px; }
+        .exit-form { display: flex; gap: 8px; }
+        .exit-form input { flex: 1; padding: 14px 18px; border-radius: var(--radius-pill); border: 2px solid #e0e0e0; font-size: 15px; font-family: var(--font); outline: none; transition: border-color 0.2s; }
+        .exit-form input:focus { border-color: var(--lime); }
+        .exit-form button { padding: 14px 24px; border-radius: var(--radius-pill); background: var(--red); color: #fff; font-weight: 800; font-size: 14px; border: none; cursor: pointer; white-space: nowrap; transition: background 0.2s, transform 0.2s; }
+        .exit-form button:hover { background: #C42818; transform: translateY(-1px); }
+        .exit-note { font-size: 12px; color: #999; margin-top: 12px; }
+        @media (max-width: 600px) { .exit-popup { padding: 36px 24px 28px; } .exit-form { flex-direction: column; } }
+
+        /* ─── RESPONSIVE ─── */
         @media (max-width: 1024px) {
             .container { padding: 0 36px; }
             .nav-inner { padding: 14px 36px; }
             .city-hero-inner { grid-template-columns: 1fr; }
+            .hero-visual { display: none; }
+            .ecosystem-grid { grid-template-columns: repeat(2, 1fr); }
             .stats-bar .stats-grid { grid-template-columns: repeat(2, 1fr); }
             .timeline-values-grid { grid-template-columns: 1fr; gap: 48px; }
-            .ecosystem-grid { grid-template-columns: 1fr; }
             .footer-grid { grid-template-columns: repeat(2, 1fr); gap: 36px; }
-            .offer-mini-grid { grid-template-columns: repeat(2, 1fr); }
-            .suppliers-grid { grid-template-columns: 1fr; }
         }
-        @media (max-width: 1024px) { .hanging-crate { width: 200px; right: 4%; bottom: 60px; } }
         @media (max-width: 768px) {
-            .hanging-crate { display: none; }
             .container { padding: 0 16px; }
             .nav-inner { padding: 12px 16px; }
             .nav-links { display: none; }
             .nav-trust { display: none; }
             .city-hero { padding: 100px 0 60px; }
-            .city-hero-inner { grid-template-columns: 1fr; gap: 32px; }
             .city-hero-buttons { flex-direction: column; }
             .city-hero-buttons .btn { text-align: center; justify-content: center; width: 100%; }
+            .ecosystem-grid { grid-template-columns: 1fr; }
             .stats-bar .stats-grid { grid-template-columns: repeat(2, 1fr); }
-            .values-grid { grid-template-columns: 1fr; }
             .timeline { padding-left: 24px; }
             .timeline-item { padding-left: 28px; }
             .timeline-item::before { left: -28px; }
             .city-cta-btns { flex-direction: column; align-items: center; }
             .footer-grid { grid-template-columns: 1fr; gap: 28px; }
-            .offer-mini-grid { grid-template-columns: 1fr; }
-            .suppliers-grid { grid-template-columns: 1fr; }
+            .floating-badge { bottom: 16px; right: 16px; }
+            .floating-badge img { height: 90px; }
+            .hero-trust-badges { justify-content: center; }
+            .prose-highlight { padding: 24px 20px; }
         }
-
         @media (max-width: 480px) {
-            /* Nav extra-small */
             .logo-img { height: 40px; }
             .btn-nav-cta { padding: 7px 14px; font-size: 12px; }
             .nav-inner { gap: 8px; }
-            /* Hero stats: prevent overflow */
-            .hero-stats { flex-wrap: wrap; gap: 16px 24px; }
-            .hero-stat { min-width: auto; }
-            /* Hero buttons: full-width stack */
-            .hero-buttons { flex-direction: column; }
-            .hero-buttons .btn { width: 100%; text-align: center; justify-content: center; }
-            /* Footer: tighter padding */
-            footer .container { padding: 0 16px; }
+            .hero-stat-ring { width: 160px; height: 160px; }
+            .hero-stat-ring .big-num { font-size: 44px; }
         }
-
-
-/* ─── CITY INDEX ─── */
-.city-index { background: #163D28; padding: 48px 0 40px; }
-.city-index h3 { font-size: 15px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: #8DC63F; margin-bottom: 20px; text-align: center; }
-.city-index-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 20px; }
-.city-index-links a { font-size: 14px; color: rgba(255,255,255,0.6); transition: color 0.2s; }
-.city-index-links a:hover { color: #8DC63F; }
-
-    .skip-link{position:absolute;top:-100%;left:50%;transform:translateX(-50%);background:#1B5E3A;color:#fff;padding:10px 24px;border-radius:0 0 8px 8px;font-size:14px;font-weight:600;z-index:10000;text-decoration:none;transition:top 0.2s}.skip-link:focus{top:0}:focus-visible{outline:3px solid #8DC63F;outline-offset:2px;border-radius:4px}
-.mobile-sticky-cta{display:none;position:fixed;bottom:0;left:0;right:0;background:#1B5E3A;padding:12px 16px;z-index:9990;transform:translateY(100%);transition:transform 0.3s ease;box-shadow:0 -2px 12px rgba(0,0,0,0.15)}
-.mobile-sticky-cta.visible{transform:translateY(0)}
-.mobile-sticky-cta-inner{display:flex;gap:10px;align-items:center;max-width:600px;margin:0 auto}
-.mobile-sticky-cta a{flex:1;text-align:center;padding:11px 16px;border-radius:8px;font-size:14px;font-weight:700;text-decoration:none}
-.mobile-sticky-cta .cta-primary{background:#E43020;color:#fff}
-.mobile-sticky-cta .cta-secondary{background:transparent;color:#fff;border:1px solid rgba(255,255,255,0.3)}
-@media(max-width:768px){.mobile-sticky-cta{display:block}}
-section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px}.logo-bar,.city-index,footer{content-visibility:auto;contain-intrinsic-size:auto 200px}
-        /* Nav hide on scroll */
-        header { transition: transform 0.35s cubic-bezier(0.16,1,0.3,1); }
-        header.nav-hidden { transform: translateY(-100%); }
-
-
-        /* ─── FAQ ─── */
-        .faq-a-inner { padding: 0 0 22px; font-size: 15px; line-height: 1.8; color: var(--gray); }
-        .faq-item { border-bottom: 1px solid rgba(27,94,58,0.1); }
-        .faq-q { width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 20px 0; background: none; border: none; cursor: pointer; font-family: var(--font); font-size: 16px; font-weight: 700; color: var(--green-dark); text-align: left; gap: 16px; }
-        .faq-a { overflow: hidden; max-height: 0; transition: max-height 0.4s ease; }
-        .faq-a[hidden] { display: block; max-height: 0; }
-
-
-/* ─── EXIT-INTENT POPUP ─── */
-.exit-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.6); backdrop-filter: blur(4px); z-index: 9999; display: none; align-items: center; justify-content: center; padding: 24px; opacity: 0; transition: opacity 0.3s ease; }
-.exit-overlay.show { display: flex; opacity: 1; }
-.exit-popup { background: var(--white); border-radius: var(--radius-lg); max-width: 480px; width: 100%; padding: 48px 40px 40px; position: relative; text-align: center; box-shadow: 0 24px 80px rgba(0,0,0,0.25); transform: translateY(20px); transition: transform 0.3s ease; }
-.exit-overlay.show .exit-popup { transform: translateY(0); }
-.exit-close { position: absolute; top: 16px; right: 16px; width: 36px; height: 36px; border-radius: 50%; border: none; background: var(--cream); cursor: pointer; font-size: 18px; display: flex; align-items: center; justify-content: center; color: var(--green-dark); transition: background 0.2s; }
-.exit-close:hover { background: #eee; }
-.exit-popup h3 { font-size: 24px; color: var(--green-dark); margin-bottom: 12px; line-height: 1.3; }
-.exit-popup h3 .fun { font-family: var(--font-fun); color: var(--lime); }
-.exit-popup p { font-size: 15px; color: var(--gray); margin-bottom: 24px; }
-.exit-form { display: flex; gap: 8px; }
-.exit-form input { flex: 1; padding: 14px 18px; border-radius: var(--radius-pill); border: 2px solid #e0e0e0; font-size: 15px; font-family: var(--font); outline: none; transition: border-color 0.2s; }
-.exit-form input:focus { border-color: var(--lime); }
-.exit-form button { padding: 14px 24px; border-radius: var(--radius-pill); background: var(--red); color: #fff; font-weight: 800; font-size: 14px; border: none; cursor: pointer; white-space: nowrap; transition: background 0.2s, transform 0.2s; }
-.exit-form button:hover { background: #C42818; transform: translateY(-1px); }
-.exit-note { font-size: 12px; color: #999; margin-top: 12px; }
-@media (max-width: 600px) { .exit-popup { padding: 36px 24px 28px; } .exit-form { flex-direction: column; } }
-
-        /* Page-specific: Suppliers grid (2 columns) */
-        .suppliers-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin-top: 48px; }
-        .supplier-card { background: var(--cream); padding: 24px 20px; border-radius: var(--radius); text-align: center; transition: transform 0.3s, box-shadow 0.3s; }
-        .supplier-card:hover { transform: translateY(-4px); box-shadow: 0 12px 36px rgba(27,94,58,0.1); }
-        .supplier-card h3 { font-size: 16px; margin-bottom: 6px; color: var(--green-dark); }
-        .supplier-card p { font-size: 14px; margin: 0; line-height: 1.6; }
-
-        /* Floating badge */
-        .floating-badge { position: fixed; bottom: 28px; right: 28px; z-index: 999; transition: opacity 0.4s, transform 0.4s; }
-        .floating-badge img { height: 120px; filter: drop-shadow(0 4px 12px rgba(228,48,32,0.3)); transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), filter 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
-        .floating-badge:hover img { transform: scale(1.1) rotate(-3deg); filter: drop-shadow(0 6px 18px rgba(27,94,58,0.4)) hue-rotate(90deg) saturate(1.4); }
-
-        @media (max-width: 768px) {
-            .floating-badge { bottom: 16px; right: 16px; }
-            .floating-badge img { height: 90px; }
-        }
-
 </style>
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
         "@type": "BreadcrumbList",
         "itemListElement": [
-            {"@type": "ListItem", "position": 1, "name": "Strona główna", "item": "https://dailyfruits.pl/"},
+            {"@type": "ListItem", "position": 1, "name": "Strona glowna", "item": "https://dailyfruits.pl/"},
             {"@type": "ListItem", "position": 2, "name": "Dostawcy", "item": "https://dailyfruits.pl/dostawcy"}
         ]
     }
@@ -321,7 +284,9 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
             {"@type": "Question", "name": "Jakie certyfikaty posiadaja dostawcy DailyFruits?", "acceptedAnswer": {"@type": "Answer", "text": "Wymagamy co najmniej jednego z czterech standardow: Fair Trade, GlobalG.A.P., Rainforest Alliance lub Integrowana Produkcja. Wiekszosc naszych partnerow spelnia dwa lub wiecej standardow jednoczesnie."}},
             {"@type": "Question", "name": "Ile owocow miesiecznie dostarcza DailyFruits?", "acceptedAnswer": {"@type": "Answer", "text": "Nasz lancuch dostaw obsluguje ponad 200 ton owocow miesiecznie, dostarczanych do biur w 13 miastach Polski."}},
             {"@type": "Question", "name": "Co sie dzieje z owocami ktore nie spelniaja standardow jakosci?", "acceptedAnswer": {"@type": "Answer", "text": "Owoce z drobnymi skazami estetycznymi przekazujemy do wspolpracujacych ogrodow zoologicznych (ZOO Warszawa i Krakow) oraz Bankow Zywnosci. Nic sie nie marnuje."}},
-            {"@type": "Question", "name": "Czy moge zostac dostawca DailyFruits?", "acceptedAnswer": {"@type": "Answer", "text": "Tak — szukamy certyfikowanych sadownikow i dystrybutorów, ktorzy moga zapewnic regularne dostawy w najwyzszej jakosci. Wyslij zapytanie przez formularz kontaktowy."}}
+            {"@type": "Question", "name": "Czy moge zostac dostawca DailyFruits?", "acceptedAnswer": {"@type": "Answer", "text": "Tak — szukamy certyfikowanych sadownikow i dystrybutorów, ktorzy moga zapewnic regularne dostawy w najwyzszej jakosci. Wyslij zapytanie przez formularz kontaktowy."}},
+            {"@type": "Question", "name": "Jak DailyFruits kontroluje jakosc owocow?", "acceptedAnswer": {"@type": "Answer", "text": "Kazda partia jest kontrolowana pod katem swiezosci, dojrzalosci i warunkow transportu. Stosujemy system HACCP i wewnetrzne audyty jakosci — od momentu odbioru od dostawcy do dostarczenia do biura klienta."}},
+            {"@type": "Question", "name": "Czy DailyFruits dostarcza owoce ekologiczne?", "acceptedAnswer": {"@type": "Answer", "text": "Czesc naszych dostawcow posiada certyfikaty ekologiczne. Na zyczenie klienta mozemy skomponowac koszyk wylacznie z owocow eko. Wszystkie owoce — rowniez konwencjonalne — pochodza z certyfikowanych upraw o najwyzszych standardach."}}
         ]
     }
     </script>
@@ -330,7 +295,7 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
 <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-XXXXXXX" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
-<a href="#main" class="skip-link">Przejdź do treści</a>
+<a href="#main" class="skip-link">Przejdz do tresci</a>
 
 <header>
     <div class="nav-inner">
@@ -342,8 +307,8 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
             <li><a href="blog.html">Blog</a></li>
         </ul></nav>
         <div class="nav-buttons">
-            <span class="nav-trust">Zaufało nam ponad<br>2 000 firm w Polsce</span>
-            <a href="zapytanie.html" class="btn btn-nav-cta">Bezpłatna wycena</a>
+            <span class="nav-trust">Zaufalo nam ponad<br>2 000 firm w Polsce</span>
+            <a href="zapytanie.html" class="btn btn-nav-cta">Bezplatna wycena</a>
             <button class="mn-burger" id="mnBurger" aria-label="Menu"><i></i><i></i><i></i></button>
         </div>
     </div>
@@ -359,19 +324,46 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
         <a href="catering-firmowy.html" class="mn-link">Catering</a>
         <a href="programy-zywieniowe.html" class="mn-link">Programy</a>
         <a href="blog.html" class="mn-link">Blog</a>
-        <a href="zapytanie.html" class="mn-cta">Bezpłatna wycena →</a>
+        <a href="zapytanie.html" class="mn-cta">Bezplatna wycena &rarr;</a>
     </nav>
 </div>
 
+<!-- ═══════════════ HERO ═══════════════ -->
 <section id="main" class="city-hero">
     <div class="container">
         <div class="city-hero-inner">
             <div class="city-hero-text reveal">
-                <div class="sticker sticker-lime" style="transform:rotate(-1deg);display:inline-block;margin-bottom:12px">Jakość</div>
-                <h1 style="margin-top:16px">Nasi dostawcy — Twoja <span class="fun">gwarancja</span> jakości</h1>
-                <p>Współpracujemy wyłącznie z certyfikowanymi sadownikami i dystrybutorami. Każdy owoc ma swoje źródło.</p>
+                <div class="sticker sticker-lime" style="transform:rotate(-1deg);display:inline-block;margin-bottom:12px">Lancuch dostaw</div>
+                <h1 style="margin-top:16px">Nasi dostawcy &mdash; Twoja <span class="fun">gwarancja</span> jakosci</h1>
+                <p>Wspolpracujemy wylacznie z certyfikowanymi sadownikami i dystrybutorami. Kazdy owoc, ktory trafia do Twojego biura, ma udokumentowane zrodlo i przeszedl kontrole jakosci.</p>
                 <div class="city-hero-buttons">
-                    <a href="zapytanie.html" class="btn btn-green">Złóż zapytanie →</a>
+                    <a href="zapytanie.html" class="btn btn-green">Zloz zapytanie &rarr;</a>
+                    <a href="oferta.html" class="btn btn-outline" style="color:var(--green-dark);border-color:var(--green-dark)">Poznaj oferte</a>
+                </div>
+                <div class="hero-trust-badges">
+                    <span class="hero-badge"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 1l2.1 4.3L15 6l-3.5 3.4.8 4.8L8 12l-4.3 2.2.8-4.8L1 6l4.9-.7L8 1z" fill="#8DC63F"/></svg> Fair Trade</span>
+                    <span class="hero-badge"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 1l2.1 4.3L15 6l-3.5 3.4.8 4.8L8 12l-4.3 2.2.8-4.8L1 6l4.9-.7L8 1z" fill="#8DC63F"/></svg> GlobalG.A.P.</span>
+                    <span class="hero-badge"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 1l2.1 4.3L15 6l-3.5 3.4.8 4.8L8 12l-4.3 2.2.8-4.8L1 6l4.9-.7L8 1z" fill="#8DC63F"/></svg> Rainforest Alliance</span>
+                </div>
+            </div>
+            <div class="hero-visual reveal">
+                <div class="hero-stat-ring">
+                    <div class="big-num">12</div>
+                    <div class="big-label">certyfikowanych<br>dostawcow</div>
+                </div>
+                <div class="hero-mini-stats">
+                    <div class="hero-mini-stat">
+                        <div class="num">200+</div>
+                        <div class="label">ton / mies.</div>
+                    </div>
+                    <div class="hero-mini-stat">
+                        <div class="num">4</div>
+                        <div class="label">certyfikaty</div>
+                    </div>
+                    <div class="hero-mini-stat">
+                        <div class="num">13</div>
+                        <div class="label">miast</div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -380,124 +372,233 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
 
 <!-- WAVE: hero → certifications -->
 <div class="wave-divider" style="background:var(--lime-bg)">
+    <svg viewBox="0 0 1440 60" preserveAspectRatio="none"><path d="M0,30 C320,60 640,0 960,40 C1120,55 1300,10 1440,25 L1440,60 L0,60Z" fill="#1B5E3A"/></svg>
+</div>
+
+<!-- ═══════════════ CERTIFICATIONS (ecosystem dark) ═══════════════ -->
+<section class="ecosystem-section">
+    <div class="container">
+        <div class="section-top reveal">
+            <h2>Standardy, ktore <span class="fun">gwarantujemy</span></h2>
+            <p>Kazdy dostawca w naszej sieci musi spelnic co najmniej jeden z czterech miedzynarodowych standardow jakosci.</p>
+        </div>
+        <div class="ecosystem-grid reveal">
+            <div class="ecosystem-card">
+                <div class="eco-icon-wrap">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M7 11c-1.1 0-2-.9-2-2s.9-2 2-2h1V5c0-1.1.9-2 2-2s2 .9 2 2v2h1c1.1 0 2 .9 2 2s-.9 2-2 2h-1v2c0 1.1-.9 2-2 2s-2-.9-2-2v-2H7zm10 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2h4c0-1.1-.9-2-2-2z" fill="#8DC63F"/><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z" stroke="#8DC63F" stroke-width="1.5" fill="none"/></svg>
+                </div>
+                <h3>Fair Trade</h3>
+                <p>Sprawiedliwy handel i godziwe warunki pracy. Wsparcie dla 1,8 mln rolnikow na swiecie.</p>
+                <span class="ecosystem-tag">Etyczny handel</span>
+            </div>
+            <div class="ecosystem-card">
+                <div class="eco-icon-wrap">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 2L3 7v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-9-5zm-1 15l-4-4 1.41-1.41L11 14.17l6.59-6.59L19 9l-8 8z" fill="#8DC63F"/></svg>
+                </div>
+                <h3>GlobalG.A.P.</h3>
+                <p>Swiatowy standard bezpieczenstwa zywnosci &mdash; kontrola od wysiewu przez zbior po transport.</p>
+                <span class="ecosystem-tag">Bezpieczenstwo</span>
+            </div>
+            <div class="ecosystem-card">
+                <div class="eco-icon-wrap">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M17 8C8 10 5.9 16.17 3.82 21.34L5.71 22l1-2.3A4.49 4.49 0 008 20c4 0 4-4 8-4 1.62 0 2.92.59 4 1.42V4c-1.3.95-2.65 2.24-3 4z" fill="#8DC63F"/></svg>
+                </div>
+                <h3>Rainforest Alliance</h3>
+                <p>Produkcja bez niszczenia ekosystemow, z godziwym wynagrodzeniem i troska o bioroznorodnosc.</p>
+                <span class="ecosystem-tag">Ekologia</span>
+            </div>
+            <div class="ecosystem-card">
+                <div class="eco-icon-wrap">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" fill="#8DC63F"/></svg>
+                </div>
+                <h3>Integrowana Produkcja</h3>
+                <p>Krajowy certyfikat jakosci. Najwyzsze wartosci odzywcze, scisla kontrola pozostalosci srodkow ochrony.</p>
+                <span class="ecosystem-tag">Jakosc PL</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-section">
+    <div class="marquee-track">
+        <div class="marquee-item"><span class="dot"></span> <span class="highlight">Fair Trade</span></div>
+        <div class="marquee-item"><span class="dot"></span> GlobalG.A.P.</div>
+        <div class="marquee-item"><span class="dot"></span> <span class="highlight">Rainforest Alliance</span></div>
+        <div class="marquee-item"><span class="dot"></span> Integrowana Produkcja</div>
+        <div class="marquee-item"><span class="dot"></span> <span class="highlight">200+ ton / miesiac</span></div>
+        <div class="marquee-item"><span class="dot"></span> 12 dostawcow</div>
+        <div class="marquee-item"><span class="dot"></span> <span class="highlight">13 miast</span></div>
+        <div class="marquee-item"><span class="dot"></span> Zero waste</div>
+        <!-- duplicate for seamless loop -->
+        <div class="marquee-item"><span class="dot"></span> <span class="highlight">Fair Trade</span></div>
+        <div class="marquee-item"><span class="dot"></span> GlobalG.A.P.</div>
+        <div class="marquee-item"><span class="dot"></span> <span class="highlight">Rainforest Alliance</span></div>
+        <div class="marquee-item"><span class="dot"></span> Integrowana Produkcja</div>
+        <div class="marquee-item"><span class="dot"></span> <span class="highlight">200+ ton / miesiac</span></div>
+        <div class="marquee-item"><span class="dot"></span> 12 dostawcow</div>
+        <div class="marquee-item"><span class="dot"></span> <span class="highlight">13 miast</span></div>
+        <div class="marquee-item"><span class="dot"></span> Zero waste</div>
+    </div>
+</div>
+
+<!-- WAVE: dark → white -->
+<div class="wave-divider" style="background:var(--green-dark)">
     <svg viewBox="0 0 1440 60" preserveAspectRatio="none"><path d="M0,30 C320,60 640,0 960,40 C1120,55 1300,10 1440,25 L1440,60 L0,60Z" fill="#FFFFFF"/></svg>
 </div>
 
-<section class="city-offer">
+<!-- ═══════════════ SUPPLIERS TIMELINE ═══════════════ -->
+<section class="timeline-section">
     <div class="container">
         <div class="section-top reveal">
-            <div class="sticker sticker-lime" style="transform:rotate(-1deg)">Certyfikaty</div>
-            <h2 style="margin-top:20px">Standardy, które <span class="fun">gwarantujemy</span></h2>
+            <div class="sticker sticker-lime" style="transform:rotate(-1deg)">12 partnerow</div>
+            <h2 style="margin-top:20px">Kim sa nasi <span class="fun">dostawcy?</span></h2>
+            <p>Od rodzinnych sadownikow z Mazowsza po najwiekszych importerow cytrusow w Polsce</p>
         </div>
-        <div class="offer-mini-grid">
-            <div class="offer-mini-card reveal">
-                <div class="offer-mini-icon">🤝</div>
-                <h3>Fair Trade</h3>
-                <p>Sprawiedliwy handel, godziwe warunki pracy, wsparcie 1,8 mln rolników</p>
+        <div class="timeline-values-grid">
+            <div class="timeline reveal">
+                <div class="timeline-item">
+                    <div class="timeline-year">Jablka</div>
+                    <div class="timeline-content">
+                        <h3>Potockie Ogrody &mdash; Dominik Markiewicz</h3>
+                        <p>Jablka i gruszki, 6 pokolen tradycji sadowniczej</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">Warzywa</div>
+                    <div class="timeline-content">
+                        <h3>Artfoods Sp. z o.o.</h3>
+                        <p>Warzywa i owoce z poludniowo-wschodniej Polski</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">Gruszki</div>
+                    <div class="timeline-content">
+                        <h3>Pawel Korczak</h3>
+                        <p>Jedna z wiekszych upraw gruszek na Mazowszu</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">Cytrusy</div>
+                    <div class="timeline-content">
+                        <h3>Bury Sp. z o.o.</h3>
+                        <p>Na rynku od 1992, najwiekszy importer cytrusow w Polsce</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">Jablka</div>
+                    <div class="timeline-content">
+                        <h3>Dariusz Lubinski</h3>
+                        <p>400 ton rocznie z rodzinnego sadu</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">Pestkowe</div>
+                    <div class="timeline-content">
+                        <h3>MK Fruits</h3>
+                        <p>Owoce pestkowe, firma rodzinna</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">Jablka</div>
+                    <div class="timeline-content">
+                        <h3>Kamil Kowalski</h3>
+                        <p>Kolejne pokolenie sadownikow</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">Banany</div>
+                    <div class="timeline-content">
+                        <h3>Targban Sp. z o.o.</h3>
+                        <p>25 lat importu, wlasne plantacje</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">Miekkie</div>
+                    <div class="timeline-content">
+                        <h3>Bogdan Mulak</h3>
+                        <p>Brzoskwinie i owoce miekkie, Mazowsze</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">Global</div>
+                    <div class="timeline-content">
+                        <h3>Consorfrut Polska</h3>
+                        <p>184 mln kg owocow rocznie, globalny dystrybutor</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">Egzotyki</div>
+                    <div class="timeline-content">
+                        <h3>Polmex Sp. z o.o.</h3>
+                        <p>Cytrusy i egzotyki od 1990, Nowy Sacz</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">Winogrona</div>
+                    <div class="timeline-content">
+                        <h3>Fresh World International</h3>
+                        <p>Cytrusy i winogrona z calego swiata, od 1998</p>
+                    </div>
+                </div>
             </div>
-            <div class="offer-mini-card reveal">
-                <div class="offer-mini-icon">✓</div>
-                <h3>GlobalG.A.P.</h3>
-                <p>Światowy standard bezpieczeństwa żywności — od wysiewu po zbiór</p>
-            </div>
-            <div class="offer-mini-card reveal">
-                <div class="offer-mini-icon">🌿</div>
-                <h3>Rainforest Alliance</h3>
-                <p>Produkcja bez niszczenia ekosystemów, z godziwym wynagrodzeniem</p>
-            </div>
-            <div class="offer-mini-card reveal">
-                <div class="offer-mini-icon">⭐</div>
-                <h3>Integrowana Produkcja</h3>
-                <p>Najwyższe wartości odżywcze, ścisła kontrola pozostałości</p>
+            <div class="values-sidebar reveal">
+                <div class="values-sidebar-header">
+                    <h2>Dlaczego <span class="fun">oni?</span></h2>
+                </div>
+                <div class="value-card-side">
+                    <h3><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 1l2.5 5.1 5.6.8-4 3.9.9 5.5L10 13.8l-5 2.5.9-5.5-4-3.9 5.6-.8L10 1z" fill="#8DC63F"/></svg> Powtarzalnosc jakosci</h3>
+                    <p>Nie wystarczy jedna dobra partia. Wymagamy stalej jakosci w kazdej dostawie, przez caly rok.</p>
+                </div>
+                <div class="value-card-side">
+                    <h3><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 2L3 6v5c0 4.6 3.2 8.9 7.5 10 4.3-1.1 7.5-5.4 7.5-10V6L10 2z" fill="none" stroke="#8DC63F" stroke-width="1.5"/><path d="M7 10l2 2 4-4" stroke="#8DC63F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Certyfikacja</h3>
+                    <p>Fair Trade, GlobalG.A.P., Rainforest Alliance lub Integrowana Produkcja &mdash; minimum jeden standard.</p>
+                </div>
+                <div class="value-card-side">
+                    <h3><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="8" stroke="#8DC63F" stroke-width="1.5" fill="none"/><path d="M10 6v4l3 2" stroke="#8DC63F" stroke-width="1.5" stroke-linecap="round"/></svg> Regularne dostawy</h3>
+                    <p>Codzienne dostawy do 13 miast wymagaja niezawodnosci. Kazdy dostawca ma potwierdzone moce logistyczne.</p>
+                </div>
+                <div class="value-card-side">
+                    <h3><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M2 15l4-4 3 3 5-6 4 4" stroke="#8DC63F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg> Transparentnosc</h3>
+                    <p>Publikujemy pelna liste dostawcow. Nie ukrywamy, skad pochodza Twoje owoce.</p>
+                </div>
             </div>
         </div>
     </div>
 </section>
 
-<!-- WAVE: certifications → suppliers -->
-<div class="wave-divider" style="background:#FFFFFF">
-    <svg viewBox="0 0 1440 60" preserveAspectRatio="none"><path d="M0,30 C320,60 640,0 960,40 C1120,55 1300,10 1440,25 L1440,60 L0,60Z" fill="#FFF9E0"/></svg>
-</div>
-
-<section class="city-how" style="background:var(--lime-bg)">
-    <div class="container">
-        <div class="section-top reveal">
-            <h2>Kim są nasi <span class="fun">dostawcy?</span></h2>
-            <p style="margin-top:12px">12 sprawdzonych partnerów — od rodzinnych sadowników po największych importerów w Polsce</p>
-        </div>
-        <div class="suppliers-grid">
-            <div class="supplier-card reveal">
-                <h3>Potockie Ogrody</h3>
-                <p>Dominik Markiewicz — jabłka i gruszki, 6 pokoleń tradycji</p>
-            </div>
-            <div class="supplier-card reveal">
-                <h3>Artfoods Sp. z o.o.</h3>
-                <p>Warzywa i owoce, południowo-wschodnia Polska</p>
-            </div>
-            <div class="supplier-card reveal">
-                <h3>Paweł Korczak</h3>
-                <p>Gruszki, jedna z większych upraw na Mazowszu</p>
-            </div>
-            <div class="supplier-card reveal">
-                <h3>Bury Sp. z o.o.</h3>
-                <p>Cytrusy, na rynku od 1992, największy importer w Polsce</p>
-            </div>
-            <div class="supplier-card reveal">
-                <h3>Dariusz Łubiński</h3>
-                <p>Jabłka, 400 ton rocznie z rodzinnego sadu</p>
-            </div>
-            <div class="supplier-card reveal">
-                <h3>MK Fruits</h3>
-                <p>Owoce pestkowe, firma rodzinna</p>
-            </div>
-            <div class="supplier-card reveal">
-                <h3>Kamil Kowalski</h3>
-                <p>Jabłka, kolejne pokolenie sadowników</p>
-            </div>
-            <div class="supplier-card reveal">
-                <h3>Targban Sp. z o.o.</h3>
-                <p>Banany, 25 lat importu, własne plantacje</p>
-            </div>
-            <div class="supplier-card reveal">
-                <h3>Bogdan Mulak</h3>
-                <p>Brzoskwinie i owoce miękkie, Mazowsze</p>
-            </div>
-            <div class="supplier-card reveal">
-                <h3>Consorfrut Polska</h3>
-                <p>184 mln kg owoców rocznie, globalny dystrybutor</p>
-            </div>
-            <div class="supplier-card reveal">
-                <h3>Polmex Sp. z o.o.</h3>
-                <p>Cytrusy i egzotyki, od 1990 w Nowym Sączu</p>
-            </div>
-            <div class="supplier-card reveal">
-                <h3>Fresh World International</h3>
-                <p>Cytrusy i winogrona z całego świata, od 1998</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- SEO: Supply chain philosophy -->
-<section style="padding:80px 0;background:var(--white)">
-    <div class="container" style="max-width:800px">
-        <div class="reveal">
-            <h2 style="text-align:center;margin-bottom:32px">Jak dobieramy <span class="fun">dostawcow?</span></h2>
-            <p style="margin-bottom:20px">Kazdy dostawca w sieci DailyFruits przechodzi wieloetapowy proces weryfikacji. Nie wystarczy zaoferowac dobrej ceny — liczy sie powtarzalnosc jakosci, certyfikacja i gotowsc do codziennych dostaw na terenie calej Polski.</p>
-            <p style="margin-bottom:20px">Wspolpracujemy z sadownikami, ktorzy prowadza uprawy w systemie Integrowanej Produkcji, importerami posiadajacymi certyfikat GlobalG.A.P. oraz dystrybutorami z akredytacja Fair Trade. Dla owocow tropikalnych wymagamy potwierdzenia Rainforest Alliance — gwarancji, ze produkcja nie niszczy ekosystemow.</p>
-            <p style="margin-bottom:20px">Nasz lancuch dostaw obejmuje ponad 200 ton owocow miesiecznie dostarczanych do biur w 13 miastach Polski. Kazda partia jest kontrolowana pod katem swiezosci, dojrzalosci i warunkow transportu. Owoce, ktore nie spelniaja naszych standardow, trafiaja do wspolpracujacych ogrodow zoologicznych i bankow zywnosci.</p>
-            <p>Transparentnosc lancucha dostaw to nie trend — to fundament naszego modelu biznesowego. Dlatego publikujemy liste dostawcow i nie ukrywamy, skad pochodza Twoje owoce.</p>
-        </div>
-    </div>
-</section>
-
-<!-- WAVE: philosophy → FAQ -->
+<!-- WAVE: white → cream -->
 <div class="wave-divider" style="background:var(--white)">
     <svg viewBox="0 0 1440 60" preserveAspectRatio="none"><path d="M0,30 C320,60 640,0 960,40 C1120,55 1300,10 1440,25 L1440,60 L0,60Z" fill="#FFF9E0"/></svg>
 </div>
 
-<!-- FAQ Section -->
-<section style="padding:80px 0;background:var(--lime-bg)">
+<!-- ═══════════════ PROSE: Supply chain philosophy ═══════════════ -->
+<section class="prose-section" style="background:var(--cream)">
+    <div class="container">
+        <div class="prose-container reveal">
+            <h2>Jak dobieramy <span class="fun">dostawcow?</span></h2>
+            <p>Kazdy dostawca w sieci DailyFruits przechodzi wieloetapowy proces weryfikacji, ktory obejmuje audyt certyfikacji, probe jakosci produktow i ocene zdolnosci logistycznych. Nie wystarczy zaoferowac dobrej ceny &mdash; liczy sie powtarzalnosc jakosci, terminowosc dostaw i gotowsc do codziennej wspolpracy na terenie calej Polski.</p>
+
+            <div class="prose-highlight">
+                <p><strong>200+ ton owocow miesiecznie</strong> &mdash; tyle obsluguje nasz lancuch dostaw. Kazda partia jest kontrolowana pod katem swiezosci, dojrzalosci i warunkow transportu, zanim trafi do biur w 13 miastach.</p>
+            </div>
+
+            <p>Wspolpracujemy z sadownikami prowadzacymi uprawy w systemie Integrowanej Produkcji, importerami posiadajacymi certyfikat GlobalG.A.P. oraz dystrybutorami z akredytacja Fair Trade. Dla owocow tropikalnych wymagamy potwierdzenia Rainforest Alliance &mdash; gwarancji, ze produkcja nie niszczy ekosystemow i zapewnia godziwe warunki pracy.</p>
+
+            <p>Owoce, ktore nie spelniaja naszych standardow estetycznych, ale sa w pelni jadalne, trafiaja do wspolpracujacych <a href="pomagamy.html" style="color:var(--lime);font-weight:700;text-decoration:underline">ogrodow zoologicznych i Bankow Zywnosci</a>. To czesc naszej polityki zero waste i <a href="pomagamy.html" style="color:var(--lime);font-weight:700;text-decoration:underline">spolecznej odpowiedzialnosci</a>.</p>
+
+            <p>Transparentnosc lancucha dostaw to nie marketingowy trend &mdash; to fundament naszego modelu biznesowego. Dlatego jako jedna z niewielu firm w branzy cateringowej publikujemy pelna liste dostawcow i certyfikatow. Wierzymy, ze klient B2B zamawiajacy <a href="oferta.html" style="color:var(--lime);font-weight:700;text-decoration:underline">owoce do biura</a> ma prawo wiedziec, skad pochodza produkty, ktore trafiaja na biurka jego pracownikow.</p>
+        </div>
+    </div>
+</section>
+
+<!-- WAVE: cream → white -->
+<div class="wave-divider" style="background:var(--cream)">
+    <svg viewBox="0 0 1440 60" preserveAspectRatio="none"><path d="M0,30 C320,60 640,0 960,40 C1120,55 1300,10 1440,25 L1440,60 L0,60Z" fill="#FFFFFF"/></svg>
+</div>
+
+<!-- ═══════════════ FAQ ═══════════════ -->
+<section style="padding:80px 0;background:var(--white)">
     <div class="container" style="max-width:800px">
         <div class="section-top reveal" style="text-align:center;margin-bottom:48px">
             <h2>Najczesciej zadawane <span class="fun">pytania</span></h2>
@@ -505,7 +606,7 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
         <div class="faq-list" role="list">
             <div class="faq-item reveal" role="listitem">
                 <button class="faq-q" aria-expanded="false"><span>Skad pochodza owoce dostarczane do biur?</span></button>
-                <div class="faq-a" hidden><div class="faq-a-inner">Wspolpracujemy z 12 certyfikowanymi dostawcami — od rodzinnych sadownikow z Mazowsza po najwiekszych importerow cytrusow w Polsce. Owoce krajowe pochodza z sadow prowadzonych w systemie Integrowanej Produkcji, a tropikalne — od partnerow z certyfikatem Rainforest Alliance i Fair Trade.</div></div>
+                <div class="faq-a" hidden><div class="faq-a-inner">Wspolpracujemy z 12 certyfikowanymi dostawcami &mdash; od rodzinnych sadownikow z Mazowsza po najwiekszych importerow cytrusow w Polsce. Owoce krajowe pochodza z sadow prowadzonych w systemie Integrowanej Produkcji, a tropikalne &mdash; od partnerow z certyfikatem Rainforest Alliance i Fair Trade.</div></div>
             </div>
             <div class="faq-item reveal" role="listitem">
                 <button class="faq-q" aria-expanded="false"><span>Jakie certyfikaty posiadaja dostawcy DailyFruits?</span></button>
@@ -516,29 +617,38 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
                 <div class="faq-a" hidden><div class="faq-a-inner">Nasz lancuch dostaw obsluguje ponad 200 ton owocow miesiecznie, dostarczanych do biur w 13 miastach Polski. Obejmuje to owoce swieze, bakalie, soki i przekaski zdrowotne.</div></div>
             </div>
             <div class="faq-item reveal" role="listitem">
-                <button class="faq-q" aria-expanded="false"><span>Co sie dzieje z owocami, ktore nie spelniaja standardow jakosci?</span></button>
-                <div class="faq-a" hidden><div class="faq-a-inner">Owoce z drobnymi skazami estetycznymi przekazujemy do wspolpracujacych ogrodow zoologicznych (ZOO Warszawa i Krakow) oraz Bankow Zywnosci. Nic sie nie marnuje — to czesc naszej polityki zero waste i spolecznej odpowiedzialnosci.</div></div>
+                <button class="faq-q" aria-expanded="false"><span>Co sie dzieje z owocami, ktore nie spelniaja standardow?</span></button>
+                <div class="faq-a" hidden><div class="faq-a-inner">Owoce z drobnymi skazami estetycznymi przekazujemy do wspolpracujacych ogrodow zoologicznych (ZOO Warszawa i Krakow) oraz Bankow Zywnosci. Nic sie nie marnuje &mdash; to czesc naszej polityki zero waste i spolecznej odpowiedzialnosci.</div></div>
             </div>
             <div class="faq-item reveal" role="listitem">
                 <button class="faq-q" aria-expanded="false"><span>Czy moge zostac dostawca DailyFruits?</span></button>
-                <div class="faq-a" hidden><div class="faq-a-inner">Tak — szukamy certyfikowanych sadownikow i dystryutorow, ktorzy moga zapewnic regularne dostawy w najwyzszej jakosci. Wyslij zapytanie przez formularz kontaktowy, a nasz zespol zakupow skonatktuje sie w ciagu 48 godzin.</div></div>
+                <div class="faq-a" hidden><div class="faq-a-inner">Tak &mdash; szukamy certyfikowanych sadownikow i dystrybutorów, ktorzy moga zapewnic regularne dostawy w najwyzszej jakosci. Wyslij zapytanie przez formularz kontaktowy, a nasz zespol zakupow skontaktuje sie w ciagu 48 godzin.</div></div>
+            </div>
+            <div class="faq-item reveal" role="listitem">
+                <button class="faq-q" aria-expanded="false"><span>Jak DailyFruits kontroluje jakosc owocow?</span></button>
+                <div class="faq-a" hidden><div class="faq-a-inner">Kazda partia jest kontrolowana pod katem swiezosci, dojrzalosci i warunkow transportu. Stosujemy system HACCP i wewnetrzne audyty jakosci &mdash; od momentu odbioru od dostawcy do dostarczenia do biura klienta. Dodatkowo, regularne testy laboratoryjne potwierdzaja brak pozostalosci pestycydow.</div></div>
+            </div>
+            <div class="faq-item reveal" role="listitem">
+                <button class="faq-q" aria-expanded="false"><span>Czy DailyFruits dostarcza owoce ekologiczne?</span></button>
+                <div class="faq-a" hidden><div class="faq-a-inner">Czesc naszych dostawcow posiada certyfikaty ekologiczne. Na zyczenie klienta mozemy skomponowac koszyk wylacznie z owocow eko. Wszystkie owoce &mdash; rowniez konwencjonalne &mdash; pochodza z certyfikowanych upraw o najwyzszych standardach bezpieczenstwa.</div></div>
             </div>
         </div>
     </div>
 </section>
 
-<!-- WAVE: faq → cta -->
-<div class="wave-divider" style="background:var(--lime-bg)">
+<!-- WAVE: white → CTA -->
+<div class="wave-divider" style="background:var(--white)">
     <svg viewBox="0 0 1440 60" preserveAspectRatio="none"><path d="M0,30 C360,0 720,55 1080,15 C1260,5 1380,40 1440,25 L1440,60 L0,60Z" fill="#1B5E3A"/></svg>
 </div>
 
+<!-- ═══════════════ CTA ═══════════════ -->
 <section class="city-cta">
     <div class="container reveal">
-        <h2>Zostań naszym <span class="fun">dostawcą</span></h2>
-        <p>Dostarczamy 200 ton owoców miesięcznie. Jeśli Twoje produkty spełniają najwyższe normy jakościowe — dołącz do nas.</p>
+        <h2>Zostan naszym <span class="fun">dostawca</span></h2>
+        <p>Dostarczamy 200 ton owocow miesiecznie do biur w 13 miastach. Jesli Twoje produkty spelniaja najwyzsze normy jakosciowe &mdash; dolacz do nas.</p>
         <div class="city-cta-btns">
-            <a href="zapytanie.html" class="btn btn-yellow">Złóż zapytanie →</a>
-            <a href="tel:+48228680499" class="btn" style="color:#fff;border-color:rgba(255,255,255,0.3);">Zadzwoń: 22 868 04 99</a>
+            <a href="zapytanie.html" class="btn btn-yellow">Zloz zapytanie &rarr;</a>
+            <a href="tel:+48228680499" class="btn" style="color:#fff;border-color:rgba(255,255,255,0.3);">Zadzwon: 22 868 04 99</a>
         </div>
     </div>
 </section>
@@ -551,15 +661,15 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
                     <img src="fruitttt.svg" alt="DailyFruits" style="height:56px;filter:brightness(10);" loading="lazy" width="56" height="56">
                     <img src="dailyfoods-logo.svg" alt="DailyFoods" style="height:56px;" loading="lazy" width="64" height="64">
                 </div>
-                <p>Zdrowsze jedzenie, lepsza praca – zaczynając od kuchni biurowej.</p>
+                <p>Zdrowsze jedzenie, lepsza praca &mdash; zaczynajac od kuchni biurowej.</p>
             </div>
             <div class="footer-col"><h4>Nawigacja</h4><ul><li><a href="index.html">Start</a></li><li><a href="oferta.html">Oferta</a></li><li><a href="dostawa.html">Dostawa</a></li><li><a href="o-nas.html">O nas</a></li><li><a href="blog.html">Blog</a></li><li><a href="dostawcy.html">Dostawcy</a></li><li><a href="pomagamy.html">Pomagamy</a></li><li><a href="zapytanie.html">Zapytanie</a></li></ul></div>
-            <div class="footer-col"><h4>Oferta</h4><ul><li><a href="kanapki-do-biura.html">Kanapki do biura</a></li><li><a href="catering-firmowy.html">Catering firmowy</a></li><li><a href="programy-zywieniowe.html">Programy żywieniowe</a></li><li><a href="oferta.html">DailyFruits</a></li><li><a href="oferta.html">DailyFoods</a></li></ul></div>
-            <div class="footer-col"><h4>Kontakt</h4><ul><li><a href="mailto:kontakt@dailyfruits.pl">kontakt@dailyfruits.pl</a></li><li><p>tel: <a href="tel:+48228680499">22 868 04 99</a></p></li></ul><h4 style="margin-top:20px;">Dane firmy</h4><ul><li><p>Betterworkplace Sp. z o.o.</p></li><li><p>ul. Modułowa 3, 05-090 Raszyn</p></li><li><p>NIP: 6793077034</p></li><li><p>REGON: 122432943</p></li></ul></div>
+            <div class="footer-col"><h4>Oferta</h4><ul><li><a href="kanapki-do-biura.html">Kanapki do biura</a></li><li><a href="catering-firmowy.html">Catering firmowy</a></li><li><a href="programy-zywieniowe.html">Programy zywieniowe</a></li><li><a href="oferta.html">DailyFruits</a></li><li><a href="oferta.html">DailyFoods</a></li></ul></div>
+            <div class="footer-col"><h4>Kontakt</h4><ul><li><a href="mailto:kontakt@dailyfruits.pl">kontakt@dailyfruits.pl</a></li><li><p>tel: <a href="tel:+48228680499">22 868 04 99</a></p></li></ul><h4 style="margin-top:20px;">Dane firmy</h4><ul><li><p>Betterworkplace Sp. z o.o.</p></li><li><p>ul. Modulowa 3, 05-090 Raszyn</p></li><li><p>NIP: 6793077034</p></li><li><p>REGON: 122432943</p></li></ul></div>
         </div>
         <div class="footer-bottom">
-            <p style="margin-bottom:8px;"><a href="polityka-prywatnosci.html" style="color:rgba(255,255,255,0.5);text-decoration:underline;">Polityka prywatności</a> · <a href="regulamin.html" style="color:rgba(255,255,255,0.5);text-decoration:underline;">Regulamin</a></p>
-            <p>&copy; 2026 DailyFruits by BetterWorkplace Sp. z o.o. Wszystkie prawa zastrzeżone.</p>
+            <p style="margin-bottom:8px;"><a href="polityka-prywatnosci.html" style="color:rgba(255,255,255,0.5);text-decoration:underline;">Polityka prywatnosci</a> &middot; <a href="regulamin.html" style="color:rgba(255,255,255,0.5);text-decoration:underline;">Regulamin</a></p>
+            <p>&copy; 2026 DailyFruits by BetterWorkplace Sp. z o.o. Wszystkie prawa zastrzezone.</p>
         </div>
     </div>
 </footer>
@@ -569,17 +679,17 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
     <div class="container">
         <div class="city-index-links">
                 <a href="owoce-do-biura-warszawa.html">Warszawa</a>
-                <a href="owoce-do-biura-krakow.html">Kraków</a>
-                <a href="owoce-do-biura-wroclaw.html">Wrocław</a>
-                <a href="owoce-do-biura-poznan.html">Poznań</a>
+                <a href="owoce-do-biura-krakow.html">Krakow</a>
+                <a href="owoce-do-biura-wroclaw.html">Wroclaw</a>
+                <a href="owoce-do-biura-poznan.html">Poznan</a>
                 <a href="owoce-do-biura-katowice.html">Katowice</a>
-                <a href="owoce-do-biura-lodz.html">Łódź</a>
-                <a href="owoce-do-biura-trojmiasto.html">Trójmiasto</a>
+                <a href="owoce-do-biura-lodz.html">Lodz</a>
+                <a href="owoce-do-biura-trojmiasto.html">Trojmiasto</a>
                 <a href="owoce-do-biura-szczecin.html">Szczecin</a>
                 <a href="owoce-do-biura-lublin.html">Lublin</a>
                 <a href="owoce-do-biura-bydgoszcz.html">Bydgoszcz</a>
-                <a href="owoce-do-biura-bialystok.html">Białystok</a>
-                <a href="owoce-do-biura-rzeszow.html">Rzeszów</a>
+                <a href="owoce-do-biura-bialystok.html">Bialystok</a>
+                <a href="owoce-do-biura-rzeszow.html">Rzeszow</a>
                 <a href="owoce-do-biura-kielce.html">Kielce</a>
         </div>
     </div>
@@ -587,76 +697,42 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
 
 <!-- Floating Badge -->
 <a href="zapytanie.html" class="floating-badge">
-    <img src="badge-trust.svg" alt="Zaufało nam ponad 2000 firm w Polsce" loading="lazy" width="120" height="120">
+    <img src="badge-trust.svg" alt="Zaufalo nam ponad 2000 firm w Polsce" loading="lazy" width="120" height="120">
 </a>
 
 <script>
 // Header scroll
-window.addEventListener('scroll', () => { document.querySelector('header').classList.toggle('scrolled', window.scrollY > 20); });
+window.addEventListener('scroll', function() { document.querySelector('header').classList.toggle('scrolled', window.scrollY > 20); });
 // Reveal
-const obs = new IntersectionObserver((entries) => { entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('vis'); obs.unobserve(e.target); } }); }, { threshold: 0.15 });
-document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
-// Fallback reveal timer
-setTimeout(() => { document.querySelectorAll('.reveal:not(.vis)').forEach(el => el.classList.add('vis')); }, 2000);
+var obs = new IntersectionObserver(function(entries) { entries.forEach(function(e) { if (e.isIntersecting) { e.target.classList.add('vis'); obs.unobserve(e.target); } }); }, { threshold: 0.15 });
+document.querySelectorAll('.reveal').forEach(function(el) { obs.observe(el); });
+setTimeout(function() { document.querySelectorAll('.reveal:not(.vis)').forEach(function(el) { el.classList.add('vis'); }); }, 2000);
 </script>
 
 <div class="mobile-sticky-cta" id="mobileCta">
     <div class="mobile-sticky-cta-inner">
-        <a href="zapytanie.html" class="cta-primary">Bezpłatna wycena</a>
-        <a href="tel:+48228680499" class="cta-secondary">Zadzwoń</a>
+        <a href="zapytanie.html" class="cta-primary">Bezplatna wycena</a>
+        <a href="tel:+48228680499" class="cta-secondary">Zadzwon</a>
     </div>
 </div>
 
 <script>
 (function(){var c=document.getElementById('mobileCta');if(!c)return;var shown=false;window.addEventListener('scroll',function(){if(window.scrollY>600&&!shown){c.classList.add('visible');shown=true}else if(window.scrollY<=600&&shown){c.classList.remove('visible');shown=false}},{passive:true})})();
-
-    // Nav hide on scroll down, show on scroll up
-    (function() {
-        const header = document.querySelector('header');
-        if (!header) return;
-        let lastY = window.scrollY;
-        let ticking = false;
-        window.addEventListener('scroll', () => {
-            if (!ticking) {
-                window.requestAnimationFrame(() => {
-                    const y = window.scrollY;
-                    if (y > 120 && y > lastY) {
-                        header.classList.add('nav-hidden');
-                    } else {
-                        header.classList.remove('nav-hidden');
-                    }
-                    lastY = y;
-                    ticking = false;
-                });
-                ticking = true;
-            }
-        });
-    })();
+(function(){var h=document.querySelector('header');if(!h)return;var ly=window.scrollY,t=false;window.addEventListener('scroll',function(){if(!t){window.requestAnimationFrame(function(){var y=window.scrollY;if(y>120&&y>ly){h.classList.add('nav-hidden')}else{h.classList.remove('nav-hidden')}ly=y;t=false});t=true}})})();
 </script>
 
 <script>
-// ─── GA4 Event Tracking via dataLayer ───
 window.dataLayer = window.dataLayer || [];
 document.addEventListener('DOMContentLoaded', function() {
-    // Track CTA clicks
     document.querySelectorAll('a[href*="zapytanie"], .btn-red-solid, .btn-green, .cta-primary').forEach(function(el) {
-        el.addEventListener('click', function() {
-            dataLayer.push({ event: 'cta_click', cta_text: this.textContent.trim().slice(0,50), cta_url: this.href, page: location.pathname });
-        });
+        el.addEventListener('click', function() { dataLayer.push({ event: 'cta_click', cta_text: this.textContent.trim().slice(0,50), cta_url: this.href, page: location.pathname }); });
     });
-    // Track phone clicks
     document.querySelectorAll('a[href^="tel:"]').forEach(function(el) {
-        el.addEventListener('click', function() {
-            dataLayer.push({ event: 'phone_click', page: location.pathname });
-        });
+        el.addEventListener('click', function() { dataLayer.push({ event: 'phone_click', page: location.pathname }); });
     });
-    // Track email clicks
     document.querySelectorAll('a[href^="mailto:"]').forEach(function(el) {
-        el.addEventListener('click', function() {
-            dataLayer.push({ event: 'email_click', page: location.pathname });
-        });
+        el.addEventListener('click', function() { dataLayer.push({ event: 'email_click', page: location.pathname }); });
     });
-    // Track scroll depth (25%, 50%, 75%, 100%)
     var scrollMarks = [25, 50, 75, 100], fired = {};
     window.addEventListener('scroll', function() {
         var pct = Math.round((window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100);
@@ -669,64 +745,45 @@ document.addEventListener('DOMContentLoaded', function() {
 <div class="exit-overlay" id="exitOverlay">
     <div class="exit-popup">
         <button class="exit-close" id="exitClose" aria-label="Zamknij">&times;</button>
-        <h3>Zanim wyjdziesz —<br>pobierz <span class="fun">darmowy</span> checklist!</h3>
-        <p>„10 kroków do zdrowszego biura" — sprawdzona lista, którą wdrożyło 200+ firm.</p>
+        <h3>Zanim wyjdziesz &mdash;<br>pobierz <span class="fun">darmowy</span> checklist!</h3>
+        <p>&bdquo;10 krokow do zdrowszego biura&rdquo; &mdash; sprawdzona lista, ktora wdrozylo 200+ firm.</p>
         <div class="exit-form">
-            <input type="email" id="exitEmail" placeholder="Twój e-mail firmowy" required>
-            <button id="exitSubmit">Pobierz PDF →</button>
+            <input type="email" id="exitEmail" placeholder="Twoj e-mail firmowy" required>
+            <button id="exitSubmit">Pobierz PDF &rarr;</button>
         </div>
-        <p class="exit-note">Zero spamu. Wypisz się w dowolnym momencie.</p>
+        <p class="exit-note">Zero spamu. Wypisz sie w dowolnym momencie.</p>
     </div>
 </div>
 
 <script>
-// ─── EXIT-INTENT POPUP ───
 (function() {
-    var overlay = document.getElementById('exitOverlay');
-    if (!overlay) return;
-    var shown = false, timer = null;
-    function showPopup() {
-        if (shown) return;
-        shown = true;
-        overlay.classList.add('show');
-        sessionStorage.setItem('exitShown', '1');
-        if (window.dataLayer) dataLayer.push({ event: 'exit_popup_shown', page: location.pathname });
-    }
-    // Don't show if already shown this session
+    var overlay = document.getElementById('exitOverlay'); if (!overlay) return;
+    var shown = false;
+    function showPopup() { if (shown) return; shown = true; overlay.classList.add('show'); sessionStorage.setItem('exitShown', '1'); if (window.dataLayer) dataLayer.push({ event: 'exit_popup_shown', page: location.pathname }); }
     if (sessionStorage.getItem('exitShown')) return;
-    // Desktop: mouse leaves viewport top
-    document.addEventListener('mouseout', function(e) {
-        if (e.clientY < 5 && !e.relatedTarget && !e.toElement) showPopup();
-    });
-    // Mobile: show after 45s on page
-    if ('ontouchstart' in window) { timer = setTimeout(showPopup, 45000); }
-    // Close
+    document.addEventListener('mouseout', function(e) { if (e.clientY < 5 && !e.relatedTarget && !e.toElement) showPopup(); });
+    if ('ontouchstart' in window) { setTimeout(showPopup, 45000); }
     document.getElementById('exitClose').addEventListener('click', function() { overlay.classList.remove('show'); });
     overlay.addEventListener('click', function(e) { if (e.target === overlay) overlay.classList.remove('show'); });
-    // Submit
     document.getElementById('exitSubmit').addEventListener('click', function() {
         var email = document.getElementById('exitEmail').value;
         if (!email || email.indexOf('@') < 1) { document.getElementById('exitEmail').style.borderColor = 'var(--red)'; return; }
         if (window.dataLayer) dataLayer.push({ event: 'lead_magnet_submit', email_domain: email.split('@')[1], page: location.pathname });
-        overlay.querySelector('.exit-popup').innerHTML = '<h3 style="margin-bottom:16px">Gotowe! 🎉</h3><p>Checklist leci na <strong>' + email + '</strong>.<br>Sprawdź skrzynkę (i spam).</p><button class="exit-close" onclick="document.getElementById(\'exitOverlay\').classList.remove(\'show\')" style="position:static;width:auto;height:auto;border-radius:var(--radius-pill);padding:12px 28px;margin-top:20px;background:var(--green-dark);color:#fff;font-weight:700">Zamknij</button>';
+        overlay.querySelector('.exit-popup').innerHTML = '<h3 style="margin-bottom:16px">Gotowe!</h3><p>Checklist leci na <strong>' + email + '</strong>.<br>Sprawdz skrzynke (i spam).</p><button class="exit-close" onclick="document.getElementById(\'exitOverlay\').classList.remove(\'show\')" style="position:static;width:auto;height:auto;border-radius:var(--radius-pill);padding:12px 28px;margin-top:20px;background:var(--green-dark);color:#fff;font-weight:700">Zamknij</button>';
     });
 })();
 </script>
 
 <script>
-// FAQ accordion
 document.querySelectorAll('.faq-q').forEach(function(btn) {
     btn.addEventListener('click', function() {
         var item = this.closest('.faq-item');
         var isOpen = item.classList.contains('open');
-        // Close all
         document.querySelectorAll('.faq-item').forEach(function(fi) {
             fi.classList.remove('open');
             fi.querySelector('.faq-q').setAttribute('aria-expanded', 'false');
-            var a = fi.querySelector('.faq-a');
-            a.style.maxHeight = null;
+            fi.querySelector('.faq-a').style.maxHeight = null;
         });
-        // Open clicked (if was closed)
         if (!isOpen) {
             item.classList.add('open');
             this.setAttribute('aria-expanded', 'true');
