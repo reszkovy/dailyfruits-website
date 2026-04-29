@@ -262,8 +262,6 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
         .faq-a-inner { padding: 0 0 22px; font-size: 15px; line-height: 1.8; color: var(--gray); }
         .faq-item { border-bottom: 1px solid rgba(27,94,58,0.1); }
         .faq-q { width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 20px 0; background: none; border: none; cursor: pointer; font-family: var(--font); font-size: 16px; font-weight: 700; color: var(--green-dark); text-align: left; gap: 16px; }
-        .faq-q svg { flex-shrink: 0; transition: transform 0.3s; }
-        .faq-q[aria-expanded="true"] svg { transform: rotate(180deg); }
         .faq-a { overflow: hidden; max-height: 0; transition: max-height 0.4s ease; }
         .faq-a[hidden] { display: block; max-height: 0; }
 
@@ -506,23 +504,23 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
         </div>
         <div class="faq-list" role="list">
             <div class="faq-item reveal" role="listitem">
-                <button class="faq-q" aria-expanded="false"><span>Skad pochodza owoce dostarczane do biur?</span><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+                <button class="faq-q" aria-expanded="false"><span>Skad pochodza owoce dostarczane do biur?</span></button>
                 <div class="faq-a" hidden><div class="faq-a-inner">Wspolpracujemy z 12 certyfikowanymi dostawcami — od rodzinnych sadownikow z Mazowsza po najwiekszych importerow cytrusow w Polsce. Owoce krajowe pochodza z sadow prowadzonych w systemie Integrowanej Produkcji, a tropikalne — od partnerow z certyfikatem Rainforest Alliance i Fair Trade.</div></div>
             </div>
             <div class="faq-item reveal" role="listitem">
-                <button class="faq-q" aria-expanded="false"><span>Jakie certyfikaty posiadaja dostawcy DailyFruits?</span><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+                <button class="faq-q" aria-expanded="false"><span>Jakie certyfikaty posiadaja dostawcy DailyFruits?</span></button>
                 <div class="faq-a" hidden><div class="faq-a-inner">Wymagamy co najmniej jednego z czterech standardow: Fair Trade (sprawiedliwy handel), GlobalG.A.P. (bezpieczenstwo zywnosci od pola do stolu), Rainforest Alliance (ochrona ekosystemow) lub Integrowana Produkcja (krajowy certyfikat jakosci). Wiekszosc naszych partnerow spelnia dwa lub wiecej standardow jednoczesnie.</div></div>
             </div>
             <div class="faq-item reveal" role="listitem">
-                <button class="faq-q" aria-expanded="false"><span>Ile owocow miesiecznie dostarcza DailyFruits?</span><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+                <button class="faq-q" aria-expanded="false"><span>Ile owocow miesiecznie dostarcza DailyFruits?</span></button>
                 <div class="faq-a" hidden><div class="faq-a-inner">Nasz lancuch dostaw obsluguje ponad 200 ton owocow miesiecznie, dostarczanych do biur w 13 miastach Polski. Obejmuje to owoce swieze, bakalie, soki i przekaski zdrowotne.</div></div>
             </div>
             <div class="faq-item reveal" role="listitem">
-                <button class="faq-q" aria-expanded="false"><span>Co sie dzieje z owocami, ktore nie spelniaja standardow jakosci?</span><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+                <button class="faq-q" aria-expanded="false"><span>Co sie dzieje z owocami, ktore nie spelniaja standardow jakosci?</span></button>
                 <div class="faq-a" hidden><div class="faq-a-inner">Owoce z drobnymi skazami estetycznymi przekazujemy do wspolpracujacych ogrodow zoologicznych (ZOO Warszawa i Krakow) oraz Bankow Zywnosci. Nic sie nie marnuje — to czesc naszej polityki zero waste i spolecznej odpowiedzialnosci.</div></div>
             </div>
             <div class="faq-item reveal" role="listitem">
-                <button class="faq-q" aria-expanded="false"><span>Czy moge zostac dostawca DailyFruits?</span><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+                <button class="faq-q" aria-expanded="false"><span>Czy moge zostac dostawca DailyFruits?</span></button>
                 <div class="faq-a" hidden><div class="faq-a-inner">Tak — szukamy certyfikowanych sadownikow i dystryutorow, ktorzy moga zapewnic regularne dostawy w najwyzszej jakosci. Wyslij zapytanie przez formularz kontaktowy, a nasz zespol zakupow skonatktuje sie w ciagu 48 godzin.</div></div>
             </div>
         </div>
@@ -719,15 +717,18 @@ document.addEventListener('DOMContentLoaded', function() {
 // FAQ accordion
 document.querySelectorAll('.faq-q').forEach(function(btn) {
     btn.addEventListener('click', function() {
-        var expanded = this.getAttribute('aria-expanded') === 'true';
+        var item = this.closest('.faq-item');
+        var isOpen = item.classList.contains('open');
         // Close all
-        document.querySelectorAll('.faq-q').forEach(function(b) {
-            b.setAttribute('aria-expanded', 'false');
-            var a = b.nextElementSibling;
+        document.querySelectorAll('.faq-item').forEach(function(fi) {
+            fi.classList.remove('open');
+            fi.querySelector('.faq-q').setAttribute('aria-expanded', 'false');
+            var a = fi.querySelector('.faq-a');
             a.style.maxHeight = null;
         });
         // Open clicked (if was closed)
-        if (!expanded) {
+        if (!isOpen) {
+            item.classList.add('open');
             this.setAttribute('aria-expanded', 'true');
             var answer = this.nextElementSibling;
             answer.removeAttribute('hidden');

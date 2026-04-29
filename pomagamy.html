@@ -129,8 +129,6 @@
         .faq-a-inner { padding: 0 0 22px; font-size: 15px; line-height: 1.8; color: var(--gray); }
         .faq-item { border-bottom: 1px solid rgba(27,94,58,0.1); }
         .faq-q { width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 20px 0; background: none; border: none; cursor: pointer; font-family: var(--font); font-size: 16px; font-weight: 700; color: var(--green-dark); text-align: left; gap: 16px; }
-        .faq-q svg { flex-shrink: 0; transition: transform 0.3s; }
-        .faq-q[aria-expanded="true"] svg { transform: rotate(180deg); }
         .faq-a { overflow: hidden; max-height: 0; transition: max-height 0.4s ease; }
         .faq-a[hidden] { display: block; max-height: 0; }
 
@@ -406,23 +404,23 @@
         </div>
         <div class="faq-list" role="list">
             <div class="faq-item reveal" role="listitem">
-                <button class="faq-q" aria-expanded="false"><span>Jakie organizacje wspiera DailyFruits?</span><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+                <button class="faq-q" aria-expanded="false"><span>Jakie organizacje wspiera DailyFruits?</span></button>
                 <div class="faq-a" hidden><div class="faq-a-inner">Wspolpracujemy z 11 organizacjami, w tym WOSP, Fundacja Inna Przestrzen, Stowarzyszenie UNICORN, Fundacja NEBO, Teatr za Jeden Usmiech, ZOO Warszawa i Krakow, Fundacja Centaurus, PCK, Fundacja Dziecieca Fantazja i Szlachetna Paczka.</div></div>
             </div>
             <div class="faq-item reveal" role="listitem">
-                <button class="faq-q" aria-expanded="false"><span>Ile owocow przekazal DailyFruits potrzebujacym?</span><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+                <button class="faq-q" aria-expanded="false"><span>Ile owocow przekazal DailyFruits potrzebujacym?</span></button>
                 <div class="faq-a" hidden><div class="faq-a-inner">Podczas pandemii w ramach akcji #wspieram przekazalismy ponad 80 ton swiezych owocow do szpitali i Bankow Zywnosci. Codziennie dostarczamy rowniez owoce do fundacji, ogrodow zoologicznych i osrodkow wychowawczych.</div></div>
             </div>
             <div class="faq-item reveal" role="listitem">
-                <button class="faq-q" aria-expanded="false"><span>Jak DailyFruits wspiera WOSP?</span><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+                <button class="faq-q" aria-expanded="false"><span>Jak DailyFruits wspiera WOSP?</span></button>
                 <div class="faq-a" hidden><div class="faq-a-inner">Od 24. finalu jestesmy stalym partnerem WOSP. Dostarczamy ponad 2000 jablek do sztabu glownego, organizujemy bezplatne porady dietetyczne i wspieramy przychodnie we wspolpracy ze ZnanyLekarz.</div></div>
             </div>
             <div class="faq-item reveal" role="listitem">
-                <button class="faq-q" aria-expanded="false"><span>Czy zamawiajac w DailyFruits wspieramy dzialania spoleczne?</span><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+                <button class="faq-q" aria-expanded="false"><span>Czy zamawiajac w DailyFruits wspieramy dzialania spoleczne?</span></button>
                 <div class="faq-a" hidden><div class="faq-a-inner">Tak — czesc naszych przychodow i produktow jest regularnie przekazywana na cele spoleczne. Owoce z drobnymi skazami estetycznymi trafiaja do ZOO i Bankow Zywnosci zamiast na smieci. Kazde zamowienie posrednio wspiera nasze inicjatywy.</div></div>
             </div>
             <div class="faq-item reveal" role="listitem">
-                <button class="faq-q" aria-expanded="false"><span>Co to jest akcja #wspieram?</span><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+                <button class="faq-q" aria-expanded="false"><span>Co to jest akcja #wspieram?</span></button>
                 <div class="faq-a" hidden><div class="faq-a-inner">Akcja #wspieram to inicjatywa uruchomiona podczas pandemii COVID-19, w ramach ktorej klienci DailyFruits mogli przekierowac swoje zamowienia biurowe do szpitali, Bankow Zywnosci i organizacji pomocowych. W pierwszym miesiacu przekazalismy 80 ton owocow.</div></div>
             </div>
         </div>
@@ -619,13 +617,16 @@ document.addEventListener('DOMContentLoaded', function() {
 // FAQ accordion
 document.querySelectorAll('.faq-q').forEach(function(btn) {
     btn.addEventListener('click', function() {
-        var expanded = this.getAttribute('aria-expanded') === 'true';
-        document.querySelectorAll('.faq-q').forEach(function(b) {
-            b.setAttribute('aria-expanded', 'false');
-            var a = b.nextElementSibling;
+        var item = this.closest('.faq-item');
+        var isOpen = item.classList.contains('open');
+        document.querySelectorAll('.faq-item').forEach(function(fi) {
+            fi.classList.remove('open');
+            fi.querySelector('.faq-q').setAttribute('aria-expanded', 'false');
+            var a = fi.querySelector('.faq-a');
             a.style.maxHeight = null;
         });
-        if (!expanded) {
+        if (!isOpen) {
+            item.classList.add('open');
             this.setAttribute('aria-expanded', 'true');
             var answer = this.nextElementSibling;
             answer.removeAttribute('hidden');
