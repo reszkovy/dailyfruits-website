@@ -101,7 +101,7 @@
 
         /* ─── FLOATING BADGE ─── */
         .floating-badge { position: fixed; bottom: 28px; right: 28px; z-index: 999; transition: opacity 0.4s, transform 0.4s; }
-        .floating-badge img { height: 90px; filter: drop-shadow(0 4px 12px rgba(228,48,32,0.3)); transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), filter 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
+        .floating-badge img { height: 120px; filter: drop-shadow(0 4px 12px rgba(228,48,32,0.3)); transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), filter 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
         .floating-badge:hover img { transform: scale(1.1) rotate(-3deg); filter: drop-shadow(0 6px 18px rgba(27,94,58,0.4)) hue-rotate(90deg) saturate(1.4); }
 
         /* ─── NAV ─── */
@@ -272,23 +272,6 @@
         .test-avatar img { width: 100%; height: 100%; object-fit: contain; background: var(--lime-bg); }
         .test-meta h4 { font-size: 14px; font-weight: 700; color: var(--green-dark); }
         .test-meta p { font-size: 12px; margin: 0; }
-
-        /* ─── VIDEO TESTIMONIALS ─── */
-        .video-test { padding: 60px 0 80px; background: var(--cream); }
-        .video-test h2 { text-align: center; margin-bottom: 12px; }
-        .video-test .section-sub { text-align: center; font-size: 16px; color: var(--gray); margin-bottom: 40px; }
-        .video-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-        .video-card { position: relative; border-radius: var(--radius); overflow: hidden; aspect-ratio: 16/9; background: var(--green-dark); cursor: pointer; }
-        .video-card img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s; }
-        .video-card:hover img { transform: scale(1.05); }
-        .video-play { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; background: rgba(0,0,0,0.3); transition: background 0.3s; }
-        .video-card:hover .video-play { background: rgba(0,0,0,0.15); }
-        .video-play svg { width: 64px; height: 64px; filter: drop-shadow(0 4px 12px rgba(0,0,0,0.3)); transition: transform 0.3s; }
-        .video-card:hover .video-play svg { transform: scale(1.1); }
-        .video-label { position: absolute; bottom: 0; left: 0; right: 0; padding: 20px; background: linear-gradient(transparent, rgba(0,0,0,0.7)); }
-        .video-label h4 { color: #fff; font-size: 15px; margin-bottom: 2px; }
-        .video-label p { color: rgba(255,255,255,0.7); font-size: 12px; margin: 0; }
-        @media (max-width: 768px) { .video-grid { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; } }
 
         /* ─── DELIVERY (LIGHT MAP) ─── */
         .delivery { padding: 100px 0 80px; background: var(--cream); position: relative; overflow: hidden; }
@@ -499,7 +482,7 @@
             .wave-divider svg { height: 30px; }
             .apple-deco { width: 80px !important; height: 94px !important; }
             .floating-badge { bottom: 16px; right: 16px; }
-            .floating-badge img { height: 64px; }
+            .floating-badge img { height: 90px; }
             .delivery-bg-text { font-size: clamp(80px, 20vw, 180px); }
             .nav-inner { padding: 12px 16px; }
             .container { padding: 0 16px; }
@@ -751,7 +734,7 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
         <div class="hero-tabs">
             <a href="oferta.html" class="hero-tab active" data-img="box_owoce_2.webp" data-alt="Owoce do biura" onclick="event.preventDefault();heroTabClick(this)"><span class="tab-icon"><img src="icon-owoce.svg" alt="Ikona owoców" style="height:22px;width:22px;vertical-align:-3px;" loading="lazy" width="48" height="48"></span> Owoce</a>
             <a href="kanapki-do-biura.html" class="hero-tab" data-img="box-kanapki1.webp" data-alt="Kanapki dla pracowników" onclick="event.preventDefault();heroTabClick(this)"><span class="tab-icon"><img src="icon-kanapki.svg" alt="Ikona kanapek" style="height:15px;width:auto;vertical-align:-2px;" loading="lazy" width="48" height="48"></span> Kanapki</a>
-            <a href="oferta.html" class="hero-tab" data-img="box-sniadaniowe.webp" data-alt="Produkty śniadaniowe" onclick="event.preventDefault();heroTabClick(this)"><span class="tab-icon"><img src="icon-sniadania.svg" alt="Ikona śniadań" style="height:20px;width:auto;vertical-align:-3px;" loading="lazy" width="48" height="48"></span> Śniadania</a>
+            <a href="oferta.html" class="hero-tab" data-img="box-sniadaniowe.webp" data-alt="Produkty śniadaniowe" onclick="event.preventDefault();heroTabClick(this)"><span class="tab-icon"><img src="icon-sniadania.svg" alt="Ikona śniadań" style="height:20px;width:auto;vertical-align:-3px;" loading="lazy" width="48" height="48"></span> Sniadania</a>
             <a href="oferta.html" class="hero-tab" data-img="box-soki1.webp" data-alt="Świeże soki" onclick="event.preventDefault();heroTabClick(this)"><span class="tab-icon"><img src="icon-soki.svg" alt="Ikona soków" style="height:24px;width:auto;vertical-align:-4px;margin-right:-2px;" loading="lazy" width="48" height="48"></span> Soki</a>
             <a href="oferta.html" class="hero-tab" data-img="box-bakalie1.webp" data-alt="Bakalie i suszone owoce" onclick="event.preventDefault();heroTabClick(this)"><span class="tab-icon"><img src="icon-bakalie.svg" alt="Ikona bakalii" style="height:20px;width:auto;vertical-align:-3px;" loading="lazy" width="48" height="48"></span> Bakalie</a>
             <a href="oferta.html" class="hero-tab hero-tab--red" data-img="box-lody.webp" data-alt="Lody do biura" onclick="event.preventDefault();heroTabClick(this)"><span class="tab-icon"><img src="icon-lody.svg" alt="Ikona lodów" style="height:22px;width:auto;vertical-align:-4px;" loading="lazy" width="48" height="48"></span> Lody</a>
@@ -905,7 +888,7 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
         <div class="marquee-item"><span class="dot"></span>Kanapki</div>
         <div class="marquee-item"><span class="dot"></span><span class="highlight">Bakalie</span></div>
         <div class="marquee-item"><span class="dot"></span>Soki</div>
-        <div class="marquee-item"><span class="dot"></span><span class="highlight">Śniadania</span></div>
+        <div class="marquee-item"><span class="dot"></span><span class="highlight">Sniadania</span></div>
         <div class="marquee-item"><span class="dot"></span>Wellbeing</div>
         <div class="marquee-item"><span class="dot"></span><span class="highlight">Zdrowie</span></div>
         <div class="marquee-item"><span class="dot"></span>Energia</div>
@@ -913,7 +896,7 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
         <div class="marquee-item"><span class="dot"></span>Kanapki</div>
         <div class="marquee-item"><span class="dot"></span><span class="highlight">Bakalie</span></div>
         <div class="marquee-item"><span class="dot"></span>Soki</div>
-        <div class="marquee-item"><span class="dot"></span><span class="highlight">Śniadania</span></div>
+        <div class="marquee-item"><span class="dot"></span><span class="highlight">Sniadania</span></div>
         <div class="marquee-item"><span class="dot"></span>Wellbeing</div>
         <div class="marquee-item"><span class="dot"></span><span class="highlight">Zdrowie</span></div>
         <div class="marquee-item"><span class="dot"></span>Energia</div>
@@ -1148,34 +1131,6 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
             <button class="carousel-btn" data-dir="prev" aria-label="Poprzedni">&#8592;</button>
             <span class="carousel-counter"><span class="carousel-current">1</span> / <span class="carousel-total">6</span></span>
             <button class="carousel-btn" data-dir="next" aria-label="Następny">&#8594;</button>
-        </div>
-    </div>
-</section>
-
-<!-- VIDEO TESTIMONIALS -->
-<section class="video-test" id="video-opinie">
-    <div class="container">
-        <div class="section-top reveal">
-            <div class="sticker sticker-lime" style="transform:rotate(1deg)">Video</div>
-            <h2 style="margin-top:20px">Zobacz, co mówią <span class="fun">klienci</span></h2>
-            <p class="section-sub">Krótkie wywiady z firmami, które już korzystają z DailyFruits</p>
-        </div>
-        <div class="video-grid">
-            <div class="video-card reveal" data-yt="YOUTUBE_ID_1">
-                <img src="https://dailyfruits.pl/app/uploads/2015/11/embs-e1453994818624.jpg" alt="EMBS – video testimonial" loading="lazy" width="400" height="300">
-                <div class="video-play"><svg viewBox="0 0 80 80" fill="none"><circle cx="40" cy="40" r="38" fill="rgba(255,255,255,0.95)"/><polygon points="33,24 33,56 58,40" fill="#1B5E3A"/></svg></div>
-                <div class="video-label"><h4>EMBS</h4><p>Stathis Karaplios, Managing Director</p></div>
-            </div>
-            <div class="video-card reveal" data-yt="YOUTUBE_ID_2">
-                <img src="https://dailyfruits.pl/app/uploads/2021/01/enea3mini.png" alt="Enea – video testimonial" loading="lazy" width="400" height="300">
-                <div class="video-play"><svg viewBox="0 0 80 80" fill="none"><circle cx="40" cy="40" r="38" fill="rgba(255,255,255,0.95)"/><polygon points="33,24 33,56 58,40" fill="#1B5E3A"/></svg></div>
-                <div class="video-label"><h4>Enea Centrum</h4><p>Hanna Gałązka, Dyrektor Departamentu</p></div>
-            </div>
-            <div class="video-card reveal" data-yt="YOUTUBE_ID_3">
-                <img src="https://dailyfruits.pl/app/uploads/2021/01/synevo2mini.jpg" alt="Synevo – video testimonial" loading="lazy" width="400" height="300">
-                <div class="video-play"><svg viewBox="0 0 80 80" fill="none"><circle cx="40" cy="40" r="38" fill="rgba(255,255,255,0.95)"/><polygon points="33,24 33,56 58,40" fill="#1B5E3A"/></svg></div>
-                <div class="video-label"><h4>Synevo</h4><p>Szymon Demmer, HR Business Partner</p></div>
-            </div>
         </div>
     </div>
 </section>
@@ -1623,7 +1578,7 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
 
 <!-- FLOATING BADGE -->
 <a href="zapytanie.html" class="floating-badge">
-    <img src="badge-trust.svg" alt="Zaufało nam ponad 2000 firm w Polsce" loading="lazy" width="90" height="90">
+    <img src="badge-trust.svg" alt="Zaufało nam ponad 2000 firm w Polsce" loading="lazy" width="120" height="120">
 </a>
 
 <div class="mobile-sticky-cta" id="mobileCta">
