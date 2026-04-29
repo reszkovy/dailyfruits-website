@@ -397,7 +397,6 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
 
 <!-- MOBILE NAV v2 -->
 <div id="mnOverlay">
-    <div class="mn-bg"></div>
     <nav class="mn-links">
         <a href="oferta.html" class="mn-link">Oferta</a>
         <a href="dostawa.html" class="mn-link">Dostawa</a>
@@ -630,8 +629,6 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
 <script>
 // Header scroll
 window.addEventListener('scroll', () => { document.querySelector('header').classList.toggle('scrolled', window.scrollY > 20); });
-// Hamburger
-}
 // Reveal
 const obs = new IntersectionObserver((entries) => { entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('vis'); obs.unobserve(e.target); } }); }, { threshold: 0.15 });
 document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
