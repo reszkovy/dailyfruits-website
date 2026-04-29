@@ -109,19 +109,24 @@
         <div class="nav-buttons">
             <a href="zapytanie.html" class="btn-nav-cta">Bezpłatna wycena</a>
         </div>
-        <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+        <button class="mn-burger" id="mnBurger" aria-label="Menu"><i></i><i></i><i></i></button>
     </nav>
 </header>
 
-<div class="mobile-drawer" id="mobileDrawer">
-    <button class="drawer-close" id="drawerClose">&times;</button>
-    <a href="oferta.html" class="mobile-nav-link">Oferta</a>
-    <a href="dostawa.html" class="mobile-nav-link">Dostawa</a>
-    <a href="o-nas.html" class="mobile-nav-link">O nas</a>
-    <a href="blog.html" class="mobile-nav-link">Blog</a>
-    <a href="zapytanie.html" class="btn btn-yellow" style="margin-top:24px;">Bezpłatna wycena →</a>
+<!-- MOBILE NAV v2 -->
+<div id="mnOverlay">
+    <div class="mn-bg"></div>
+    <nav class="mn-links">
+        <a href="oferta.html" class="mn-link">Oferta</a>
+        <a href="dostawa.html" class="mn-link">Dostawa</a>
+        <a href="o-nas.html" class="mn-link">O nas</a>
+        <a href="kanapki-do-biura.html" class="mn-link">Kanapki</a>
+        <a href="catering-firmowy.html" class="mn-link">Catering</a>
+        <a href="programy-zywieniowe.html" class="mn-link">Programy</a>
+        <a href="blog.html" class="mn-link">Blog</a>
+        <a href="zapytanie.html" class="mn-cta">Bezpłatna wycena →</a>
+    </nav>
 </div>
-
 <section class="cs-hero" id="main">
     <div class="container">
         <div class="cs-badge">Case Study</div>
@@ -242,13 +247,16 @@
 <script>
     const header = document.querySelector('header');
     window.addEventListener('scroll', () => { header.classList.toggle('scrolled', window.scrollY > 20); }, { passive: true });
-    const hamburger = document.getElementById('hamburger');
-    const mobileDrawer = document.getElementById('mobileDrawer');
-    const drawerClose = document.getElementById('drawerClose');
-    if (hamburger && mobileDrawer) {
-        hamburger.addEventListener('click', () => { hamburger.classList.toggle('open'); mobileDrawer.classList.toggle('open'); document.body.style.overflow = mobileDrawer.classList.contains('open') ? 'hidden' : ''; });
-        drawerClose.addEventListener('click', () => { hamburger.classList.remove('open'); mobileDrawer.classList.remove('open'); document.body.style.overflow = ''; });
-    }
+    // ─── MOBILE NAV v2 ───
+    (function(){
+        var burger = document.getElementById('mnBurger');
+        var overlay = document.getElementById('mnOverlay');
+        if(!burger || !overlay) return;
+        function openMenu(){ burger.classList.add('active'); overlay.classList.add('active'); document.body.style.overflow='hidden'; }
+        function closeMenu(){ burger.classList.remove('active'); overlay.classList.remove('active'); document.body.style.overflow=''; }
+        burger.addEventListener('click', function(){ overlay.classList.contains('active') ? closeMenu() : openMenu(); });
+        overlay.querySelectorAll('.mn-link, .mn-cta').forEach(function(a){ a.addEventListener('click', closeMenu); });
+    })();
     // Nav hide on scroll
     (function(){var h=document.querySelector('header'),ly=0;window.addEventListener('scroll',function(){var y=window.scrollY;if(y>120&&y>ly)h.classList.add('nav-hidden');else h.classList.remove('nav-hidden');ly=y;},{passive:true})})();
 </script>

@@ -226,24 +226,25 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
         <div class="nav-buttons">
             <span class="nav-trust">Zaufało nam ponad<br>2 000 firm w Polsce</span>
             <a href="zapytanie.html" class="btn btn-nav-cta">Bezpłatna wycena</a>
-            <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+            <button class="mn-burger" id="mnBurger" aria-label="Menu"><i></i><i></i><i></i></button>
         </div>
     </div>
 </header>
 
-<!-- MOBILE DRAWER -->
-<div class="mobile-drawer" id="mobileDrawer">
-    <button class="mobile-drawer-close" id="drawerClose" aria-label="Zamknij menu"><span></span><span></span></button>
-    <a href="oferta.html">Oferta</a>
-    <a href="dostawa.html">Dostawa</a>
-    <a href="o-nas.html">O nas</a>
-    <a href="kanapki-do-biura.html">Kanapki</a>
-    <a href="catering-firmowy.html">Catering</a>
-    <a href="programy-zywieniowe.html">Programy</a>
-    <a href="blog.html">Blog</a>
-    <a href="zapytanie.html" class="mobile-cta">Bezpłatna wycena →</a>
+<!-- MOBILE NAV v2 -->
+<div id="mnOverlay">
+    <div class="mn-bg"></div>
+    <nav class="mn-links">
+        <a href="oferta.html" class="mn-link">Oferta</a>
+        <a href="dostawa.html" class="mn-link">Dostawa</a>
+        <a href="o-nas.html" class="mn-link">O nas</a>
+        <a href="kanapki-do-biura.html" class="mn-link">Kanapki</a>
+        <a href="catering-firmowy.html" class="mn-link">Catering</a>
+        <a href="programy-zywieniowe.html" class="mn-link">Programy</a>
+        <a href="blog.html" class="mn-link">Blog</a>
+        <a href="zapytanie.html" class="mn-cta">Bezpłatna wycena →</a>
+    </nav>
 </div>
-
 <section id="main" class="page-hero">
     <div class="container">
         <div class="breadcrumb"><a href="index.html">Strona główna</a> → <a href="blog.html">Blog</a> → Artykuł</div>
@@ -472,27 +473,16 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
     });
 
     // ─── HAMBURGER MENU ───
-    const hamburger = document.getElementById('hamburger');
-    const mobileDrawer = document.getElementById('mobileDrawer');
-    const drawerClose = document.getElementById('drawerClose');
-    if (hamburger && mobileDrawer) {
-        hamburger.addEventListener('click', () => {
-            hamburger.classList.toggle('open');
-            mobileDrawer.classList.toggle('open');
-            document.body.style.overflow = mobileDrawer.classList.contains('open') ? 'hidden' : '';
-        });
-        drawerClose.addEventListener('click', () => {
-            hamburger.classList.remove('open');
-            mobileDrawer.classList.remove('open');
-            document.body.style.overflow = '';
-        });
-        document.querySelectorAll('.mobile-nav-link').forEach(link => {
-            link.addEventListener('click', () => {
-                hamburger.classList.remove('open');
-                mobileDrawer.classList.remove('open');
-                document.body.style.overflow = '';
-            });
-        });
+    // ─── MOBILE NAV v2 ───
+    (function(){
+        var burger = document.getElementById('mnBurger');
+        var overlay = document.getElementById('mnOverlay');
+        if(!burger || !overlay) return;
+        function openMenu(){ burger.classList.add('active'); overlay.classList.add('active'); document.body.style.overflow='hidden'; }
+        function closeMenu(){ burger.classList.remove('active'); overlay.classList.remove('active'); document.body.style.overflow=''; }
+        burger.addEventListener('click', function(){ overlay.classList.contains('active') ? closeMenu() : openMenu(); });
+        overlay.querySelectorAll('.mn-link, .mn-cta').forEach(function(a){ a.addEventListener('click', closeMenu); });
+    })();
     }
 </script>
 
