@@ -453,7 +453,6 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
 
 <script>
 window.addEventListener('scroll', () => { document.querySelector('header').classList.toggle('scrolled', window.scrollY > 20); });
-}
 const obs = new IntersectionObserver((entries) => { entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('vis'); obs.unobserve(e.target); } }); }, { threshold: 0.15 });
 document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 setTimeout(() => { document.querySelectorAll('.reveal').forEach(el => el.classList.add('vis')); }, 2000);
