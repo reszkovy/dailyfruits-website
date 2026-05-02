@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DailyFruits CMS</title>
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="icon" type="image/png" href="favicon_.png">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --green: #1B5E3A; --lime: #8DC63F; --cream: #FFF9E0;
+            --white: #FFFFFF; --gray: #6B7280; --light: #F3F4F6;
+            --radius: 12px; --font: 'DM Sans', -apple-system, sans-serif;
+        }
+        body { font-family: var(--font); background: var(--light); min-height: 100vh; }
+
+        /* Login */
+        .login-wrap { display: flex; align-items: center; justify-content: center; min-height: 100vh; padding: 20px; }
+        .login-box { background: var(--white); padding: 48px; border-radius: var(--radius); box-shadow: 0 4px 24px rgba(0,0,0,0.08); max-width: 400px; width: 100%; text-align: center; }
+        .login-box h1 { font-size: 24px; color: var(--green); margin-bottom: 8px; }
+        .login-box p { color: var(--gray); font-size: 14px; margin-bottom: 24px; }
+        .login-box input { width: 100%; padding: 12px 16px; border: 2px solid #E5E7EB; border-radius: 8px; font-size: 15px; outline: none; transition: border 0.2s; }
+        .login-box input:focus { border-color: var(--lime); }
+        .login-box button { width: 100%; padding: 12px; background: var(--green); color: white; border: none; border-radius: 8px; font-size: 15px; font-weight: 600; cursor: pointer; margin-top: 16px; transition: background 0.2s; }
+        .login-box button:hover { background: #245a3a; }
+        .login-error { color: #E43020; font-size: 13px; margin-top: 12px; display: none; }
+
+        /* Dashboard */
+        .dashboard { display: none; }
+        .topbar { background: var(--green); color: white; padding: 16px 32px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 100; }
+        .topbar h1 { font-size: 18px; font-weight: 700; }
+        .topbar-actions { display: flex; gap: 12px; align-items: center; }
+        .topbar .btn-sm { padding: 8px 16px; border-radius: 8px; font-size: 13px; font-weight: 600; border: none; cursor: pointer; transition: all 0.2s; }
+        .btn-logout { background: rgba(255,255,255,0.15); color: white; }
+        .btn-logout:hover { background: rgba(255,255,255,0.25); }
+
+        /* Post list */
+        .content { max-width: 1000px; margin: 32px auto; padding: 0 24px; }
+        .post-list-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; }
+        .post-list-header h2 { font-size: 20px; color: var(--green); }
+        .post-count { color: var(--gray); font-size: 14px; }
+
+        .post-item { background: var(--white); border-radius: var(--radius); padding: 20px 24px; margin-bottom: 12px; display: flex; align-items: center; gap: 16px; cursor: pointer; transition: all 0.2s; border: 2px solid transparent; }
+        .post-item:hover { border-color: var(--lime); transform: translateY(-1px); box-shadow: 0 4px 12px rgba(0,0,0,0.06); }
+        .post-item-info { flex: 1; }
+        .post-item-title { font-weight: 700; font-size: 15px; color: var(--green); margin-bottom: 4px; }
+        .post-item-meta { font-size: 13px; color: var(--gray); display: flex; gap: 12px; align-items: center; }
+        .post-item-tag { background: rgba(141,198,63,0.15); color: var(--green); padding: 2px 10px; border-radius: 20px; font-size: 12px; font-weight: 600; }
+        .post-item-arrow { color: var(--gray); font-size: 20px; }
+
+        /* Editor */
+        .editor { display: none; }
+        .editor-header { display: flex; align-items: center; gap: 16px; margin-bottom: 24px; }
+        .editor-header h2 { font-size: 20px; color: var(--green); flex: 1; }
+        .btn { padding: 10px 20px; border-radius: 8px; font-size: 14px; font-weight: 600; border: none; cursor: pointer; transition: all 0.2s; }
+        .btn-back { background: var(--light); color: var(--green); }
+        .btn-back:hover { background: #E5E7EB; }
+        .btn-save { background: var(--lime); color: var(--green); }
+        .btn-save:hover { background: #7ab835; }
+        .btn-preview { background: var(--white); color: var(--green); border: 2px solid var(--green); }
+        .btn-preview:hover { background: var(--cream); }
+
+        .editor-form { background: var(--white); border-radius: var(--radius); padding: 32px; }
+        .field { margin-bottom: 20px; }
+        .field label { display: block; font-weight: 600; font-size: 13px; color: var(--green); margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.5px; }
+        .field input, .field select, .field textarea { width: 100%; padding: 10px 14px; border: 2px solid #E5E7EB; border-radius: 8px; font-size: 14px; font-family: var(--font); outline: none; transition: border 0.2s; }
+        .field input:focus, .field select:focus, .field textarea:focus { border-color: var(--lime); }
+        .field textarea { min-height: 400px; font-family: 'SF Mono', 'Fira Code', monospace; font-size: 13px; line-height: 1.6; resize: vertical; }
+        .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+        .field-help { font-size: 12px; color: var(--gray); margin-top: 4px; }
+
+        /* Toast */
+        .toast { position: fixed; bottom: 24px; right: 24px; background: var(--green); color: white; padding: 14px 24px; border-radius: 8px; font-size: 14px; font-weight: 600; transform: translateY(100px); opacity: 0; transition: all 0.3s; z-index: 1000; }
+        .toast.show { transform: translateY(0); opacity: 1; }
+        .toast.error { background: #E43020; }
+
+        /* Loading */
+        .loading { text-align: center; padding: 60px; color: var(--gray); }
+        .spinner { width: 32px; height: 32px; border: 3px solid var(--light); border-top-color: var(--lime); border-radius: 50%; animation: spin 0.6s linear infinite; margin: 0 auto 12px; }
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+        @media (max-width: 640px) {
+            .content { padding: 0 16px; margin: 20px auto; }
+            .post-item { padding: 16px; }
+            .editor-form { padding: 20px; }
+            .field-row { grid-template-columns: 1fr; }
+            .topbar { padding: 12px 16px; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- LOGIN -->
+<div class="login-wrap" id="loginView">
+    <div class="login-box">
+        <h1>🍋 DailyFruits CMS</h1>
+        <p>Panel zarządzania blogiem</p>
+        <input type="password" id="passwordInput" placeholder="Wpisz hasło..." autocomplete="current-password">
+        <button onclick="doLogin()">Zaloguj się</button>
+        <div class="login-error" id="loginError">Nieprawidłowe hasło</div>
+    </div>
+</div>
+
+<!-- DASHBOARD -->
+<div class="dashboard" id="dashboardView">
+    <div class="topbar">
+        <h1>🍋 DailyFruits CMS</h1>
+        <div class="topbar-actions">
+            <a href="https://dailyfruits.pl/blog" target="_blank" class="btn-sm btn-logout">Zobacz blog →</a>
+            <button class="btn-sm btn-logout" onclick="doLogout()">Wyloguj</button>
+        </div>
+    </div>
+
+    <!-- POST LIST -->
+    <div class="content" id="postListView">
+        <div class="post-list-header">
+            <h2>Artykuły blogowe</h2>
+            <span class="post-count" id="postCount"></span>
+        </div>
+        <div id="postList">
+            <div class="loading"><div class="spinner"></div>Ładowanie artykułów...</div>
+        </div>
+    </div>
+
+    <!-- EDITOR -->
+    <div class="content editor" id="editorView">
+        <div class="editor-header">
+            <button class="btn btn-back" onclick="showList()">← Wróć</button>
+            <h2 id="editorTitle">Edytuj artykuł</h2>
+            <button class="btn btn-preview" onclick="previewPost()">Podgląd</button>
+            <button class="btn btn-save" onclick="savePost()">💾 Zapisz</button>
+        </div>
+        <div class="editor-form">
+            <div class="field">
+                <label>Tytuł artykułu (H1)</label>
+                <input type="text" id="editTitle" placeholder="Np. Kolagen w owocach i warzywach">
+            </div>
+            <div class="field-row">
+                <div class="field">
+                    <label>Kategoria</label>
+                    <select id="editCategory">
+                        <option value="Zdrowie">Zdrowie</option>
+                        <option value="Poradnik">Poradnik</option>
+                        <option value="HR">HR</option>
+                        <option value="Integracja">Integracja</option>
+                        <option value="Biuro">Biuro</option>
+                        <option value="Raport">Raport</option>
+                        <option value="Eventy">Eventy</option>
+                        <option value="Edukacja">Edukacja</option>
+                        <option value="ESG">ESG</option>
+                        <option value="Wellbeing">Wellbeing</option>
+                    </select>
+                </div>
+                <div class="field">
+                    <label>Data publikacji</label>
+                    <input type="text" id="editDate" placeholder="Np. 2 maja 2026">
+                </div>
+            </div>
+            <div class="field">
+                <label>Meta description (SEO)</label>
+                <input type="text" id="editDescription" placeholder="Krótki opis do Google (max 160 znaków)">
+                <div class="field-help">Maks. 160 znaków — widoczny w wynikach wyszukiwania</div>
+            </div>
+            <div class="field">
+                <label>Zajawka (na karcie bloga)</label>
+                <input type="text" id="editExcerpt" placeholder="Krótki tekst widoczny na liście artykułów">
+            </div>
+            <div class="field">
+                <label>Treść artykułu (HTML)</label>
+                <textarea id="editBody" placeholder="<h2>Nagłówek sekcji</h2><p>Tekst akapitu...</p>"></textarea>
+                <div class="field-help">Używaj tagów HTML: &lt;h2&gt;, &lt;h3&gt;, &lt;p&gt;, &lt;ul&gt;, &lt;li&gt;, &lt;strong&gt;, &lt;em&gt;</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+const API = '/api';
+let token = localStorage.getItem('cms_token') || '';
+let posts = [];
+let currentPost = null;
+let currentPostSha = '';
+let currentPostHtml = '';
+
+// ─── AUTH ───
+async function doLogin() {
+    const pw = document.getElementById('passwordInput').value;
+    try {
+        const res = await fetch(`${API}/auth`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ password: pw })
+        });
+        const data = await res.json();
+        if (data.ok) {
+            token = data.token;
+            localStorage.setItem('cms_token', token);
+            showDashboard();
+        } else {
+            document.getElementById('loginError').style.display = 'block';
+        }
+    } catch (e) {
+        document.getElementById('loginError').style.display = 'block';
+    }
+}
+
+function doLogout() {
+    token = '';
+    localStorage.removeItem('cms_token');
+    document.getElementById('dashboardView').style.display = 'none';
+    document.getElementById('loginView').style.display = 'flex';
+}
+
+document.getElementById('passwordInput').addEventListener('keydown', e => {
+    if (e.key === 'Enter') doLogin();
+});
+
+// ─── DASHBOARD ───
+async function showDashboard() {
+    document.getElementById('loginView').style.display = 'none';
+    document.getElementById('dashboardView').style.display = 'block';
+    await loadPosts();
+}
+
+async function loadPosts() {
+    document.getElementById('postList').innerHTML = '<div class="loading"><div class="spinner"></div>Ładowanie artykułów...</div>';
+    try {
+        const res = await fetch(`${API}/posts?action=list`, { headers: { 'X-CMS-Token': token } });
+        if (res.status === 401) { doLogout(); return; }
+        const data = await res.json();
+        posts = data.posts || [];
+        renderPostList();
+    } catch (e) {
+        document.getElementById('postList').innerHTML = '<div class="loading">Błąd ładowania. Sprawdź konfigurację.</div>';
+    }
+}
+
+function renderPostList() {
+    document.getElementById('postCount').textContent = `${posts.length} artykułów`;
+    if (posts.length === 0) {
+        document.getElementById('postList').innerHTML = '<div class="loading">Brak artykułów</div>';
+        return;
+    }
+    const html = posts.map(p => `
+        <div class="post-item" onclick="editPost('${p.slug}')">
+            <div class="post-item-info">
+                <div class="post-item-title">${escHtml(p.title)}</div>
+                <div class="post-item-meta">
+                    <span>${p.date || 'Brak daty'}</span>
+                    ${p.category ? `<span class="post-item-tag">${p.category}</span>` : ''}
+                </div>
+            </div>
+            <div class="post-item-arrow">›</div>
+        </div>
+    `).join('');
+    document.getElementById('postList').innerHTML = html;
+}
+
+// ─── EDITOR ───
+async function editPost(slug) {
+    document.getElementById('postListView').style.display = 'none';
+    document.getElementById('editorView').style.display = 'block';
+    document.getElementById('editorTitle').textContent = 'Ładowanie...';
+
+    try {
+        const res = await fetch(`${API}/posts?action=get&slug=${slug}`, { headers: { 'X-CMS-Token': token } });
+        if (!res.ok) { toast('Nie można załadować artykułu', true); return; }
+        const data = await res.json();
+        currentPost = data.post;
+        currentPostSha = data.post.sha;
+        currentPostHtml = data.post.rawHtml;
+
+        document.getElementById('editorTitle').textContent = 'Edytuj: ' + (currentPost.title || currentPost.slug);
+        document.getElementById('editTitle').value = cleanHtml(currentPost.h1 || currentPost.title || '');
+        document.getElementById('editCategory').value = currentPost.category || 'Zdrowie';
+        document.getElementById('editDate').value = currentPost.dateDisplay || '';
+        document.getElementById('editDescription').value = currentPost.description || '';
+        document.getElementById('editExcerpt').value = currentPost.excerpt || '';
+        document.getElementById('editBody').value = formatHtml(currentPost.body || '');
+    } catch (e) {
+        toast('Błąd: ' + e.message, true);
+    }
+}
+
+function showList() {
+    document.getElementById('editorView').style.display = 'none';
+    document.getElementById('postListView').style.display = 'block';
+    currentPost = null;
+}
+
+async function savePost() {
+    if (!currentPost || !currentPostHtml) return;
+
+    const title = document.getElementById('editTitle').value.trim();
+    const category = document.getElementById('editCategory').value;
+    const date = document.getElementById('editDate').value.trim();
+    const description = document.getElementById('editDescription').value.trim();
+    const body = document.getElementById('editBody').value.trim();
+
+    if (!title) { toast('Tytuł jest wymagany', true); return; }
+
+    // Replace content in the raw HTML
+    let html = currentPostHtml;
+
+    // Update <title>
+    html = html.replace(/<title>.*?<\/title>/, `<title>${escHtml(title)} – DailyFruits Blog</title>`);
+
+    // Update meta description
+    html = html.replace(/(<meta name="description" content=").*?"/, `$1${escAttr(description)}"`);
+
+    // Update OG tags
+    html = html.replace(/(<meta property="og:title" content=").*?"/, `$1${escAttr(title)} – DailyFruits Blog"`);
+    html = html.replace(/(<meta property="og:description" content=").*?"/, `$1${escAttr(description)}"`);
+
+    // Update twitter tags
+    html = html.replace(/(<meta name="twitter:title" content=").*?"/, `$1${escAttr(title)} – DailyFruits"`);
+    html = html.replace(/(<meta name="twitter:description" content=").*?"/, `$1${escAttr(description)}"`);
+
+    // Update H1
+    html = html.replace(/<h1 class="article-title"[^>]*>[\s\S]*?<\/h1>/, `<h1 class="article-title">${title}</h1>`);
+
+    // Update date
+    if (date) {
+        html = html.replace(/<time[^>]*>.*?<\/time>/, `<time datetime="${date}">${date}</time>`);
+    }
+
+    // Update category badge
+    html = html.replace(/<span class="article-tag"[^>]*>.*?<\/span>/, `<span class="article-tag">${category}</span>`);
+
+    // Update article body
+    if (body) {
+        html = html.replace(/(<div class="article-body">)[\s\S]*?(<\/div>\s*<\/article>)/, `$1\n${body}\n$2`);
+    }
+
+    // Update data-category on card (for breadcrumb)
+    html = html.replace(/(data-category=").*?"/, `$1${category}"`);
+
+    try {
+        const res = await fetch(`${API}/posts?action=update&slug=${currentPost.slug}`, {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json', 'X-CMS-Token': token },
+            body: JSON.stringify({
+                html: html,
+                sha: currentPostSha,
+                commitMessage: `CMS: update ${currentPost.filename} — ${title}`
+            })
+        });
+
+        const data = await res.json();
+        if (data.ok) {
+            currentPostSha = data.sha;
+            currentPostHtml = html;
+            toast('Zapisano! Deploy za ~30s');
+        } else {
+            toast('Błąd: ' + (data.error || 'nieznany'), true);
+        }
+    } catch (e) {
+        toast('Błąd zapisu: ' + e.message, true);
+    }
+}
+
+function previewPost() {
+    if (!currentPost) return;
+    window.open(`https://dailyfruits.pl/${currentPost.filename}`, '_blank');
+}
+
+// ─── UTILS ───
+function escHtml(s) { return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+function escAttr(s) { return s.replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+function cleanHtml(s) { return s.replace(/<[^>]*>/g, '').replace(/&nbsp;/g, ' ').trim(); }
+
+function formatHtml(html) {
+    // Basic pretty-print for editing
+    return html
+        .replace(/>\s+</g, '>\n<')
+        .replace(/<\/(h[1-6]|p|ul|ol|li|div|blockquote)>/g, '</$1>\n')
+        .replace(/<(h[1-6]|ul|ol|blockquote)/g, '\n<$1')
+        .trim();
+}
+
+function toast(msg, isError) {
+    const t = document.getElementById('toast');
+    t.textContent = msg;
+    t.className = 'toast show' + (isError ? ' error' : '');
+    setTimeout(() => t.className = 'toast', 3000);
+}
+
+// ─── INIT ───
+if (token) {
+    // Verify token is still valid
+    fetch(`${API}/posts?action=list`, { headers: { 'X-CMS-Token': token } })
+        .then(r => { if (r.ok) showDashboard(); else doLogout(); })
+        .catch(() => doLogout());
+} else {
+    document.getElementById('loginView').style.display = 'flex';
+}
+</script>
+</body>
+</html>
