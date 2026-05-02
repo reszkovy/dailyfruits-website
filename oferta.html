@@ -565,8 +565,8 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
                 </div>
 
                 <div class="qb-live-price" id="qbLivePrice">
-                    <div><div class="qb-live-label">Szacunkowy koszt miesiecznie (netto)</div><div class="qb-live-per" id="qbLivePer">~ 18 zl / os. / tydzien</div></div>
-                    <div class="qb-live-amount" id="qbLiveAmount">2 340 <span>zl</span></div>
+                    <div><div class="qb-live-label">Koszt na osobe tygodniowo (netto)</div><div class="qb-live-per" id="qbLivePer">~ 2 340 zl / mies. za caly zespol</div></div>
+                    <div class="qb-live-amount" id="qbLiveAmount">18 <span>zl / os.</span></div>
                 </div>
 
                 <div class="qb-nav" style="justify-content:flex-end;">
@@ -617,7 +617,7 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
                 </div>
 
                 <div class="qb-live-price">
-                    <div><div class="qb-live-label">Szacunkowy koszt miesiecznie (netto)</div><div class="qb-live-per" id="qbLivePer2"></div></div>
+                    <div><div class="qb-live-label">Koszt na osobe tygodniowo (netto)</div><div class="qb-live-per" id="qbLivePer2"></div></div>
                     <div class="qb-live-amount" id="qbLiveAmount2"></div>
                 </div>
 
@@ -657,7 +657,7 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
                 </div>
 
                 <div class="qb-live-price">
-                    <div><div class="qb-live-label">Szacunkowy koszt miesiecznie (netto)</div><div class="qb-live-per" id="qbLivePer3"></div></div>
+                    <div><div class="qb-live-label">Koszt na osobe tygodniowo (netto)</div><div class="qb-live-per" id="qbLivePer3"></div></div>
                     <div class="qb-live-amount" id="qbLiveAmount3"></div>
                 </div>
 
@@ -820,8 +820,8 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
 
         function updateAllPrices() {
             const p = calcPrice();
-            const html = p.monthly.toLocaleString('pl-PL') + ' <span>zl</span>';
-            const perHtml = '~ ' + p.perPerson + ' zl / os. / tydzien';
+            const html = p.perPerson + ' <span>zl / os.</span>';
+            const perHtml = '~ ' + p.monthly.toLocaleString('pl-PL') + ' zl / mies. za caly zespol';
             ['', '2', '3'].forEach(s => {
                 const amt = document.getElementById('qbLiveAmount' + s);
                 const per = document.getElementById('qbLivePer' + s);
@@ -936,7 +936,8 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
                 const addonTotal = activeAddons.reduce((s, k) => s + state.addons[k], 0);
                 rows += '<div class="qb-summary-row"><span class="label">Dodatki</span><span class="value">' + names + ' (+' + addonTotal + ' zl/os.)</span></div>';
             }
-            rows += '<div class="qb-summary-total"><span>Szacunkowo miesiecznie (netto)</span><span>' + p.monthly.toLocaleString('pl-PL') + ' zl</span></div>';
+            rows += '<div class="qb-summary-total"><span>Koszt na osobe</span><span>' + p.perPerson + ' zl / tydz.</span></div>';
+            rows += '<div class="qb-summary-row" style="border-top:1px solid rgba(27,94,58,0.15);padding-top:12px;margin-top:8px"><span class="label">Laczny koszt miesieczny (netto)</span><span class="value">' + p.monthly.toLocaleString('pl-PL') + ' zl</span></div>';
             document.getElementById('qbSummary').innerHTML = rows;
         }
 
