@@ -30,5 +30,17 @@
         { "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" }
       ]
     }
+  ],
+  "redirects": [
+    { "source": "/blog/jak-przetrwac-lato-w-biurze/", "destination": "/wpis-lato-biuro.html", "statusCode": 301 },
+    { "source": "/blog/integracyjne-sniadanie-firmowe-zamow-dla-swojego-zespolu/", "destination": "/wpis-sniadanie-firmowe.html", "statusCode": 301 },
+    { "source": "/blog/bakalie-w-biurze-dlaczego-warto/", "destination": "/wpis-bakalie-biuro.html", "statusCode": 301 },
+    { "source": "/blog/idealny-welcome-pack-dla-pracownika-co-powinien-zawierac/", "destination": "/wpis-welcome-pack.html", "statusCode": 301 },
+    { "source": "/blog/zdrowe-i-fit-przekaski-ze-sklepu-do-pracy-poznaj-nasza-liste/", "destination": "/wpis-przekaski-praca.html", "statusCode": 301 },
+    { "source": "/blog/zywieniowe-nawyki-raport-2023/", "destination": "/wpis-nawyki-raport.html", "statusCode": 301 },
+    { "source": "/blog/catering-przekaski-i-menu-na-konferencje-o-czym-musisz-pamietac/", "destination": "/wpis-catering-konferencja.html", "statusCode": 301 },
+    { "source": "/blog/employer-branding-2021/", "destination": "/wpis-employer-branding.html", "statusCode": 301 },
+    { "source": "/blog/praca-zdalna-a-dieta-co-jesc-na-home-office/", "destination": "/wpis-praca-zdalna-dieta.html", "statusCode": 301 },
+    { "source": "/blog/ile-wody-powinno-sie-pic-dziennie/", "destination": "/wpis-ile-wody.html", "statusCode": 301 }
   ]
 }
