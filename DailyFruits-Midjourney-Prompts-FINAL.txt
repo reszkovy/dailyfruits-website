@@ -1,0 +1,233 @@
+DailyFruits — gotowe prompty Midjourney
+Wersja: --v 8.1 (najnowsza)
+Style board: --p m7358349529072009217
+Tryb: --style raw (z briefu, redukuje "AI look")
+Total: 53 zdjęcia
+
+================================================================================
+P0 — Deep offer pages (16 zdjęć) — START TUTAJ
+================================================================================
+
+[01] programy-zywieniowe.html  ›  Hero
+     plik docelowy: programy-hero.webp
+A bright modern open-plan office kitchen, diverse team of professionals around a large table with fresh fruit bowls and healthy meal prep containers, nutritionist in smart casual presenting on a whiteboard, natural daylight, green plants, clean Scandinavian interior, editorial photography --ar 4:3 --style raw --v 8.1 --p m7358349529072009217
+
+[02] programy-zywieniowe.html  ›  Card: Dzień Zdrowia
+     plik docelowy: programy-dzien-zdrowia.webp
+Corporate wellness day event setup, fresh fruit station with colorful tropical fruits arrangement, measuring tape and health pamphlets on a clean white desk, blurred office background with employees in line, warm bright lighting, corporate event photography --ar 4:3 --style raw --v 8.1 --p m7358349529072009217
+
+[03] programy-zywieniowe.html  ›  Card: Edukacja
+     plik docelowy: programy-edukacja.webp
+Modern conference room, nutritionist presenting healthy eating slides to engaged corporate audience, meal prep ingredients displayed on table, minimalist Scandinavian office interior, warm natural light, professional workshop setting --ar 4:3 --style raw --v 8.1 --p m7358349529072009217
+
+[04] programy-zywieniowe.html  ›  Card: Challenge
+     plik docelowy: programy-challenge.webp
+Close-up of three colleagues in business casual holding branded healthy lunch boxes with colorful salads and fruits, smartphone showing fitness tracking app, bright modern office break room, editorial lifestyle photography --ar 4:3 --style raw --v 8.1 --p m7358349529072009217
+
+[05] catering-firmowy.html  ›  Hero
+     plik docelowy: catering-hero.webp
+Overhead shot of an elegant corporate meeting table with a stunning fresh fruit platter arrangement, exotic fruits artfully displayed on a slate board, minimalist glasses of water with cucumber, blurred executives in background, warm lighting, food photography --ar 4:3 --style raw --v 8.1 --p m7358349529072009217
+
+[06] catering-firmowy.html  ›  Card: Spotkania zarządu
+     plik docelowy: catering-zarzad.webp
+Premium fruit and cheese platter on a dark marble conference table, crystal water pitcher, leather chairs blurred in background, executive boardroom with city view, moody professional food photography --ar 4:3 --style raw --v 8.1 --p m7358349529072009217
+
+[07] catering-firmowy.html  ›  Card: Szkolenia
+     plik docelowy: catering-szkolenia.webp
+Healthy lunch boxes with sandwiches, fruit and granola bars arranged on a workshop table, notebooks and pens visible, training room with projector in background, bright daylight, clean food photography --ar 4:3 --style raw --v 8.1 --p m7358349529072009217
+
+[08] catering-firmowy.html  ›  Card: Town hall
+     plik docelowy: catering-townhall.webp
+Large-scale corporate town hall buffet, long table with fresh fruit platters, mini sandwiches and smoothie glasses, open plan office with 50+ employees networking in background, festive but professional atmosphere, editorial photography --ar 4:3 --style raw --v 8.1 --p m7358349529072009217
+
+[09] catering-firmowy.html  ›  Card: Zestawy owocowe
+     plik docelowy: catering-owoce.webp
+Stunning overhead shot of a large fresh fruit platter, sliced tropical fruits arranged in rainbow gradient pattern — mango, kiwi, strawberries, blueberries, dragon fruit — on a round wooden board, white marble surface, food styling photography --ar 4:3 --style raw --v 8.1 --p m7358349529072009217
+
+[10] catering-firmowy.html  ›  Card: Przekąski
+     plik docelowy: catering-przekaski.webp
+Overhead flat lay of healthy office snacks in small glass bowls — mixed nuts, dried fruits, granola bars, dark chocolate pieces, trail mix — arranged on a light oak desk surface, clean minimal food photography --ar 4:3 --style raw --v 8.1 --p m7358349529072009217
+
+[11] catering-firmowy.html  ›  Card: Kanapki
+     plik docelowy: catering-kanapki.webp
+Artfully arranged gourmet mini sandwiches and wraps on a long slate serving board, smoked salmon, avocado, fresh herbs visible, catering presentation style, soft natural light, food photography --ar 4:3 --style raw --v 8.1 --p m7358349529072009217
+
+[12] kanapki-do-biura.html  ›  Hero
+     plik docelowy: kanapki-hero.webp
+Fresh gourmet sandwiches in eco-friendly kraft paper packaging, arranged in a branded delivery box, early morning kitchen prep setting, ingredients visible — sourdough bread, avocado, salmon, greens — warm golden hour light, commercial food photography --ar 4:3 --style raw --v 8.1 --p m7358349529072009217
+
+[13] kanapki-do-biura.html  ›  Card: Klasyczne
+     plik docelowy: kanapki-klasyczne.webp
+Close-up of a classic deli sandwich cut in half showing layers — ham, Swiss cheese, fresh lettuce, tomato, on sourdough bread — on parchment paper, rustic wooden board, soft natural window light, food photography --ar 4:3 --style raw --v 8.1 --p m7358349529072009217
+
+[14] kanapki-do-biura.html  ›  Card: Premium
+     plik docelowy: kanapki-premium.webp
+Close-up of a premium open-faced sandwich — smoked salmon, creamy avocado, microgreens, seeds — on dark rye bread, ceramic plate, minimalist restaurant plating style, soft diffused light, food photography --ar 4:3 --style raw --v 8.1 --p m7358349529072009217
+
+[15] kanapki-do-biura.html  ›  Card: Śniadaniowe
+     plik docelowy: kanapki-sniadaniowe.webp
+Breakfast spread — golden croissant, glass jar of granola with yogurt, fresh berries and sliced banana on the side, white ceramic plates, morning light streaming through window, bright and airy food photography --ar 4:3 --style raw --v 8.1 --p m7358349529072009217
+
+[16] kanapki-do-biura.html  ›  Card: Lunche fit
+     plik docelowy: kanapki-fit.webp
+Healthy lunch bowl with quinoa, roasted vegetables, avocado, chickpeas, fresh herbs, next to a wrapped tortilla, eco-friendly containers, clean modern food photography, bright white background --ar 4:3 --style raw --v 8.1 --p m7358349529072009217
+
+================================================================================
+P1 — Key pages: case study, dostawa, dostawcy, o-nas (10 zdjęć)
+================================================================================
+
+[17] case-study-allegro.html  ›  Hero
+     plik docelowy: casestudy-allegro-hero.webp
+Modern corporate office kitchen breakroom with a large fruit delivery box on the counter, fresh colorful fruits — apples, bananas, oranges — being unpacked by a smiling office worker, open plan office visible through glass wall, morning light, editorial lifestyle photography --ar 4:3 --style raw --v 8.1 --p m7358349529072009217
+
+[18] case-study-allegro.html  ›  Results section
+     plik docelowy: casestudy-allegro-results.webp
+Three diverse professionals in smart casual picking fresh fruits from a beautiful wooden bowl in a modern office kitchen, laughing, natural interaction, Scandinavian office interior with plants, warm natural light, candid editorial photography --ar 4:3 --style raw --v 8.1 --p m7358349529072009217
+
+[19] dostawa.html  ›  Hero
+     plik docelowy: dostawa-hero.webp
+Delivery person in clean branded green polo shirt carrying a wooden crate full of fresh colorful fruits, standing at modern glass office building entrance, early morning golden light, professional service photography, clean urban background --ar 4:3 --style raw --v 8.1 --p m7358349529072009217
+
+[20] dostawa.html  ›  Proces - krok 4
+     plik docelowy: dostawa-kuchnia.webp
+Fresh fruit delivery box placed on a modern office kitchen counter, colorful apples, pears, bananas and citrus fruits arranged neatly, coffee machine and mugs in background, early morning empty kitchen, warm light, lifestyle photography --ar 4:3 --style raw --v 8.1 --p m7358349529072009217
+
+[21] dostawcy.html  ›  Hero
+     plik docelowy: dostawcy-hero.webp
+Beautiful Polish apple orchard in golden autumn light, red apples on trees, farmer in background checking fruit quality, rolling green hills, professional agricultural photography, warm and authentic feel --ar 4:3 --style raw --v 8.1 --p m7358349529072009217
+
+[22] dostawcy.html  ›  Card: Sadownik
+     plik docelowy: dostawcy-sadownik.webp
+Portrait of a weathered but smiling Polish farmer in his 50s, holding fresh apples in both hands, apple orchard background with bokeh, warm golden hour light, authentic documentary portrait photography --ar 1:1 --style raw --v 8.1 --p m7358349529072009217
+
+[23] dostawcy.html  ›  Card: Import
+     plik docelowy: dostawcy-import.webp
+Close-up of wooden crates filled with vibrant oranges and lemons at a wholesale market, stacked neatly with hand-written labels, early morning market lighting, authentic produce photography --ar 1:1 --style raw --v 8.1 --p m7358349529072009217
+
+[24] o-nas.html  ›  Hero / Team
+     plik docelowy: onas-team.webp
+Small team of 6 young professionals in branded green t-shirts standing in a clean produce warehouse, fresh fruit boxes around them, smiling confidently at camera, group portrait, natural warehouse light, startup team photography --ar 4:3 --style raw --v 8.1 --p m7358349529072009217
+
+[25] o-nas.html  ›  Timeline: Początek
+     plik docelowy: onas-poczatek.webp
+Single wooden fruit box with apples and bananas on a small office desk, startup vibes, laptop and coffee mug visible, cramped but cozy small office, warm nostalgic light, documentary photography --ar 4:3 --style raw --v 8.1 --p m7358349529072009217
+
+[26] o-nas.html  ›  Timeline: Skalowanie
+     plik docelowy: onas-skalowanie.webp
+Multiple branded green delivery boxes being loaded onto a van at a warehouse loading dock, workers in branded uniforms, organized logistics operation, morning light, commercial photography --ar 4:3 --style raw --v 8.1 --p m7358349529072009217
+
+================================================================================
+P2 — Blog posts (14 zdjęć)
+================================================================================
+
+[27] wpis-bakalie-biuro.html  ›  Hero image
+     plik docelowy: blog-bakalie-hero.webp
+Overhead flat lay of premium mixed nuts and dried fruits in small glass bowls on a clean office desk, almonds, walnuts, cashews, dried apricots, cranberries, laptop edge visible, minimal modern workspace, food photography --ar 16:9 --style raw --v 8.1 --p m7358349529072009217
+
+[28] wpis-benefity.html  ›  Hero image
+     plik docelowy: blog-benefity-hero.webp
+Happy diverse team in modern office break room enjoying various workplace perks — fresh fruit bowl, yoga mat rolled in corner, standing desk visible, bright Scandinavian interior, candid editorial photography --ar 16:9 --style raw --v 8.1 --p m7358349529072009217
+
+[29] wpis-catering-konferencja.html  ›  Hero image
+     plik docelowy: blog-catering-konf-hero.webp
+Conference catering setup — long table with elegant fresh fruit platters, mini sandwiches, juice pitchers, name badges and notebooks in foreground, large conference hall blurred in background, event photography --ar 16:9 --style raw --v 8.1 --p m7358349529072009217
+
+[30] wpis-employer-branding.html  ›  Hero image
+     plik docelowy: blog-employer-brand-hero.webp
+Office kitchen with branded fruit delivery box being unboxed by smiling HR professional, 'Employee of the Month' wall and company values poster visible in background, warm welcoming corporate culture vibe, editorial photography --ar 16:9 --style raw --v 8.1 --p m7358349529072009217
+
+[31] wpis-ile-wody.html  ›  Hero image
+     plik docelowy: blog-woda-hero.webp
+Clean minimal desk with a large glass water bottle, sliced lemon and mint inside, laptop and notebook in background, morning light through window blinds, wellness at work aesthetic, product-style photography --ar 16:9 --style raw --v 8.1 --p m7358349529072009217
+
+[32] wpis-kanapki-biuro.html  ›  Hero image
+     plik docelowy: blog-kanapki-hero.webp
+Variety of gourmet sandwiches wrapped in kraft paper arranged in a delivery box, visible fillings — salmon, avocado, turkey, fresh greens — office desk background, commercial food photography --ar 16:9 --style raw --v 8.1 --p m7358349529072009217
+
+[33] wpis-lato-biuro.html  ›  Hero image
+     plik docelowy: blog-lato-hero.webp
+Bright summer office scene — desk with cold watermelon slices, iced water with berries, small desk fan, sunlight streaming through window, green plants, refreshing summer vibes, lifestyle photography --ar 16:9 --style raw --v 8.1 --p m7358349529072009217
+
+[34] wpis-nawyki-raport.html  ›  Hero image
+     plik docelowy: blog-nawyki-hero.webp
+Infographic-style flat lay — printed charts and graphs on desk, fresh fruits and vegetables arranged around them, pen and highlighter, laptop showing data dashboard, top-down office photography --ar 16:9 --style raw --v 8.1 --p m7358349529072009217
+
+[35] wpis-owoce-do-biura.html  ›  Hero image
+     plik docelowy: blog-owoce-hero.webp
+Beautiful wooden crate overflowing with fresh seasonal fruits — apples, pears, oranges, grapes, kiwi — being placed on a modern office reception desk, blurred office worker smiling, warm professional photography --ar 16:9 --style raw --v 8.1 --p m7358349529072009217
+
+[36] wpis-praca-zdalna-dieta.html  ›  Hero image
+     plik docelowy: blog-homeoffice-hero.webp
+Home office desk with healthy meal prep containers, fresh fruits in a bowl, laptop showing video call, cozy apartment interior with plants, soft natural light, work-from-home lifestyle photography --ar 16:9 --style raw --v 8.1 --p m7358349529072009217
+
+[37] wpis-przekaski-praca.html  ›  Hero image
+     plik docelowy: blog-przekaski-hero.webp
+Collection of healthy office snacks artfully arranged — protein bars, mixed nuts, dark chocolate, fresh apple, rice cakes with nut butter — on a desk organizer tray, clean minimal desk background, food photography --ar 16:9 --style raw --v 8.1 --p m7358349529072009217
+
+[38] wpis-sniadanie-firmowe.html  ›  Hero image
+     plik docelowy: blog-sniadanie-hero.webp
+Team breakfast in bright modern office — 8 people around a long table with croissants, fruit, yogurt, coffee, engaged in conversation, relaxed Friday morning atmosphere, wide angle editorial photography --ar 16:9 --style raw --v 8.1 --p m7358349529072009217
+
+[39] wpis-welcome-pack.html  ›  Hero image
+     plik docelowy: blog-welcomepack-hero.webp
+Beautifully designed employee welcome box opened on a desk — branded notebook, fruit snack pack, water bottle, company t-shirt folded neatly — new employee's desk with fresh flowers, first-day-at-work photography --ar 16:9 --style raw --v 8.1 --p m7358349529072009217
+
+[40] wpis-wellness-biuro.html  ›  Hero image
+     plik docelowy: blog-wellness-hero.webp
+Corporate wellness corner in modern office — yoga mats stacked, fresh fruit station, standing desk area, green wall with plants, employees stretching in background, bright health-focused office photography --ar 16:9 --style raw --v 8.1 --p m7358349529072009217
+
+================================================================================
+P3 — City landing pages (13 zdjęć)
+================================================================================
+
+[41] owoce-do-biura-bialystok.html  ›  Hero
+     plik docelowy: city-bialystok.webp
+Białystok city skyline with Branicki Palace and green parks, golden hour warm light, cinematic wide shot, architectural photography, no people, clean composition --ar 4:3 --style raw --v 8.1 --p m7358349529072009217
+
+[42] owoce-do-biura-bydgoszcz.html  ›  Hero
+     plik docelowy: city-bydgoszcz.webp
+Bydgoszcz city canal district with colorful waterfront buildings, golden hour warm light, cinematic wide shot, architectural photography, no people, clean composition --ar 4:3 --style raw --v 8.1 --p m7358349529072009217
+
+[43] owoce-do-biura-katowice.html  ›  Hero
+     plik docelowy: city-katowice.webp
+Katowice modern Spodek arena and business district, golden hour warm light, cinematic wide shot, architectural photography, no people, clean composition --ar 4:3 --style raw --v 8.1 --p m7358349529072009217
+
+[44] owoce-do-biura-kielce.html  ›  Hero
+     plik docelowy: city-kielce.webp
+Kielce city center with Holy Cross Mountains in background, golden hour warm light, cinematic wide shot, architectural photography, no people, clean composition --ar 4:3 --style raw --v 8.1 --p m7358349529072009217
+
+[45] owoce-do-biura-krakow.html  ›  Hero
+     plik docelowy: city-krakow.webp
+Kraków Wawel castle and Vistula river aerial view, golden hour warm light, cinematic wide shot, architectural photography, no people, clean composition --ar 4:3 --style raw --v 8.1 --p m7358349529072009217
+
+[46] owoce-do-biura-lodz.html  ›  Hero
+     plik docelowy: city-lodz.webp
+Łódź Manufaktura red brick industrial architecture, golden hour warm light, cinematic wide shot, architectural photography, no people, clean composition --ar 4:3 --style raw --v 8.1 --p m7358349529072009217
+
+[47] owoce-do-biura-lublin.html  ›  Hero
+     plik docelowy: city-lublin.webp
+Lublin Old Town with Krakowska Gate and colorful facades, golden hour warm light, cinematic wide shot, architectural photography, no people, clean composition --ar 4:3 --style raw --v 8.1 --p m7358349529072009217
+
+[48] owoce-do-biura-poznan.html  ›  Hero
+     plik docelowy: city-poznan.webp
+Poznań Old Market Square with colorful merchant houses, golden hour warm light, cinematic wide shot, architectural photography, no people, clean composition --ar 4:3 --style raw --v 8.1 --p m7358349529072009217
+
+[49] owoce-do-biura-rzeszow.html  ›  Hero
+     plik docelowy: city-rzeszow.webp
+Rzeszów modern city center with market square fountain, golden hour warm light, cinematic wide shot, architectural photography, no people, clean composition --ar 4:3 --style raw --v 8.1 --p m7358349529072009217
+
+[50] owoce-do-biura-szczecin.html  ›  Hero
+     plik docelowy: city-szczecin.webp
+Szczecin Chrobry Embankment and Oder river waterfront, golden hour warm light, cinematic wide shot, architectural photography, no people, clean composition --ar 4:3 --style raw --v 8.1 --p m7358349529072009217
+
+[51] owoce-do-biura-trojmiasto.html  ›  Hero
+     plik docelowy: city-trojmiasto.webp
+Gdańsk Long Market with Neptune fountain and colorful townhouses, golden hour warm light, cinematic wide shot, architectural photography, no people, clean composition --ar 4:3 --style raw --v 8.1 --p m7358349529072009217
+
+[52] owoce-do-biura-warszawa.html  ›  Hero
+     plik docelowy: city-warszawa.webp
+Warsaw modern business district skyline with Złote Tarasy, golden hour warm light, cinematic wide shot, architectural photography, no people, clean composition --ar 4:3 --style raw --v 8.1 --p m7358349529072009217
+
+[53] owoce-do-biura-wroclaw.html  ›  Hero
+     plik docelowy: city-wroclaw.webp
+Wrocław Ostrów Tumski cathedral island at golden hour, golden hour warm light, cinematic wide shot, architectural photography, no people, clean composition --ar 4:3 --style raw --v 8.1 --p m7358349529072009217
