@@ -252,8 +252,8 @@
         .eco-card::before { content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 60%; height: 1px; background: linear-gradient(90deg, transparent, rgba(141,198,63,0.5), transparent); }
         .eco-card:hover { transform: translateY(-6px); border-color: rgba(141,198,63,0.35); background: rgba(255,255,255,0.07); box-shadow: 0 20px 50px rgba(0,0,0,0.2), 0 0 30px rgba(141,198,63,0.08); }
         .eco-icon { display: none; }
-        .eco-card h3 { color: #fff; margin-bottom: 10px; font-size: 18px; font-weight: 800; letter-spacing: -0.2px; }
-        .eco-card h3 span.eco-highlight { color: var(--lime); font-weight: 800; }
+        .eco-card h3 { color: #fff; margin-bottom: 10px; font-family: 'Achiko', sans-serif; font-size: 28px; font-weight: 400; letter-spacing: -0.2px; }
+        .eco-card h3 span.eco-highlight { color: var(--lime); }
         .eco-card p { font-size: 14px; margin: 0; line-height: 1.6; color: rgba(255,255,255,0.6); }
         .eco-tag { display: inline-block; margin-top: 14px; padding: 5px 14px; border-radius: var(--radius-pill); font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; background: rgba(141,198,63,0.1); color: var(--lime); border: 1px solid rgba(141,198,63,0.2); }
 
@@ -1062,25 +1062,21 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
         </div>
         <div class="eco-grid">
             <div class="eco-card reveal">
-                <span class="eco-icon"><svg width="28" height="28" viewBox="0 0 28 28" fill="none"><path d="M14 3c-1.5 0-3 .8-3 2.5C11 7.5 14 9 14 9s3-1.5 3-3.5C17 3.8 15.5 3 14 3z" fill="var(--lime)" opacity="0.8"/><path d="M6 12a8 8 0 0 0 16 0" stroke="var(--lime)" stroke-width="1.8" stroke-linecap="round"/><path d="M4 12h20" stroke="rgba(255,255,255,0.4)" stroke-width="1.5" stroke-linecap="round"/><path d="M9 16v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2v-5" stroke="var(--lime)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="14" cy="19" r="1.5" fill="var(--yellow)" opacity="0.7"/></svg></span>
                 <h3><span class="eco-highlight">Daily</span>Fruits + Foods</h3>
                 <p>Owoce, kanapki, kawa, snacki — jedno zamówienie, jedna faktura, zero komplikacji.</p>
                 <span class="eco-tag">Żywienie</span>
             </div>
             <div class="eco-card reveal">
-                <span class="eco-icon"><svg width="28" height="28" viewBox="0 0 28 28" fill="none"><rect x="4" y="7" width="20" height="14" rx="3" stroke="var(--lime)" stroke-width="1.8"/><path d="M4 11h20" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/><circle cx="19" cy="17" r="2" stroke="var(--yellow)" stroke-width="1.5"/><path d="M8 17h5" stroke="rgba(255,255,255,0.3)" stroke-width="1.5" stroke-linecap="round"/><path d="M8 14.5h3" stroke="rgba(255,255,255,0.2)" stroke-width="1.2" stroke-linecap="round"/></svg></span>
                 <h3><span class="eco-highlight">Team</span>Budget</h3>
                 <p>Budżet żywieniowy per pracownik. Zespół wybiera, Ty kontrolujesz koszty.</p>
                 <span class="eco-tag">Budżety</span>
             </div>
             <div class="eco-card reveal">
-                <span class="eco-icon"><svg width="28" height="28" viewBox="0 0 28 28" fill="none"><path d="M6 22V8a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v14" stroke="var(--lime)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M3 22h22" stroke="rgba(255,255,255,0.3)" stroke-width="1.5" stroke-linecap="round"/><rect x="10" y="10" width="3" height="3" rx="0.5" fill="var(--yellow)" opacity="0.6"/><rect x="15" y="10" width="3" height="3" rx="0.5" fill="var(--lime)" opacity="0.4"/><rect x="10" y="15" width="3" height="3" rx="0.5" fill="var(--lime)" opacity="0.4"/><rect x="15" y="15" width="3" height="3" rx="0.5" fill="var(--yellow)" opacity="0.6"/></svg></span>
                 <h3><span class="eco-highlight">Better</span>Office</h3>
                 <p>Od kawy po środki czystości — wszystko dla sprawnego biura w jednym miejscu.</p>
                 <span class="eco-tag">Biuro</span>
             </div>
             <div class="eco-card reveal">
-                <span class="eco-icon"><svg width="28" height="28" viewBox="0 0 28 28" fill="none"><path d="M14 4l-2 4h-5l4 3.5-1.5 5L14 13.5l4.5 3 -1.5-5 4-3.5h-5L14 4z" stroke="var(--yellow)" stroke-width="1.8" stroke-linejoin="round" fill="none"/><path d="M8 20l-1 4h14l-1-4" stroke="var(--lime)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M10 24v1.5M18 24v1.5" stroke="rgba(255,255,255,0.3)" stroke-width="1.5" stroke-linecap="round"/></svg></span>
                 <h3><span class="eco-highlight">Send</span>Gift</h3>
                 <p>Welcome packi, zestawy świąteczne, podziękowania — wysyłasz jednym kliknięciem.</p>
                 <span class="eco-tag">Prezenty</span>
