@@ -84,8 +84,10 @@
         .city-offer .section-top { text-align: center; margin-bottom: 48px; }
         .city-offer .section-top p { max-width: 520px; margin: 12px auto 0; }
         .offer-mini-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
-        .offer-mini-card { background: var(--cream); padding: 28px 20px; text-align: center; transition: transform 0.3s, box-shadow 0.3s; }
+        .offer-mini-card { background: var(--cream); padding: 0; text-align: center; transition: transform 0.3s, box-shadow 0.3s; overflow: hidden; }
         .offer-mini-card:hover { transform: translateY(-4px); box-shadow: 0 12px 36px rgba(27,94,58,0.1); }
+        .offer-mini-card img.card-img { width: 100%; height: 160px; object-fit: cover; display: block; }
+        .offer-mini-card .card-body { padding: 20px 20px 28px; }
         .offer-mini-icon { font-size: 36px; margin-bottom: 12px; }
         .offer-mini-card h3 { font-size: 15px; margin-bottom: 4px; }
         .offer-mini-card p { font-size: 13px; margin: 0; }
@@ -342,14 +344,18 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
         </div>
         <div class="offer-mini-grid">
             <div class="offer-mini-card reveal">
-                <div class="offer-mini-icon">🥪</div>
+                <img class="card-img" src="kanapki-klasyczne.webp" alt="Kanapki klasyczne do biura" loading="lazy" width="400" height="160">
+                <div class="card-body">
                 <h3>Kanapki klasyczne</h3>
                 <p>Szynka, ser, warzywa i miód. Sprawdzone smaki, które lubią wszyscy.</p>
+                </div>
             </div>
             <div class="offer-mini-card reveal">
-                <div class="offer-mini-icon">🦐</div>
+                <img class="card-img" src="kanapki-premium.webp" alt="Kanapki premium z łososiem i awokado" loading="lazy" width="400" height="160">
+                <div class="card-body">
                 <h3>Kanapki premium</h3>
                 <p>Łosoś, awokado, hummus, rukkola. Dla bardziej wymagających podniebień.</p>
+                </div>
             </div>
             <div class="offer-mini-card reveal">
                 <div class="offer-mini-icon">🥐</div>
@@ -357,9 +363,11 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
                 <p>Croissanty, granola, jogurt naturalny, owoce. Energiczny start dnia.</p>
             </div>
             <div class="offer-mini-card reveal">
-                <div class="offer-mini-icon">🥗</div>
+                <img class="card-img" src="kanapki-fit.webp" alt="Lunche fit — sałatki i bowle" loading="lazy" width="400" height="160">
+                <div class="card-body">
                 <h3>Lunche fit</h3>
                 <p>Sałatki, wraps, bowle z quinoa. Zero cukru w krwi, pełna energia.</p>
+                </div>
             </div>
         </div>
     </div>

@@ -256,6 +256,7 @@
             .floating-badge img { height: 90px; }
             .hero-trust-badges { justify-content: center; }
             .prose-highlight { padding: 24px 20px; }
+            .prose-container div[style*="grid-template-columns"] { grid-template-columns: 1fr !important; }
         }
         @media (max-width: 480px) {
             .logo-img { height: 40px; }
@@ -347,11 +348,12 @@
                 </div>
             </div>
             <div class="hero-visual reveal">
-                <div class="hero-stat-ring">
-                    <div class="big-num">12</div>
-                    <div class="big-label">certyfikowanych<br>dostawcow</div>
-                </div>
+                <img src="dostawcy-hero.webp" alt="Certyfikowani dostawcy owoców DailyFruits" loading="eager" width="600" height="450" style="border-radius:var(--radius-lg);margin-bottom:20px">
                 <div class="hero-mini-stats">
+                    <div class="hero-mini-stat">
+                        <div class="num">12</div>
+                        <div class="label">dostawcow</div>
+                    </div>
                     <div class="hero-mini-stat">
                         <div class="num">200+</div>
                         <div class="label">ton / mies.</div>
@@ -359,10 +361,6 @@
                     <div class="hero-mini-stat">
                         <div class="num">4</div>
                         <div class="label">certyfikaty</div>
-                    </div>
-                    <div class="hero-mini-stat">
-                        <div class="num">13</div>
-                        <div class="label">miast</div>
                     </div>
                 </div>
             </div>
@@ -581,6 +579,11 @@
 
             <div class="prose-highlight">
                 <p><strong>200+ ton owocow miesiecznie</strong> &mdash; tyle obsluguje nasz lancuch dostaw. Kazda partia jest kontrolowana pod katem swiezosci, dojrzalosci i warunkow transportu, zanim trafi do biur w 13 miastach.</p>
+            </div>
+
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;margin:32px 0">
+                <img src="dostawcy-sadownik.webp" alt="Polski sadownik — dostawca jabłek DailyFruits" loading="lazy" width="500" height="340" style="border-radius:var(--radius);width:100%;height:auto">
+                <img src="dostawcy-import.webp" alt="Import owoców egzotycznych — certyfikowani dystrybutorzy" loading="lazy" width="500" height="340" style="border-radius:var(--radius);width:100%;height:auto">
             </div>
 
             <p>Wspolpracujemy z sadownikami prowadzacymi uprawy w systemie Integrowanej Produkcji, importerami posiadajacymi certyfikat GlobalG.A.P. oraz dystrybutorami z akredytacja Fair Trade. Dla owocow tropikalnych wymagamy potwierdzenia Rainforest Alliance &mdash; gwarancji, ze produkcja nie niszczy ekosystemow i zapewnia godziwe warunki pracy.</p>

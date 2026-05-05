@@ -84,8 +84,10 @@
         .city-offer .section-top { text-align: center; margin-bottom: 48px; }
         .city-offer .section-top p { max-width: 520px; margin: 12px auto 0; }
         .offer-mini-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
-        .offer-mini-card { background: var(--cream); padding: 28px 20px; text-align: center; transition: transform 0.3s, box-shadow 0.3s; }
+        .offer-mini-card { background: var(--cream); padding: 0; text-align: center; transition: transform 0.3s, box-shadow 0.3s; overflow: hidden; }
         .offer-mini-card:hover { transform: translateY(-4px); box-shadow: 0 12px 36px rgba(27,94,58,0.1); }
+        .offer-mini-card img.card-img { width: 100%; height: 160px; object-fit: cover; display: block; }
+        .offer-mini-card .card-body { padding: 20px 20px 28px; }
         .offer-mini-icon { font-size: 36px; margin-bottom: 12px; }
         .offer-mini-card h3 { font-size: 15px; margin-bottom: 4px; }
         .offer-mini-card p { font-size: 13px; margin: 0; }
@@ -342,24 +344,32 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
         </div>
         <div class="offer-mini-grid">
             <div class="offer-mini-card reveal">
-                <div class="offer-mini-icon">👔</div>
+                <img class="card-img" src="catering-zarzad.webp" alt="Catering na spotkania zarządu" loading="lazy" width="400" height="160">
+                <div class="card-body">
                 <h3>Spotkania zarządu</h3>
                 <p>Premium plattery owocowe, ciasta, espresso. Profesjonalnie, bez ruchu.</p>
+                </div>
             </div>
             <div class="offer-mini-card reveal">
-                <div class="offer-mini-icon">📚</div>
+                <img class="card-img" src="catering-szkolenia.webp" alt="Catering na szkolenia i warsztaty" loading="lazy" width="400" height="160">
+                <div class="card-body">
                 <h3>Szkolenia i warsztaty</h3>
                 <p>Lunchboxy, kanapki, owoce. Coś lekko, żeby zespół się nie czuł senny.</p>
+                </div>
             </div>
             <div class="offer-mini-card reveal">
-                <div class="offer-mini-icon">📣</div>
+                <img class="card-img" src="catering-owoce.webp" alt="Plattery owocowe na town hall" loading="lazy" width="400" height="160">
+                <div class="card-body">
                 <h3>Town halle</h3>
                 <p>Plattery dla całej firmy, soki, smoothie bar. Team building przez żolądek.</p>
+                </div>
             </div>
             <div class="offer-mini-card reveal">
-                <div class="offer-mini-icon">❤️</div>
+                <img class="card-img" src="catering-kanapki.webp" alt="Zdrowe przekąski na dni zdrowia" loading="lazy" width="400" height="160">
+                <div class="card-body">
                 <h3>Dni zdrowia</h3>
                 <p>Zdrowe przekąski, owoce, soki fresh. Wzmacniamy messę o wellbeingu.</p>
+                </div>
             </div>
             <div class="offer-mini-card reveal">
                 <div class="offer-mini-icon">👋</div>
