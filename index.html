@@ -201,11 +201,8 @@
         .benefit-card:nth-child(5)::before { background: var(--green-dark); }
         .benefit-card:nth-child(6)::before { background: var(--lime); }
         .benefit-card:hover { transform: translateY(-8px) rotate(-1deg); box-shadow: 0 20px 50px rgba(27,94,58,0.12); }
-        .benefit-emoji { width: 60px; height: 60px; background: rgba(141,198,63,0.12); border: 2px solid rgba(141,198,63,0.25); border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 28px; margin-bottom: 20px; }
-        .benefit-card:nth-child(2) .benefit-emoji { background: rgba(27,94,58,0.1); border-color: rgba(27,94,58,0.25); }
-        .benefit-card:nth-child(3) .benefit-emoji { background: rgba(228,48,32,0.08); border-color: rgba(228,48,32,0.2); }
-        .benefit-card:nth-child(4) .benefit-emoji { background: rgba(228,48,32,0.08); border-color: rgba(228,48,32,0.2); }
-        .benefit-card:nth-child(5) .benefit-emoji { background: rgba(27,94,58,0.1); border-color: rgba(27,94,58,0.25); }
+        .benefit-emoji { width: 60px; height: 60px; background: none; border: none; border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 28px; margin-bottom: 20px; }
+        .benefit-emoji img { border-radius: 12px; }
         .benefit-card h3 { margin-bottom: 8px; font-size: 24px; letter-spacing: -0.05em; }
         .benefit-card p { font-size: 14px; margin: 0; }
         .benefit-stat { font-family: var(--font-fun); font-size: 36px; color: var(--lime); margin-top: 14px; display: block; }
@@ -221,7 +218,8 @@
         .deep-offer-card:hover { transform: translateY(-4px); box-shadow: 0 12px 36px rgba(27,94,58,0.25); }
         .deep-offer-card:hover::before { opacity: 1; }
         .deep-offer-card:hover .deep-offer-arrow { transform: translateX(4px); }
-        .deep-offer-icon { font-size: 32px; flex-shrink: 0; width: 48px; height: 48px; background: rgba(255,255,255,0.12); border-radius: 12px; display: flex; align-items: center; justify-content: center; position: relative; z-index: 1; }
+        .deep-offer-icon { font-size: 32px; flex-shrink: 0; width: 48px; height: 48px; background: none; border-radius: 12px; display: flex; align-items: center; justify-content: center; position: relative; z-index: 1; }
+        .deep-offer-icon img { border-radius: 10px; }
         .deep-offer-content { flex: 1; position: relative; z-index: 1; }
         .deep-offer-content h3 { font-size: 16px; font-weight: 800; margin: 0 0 4px; color: #fff; }
         .deep-offer-content p { font-size: 13px; margin: 0; color: rgba(255,255,255,0.7); line-height: 1.4; }
@@ -952,7 +950,7 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
                 <p style="font-size:12px;margin-top:4px;color:var(--olive)">wzrost produktywności przy zdrowej diecie w biurze</p>
             </div>
             <div class="benefit-card reveal">
-                <div class="benefit-emoji">↻</div>
+                <div class="benefit-emoji"><img src="icons/icon-refresh.webp" alt="Ikona elastyczności" width="48" height="48" loading="lazy"></div>
                 <h3>Elastyczność</h3>
                 <p>Subskrypcja, nie kontrakt. Zmień skład i częstotliwość kiedy chcesz, bez kar i zobowiązań.</p>
                 <span class="benefit-stat">0 zł</span>
