@@ -256,6 +256,7 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
 .exit-form button:hover { background: #C42818; transform: translateY(-1px); }
 .exit-note { font-size: 12px; color: #999; margin-top: 12px; }
 @media (max-width: 600px) { .exit-popup { padding: 36px 24px 28px; } .exit-form { flex-direction: column; } }
+@media (max-width: 768px) { #ofertaContactForm [style*="grid-template-columns: 1fr 1fr"] { grid-template-columns: 1fr !important; } #kontakt [style*="padding:44px"] { padding: 28px 20px !important; } }
 
 </style>
     <meta name="robots" content="index, follow">
@@ -508,7 +509,7 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
 
 <!-- WAVE: white → trust band -->
 
-<section class="qb-section" id="cennik">
+<section class="qb-section" id="cennik" style="display:none!important">
     <div class="container">
         <div class="qb-wrap">
             <div style="text-align:center;margin-bottom:40px;" class="reveal">
@@ -702,6 +703,42 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
                 </div>
             </div>
 
+        </div>
+    </div>
+</section>
+
+<!-- ═══ CONTACT FORM (replaces calculator) ═══ -->
+<section id="kontakt" style="padding:60px 0 80px;">
+    <div class="container">
+        <div style="max-width:680px;margin:0 auto;text-align:center;" class="reveal">
+            <div class="sticker sticker-yellow" style="transform:rotate(-2deg)">Zapytanie</div>
+            <h2 style="margin-top:20px">Zamów <span class="fun">bezpłatną wycenę</span></h2>
+            <p style="max-width:520px;margin:12px auto 40px;color:#555;">Wypełnij formularz — odezwiemy się w ciągu 2 godzin z propozycją dopasowaną do Twojego biura.</p>
+        </div>
+        <div style="max-width:680px;margin:0 auto;background:var(--cream);border-radius:24px;padding:44px;" class="reveal">
+            <form id="ofertaContactForm">
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+                    <div style="margin-bottom:18px;"><label style="display:block;font-size:14px;font-weight:700;color:var(--green-dark);margin-bottom:6px;" for="oc-name">Imię i nazwisko</label><input type="text" id="oc-name" name="fullname" required placeholder="Jan Kowalski" style="width:100%;padding:14px 18px;border:2px solid rgba(27,94,58,0.1);border-radius:60px;font-size:15px;background:#fff;transition:box-shadow 0.2s;"></div>
+                    <div style="margin-bottom:18px;"><label style="display:block;font-size:14px;font-weight:700;color:var(--green-dark);margin-bottom:6px;" for="oc-company">Firma</label><input type="text" id="oc-company" name="company" required placeholder="ABC sp. z o.o." style="width:100%;padding:14px 18px;border:2px solid rgba(27,94,58,0.1);border-radius:60px;font-size:15px;background:#fff;transition:box-shadow 0.2s;"></div>
+                </div>
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+                    <div style="margin-bottom:18px;"><label style="display:block;font-size:14px;font-weight:700;color:var(--green-dark);margin-bottom:6px;" for="oc-email">Email</label><input type="email" id="oc-email" name="email" required placeholder="jan@firma.pl" style="width:100%;padding:14px 18px;border:2px solid rgba(27,94,58,0.1);border-radius:60px;font-size:15px;background:#fff;transition:box-shadow 0.2s;"></div>
+                    <div style="margin-bottom:18px;"><label style="display:block;font-size:14px;font-weight:700;color:var(--green-dark);margin-bottom:6px;" for="oc-phone">Telefon</label><input type="tel" id="oc-phone" name="phone" placeholder="+48 123 456 789" style="width:100%;padding:14px 18px;border:2px solid rgba(27,94,58,0.1);border-radius:60px;font-size:15px;background:#fff;transition:box-shadow 0.2s;"></div>
+                </div>
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+                    <div style="margin-bottom:18px;"><label style="display:block;font-size:14px;font-weight:700;color:var(--green-dark);margin-bottom:6px;" for="oc-city">Miasto</label><input type="text" id="oc-city" name="city" required placeholder="np. Warszawa" style="width:100%;padding:14px 18px;border:2px solid rgba(27,94,58,0.1);border-radius:60px;font-size:15px;background:#fff;transition:box-shadow 0.2s;"></div>
+                    <div style="margin-bottom:18px;"><label style="display:block;font-size:14px;font-weight:700;color:var(--green-dark);margin-bottom:6px;" for="oc-employees">Liczba pracowników</label><select id="oc-employees" name="employees" required style="width:100%;padding:14px 18px;border:2px solid rgba(27,94,58,0.1);border-radius:60px;font-size:15px;background:#fff;appearance:none;-webkit-appearance:none;background-image:url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2212%22 height=%2212%22 viewBox=%220 0 12 12%22><path d=%22M2 4l4 4 4-4%22 fill=%22none%22 stroke=%22%231B5E3A%22 stroke-width=%221.5%22/></svg>');background-repeat:no-repeat;background-position:right 18px center;"><option value="">Wybierz</option><option value="1-20">1–20</option><option value="21-50">21–50</option><option value="51-100">51–100</option><option value="101-250">101–250</option><option value="251-500">251–500</option><option value="500+">500+</option></select></div>
+                </div>
+                <div style="margin-bottom:22px;"><label style="display:block;font-size:14px;font-weight:700;color:var(--green-dark);margin-bottom:6px;" for="oc-message">Czego szukasz?</label><textarea id="oc-message" name="message" placeholder="Owoce, kanapki, częstotliwość dostaw, budżet..." style="width:100%;padding:14px 18px;border:2px solid rgba(27,94,58,0.1);border-radius:20px;font-size:15px;background:#fff;height:110px;resize:vertical;font-family:inherit;transition:box-shadow 0.2s;"></textarea></div>
+                <div style="margin-top:28px;"><button type="submit" style="width:100%;padding:16px 32px;font-size:16px;font-weight:800;border:none;border-radius:60px;background:var(--green-dark);color:#fff;cursor:pointer;transition:transform 0.2s,box-shadow 0.2s;display:flex;align-items:center;justify-content:center;gap:8px;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 6px 20px rgba(27,94,58,0.3)'" onmouseout="this.style.transform='';this.style.boxShadow=''">Wyślij zapytanie →</button></div>
+                <p style="text-align:center;font-size:13px;color:#888;margin-top:14px;">🔒 Twoje dane są bezpieczne. Odpowiadamy w ciągu 2h w dni robocze.</p>
+            </form>
+            <div id="ofertaFormSuccess" style="display:none;text-align:center;padding:56px 32px;">
+                <div style="width:64px;height:64px;border-radius:50%;background:var(--lime);display:flex;align-items:center;justify-content:center;margin:0 auto 20px;font-size:28px;color:#fff;">✓</div>
+                <h2 style="margin-bottom:10px;">Dziękujemy!</h2>
+                <p style="max-width:380px;margin:0 auto;color:#555;">Twoje zapytanie zostało wysłane. Skontaktujemy się w ciągu 2 godzin z dopasowaną ofertą.</p>
+                <a href="index.html" class="btn btn-green" style="margin-top:24px;display:inline-block;">Wróć na stronę główną</a>
+            </div>
         </div>
     </div>
 </section>
@@ -977,6 +1014,37 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
         // Init prices
         updateAllPrices();
     })();
+</script>
+
+<!-- Contact form handler -->
+<script>
+(function() {
+    var form = document.getElementById('ofertaContactForm');
+    if (!form) return;
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        var btn = form.querySelector('button[type="submit"]');
+        btn.textContent = 'Wysyłanie...';
+        btn.disabled = true;
+        var data = new FormData(form);
+        var payload = {};
+        data.forEach(function(v, k) { payload[k] = v; });
+        payload.source = 'oferta-page';
+        payload.timestamp = new Date().toISOString();
+        if (window.dataLayer) {
+            dataLayer.push({ event: 'form_submit', form_name: 'oferta_contact', page: '/oferta.html' });
+        }
+        setTimeout(function() {
+            form.style.display = 'none';
+            document.getElementById('ofertaFormSuccess').style.display = 'block';
+        }, 800);
+    });
+    // Focus styles
+    form.querySelectorAll('input, select, textarea').forEach(function(el) {
+        el.addEventListener('focus', function() { this.style.boxShadow = '0 0 0 2px #8DC63F'; });
+        el.addEventListener('blur', function() { this.style.boxShadow = ''; });
+    });
+})();
 </script>
 
 <div class="mobile-sticky-cta" id="mobileCta">
