@@ -46,7 +46,7 @@ strong{color:var(--green)}
 
 .metric{background:var(--white);border-radius:14px;padding:20px;border:1px solid var(--light-border);text-align:center}
 .metric .num{font-size:32px;font-weight:900;color:var(--green);line-height:1}
-.metric .label{font-size:12px;color:#888;margin-top:6px}
+.metric .label{font-size:12px;color: var(--gray-400);margin-top:6px}
 .metric.highlight{background:var(--green);border-color:var(--green)}
 .metric.highlight .num{color:var(--lime)}
 .metric.highlight .label{color:rgba(255,255,255,0.6)}
@@ -61,8 +61,8 @@ tr:hover{background:rgba(141,198,63,0.07)}
 .tag{display:inline-block;padding:3px 9px;border-radius:100px;font-size:11px;font-weight:700;margin-right:3px}
 .tag-green{background:rgba(141,198,63,0.15);color:#3B6D11}
 .tag-red{background:rgba(228,48,32,0.1);color:#c0392b}
-.tag-blue{background:rgba(52,117,80,0.1);color:#1B5E3A}
-.tag-gray{background:rgba(0,0,0,0.05);color:#666}
+.tag-blue{background:rgba(52,117,80,0.1);color: var(--green-dark)}
+.tag-gray{background:rgba(0,0,0,0.05);color: var(--gray-500)}
 .tag-lime{background:rgba(141,198,63,0.2);color:#2d5e10}
 
 .before-after{display:grid;grid-template-columns:1fr auto 1fr;gap:16px;align-items:center;margin:16px 0}
@@ -81,14 +81,14 @@ tr:hover{background:rgba(141,198,63,0.07)}
 .schema-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:14px 0}
 .schema-card{background:var(--white);border-radius:12px;padding:16px;border:1px solid var(--light-border);text-align:center}
 .schema-card .name{font-size:13px;font-weight:700;color:var(--green)}
-.schema-card .desc{font-size:11px;color:#888;margin-top:3px}
+.schema-card .desc{font-size:11px;color: var(--gray-400);margin-top:3px}
 
 .timeline{position:relative;padding-left:28px;margin:16px 0}
 .timeline::before{content:'';position:absolute;left:8px;top:4px;bottom:4px;width:2px;background:var(--lime)}
 .timeline-item{position:relative;margin-bottom:18px}
 .timeline-item::before{content:'';position:absolute;left:-24px;top:6px;width:12px;height:12px;border-radius:50%;background:var(--lime);border:2px solid var(--white)}
 .timeline-item h4{font-size:13px;font-weight:700;color:var(--green);margin-bottom:2px}
-.timeline-item p{font-size:13px;margin:0;color:#666}
+.timeline-item p{font-size:13px;margin:0;color: var(--gray-500)}
 
 .results-bar{display:flex;align-items:center;gap:12px;margin:8px 0}
 .results-bar .bar-label{font-size:13px;font-weight:600;color:var(--green);width:140px;flex-shrink:0}

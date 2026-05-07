@@ -43,26 +43,26 @@ td:first-child{font-weight:600;color:var(--green)}
 .tag{display:inline-block;padding:3px 10px;border-radius:100px;font-size:11px;font-weight:700;margin-right:4px}
 .tag-green{background:rgba(141,198,63,0.15);color:#3B6D11}
 .tag-red{background:rgba(228,48,32,0.1);color:#c0392b}
-.tag-blue{background:rgba(52,117,80,0.1);color:#1B5E3A}
-.tag-gray{background:rgba(0,0,0,0.05);color:#666}
+.tag-blue{background:rgba(52,117,80,0.1);color: var(--green-dark)}
+.tag-gray{background:rgba(0,0,0,0.05);color: var(--gray-500)}
 
 .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
 .metric-card{background:var(--white);border-radius:16px;padding:24px;border:1px solid rgba(27,94,58,0.08);text-align:center}
 .metric-card .num{font-size:36px;font-weight:900;color:var(--green);line-height:1}
-.metric-card .label{font-size:13px;color:#888;margin-top:6px}
+.metric-card .label{font-size:13px;color: var(--gray-400);margin-top:6px}
 
 .schema-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:16px 0 24px}
 .schema-card{background:var(--white);border-radius:12px;padding:20px;border:1px solid rgba(27,94,58,0.08);text-align:center}
 .schema-card .icon{font-size:28px;margin-bottom:8px}
 .schema-card .name{font-size:14px;font-weight:700;color:var(--green)}
-.schema-card .desc{font-size:12px;color:#888;margin-top:4px}
+.schema-card .desc{font-size:12px;color: var(--gray-400);margin-top:4px}
 
 .timeline{position:relative;padding-left:28px;margin:16px 0}
 .timeline::before{content:'';position:absolute;left:8px;top:4px;bottom:4px;width:2px;background:var(--lime)}
 .timeline-item{position:relative;margin-bottom:20px}
 .timeline-item::before{content:'';position:absolute;left:-24px;top:6px;width:12px;height:12px;border-radius:50%;background:var(--lime);border:2px solid var(--white)}
 .timeline-item h4{font-size:14px;font-weight:700;color:var(--green);margin-bottom:2px}
-.timeline-item p{font-size:13px;margin:0;color:#666}
+.timeline-item p{font-size:13px;margin:0;color: var(--gray-500)}
 
 .city-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:16px 0}
 .city-chip{background:var(--white);border:1px solid rgba(27,94,58,0.1);border-radius:10px;padding:10px 12px;text-align:center}
