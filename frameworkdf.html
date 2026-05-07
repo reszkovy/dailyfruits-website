@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Website Build Framework — Reszek Method</title>
+<style>
+:root {
+    --bg: #0A0A0A;
+    --surface: #141414;
+    --surface-2: #1C1C1C;
+    --border: #2A2A2A;
+    --text: #E8E8E8;
+    --text-muted: #888;
+    --accent: #8DC63F;
+    --accent-dim: rgba(141,198,63,0.12);
+    --yellow: #FFF200;
+    --red: #E43020;
+    --blue: #3B82F6;
+    --font: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    --mono: 'JetBrains Mono', 'Fira Code', monospace;
+    --radius: 16px;
+}
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap');
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: var(--font); background: var(--bg); color: var(--text); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+
+/* ─── HEADER ─── */
+.hero {
+    padding: 80px 40px 60px;
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+}
+.hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--accent-dim);
+    color: var(--accent);
+    font-size: 13px;
+    font-weight: 700;
+    padding: 6px 16px;
+    border-radius: 100px;
+    margin-bottom: 24px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+.hero h1 {
+    font-size: clamp(36px, 5vw, 64px);
+    font-weight: 900;
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    margin-bottom: 20px;
+}
+.hero h1 .accent { color: var(--accent); }
+.hero p.subtitle {
+    font-size: 18px;
+    color: var(--text-muted);
+    max-width: 600px;
+    line-height: 1.7;
+}
+
+/* ─── STATS BAR ─── */
+.stats-bar {
+    display: flex;
+    gap: 1px;
+    background: var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    max-width: 1200px;
+    margin: 0 auto 60px;
+}
+.stat {
+    flex: 1;
+    background: var(--surface);
+    padding: 28px 24px;
+    text-align: center;
+}
+.stat-value {
+    font-size: 32px;
+    font-weight: 900;
+    font-family: var(--mono);
+    color: var(--accent);
+    line-height: 1;
+    margin-bottom: 6px;
+}
+.stat-label {
+    font-size: 12px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 600;
+}
+
+/* ─── TIMELINE ─── */
+.timeline {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 40px 80px;
+    position: relative;
+}
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 76px;
+    top: 0;
+    bottom: 80px;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--accent), var(--border) 90%, transparent);
+}
+
+/* ─── PHASE CARD ─── */
+.phase {
+    position: relative;
+    margin-bottom: 32px;
+    padding-left: 100px;
+}
+.phase-dot {
+    position: absolute;
+    left: 64px;
+    top: 28px;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: var(--bg);
+    border: 3px solid var(--accent);
+    z-index: 2;
+    transition: background 0.3s, transform 0.3s;
+}
+.phase.open .phase-dot {
+    background: var(--accent);
+    transform: scale(1.2);
+}
+.phase-number {
+    position: absolute;
+    left: 0;
+    top: 24px;
+    font-size: 14px;
+    font-weight: 800;
+    color: var(--text-muted);
+    font-family: var(--mono);
+    letter-spacing: 1px;
+}
+
+.phase-header {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 24px 32px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: border-color 0.3s, background 0.3s;
+    user-select: none;
+}
+.phase-header:hover {
+    border-color: var(--accent);
+    background: var(--surface-2);
+}
+.phase.open .phase-header {
+    border-color: var(--accent);
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+.phase-header-left { display: flex; align-items: center; gap: 16px; }
+.phase-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    background: var(--accent-dim);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    flex-shrink: 0;
+}
+.phase-title {
+    font-size: 18px;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+}
+.phase-meta {
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-top: 2px;
+}
+.phase-arrow {
+    font-size: 18px;
+    color: var(--text-muted);
+    transition: transform 0.3s;
+    flex-shrink: 0;
+}
+.phase.open .phase-arrow { transform: rotate(180deg); color: var(--accent); }
+
+/* ─── PHASE BODY ─── */
+.phase-body {
+    background: var(--surface);
+    border: 1px solid var(--accent);
+    border-top: none;
+    border-bottom-left-radius: var(--radius);
+    border-bottom-right-radius: var(--radius);
+    padding: 0 32px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s cubic-bezier(0.16,1,0.3,1), padding 0.3s;
+}
+.phase.open .phase-body {
+    max-height: 2000px;
+    padding: 28px 32px 32px;
+}
+
+.phase-desc {
+    font-size: 15px;
+    color: var(--text-muted);
+    line-height: 1.7;
+    margin-bottom: 28px;
+    max-width: 640px;
+}
+
+/* Columns inside phase */
+.phase-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+}
+.phase-col h4 {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--accent);
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+.phase-col ul {
+    list-style: none;
+}
+.phase-col li {
+    font-size: 14px;
+    color: var(--text);
+    padding: 7px 0;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.phase-col li:last-child { border-bottom: none; }
+.phase-col li .dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+    flex-shrink: 0;
+}
+
+/* ─── CHECKLIST STYLE ─── */
+.check-item {
+    font-size: 14px;
+    color: var(--text);
+    padding: 7px 0;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+}
+.check-item:last-child { border-bottom: none; }
+.check-box {
+    width: 18px;
+    height: 18px;
+    border-radius: 4px;
+    border: 2px solid var(--border);
+    flex-shrink: 0;
+    margin-top: 1px;
+    cursor: pointer;
+    transition: background 0.2s, border-color 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.check-box.checked {
+    background: var(--accent);
+    border-color: var(--accent);
+}
+.check-box.checked::after {
+    content: '✓';
+    color: #000;
+    font-size: 11px;
+    font-weight: 900;
+}
+.check-item.done { color: var(--text-muted); text-decoration: line-through; }
+
+/* ─── TOOL TAGS ─── */
+.tool-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.tool-tag {
+    font-size: 12px;
+    font-weight: 600;
+    padding: 4px 12px;
+    border-radius: 100px;
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    color: var(--text-muted);
+    font-family: var(--mono);
+}
+
+/* ─── FOOTER ─── */
+.framework-footer {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.framework-footer p { font-size: 13px; color: var(--text-muted); }
+.framework-footer .sig { font-weight: 700; color: var(--accent); }
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 768px) {
+    .hero { padding: 48px 20px 40px; }
+    .stats-bar { flex-direction: column; margin-left: 20px; margin-right: 20px; }
+    .timeline { padding: 0 20px 60px; }
+    .timeline::before { left: 36px; }
+    .phase { padding-left: 60px; }
+    .phase-dot { left: 24px; top: 24px; }
+    .phase-number { display: none; }
+    .phase-header { padding: 18px 20px; flex-wrap: wrap; gap: 12px; }
+    .phase-body { padding: 0 20px; }
+    .phase.open .phase-body { padding: 20px; }
+    .phase-grid { grid-template-columns: 1fr; gap: 28px; }
+    .framework-footer { flex-direction: column; gap: 12px; padding: 40px 20px; text-align: center; }
+    #scoreGrid { grid-template-columns: 1fr !important; }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══ HERO ═══ -->
+<div class="hero">
+    <div class="hero-badge">⚡ Reusable Framework</div>
+    <h1>Website Build<br><span class="accent">Framework</span></h1>
+    <p class="subtitle">Powtarzalny, 7-fazowy proces budowy strony korporacyjnej — od audytu po iterację. Zbudowany na bazie 137 tasków, przetestowany na żywym produkcie.</p>
+</div>
+
+<!-- ═══ STATS ═══ -->
+<div class="stats-bar">
+    <div class="stat"><div class="stat-value">7</div><div class="stat-label">Faz procesu</div></div>
+    <div class="stat"><div class="stat-value">137</div><div class="stat-label">Tasków wykonanych</div></div>
+    <div class="stat"><div class="stat-value">25+</div><div class="stat-label">Stron w serwisie</div></div>
+    <div class="stat"><div class="stat-value">6</div><div class="stat-label">Cykli audytu</div></div>
+    <div class="stat"><div class="stat-value">95+</div><div class="stat-label">PageSpeed score</div></div>
+</div>
+
+<!-- ═══ TIMELINE ═══ -->
+<div class="timeline">
+
+    <!-- PHASE 1 -->
+    <div class="phase" data-phase="1">
+        <div class="phase-number">01</div>
+        <div class="phase-dot"></div>
+        <div class="phase-header" onclick="togglePhase(this)">
+            <div class="phase-header-left">
+                <div class="phase-icon">🔍</div>
+                <div>
+                    <div class="phase-title">Discovery & Audyt</div>
+                    <div class="phase-meta">Analiza stanu obecnego, zbieranie materiałów, mapowanie problemów</div>
+                </div>
+            </div>
+            <div class="phase-arrow">▼</div>
+        </div>
+        <div class="phase-body">
+            <div class="phase-desc">Zanim napiszesz linijkę kodu — zrozum co masz, co nie działa i co realnie wpływa na biznes klienta. Audyt to nie checklist SEO, to mapa operacyjna: co zabija konwersje, co spowalnia stronę, co jest redundantne.</div>
+            <div class="phase-grid">
+                <div class="phase-col">
+                    <h4>🎯 Działania</h4>
+                    <ul>
+                        <li><span class="dot"></span>Audyt obecnej strony (UX, CX, copy, SEO)</li>
+                        <li><span class="dot"></span>Inwentaryzacja contentu — keep / kill / merge</li>
+                        <li><span class="dot"></span>Mapowanie redirectów (stary → nowy URL)</li>
+                        <li><span class="dot"></span>Zebranie brandingu: logo, kolory, fonty, zdjęcia</li>
+                        <li><span class="dot"></span>Analiza konkurencji + benchmark</li>
+                    </ul>
+                </div>
+                <div class="phase-col">
+                    <h4>📦 Deliverables</h4>
+                    <ul>
+                        <li><span class="dot"></span>Raport audytu z priorytetami (P0/P1/P2/P3)</li>
+                        <li><span class="dot"></span>Mapa redirectów 301</li>
+                        <li><span class="dot"></span>Content inventory spreadsheet</li>
+                        <li><span class="dot"></span>Brand asset kit</li>
+                        <li><span class="dot"></span>Competitive brief</li>
+                    </ul>
+                </div>
+                <div class="phase-col">
+                    <h4>🔧 Narzędzia</h4>
+                    <div class="tool-tags">
+                        <span class="tool-tag">Screaming Frog</span>
+                        <span class="tool-tag">Lighthouse</span>
+                        <span class="tool-tag">GTmetrix</span>
+                        <span class="tool-tag">Ahrefs</span>
+                        <span class="tool-tag">Claude + Cowork</span>
+                        <span class="tool-tag">Figma</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PHASE 2 -->
+    <div class="phase" data-phase="2">
+        <div class="phase-number">02</div>
+        <div class="phase-dot"></div>
+        <div class="phase-header" onclick="togglePhase(this)">
+            <div class="phase-header-left">
+                <div class="phase-icon">🏗️</div>
+                <div>
+                    <div class="phase-title">Architektura & Struktura</div>
+                    <div class="phase-meta">IA, nawigacja, mapa stron, routing, schema</div>
+                </div>
+            </div>
+            <div class="phase-arrow">▼</div>
+        </div>
+        <div class="phase-body">
+            <div class="phase-desc">Architektura informacji to fundament. Bez solidnej IA nawet najładniejszy design nie konwertuje. Definiujesz hierarchię stron, nawigację, URL-e i redirecty zanim dotkniesz CSS-a.</div>
+            <div class="phase-grid">
+                <div class="phase-col">
+                    <h4>🎯 Działania</h4>
+                    <ul>
+                        <li><span class="dot"></span>Mapa stron — główne + deep offer + city pages</li>
+                        <li><span class="dot"></span>Nawigacja desktop + mobile</li>
+                        <li><span class="dot"></span>URL structure + canonical tags</li>
+                        <li><span class="dot"></span>Schema JSON-LD (Organization, BreadcrumbList, Service)</li>
+                        <li><span class="dot"></span>Sitemap.xml + robots.txt</li>
+                        <li><span class="dot"></span>Mapa 301 redirectów (vercel.json)</li>
+                    </ul>
+                </div>
+                <div class="phase-col">
+                    <h4>📦 Deliverables</h4>
+                    <ul>
+                        <li><span class="dot"></span>Sitemap diagram (visual)</li>
+                        <li><span class="dot"></span>Routing table (URL → plik)</li>
+                        <li><span class="dot"></span>vercel.json z redirectami</li>
+                        <li><span class="dot"></span>Schema templates per page type</li>
+                        <li><span class="dot"></span>sitemap.xml + robots.txt</li>
+                    </ul>
+                </div>
+                <div class="phase-col">
+                    <h4>🔧 Narzędzia</h4>
+                    <div class="tool-tags">
+                        <span class="tool-tag">Mermaid</span>
+                        <span class="tool-tag">JSON-LD</span>
+                        <span class="tool-tag">Vercel CLI</span>
+                        <span class="tool-tag">Google Search Console</span>
+                        <span class="tool-tag">Schema Validator</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PHASE 3 -->
+    <div class="phase" data-phase="3">
+        <div class="phase-number">03</div>
+        <div class="phase-dot"></div>
+        <div class="phase-header" onclick="togglePhase(this)">
+            <div class="phase-header-left">
+                <div class="phase-icon">🎨</div>
+                <div>
+                    <div class="phase-title">Design & Build</div>
+                    <div class="phase-meta">HTML/CSS, komponenty, responsive, animacje</div>
+                </div>
+            </div>
+            <div class="phase-arrow">▼</div>
+        </div>
+        <div class="phase-body">
+            <div class="phase-desc">Budowa strona-po-stronie z mobile-first approach. Każda strona to system komponentów (hero, cards, CTA, FAQ, footer) — nie jednorazowy layout. Shared CSS zamiast copy-paste per plik. Wave dividers, reveal animations, sticky nav — ale bez library bloat.</div>
+            <div class="phase-grid">
+                <div class="phase-col">
+                    <h4>🎯 Działania</h4>
+                    <ul>
+                        <li><span class="dot"></span>Design system: kolory, typografia, spacing, radius</li>
+                        <li><span class="dot"></span>Komponent library: nav, hero, cards, FAQ, footer</li>
+                        <li><span class="dot"></span>Homepage + oferta + zapytanie (core funnel)</li>
+                        <li><span class="dot"></span>Deep offer pages (kanapki, catering, programy)</li>
+                        <li><span class="dot"></span>City landing pages × N miast</li>
+                        <li><span class="dot"></span>Blog index + article template</li>
+                        <li><span class="dot"></span>Shared style.css extraction</li>
+                    </ul>
+                </div>
+                <div class="phase-col">
+                    <h4>📦 Deliverables</h4>
+                    <ul>
+                        <li><span class="dot"></span>25+ responsive stron HTML</li>
+                        <li><span class="dot"></span>Shared style.css + mn.js</li>
+                        <li><span class="dot"></span>SVG icon system</li>
+                        <li><span class="dot"></span>WebP optimized images</li>
+                        <li><span class="dot"></span>Mobile drawer menu</li>
+                        <li><span class="dot"></span>Exit-intent popup</li>
+                    </ul>
+                </div>
+                <div class="phase-col">
+                    <h4>🔧 Narzędzia</h4>
+                    <div class="tool-tags">
+                        <span class="tool-tag">HTML/CSS/JS</span>
+                        <span class="tool-tag">Claude + Cowork</span>
+                        <span class="tool-tag">Pillow (WebP)</span>
+                        <span class="tool-tag">Git</span>
+                        <span class="tool-tag">SVG</span>
+                        <span class="tool-tag">CSS Variables</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PHASE 4 -->
+    <div class="phase" data-phase="4">
+        <div class="phase-number">04</div>
+        <div class="phase-dot"></div>
+        <div class="phase-header" onclick="togglePhase(this)">
+            <div class="phase-header-left">
+                <div class="phase-icon">✍️</div>
+                <div>
+                    <div class="phase-title">Content & SEO</div>
+                    <div class="phase-meta">Treść, meta tagi, schema, internal linking, AEO</div>
+                </div>
+            </div>
+            <div class="phase-arrow">▼</div>
+        </div>
+        <div class="phase-body">
+            <div class="phase-desc">Content nie jest "dodawany na końcu" — jest częścią budowy. Każda strona dostaje unikalne meta title + description, Schema JSON-LD, OG image, internal links. Blog to SEO engine, nie afterthought. AEO (AI Engine Optimization) to nowy standard obok klasycznego SEO.</div>
+            <div class="phase-grid">
+                <div class="phase-col">
+                    <h4>🎯 Działania</h4>
+                    <ul>
+                        <li><span class="dot"></span>Unikalne meta titles + descriptions per strona</li>
+                        <li><span class="dot"></span>Schema JSON-LD (6+ typów)</li>
+                        <li><span class="dot"></span>OG images + Twitter cards</li>
+                        <li><span class="dot"></span>Blog keyword research + content plan</li>
+                        <li><span class="dot"></span>Migracja wartościowych artykułów</li>
+                        <li><span class="dot"></span>Internal linking strategy</li>
+                        <li><span class="dot"></span>FAQ sekcje z FAQPage schema</li>
+                    </ul>
+                </div>
+                <div class="phase-col">
+                    <h4>📦 Deliverables</h4>
+                    <ul>
+                        <li><span class="dot"></span>SEO spreadsheet (URL, title, desc, schema)</li>
+                        <li><span class="dot"></span>10+ artykułów blogowych</li>
+                        <li><span class="dot"></span>Content plan na 20 kolejnych</li>
+                        <li><span class="dot"></span>OG image 1200×630</li>
+                        <li><span class="dot"></span>Internal linking map</li>
+                    </ul>
+                </div>
+                <div class="phase-col">
+                    <h4>🔧 Narzędzia</h4>
+                    <div class="tool-tags">
+                        <span class="tool-tag">Ahrefs</span>
+                        <span class="tool-tag">Schema.org</span>
+                        <span class="tool-tag">Google Rich Results</span>
+                        <span class="tool-tag">Claude AI</span>
+                        <span class="tool-tag">OG Preview</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PHASE 5 -->
+    <div class="phase" data-phase="5">
+        <div class="phase-number">05</div>
+        <div class="phase-dot"></div>
+        <div class="phase-header" onclick="togglePhase(this)">
+            <div class="phase-header-left">
+                <div class="phase-icon">⚡</div>
+                <div>
+                    <div class="phase-title">Performance & QA</div>
+                    <div class="phase-meta">PageSpeed, mobile audit, a11y, bugfix cycles</div>
+                </div>
+            </div>
+            <div class="phase-arrow">▼</div>
+        </div>
+        <div class="phase-body">
+            <div class="phase-desc">Każda iteracja kończy się cyklem QA. Nie ma "deploy and pray" — jest screenshot every page at 375px, Lighthouse per strona, checklist a11y. Bugfixy idą w batch commitach, nie w hotfixach o 3 w nocy.</div>
+            <div class="phase-grid">
+                <div class="phase-col">
+                    <h4>🎯 Działania</h4>
+                    <ul>
+                        <li><span class="dot"></span>Lighthouse audit (mobile + desktop)</li>
+                        <li><span class="dot"></span>Mobile responsive check (375px, 768px, 1024px)</li>
+                        <li><span class="dot"></span>WCAG 2.1 AA — skip-link, focus-visible, ARIA</li>
+                        <li><span class="dot"></span>Image optimization (WebP, lazy load, fetchpriority)</li>
+                        <li><span class="dot"></span>Kill bloat: unused CSS, JS libraries, duplicate assets</li>
+                        <li><span class="dot"></span>Cross-browser testing</li>
+                    </ul>
+                </div>
+                <div class="phase-col">
+                    <h4>📦 Deliverables</h4>
+                    <ul>
+                        <li><span class="dot"></span>PageSpeed raport (95+ mobile target)</li>
+                        <li><span class="dot"></span>Mobile screenshot deck</li>
+                        <li><span class="dot"></span>Bug tracker z priorytetami</li>
+                        <li><span class="dot"></span>Accessibility audit report</li>
+                        <li><span class="dot"></span>Asset size inventory</li>
+                    </ul>
+                </div>
+                <div class="phase-col">
+                    <h4>🔧 Narzędzia</h4>
+                    <div class="tool-tags">
+                        <span class="tool-tag">Lighthouse</span>
+                        <span class="tool-tag">PageSpeed Insights</span>
+                        <span class="tool-tag">Chrome DevTools</span>
+                        <span class="tool-tag">Pillow/WebP</span>
+                        <span class="tool-tag">axe DevTools</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PHASE 6 -->
+    <div class="phase" data-phase="6">
+        <div class="phase-number">06</div>
+        <div class="phase-dot"></div>
+        <div class="phase-header" onclick="togglePhase(this)">
+            <div class="phase-header-left">
+                <div class="phase-icon">🚀</div>
+                <div>
+                    <div class="phase-title">Launch & Deploy</div>
+                    <div class="phase-meta">Git → GitHub → Vercel auto-deploy, DNS, weryfikacja</div>
+                </div>
+            </div>
+            <div class="phase-arrow">▼</div>
+        </div>
+        <div class="phase-body">
+            <div class="phase-desc">Deploy pipeline: git push → GitHub → Vercel auto-deploy w &lt;60 sekund. Zero downtime, instant rollback. DNS migration to oddzielny krok — nie zmieniaj nameserverów w piątek o 17:00. GTM/GA4 tracking odpala się dopiero po weryfikacji live.</div>
+            <div class="phase-grid">
+                <div class="phase-col">
+                    <h4>🎯 Działania</h4>
+                    <ul>
+                        <li><span class="dot"></span>Git repo setup + .gitignore</li>
+                        <li><span class="dot"></span>Vercel project link (GitHub integration)</li>
+                        <li><span class="dot"></span>Konfiguracja custom domain + SSL</li>
+                        <li><span class="dot"></span>301 redirect map w vercel.json</li>
+                        <li><span class="dot"></span>GTM container + GA4 property</li>
+                        <li><span class="dot"></span>Event tracking (form_submit, CTA clicks)</li>
+                        <li><span class="dot"></span>Google Search Console submit sitemap</li>
+                    </ul>
+                </div>
+                <div class="phase-col">
+                    <h4>📦 Deliverables</h4>
+                    <ul>
+                        <li><span class="dot"></span>Live site na custom domain</li>
+                        <li><span class="dot"></span>Vercel dashboard z deploys</li>
+                        <li><span class="dot"></span>GTM container z event tags</li>
+                        <li><span class="dot"></span>GA4 realtime verification</li>
+                        <li><span class="dot"></span>Search Console indexed pages</li>
+                    </ul>
+                </div>
+                <div class="phase-col">
+                    <h4>🔧 Narzędzia</h4>
+                    <div class="tool-tags">
+                        <span class="tool-tag">Git</span>
+                        <span class="tool-tag">GitHub</span>
+                        <span class="tool-tag">Vercel</span>
+                        <span class="tool-tag">GTM</span>
+                        <span class="tool-tag">GA4</span>
+                        <span class="tool-tag">Search Console</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PHASE 7 -->
+    <div class="phase" data-phase="7">
+        <div class="phase-number">07</div>
+        <div class="phase-dot"></div>
+        <div class="phase-header" onclick="togglePhase(this)">
+            <div class="phase-header-left">
+                <div class="phase-icon">🔄</div>
+                <div>
+                    <div class="phase-title">Iteracja & Growth</div>
+                    <div class="phase-meta">CRO, formularze, kalkulatory, blog engine, A/B testy</div>
+                </div>
+            </div>
+            <div class="phase-arrow">▼</div>
+        </div>
+        <div class="phase-body">
+            <div class="phase-desc">Strona po launchu to v1.0, nie final. Iteracja oparta na danych: co konwertuje, co nie, gdzie ludzie odpadają. Dodajesz interaktywne elementy (kalkulator, quote builder, formularze), rozbudowujesz blog, testujesz CTA copy. Każda zmiana = commit + deploy + verify.</div>
+            <div class="phase-grid">
+                <div class="phase-col">
+                    <h4>🎯 Działania</h4>
+                    <ul>
+                        <li><span class="dot"></span>Formularz kontaktowy z progressem</li>
+                        <li><span class="dot"></span>Kalkulator kosztów / quote builder</li>
+                        <li><span class="dot"></span>Exit-intent popup z lead magnet</li>
+                        <li><span class="dot"></span>Blog content machine (nowe artykuły)</li>
+                        <li><span class="dot"></span>Case studies + social proof</li>
+                        <li><span class="dot"></span>CRO: testy CTA, copy, layout</li>
+                        <li><span class="dot"></span>Cykliczny re-audyt (co 2-4 tygodnie)</li>
+                    </ul>
+                </div>
+                <div class="phase-col">
+                    <h4>📦 Deliverables</h4>
+                    <ul>
+                        <li><span class="dot"></span>Interaktywne komponenty</li>
+                        <li><span class="dot"></span>Blog z nowym contentem co tydzień</li>
+                        <li><span class="dot"></span>Monthly performance report</li>
+                        <li><span class="dot"></span>Conversion funnel analysis</li>
+                        <li><span class="dot"></span>Iteracyjny backlog (nowe taski)</li>
+                    </ul>
+                </div>
+                <div class="phase-col">
+                    <h4>🔧 Narzędzia</h4>
+                    <div class="tool-tags">
+                        <span class="tool-tag">GA4</span>
+                        <span class="tool-tag">Hotjar</span>
+                        <span class="tool-tag">Claude + Cowork</span>
+                        <span class="tool-tag">Vercel Analytics</span>
+                        <span class="tool-tag">A/B testing</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<!-- ═══ SCORECARD ═══ -->
+<div style="max-width:1200px;margin:0 auto;padding:0 40px 80px;">
+    <div style="text-align:center;margin-bottom:48px;">
+        <div class="hero-badge" style="display:inline-flex;">📊 Scorecard</div>
+        <h2 style="font-size:clamp(28px,4vw,48px);font-weight:900;letter-spacing:-0.03em;margin-top:16px;">10 kategorii <span style="color:var(--accent);">oceny strony</span></h2>
+        <p style="font-size:16px;color:var(--text-muted);max-width:560px;margin:12px auto 0;">Każda strona oceniana w skali 1-1000. Kategorie odpowiadają fazom procesu — wiesz dokładnie co adresuje każda faza.</p>
+    </div>
+
+    <!-- Radar-like grid -->
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:32px;" id="scoreGrid">
+    </div>
+
+    <!-- Summary bar -->
+    <div style="display:flex;gap:1px;background:var(--border);border-radius:var(--radius);overflow:hidden;margin-bottom:32px;">
+        <div style="flex:1;background:var(--surface);padding:24px;text-align:center;">
+            <div style="font-size:36px;font-weight:900;font-family:var(--mono);color:var(--accent);">688</div>
+            <div style="font-size:12px;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px;font-weight:600;">Średnia / 1000</div>
+        </div>
+        <div style="flex:1;background:var(--surface);padding:24px;text-align:center;">
+            <div style="font-size:36px;font-weight:900;font-family:var(--mono);color:#4ade80;">870</div>
+            <div style="font-size:12px;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px;font-weight:600;">Najwyżej: SEO</div>
+        </div>
+        <div style="flex:1;background:var(--surface);padding:24px;text-align:center;">
+            <div style="font-size:36px;font-weight:900;font-family:var(--mono);color:var(--red);">320</div>
+            <div style="font-size:12px;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px;font-weight:600;">Najniżej: Fotografia</div>
+        </div>
+        <div style="flex:1;background:var(--surface);padding:24px;text-align:center;">
+            <div style="font-size:36px;font-weight:900;font-family:var(--mono);color:var(--yellow);">~850</div>
+            <div style="font-size:12px;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px;font-weight:600;">Target po P0+P1</div>
+        </div>
+    </div>
+
+    <!-- Phase mapping -->
+    <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:32px;">
+        <h3 style="font-size:14px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:var(--accent);margin-bottom:20px;">Kategoria → Faza procesu</h3>
+        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;" id="phaseMap"></div>
+    </div>
+</div>
+
+<!-- ═══ FOOTER ═══ -->
+<div class="framework-footer">
+    <p>Website Build Framework v1.0 — <span class="sig">Reszek Method</span></p>
+    <p>Zbudowane na bazie DailyFruits.pl · 137 tasków · 7 faz · 25+ stron</p>
+</div>
+
+<script>
+function togglePhase(header) {
+    var phase = header.parentElement;
+    var wasOpen = phase.classList.contains('open');
+    // close all
+    document.querySelectorAll('.phase').forEach(function(p) { p.classList.remove('open'); });
+    // toggle clicked
+    if (!wasOpen) phase.classList.add('open');
+}
+
+// Interactive checkboxes
+document.querySelectorAll('.check-box').forEach(function(box) {
+    box.addEventListener('click', function() {
+        this.classList.toggle('checked');
+        this.parentElement.classList.toggle('done');
+    });
+});
+
+// ─── SCORECARD DATA ───
+var categories = [
+    { name: 'Architektura SEO', score: 870, phase: 4, color: '#4ade80', blocker: 'Brak — najsilniejszy wymiar strony' },
+    { name: 'Struktura IA', score: 830, phase: 2, color: '#4ade80', blocker: 'Brak — solidna architektura informacji' },
+    { name: 'Copy & Komunikacja', score: 760, phase: 4, color: '#86efac', blocker: 'Gramatyka, spójność ton-of-voice' },
+    { name: 'UX Flow', score: 740, phase: 3, color: '#86efac', blocker: 'Nawigacja mobile, deep linking' },
+    { name: 'Performance', score: 720, phase: 5, color: '#fbbf24', blocker: 'JS bloat, lazy load gaps' },
+    { name: 'Customer Experience', score: 700, phase: 7, color: '#fbbf24', blocker: 'Brak pricing, formularz ukryty' },
+    { name: 'Design System', score: 650, phase: 3, color: '#fb923c', blocker: 'Niespójne spacing, brak tokenów' },
+    { name: 'Mobile', score: 620, phase: 5, color: '#fb923c', blocker: 'Hamburger bugs, overflow issues' },
+    { name: 'Trust / Social Proof', score: 470, phase: 7, color: '#f87171', blocker: 'Brak case studies, wideo, logo klientów' },
+    { name: 'Fotografia', score: 320, phase: 1, color: '#ef4444', blocker: 'Stock / brak zdjęć, placeholder grafiki' }
+];
+
+// Render score cards
+var gridEl = document.getElementById('scoreGrid');
+categories.forEach(function(cat, i) {
+    var pct = Math.round(cat.score / 10);
+    var card = document.createElement('div');
+    card.style.cssText = 'background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:20px;display:flex;align-items:center;gap:16px;transition:border-color 0.3s;cursor:default;';
+    card.onmouseenter = function() { this.style.borderColor = cat.color; };
+    card.onmouseleave = function() { this.style.borderColor = 'var(--border)'; };
+    card.innerHTML = '<div style="min-width:52px;text-align:center;"><div style="font-size:24px;font-weight:900;font-family:var(--mono);color:' + cat.color + ';">' + cat.score + '</div><div style="font-size:10px;color:var(--text-muted);margin-top:2px;">/1000</div></div>' +
+        '<div style="flex:1;"><div style="font-size:14px;font-weight:700;margin-bottom:6px;">' + cat.name + '</div>' +
+        '<div style="height:4px;background:var(--border);border-radius:2px;overflow:hidden;margin-bottom:6px;"><div style="height:100%;width:' + pct + '%;background:' + cat.color + ';border-radius:2px;"></div></div>' +
+        '<div style="font-size:11px;color:var(--text-muted);"><span style="color:' + cat.color + ';font-weight:600;">Faza ' + cat.phase + '</span> · ' + cat.blocker + '</div></div>';
+    gridEl.appendChild(card);
+});
+
+// Render phase mapping
+var phaseNames = { 1: 'Discovery & Audyt', 2: 'Architektura & Struktura', 3: 'Design & Build', 4: 'Content & SEO', 5: 'Performance & QA', 6: 'Launch & Deploy', 7: 'Iteracja & Growth' };
+var mapEl = document.getElementById('phaseMap');
+var grouped = {};
+categories.forEach(function(c) {
+    if (!grouped[c.phase]) grouped[c.phase] = [];
+    grouped[c.phase].push(c);
+});
+Object.keys(grouped).sort().forEach(function(p) {
+    var div = document.createElement('div');
+    div.style.cssText = 'background:var(--surface-2);border-radius:10px;padding:16px;';
+    var cats = grouped[p].map(function(c) {
+        return '<span style="display:inline-flex;align-items:center;gap:4px;font-size:13px;"><span style="width:8px;height:8px;border-radius:50%;background:' + c.color + ';"></span>' + c.name + ' <span style="color:var(--text-muted);font-family:var(--mono);font-size:11px;">' + c.score + '</span></span>';
+    }).join('<br>');
+    div.innerHTML = '<div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--accent);margin-bottom:8px;">Faza ' + p + ': ' + phaseNames[p] + '</div>' + cats;
+    mapEl.appendChild(div);
+});
+
+// Open first phase by default
+document.querySelector('.phase').classList.add('open');
+
+// Entrance animations
+var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+        }
+    });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.phase').forEach(function(phase, i) {
+    phase.style.opacity = '0';
+    phase.style.transform = 'translateY(20px)';
+    phase.style.transition = 'opacity 0.5s ease ' + (i * 0.08) + 's, transform 0.5s ease ' + (i * 0.08) + 's';
+    observer.observe(phase);
+});
+</script>
+</body>
+</html>
