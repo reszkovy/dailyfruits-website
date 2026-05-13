@@ -106,6 +106,32 @@
         .product-card:hover { transform: translateY(-6px); box-shadow: 0 16px 48px rgba(27,94,58,0.1); }
         .product-card-img { position: relative; background: #f8f7f0; padding: 12px; display: flex; align-items: center; justify-content: center; min-height: 140px; }
         .product-card-img img { width: 85%; height: 120px; object-fit: contain; }
+
+        /* ─── PACKSHOT TOOLTIP ─── */
+        .product-card-img[data-tooltip] { cursor: pointer; }
+        .product-card-img[data-tooltip]::after {
+            content: attr(data-tooltip);
+            position: absolute; bottom: calc(100% + 10px); left: 50%; transform: translateX(-50%) translateY(8px);
+            background: var(--green-dark); color: #fff; font-size: 12px; line-height: 1.6; font-weight: 500;
+            padding: 14px 18px; border-radius: var(--radius); white-space: pre-line;
+            min-width: 220px; max-width: 280px; text-align: left;
+            box-shadow: 0 12px 40px rgba(27,94,58,0.25);
+            opacity: 0; pointer-events: none;
+            transition: opacity 0.3s cubic-bezier(0.16,1,0.3,1), transform 0.3s cubic-bezier(0.16,1,0.3,1);
+            z-index: 60;
+        }
+        .product-card-img[data-tooltip]::before {
+            content: ''; position: absolute; bottom: calc(100% + 4px); left: 50%; transform: translateX(-50%);
+            border: 6px solid transparent; border-top-color: var(--green-dark);
+            opacity: 0; pointer-events: none;
+            transition: opacity 0.3s cubic-bezier(0.16,1,0.3,1);
+            z-index: 61;
+        }
+        .product-card-img[data-tooltip]:hover::after { opacity: 1; transform: translateX(-50%) translateY(0); }
+        .product-card-img[data-tooltip]:hover::before { opacity: 1; }
+        @media (max-width: 768px) {
+            .product-card-img[data-tooltip]::after, .product-card-img[data-tooltip]::before { display: none; }
+        }
         .product-badge { position: absolute; top: 8px; left: 8px; padding: 3px 8px; border-radius: var(--radius-pill); font-size: 9px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
         .badge-bestseller { background: var(--red); color: #fff; }
         .badge-new { background: var(--lime); color: var(--green-dark); }
@@ -352,7 +378,7 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
 <p style="text-align:center;font-size:15px;color: var(--gray-500);margin:8px auto 0;max-width:520px;">Owoce, kanapki, soki, bakalie, lody i wiele wiecej — wszystko w jednej dostawie.</p>
 <div class="cat-tabs-wrap" id="catTabs" style="margin-top:20px;">
     <div class="cat-tabs" role="tablist" aria-label="Kategorie produktów">
-        <button class="cat-tab active" role="tab" aria-selected="true" data-cat="owoce"><img src="icon-owoce.svg" alt="Ikona owoców" style="height:18px" loading="lazy" width="48" height="48"> Owoce <span class="cat-count">6</span></button>
+        <button class="cat-tab active" role="tab" aria-selected="true" data-cat="owoce"><img src="icon-owoce.svg" alt="Ikona owoców" style="height:18px" loading="lazy" width="48" height="48"> Owoce <span class="cat-count">7</span></button>
         <button class="cat-tab" role="tab" aria-selected="false" data-cat="kanapki"><img src="icon-kanapki.svg" alt="Ikona kanapek" style="height:14px" loading="lazy" width="48" height="48"> Kanapki <span class="cat-count">4</span></button>
         <button class="cat-tab" role="tab" aria-selected="false" data-cat="sniadania"><img src="icon-sniadania.svg" alt="Ikona sniadaniowa" style="height:18px" loading="lazy" width="48" height="48"> Sniadania <span class="cat-count">3</span></button>
         <button class="cat-tab" role="tab" aria-selected="false" data-cat="soki"><img src="icon-soki.svg" alt="Ikona soków" style="height:20px" loading="lazy" width="48" height="48"> Soki <span class="cat-count">3</span></button>
@@ -370,28 +396,32 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
     <div class="cat-panel active" data-cat="owoce" role="tabpanel">
         <div class="products-grid">
             <div class="product-card">
-                <div class="product-card-img"><span class="product-badge badge-popular">Low cost</span><img src="box_owoce_2.webp" alt="Zestaw Standard MIX" loading="lazy" width="400" height="300"></div>
-                <div class="product-card-body"><h3>Zestaw Standard MIX</h3><p>5 kg jabłek, 2 kg bananów, 2 kg owoców sezonowych – idealne na start</p><a href="zapytanie.html" class="btn-sm">Złóż zapytanie →</a></div>
+                <div class="product-card-img" data-tooltip="🍎 Jabłka — 5 kg&#10;🍌 Banany — 3 kg&#10;&#10;Idealny na start dla zespołów 10-15 osób"><span class="product-badge badge-popular">Low cost</span><img src="icons/zestaw-podstawowy.webp" alt="Zestaw Podstawowy — jabłka i banany w pudełku DailyFruits" loading="lazy" width="800" height="533"></div>
+                <div class="product-card-body"><h3>Zestaw Podstawowy</h3><p>Jabłka i banany — klasyczny duet na start. Idealne na codzienne doładowanie energii w biurze</p><a href="zapytanie.html" class="btn-sm">Złóż zapytanie →</a></div>
             </div>
             <div class="product-card">
-                <div class="product-card-img"><span class="product-badge badge-bestseller">Bestseller</span><img src="owoce-product-01.png" alt="Zestaw Premium MIX 1" loading="lazy" width="400" height="300"></div>
-                <div class="product-card-body"><h3>Zestaw Premium MIX 1</h3><p>3 kg jabłek, 3 kg bananów, 3 kg owoców sezonowych. Nasz najczęściej zamawiany</p><a href="zapytanie.html" class="btn-sm">Złóż zapytanie →</a></div>
+                <div class="product-card-img" data-tooltip="🍇 Winogrona — 1.5 kg&#10;🍊 Pomarańcze — 2 kg&#10;🍐 Gruszki — 2 kg&#10;🍎 Jabłka — 2 kg&#10;🍌 Banany — 2 kg&#10;&#10;Nasz #1 dla zespołów 15-25 osób"><span class="product-badge badge-bestseller">Bestseller</span><img src="icons/zestaw-klasyczny.webp" alt="Zestaw Klasyczny — mix owoców w pudełku DailyFruits" loading="lazy" width="800" height="533"></div>
+                <div class="product-card-body"><h3>Zestaw Klasyczny</h3><p>Winogrona, pomarańcze, gruszki, jabłka, banany — bogaty mix na każdy dzień tygodnia</p><a href="zapytanie.html" class="btn-sm">Złóż zapytanie →</a></div>
             </div>
             <div class="product-card">
-                <div class="product-card-img"><span class="product-badge badge-bestseller">Bestseller</span><img src="owoce-product-02.png" alt="Zestaw Premium MIX 2" loading="lazy" width="400" height="300"></div>
-                <div class="product-card-body"><h3>Zestaw Premium MIX 2</h3><p>2 kg jabłek, 3 kg bananów, 4 kg owoców sezonowych + owoce egzotyczne</p><a href="zapytanie.html" class="btn-sm">Złóż zapytanie →</a></div>
+                <div class="product-card-img" data-tooltip="🍍 Ananas — 1 szt.&#10;🍎 Jabłka — 3 kg&#10;🍌 Banany — 2 kg&#10;🍐 Gruszki — 2 kg&#10;🍊 Pomarańcze — 3 kg&#10;&#10;Pełne pudełko dla zespołów 20-30 osób"><span class="product-badge badge-bestseller">Bestseller</span><img src="icons/zestaw-premium.webp" alt="Zestaw Premium — ananas, jabłka, banany, gruszki i pomarańcze w pudełku DailyFruits" loading="lazy" width="800" height="533"></div>
+                <div class="product-card-body"><h3>Zestaw Premium</h3><p>Ananas, jabłka, banany, gruszki i pomarańcze — pełne pudełko dla wymagających zespołów</p><a href="zapytanie.html" class="btn-sm">Złóż zapytanie →</a></div>
             </div>
             <div class="product-card">
-                <div class="product-card-img"><img src="owoce-product-03.png" alt="Zestawy indywidualne" loading="lazy" width="400" height="300"></div>
-                <div class="product-card-body"><h3>Zestawy indywidualne</h3><p>Porcje owoców dla każdego pracownika. Personalizowane zestawy na biurko</p><a href="zapytanie.html" class="btn-sm">Złóż zapytanie →</a></div>
+                <div class="product-card-img" data-tooltip="🍍 Ananas — 1 szt.&#10;🥝 Kiwi — 1 kg&#10;🍎 Jabłka — 2 kg&#10;🍌 Banany — 2 kg&#10;🍊 Pomarańcze — 2 kg&#10;&#10;Egzotyczny twist dla zespołów 15-20 osób"><span class="product-badge badge-new">Nowość</span><img src="icons/zestaw-egzotyczny.webp" alt="Zestaw Egzotyczny — ananas, kiwi, jabłka, banany i pomarańcze w pudełku DailyFruits" loading="lazy" width="800" height="533"></div>
+                <div class="product-card-body"><h3>Zestaw Egzotyczny</h3><p>Ananas, kiwi, jabłka, banany i pomarańcze — egzotyczny twist dla zespołu</p><a href="zapytanie.html" class="btn-sm">Złóż zapytanie →</a></div>
             </div>
             <div class="product-card">
-                <div class="product-card-img"><img src="owoce-product-05.png" alt="Przekąski warzywne" loading="lazy" width="400" height="300"></div>
-                <div class="product-card-body"><h3>Przekąski warzywne</h3><p>Marchewki, papryka, pomidorki cherry – zdrowa alternatywa dla chipsów</p><a href="zapytanie.html" class="btn-sm">Złóż zapytanie →</a></div>
+                <div class="product-card-img" data-tooltip="🌿 Mięta świeża — pęczek&#10;🍋 Cytryny — 1 kg&#10;🍊 Pomarańcze — 2 kg&#10;🫙 Hummus — 3 szt.&#10;&#10;Bomba witaminowa na odporność"><img src="icons/zestaw-witaminowy.webp" alt="Zestaw Witaminowy — mięta, cytryny, pomarańcze i hummus w pudełku DailyFruits" loading="lazy" width="800" height="533"></div>
+                <div class="product-card-body"><h3>Zestaw Witaminowy</h3><p>Mięta, cytryny, pomarańcze i hummus — bomba witaminowa na odporność</p><a href="zapytanie.html" class="btn-sm">Złóż zapytanie →</a></div>
             </div>
             <div class="product-card">
-                <div class="product-card-img"><span class="product-badge badge-new">Nowość</span><img src="owoce-product-06.png" alt="Zestaw Eco" loading="lazy" width="400" height="300"></div>
-                <div class="product-card-body"><h3>Zestaw Eco</h3><p>Owoce ekologiczne z certyfikatem. Premium jakość dla firm dbających o ESG</p><a href="zapytanie.html" class="btn-sm">Złóż zapytanie →</a></div>
+                <div class="product-card-img" data-tooltip="🌿 Mięta świeża — pęczek&#10;🫚 Imbir — 200g&#10;🍋 Cytryna — 0.5 kg&#10;🍵 Herbaty premium — 3 szt.&#10;&#10;Wellness prosto na biurko"><img src="icons/zestaw-herbaciarnia.webp" alt="Zestaw Herbaciarnia — mięta, imbir, cytryna i herbaty w pudełku DailyFruits" loading="lazy" width="800" height="533"></div>
+                <div class="product-card-body"><h3>Zestaw Herbaciarnia</h3><p>Świeża mięta, imbir, cytryna i herbaty premium — wellness prosto na biurko</p><a href="zapytanie.html" class="btn-sm">Złóż zapytanie →</a></div>
+            </div>
+            <div class="product-card">
+                <div class="product-card-img" data-tooltip="🌿 Mięta świeża — pęczek&#10;🫚 Imbir — 200g&#10;🍋 Cytryna — 0.5 kg&#10;💚 Limonki — 0.5 kg&#10;🥒 Ogórki — 1 kg&#10;🍊 Pomarańcze — 2 kg&#10;&#10;Zielona energia i naturalny detox"><img src="icons/zestaw-zielony.webp" alt="Zestaw Zielony — mięta, imbir, cytryna, limonki, ogórki i pomarańcze w pudełku DailyFruits" loading="lazy" width="800" height="533"></div>
+                <div class="product-card-body"><h3>Zestaw Zielony</h3><p>Mięta, imbir, cytryna, limonki, ogórki i pomarańcze — zielona energia i detox</p><a href="zapytanie.html" class="btn-sm">Złóż zapytanie →</a></div>
             </div>
         </div>
     </div>
