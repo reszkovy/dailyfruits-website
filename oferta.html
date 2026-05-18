@@ -99,6 +99,18 @@
         .cat-panel.active { display: block; }
         @keyframes fadeSlide { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
 
+        /* ─── SUBCATEGORY PILLS ─── */
+        .subcat-bar { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 20px; padding-bottom: 16px; border-bottom: 1px solid rgba(27,94,58,0.08); }
+        .subcat-pill { display: inline-flex; align-items: center; gap: 4px; padding: 7px 16px; border-radius: var(--radius-pill); font-size: 13px; font-weight: 600; cursor: pointer; border: 1.5px solid rgba(27,94,58,0.15); background: transparent; color: var(--green-dark); transition: all 0.25s ease; white-space: nowrap; }
+        .subcat-pill:hover { background: rgba(141,198,63,0.12); border-color: rgba(141,198,63,0.4); }
+        .subcat-pill.active { background: var(--lime); border-color: var(--lime); color: var(--green-dark); font-weight: 700; }
+        .subcat-pill .pill-count { font-size: 10px; background: rgba(27,94,58,0.08); padding: 1px 6px; border-radius: 8px; font-weight: 700; }
+        .subcat-pill.active .pill-count { background: rgba(27,94,58,0.15); }
+        .subcat-intro { font-size: 13px; color: var(--gray-500); line-height: 1.6; margin-bottom: 16px; padding: 0; background: none; border: none; }
+        .product-card[data-subcat] { transition: opacity 0.3s ease, transform 0.3s ease; }
+        .product-card.subcat-hidden { display: none; }
+        @media (max-width: 768px) { .subcat-bar { gap: 6px; overflow-x: auto; flex-wrap: nowrap; -webkit-overflow-scrolling: touch; scrollbar-width: none; padding-bottom: 12px; } .subcat-bar::-webkit-scrollbar { display: none; } .subcat-pill { font-size: 12px; padding: 6px 12px; flex-shrink: 0; } }
+
         .products-section { padding: 24px 0 80px; position: relative; overflow: hidden; }
 
         .products-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 14px; }
@@ -111,14 +123,17 @@
         .product-card-img[data-tooltip] { cursor: pointer; }
         .pkt-tooltip {
             position: fixed; z-index: 9999;
-            background: var(--green-dark); color: #fff; font-size: 13px; line-height: 1.7; font-weight: 500;
-            padding: 16px 20px; border-radius: var(--radius); white-space: pre-line;
-            min-width: 240px; max-width: 300px; text-align: left;
+            background: var(--green-dark); color: #fff; font-size: 12px; line-height: 1.6; font-weight: 500;
+            padding: 14px 18px; border-radius: var(--radius); white-space: pre-line;
+            min-width: 240px; max-width: 320px; max-height: 360px; overflow-y: auto; text-align: left;
             box-shadow: 0 16px 48px rgba(27,94,58,0.3);
             opacity: 0; pointer-events: none;
             transform: translateY(6px);
             transition: opacity 0.25s ease, transform 0.25s ease;
+            scrollbar-width: thin; scrollbar-color: rgba(255,255,255,0.3) transparent;
         }
+        .pkt-tooltip::-webkit-scrollbar { width: 4px; }
+        .pkt-tooltip::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.3); border-radius: 4px; }
         .pkt-tooltip.vis { opacity: 1; transform: translateY(0); }
         .pkt-tooltip::after {
             content: ''; position: absolute; top: 100%; left: 50%; transform: translateX(-50%);
@@ -296,7 +311,7 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
     "@context": "https://schema.org",
     "@type": "Service",
     "name": "DailyFruits – dostawy owoców i zdrowego jedzenia do biur",
-    "description": "Kompleksowa usługa dostawy owoców, kanapek, soków, kawy i zdrowych przekąsek do biur w 13 miastach Polski. Abonament, elastyczne pakiety, dostawa w 24h.",
+    "description": "Kompleksowa usługa dostawy owoców, kanapek, soków, kawy i zdrowych przekąsek do biur w całej Polsce. Abonament, elastyczne pakiety, dostawa w 24h.",
     "url": "https://dailyfruits.pl/oferta",
     "serviceType": "Office Food Delivery",
     "areaServed": [
@@ -369,16 +384,15 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
 </div>
 <!-- ═══ CATEGORY TABS (straight into browser) ═══ -->
 <h1 style="margin-top:108px;padding:24px 0 0;text-align:center;font-family:'Achiko',sans-serif;font-size:clamp(28px,4vw,38px);font-weight:400;color: var(--green-dark);">Pelna oferta DailyFruits & DailyFoods</h1>
-<p style="text-align:center;font-size:15px;color: var(--gray-500);margin:8px auto 0;max-width:520px;">Owoce, kanapki, soki, bakalie, lody i wiele wiecej — wszystko w jednej dostawie.</p>
+<p style="text-align:center;font-size:15px;color: var(--gray-500);margin:8px auto 0;max-width:520px;">Owoce, kanapki, napoje, przekąski, lody i wiele więcej — wszystko w jednej dostawie.</p>
 <div class="cat-tabs-wrap" id="catTabs" style="margin-top:20px;">
     <div class="cat-tabs" role="tablist" aria-label="Kategorie produktów">
         <button class="cat-tab active" role="tab" aria-selected="true" data-cat="owoce"><img src="icon-owoce.svg" alt="Ikona owoców" style="height:18px" loading="lazy" width="48" height="48"> Owoce <span class="cat-count">7</span></button>
-        <button class="cat-tab" role="tab" aria-selected="false" data-cat="kanapki"><img src="icon-kanapki.svg" alt="Ikona kanapek" style="height:14px" loading="lazy" width="48" height="48"> Kanapki <span class="cat-count">7</span></button>
+        <button class="cat-tab" role="tab" aria-selected="false" data-cat="kanapki"><img src="icon-kanapki.svg" alt="Ikona kanapek" style="height:14px" loading="lazy" width="48" height="48"> Kanapki <span class="cat-count">5</span></button>
         <button class="cat-tab" role="tab" aria-selected="false" data-cat="sniadania"><img src="icon-sniadania.svg" alt="Ikona sniadaniowa" style="height:18px" loading="lazy" width="48" height="48"> Sniadania <span class="cat-count">3</span></button>
-        <button class="cat-tab" role="tab" aria-selected="false" data-cat="soki"><img src="icon-soki.svg" alt="Ikona soków" style="height:20px" loading="lazy" width="48" height="48"> Soki <span class="cat-count">3</span></button>
-        <button class="cat-tab" role="tab" aria-selected="false" data-cat="bakalie"><img src="icon-bakalie.svg" alt="Ikona bakalii" style="height:18px" loading="lazy" width="48" height="48"> Bakalie <span class="cat-count">3</span></button>
+        <button class="cat-tab" role="tab" aria-selected="false" data-cat="soki"><img src="icon-soki.svg" alt="Ikona napojów" style="height:20px" loading="lazy" width="48" height="48"> Napoje <span class="cat-count">4</span></button>
+        <button class="cat-tab" role="tab" aria-selected="false" data-cat="bakalie"><img src="icon-bakalie.svg" alt="Ikona przekąsek" style="height:18px" loading="lazy" width="48" height="48"> Przekaski <span class="cat-count">4</span></button>
         <button class="cat-tab" role="tab" aria-selected="false" data-cat="lody"><img src="icon-lody.svg" alt="Ikona lodów" style="height:20px" loading="lazy" width="48" height="48"> Lody <span class="cat-count">2</span></button>
-        <button class="cat-tab" role="tab" aria-selected="false" data-cat="extra"><img src="icon-extra.svg" alt="Ikona paczek" style="height:18px" loading="lazy" width="48" height="48"> Paczki <span class="cat-count">10</span></button>
     </div>
 </div>
 
@@ -422,32 +436,31 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
 
     <!-- ── KANAPKI ── -->
     <div class="cat-panel" data-cat="kanapki" role="tabpanel">
+        <div class="subcat-bar">
+            <button class="subcat-pill active" data-subcat="all">Wszystkie <span class="pill-count">5</span></button>
+            <button class="subcat-pill" data-subcat="office-box">Office Box <span class="pill-count">2</span></button>
+            <button class="subcat-pill" data-subcat="factory-box">Factory Box <span class="pill-count">3</span></button>
+        </div>
+        <div class="subcat-intro" data-subcat-desc="office-box" style="display:none;">Gotowe zestawy kanapek i przekąsek dostarczane prosto do biura — idealne na co dzień dla zespołów od 10 osób.</div>
+        <div class="subcat-intro" data-subcat-desc="factory-box" style="display:none;">Eleganckie tace kanapkowe na spotkania firmowe, boardmeetingi i eventy — od klasycznych po premium finger food.</div>
         <div class="products-grid">
-            <div class="product-card">
+            <div class="product-card" data-subcat="office-box">
                 <div class="product-card-img"><span class="product-badge badge-bestseller">Bestseller</span><img src="kanapki-biuro-product-02.png" alt="Kanapki klasyczne" loading="lazy" width="400" height="300"></div>
                 <div class="product-card-body"><h3>Kanapki klasyczne</h3><p>Świeże bagietki, ciabatty i croissanty. Różne warianty – mięsne, wegetariańskie i wegańskie</p><a href="zapytanie.html" class="btn-sm"><span class="fun">Zamów</span> wycenę →</a></div>
             </div>
-            <div class="product-card">
-                <div class="product-card-img"><img src="kanapki-fabryka-product-03.png" alt="Wrapy i tortille" loading="lazy" width="400" height="300"></div>
-                <div class="product-card-body"><h3>Wrapy i tortille</h3><p>Lekkie i sycące wrapy z kurczakiem, falafelem lub łososiem. Idealne na lunch</p><a href="zapytanie.html" class="btn-sm"><span class="fun">Zamów</span> wycenę →</a></div>
-            </div>
-            <div class="product-card">
-                <div class="product-card-img"><img src="kanapki-fabryka-product-04.png" alt="Zestawy lunchowe" loading="lazy" width="400" height="300"></div>
-                <div class="product-card-body"><h3>Zestawy lunchowe</h3><p>Kompletny lunch: kanapka + sałatka + napój. Gotowy do podania na spotkanie</p><a href="zapytanie.html" class="btn-sm"><span class="fun">Zamów</span> wycenę →</a></div>
-            </div>
-            <div class="product-card">
+            <div class="product-card" data-subcat="office-box">
                 <div class="product-card-img"><span class="product-badge badge-popular">Popularne</span><img src="kanapki-biuro-circle-05.png" alt="Zestawy na spotkania" loading="lazy" width="400" height="300"></div>
                 <div class="product-card-body"><h3>Zestawy na spotkania</h3><p>Tace z mini kanapkami, finger food i przekąskami na firmowe meetingi</p><a href="zapytanie.html" class="btn-sm"><span class="fun">Zamów</span> wycenę →</a></div>
             </div>
-            <div class="product-card">
+            <div class="product-card" data-subcat="factory-box">
                 <div class="product-card-img"><span class="product-badge badge-new">Nowość</span><img src="icons/kanapki-taca-1.webp" alt="Taca kanapkowa klasyczna" loading="lazy" width="800" height="800"></div>
-                <div class="product-card-body"><h3>Taca kanapkowa klasyczna</h3><p>Taca z mixem kanapek na spotkanie — bagietki, ciabatty i wrapy w eleganckim ułożeniu</p><a href="zapytanie.html" class="btn-sm"><span class="fun">Zamów</span> wycenę →</a></div>
+                <div class="product-card-body"><h3>Taca kanapkowa klasyczna</h3><p>Taca z mixem kanapek na spotkanie — bagietki i ciabatty w eleganckim ułożeniu</p><a href="zapytanie.html" class="btn-sm"><span class="fun">Zamów</span> wycenę →</a></div>
             </div>
-            <div class="product-card">
+            <div class="product-card" data-subcat="factory-box">
                 <div class="product-card-img"><img src="icons/kanapki-taca-2.webp" alt="Taca kanapkowa premium" loading="lazy" width="800" height="800"></div>
                 <div class="product-card-body"><h3>Taca kanapkowa premium</h3><p>Premium wybór — łosoś, ser brie, prosciutto i pesto. Idealna na board meeting</p><a href="zapytanie.html" class="btn-sm"><span class="fun">Zamów</span> wycenę →</a></div>
             </div>
-            <div class="product-card">
+            <div class="product-card" data-subcat="factory-box">
                 <div class="product-card-img"><img src="icons/kanapki-taca-3.webp" alt="Taca finger food" loading="lazy" width="800" height="800"></div>
                 <div class="product-card-body"><h3>Taca finger food</h3><p>Mini kanapki i finger food na event — koreczki, bruschetta, mini bagietki</p><a href="zapytanie.html" class="btn-sm"><span class="fun">Zamów</span> wycenę →</a></div>
             </div>
@@ -472,38 +485,66 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
         </div>
     </div>
 
-    <!-- ── SOKI ── -->
+    <!-- ── NAPOJE (was: SOKI) ── -->
     <div class="cat-panel" data-cat="soki" role="tabpanel">
+        <div class="subcat-bar">
+            <button class="subcat-pill active" data-subcat="all">Wszystkie <span class="pill-count">4</span></button>
+            <button class="subcat-pill" data-subcat="nfc">Soki NFC <span class="pill-count">1</span></button>
+            <button class="subcat-pill" data-subcat="lemoniady">Lemoniady i smoothie <span class="pill-count">1</span></button>
+            <button class="subcat-pill" data-subcat="gazowane">Napoje gazowane <span class="pill-count">1</span></button>
+            <button class="subcat-pill" data-subcat="nawadniajace">Zestawy nawadniające <span class="pill-count">1</span></button>
+        </div>
+        <div class="subcat-intro" data-subcat-desc="nfc" style="display:none;">Sok NFC (Not From Concentrate) to sok wyciskany bezpośrednio ze świeżych owoców bez zagęszczania i sztucznych dodatków — 100% smaku i więcej witamin.</div>
+        <div class="subcat-intro" data-subcat-desc="lemoniady" style="display:none;">Orzeźwiające lemoniady i energetyczne smoothie — idealny sposób na orzeźwienie w pracy.</div>
+        <div class="subcat-intro" data-subcat-desc="gazowane" style="display:none;">Na spotkanie, na imprezę, na co dzień — napoje gazowane na wyciągnięciu ręki.</div>
+        <div class="subcat-intro" data-subcat-desc="nawadniajace" style="display:none;">Gotowe zestawy nawadniające z miętą, cytrusami i imbirem — woda smakowa w eleganckich kartonach, idealna do biura.</div>
         <div class="products-grid">
-            <div class="product-card">
-                <div class="product-card-img"><span class="product-badge badge-bestseller">Bestseller</span><img src="box-soki1.webp" alt="Soki świeżo wyciskane" loading="lazy" width="400" height="300"></div>
-                <div class="product-card-body"><h3>Soki świeżo wyciskane</h3><p>Pomarańcza, jabłko-marchew, burak-imbir – codziennie tłoczone, bez dodatków</p><a href="zapytanie.html" class="btn-sm"><span class="fun">Zamów</span> wycenę →</a></div>
+            <div class="product-card" data-subcat="nfc">
+                <div class="product-card-img"><span class="product-badge badge-bestseller">Bestseller</span><img src="box-soki1.webp" alt="Soki NFC świeżo wyciskane" loading="lazy" width="400" height="300"></div>
+                <div class="product-card-body"><h3>Soki NFC</h3><p>Pomarańcza, jabłko-marchew, burak-imbir — tłoczone ze świeżych owoców, bez zagęszczania i dodatków</p><a href="zapytanie.html" class="btn-sm"><span class="fun">Zamów</span> wycenę →</a></div>
             </div>
-            <div class="product-card">
-                <div class="product-card-img"><img src="soki-i-napoje.png" alt="Syropy i lemoniady" loading="lazy" width="400" height="300"></div>
-                <div class="product-card-body"><h3>Syropy i lemoniady</h3><p>Domowe syropy, lemoniady na bazie owoców i ziół. Orzeźwienie na lato</p><a href="zapytanie.html" class="btn-sm"><span class="fun">Zamów</span> wycenę →</a></div>
+            <div class="product-card" data-subcat="lemoniady">
+                <div class="product-card-img"><img src="soki-i-napoje.png" alt="Lemoniady i smoothie" loading="lazy" width="400" height="300"></div>
+                <div class="product-card-body"><h3>Lemoniady i smoothie</h3><p>Domowe lemoniady, smoothie owocowe i syropy na bazie ziół — orzeźwienie na każdy dzień</p><a href="zapytanie.html" class="btn-sm"><span class="fun">Zamów</span> wycenę →</a></div>
             </div>
-            <div class="product-card">
-                <div class="product-card-img"><span class="product-badge badge-new">Nowość</span><img src="kawa-product-02.png" alt="Kombucha i cold brew" loading="lazy" width="400" height="300"></div>
-                <div class="product-card-body"><h3>Kombucha i cold brew</h3><p>Fermentowana herbata, cold brew coffee i mleka roślinne. Zdrowy energy boost</p><a href="zapytanie.html" class="btn-sm"><span class="fun">Zamów</span> wycenę →</a></div>
+            <div class="product-card" data-subcat="gazowane">
+                <div class="product-card-img"><span class="product-badge badge-new">Nowość</span><img src="kawa-product-02.png" alt="Napoje gazowane" loading="lazy" width="400" height="300"></div>
+                <div class="product-card-body"><h3>Napoje gazowane</h3><p>Kombucha, cold brew, wody smakowe i napoje energetyczne — zdrowe alternatywy na co dzień</p><a href="zapytanie.html" class="btn-sm"><span class="fun">Zamów</span> wycenę →</a></div>
+            </div>
+            <div class="product-card" data-subcat="nawadniajace">
+                <div class="product-card-img"><span class="product-badge badge-popular">Popularne</span><img src="owoce-product-04.png" alt="Zestawy nawadniające" loading="lazy" width="400" height="300"></div>
+                <div class="product-card-body"><h3>Zestawy nawadniające</h3><p>Kartony z wodą smakową — mięta, cytryna, imbir, ogórek. Gotowe do postawienia w biurze</p><a href="zapytanie.html" class="btn-sm"><span class="fun">Zamów</span> wycenę →</a></div>
             </div>
         </div>
     </div>
 
-    <!-- ── BAKALIE ── -->
+    <!-- ── PRZEKĄSKI (was: BAKALIE) ── -->
     <div class="cat-panel" data-cat="bakalie" role="tabpanel">
+        <div class="subcat-bar">
+            <button class="subcat-pill active" data-subcat="all">Wszystkie <span class="pill-count">4</span></button>
+            <button class="subcat-pill" data-subcat="bakalie-suszone">Bakalie i owoce suszone <span class="pill-count">2</span></button>
+            <button class="subcat-pill" data-subcat="batony">Batony i ciastka <span class="pill-count">1</span></button>
+            <button class="subcat-pill" data-subcat="kubeczki">Owoce i warzywa w kubeczkach <span class="pill-count">1</span></button>
+        </div>
+        <div class="subcat-intro" data-subcat-desc="bakalie-suszone" style="display:none;">Orzechy, migdały i naturalnie suszone owoce premium — zdrowa przekąska do biura bez sztucznych dodatków.</div>
+        <div class="subcat-intro" data-subcat-desc="batony" style="display:none;">Zdrowe batony proteinowe, energy balls i ciastka owsiane — słodka przerwa bez cukru rafinowanego.</div>
+        <div class="subcat-intro" data-subcat-desc="kubeczki" style="display:none;">Świeże owoce i warzywa krojone w wygodnych kubeczkach — gotowe do jedzenia, zero przygotowania.</div>
         <div class="products-grid">
-            <div class="product-card">
+            <div class="product-card" data-subcat="bakalie-suszone">
                 <div class="product-card-img"><span class="product-badge badge-bestseller">Bestseller</span><img src="box-bakalie1.webp" alt="Bakalie mix" loading="lazy" width="400" height="300"></div>
-                <div class="product-card-body"><h3>Bakalie mix</h3><p>Orzechy nerkowca, migdały, orzechy włoskie i laskowe – premium jakość</p><a href="zapytanie.html" class="btn-sm"><span class="fun">Zamów</span> wycenę →</a></div>
+                <div class="product-card-body"><h3>Bakalie mix</h3><p>Orzechy nerkowca, migdały, orzechy włoskie i laskowe — premium jakość w biurze</p><a href="zapytanie.html" class="btn-sm"><span class="fun">Zamów</span> wycenę →</a></div>
             </div>
-            <div class="product-card">
-                <div class="product-card-img"><img src="kawa-cta-alt.png" alt="Zdrowe batony i ciastka" loading="lazy" width="400" height="300"></div>
-                <div class="product-card-body"><h3>Batony i ciastka</h3><p>Batony proteinowe, energy balls, ciastka owsiane – bez cukru rafinowanego</p><a href="zapytanie.html" class="btn-sm"><span class="fun">Zamów</span> wycenę →</a></div>
-            </div>
-            <div class="product-card">
+            <div class="product-card" data-subcat="bakalie-suszone">
                 <div class="product-card-img"><img src="owoce-product-06.png" alt="Suszone owoce premium" loading="lazy" width="400" height="300"></div>
-                <div class="product-card-body"><h3>Suszone owoce</h3><p>Mango, ananas, żurawina, morele – naturalnie suszone, bez siarki</p><a href="zapytanie.html" class="btn-sm"><span class="fun">Zamów</span> wycenę →</a></div>
+                <div class="product-card-body"><h3>Suszone owoce</h3><p>Mango, ananas, żurawina, morele — naturalnie suszone, bez siarki i konserwantów</p><a href="zapytanie.html" class="btn-sm"><span class="fun">Zamów</span> wycenę →</a></div>
+            </div>
+            <div class="product-card" data-subcat="batony">
+                <div class="product-card-img"><img src="kawa-cta-alt.png" alt="Zdrowe batony i ciastka" loading="lazy" width="400" height="300"></div>
+                <div class="product-card-body"><h3>Batony i ciastka</h3><p>Batony proteinowe, energy balls, ciastka owsiane — bez cukru rafinowanego</p><a href="zapytanie.html" class="btn-sm"><span class="fun">Zamów</span> wycenę →</a></div>
+            </div>
+            <div class="product-card" data-subcat="kubeczki">
+                <div class="product-card-img"><span class="product-badge badge-new">Nowość</span><img src="owoce-product-03.png" alt="Owoce i warzywa w kubeczkach" loading="lazy" width="400" height="300"></div>
+                <div class="product-card-body"><h3>Owoce i warzywa w kubeczkach</h3><p>Świeżo krojone owoce i warzywa w poręcznych kubeczkach — marchew, jabłko, ananas, melon</p><a href="zapytanie.html" class="btn-sm"><span class="fun">Zamów</span> wycenę →</a></div>
             </div>
         </div>
     </div>
@@ -518,52 +559,6 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
             <div class="product-card">
                 <div class="product-card-img"><img src="owoce-product-05.png" alt="Sorbety owocowe" loading="lazy" width="400" height="300"></div>
                 <div class="product-card-body"><h3>Sorbety owocowe</h3><p>100% owoców, bez mleka. Mango, malina, passion fruit – wegańska alternatywa</p><a href="zapytanie.html" class="btn-sm"><span class="fun">Zamów</span> wycenę →</a></div>
-            </div>
-        </div>
-    </div>
-
-    <!-- ── PACZKI & EVENTY ── -->
-    <div class="cat-panel" data-cat="extra" role="tabpanel">
-        <div class="products-grid">
-            <div class="product-card">
-                <div class="product-card-img" data-tooltip="ciabatta, 60g — 20,0 szt.&#10;Dżem truskawkowy — 1,0 szt.&#10;Jabłko — 1,5 kg&#10;Kiełbasa Sucha Krakowska 90g, Dolina Dobra — 1,0 szt.&#10;masło, 200g — 1,0 szt.&#10;ogórek kiszony, cook, 900ml — 1,0 szt.&#10;Ogórek zielony — 1,0 szt.&#10;Pasztet z indyka 180g, Bacówka — 1,0 szt.&#10;pomidory — 0,7 kg&#10;Rzodkiewka, pęczek, 150g — 1,0 szt&#10;...i 11 więcej"><span class="product-badge badge-bestseller">Bestseller</span><img src="icons/zestaw-sniadaniowy-1.webp" alt="Zestaw Śniadaniowy 1" loading="lazy" width="800" height="800"></div>
-                <div class="product-card-body"><h3>Zestaw Śniadaniowy 1</h3><p>Ciabatty, dżem, wędliny, sery, jogurty i crunchy — kompletne śniadanie na 20 osób</p><a href="zapytanie.html" class="btn-sm"><span class="fun">Zamów</span> wycenę →</a></div>
-            </div>
-            <div class="product-card">
-                <div class="product-card-img" data-tooltip="Bagietka ciemna, 110g — 5,0 szt.&#10;Serek wiejski 150g, Piątnica — 4,0 szt.&#10;ciabatta, 60g — 4,0 szt.&#10;Twaróg delikatny naturalny 150g, PRESIDENT — 1,0 szt.&#10;croissanty maślane — 4,0 szt.&#10;Ser Brie Naturalny 125g, President — 2,0 szt.&#10;gruszki — 1,5 kg&#10;Migdały 65g, Hebar — 1,0 szt.&#10;Orzechy laskowe 65g, Hebar — 1,0 szt.&#10;masło, 200g — 1,0 szt.&#10;...i 6 więcej"><img src="icons/zestaw-sniadaniowy-2.webp" alt="Zestaw Śniadaniowy 2" loading="lazy" width="800" height="800"></div>
-                <div class="product-card-body"><h3>Zestaw Śniadaniowy 2</h3><p>Bagietki, croissanty, sery brie, gruszki i wiejski — śniadanie w stylu francuskim</p><a href="zapytanie.html" class="btn-sm"><span class="fun">Zamów</span> wycenę →</a></div>
-            </div>
-            <div class="product-card">
-                <div class="product-card-img" data-tooltip="Bagietka ciemna, 110g — 8,00 szt.&#10;Kiełbasa Sucha Krakowska 90g, Dolina Dobra — 2,00 szt.&#10;Ogórek zielony — 1,00 szt.&#10;hummus klasyczny 180g, Sante — 1,00 szt.&#10;Papryka — 0,50 kg&#10;pomidory — 0,30 kg&#10;Rzodkiewka, pęczek, 150g — 1,00 szt&#10;sałata masłowa — 1,00 szt.&#10;mozzarella kulki — 0,25 kg&#10;Wafle Ryżowe Extra Cienkie 110g, Sante — 1,00 szt.&#10;...i 6 więcej"><img src="icons/zestaw-sniadaniowy-3.webp" alt="Zestaw Śniadaniowy 3" loading="lazy" width="800" height="800"></div>
-                <div class="product-card-body"><h3>Zestaw Śniadaniowy 3</h3><p>Bagietki, hummus, pasztety, camembert i kabanosy — różnorodność na stole</p><a href="zapytanie.html" class="btn-sm"><span class="fun">Zamów</span> wycenę →</a></div>
-            </div>
-            <div class="product-card">
-                <div class="product-card-img" data-tooltip="Jabłko — 4 kg&#10;Ogórek zielony — 1 szt.&#10;Pomidory — 1 kg&#10;Soki NFC (wytłoczka) — 20 szt.&#10;Baton Crunchy żurawina z maliną 40g, Sante — 5 szt.&#10;Baton owocowy Nerkowiec &amp; Kokos 35g, Dobra Kaloria — 5 szt.&#10;Chips z jabłka z sokiem z mango 18g, Crispy Natural — 5 szt.&#10;Bakalie MIX 65g, Hebar (torebka) — 16 szt."><span class="product-badge badge-popular">Popularne</span><img src="icons/zestaw-do-biura.webp" alt="Do Biura Na Co Dzień" loading="lazy" width="800" height="800"></div>
-                <div class="product-card-body"><h3>Do Biura Na Co Dzień</h3><p>Owoce, warzywa, soki NFC, batony i bakalie — codzienny energy box</p><a href="zapytanie.html" class="btn-sm"><span class="fun">Zamów</span> wycenę →</a></div>
-            </div>
-            <div class="product-card">
-                <div class="product-card-img" data-tooltip="Cytryny — 1,0 kg&#10;Imbir — 0,3 kg&#10;Mięta doniczka — 1,0 szt.&#10;Miód Dobre Krafty, 350g — 1,0 szt.&#10;Goździki op. 10g, Prymat/Kamis — 2,0 szt.&#10;cynamon cały 14g, Prymat — 2,0 szt.&#10;Anyż gwiazdki 8g, Kotanyi / Kamis — 1,0 szt.&#10;Syrop do herbaty malinowy 500ml, Rembowscy — 1,0 szt.&#10;Jarzębina do herbaty 200g, Bacówka — 1,0 szt.&#10;Konfitura z czarnego bzu 200g, Dobre Krafty — 1,0 szt.&#10;...i 3 więcej"><img src="icons/zestaw-rozgrzewajacy.webp" alt="Zestaw Rozgrzewający" loading="lazy" width="800" height="800"></div>
-                <div class="product-card-body"><h3>Zestaw Rozgrzewający</h3><p>Cytryny, imbir, miód, goździki, cynamon i herbaty — na chłodne dni w biurze</p><a href="zapytanie.html" class="btn-sm"><span class="fun">Zamów</span> wycenę →</a></div>
-            </div>
-            <div class="product-card">
-                <div class="product-card-img" data-tooltip="Baton Crunchy Śliwka 40g, Sante — 10 szt.&#10;Baton Crunchy żurawina z maliną 40g, Sante — 10 szt.&#10;Baton Crunchy orzechowy z migdałami 35g, Sante — 10 szt."><img src="icons/zestaw-batony.webp" alt="Batony Mix" loading="lazy" width="800" height="800"></div>
-                <div class="product-card-body"><h3>Batony Mix</h3><p>30 batonów Crunchy w trzech smakach — śliwka, żurawina, orzech</p><a href="zapytanie.html" class="btn-sm"><span class="fun">Zamów</span> wycenę →</a></div>
-            </div>
-            <div class="product-card">
-                <div class="product-card-img" data-tooltip="Kulki Mocy kakao &amp; nuta limonki 65g, Dobra Kaloria — 8 szt.&#10;Chips z jabłka 18g, Crispy Natural — 4 szt.&#10;Baton owocowy Jabłko &amp; Cynamon 35g, Dobra Kaloria — 6 szt.&#10;Baton owocowy Chrupiący Orzech 35g, Dobra Kaloria — 6 szt."><img src="icons/zestaw-batony-przekaski.webp" alt="Batony i Przekąski" loading="lazy" width="800" height="800"></div>
-                <div class="product-card-body"><h3>Batony i Przekąski</h3><p>Kulki mocy, chipsy jabłkowe i batony owocowe — zdrowy snack bar</p><a href="zapytanie.html" class="btn-sm"><span class="fun">Zamów</span> wycenę →</a></div>
-            </div>
-            <div class="product-card">
-                <div class="product-card-img" data-tooltip="Baton owocowy Jabłko &amp; Cynamon 35g, Dobra Kaloria — 5 szt.&#10;Baton owocowy Chrupiący Orzech 35g, Dobra Kaloria — 5 szt.&#10;Ciasteczko Keto sernik i biała czekolada 50g, Frank &amp; Oli — 3 szt.&#10;Ciasteczko Peanut Butter Chocolate 50g, Frank &amp; Oli — 4 szt.&#10;Bakalie MIX 65g, Hebar (torebka) — 6 szt.&#10;Baton proteinowy krem orzechowy i wanilia 45g, Dobra Kaloria — 5 szt."><img src="icons/zestaw-batony-ciasteczka.webp" alt="Batony i Ciasteczka" loading="lazy" width="800" height="800"></div>
-                <div class="product-card-body"><h3>Batony i Ciasteczka</h3><p>Batony owocowe, ciasteczka keto Frank &amp; Oli, bakalie i batony proteinowe</p><a href="zapytanie.html" class="btn-sm"><span class="fun">Zamów</span> wycenę →</a></div>
-            </div>
-            <div class="product-card">
-                <div class="product-card-img" data-tooltip="Ciasteczka zbożowe bez cukru morelowe 50g, Sante — 2 szt.&#10;Ciasteczka zbożowe bez cukru kakaowe 50g, Sante — 2 szt.&#10;Ciasteczka zbożowe bez cukru jagoda 50g, Sante — 2 szt.&#10;Baton Crunchy Banan z czekoladą 40g, Sante — 2 szt.&#10;Baton Crunchy Śliwka 40g, Sante — 2 szt.&#10;Baton Granola owsiany z czekoladą 40g, Sante — 2 szt.&#10;BA! baton zbożowy żurawina i pomarańcza 38g, Bakalland — 2 szt.&#10;BA! baton zbożowy 5 ziaren z miodem 38g, Bakalland — 2 szt.&#10;BA! Baton banan i zboża 40g, Bakalland — 2 szt.&#10;Baton proteinowy krem orzechowy i sól 45g, Dobra Kaloria — 2 szt.&#10;...i 3 więcej"><img src="icons/zestaw-batony-ciasteczka-26.webp" alt="Batony i Ciasteczka 26szt" loading="lazy" width="800" height="800"></div>
-                <div class="product-card-body"><h3>Batony i Ciasteczka 26szt</h3><p>26 batonów i ciasteczek: Sante, Bakalland, Dobra Kaloria — mix na cały tydzień</p><a href="zapytanie.html" class="btn-sm"><span class="fun">Zamów</span> wycenę →</a></div>
-            </div>
-            <div class="product-card">
-                <div class="product-card-img" data-tooltip="Ptysie z bitą śmietaną, 12,5g — 8 szt.&#10;Bite z nadzieniem z białej czekolady, 25g — 6 szt.&#10;Mini gofry, ok. 15 g/szt — 12 szt.&#10;Bite z nadzieniem karmelowym 25g/szt, — 6 szt.&#10;Muffinki amerykańskie mini czekoladowe, 15g — 8 szt."><img src="icons/zestaw-slodkie-przekaski.webp" alt="Słodkie Przekąski 40szt" loading="lazy" width="800" height="800"></div>
-                <div class="product-card-body"><h3>Słodkie Przekąski 40szt</h3><p>Ptysie, mini gofry, muffinki i bite — słodki zestaw na spotkanie lub event</p><a href="zapytanie.html" class="btn-sm"><span class="fun">Zamów</span> wycenę →</a></div>
             </div>
         </div>
     </div>
@@ -736,7 +731,7 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
             <div class="qb-step" data-step="4">
                 <div class="qb-step-label">Krok 4 z 4</div>
                 <div class="qb-step-title">Twoja wycena</div>
-                <div class="qb-step-desc">Sprawdz podsumowanie i wyslij zapytanie — odezwiemy sie w 2h.</div>
+                <div class="qb-step-desc">Sprawdz podsumowanie i wyslij zapytanie — odezwiemy sie w 24h.</div>
 
                 <div class="qb-summary" id="qbSummary">
                     <!-- filled by JS -->
@@ -752,12 +747,12 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
 
                 <div class="qb-submit-wrap">
                     <button class="qb-submit" id="qbSubmit">Wyslij zapytanie &rarr;</button>
-                    <p style="font-size:12px;color:var(--gray);opacity:0.6;margin-top:10px;">* Ceny orientacyjne netto. Dokladna wycena w ciagu 2h. Dostawa wliczona.</p>
+                    <p style="font-size:12px;color:var(--gray);opacity:0.6;margin-top:10px;">* Ceny orientacyjne netto. Dokladna wycena w ciagu 24h. Dostawa wliczona.</p>
                 </div>
 
                 <div class="qb-success" id="qbSuccess">
                     <h3>Dziekujemy!</h3>
-                    <p>Twoje zapytanie zostalo wyslane. Odezwiemy sie w ciagu 2 godzin z dokladna wycena.</p>
+                    <p>Twoje zapytanie zostalo wyslane. Odezwiemy sie w ciagu 24 godzin z dokladna wycena.</p>
                     <a href="index.html" class="btn btn-green" style="margin-top:20px;">Wróc na strone glowna</a>
                 </div>
 
@@ -777,7 +772,7 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
         <div style="max-width:680px;margin:0 auto;text-align:center;" class="reveal">
             <div class="sticker sticker-yellow" style="transform:rotate(-2deg)">Zapytanie</div>
             <h2 style="margin-top:20px"><span class="fun">Zamów</span> bezpłatną wycenę</h2>
-            <p style="max-width:520px;margin:12px auto 40px;color: var(--gray-600);">Wypełnij formularz — odezwiemy się w ciągu 2 godzin z propozycją dopasowaną do Twojego biura.</p>
+            <p style="max-width:520px;margin:12px auto 40px;color: var(--gray-600);">Wypełnij formularz — odezwiemy się w ciągu 24 godzin z propozycją dopasowaną do Twojego biura.</p>
         </div>
         <div style="max-width:680px;margin:0 auto;background:var(--cream);border-radius:24px;padding:44px;" class="reveal">
             <form id="ofertaContactForm">
@@ -795,12 +790,12 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
                 </div>
                 <div style="margin-bottom:22px;"><label style="display:block;font-size:14px;font-weight:700;color:var(--green-dark);margin-bottom:6px;" for="oc-message">Czego szukasz?</label><textarea id="oc-message" name="message" placeholder="Owoce, kanapki, częstotliwość dostaw, budżet..." style="width:100%;padding:14px 18px;border:2px solid rgba(27,94,58,0.1);border-radius:20px;font-size:15px;background:#fff;height:110px;resize:vertical;font-family:inherit;transition:box-shadow 0.2s;"></textarea></div>
                 <div style="margin-top:28px;"><button type="submit" style="width:100%;padding:16px 32px;font-size:16px;font-weight:800;border:none;border-radius:60px;background:var(--green-dark);color:#fff;cursor:pointer;transition:transform 0.2s,box-shadow 0.2s;display:flex;align-items:center;justify-content:center;gap:8px;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 6px 20px rgba(27,94,58,0.3)'" onmouseout="this.style.transform='';this.style.boxShadow=''">Wyślij zapytanie →</button></div>
-                <p style="text-align:center;font-size:13px;color: var(--gray-400);margin-top:14px;">🔒 Twoje dane są bezpieczne. Odpowiadamy w ciągu 2h w dni robocze.</p>
+                <p style="text-align:center;font-size:13px;color: var(--gray-400);margin-top:14px;">🔒 Twoje dane są bezpieczne. Odpowiadamy w ciągu 24h w dni robocze.</p>
             </form>
             <div id="ofertaFormSuccess" style="display:none;text-align:center;padding:56px 32px;">
                 <div style="width:64px;height:64px;border-radius:50%;background:var(--lime);display:flex;align-items:center;justify-content:center;margin:0 auto 20px;font-size:28px;color:#fff;">✓</div>
                 <h2 style="margin-bottom:10px;">Dziękujemy!</h2>
-                <p style="max-width:380px;margin:0 auto;color: var(--gray-600);">Twoje zapytanie zostało wysłane. Skontaktujemy się w ciągu 2 godzin z dopasowaną ofertą.</p>
+                <p style="max-width:380px;margin:0 auto;color: var(--gray-600);">Twoje zapytanie zostało wysłane. Skontaktujemy się w ciągu 24 godzin z dopasowaną ofertą.</p>
                 <a href="index.html" class="btn btn-green" style="margin-top:24px;display:inline-block;">Wróć na stronę główną</a>
             </div>
         </div>
@@ -899,6 +894,40 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
         const matchTab = document.querySelector(`.cat-tab[data-cat="${hashCat}"]`);
         if (matchTab) matchTab.click();
     }
+
+    // ─── SUBCATEGORY FILTER ───
+    document.querySelectorAll('.subcat-pill').forEach(pill => {
+        pill.addEventListener('click', () => {
+            const panel = pill.closest('.cat-panel');
+            const subcat = pill.dataset.subcat;
+            // Update active pill
+            panel.querySelectorAll('.subcat-pill').forEach(p => p.classList.remove('active'));
+            pill.classList.add('active');
+            // Show/hide description
+            panel.querySelectorAll('.subcat-intro').forEach(desc => {
+                desc.style.display = (subcat !== 'all' && desc.dataset.subcatDesc === subcat) ? 'block' : 'none';
+            });
+            // Filter products
+            panel.querySelectorAll('.product-card[data-subcat]').forEach(card => {
+                if (subcat === 'all' || card.dataset.subcat === subcat) {
+                    card.classList.remove('subcat-hidden');
+                } else {
+                    card.classList.add('subcat-hidden');
+                }
+            });
+        });
+    });
+    // Reset subcategory filters when switching main tabs
+    catTabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            const cat = tab.dataset.cat;
+            const panel = document.querySelector(`.cat-panel[data-cat="${cat}"]`);
+            if (panel) {
+                const allPill = panel.querySelector('.subcat-pill[data-subcat="all"]');
+                if (allPill && !allPill.classList.contains('active')) allPill.click();
+            }
+        });
+    });
 
     // ─── QUOTE BUILDER ───
     (function() {
@@ -1198,7 +1227,7 @@ document.addEventListener('DOMContentLoaded', function() {
             <input type="email" id="exitEmail" placeholder="Twój e-mail firmowy" required>
             <button id="exitSubmit">Pobierz PDF →</button>
         </div>
-        <p class="exit-note">Zero spamu. Wypisz się w dowolnym momencie.</p>
+        <p class="exit-note">Zero spamu. Tylko wartościowe treści o zdrowym biurze.</p>
     </div>
 </div>
 <script>
