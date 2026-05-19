@@ -996,9 +996,9 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
     </div>
 </section>
 
-<!-- FULL-WIDTH PHOTO BREAK -->
-<section class="photo-break reveal" style="width:100%;padding:0;margin:0;overflow:hidden;line-height:0;">
-    <img src="HORIZONTAL.webp" alt="DailyFruits box w biurze" loading="lazy" style="width:100%;height:auto;display:block;object-fit:contain;" width="400" height="300">
+<!-- SCROLL-SCRUB VIDEO -->
+<section class="scroll-video-wrap" style="width:100%;padding:0;margin:0;overflow:hidden;line-height:0;position:relative;">
+    <video id="scrollVideo" src="hero-scroll.mp4" muted playsinline preload="auto" style="width:100%;height:auto;display:block;object-fit:cover;"></video>
 </section>
 
 <!-- OFFER -->
@@ -1325,6 +1325,33 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
         if (window.scrollY > 20) { header.classList.add('scrolled'); }
         else { header.classList.remove('scrolled'); }
     }, { passive: true });
+
+    // ─── SCROLL-SCRUB VIDEO ───
+    (function() {
+        const vid = document.getElementById('scrollVideo');
+        if (!vid) return;
+        let ticking = false;
+        let vidReady = false;
+        vid.addEventListener('loadedmetadata', () => { vidReady = true; });
+        if (vid.readyState >= 1) vidReady = true;
+
+        function scrub() {
+            if (!vidReady) return;
+            const rect = vid.getBoundingClientRect();
+            const winH = window.innerHeight;
+            const start = rect.top + window.scrollY - winH;
+            const end = rect.top + window.scrollY + rect.height;
+            const range = end - start;
+            if (range <= 0) return;
+            const progress = Math.min(Math.max((window.scrollY - start) / range, 0), 1);
+            vid.currentTime = progress * vid.duration;
+        }
+
+        window.addEventListener('scroll', () => {
+            if (!ticking) { ticking = true; requestAnimationFrame(() => { scrub(); ticking = false; }); }
+        }, { passive: true });
+        scrub();
+    })();
 
     // ─── MOBILE: MOVE TABS INTO HERO (above image, below text) ───
     (function() {
