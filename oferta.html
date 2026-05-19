@@ -342,11 +342,12 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
         "itemListElement": [
             {"@type": "OfferCatalog", "name": "Kanapki do biura", "url": "https://dailyfruits.pl/kanapki-do-biura"},
             {"@type": "OfferCatalog", "name": "Catering firmowy", "url": "https://dailyfruits.pl/catering-firmowy"},
-            {"@type": "OfferCatalog", "name": "Programy żywieniowe", "url": "https://dailyfruits.pl/programy-zywieniowe"}
+            {"@type": "OfferCatalog", "name": "Programy żywieniowe", "url": "https://dailyfruits.pl/programy-żywieniowe"}
         ]
     }
 }
 </script>
+<script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
 </head>
 <body>
 <!-- Google Tag Manager (noscript) -->
@@ -389,7 +390,7 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
     <div class="cat-tabs" role="tablist" aria-label="Kategorie produktów">
         <button class="cat-tab active" role="tab" aria-selected="true" data-cat="owoce"><img src="icon-owoce.svg" alt="Ikona owoców" style="height:18px" loading="lazy" width="48" height="48"> Owoce <span class="cat-count">7</span></button>
         <button class="cat-tab" role="tab" aria-selected="false" data-cat="kanapki"><img src="icon-kanapki.svg" alt="Ikona kanapek" style="height:14px" loading="lazy" width="48" height="48"> Kanapki <span class="cat-count">5</span></button>
-        <button class="cat-tab" role="tab" aria-selected="false" data-cat="sniadania"><img src="icon-sniadania.svg" alt="Ikona sniadaniowa" style="height:18px" loading="lazy" width="48" height="48"> Sniadania <span class="cat-count">3</span></button>
+        <button class="cat-tab" role="tab" aria-selected="false" data-cat="śniadania"><img src="icon-sniadania.svg" alt="Ikona sniadaniowa" style="height:18px" loading="lazy" width="48" height="48"> Śniadania <span class="cat-count">3</span></button>
         <button class="cat-tab" role="tab" aria-selected="false" data-cat="soki"><img src="icon-soki.svg" alt="Ikona napojów" style="height:20px" loading="lazy" width="48" height="48"> Napoje <span class="cat-count">4</span></button>
         <button class="cat-tab" role="tab" aria-selected="false" data-cat="bakalie"><img src="icon-bakalie.svg" alt="Ikona przekąsek" style="height:18px" loading="lazy" width="48" height="48"> Przekaski <span class="cat-count">4</span></button>
         <button class="cat-tab" role="tab" aria-selected="false" data-cat="lody"><img src="icon-lody.svg" alt="Ikona lodów" style="height:20px" loading="lazy" width="48" height="48"> Lody <span class="cat-count">2</span></button>
@@ -468,7 +469,7 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
     </div>
 
     <!-- ── ŚNIADANIA ── -->
-    <div class="cat-panel" data-cat="sniadania" role="tabpanel">
+    <div class="cat-panel" data-cat="śniadania" role="tabpanel">
         <div class="products-grid">
             <div class="product-card">
                 <div class="product-card-img"><span class="product-badge badge-bestseller">Bestseller</span><img src="box-sniadaniowe.webp" alt="Zestaw śniadaniowy" loading="lazy" width="400" height="300"></div>
@@ -573,7 +574,7 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
         <div class="qb-wrap">
             <div style="text-align:center;margin-bottom:40px;" class="reveal">
                 <div class="sticker sticker-yellow" style="transform:rotate(-2deg)">Konfigurator</div>
-                <h2 style="margin-top:20px">Skonfiguruj <span class="fun">wycene</span></h2>
+                <h2 style="margin-top:20px">Skonfiguruj <span class="fun">wycenę</span></h2>
                 <p style="max-width:520px;margin:12px auto 0;">Wybierz parametry, sprawdz orientacyjna cene i wyslij zapytanie — wszystko w 60 sekund.</p>
             </div>
 
@@ -588,10 +589,10 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
             <div class="qb-step active" data-step="1">
                 <div class="qb-step-label">Krok 1 z 4</div>
                 <div class="qb-step-title">Opowiedz nam o swoim biurze</div>
-                <div class="qb-step-desc">Ustaw liczbe pracownikow i czestotliwosc dostaw.</div>
+                <div class="qb-step-desc">Ustaw liczbe pracowników i czestotliwosc dostaw.</div>
 
                 <div class="qb-slider-row">
-                    <div class="qb-slider-label"><span>Liczba pracownikow</span><span class="qb-val" id="qbPeopleVal">30</span></div>
+                    <div class="qb-slider-label"><span>Liczba pracowników</span><span class="qb-val" id="qbPeopleVal">30</span></div>
                     <input type="range" class="calc-slider" id="qbPeople" min="5" max="500" value="30" step="5">
                 </div>
 
@@ -599,17 +600,17 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
                     <div class="qb-slider-label"><span>Miasto dostawy</span></div>
                     <select class="qb-city-select" id="qbCity">
                         <option value="warszawa">Warszawa</option>
-                        <option value="krakow">Krakow</option>
-                        <option value="wroclaw">Wroclaw</option>
-                        <option value="poznan">Poznan</option>
+                        <option value="krakow">Kraków</option>
+                        <option value="wroclaw">Wrocław</option>
+                        <option value="poznan">Poznań</option>
                         <option value="katowice">Katowice</option>
-                        <option value="lodz">Lodz</option>
-                        <option value="trojmiasto">Trojmiasto</option>
+                        <option value="lodz">Łódź</option>
+                        <option value="trojmiasto">Trójmiasto</option>
                         <option value="szczecin">Szczecin</option>
                         <option value="lublin">Lublin</option>
                         <option value="bydgoszcz">Bydgoszcz</option>
-                        <option value="bialystok">Bialystok</option>
-                        <option value="rzeszow">Rzeszow</option>
+                        <option value="bialystok">Białystok</option>
+                        <option value="rzeszow">Rzeszów</option>
                         <option value="kielce">Kielce</option>
                     </select>
                 </div>
@@ -638,7 +639,7 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
             <div class="qb-step" data-step="2">
                 <div class="qb-step-label">Krok 2 z 4</div>
                 <div class="qb-step-title">Wybierz pakiet</div>
-                <div class="qb-step-desc">Kliknij pakiet, ktory najlepiej pasuje do Twojego biura.</div>
+                <div class="qb-step-desc">Kliknij pakiet, który najlepiej pasuje do Twojego biura.</div>
 
                 <div class="qb-pkg-grid">
                     <div class="qb-pkg" data-pkg="start">
@@ -701,7 +702,7 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
                     </div>
                     <div class="qb-addon" data-addon="soki" data-price="4">
                         <div class="qb-addon-toggle"></div>
-                        <div class="qb-addon-info"><h5>Soki NFC</h5><p>Tloczony sok 100% owocow</p></div>
+                        <div class="qb-addon-info"><h5>Soki NFC</h5><p>Tloczony sok 100% owoców</p></div>
                         <div class="qb-addon-price">+4 zl/os.</div>
                     </div>
                     <div class="qb-addon" data-addon="warzywa" data-price="5">
@@ -751,9 +752,9 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
                 </div>
 
                 <div class="qb-success" id="qbSuccess">
-                    <h3>Dziekujemy!</h3>
+                    <h3>Dziękujemy!</h3>
                     <p>Twoje zapytanie zostalo wyslane. Odezwiemy sie w ciagu 24 godzin z dokladna wycena.</p>
-                    <a href="index.html" class="btn btn-green" style="margin-top:20px;">Wróc na strone glowna</a>
+                    <a href="index.html" class="btn btn-green" style="margin-top:20px;">Wróc na strone główna</a>
                 </div>
 
                 <div class="qb-nav" id="qbStep4Nav">
@@ -806,7 +807,7 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
 <div style="padding:32px 0 48px;background:var(--cream);text-align:center">
     <div class="container reveal" style="display:flex;justify-content:center;gap:32px;flex-wrap:wrap;font-size:14px;font-weight:600">
         <a href="dostawcy.html" style="color:var(--green-dark);opacity:0.6;transition:opacity 0.2s;text-decoration:none;display:inline-flex;align-items:center;gap:6px" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.6'">🤝 Poznaj naszych certyfikowanych dostawcow →</a>
-        <a href="pomagamy.html" style="color:var(--green-dark);opacity:0.6;transition:opacity 0.2s;text-decoration:none;display:inline-flex;align-items:center;gap:6px" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.6'">💚 Zobacz jak pomagamy lokalnym spolecznosciom →</a>
+        <a href="pomagamy.html" style="color:var(--green-dark);opacity:0.6;transition:opacity 0.2s;text-decoration:none;display:inline-flex;align-items:center;gap:6px" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.6'">💚 Zobacz jak pomagamy lokalnym społecznościom →</a>
     </div>
 </div>
 
@@ -1301,6 +1302,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 })();
 </script>
+<script src="transition.js"></script>
 <script src="mn.js?v=4"></script>
 </body>
 </html><!-- sync-test -->
