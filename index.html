@@ -757,7 +757,7 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
     <div class="hero-tabs-inner">
         <span class="hero-tabs-label">Dopasuj zamówienie<br>do potrzeb firmy:</span>
         <div class="hero-tabs">
-            <a href="oferta.html" class="hero-tab active" data-img="box_owoce_2.webp" data-alt="Owoce do biura" onclick="event.preventDefault();heroTabClick(this)"><span class="tab-icon"><img src="icon-owoce.svg" alt="Ikona owoców" style="height:22px;width:22px;vertical-align:-3px;" loading="lazy" width="48" height="48"></span> Owoce</a>
+            <a href="oferta.html" class="hero-tab active" data-img="box_owoce_2.webp" data-alt="Owoce do biura" onclick="event.preventDefault();heroTabClick(this)"><span class="tab-icon"><img src="icon-owoce.svg" alt="Ikona owoców" class="inline-icon" loading="lazy" width="48" height="48"></span> Owoce</a>
             <a href="kanapki-do-biura.html" class="hero-tab" data-img="box-kanapki1.webp" data-alt="Kanapki dla pracowników" onclick="event.preventDefault();heroTabClick(this)"><span class="tab-icon"><img src="icon-kanapki.svg" alt="Ikona kanapek" style="height:15px;width:auto;vertical-align:-2px;" loading="lazy" width="48" height="48"></span> Kanapki</a>
             <a href="oferta.html" class="hero-tab" data-img="box-sniadaniowe.webp" data-alt="Produkty śniadaniowe" onclick="event.preventDefault();heroTabClick(this)"><span class="tab-icon"><img src="icon-sniadania.svg" alt="Ikona śniadań" style="height:20px;width:auto;vertical-align:-3px;" loading="lazy" width="48" height="48"></span> Śniadania</a>
             <a href="oferta.html" class="hero-tab" data-img="box-soki1.webp" data-alt="Świeże soki" onclick="event.preventDefault();heroTabClick(this)"><span class="tab-icon"><img src="icon-soki.svg" alt="Ikona soków" style="height:24px;width:auto;vertical-align:-4px;margin-right:-2px;" loading="lazy" width="48" height="48"></span> Soki</a>
@@ -776,15 +776,15 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
                 <h1 class="split-heading"><span class="hero-line1">Zdrowsze jedzenie,</span> <span class="fun">lepsza praca.</span></h1>
                 <p>Nie jesteśmy dostawcą owoców.<br>Budujemy kulturę zdrowia w&nbsp;Twojej firmie<br>– zaczynając od&nbsp;kuchni. Świeże owoce,<br>zdrowe przekąski i&nbsp;rytuały, które łączą zespół.</p>
                 <div style="display:flex;gap:24px;margin-bottom:20px;flex-wrap:wrap;">
-                    <div style="display:flex;align-items:center;gap:8px;"><span style="font-family:var(--font-fun);font-size:38px;color:var(--lime);line-height:1;">24h</span><span style="font-size:13px;font-weight:700;color:var(--green-dark);opacity:0.6;line-height:1.2;">czas<br>dostawy</span></div>
-                    <div style="display:flex;align-items:center;gap:8px;"><span style="font-family:var(--font-fun);font-size:38px;color:var(--lime);line-height:1;">cała</span><span style="font-size:13px;font-weight:700;color:var(--green-dark);opacity:0.6;line-height:1.2;">Polska<br>w zasięgu</span></div>
-                    <div style="display:flex;align-items:center;gap:8px;"><span style="font-family:var(--font-fun);font-size:38px;color:var(--lime);line-height:1;">2000+</span><span style="font-size:13px;font-weight:700;color:var(--green-dark);opacity:0.6;line-height:1.2;">firm<br>nam zaufało</span></div>
+                    <div class="flex-center"><span style="font-family:var(--font-fun);font-size:38px;color:var(--lime);line-height:1;">24h</span><span style="font-size:13px;font-weight:700;color:var(--green-dark);opacity:0.6;line-height:1.2;">czas<br>dostawy</span></div>
+                    <div class="flex-center"><span style="font-family:var(--font-fun);font-size:38px;color:var(--lime);line-height:1;">cała</span><span style="font-size:13px;font-weight:700;color:var(--green-dark);opacity:0.6;line-height:1.2;">Polska<br>w zasięgu</span></div>
+                    <div class="flex-center"><span style="font-family:var(--font-fun);font-size:38px;color:var(--lime);line-height:1;">2000+</span><span style="font-size:13px;font-weight:700;color:var(--green-dark);opacity:0.6;line-height:1.2;">firm<br>nam zaufało</span></div>
                 </div>
                 <div class="hero-buttons">
                     <a href="zapytanie.html" class="btn btn-red-solid btn-arrow">Zamów bezpłatną wycenę</a>
                     <a href="oferta.html" class="btn btn-outline">Zobacz pełną ofertę →</a>
                 </div>
-                <p style="font-size:13px;color:rgba(27,94,58,0.5);margin-top:10px;">Odpowiadamy w ciągu 24h · Darmowa dostawa próbna · Wsparcie we wdrożeniu · Elastyczna współpraca</p>
+                <p class="meta-text">Odpowiadamy w ciągu 24h · Darmowa dostawa próbna · Wsparcie we wdrożeniu · Elastyczna współpraca</p>
             </div>
             <div class="hero-image scale-in">
                 <img id="hero-product-img" src="box_owoce_2.webp" alt="Owoce do biura" fetchpriority="high" width="800" height="600">
@@ -796,7 +796,7 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
 </div><!-- /hero-wrapper -->
 
 <!-- WAVE: hero → features -->
-<div class="wave-divider" style="background:var(--cream)">
+<div class="wave-divider bg-cream">
     <svg viewBox="0 0 1440 60" preserveAspectRatio="none"><path d="M0,0 C240,50 480,10 720,40 C960,70 1200,10 1440,30 L1440,60 L0,60Z" fill="#FFFFFF"/></svg>
 </div>
 
@@ -1269,7 +1269,7 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
 
 <!-- WAVE: cta → footer -->
 <div class="wave-wrap">
-    <div class="wave-divider" style="background:var(--cream)">
+    <div class="wave-divider bg-cream">
         <svg viewBox="0 0 1440 60" preserveAspectRatio="none"><path d="M0,15 C240,50 480,5 720,35 C960,60 1200,10 1440,25 L1440,60 L0,60Z" fill="#1B5E3A"/></svg>
     </div>
 </div>
