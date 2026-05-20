@@ -89,6 +89,12 @@
 
     /* Fruit rows */
     .fruit-list { background: var(--white); border-radius: var(--radius); padding: 8px 0; border: 1px solid rgba(27,94,58,0.08); }
+    .fruit-cat { display: flex; align-items: center; gap: 10px; padding: 16px 24px 8px; font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: 1.2px; color: rgba(27,94,58,0.4); }
+    .fruit-cat::after { content: ''; flex: 1; height: 1px; background: rgba(27,94,58,0.08); }
+    .fruit-cat-tag { font-size: 10px; font-weight: 700; padding: 2px 10px; border-radius: var(--radius-pill); letter-spacing: 0.5px; text-transform: uppercase; }
+    .fruit-cat-tag.standard { background: rgba(27,94,58,0.08); color: var(--green-dark); }
+    .fruit-cat-tag.sezon { background: rgba(255,145,0,0.12); color: #E07800; }
+    .fruit-cat-tag.egzo { background: rgba(180,50,180,0.1); color: #9B30A0; }
     .fruit-row { display: grid; grid-template-columns: 44px 1fr 1fr 64px; align-items: center; gap: 12px; padding: 14px 24px; border-bottom: 1px solid rgba(27,94,58,0.06); transition: background 0.15s; }
     .fruit-row:last-child { border-bottom: none; }
     .fruit-row:hover { background: rgba(141,198,63,0.04); }
@@ -155,6 +161,7 @@
         .fruit-slider-wrap { grid-column: 1 / -1; }
         .fruit-val { grid-column: 1 / -1; text-align: left; }
         .fruit-info span { display: none; }
+        .fruit-cat { padding: 14px 16px 6px; font-size: 11px; gap: 8px; }
         .container { padding: 0 20px; }
         .nav-inner { padding: 10px 20px; }
     }
@@ -239,9 +246,11 @@
 
                 <!-- Fruit list -->
                 <div class="fruit-list reveal">
+                    <!-- STANDARD — cały rok -->
+                    <div class="fruit-cat"><span class="fruit-cat-tag standard">Standard</span> Dostępne cały rok</div>
                     <div class="fruit-row" data-fruit="0">
                         <div class="fruit-emoji">🍎</div>
-                        <div class="fruit-info"><h4>Jabłka</h4><span>Polskie, sezonowe</span></div>
+                        <div class="fruit-info"><h4>Jabłka</h4><span>Polskie, odmiany mix</span></div>
                         <div class="fruit-slider-wrap"><input type="range" min="0" max="10" value="0" step="0.5" data-idx="0"></div>
                         <div class="fruit-val"><span id="v0">0</span> <small>kg</small></div>
                     </div>
@@ -258,44 +267,50 @@
                         <div class="fruit-val"><span id="v2">0</span> <small>kg</small></div>
                     </div>
                     <div class="fruit-row" data-fruit="3">
-                        <div class="fruit-emoji">🍇</div>
-                        <div class="fruit-info"><h4>Winogrona</h4><span>Bezpestkowe, ciemne</span></div>
+                        <div class="fruit-emoji">🍐</div>
+                        <div class="fruit-info"><h4>Gruszki</h4><span>Conference, słodkie</span></div>
                         <div class="fruit-slider-wrap"><input type="range" min="0" max="10" value="0" step="0.5" data-idx="3"></div>
                         <div class="fruit-val"><span id="v3">0</span> <small>kg</small></div>
                     </div>
+
+                    <!-- SEZONOWE — dostępność zależna od pory roku -->
+                    <div class="fruit-cat"><span class="fruit-cat-tag sezon">Sezonowe</span> Dostępność zależy od sezonu</div>
                     <div class="fruit-row" data-fruit="4">
                         <div class="fruit-emoji">🍓</div>
-                        <div class="fruit-info"><h4>Truskawki</h4><span>Sezonowe, polskie</span></div>
+                        <div class="fruit-info"><h4>Truskawki</h4><span>Polskie, V–IX</span></div>
                         <div class="fruit-slider-wrap"><input type="range" min="0" max="10" value="0" step="0.5" data-idx="4"></div>
                         <div class="fruit-val"><span id="v4">0</span> <small>kg</small></div>
                     </div>
                     <div class="fruit-row" data-fruit="5">
-                        <div class="fruit-emoji">🫐</div>
-                        <div class="fruit-info"><h4>Borówki</h4><span>Premium, antyoksydanty</span></div>
+                        <div class="fruit-emoji">🍇</div>
+                        <div class="fruit-info"><h4>Winogrona</h4><span>Bezpestkowe, VII–XI</span></div>
                         <div class="fruit-slider-wrap"><input type="range" min="0" max="10" value="0" step="0.5" data-idx="5"></div>
                         <div class="fruit-val"><span id="v5">0</span> <small>kg</small></div>
                     </div>
                     <div class="fruit-row" data-fruit="6">
-                        <div class="fruit-emoji">🥝</div>
-                        <div class="fruit-info"><h4>Kiwi</h4><span>Zespri, witamina C</span></div>
+                        <div class="fruit-emoji">🫐</div>
+                        <div class="fruit-info"><h4>Borówki</h4><span>Polskie, VI–IX</span></div>
                         <div class="fruit-slider-wrap"><input type="range" min="0" max="10" value="0" step="0.5" data-idx="6"></div>
                         <div class="fruit-val"><span id="v6">0</span> <small>kg</small></div>
                     </div>
                     <div class="fruit-row" data-fruit="7">
-                        <div class="fruit-emoji">🍐</div>
-                        <div class="fruit-info"><h4>Gruszki</h4><span>Conference, słodkie</span></div>
+                        <div class="fruit-emoji">🍑</div>
+                        <div class="fruit-info"><h4>Nektarynki</h4><span>Aromatyczne, VI–IX</span></div>
                         <div class="fruit-slider-wrap"><input type="range" min="0" max="10" value="0" step="0.5" data-idx="7"></div>
                         <div class="fruit-val"><span id="v7">0</span> <small>kg</small></div>
                     </div>
+
+                    <!-- EGZOTYCZNE — import, premium -->
+                    <div class="fruit-cat"><span class="fruit-cat-tag egzo">Egzotyczne</span> Import, premium</div>
                     <div class="fruit-row" data-fruit="8">
-                        <div class="fruit-emoji">🥭</div>
-                        <div class="fruit-info"><h4>Mango</h4><span>Premium, dojrzałe</span></div>
+                        <div class="fruit-emoji">🥝</div>
+                        <div class="fruit-info"><h4>Kiwi</h4><span>Zespri, Nowa Zelandia</span></div>
                         <div class="fruit-slider-wrap"><input type="range" min="0" max="10" value="0" step="0.5" data-idx="8"></div>
                         <div class="fruit-val"><span id="v8">0</span> <small>kg</small></div>
                     </div>
                     <div class="fruit-row" data-fruit="9">
-                        <div class="fruit-emoji">🍑</div>
-                        <div class="fruit-info"><h4>Nektarynki</h4><span>Aromatyczne, sezonowe</span></div>
+                        <div class="fruit-emoji">🥭</div>
+                        <div class="fruit-info"><h4>Mango</h4><span>Premium, dojrzałe</span></div>
                         <div class="fruit-slider-wrap"><input type="range" min="0" max="10" value="0" step="0.5" data-idx="9"></div>
                         <div class="fruit-val"><span id="v9">0</span> <small>kg</small></div>
                     </div>
@@ -377,16 +392,19 @@ setTimeout(function() { document.querySelectorAll('.reveal').forEach(function(el
 
 (function() {
     var fruits = [
-        { name: 'Jabłka',      price: 6,  emoji: '🍎', servingG: 180 },
-        { name: 'Banany',      price: 8,  emoji: '🍌', servingG: 120 },
-        { name: 'Pomarańcze',  price: 9,  emoji: '🍊', servingG: 200 },
-        { name: 'Winogrona',   price: 16, emoji: '🍇', servingG: 150 },
-        { name: 'Truskawki',   price: 18, emoji: '🍓', servingG: 150 },
-        { name: 'Borówki',     price: 40, emoji: '🫐', servingG: 100 },
-        { name: 'Kiwi',        price: 14, emoji: '🥝', servingG: 100 },
-        { name: 'Gruszki',     price: 8,  emoji: '🍐', servingG: 180 },
-        { name: 'Mango',       price: 25, emoji: '🥭', servingG: 200 },
-        { name: 'Nektarynki',  price: 12, emoji: '🍑', servingG: 150 }
+        /* Standard */
+        { name: 'Jabłka',      price: 6,  emoji: '🍎', servingG: 180, cat: 'standard' },
+        { name: 'Banany',      price: 8,  emoji: '🍌', servingG: 120, cat: 'standard' },
+        { name: 'Pomarańcze',  price: 9,  emoji: '🍊', servingG: 200, cat: 'standard' },
+        { name: 'Gruszki',     price: 8,  emoji: '🍐', servingG: 180, cat: 'standard' },
+        /* Sezonowe */
+        { name: 'Truskawki',   price: 18, emoji: '🍓', servingG: 150, cat: 'sezon' },
+        { name: 'Winogrona',   price: 16, emoji: '🍇', servingG: 150, cat: 'sezon' },
+        { name: 'Borówki',     price: 40, emoji: '🫐', servingG: 100, cat: 'sezon' },
+        { name: 'Nektarynki',  price: 12, emoji: '🍑', servingG: 150, cat: 'sezon' },
+        /* Egzotyczne */
+        { name: 'Kiwi',        price: 14, emoji: '🥝', servingG: 100, cat: 'egzo' },
+        { name: 'Mango',       price: 25, emoji: '🥭', servingG: 200, cat: 'egzo' }
     ];
 
     var sliders = document.querySelectorAll('.fruit-slider-wrap input[type="range"]');
