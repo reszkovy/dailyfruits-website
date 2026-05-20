@@ -116,6 +116,35 @@
     .time-slider::-moz-range-thumb { width: 24px; height: 24px; border-radius: 50%; background: var(--lime); cursor: pointer; border: 3px solid var(--white); box-shadow: 0 2px 8px rgba(0,0,0,0.18); }
     .time-labels { display: flex; justify-content: space-between; margin-top: 8px; font-size: 11px; color: rgba(27,94,58,0.4); font-weight: 600; }
 
+    /* Region map */
+    .region-bar { background: var(--white); border-radius: var(--radius); padding: 24px 28px; margin-bottom: 16px; border: 1px solid rgba(27,94,58,0.08); }
+    .region-bar h3 { font-size: 16px; margin-bottom: 16px; }
+    .region-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: center; }
+    .map-svg { width: 100%; height: auto; }
+    .map-svg polygon, .map-svg path { fill: #E8F5E9; stroke: var(--white); stroke-width: 1.5; cursor: pointer; transition: fill 0.15s, filter 0.15s; }
+    .map-svg polygon:hover, .map-svg path:hover { fill: #C8E6C9; filter: brightness(0.97); }
+    .map-svg .reg-active { fill: var(--lime) !important; filter: drop-shadow(0 2px 6px rgba(141,198,63,0.4)); }
+    .map-svg text { font-family: var(--font); font-size: 7px; font-weight: 700; fill: rgba(27,94,58,0.35); pointer-events: none; text-anchor: middle; }
+    .region-info { display: flex; flex-direction: column; gap: 10px; }
+    .region-empty { text-align: center; color: rgba(27,94,58,0.35); font-size: 14px; padding: 20px 0; }
+    .region-name { font-size: 20px; font-weight: 900; color: var(--green-dark); line-height: 1.2; }
+    .region-fee-row { display: flex; align-items: baseline; gap: 6px; }
+    .region-fee-amount { font-size: 32px; font-weight: 900; color: var(--green-dark); letter-spacing: -1px; }
+    .region-fee-amount.free { color: var(--lime-light); }
+    .region-fee-label { font-size: 13px; color: rgba(27,94,58,0.45); }
+    .region-tier-badge { font-size: 11px; font-weight: 700; padding: 3px 12px; border-radius: var(--radius-pill); display: inline-block; margin-top: 2px; }
+    .region-tier-badge.t0 { background: rgba(141,198,63,0.18); color: #4A7A12; }
+    .region-tier-badge.t1 { background: rgba(27,94,58,0.08); color: var(--green-dark); }
+    .region-tier-badge.t2 { background: rgba(255,180,0,0.12); color: #B87800; }
+    .region-tier-badge.t3 { background: rgba(228,48,32,0.08); color: #C42818; }
+    .region-legend { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+    .region-legend span { font-size: 10px; color: rgba(27,94,58,0.4); display: flex; align-items: center; gap: 4px; }
+    .region-legend i { width: 10px; height: 10px; border-radius: 3px; display: inline-block; }
+    .sum-delivery { background: rgba(255,255,255,0.05); margin: 0 -28px; padding: 10px 28px; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid rgba(255,255,255,0.06); }
+    .sum-delivery .sum-label { opacity: 0.6; font-size: 13px; }
+    .sum-delivery .sum-value { font-weight: 700; font-size: 14px; }
+    .sum-delivery-warn { color: rgba(255,242,0,0.6); font-size: 11px; }
+
     /* Right panel */
     .calc-right { position: sticky; top: 120px; }
     .calc-summary { background: var(--green-dark); border-radius: var(--radius); padding: 32px 28px; color: #fff; }
@@ -152,6 +181,8 @@
         .nav-inner { padding: 10px 24px; }
     }
     @media (max-width: 768px) {
+        .region-grid { grid-template-columns: 1fr; gap: 16px; }
+        .region-bar { padding: 20px; }
         .nav-links, .nav-trust { display: none !important; }
         .nav-buttons .btn, .nav-buttons .nav-trust { display: none !important; }
         .nav-buttons { gap: 0; }
@@ -244,6 +275,56 @@
                     </div>
                 </div>
 
+                <!-- Region map -->
+                <div class="region-bar reveal">
+                    <h3>Wybierz województwo</h3>
+                    <div class="region-grid">
+                        <svg class="map-svg" viewBox="0 0 480 500" xmlns="http://www.w3.org/2000/svg" id="mapSvg">
+                            <polygon data-region="zachodniopomorskie" points="8,8 90,3 148,5 160,38 135,82 95,112 58,138 15,125 5,78 5,42"/>
+                            <polygon data-region="pomorskie" points="148,5 220,2 288,5 290,48 262,82 240,98 210,108 185,105 168,92 135,82 160,38"/>
+                            <polygon data-region="warminsko-mazurskie" points="288,5 350,3 420,8 455,28 468,55 458,85 438,110 400,125 360,120 320,105 300,88 290,65 290,48"/>
+                            <polygon data-region="podlaskie" points="438,110 458,85 468,55 480,80 480,145 478,200 472,245 455,262 435,255 415,238 400,205 392,170 388,142 400,125"/>
+                            <polygon data-region="lubuskie" points="15,125 58,138 68,168 65,218 60,248 38,278 12,275 3,250 2,200 2,160"/>
+                            <polygon data-region="wielkopolskie" points="58,138 95,112 135,82 168,92 185,105 200,120 205,148 198,182 185,210 170,235 152,255 125,262 100,252 82,235 72,215 68,192 68,168"/>
+                            <polygon data-region="kujawsko-pomorskie" points="168,92 210,108 240,98 262,82 290,65 300,88 320,105 290,130 268,152 238,160 205,148 200,120"/>
+                            <polygon data-region="mazowieckie" points="320,105 360,120 400,125 388,142 392,170 400,205 415,238 405,270 382,292 355,300 328,295 302,282 280,268 268,250 260,232 260,210 262,188 268,165 268,152 290,130"/>
+                            <polygon data-region="lodzkie" points="205,148 238,160 268,152 268,165 262,188 260,210 268,250 255,272 242,292 225,302 208,302 192,292 182,272 178,252 182,232 185,210 198,182"/>
+                            <polygon data-region="dolnoslaskie" points="38,278 60,248 100,252 125,262 142,280 145,312 140,342 125,362 100,372 72,372 48,360 28,345 15,322 10,298"/>
+                            <polygon data-region="opolskie" points="142,280 160,268 182,262 198,272 208,302 205,332 198,355 182,365 165,368 148,360 140,342 145,312"/>
+                            <polygon data-region="slaskie" points="198,272 215,268 232,278 242,292 248,320 245,348 238,368 225,382 208,385 195,378 188,365 192,345 198,328 205,332 208,302"/>
+                            <polygon data-region="swietokrzyskie" points="280,268 302,262 328,268 345,285 348,308 340,332 322,348 302,352 282,345 270,328 268,305 268,282"/>
+                            <polygon data-region="malopolskie" points="238,368 245,348 248,320 268,305 282,345 302,352 322,348 340,355 345,375 335,398 315,412 290,418 268,412 252,400 242,385"/>
+                            <polygon data-region="lubelskie" points="382,292 405,270 415,238 435,255 455,262 470,290 468,328 458,355 442,372 422,378 402,372 385,358 372,338 362,318 358,302"/>
+                            <polygon data-region="podkarpackie" points="340,355 358,345 372,338 385,358 402,372 422,378 442,385 452,408 442,432 422,448 398,455 375,448 355,435 342,415 338,395 335,378 345,375"/>
+                            <text x="80" y="72">ZP</text>
+                            <text x="218" y="58">PM</text>
+                            <text x="375" y="68">WM</text>
+                            <text x="440" y="175">PD</text>
+                            <text x="38" y="205">LB</text>
+                            <text x="135" y="185">WP</text>
+                            <text x="255" y="125">KP</text>
+                            <text x="340" y="215">MZ</text>
+                            <text x="228" y="235">LD</text>
+                            <text x="82" y="325">DS</text>
+                            <text x="172" y="325">OP</text>
+                            <text x="225" y="335">SL</text>
+                            <text x="308" y="310">SK</text>
+                            <text x="295" y="388">MP</text>
+                            <text x="415" y="325">LU</text>
+                            <text x="392" y="405">PK</text>
+                        </svg>
+                        <div class="region-info" id="regionInfo">
+                            <div class="region-empty">
+                                <p>Kliknij województwo na mapie,<br>żeby zobaczyć koszt dostawy</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="region-legend" style="margin-top:14px;">
+                        <span><i style="background:rgba(141,198,63,0.35)"></i>Baza — 0 zł</span>
+                        <span><i style="background:#E8F5E9"></i>+29–69 zł/tydz.</span>
+                    </div>
+                </div>
+
                 <!-- Fruit list -->
                 <div class="fruit-list reveal">
                     <!-- STANDARD — cały rok -->
@@ -251,25 +332,25 @@
                     <div class="fruit-row" data-fruit="0">
                         <div class="fruit-emoji">🍎</div>
                         <div class="fruit-info"><h4>Jabłka</h4><span>Polskie, odmiany mix</span></div>
-                        <div class="fruit-slider-wrap"><input type="range" min="0" max="10" value="0" step="0.5" data-idx="0"></div>
+                        <div class="fruit-slider-wrap"><input type="range" min="0" max="100" value="0" step="1" data-idx="0"></div>
                         <div class="fruit-val"><span id="v0">0</span> <small>kg</small></div>
                     </div>
                     <div class="fruit-row" data-fruit="1">
                         <div class="fruit-emoji">🍌</div>
                         <div class="fruit-info"><h4>Banany</h4><span>Fair trade, premium</span></div>
-                        <div class="fruit-slider-wrap"><input type="range" min="0" max="10" value="0" step="0.5" data-idx="1"></div>
+                        <div class="fruit-slider-wrap"><input type="range" min="0" max="100" value="0" step="1" data-idx="1"></div>
                         <div class="fruit-val"><span id="v1">0</span> <small>kg</small></div>
                     </div>
                     <div class="fruit-row" data-fruit="2">
                         <div class="fruit-emoji">🍊</div>
                         <div class="fruit-info"><h4>Pomarańcze</h4><span>Hiszpańskie, soczyste</span></div>
-                        <div class="fruit-slider-wrap"><input type="range" min="0" max="10" value="0" step="0.5" data-idx="2"></div>
+                        <div class="fruit-slider-wrap"><input type="range" min="0" max="100" value="0" step="1" data-idx="2"></div>
                         <div class="fruit-val"><span id="v2">0</span> <small>kg</small></div>
                     </div>
                     <div class="fruit-row" data-fruit="3">
                         <div class="fruit-emoji">🍐</div>
                         <div class="fruit-info"><h4>Gruszki</h4><span>Conference, słodkie</span></div>
-                        <div class="fruit-slider-wrap"><input type="range" min="0" max="10" value="0" step="0.5" data-idx="3"></div>
+                        <div class="fruit-slider-wrap"><input type="range" min="0" max="100" value="0" step="1" data-idx="3"></div>
                         <div class="fruit-val"><span id="v3">0</span> <small>kg</small></div>
                     </div>
 
@@ -278,25 +359,25 @@
                     <div class="fruit-row" data-fruit="4">
                         <div class="fruit-emoji">🍓</div>
                         <div class="fruit-info"><h4>Truskawki</h4><span>Polskie, V–IX</span></div>
-                        <div class="fruit-slider-wrap"><input type="range" min="0" max="10" value="0" step="0.5" data-idx="4"></div>
+                        <div class="fruit-slider-wrap"><input type="range" min="0" max="100" value="0" step="1" data-idx="4"></div>
                         <div class="fruit-val"><span id="v4">0</span> <small>kg</small></div>
                     </div>
                     <div class="fruit-row" data-fruit="5">
                         <div class="fruit-emoji">🍇</div>
                         <div class="fruit-info"><h4>Winogrona</h4><span>Bezpestkowe, VII–XI</span></div>
-                        <div class="fruit-slider-wrap"><input type="range" min="0" max="10" value="0" step="0.5" data-idx="5"></div>
+                        <div class="fruit-slider-wrap"><input type="range" min="0" max="100" value="0" step="1" data-idx="5"></div>
                         <div class="fruit-val"><span id="v5">0</span> <small>kg</small></div>
                     </div>
                     <div class="fruit-row" data-fruit="6">
                         <div class="fruit-emoji">🫐</div>
                         <div class="fruit-info"><h4>Borówki</h4><span>Polskie, VI–IX</span></div>
-                        <div class="fruit-slider-wrap"><input type="range" min="0" max="10" value="0" step="0.5" data-idx="6"></div>
+                        <div class="fruit-slider-wrap"><input type="range" min="0" max="100" value="0" step="1" data-idx="6"></div>
                         <div class="fruit-val"><span id="v6">0</span> <small>kg</small></div>
                     </div>
                     <div class="fruit-row" data-fruit="7">
                         <div class="fruit-emoji">🍑</div>
                         <div class="fruit-info"><h4>Nektarynki</h4><span>Aromatyczne, VI–IX</span></div>
-                        <div class="fruit-slider-wrap"><input type="range" min="0" max="10" value="0" step="0.5" data-idx="7"></div>
+                        <div class="fruit-slider-wrap"><input type="range" min="0" max="100" value="0" step="1" data-idx="7"></div>
                         <div class="fruit-val"><span id="v7">0</span> <small>kg</small></div>
                     </div>
 
@@ -305,13 +386,13 @@
                     <div class="fruit-row" data-fruit="8">
                         <div class="fruit-emoji">🥝</div>
                         <div class="fruit-info"><h4>Kiwi</h4><span>Zespri, Nowa Zelandia</span></div>
-                        <div class="fruit-slider-wrap"><input type="range" min="0" max="10" value="0" step="0.5" data-idx="8"></div>
+                        <div class="fruit-slider-wrap"><input type="range" min="0" max="100" value="0" step="1" data-idx="8"></div>
                         <div class="fruit-val"><span id="v8">0</span> <small>kg</small></div>
                     </div>
                     <div class="fruit-row" data-fruit="9">
                         <div class="fruit-emoji">🥭</div>
                         <div class="fruit-info"><h4>Mango</h4><span>Premium, dojrzałe</span></div>
-                        <div class="fruit-slider-wrap"><input type="range" min="0" max="10" value="0" step="0.5" data-idx="9"></div>
+                        <div class="fruit-slider-wrap"><input type="range" min="0" max="100" value="0" step="1" data-idx="9"></div>
                         <div class="fruit-val"><span id="v9">0</span> <small>kg</small></div>
                     </div>
                 </div>
@@ -392,29 +473,49 @@ setTimeout(function() { document.querySelectorAll('.reveal').forEach(function(el
 
 (function() {
     var fruits = [
-        /* Standard */
-        { name: 'Jabłka',      price: 6,  emoji: '🍎', servingG: 180, cat: 'standard' },
-        { name: 'Banany',      price: 8,  emoji: '🍌', servingG: 120, cat: 'standard' },
-        { name: 'Pomarańcze',  price: 9,  emoji: '🍊', servingG: 200, cat: 'standard' },
-        { name: 'Gruszki',     price: 8,  emoji: '🍐', servingG: 180, cat: 'standard' },
-        /* Sezonowe */
-        { name: 'Truskawki',   price: 18, emoji: '🍓', servingG: 150, cat: 'sezon' },
-        { name: 'Winogrona',   price: 16, emoji: '🍇', servingG: 150, cat: 'sezon' },
-        { name: 'Borówki',     price: 40, emoji: '🫐', servingG: 100, cat: 'sezon' },
-        { name: 'Nektarynki',  price: 12, emoji: '🍑', servingG: 150, cat: 'sezon' },
-        /* Egzotyczne */
-        { name: 'Kiwi',        price: 14, emoji: '🥝', servingG: 100, cat: 'egzo' },
-        { name: 'Mango',       price: 25, emoji: '🥭', servingG: 200, cat: 'egzo' }
+        { name: 'Jabłka',      price: 6,  emoji: '🍎', servingG: 180 },
+        { name: 'Banany',      price: 8,  emoji: '🍌', servingG: 120 },
+        { name: 'Pomarańcze',  price: 9,  emoji: '🍊', servingG: 200 },
+        { name: 'Gruszki',     price: 8,  emoji: '🍐', servingG: 180 },
+        { name: 'Truskawki',   price: 18, emoji: '🍓', servingG: 150 },
+        { name: 'Winogrona',   price: 16, emoji: '🍇', servingG: 150 },
+        { name: 'Borówki',     price: 40, emoji: '🫐', servingG: 100 },
+        { name: 'Nektarynki',  price: 12, emoji: '🍑', servingG: 150 },
+        { name: 'Kiwi',        price: 14, emoji: '🥝', servingG: 100 },
+        { name: 'Mango',       price: 25, emoji: '🥭', servingG: 200 }
     ];
+
+    var regions = {
+        'mazowieckie':          { name: 'Mazowieckie',          fee: 0,  tier: 0, label: 'Baza operacyjna' },
+        'lodzkie':              { name: 'Łódzkie',              fee: 29, tier: 1, label: 'Region bliski' },
+        'lubelskie':            { name: 'Lubelskie',            fee: 29, tier: 1, label: 'Region bliski' },
+        'swietokrzyskie':       { name: 'Świętokrzyskie',       fee: 29, tier: 1, label: 'Region bliski' },
+        'kujawsko-pomorskie':   { name: 'Kujawsko-Pomorskie',   fee: 49, tier: 2, label: 'Region średni' },
+        'wielkopolskie':        { name: 'Wielkopolskie',         fee: 49, tier: 2, label: 'Region średni' },
+        'warminsko-mazurskie':  { name: 'Warmińsko-Mazurskie',  fee: 49, tier: 2, label: 'Region średni' },
+        'podlaskie':            { name: 'Podlaskie',             fee: 49, tier: 2, label: 'Region średni' },
+        'malopolskie':          { name: 'Małopolskie',           fee: 69, tier: 3, label: 'Region dalszy' },
+        'slaskie':              { name: 'Śląskie',               fee: 69, tier: 3, label: 'Region dalszy' },
+        'podkarpackie':         { name: 'Podkarpackie',          fee: 69, tier: 3, label: 'Region dalszy' },
+        'dolnoslaskie':         { name: 'Dolnośląskie',          fee: 69, tier: 3, label: 'Region dalszy' },
+        'opolskie':             { name: 'Opolskie',              fee: 69, tier: 3, label: 'Region dalszy' },
+        'pomorskie':            { name: 'Pomorskie',             fee: 69, tier: 3, label: 'Region dalszy' },
+        'lubuskie':             { name: 'Lubuskie',              fee: 69, tier: 3, label: 'Region dalszy' },
+        'zachodniopomorskie':   { name: 'Zachodniopomorskie',    fee: 69, tier: 3, label: 'Region dalszy' }
+    };
 
     var sliders = document.querySelectorAll('.fruit-slider-wrap input[type="range"]');
     var timeSlider = document.getElementById('timeSlider');
     var timeValue = document.getElementById('timeValue');
     var discountBadge = document.getElementById('discountBadge');
     var summaryContent = document.getElementById('summaryContent');
+    var regionInfo = document.getElementById('regionInfo');
+    var mapPolygons = document.querySelectorAll('#mapSvg polygon');
+    var selectedRegion = null;
 
     function getMonths() { return parseInt(timeSlider.value); }
     function getDiscount() { return (getMonths() - 1); }
+    function getDeliveryFee() { return selectedRegion ? regions[selectedRegion].fee : 0; }
 
     function formatPLN(v) { return Math.round(v).toLocaleString('pl-PL') + ' zł'; }
 
@@ -423,6 +524,22 @@ setTimeout(function() { document.querySelectorAll('.reveal').forEach(function(el
         if (n >= 2 && n <= 4) return n + ' miesiące';
         return n + ' miesięcy';
     }
+
+    /* Map click */
+    mapPolygons.forEach(function(p) {
+        p.addEventListener('click', function() {
+            mapPolygons.forEach(function(el) { el.classList.remove('reg-active'); });
+            p.classList.add('reg-active');
+            selectedRegion = p.dataset.region;
+            var r = regions[selectedRegion];
+            var tierClass = 't' + r.tier;
+            var feeText = r.fee === 0 ? '<span class="region-fee-amount free">0 zł</span><span class="region-fee-label">darmowa dostawa</span>' : '<span class="region-fee-amount">+' + r.fee + ' zł</span><span class="region-fee-label">/ tydzień dostawy</span>';
+            regionInfo.innerHTML = '<div class="region-name">' + r.name + '</div>' +
+                '<div class="region-fee-row">' + feeText + '</div>' +
+                '<span class="region-tier-badge ' + tierClass + '">' + r.label + '</span>';
+            update();
+        });
+    });
 
     function update() {
         var months = getMonths();
@@ -440,7 +557,7 @@ setTimeout(function() { document.querySelectorAll('.reveal').forEach(function(el
 
         sliders.forEach(function(s, i) {
             var kg = parseFloat(s.value);
-            document.getElementById('v' + i).textContent = kg % 1 === 0 ? kg : kg.toFixed(1);
+            document.getElementById('v' + i).textContent = kg;
             var row = s.closest('.fruit-row');
             if (kg > 0) {
                 row.classList.add('active');
@@ -459,29 +576,44 @@ setTimeout(function() { document.querySelectorAll('.reveal').forEach(function(el
             return;
         }
 
+        var deliveryFee = getDeliveryFee();
         var weeklyBase = totalWeekly;
         var discountMultiplier = 1 - (discount / 100);
-        var weeklyFinal = weeklyBase * discountMultiplier;
-        var monthlyFinal = weeklyFinal * 4.33;
-        var totalFinal = monthlyFinal * months;
-        var saved = (weeklyBase * 4.33 * months) - totalFinal;
+        var weeklyFruit = weeklyBase * discountMultiplier;
+        var weeklyTotal = weeklyFruit + deliveryFee;
+        var monthlyTotal = weeklyTotal * 4.33;
+        var totalFinal = monthlyTotal * months;
+        var savedFruit = (weeklyBase * 4.33 * months) - (weeklyFruit * 4.33 * months);
         var personsPerWeek = Math.round(totalServings / 5);
 
         var html = '';
-        html += '<div class="sum-total">' + formatPLN(weeklyFinal) + ' <small>/tydzień</small></div>';
+        html += '<div class="sum-total">' + formatPLN(weeklyTotal) + ' <small>/tydzień</small></div>';
         html += '<div class="sum-period">' + pluralMonths(months) + ' abonamentu</div>';
 
         if (discount > 0) {
             html += '<div class="sum-discount">';
             html += '<span class="sum-label">Zniżka abonamentowa -' + discount + '%</span>';
-            html += '<span class="sum-value">-' + formatPLN(saved) + '</span>';
+            html += '<span class="sum-value">-' + formatPLN(savedFruit) + '</span>';
+            html += '</div>';
+        }
+
+        /* Delivery row */
+        if (selectedRegion) {
+            html += '<div class="sum-delivery">';
+            html += '<span class="sum-label">Dostawa (' + regions[selectedRegion].name + ')</span>';
+            html += '<span class="sum-value">' + (deliveryFee === 0 ? 'gratis' : '+' + deliveryFee + ' zł/tydz.') + '</span>';
+            html += '</div>';
+        } else {
+            html += '<div class="sum-delivery">';
+            html += '<span class="sum-delivery-warn">Wybierz województwo, żeby uwzględnić dostawę</span>';
             html += '</div>';
         }
 
         html += '<div class="sum-divider"></div>';
-        html += '<div class="sum-row"><span class="sum-label">Łączna waga / tydzień</span><span class="sum-value">' + totalKg.toFixed(1) + ' kg</span></div>';
+        html += '<div class="sum-row"><span class="sum-label">Owoce / tydzień</span><span class="sum-value">' + formatPLN(weeklyFruit) + '</span></div>';
+        html += '<div class="sum-row"><span class="sum-label">Łączna waga / tydzień</span><span class="sum-value">' + totalKg + ' kg</span></div>';
         html += '<div class="sum-row"><span class="sum-label">Porcje / tydzień</span><span class="sum-value">' + totalServings + ' szt.</span></div>';
-        html += '<div class="sum-row"><span class="sum-label">Koszt / miesiąc</span><span class="sum-value">' + formatPLN(monthlyFinal) + '</span></div>';
+        html += '<div class="sum-row"><span class="sum-label">Koszt / miesiąc</span><span class="sum-value">' + formatPLN(monthlyTotal) + '</span></div>';
 
         html += '<div class="sum-highlight"><div class="sum-row"><span class="sum-label">Wystarczy dla</span><span class="sum-value">' + personsPerWeek + ' osób / dzień</span></div></div>';
 
