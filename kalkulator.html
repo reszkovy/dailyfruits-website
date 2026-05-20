@@ -78,8 +78,56 @@
 
     /* ─── CALCULATOR ─── */
     .calc-section { padding: 0 0 80px; }
-    .calc-grid { display: grid; grid-template-columns: 1fr 380px; gap: 32px; align-items: start; }
-    .calc-left { display: flex; flex-direction: column; gap: 0; }
+    .calc-flow { display: flex; flex-direction: column; gap: 0; }
+    .calc-input-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; align-items: start; }
+
+    /* Quote bar — sticky summary strip */
+    .quote-bar { background: var(--green-dark); border-radius: var(--radius) var(--radius) 0 0; padding: 20px 28px; margin-top: 24px; margin-bottom: 0; color: #fff; transition: all 0.3s ease; box-shadow: 0 4px 20px rgba(27,94,58,0.15); }
+    .quote-bar.empty { background: rgba(27,94,58,0.06); border: 2px dashed rgba(27,94,58,0.12); box-shadow: none; }
+    .quote-bar.empty .quote-bar-inner { justify-content: center; }
+    .quote-bar.empty .quote-bar-empty { display: flex; }
+    .quote-bar.empty .quote-bar-filled { display: none; }
+    .quote-bar-inner { display: flex; align-items: center; gap: 12px; }
+    .quote-bar-empty { display: none; align-items: center; gap: 10px; color: rgba(27,94,58,0.35); font-size: 14px; font-weight: 600; }
+    .quote-bar-empty svg { width: 20px; height: 20px; opacity: 0.4; }
+    .quote-bar-filled { display: flex; align-items: center; gap: 0; flex: 1; }
+    .quote-bar-main { display: flex; align-items: baseline; gap: 8px; flex-shrink: 0; }
+    .quote-bar-price { font-size: 28px; font-weight: 900; letter-spacing: -1px; line-height: 1; }
+    .quote-bar-price small { font-size: 14px; font-weight: 600; opacity: 0.5; }
+    .quote-bar-period { font-size: 13px; opacity: 0.5; }
+    .quote-bar-divider { width: 1px; height: 28px; background: rgba(255,255,255,0.15); margin: 0 16px; flex-shrink: 0; }
+    .quote-bar-stats { display: flex; gap: 20px; flex: 1; }
+    .quote-bar-stat { display: flex; flex-direction: column; }
+    .quote-bar-stat-val { font-size: 15px; font-weight: 800; line-height: 1.2; }
+    .quote-bar-stat-label { font-size: 11px; opacity: 0.4; font-weight: 600; }
+    .quote-bar-stat-sub { font-size: 10px; opacity: 0.35; font-weight: 500; margin-top: 1px; }
+    .quote-bar-discount { background: rgba(141,198,63,0.2); color: var(--lime); font-size: 12px; font-weight: 800; padding: 4px 10px; border-radius: 20px; flex-shrink: 0; margin-left: auto; }
+    .quote-bar-note { font-size: 11px; opacity: 0.4; margin-top: 8px; font-weight: 500; }
+    .quote-bar.empty .quote-bar-note { display: none; }
+
+    /* Mode toggle */
+    .mode-toggle { display: flex; background: rgba(27,94,58,0.06); border-radius: var(--radius); padding: 4px; margin-bottom: 16px; }
+    .mode-btn { flex: 1; padding: 10px 16px; border: none; background: none; font-family: var(--font); font-size: 13px; font-weight: 700; color: rgba(27,94,58,0.45); border-radius: calc(var(--radius) - 2px); cursor: pointer; transition: all 0.2s; text-align: center; }
+    .mode-btn.active { background: var(--white); color: var(--green-dark); box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+    .mode-panel { display: none; }
+    .mode-panel.active { display: block; }
+
+    /* Budget/team input mode */
+    .input-card { background: var(--white); border-radius: var(--radius); padding: 24px; border: 1px solid rgba(27,94,58,0.08); }
+    .input-card h4 { font-size: 14px; font-weight: 800; color: var(--green-dark); margin-bottom: 16px; }
+    .input-field { margin-bottom: 20px; }
+    .input-field:last-child { margin-bottom: 0; }
+    .input-field label { display: block; font-size: 12px; font-weight: 700; color: rgba(27,94,58,0.5); text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 8px; }
+    .input-field input[type="number"] { width: 100%; padding: 12px 16px; border: 2px solid rgba(27,94,58,0.1); border-radius: 10px; font-family: var(--font); font-size: 18px; font-weight: 800; color: var(--green-dark); outline: none; transition: border-color 0.2s; -moz-appearance: textfield; }
+    .input-field input[type="number"]::-webkit-inner-spin-button, .input-field input[type="number"]::-webkit-outer-spin-button { -webkit-appearance: none; }
+    .input-field input[type="number"]:focus { border-color: var(--lime); }
+    .input-field .input-hint { font-size: 11px; color: rgba(27,94,58,0.4); margin-top: 6px; }
+    .input-field .input-suffix { display: flex; align-items: center; gap: 8px; }
+    .input-field .input-suffix input { flex: 1; }
+    .input-field .input-suffix span { font-size: 14px; font-weight: 700; color: rgba(27,94,58,0.4); white-space: nowrap; }
+    .budget-presets { display: flex; gap: 6px; margin-top: 8px; flex-wrap: wrap; }
+    .budget-preset { padding: 5px 12px; border: 1.5px solid rgba(27,94,58,0.1); border-radius: var(--radius-pill); font-family: var(--font); font-size: 12px; font-weight: 700; color: rgba(27,94,58,0.5); background: none; cursor: pointer; transition: all 0.15s; }
+    .budget-preset:hover, .budget-preset.active { border-color: var(--lime); background: rgba(141,198,63,0.08); color: var(--green-dark); }
 
     /* Time slider */
     .time-bar { background: var(--white); border-radius: var(--radius); padding: 24px 28px; margin-bottom: 16px; border: 1px solid rgba(27,94,58,0.08); }
@@ -87,28 +135,55 @@
     .time-bar-head h3 { font-size: 16px; }
     .time-badge { background: var(--lime); color: var(--green-dark); font-size: 13px; font-weight: 800; padding: 4px 14px; border-radius: var(--radius-pill); }
 
-    /* Fruit rows */
-    .fruit-list { background: var(--white); border-radius: var(--radius); padding: 8px 0; border: 1px solid rgba(27,94,58,0.08); }
-    .fruit-cat { display: flex; align-items: center; gap: 10px; padding: 16px 24px 8px; font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: 1.2px; color: rgba(27,94,58,0.4); }
-    .fruit-cat::after { content: ''; flex: 1; height: 1px; background: rgba(27,94,58,0.08); }
-    .fruit-cat-tag { font-size: 10px; font-weight: 700; padding: 2px 10px; border-radius: var(--radius-pill); letter-spacing: 0.5px; text-transform: uppercase; }
-    .fruit-cat-tag.standard { background: rgba(27,94,58,0.08); color: var(--green-dark); }
-    .fruit-cat-tag.sezon { background: rgba(255,145,0,0.12); color: #E07800; }
-    .fruit-cat-tag.egzo { background: rgba(180,50,180,0.1); color: #9B30A0; }
-    .fruit-row { display: grid; grid-template-columns: 44px 1fr 1fr 64px; align-items: center; gap: 12px; padding: 14px 24px; border-bottom: 1px solid rgba(27,94,58,0.06); transition: background 0.15s; }
-    .fruit-row:last-child { border-bottom: none; }
-    .fruit-row:hover { background: rgba(141,198,63,0.04); }
-    .fruit-row.active { background: rgba(141,198,63,0.08); }
-    .fruit-emoji { font-size: 28px; text-align: center; line-height: 1; }
-    .fruit-info h4 { font-size: 15px; font-weight: 700; color: var(--green-dark); margin-bottom: 2px; }
-    .fruit-info span { font-size: 12px; color: rgba(27,94,58,0.5); }
-    .fruit-slider-wrap { display: flex; align-items: center; gap: 8px; }
-    .fruit-slider-wrap input[type="range"] { flex: 1; height: 6px; -webkit-appearance: none; appearance: none; background: rgba(27,94,58,0.1); border-radius: 3px; outline: none; cursor: pointer; }
-    .fruit-slider-wrap input[type="range"]::-webkit-slider-thumb { -webkit-appearance: none; width: 20px; height: 20px; border-radius: 50%; background: var(--green-dark); cursor: pointer; border: 3px solid var(--white); box-shadow: 0 2px 6px rgba(0,0,0,0.15); transition: transform 0.15s; }
-    .fruit-slider-wrap input[type="range"]::-webkit-slider-thumb:hover { transform: scale(1.15); }
-    .fruit-slider-wrap input[type="range"]::-moz-range-thumb { width: 20px; height: 20px; border-radius: 50%; background: var(--green-dark); cursor: pointer; border: 3px solid var(--white); box-shadow: 0 2px 6px rgba(0,0,0,0.15); }
-    .fruit-val { font-size: 15px; font-weight: 800; color: var(--green-dark); text-align: right; min-width: 48px; }
-    .fruit-val small { font-weight: 600; font-size: 12px; opacity: 0.6; }
+    /* Category sliders */
+    .cat-list { background: var(--white); border-radius: var(--radius); padding: 8px 0; border: 1px solid rgba(27,94,58,0.08); }
+    .cat-header { display: flex; align-items: center; gap: 10px; padding: 16px 24px 8px; font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: 1.2px; color: rgba(27,94,58,0.4); }
+    .cat-header::after { content: ''; flex: 1; height: 1px; background: rgba(27,94,58,0.08); }
+    .cat-tag { font-size: 10px; font-weight: 700; padding: 2px 10px; border-radius: var(--radius-pill); letter-spacing: 0.5px; text-transform: uppercase; }
+    .cat-tag.standard { background: rgba(27,94,58,0.08); color: var(--green-dark); }
+    .cat-tag.sezon { background: rgba(255,145,0,0.12); color: #E07800; }
+    .cat-tag.egzo { background: rgba(180,50,180,0.1); color: #9B30A0; }
+    .cat-row { padding: 18px 24px; border-bottom: 1px solid rgba(27,94,58,0.06); transition: background 0.15s; }
+    .cat-row:last-child { border-bottom: none; }
+    .cat-row.active { background: rgba(141,198,63,0.06); }
+    .cat-row-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
+    .cat-row-left { display: flex; align-items: center; gap: 10px; }
+    .cat-row-left .cat-emoji { font-size: 22px; line-height: 1; }
+    .cat-row-left h4 { font-size: 15px; font-weight: 700; color: var(--green-dark); }
+    .cat-row-left span { font-size: 12px; color: rgba(27,94,58,0.45); }
+    .cat-val { font-size: 22px; font-weight: 900; color: var(--green-dark); min-width: 64px; text-align: right; }
+    .cat-val small { font-weight: 600; font-size: 13px; opacity: 0.5; }
+    .cat-slider { width: 100%; height: 6px; -webkit-appearance: none; appearance: none; background: rgba(27,94,58,0.1); border-radius: 3px; outline: none; cursor: pointer; }
+    .cat-slider::-webkit-slider-thumb { -webkit-appearance: none; width: 22px; height: 22px; border-radius: 50%; background: var(--green-dark); cursor: pointer; border: 3px solid var(--white); box-shadow: 0 2px 6px rgba(0,0,0,0.15); transition: transform 0.15s; }
+    .cat-slider::-webkit-slider-thumb:hover { transform: scale(1.15); }
+    .cat-slider::-moz-range-thumb { width: 22px; height: 22px; border-radius: 50%; background: var(--green-dark); cursor: pointer; border: 3px solid var(--white); box-shadow: 0 2px 6px rgba(0,0,0,0.15); }
+    .cat-slider.s-standard::-webkit-slider-thumb { background: var(--green-dark); }
+    .cat-slider.s-sezon::-webkit-slider-thumb { background: #E07800; }
+    .cat-slider.s-egzo::-webkit-slider-thumb { background: #9B30A0; }
+    .cat-slider.s-sezon::-moz-range-thumb { background: #E07800; }
+    .cat-slider.s-egzo::-moz-range-thumb { background: #9B30A0; }
+    .cat-fruits-list { font-size: 12px; color: rgba(27,94,58,0.45); margin-top: 6px; }
+    .cat-mix-tip { display: none; align-items: flex-start; gap: 8px; background: rgba(141,198,63,0.1); border: 1px solid rgba(141,198,63,0.2); border-radius: 10px; padding: 10px 14px; margin-top: 12px; font-size: 13px; color: var(--green-dark); line-height: 1.45; }
+    .cat-mix-tip.visible { display: flex; }
+    .cat-mix-tip svg { width: 16px; min-width: 16px; height: 16px; margin-top: 2px; color: var(--lime); }
+
+    /* Box recommendation */
+    .box-section { background: var(--white); border-radius: var(--radius); padding: 24px; border: 1px solid rgba(27,94,58,0.08); }
+    .box-section h3 { font-size: 16px; margin-bottom: 16px; }
+    .box-grid { display: flex; flex-direction: column; gap: 10px; }
+    .box-card { border-radius: 12px; padding: 12px 16px; border: 2px solid rgba(27,94,58,0.08); display: flex; align-items: center; gap: 14px; transition: all 0.2s; position: relative; overflow: hidden; }
+    .box-card.recommended { border-color: var(--lime); background: rgba(141,198,63,0.04); }
+    .box-card.recommended::before { content: ''; position: absolute; top: 0; left: 0; bottom: 0; width: 3px; background: var(--lime); }
+    .box-card img { width: 56px; height: 56px; object-fit: cover; border-radius: 10px; flex-shrink: 0; }
+    .box-card-info { flex: 1; min-width: 0; }
+    .box-card h4 { font-size: 13px; font-weight: 800; color: var(--green-dark); margin-bottom: 2px; }
+    .box-card .box-desc { font-size: 11px; color: rgba(27,94,58,0.5); line-height: 1.3; }
+    .box-card .box-weight { font-size: 10px; font-weight: 700; color: rgba(27,94,58,0.35); margin-top: 2px; }
+    .box-qty { display: flex; flex-direction: column; align-items: center; flex-shrink: 0; min-width: 48px; }
+    .box-qty-num { font-size: 26px; font-weight: 900; color: var(--green-dark); line-height: 1; }
+    .box-qty-num.zero { color: rgba(27,94,58,0.12); }
+    .box-qty-label { font-size: 10px; color: rgba(27,94,58,0.4); font-weight: 600; }
+    .box-empty { text-align: center; color: rgba(27,94,58,0.3); font-size: 14px; padding: 24px 0; }
 
     /* Time slider styling */
     .time-slider { width: 100%; height: 6px; -webkit-appearance: none; appearance: none; background: rgba(27,94,58,0.1); border-radius: 3px; outline: none; cursor: pointer; }
@@ -117,14 +192,14 @@
     .time-labels { display: flex; justify-content: space-between; margin-top: 8px; font-size: 11px; color: rgba(27,94,58,0.4); font-weight: 600; }
 
     /* Region map */
-    .region-bar { background: var(--white); border-radius: var(--radius); padding: 24px 28px; margin-bottom: 16px; border: 1px solid rgba(27,94,58,0.08); }
-    .region-bar h3 { font-size: 16px; margin-bottom: 16px; }
-    .region-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: center; }
-    .map-svg { width: 100%; height: auto; }
+    .region-bar { background: var(--white); border-radius: var(--radius); padding: 20px 24px; margin-bottom: 16px; border: 1px solid rgba(27,94,58,0.08); }
+    .region-bar h3 { font-size: 15px; margin-bottom: 12px; }
+    .region-grid { display: flex; align-items: center; gap: 20px; }
+    .map-svg { width: 200px; min-width: 200px; height: auto; }
     .map-svg polygon, .map-svg path { fill: #E8F5E9; stroke: var(--white); stroke-width: 1.5; cursor: pointer; transition: fill 0.15s, filter 0.15s; }
     .map-svg polygon:hover, .map-svg path:hover { fill: #C8E6C9; filter: brightness(0.97); }
     .map-svg .reg-active { fill: var(--lime) !important; filter: drop-shadow(0 2px 6px rgba(141,198,63,0.4)); }
-    .map-svg text { font-family: var(--font); font-size: 9px; font-weight: 700; fill: rgba(27,94,58,0.4); pointer-events: none; text-anchor: middle; dominant-baseline: central; }
+    .map-svg text { font-family: var(--font); font-size: 11px; font-weight: 700; fill: rgba(27,94,58,0.4); pointer-events: none; text-anchor: middle; dominant-baseline: central; }
     .region-info { display: flex; flex-direction: column; gap: 10px; }
     .region-empty { text-align: center; color: rgba(27,94,58,0.35); font-size: 14px; padding: 20px 0; }
     .region-name { font-size: 20px; font-weight: 900; color: var(--green-dark); line-height: 1.2; }
@@ -140,59 +215,66 @@
     .region-legend { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
     .region-legend span { font-size: 10px; color: rgba(27,94,58,0.4); display: flex; align-items: center; gap: 4px; }
     .region-legend i { width: 10px; height: 10px; border-radius: 3px; display: inline-block; }
-    .sum-delivery { background: rgba(255,255,255,0.05); margin: 0 -28px; padding: 10px 28px; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid rgba(255,255,255,0.06); }
-    .sum-delivery .sum-label { opacity: 0.6; font-size: 13px; }
-    .sum-delivery .sum-value { font-weight: 700; font-size: 14px; }
-    .sum-delivery-warn { color: rgba(255,242,0,0.6); font-size: 11px; }
+    /* Old summary panel styles removed — now using quote bar */
 
-    /* Right panel */
-    .calc-right { position: sticky; top: 120px; }
-    .calc-summary { background: var(--green-dark); border-radius: var(--radius); padding: 32px 28px; color: #fff; }
-    .calc-summary h3 { color: #fff; font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; opacity: 0.5; margin-bottom: 24px; }
-    .sum-total { font-size: 48px; font-weight: 900; line-height: 1; margin-bottom: 4px; letter-spacing: -2px; }
-    .sum-total small { font-size: 20px; font-weight: 700; opacity: 0.5; letter-spacing: 0; }
-    .sum-period { font-size: 14px; opacity: 0.5; margin-bottom: 24px; }
-    .sum-divider { height: 1px; background: rgba(255,255,255,0.1); margin: 0 0 20px; }
-    .sum-row { display: flex; justify-content: space-between; align-items: center; padding: 8px 0; font-size: 14px; }
-    .sum-label { opacity: 0.6; }
-    .sum-value { font-weight: 700; }
-    .sum-highlight { background: rgba(255,255,255,0.08); margin: 16px -28px; padding: 16px 28px; border-radius: 0; }
-    .sum-highlight .sum-label { opacity: 1; font-weight: 700; }
-    .sum-highlight .sum-value { color: var(--yellow); font-size: 18px; font-weight: 900; }
-    .sum-discount { background: rgba(141,198,63,0.15); margin: 0 -28px 16px; padding: 12px 28px; display: flex; justify-content: space-between; align-items: center; }
-    .sum-discount .sum-label { color: var(--lime); font-weight: 700; opacity: 1; font-size: 13px; }
-    .sum-discount .sum-value { color: var(--lime); font-weight: 800; }
-    .sum-cta { margin-top: 24px; }
-    .sum-cta .btn { width: 100%; justify-content: center; font-size: 16px; padding: 16px; }
-    .sum-note { text-align: center; font-size: 12px; opacity: 0.4; margin-top: 12px; }
-
-    .sum-breakdown { margin-top: 16px; }
-    .sum-breakdown-item { display: flex; justify-content: space-between; padding: 5px 0; font-size: 13px; opacity: 0.7; }
-    .sum-breakdown-item span:first-child { display: flex; align-items: center; gap: 6px; }
-
-    /* Empty state */
-    .sum-empty { text-align: center; padding: 32px 0; }
-    .sum-empty p { opacity: 0.4; font-size: 15px; }
+    /* Lead form card — full-width below content */
+    .calc-lead-card { background: var(--white); border-radius: var(--radius); padding: 32px; margin-top: 0; border: 1px solid rgba(27,94,58,0.08); border-top-left-radius: 0; border-top-right-radius: 0; }
+    .lead-card-inner { display: grid; grid-template-columns: 280px 1fr; gap: 32px; align-items: start; }
+    .calc-lead-card h3 { color: var(--green-dark); font-size: 20px; font-weight: 900; margin-bottom: 8px; }
+    .calc-lead-card .lead-subtitle { font-size: 14px; color: rgba(27,94,58,0.5); line-height: 1.5; }
+    .lead-form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .lead-card-form .sum-lead-submit { margin-top: 14px; }
+    .lead-card-form .sum-lead-submit .btn { width: auto; padding: 14px 32px; }
+    .sum-lead-group { margin-bottom: 10px; }
+    .sum-lead-group label { display: block; font-size: 12px; font-weight: 600; color: var(--green-dark); opacity: 0.5; margin-bottom: 4px; }
+    .sum-lead-group input { width: 100%; padding: 10px 14px; border: 1px solid rgba(27,94,58,0.12); border-radius: 10px; background: rgba(27,94,58,0.03); color: var(--green-dark); font-family: var(--font); font-size: 14px; outline: none; transition: all 0.2s; }
+    .sum-lead-group input::placeholder { color: rgba(27,94,58,0.25); }
+    .sum-lead-group input:focus { border-color: var(--lime); background: #fff; box-shadow: 0 0 0 2px rgba(141,198,63,0.2); }
+    .sum-lead-group input.error { border-color: var(--red); }
+    /* removed sum-lead-row — now using lead-form-grid */
+    .sum-lead-submit { margin-top: 14px; }
+    .sum-lead-submit .btn { width: 100%; justify-content: center; padding: 14px; font-size: 15px; }
+    .sum-lead-note { text-align: center; font-size: 11px; color: rgba(27,94,58,0.35); margin-top: 8px; }
+    .sum-lead-success { text-align: center; padding: 24px 0; }
+    .sum-lead-success .check-icon { width: 48px; height: 48px; background: var(--lime); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 12px; }
+    .sum-lead-success .check-icon svg { width: 24px; height: 24px; stroke: var(--green-dark); }
+    .sum-lead-success h4 { font-size: 16px; font-weight: 800; color: var(--green-dark); margin-bottom: 4px; }
+    .sum-lead-success p { font-size: 13px; color: rgba(27,94,58,0.5); }
 
     @media (max-width: 1024px) {
-        .calc-grid { grid-template-columns: 1fr; }
-        .calc-right { position: static; }
+        .calc-input-row { grid-template-columns: 1fr; }
+        .quote-bar-stats { gap: 12px; }
+        .quote-bar-price { font-size: 24px; }
         .container { padding: 0 24px; }
         .nav-inner { padding: 10px 24px; }
     }
     @media (max-width: 768px) {
-        .region-grid { grid-template-columns: 1fr; gap: 16px; }
-        .region-bar { padding: 20px; }
+        .region-grid { flex-direction: column; gap: 12px; }
+        .region-bar { padding: 16px; }
+        .map-svg { width: 180px; min-width: 180px; }
         .nav-links, .nav-trust { display: none !important; }
         .nav-buttons .btn, .nav-buttons .nav-trust { display: none !important; }
         .nav-buttons { gap: 0; }
         .mn-burger { display: flex; }
         .calc-hero { padding: 130px 0 40px; }
-        .fruit-row { grid-template-columns: 36px 1fr; gap: 8px; padding: 12px 16px; }
-        .fruit-slider-wrap { grid-column: 1 / -1; }
-        .fruit-val { grid-column: 1 / -1; text-align: left; }
-        .fruit-info span { display: none; }
-        .fruit-cat { padding: 14px 16px 6px; font-size: 11px; gap: 8px; }
+        .cat-row { padding: 14px 16px; }
+        .cat-row-left span { display: none; }
+        .cat-val { min-width: 48px; font-size: 18px; }
+        .cat-val small { font-size: 12px; }
+        .box-card { padding: 10px 12px; }
+        .box-card img { width: 44px; height: 44px; }
+        .box-card h4 { font-size: 12px; }
+        .box-desc { display: none; }
+        .lead-form-grid { grid-template-columns: 1fr; }
+        .lead-card-inner { grid-template-columns: 1fr; gap: 16px; }
+        .calc-lead-card { padding: 20px 16px; }
+        .lead-card-form .sum-lead-submit .btn { width: 100%; }
+        .quote-bar { padding: 14px 20px; border-radius: 14px; }
+        .quote-bar-inner { flex-wrap: wrap; gap: 8px; }
+        .quote-bar-divider { display: none; }
+        .quote-bar-stats { gap: 12px; width: 100%; }
+        .quote-bar-price { font-size: 22px; }
+        .quote-bar-discount { margin-left: 0; }
         .container { padding: 0 20px; }
         .nav-inner { padding: 10px 20px; }
     }
@@ -257,24 +339,8 @@
 
 <section class="calc-section">
     <div class="container">
-        <div class="calc-grid">
+        <div class="calc-flow">
             <div class="calc-left">
-                <!-- Time slider -->
-                <div class="time-bar reveal">
-                    <div class="time-bar-head">
-                        <h3>Okres abonamentu</h3>
-                        <span class="time-badge" id="discountBadge">0% zniżki</span>
-                    </div>
-                    <input type="range" min="1" max="12" value="1" step="1" class="time-slider" id="timeSlider">
-                    <div style="display:flex;justify-content:space-between;align-items:baseline;margin-top:10px;">
-                        <span id="timeValue" style="font-size:24px;font-weight:900;color:var(--green-dark);">1 miesiąc</span>
-                        <span style="font-size:12px;color:rgba(27,94,58,0.4);">-1% za każdy kolejny miesiąc</span>
-                    </div>
-                    <div class="time-labels">
-                        <span>1 mies.</span><span>3</span><span>6</span><span>9</span><span>12 mies.</span>
-                    </div>
-                </div>
-
                 <!-- Region map -->
                 <div class="region-bar reveal">
                     <h3>Wybierz województwo</h3>
@@ -325,87 +391,211 @@
                     </div>
                 </div>
 
-                <!-- Fruit list -->
-                <div class="fruit-list reveal">
-                    <!-- STANDARD — cały rok -->
-                    <div class="fruit-cat"><span class="fruit-cat-tag standard">Standard</span> Dostępne cały rok</div>
-                    <div class="fruit-row" data-fruit="0">
-                        <div class="fruit-emoji">🍎</div>
-                        <div class="fruit-info"><h4>Jabłka</h4><span>Polskie, odmiany mix</span></div>
-                        <div class="fruit-slider-wrap"><input type="range" min="0" max="100" value="0" step="1" data-idx="0"></div>
-                        <div class="fruit-val"><span id="v0">0</span> <small>kg</small></div>
+                <!-- Time slider — right above recommendations -->
+                <div class="time-bar reveal">
+                    <div class="time-bar-head">
+                        <h3>Okres abonamentu</h3>
+                        <span class="time-badge" id="discountBadge">0% zniżki</span>
                     </div>
-                    <div class="fruit-row" data-fruit="1">
-                        <div class="fruit-emoji">🍌</div>
-                        <div class="fruit-info"><h4>Banany</h4><span>Fair trade, premium</span></div>
-                        <div class="fruit-slider-wrap"><input type="range" min="0" max="100" value="0" step="1" data-idx="1"></div>
-                        <div class="fruit-val"><span id="v1">0</span> <small>kg</small></div>
+                    <input type="range" min="1" max="12" value="1" step="1" class="time-slider" id="timeSlider">
+                    <div style="display:flex;justify-content:space-between;align-items:baseline;margin-top:10px;">
+                        <span id="timeValue" style="font-size:24px;font-weight:900;color:var(--green-dark);">1 miesiąc</span>
+                        <span style="font-size:12px;color:rgba(27,94,58,0.4);">-1% za każdy kolejny miesiąc</span>
                     </div>
-                    <div class="fruit-row" data-fruit="2">
-                        <div class="fruit-emoji">🍊</div>
-                        <div class="fruit-info"><h4>Pomarańcze</h4><span>Hiszpańskie, soczyste</span></div>
-                        <div class="fruit-slider-wrap"><input type="range" min="0" max="100" value="0" step="1" data-idx="2"></div>
-                        <div class="fruit-val"><span id="v2">0</span> <small>kg</small></div>
+                    <div class="time-labels">
+                        <span>1 mies.</span><span>3</span><span>6</span><span>9</span><span>12 mies.</span>
                     </div>
-                    <div class="fruit-row" data-fruit="3">
-                        <div class="fruit-emoji">🍐</div>
-                        <div class="fruit-info"><h4>Gruszki</h4><span>Conference, słodkie</span></div>
-                        <div class="fruit-slider-wrap"><input type="range" min="0" max="100" value="0" step="1" data-idx="3"></div>
-                        <div class="fruit-val"><span id="v3">0</span> <small>kg</small></div>
+                </div>
+
+                <!-- Mode toggle -->
+                <div class="mode-toggle reveal">
+                    <button class="mode-btn active" data-mode="sliders">Zapotrzebowanie (kg)</button>
+                    <button class="mode-btn" data-mode="budget">Budżet i zespół</button>
+                </div>
+
+                <div class="calc-input-row reveal">
+                    <!-- LEFT: Input mode -->
+                    <div>
+                        <!-- Mode A: Category sliders -->
+                        <div class="mode-panel active" id="modeSliders">
+                            <div class="cat-list">
+                                <div class="cat-header">Wybierz zapotrzebowanie</div>
+
+                                <div class="cat-row" data-cat="standard">
+                                    <div class="cat-row-top">
+                                        <div class="cat-row-left">
+                                            <span class="cat-emoji">🍎</span>
+                                            <div><h4>Owoce standardowe</h4><span>Jabłka, banany, gruszki, pomarańcze</span></div>
+                                        </div>
+                                        <div class="cat-val"><span id="vStandard">0</span> <small>kg</small></div>
+                                    </div>
+                                    <input type="range" min="0" max="100" value="0" step="1" class="cat-slider s-standard" id="sliderStandard">
+                                    <div class="cat-fruits-list"><span class="cat-tag standard">Standard</span> Dostępne cały rok</div>
+                                </div>
+
+                                <div class="cat-row" data-cat="sezon">
+                                    <div class="cat-row-top">
+                                        <div class="cat-row-left">
+                                            <span class="cat-emoji">🍇</span>
+                                            <div><h4>Owoce sezonowe</h4><span>Truskawki, winogrona, borówki, nektarynki, mandarynki</span></div>
+                                        </div>
+                                        <div class="cat-val"><span id="vSezon">0</span> <small>kg</small></div>
+                                    </div>
+                                    <input type="range" min="0" max="50" value="0" step="1" class="cat-slider s-sezon" id="sliderSezon">
+                                    <div class="cat-fruits-list"><span class="cat-tag sezon">Sezonowe</span> Dostępność zależy od sezonu</div>
+                                </div>
+
+                                <div class="cat-row" data-cat="egzo">
+                                    <div class="cat-row-top">
+                                        <div class="cat-row-left">
+                                            <span class="cat-emoji">🥝</span>
+                                            <div><h4>Owoce egzotyczne</h4><span>Kiwi, mango, ananas, papaja</span></div>
+                                        </div>
+                                        <div class="cat-val"><span id="vEgzo">0</span> <small>kg</small></div>
+                                    </div>
+                                    <input type="range" min="0" max="50" value="0" step="1" class="cat-slider s-egzo" id="sliderEgzo">
+                                    <div class="cat-fruits-list"><span class="cat-tag egzo">Egzotyczne</span> Import, premium</div>
+                                </div>
+
+                                <div class="cat-mix-tip" id="catMixTip">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+                                    <span id="catMixTipText"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Mode B: Budget & team -->
+                        <div class="mode-panel" id="modeBudget">
+                            <div class="input-card">
+                                <h4>Podaj dane zespołu</h4>
+                                <div class="input-field">
+                                    <label>Liczba osób w biurze</label>
+                                    <div class="input-suffix">
+                                        <input type="number" id="inputPeople" min="1" max="500" value="" placeholder="np. 30">
+                                        <span>osób</span>
+                                    </div>
+                                    <div class="input-hint">Ile osób korzysta z owoców na co dzień?</div>
+                                </div>
+                                <div class="input-field">
+                                    <label>Budżet miesięczny</label>
+                                    <div class="input-suffix">
+                                        <input type="number" id="inputBudget" min="100" max="50000" value="" placeholder="np. 2000" step="100">
+                                        <span>zł/mies.</span>
+                                    </div>
+                                    <div class="budget-presets">
+                                        <button class="budget-preset" data-val="500">500 zł</button>
+                                        <button class="budget-preset" data-val="1000">1 000 zł</button>
+                                        <button class="budget-preset" data-val="2000">2 000 zł</button>
+                                        <button class="budget-preset" data-val="5000">5 000 zł</button>
+                                    </div>
+                                    <div class="input-hint">Ile chcesz wydawać na owoce miesięcznie?</div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
-                    <!-- SEZONOWE — dostępność zależna od pory roku -->
-                    <div class="fruit-cat"><span class="fruit-cat-tag sezon">Sezonowe</span> Dostępność zależy od sezonu</div>
-                    <div class="fruit-row" data-fruit="4">
-                        <div class="fruit-emoji">🍓</div>
-                        <div class="fruit-info"><h4>Truskawki</h4><span>Polskie, V–IX</span></div>
-                        <div class="fruit-slider-wrap"><input type="range" min="0" max="100" value="0" step="1" data-idx="4"></div>
-                        <div class="fruit-val"><span id="v4">0</span> <small>kg</small></div>
-                    </div>
-                    <div class="fruit-row" data-fruit="5">
-                        <div class="fruit-emoji">🍇</div>
-                        <div class="fruit-info"><h4>Winogrona</h4><span>Bezpestkowe, VII–XI</span></div>
-                        <div class="fruit-slider-wrap"><input type="range" min="0" max="100" value="0" step="1" data-idx="5"></div>
-                        <div class="fruit-val"><span id="v5">0</span> <small>kg</small></div>
-                    </div>
-                    <div class="fruit-row" data-fruit="6">
-                        <div class="fruit-emoji">🫐</div>
-                        <div class="fruit-info"><h4>Borówki</h4><span>Polskie, VI–IX</span></div>
-                        <div class="fruit-slider-wrap"><input type="range" min="0" max="100" value="0" step="1" data-idx="6"></div>
-                        <div class="fruit-val"><span id="v6">0</span> <small>kg</small></div>
-                    </div>
-                    <div class="fruit-row" data-fruit="7">
-                        <div class="fruit-emoji">🍑</div>
-                        <div class="fruit-info"><h4>Nektarynki</h4><span>Aromatyczne, VI–IX</span></div>
-                        <div class="fruit-slider-wrap"><input type="range" min="0" max="100" value="0" step="1" data-idx="7"></div>
-                        <div class="fruit-val"><span id="v7">0</span> <small>kg</small></div>
-                    </div>
-
-                    <!-- EGZOTYCZNE — import, premium -->
-                    <div class="fruit-cat"><span class="fruit-cat-tag egzo">Egzotyczne</span> Import, premium</div>
-                    <div class="fruit-row" data-fruit="8">
-                        <div class="fruit-emoji">🥝</div>
-                        <div class="fruit-info"><h4>Kiwi</h4><span>Zespri, Nowa Zelandia</span></div>
-                        <div class="fruit-slider-wrap"><input type="range" min="0" max="100" value="0" step="1" data-idx="8"></div>
-                        <div class="fruit-val"><span id="v8">0</span> <small>kg</small></div>
-                    </div>
-                    <div class="fruit-row" data-fruit="9">
-                        <div class="fruit-emoji">🥭</div>
-                        <div class="fruit-info"><h4>Mango</h4><span>Premium, dojrzałe</span></div>
-                        <div class="fruit-slider-wrap"><input type="range" min="0" max="100" value="0" step="1" data-idx="9"></div>
-                        <div class="fruit-val"><span id="v9">0</span> <small>kg</small></div>
+                    <!-- RIGHT: Box recommendation (always visible) -->
+                    <div class="box-section" id="boxSection">
+                        <h3>Rekomendacja pudełek</h3>
+                        <div class="box-empty" id="boxEmpty">Ustaw parametry, żeby zobaczyć rekomendację</div>
+                        <div class="box-grid" id="boxGrid" style="display:none;">
+                            <div class="box-card" id="boxBaza">
+                                <img src="image%20421436.png" alt="Box Baza" loading="lazy">
+                                <div class="box-card-info">
+                                    <h4>Box Baza</h4>
+                                    <div class="box-desc">Jabłka + banany</div>
+                                    <div class="box-weight">~5 kg</div>
+                                </div>
+                                <div class="box-qty">
+                                    <span class="box-qty-num zero" id="qBaza">0</span>
+                                    <span class="box-qty-label">szt./tydz.</span>
+                                </div>
+                            </div>
+                            <div class="box-card" id="boxSezon">
+                                <img src="image23%204.png" alt="Box Sezonowy" loading="lazy">
+                                <div class="box-card-info">
+                                    <h4>Box Sezonowy</h4>
+                                    <div class="box-desc">Standard + sezonowe</div>
+                                    <div class="box-weight">~5 kg</div>
+                                </div>
+                                <div class="box-qty">
+                                    <span class="box-qty-num zero" id="qSezon">0</span>
+                                    <span class="box-qty-label">szt./tydz.</span>
+                                </div>
+                            </div>
+                            <div class="box-card" id="boxEgzo">
+                                <img src="image333%2023.png" alt="Box Egzotyczny" loading="lazy">
+                                <div class="box-card-info">
+                                    <h4>Box Egzotyczny</h4>
+                                    <div class="box-desc">Standard + egzotyczne</div>
+                                    <div class="box-weight">~5 kg</div>
+                                </div>
+                                <div class="box-qty">
+                                    <span class="box-qty-num zero" id="qEgzo">0</span>
+                                    <span class="box-qty-label">szt./tydz.</span>
+                                </div>
+                            </div>
+                            <div class="box-card" id="boxPremium">
+                                <img src="image32%20114.png" alt="Box Premium" loading="lazy">
+                                <div class="box-card-info">
+                                    <h4>Box Premium</h4>
+                                    <div class="box-desc">Duży mix wszystkich kategorii</div>
+                                    <div class="box-weight">~9 kg</div>
+                                </div>
+                                <div class="box-qty">
+                                    <span class="box-qty-num zero" id="qPremium">0</span>
+                                    <span class="box-qty-label">szt./tydz.</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <!-- RIGHT PANEL -->
-            <div class="calc-right">
-                <div class="calc-summary">
-                    <h3>Twoja wycena</h3>
-                    <div id="summaryContent">
-                        <div class="sum-empty">
-                            <p>Przesuń suwaki po lewej,<br>żeby zobaczyć wycenę</p>
+            <!-- Quote bar — summary strip above form -->
+            <div class="quote-bar empty" id="quoteBar">
+                <div class="quote-bar-inner">
+                    <div class="quote-bar-empty">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 7h6M9 11h6M9 15h4"/><rect x="4" y="3" width="16" height="18" rx="2"/></svg>
+                        <span>Ustaw parametry powyżej, żeby zobaczyć wycenę</span>
+                    </div>
+                    <div class="quote-bar-filled">
+                        <div class="quote-bar-main">
+                            <span class="quote-bar-price" id="qbPrice">0 <small>zł/tydz.</small></span>
                         </div>
+                        <div class="quote-bar-divider"></div>
+                        <div class="quote-bar-stats">
+                            <div class="quote-bar-stat"><span class="quote-bar-stat-val" id="qbMonthly">0 zł</span><span class="quote-bar-stat-label">miesięcznie</span></div>
+                            <div class="quote-bar-stat"><span class="quote-bar-stat-val" id="qbBoxes">0 szt.</span><span class="quote-bar-stat-label">pudełek/tydz.</span></div>
+                            <div class="quote-bar-stat"><span class="quote-bar-stat-val" id="qbPersons">~0</span><span class="quote-bar-stat-label">osób/dzień</span></div>
+                            <div class="quote-bar-stat"><span class="quote-bar-stat-val" id="qbKg">0 kg</span><span class="quote-bar-stat-label">tygodniowo</span><span class="quote-bar-stat-sub" id="qbKgBreak"></span></div>
+                        </div>
+                        <span class="quote-bar-discount" id="qbDiscount" style="display:none;">-0%</span>
+                    </div>
+                    <div class="quote-bar-note">Przybliżona estymacja — aby otrzymać wiążącą ofertę, wyślij formularz poniżej</div>
+                </div>
+            </div>
+
+            <!-- Lead form -->
+            <div class="calc-lead-card" id="calcLeadCard">
+                <div class="lead-card-inner">
+                    <div class="lead-card-text">
+                        <h3>Chcesz dokładną wycenę?</h3>
+                        <p class="lead-subtitle">Zostaw dane — odezwiemy się w ciągu 24h z ofertą dopasowaną do Twojego biura.</p>
+                    </div>
+                    <form id="calcLeadForm" onsubmit="return false;" class="lead-card-form">
+                        <div class="lead-form-grid">
+                            <div class="sum-lead-group"><label for="leadName">Imię i nazwisko</label><input type="text" id="leadName" placeholder="Jan Kowalski" required></div>
+                            <div class="sum-lead-group"><label for="leadEmail">Email</label><input type="email" id="leadEmail" placeholder="jan@firma.pl" required></div>
+                            <div class="sum-lead-group"><label for="leadPhone">Telefon</label><input type="tel" id="leadPhone" placeholder="+48 123 456 789"></div>
+                            <div class="sum-lead-group"><label for="leadCompany">Firma</label><input type="text" id="leadCompany" placeholder="ABC sp. z o.o."></div>
+                        </div>
+                        <div class="sum-lead-submit"><button type="button" class="btn btn-red-solid" onclick="submitCalcLead()">Wyślij wycenę na maila →</button></div>
+                    </form>
+                    <div class="sum-lead-success" id="leadSuccess" style="display:none;">
+                        <div class="check-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+                        <h4>Dziękujemy!</h4>
+                        <p>Odezwiemy się w ciągu 24h z dokładną ofertą.</p>
                     </div>
                 </div>
             </div>
@@ -472,17 +662,12 @@ document.querySelectorAll('.reveal').forEach(function(el) { obs.observe(el); });
 setTimeout(function() { document.querySelectorAll('.reveal').forEach(function(el) { el.classList.add('vis'); }); }, 2000);
 
 (function() {
-    var fruits = [
-        { name: 'Jabłka',      price: 6,  emoji: '🍎', servingG: 180 },
-        { name: 'Banany',      price: 8,  emoji: '🍌', servingG: 120 },
-        { name: 'Pomarańcze',  price: 9,  emoji: '🍊', servingG: 200 },
-        { name: 'Gruszki',     price: 8,  emoji: '🍐', servingG: 180 },
-        { name: 'Truskawki',   price: 18, emoji: '🍓', servingG: 150 },
-        { name: 'Winogrona',   price: 16, emoji: '🍇', servingG: 150 },
-        { name: 'Borówki',     price: 40, emoji: '🫐', servingG: 100 },
-        { name: 'Nektarynki',  price: 12, emoji: '🍑', servingG: 150 },
-        { name: 'Kiwi',        price: 14, emoji: '🥝', servingG: 100 },
-        { name: 'Mango',       price: 25, emoji: '🥭', servingG: 200 }
+    /* Box definitions: kg composition per box type */
+    var boxes = [
+        { id: 'Baza',    name: 'Box Baza',      std: 5,   sezon: 0,   egzo: 0,   total: 5,  price: 45  },
+        { id: 'Sezon',   name: 'Box Sezonowy',   std: 3,   sezon: 2,   egzo: 0,   total: 5,  price: 65  },
+        { id: 'Egzo',    name: 'Box Egzotyczny',  std: 3,   sezon: 0,   egzo: 2,   total: 5,  price: 75  },
+        { id: 'Premium', name: 'Box Premium',     std: 4,   sezon: 2.5, egzo: 2.5, total: 9,  price: 119 }
     ];
 
     var regions = {
@@ -504,14 +689,44 @@ setTimeout(function() { document.querySelectorAll('.reveal').forEach(function(el
         'zachodniopomorskie':   { name: 'Zachodniopomorskie',    fee: 69, tier: 3, label: 'Region dalszy' }
     };
 
-    var sliders = document.querySelectorAll('.fruit-slider-wrap input[type="range"]');
+    /* DOM refs */
+    var sliderStd = document.getElementById('sliderStandard');
+    var sliderSez = document.getElementById('sliderSezon');
+    var sliderEgz = document.getElementById('sliderEgzo');
+    var inputPeople = document.getElementById('inputPeople');
+    var inputBudget = document.getElementById('inputBudget');
     var timeSlider = document.getElementById('timeSlider');
     var timeValue = document.getElementById('timeValue');
     var discountBadge = document.getElementById('discountBadge');
-    var summaryContent = document.getElementById('summaryContent');
+    var quoteBar = document.getElementById('quoteBar');
     var regionInfo = document.getElementById('regionInfo');
     var mapPolygons = document.querySelectorAll('#mapSvg path');
+    var boxGrid = document.getElementById('boxGrid');
+    var boxEmpty = document.getElementById('boxEmpty');
     var selectedRegion = null;
+    var currentMode = 'sliders';
+
+    /* Mode toggle */
+    document.querySelectorAll('.mode-btn').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+            document.querySelectorAll('.mode-btn').forEach(function(b) { b.classList.remove('active'); });
+            btn.classList.add('active');
+            currentMode = btn.dataset.mode;
+            document.getElementById('modeSliders').classList.toggle('active', currentMode === 'sliders');
+            document.getElementById('modeBudget').classList.toggle('active', currentMode === 'budget');
+            update();
+        });
+    });
+
+    /* Budget presets */
+    document.querySelectorAll('.budget-preset').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+            document.querySelectorAll('.budget-preset').forEach(function(b) { b.classList.remove('active'); });
+            btn.classList.add('active');
+            inputBudget.value = btn.dataset.val;
+            update();
+        });
+    });
 
     function getMonths() { return parseInt(timeSlider.value); }
     function getDiscount() { return (getMonths() - 1); }
@@ -523,6 +738,73 @@ setTimeout(function() { document.querySelectorAll('.reveal').forEach(function(el
         if (n === 1) return '1 miesiąc';
         if (n >= 2 && n <= 4) return n + ' miesiące';
         return n + ' miesięcy';
+    }
+
+    /* Box recommendation from kg demand (Mode A) */
+    function recommendBoxes(needStd, needSez, needEgz) {
+        var result = { Baza: 0, Sezon: 0, Egzo: 0, Premium: 0 };
+        var remStd = needStd, remSez = needSez, remEgz = needEgz;
+
+        while (remSez > 0 && remEgz > 0) {
+            result.Premium++;
+            remStd = Math.max(0, remStd - 4);
+            remSez = Math.max(0, remSez - 2.5);
+            remEgz = Math.max(0, remEgz - 2.5);
+        }
+        while (remEgz > 0) {
+            result.Egzo++;
+            remStd = Math.max(0, remStd - 3);
+            remEgz = Math.max(0, remEgz - 2);
+        }
+        while (remSez > 0) {
+            result.Sezon++;
+            remStd = Math.max(0, remStd - 3);
+            remSez = Math.max(0, remSez - 2);
+        }
+        while (remStd > 0) {
+            result.Baza++;
+            remStd = Math.max(0, remStd - 5);
+        }
+        return result;
+    }
+
+    /* Reverse recommendation from people + budget (Mode B)
+       Logic: ~0.15kg fruit/person/day × 5 days = 0.75kg/person/week
+       Split: 60% standard, 25% seasonal, 15% exotic
+       Then constrain by weekly budget */
+    function recommendFromBudget(people, monthlyBudget) {
+        var result = { Baza: 0, Sezon: 0, Egzo: 0, Premium: 0 };
+        if (!people || people <= 0) return result;
+
+        var months = getMonths();
+        var discount = getDiscount();
+        var discountMult = 1 - (discount / 100);
+        var deliveryFee = getDeliveryFee();
+        var weeklyBudget = monthlyBudget ? (monthlyBudget / 4.33) - deliveryFee : Infinity;
+        if (weeklyBudget < 0) weeklyBudget = 0;
+
+        /* Calculate kg demand from people */
+        var totalKgWeek = people * 0.75;
+        var needStd = totalKgWeek * 0.60;
+        var needSez = totalKgWeek * 0.25;
+        var needEgz = totalKgWeek * 0.15;
+
+        /* Get unconstrained recommendation */
+        var rec = recommendBoxes(needStd, needSez, needEgz);
+
+        /* If budget is set, check cost and scale down if needed */
+        if (monthlyBudget && monthlyBudget > 0) {
+            var weeklyCost = 0;
+            boxes.forEach(function(b) { weeklyCost += rec[b.id] * b.price * discountMult; });
+
+            /* Scale down proportionally if over budget */
+            if (weeklyCost > weeklyBudget && weeklyCost > 0) {
+                var scale = weeklyBudget / weeklyCost;
+                /* Recalc with scaled kg */
+                rec = recommendBoxes(needStd * scale, needSez * scale, needEgz * scale);
+            }
+        }
+        return rec;
     }
 
     /* Map click */
@@ -544,96 +826,184 @@ setTimeout(function() { document.querySelectorAll('.reveal').forEach(function(el
     function update() {
         var months = getMonths();
         var discount = getDiscount();
+        var rec, totalKg;
 
+        /* Track actual kg delivered by category */
+        var actualStd = 0, actualSez = 0, actualEgz = 0;
+
+        if (currentMode === 'sliders') {
+            var kgStd = parseFloat(sliderStd.value);
+            var kgSez = parseFloat(sliderSez.value);
+            var kgEgz = parseFloat(sliderEgz.value);
+
+            document.getElementById('vStandard').textContent = kgStd;
+            document.getElementById('vSezon').textContent = kgSez;
+            document.getElementById('vEgzo').textContent = kgEgz;
+
+            document.querySelector('[data-cat="standard"]').classList.toggle('active', kgStd > 0);
+            document.querySelector('[data-cat="sezon"]').classList.toggle('active', kgSez > 0);
+            document.querySelector('[data-cat="egzo"]').classList.toggle('active', kgEgz > 0);
+
+            rec = recommendBoxes(kgStd, kgSez, kgEgz);
+        } else {
+            var people = parseInt(inputPeople.value) || 0;
+            var budget = parseInt(inputBudget.value) || 0;
+            rec = recommendFromBudget(people, budget);
+        }
+
+        /* Calculate ACTUAL kg delivered from recommended boxes (not slider input) */
+        boxes.forEach(function(b) {
+            actualStd += rec[b.id] * b.std;
+            actualSez += rec[b.id] * b.sezon;
+            actualEgz += rec[b.id] * b.egzo;
+        });
+        totalKg = actualStd + actualSez + actualEgz;
+
+        /* Time & discount */
         timeValue.textContent = pluralMonths(months);
         discountBadge.textContent = discount > 0 ? ('-' + discount + '% zniżki') : '0% zniżki';
         discountBadge.style.background = discount > 0 ? 'var(--lime)' : 'rgba(27,94,58,0.1)';
         discountBadge.style.color = discount > 0 ? 'var(--green-dark)' : 'rgba(27,94,58,0.4)';
 
-        var totalKg = 0;
-        var totalWeekly = 0;
-        var totalServings = 0;
-        var breakdown = [];
+        var totalBoxes = rec.Baza + rec.Sezon + rec.Egzo + rec.Premium;
+        var hasInput = (currentMode === 'sliders') ? totalKg > 0 : (parseInt(inputPeople.value) > 0);
 
-        sliders.forEach(function(s, i) {
-            var kg = parseFloat(s.value);
-            document.getElementById('v' + i).textContent = kg;
-            var row = s.closest('.fruit-row');
-            if (kg > 0) {
-                row.classList.add('active');
-                var cost = kg * fruits[i].price;
-                totalKg += kg;
-                totalWeekly += cost;
-                totalServings += Math.floor((kg * 1000) / fruits[i].servingG);
-                breakdown.push({ emoji: fruits[i].emoji, name: fruits[i].name, kg: kg, cost: cost });
-            } else {
-                row.classList.remove('active');
-            }
-        });
-
-        if (totalKg === 0) {
-            summaryContent.innerHTML = '<div class="sum-empty"><p>Przesuń suwaki po lewej,<br>żeby zobaczyć wycenę</p></div>';
-            return;
+        if (!hasInput) {
+            boxGrid.style.display = 'none';
+            boxEmpty.style.display = 'block';
+        } else {
+            boxGrid.style.display = 'grid';
+            boxEmpty.style.display = 'none';
         }
 
+        /* Update box cards */
+        ['Baza', 'Sezon', 'Egzo', 'Premium'].forEach(function(id) {
+            var el = document.getElementById('q' + id);
+            var card = document.getElementById('box' + id);
+            el.textContent = rec[id];
+            el.classList.toggle('zero', rec[id] === 0);
+            card.classList.toggle('recommended', rec[id] > 0);
+        });
+
+        /* Quote bar */
+        if (!hasInput) {
+            quoteBar.classList.add('empty');
+            return;
+        }
+        quoteBar.classList.remove('empty');
+
         var deliveryFee = getDeliveryFee();
-        var weeklyBase = totalWeekly;
         var discountMultiplier = 1 - (discount / 100);
+
+        var weeklyBase = 0;
+        boxes.forEach(function(b) { weeklyBase += rec[b.id] * b.price; });
+
         var weeklyFruit = weeklyBase * discountMultiplier;
         var weeklyTotal = weeklyFruit + deliveryFee;
         var monthlyTotal = weeklyTotal * 4.33;
-        var totalFinal = monthlyTotal * months;
-        var savedFruit = (weeklyBase * 4.33 * months) - (weeklyFruit * 4.33 * months);
+
+        var totalServings = Math.floor((totalKg * 1000) / 150);
         var personsPerWeek = Math.round(totalServings / 5);
 
-        var html = '';
-        html += '<div class="sum-total">' + formatPLN(weeklyTotal) + ' <small>/tydzień</small></div>';
-        html += '<div class="sum-period">' + pluralMonths(months) + ' abonamentu</div>';
+        document.getElementById('qbPrice').innerHTML = Math.round(weeklyTotal).toLocaleString('pl-PL') + ' <small>zł/tydz.</small>';
+        document.getElementById('qbMonthly').textContent = formatPLN(monthlyTotal);
+        document.getElementById('qbBoxes').textContent = totalBoxes + ' szt.';
+        document.getElementById('qbPersons').textContent = '~' + personsPerWeek;
+        var kgParts = [];
+        if (actualStd > 0) kgParts.push(Math.round(actualStd * 10) / 10 + ' standard');
+        if (actualSez > 0) kgParts.push(Math.round(actualSez * 10) / 10 + ' sezon');
+        if (actualEgz > 0) kgParts.push(Math.round(actualEgz * 10) / 10 + ' egzo');
+        document.getElementById('qbKg').textContent = (Math.round(totalKg * 10) / 10) + ' kg';
+        document.getElementById('qbKgBreak').textContent = kgParts.length > 1 ? kgParts.join(' · ') : '';
 
+        var qbDiscount = document.getElementById('qbDiscount');
         if (discount > 0) {
-            html += '<div class="sum-discount">';
-            html += '<span class="sum-label">Zniżka abonamentowa -' + discount + '%</span>';
-            html += '<span class="sum-value">-' + formatPLN(savedFruit) + '</span>';
-            html += '</div>';
-        }
-
-        /* Delivery row */
-        if (selectedRegion) {
-            html += '<div class="sum-delivery">';
-            html += '<span class="sum-label">Dostawa (' + regions[selectedRegion].name + ')</span>';
-            html += '<span class="sum-value">' + (deliveryFee === 0 ? 'gratis' : '+' + deliveryFee + ' zł/tydz.') + '</span>';
-            html += '</div>';
+            qbDiscount.textContent = '-' + discount + '%';
+            qbDiscount.style.display = '';
         } else {
-            html += '<div class="sum-delivery">';
-            html += '<span class="sum-delivery-warn">Wybierz województwo, żeby uwzględnić dostawę</span>';
-            html += '</div>';
+            qbDiscount.style.display = 'none';
         }
 
-        html += '<div class="sum-divider"></div>';
-        html += '<div class="sum-row"><span class="sum-label">Owoce / tydzień</span><span class="sum-value">' + formatPLN(weeklyFruit) + '</span></div>';
-        html += '<div class="sum-row"><span class="sum-label">Łączna waga / tydzień</span><span class="sum-value">' + totalKg + ' kg</span></div>';
-        html += '<div class="sum-row"><span class="sum-label">Porcje / tydzień</span><span class="sum-value">' + totalServings + ' szt.</span></div>';
-        html += '<div class="sum-row"><span class="sum-label">Koszt / miesiąc</span><span class="sum-value">' + formatPLN(monthlyTotal) + '</span></div>';
-
-        html += '<div class="sum-highlight"><div class="sum-row"><span class="sum-label">Wystarczy dla</span><span class="sum-value">' + personsPerWeek + ' osób / dzień</span></div></div>';
-
-        html += '<div class="sum-row" style="font-weight:800;font-size:16px;padding-top:12px;"><span>Łącznie za ' + pluralMonths(months) + '</span><span style="color:var(--yellow);font-size:20px;">' + formatPLN(totalFinal) + '</span></div>';
-
-        html += '<div class="sum-breakdown">';
-        breakdown.forEach(function(b) {
-            html += '<div class="sum-breakdown-item"><span>' + b.emoji + ' ' + b.name + ' (' + b.kg + ' kg)</span><span>' + formatPLN(b.cost * discountMultiplier) + '/tydz.</span></div>';
-        });
-        html += '</div>';
-
-        html += '<div class="sum-cta"><a href="zapytanie.html" class="btn btn-red-solid">Zamów z tą konfiguracją →</a></div>';
-        html += '<div class="sum-note">Ceny orientacyjne · Dokładna wycena po kontakcie</div>';
-
-        summaryContent.innerHTML = html;
+        /* Mix tooltip — show when sezon/egzo selected but actual std > requested std */
+        var mixTip = document.getElementById('catMixTip');
+        var mixText = document.getElementById('catMixTipText');
+        if (currentMode === 'sliders' && totalKg > 0) {
+            var requestedStd = parseFloat(sliderStd.value);
+            var bonusStd = Math.round((actualStd - requestedStd) * 10) / 10;
+            if (bonusStd > 0) {
+                mixText.textContent = 'Boxy sezonowe i egzotyczne zawierają też owoce standardowe. Przy tej konfiguracji otrzymasz dodatkowo ' + bonusStd + ' kg owoców standardowych w ramach zamówionych paczek.';
+                mixTip.classList.add('visible');
+            } else {
+                mixTip.classList.remove('visible');
+            }
+        } else {
+            mixTip.classList.remove('visible');
+        }
     }
 
-    sliders.forEach(function(s) { s.addEventListener('input', update); });
+    sliderStd.addEventListener('input', update);
+    sliderSez.addEventListener('input', update);
+    sliderEgz.addEventListener('input', update);
+    inputPeople.addEventListener('input', update);
+    inputBudget.addEventListener('input', function() {
+        document.querySelectorAll('.budget-preset').forEach(function(b) {
+            b.classList.toggle('active', b.dataset.val === inputBudget.value);
+        });
+        update();
+    });
     timeSlider.addEventListener('input', update);
     update();
+
+    /* Lead form submission */
+    window.submitCalcLead = function() {
+        var name = document.getElementById('leadName');
+        var email = document.getElementById('leadEmail');
+        var phone = document.getElementById('leadPhone');
+        var company = document.getElementById('leadCompany');
+        if (!name || !email) return;
+
+        /* Clear previous errors */
+        [name, email].forEach(function(el) { el.classList.remove('error'); });
+
+        if (!name.value.trim() || !email.value.trim()) {
+            if (!name.value.trim()) name.classList.add('error');
+            if (!email.value.trim()) email.classList.add('error');
+            return;
+        }
+
+        /* Build config summary */
+        var configLines = [];
+        boxes.forEach(function(b) {
+            var el = document.getElementById('q' + b.id);
+            var qty = el ? parseInt(el.textContent) : 0;
+            if (qty > 0) configLines.push(b.name + ' x' + qty);
+        });
+        var months = getMonths();
+        var region = selectedRegion ? regions[selectedRegion].name : 'nie wybrano';
+
+        var payload = {
+            name: name.value.trim(),
+            email: email.value.trim(),
+            phone: phone.value.trim(),
+            company: company.value.trim(),
+            config: configLines.join(', '),
+            months: months,
+            region: region,
+            source: 'kalkulator'
+        };
+
+        /* GTM event */
+        if (window.dataLayer) {
+            window.dataLayer.push({ event: 'calc_lead_submit', lead_email: payload.email, lead_config: payload.config });
+        }
+
+        /* Show success, hide form */
+        document.getElementById('calcLeadForm').style.display = 'none';
+        document.getElementById('leadSuccess').style.display = 'block';
+
+        /* Send to backend (same pattern as zapytanie.html — currently front-end only) */
+        console.log('Calc lead:', JSON.stringify(payload));
+    };
 })();
 </script>
 </body>
