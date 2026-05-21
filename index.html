@@ -400,8 +400,7 @@
         .card-marquee-item:nth-child(even) { transform: rotate(1.5deg); }
         .card-marquee-item:hover { transform: rotate(0) scale(1.08); box-shadow: 0 12px 36px rgba(27,94,58,0.2); z-index: 2; }
         .card-marquee-item img { width: 100%; height: auto; display: block; }
-        .card-marquee-item video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 0.3s ease; pointer-events: none; }
-        .card-marquee-item:hover video { opacity: 1; }
+        .card-marquee-item video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 1; pointer-events: none; }
         @keyframes card-slide { 0% { transform: translateX(0); } 100% { transform: translateX(-25%); } }
         @media (max-width: 768px) {
             .card-marquee { padding: 16px 0 24px; }
@@ -885,30 +884,30 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
             <p>Owoce, warzywa, kanapki, kawa, soki – wszystko w jednej dostawie, od jednego partnera.</p>
         </div>
         <div class="offer-grid">
-            <div class="offer-card offer-card--tall reveal" data-delay="1">
+            <a href="oferta.html" class="offer-card offer-card--tall reveal" data-delay="1">
                 <img src="packshot-owoce.webp" alt="Owoce do biura" loading="lazy" width="600" height="740">
-                <div class="offer-card-body"><h3>Owoce do biura</h3><p>Selekcjonowane owoce, zawsze świeże i dojrzałe. Podstawa Owocowych Czwartków.</p><a href="oferta.html" class="offer-link">Zobacz więcej →</a></div>
-            </div>
-            <div class="offer-card reveal" data-delay="2">
+                <div class="offer-card-body"><h3>Owoce do biura</h3><p>Selekcjonowane owoce, zawsze świeże i dojrzałe. Podstawa Owocowych Czwartków.</p><span class="offer-link">Zobacz więcej →</span></div>
+            </a>
+            <a href="kanapki-do-biura.html" class="offer-card reveal" data-delay="2">
                 <img src="packshot-kanapki.webp" alt="Kanapki i lunche" loading="lazy" width="600" height="486">
-                <div class="offer-card-body"><h3>Kanapki i lunche</h3><p>Zdrowe zestawy z najlepszych składników. Kanapkowe Wtorki w Twoim biurze.</p><a href="kanapki-do-biura.html" class="offer-link">Zobacz więcej →</a></div>
-            </div>
-            <div class="offer-card reveal" data-delay="3">
+                <div class="offer-card-body"><h3>Kanapki i lunche</h3><p>Zdrowe zestawy z najlepszych składników. Kanapkowe Wtorki w Twoim biurze.</p><span class="offer-link">Zobacz więcej →</span></div>
+            </a>
+            <a href="oferta.html" class="offer-card reveal" data-delay="3">
                 <img src="packshot-fingerfoods.webp" alt="Finger foods" loading="lazy" width="600" height="571">
-                <div class="offer-card-body"><h3>Finger foods</h3><p>Eleganckie przekąski na spotkania — bruschetta, kanapeczki, koreczki. Imponuj gościom.</p><a href="oferta.html" class="offer-link">Zobacz więcej →</a></div>
-            </div>
-            <div class="offer-card reveal" data-delay="1">
+                <div class="offer-card-body"><h3>Finger foods</h3><p>Eleganckie przekąski na spotkania — bruschetta, kanapeczki, koreczki. Imponuj gościom.</p><span class="offer-link">Zobacz więcej →</span></div>
+            </a>
+            <a href="oferta.html" class="offer-card reveal" data-delay="1">
                 <img src="packshot-sniadaniowe.webp" alt="Produkty śniadaniowe" loading="lazy" width="600" height="476">
-                <div class="offer-card-body"><h3>Produkty śniadaniowe</h3><p>Musli, jogurty, granola. Poranny rytuał dla całego zespołu.</p><a href="oferta.html" class="offer-link">Zobacz więcej →</a></div>
-            </div>
-            <div class="offer-card offer-card--tall reveal" data-delay="2">
+                <div class="offer-card-body"><h3>Produkty śniadaniowe</h3><p>Musli, jogurty, granola. Poranny rytuał dla całego zespołu.</p><span class="offer-link">Zobacz więcej →</span></div>
+            </a>
+            <a href="oferta.html" class="offer-card offer-card--tall reveal" data-delay="2">
                 <img src="packshot-bakalie.webp" alt="Bakalie i przekąski" loading="lazy" width="600" height="824">
-                <div class="offer-card-body"><h3>Bakalie i suszone owoce</h3><p>Orzechy, suszone owoce i zdrowe przekąski na cały tydzień.</p><a href="oferta.html" class="offer-link">Zobacz więcej →</a></div>
-            </div>
-            <div class="offer-card reveal" data-delay="3">
+                <div class="offer-card-body"><h3>Bakalie i suszone owoce</h3><p>Orzechy, suszone owoce i zdrowe przekąski na cały tydzień.</p><span class="offer-link">Zobacz więcej →</span></div>
+            </a>
+            <a href="oferta.html" class="offer-card reveal" data-delay="3">
                 <img src="packshot-soki.webp" alt="Świeże soki" loading="lazy" width="600" height="610">
-                <div class="offer-card-body"><h3>Świeże soki</h3><p>Tłoczone na zimno ze świeżych owoców i warzyw. Smoothie Monday ready.</p><a href="oferta.html" class="offer-link">Zobacz więcej →</a></div>
-            </div>
+                <div class="offer-card-body"><h3>Świeże soki</h3><p>Tłoczone na zimno ze świeżych owoców i warzyw. Smoothie Monday ready.</p><span class="offer-link">Zobacz więcej →</span></div>
+            </a>
         </div>
 
         <!-- Deep offer links -->
@@ -967,26 +966,26 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
 <!-- CARD MARQUEE (illustrated icons) -->
 <section class="card-marquee" aria-label="Ilustracje DailyFruits">
     <div class="card-marquee-track">
-        <div class="card-marquee-item"><img src="karta-33.webp" alt="Truskawka — świeże owoce" loading="lazy" width="400" height="533"><video src="karta-33.mp4" muted loop playsinline preload="none"></video></div>
-        <div class="card-marquee-item"><img src="karta-22.webp" alt="Uśmiech — zadowolony zespół" loading="lazy" width="400" height="533"><video src="karta-22.mp4" muted loop playsinline preload="none"></video></div>
-        <div class="card-marquee-item"><img src="karta-11.webp" alt="Wellbeing — równowaga i zdrowie" loading="lazy" width="400" height="533"><video src="karta-11.mp4" muted loop playsinline preload="none"></video></div>
-        <div class="card-marquee-item"><img src="karta-44.webp" alt="Jabłko — zdrowe przekąski" loading="lazy" width="400" height="533"><video src="karta-44.mp4" muted loop playsinline preload="none"></video></div>
-        <div class="card-marquee-item"><img src="karta-55.webp" alt="Partnerstwo — współpraca" loading="lazy" width="400" height="533"><video src="karta-55.mp4" muted loop playsinline preload="none"></video></div>
-        <div class="card-marquee-item"><img src="karta-33.webp" alt="Truskawka" loading="lazy" width="400" height="533"><video src="karta-33.mp4" muted loop playsinline preload="none"></video></div>
-        <div class="card-marquee-item"><img src="karta-22.webp" alt="Uśmiech" loading="lazy" width="400" height="533"><video src="karta-22.mp4" muted loop playsinline preload="none"></video></div>
-        <div class="card-marquee-item"><img src="karta-11.webp" alt="Wellbeing" loading="lazy" width="400" height="533"><video src="karta-11.mp4" muted loop playsinline preload="none"></video></div>
-        <div class="card-marquee-item"><img src="karta-44.webp" alt="Jabłko" loading="lazy" width="400" height="533"><video src="karta-44.mp4" muted loop playsinline preload="none"></video></div>
-        <div class="card-marquee-item"><img src="karta-55.webp" alt="Partnerstwo" loading="lazy" width="400" height="533"><video src="karta-55.mp4" muted loop playsinline preload="none"></video></div>
-        <div class="card-marquee-item"><img src="karta-33.webp" alt="Truskawka" loading="lazy" width="400" height="533"><video src="karta-33.mp4" muted loop playsinline preload="none"></video></div>
-        <div class="card-marquee-item"><img src="karta-22.webp" alt="Uśmiech" loading="lazy" width="400" height="533"><video src="karta-22.mp4" muted loop playsinline preload="none"></video></div>
-        <div class="card-marquee-item"><img src="karta-11.webp" alt="Wellbeing" loading="lazy" width="400" height="533"><video src="karta-11.mp4" muted loop playsinline preload="none"></video></div>
-        <div class="card-marquee-item"><img src="karta-44.webp" alt="Jabłko" loading="lazy" width="400" height="533"><video src="karta-44.mp4" muted loop playsinline preload="none"></video></div>
-        <div class="card-marquee-item"><img src="karta-55.webp" alt="Partnerstwo" loading="lazy" width="400" height="533"><video src="karta-55.mp4" muted loop playsinline preload="none"></video></div>
-        <div class="card-marquee-item"><img src="karta-33.webp" alt="Truskawka" loading="lazy" width="400" height="533"><video src="karta-33.mp4" muted loop playsinline preload="none"></video></div>
-        <div class="card-marquee-item"><img src="karta-22.webp" alt="Uśmiech" loading="lazy" width="400" height="533"><video src="karta-22.mp4" muted loop playsinline preload="none"></video></div>
-        <div class="card-marquee-item"><img src="karta-11.webp" alt="Wellbeing" loading="lazy" width="400" height="533"><video src="karta-11.mp4" muted loop playsinline preload="none"></video></div>
-        <div class="card-marquee-item"><img src="karta-44.webp" alt="Jabłko" loading="lazy" width="400" height="533"><video src="karta-44.mp4" muted loop playsinline preload="none"></video></div>
-        <div class="card-marquee-item"><img src="karta-55.webp" alt="Partnerstwo" loading="lazy" width="400" height="533"><video src="karta-55.mp4" muted loop playsinline preload="none"></video></div>
+        <div class="card-marquee-item"><img src="karta-33.webp" alt="Truskawka — świeże owoce" loading="lazy" width="400" height="533"><video src="karta-33.mp4" muted loop playsinline autoplay preload="auto"></video></div>
+        <div class="card-marquee-item"><img src="karta-22.webp" alt="Uśmiech — zadowolony zespół" loading="lazy" width="400" height="533"><video src="karta-22.mp4" muted loop playsinline autoplay preload="auto"></video></div>
+        <div class="card-marquee-item"><img src="karta-11.webp" alt="Wellbeing — równowaga i zdrowie" loading="lazy" width="400" height="533"><video src="karta-11.mp4" muted loop playsinline autoplay preload="auto"></video></div>
+        <div class="card-marquee-item"><img src="karta-44.webp" alt="Jabłko — zdrowe przekąski" loading="lazy" width="400" height="533"><video src="karta-44.mp4" muted loop playsinline autoplay preload="auto"></video></div>
+        <div class="card-marquee-item"><img src="karta-55.webp" alt="Partnerstwo — współpraca" loading="lazy" width="400" height="533"><video src="karta-55.mp4" muted loop playsinline autoplay preload="auto"></video></div>
+        <div class="card-marquee-item"><img src="karta-33.webp" alt="Truskawka" loading="lazy" width="400" height="533"><video src="karta-33.mp4" muted loop playsinline autoplay preload="auto"></video></div>
+        <div class="card-marquee-item"><img src="karta-22.webp" alt="Uśmiech" loading="lazy" width="400" height="533"><video src="karta-22.mp4" muted loop playsinline autoplay preload="auto"></video></div>
+        <div class="card-marquee-item"><img src="karta-11.webp" alt="Wellbeing" loading="lazy" width="400" height="533"><video src="karta-11.mp4" muted loop playsinline autoplay preload="auto"></video></div>
+        <div class="card-marquee-item"><img src="karta-44.webp" alt="Jabłko" loading="lazy" width="400" height="533"><video src="karta-44.mp4" muted loop playsinline autoplay preload="auto"></video></div>
+        <div class="card-marquee-item"><img src="karta-55.webp" alt="Partnerstwo" loading="lazy" width="400" height="533"><video src="karta-55.mp4" muted loop playsinline autoplay preload="auto"></video></div>
+        <div class="card-marquee-item"><img src="karta-33.webp" alt="Truskawka" loading="lazy" width="400" height="533"><video src="karta-33.mp4" muted loop playsinline autoplay preload="auto"></video></div>
+        <div class="card-marquee-item"><img src="karta-22.webp" alt="Uśmiech" loading="lazy" width="400" height="533"><video src="karta-22.mp4" muted loop playsinline autoplay preload="auto"></video></div>
+        <div class="card-marquee-item"><img src="karta-11.webp" alt="Wellbeing" loading="lazy" width="400" height="533"><video src="karta-11.mp4" muted loop playsinline autoplay preload="auto"></video></div>
+        <div class="card-marquee-item"><img src="karta-44.webp" alt="Jabłko" loading="lazy" width="400" height="533"><video src="karta-44.mp4" muted loop playsinline autoplay preload="auto"></video></div>
+        <div class="card-marquee-item"><img src="karta-55.webp" alt="Partnerstwo" loading="lazy" width="400" height="533"><video src="karta-55.mp4" muted loop playsinline autoplay preload="auto"></video></div>
+        <div class="card-marquee-item"><img src="karta-33.webp" alt="Truskawka" loading="lazy" width="400" height="533"><video src="karta-33.mp4" muted loop playsinline autoplay preload="auto"></video></div>
+        <div class="card-marquee-item"><img src="karta-22.webp" alt="Uśmiech" loading="lazy" width="400" height="533"><video src="karta-22.mp4" muted loop playsinline autoplay preload="auto"></video></div>
+        <div class="card-marquee-item"><img src="karta-11.webp" alt="Wellbeing" loading="lazy" width="400" height="533"><video src="karta-11.mp4" muted loop playsinline autoplay preload="auto"></video></div>
+        <div class="card-marquee-item"><img src="karta-44.webp" alt="Jabłko" loading="lazy" width="400" height="533"><video src="karta-44.mp4" muted loop playsinline autoplay preload="auto"></video></div>
+        <div class="card-marquee-item"><img src="karta-55.webp" alt="Partnerstwo" loading="lazy" width="400" height="533"><video src="karta-55.mp4" muted loop playsinline autoplay preload="auto"></video></div>
     </div>
 </section>
 
