@@ -137,8 +137,8 @@
         .hero h1 { margin: 10px 0 12px; }
         .hero p { font-size: 18px; max-width: 480px; margin-bottom: 20px; line-height: 1.45; }
         .hero-buttons { display: flex; gap: 14px; align-items: center; }
-        .hero-image { position: relative; z-index: 5; display: flex; align-items: center; justify-content: center; will-change: transform; margin-bottom: -60px; }
-        .hero-image img { width: 100%; max-width: 520px; max-height: 45vh; object-fit: contain; border-radius: 0; box-shadow: none; background: transparent; margin-left: 0; }
+        .hero-image { position: relative; z-index: 5; display: flex; align-items: center; justify-content: center; will-change: transform; margin-bottom: -60px; height: 340px; }
+        .hero-image img { width: auto; max-width: 520px; height: 100%; object-fit: contain; border-radius: 0; box-shadow: none; background: transparent; margin-left: 0; }
         .hero-sticker { position: absolute; bottom: -16px; right: 24px; z-index: 3; }
 
         /* ─── HERO CATEGORY TABS (full-width bar) ─── */
@@ -146,7 +146,7 @@
         .hero-tabs-inner { display: flex; align-items: center; justify-content: center; padding: 14px 48px; max-width: 1440px; margin: 0 auto; position: relative; }
         .hero-tabs-label { position: absolute; left: 48px; font-size: 13px; font-weight: 700; color: var(--green-dark); opacity: 0.5; line-height: 1.35; flex-shrink: 0; }
         .hero-tabs { display: flex; justify-content: center; gap: 4px; overflow: visible; }
-        .hero-tab { display: inline-flex; align-items: center; gap: 6px; padding: 10px 22px; border-radius: var(--radius-pill); font-family: var(--font-fun); font-size: 16px; font-weight: 400; color: var(--green-dark); background: transparent; border: 2px solid transparent; cursor: pointer; transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1); white-space: nowrap; position: relative; }
+        .hero-tab { display: inline-flex; align-items: center; gap: 6px; padding: 10px 22px; border-radius: var(--radius-pill); font-family: var(--font-fun); font-size: 16px; font-weight: 400; color: var(--green-dark); background: transparent; border: 2px solid transparent; cursor: pointer; transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1); white-space: nowrap; position: relative; outline: none; text-decoration: none; -webkit-appearance: none; }
         .hero-tab:hover { background: rgba(141,198,63,0.2); transform: translateY(-2px) scale(1.04); box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
         .hero-tab:hover .tab-icon { transform: scale(1.2) rotate(-8deg); }
         .hero-tab:active { transform: translateY(0) scale(0.97); }
@@ -173,11 +173,11 @@
         .feature-item p { font-size: 14px; margin: 0; }
 
         /* ─── HOW ─── */
-        .how-section { padding: 80px 0; background: var(--white); }
+        .how-section { padding: 40px 0 24px; background: var(--white); }
         .section-top { text-align: center; margin-bottom: 64px; }
         .section-top p { max-width: 520px; margin: 12px auto 0; }
         .how-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 20px; }
-        .how-card { background: var(--yellow-bg); border-radius: var(--radius); padding: 32px 24px; text-align: center; transition: transform 0.3s, box-shadow 0.3s; }
+        .how-card { background: #fff; border-radius: var(--radius); padding: 32px 24px; text-align: center; transition: transform 0.3s, box-shadow 0.3s; }
         .how-card:hover { transform: translateY(-6px); box-shadow: 0 16px 48px rgba(27,94,58,0.1); }
         .how-num { font-family: var(--font-fun); font-size: 52px; color: var(--green-dark); line-height: 1; margin-bottom: 12px; }
         .how-card h3 { margin-bottom: 8px; font-size: 17px; }
@@ -185,10 +185,10 @@
         .how-buttons { text-align: center; margin-top: 48px; display: flex; gap: 14px; justify-content: center; }
 
         /* ─── STATS ─── */
-        .stats { background: var(--green-dark); padding: 72px 0; color: #fff; }
+        .stats { background: #E8F5E9; padding: 72px 0; color: var(--green-dark); }
         .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; text-align: center; }
-        .stat-num { font-family: var(--font-fun); font-size: 56px; line-height: 1; margin-bottom: 8px; color: var(--yellow); }
-        .stat-label { font-size: 14px; opacity: 0.8; text-transform: uppercase; letter-spacing: 1px; }
+        .stat-num { font-family: var(--font-fun); font-size: 56px; line-height: 1; margin-bottom: 8px; color: var(--green-dark); }
+        .stat-label { font-size: 14px; opacity: 0.7; text-transform: uppercase; letter-spacing: 1px; color: var(--green-dark); }
 
         /* ─── 6 BENEFITS ─── */
         .benefits-six { padding: 80px 0; background: var(--yellow-bg); position: relative; overflow: hidden; }
@@ -228,15 +228,16 @@
         /* ─── OFFER ─── */
         .offer-section { padding: 80px 0; background: var(--white); position: relative; overflow: hidden; }
         .offer-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-        .offer-card { border-radius: var(--radius); overflow: visible; background: var(--cream); transition: transform 0.3s, box-shadow 0.3s, background 0.35s; position: relative; padding-top: 80px; margin-top: 60px; }
+        .offer-card { border-radius: var(--radius); overflow: visible; background: var(--cream); transition: transform 0.3s, box-shadow 0.3s, background 0.35s; position: relative; padding-top: 60px; margin-top: 80px; display: flex; flex-direction: column; }
         .offer-card:hover { transform: translateY(-6px) rotate(-0.5deg); box-shadow: 0 16px 48px rgba(27,94,58,0.12); background: var(--green-dark); }
         .offer-card:hover .offer-card-body h3 { color: #fff; }
         .offer-card:hover .offer-card-body p { color: rgba(255,255,255,0.75); }
         .offer-card:hover .offer-link { color: var(--yellow); }
-        .offer-card img { width: 80%; height: auto; object-fit: contain; margin: -100px auto 0; display: block; position: relative; z-index: 2; filter: drop-shadow(0 8px 20px rgba(0,0,0,0.1)); }
-        .offer-card-body { padding: 24px; }
+        .offer-card img { width: 55%; max-height: 180px; object-fit: contain; margin: -120px auto 0; display: block; position: relative; z-index: 2; filter: drop-shadow(0 8px 20px rgba(0,0,0,0.1)); }
+        .offer-card--tall img { width: 60%; max-height: 230px; margin-top: -160px; }
+        .offer-card-body { padding: 24px; display: flex; flex-direction: column; flex: 1; }
         .offer-card-body h3 { margin-bottom: 6px; transition: color 0.35s; }
-        .offer-card-body p { font-size: 14px; margin-bottom: 16px; transition: color 0.35s; }
+        .offer-card-body p { font-size: 14px; margin-bottom: 16px; transition: color 0.35s; flex: 1; }
         .offer-link { font-weight: 700; font-size: 14px; color: var(--lime); display: inline-flex; align-items: center; gap: 4px; transition: color 0.35s; }
         .offer-link:hover { color: var(--green-dark); }
 
@@ -390,6 +391,24 @@
         .slide-right { opacity: 0; transform: translateX(40px); transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
         .slide-right.vis { opacity: 1; transform: translateX(0); }
 
+        /* ─── CARD MARQUEE (illustrated cards) ─── */
+        .card-marquee { padding: 24px 0 32px; background: var(--white); overflow: hidden; }
+        .card-marquee-track { display: flex; width: max-content; gap: 28px; animation: card-slide 30s linear infinite; }
+        .card-marquee-track:hover { animation-play-state: paused; }
+        .card-marquee-item { flex-shrink: 0; width: 180px; border-radius: var(--radius); overflow: hidden; box-shadow: 0 6px 24px rgba(27,94,58,0.12); transition: transform 0.4s cubic-bezier(0.16,1,0.3,1), box-shadow 0.4s ease; position: relative; }
+        .card-marquee-item:nth-child(odd) { transform: rotate(-2deg); }
+        .card-marquee-item:nth-child(even) { transform: rotate(1.5deg); }
+        .card-marquee-item:hover { transform: rotate(0) scale(1.08); box-shadow: 0 12px 36px rgba(27,94,58,0.2); z-index: 2; }
+        .card-marquee-item img { width: 100%; height: auto; display: block; }
+        .card-marquee-item video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 0.3s ease; pointer-events: none; }
+        .card-marquee-item:hover video { opacity: 1; }
+        @keyframes card-slide { 0% { transform: translateX(0); } 100% { transform: translateX(-25%); } }
+        @media (max-width: 768px) {
+            .card-marquee { padding: 16px 0 24px; }
+            .card-marquee-track { gap: 18px; }
+            .card-marquee-item { width: 140px; }
+        }
+
         /* ─── MARQUEE TICKER (r352-style) ─── */
         .marquee-section { padding: 28px 0; background: var(--green-dark); overflow: hidden; }
         .marquee-track { display: flex; width: max-content; animation: marquee-slide 20s linear infinite; }
@@ -460,8 +479,8 @@
             .hero-text { order: 3; position: relative; z-index: 2; }
             .hero-inner .hero-tabs-bar { order: 1; margin-top: 0; background: transparent; overflow: visible; }
             .hero-inner .hero-tabs-inner { padding: 8px 4px; }
-            .hero-image { order: 2; max-width: 100%; margin: 0 auto; margin-bottom: 0; }
-            .hero-image img { width: 100%; max-width: 420px; margin: 0 auto; }
+            .hero-image { order: 2; max-width: 100%; margin: 0 auto; margin-bottom: 0; height: 240px; }
+            .hero-image img { width: auto; max-width: 100%; height: 100%; margin: 0 auto; }
             .hero-buttons { display: flex; flex-direction: column; align-items: stretch; gap: 12px; padding-bottom: 10px; }
             .hero-buttons .btn { text-align: center; justify-content: center; width: 100%; }
             .hero-tabs-inner { padding: 8px 16px; justify-content: center; }
@@ -480,6 +499,8 @@
             .trial-br { display: none; }
             /* Loader apples: one top, one bottom */
             .how-grid, .offer-grid, .eco-grid, .stats-grid { grid-template-columns: 1fr; }
+            .offer-card { margin-top: 60px; padding-top: 40px; }
+            .offer-card img { width: 45%; max-height: 150px; margin-top: -80px; }
             /* Carousel navigation arrows */
             .carousel-nav { display: flex; align-items: center; justify-content: center; gap: 16px; margin-top: 16px; }
             .carousel-btn { width: 44px; height: 44px; border-radius: 50%; border: 2px solid var(--green-dark); background: transparent; color: var(--green-dark); font-size: 20px; font-weight: 700; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.2s; flex-shrink: 0; }
@@ -757,14 +778,13 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
     <div class="hero-tabs-inner">
         <span class="hero-tabs-label">Dopasuj zamówienie<br>do potrzeb firmy:</span>
         <div class="hero-tabs">
-            <a href="oferta.html" class="hero-tab active" data-img="hero-box.webp" data-alt="Paczka DailyFruits pełna świeżych owoców do biura" onclick="event.preventDefault();heroTabClick(this)"><span class="tab-icon"><img src="icon-owoce.svg" alt="Ikona owoców" class="inline-icon" loading="lazy" width="48" height="48"></span> Owoce</a>
-            <a href="kanapki-do-biura.html" class="hero-tab" data-img="box-kanapki1.webp" data-alt="Kanapki dla pracowników" onclick="event.preventDefault();heroTabClick(this)"><span class="tab-icon"><img src="icon-kanapki.svg" alt="Ikona kanapek" style="height:15px;width:auto;vertical-align:-2px;" loading="lazy" width="48" height="48"></span> Kanapki</a>
-            <a href="oferta.html" class="hero-tab" data-img="box-sniadaniowe.webp" data-alt="Produkty śniadaniowe" onclick="event.preventDefault();heroTabClick(this)"><span class="tab-icon"><img src="icon-sniadania.svg" alt="Ikona śniadań" style="height:20px;width:auto;vertical-align:-3px;" loading="lazy" width="48" height="48"></span> Śniadania</a>
-            <a href="oferta.html" class="hero-tab" data-img="box-soki1.webp" data-alt="Świeże soki" onclick="event.preventDefault();heroTabClick(this)"><span class="tab-icon"><img src="icon-soki.svg" alt="Ikona soków" style="height:24px;width:auto;vertical-align:-4px;margin-right:-2px;" loading="lazy" width="48" height="48"></span> Soki</a>
-            <a href="oferta.html" class="hero-tab" data-img="box-bakalie1.webp" data-alt="Bakalie i suszone owoce" onclick="event.preventDefault();heroTabClick(this)"><span class="tab-icon"><img src="icon-bakalie.svg" alt="Ikona bakalii" style="height:20px;width:auto;vertical-align:-3px;" loading="lazy" width="48" height="48"></span> Bakalie</a>
-            <a href="oferta.html" class="hero-tab hero-tab--red" data-img="box-lody.webp" data-alt="Lody do biura" onclick="event.preventDefault();heroTabClick(this)"><span class="tab-icon"><img src="icon-lody.svg" alt="Ikona lodów" style="height:22px;width:auto;vertical-align:-4px;" loading="lazy" width="48" height="48"></span> Lody</a>
+            <button class="hero-tab active" data-img="hero-box.webp" data-alt="Paczka DailyFruits pełna świeżych owoców do biura" onclick="heroTabClick(this)"><span class="tab-icon"><img src="icon-owoce.svg" alt="Ikona owoców" class="inline-icon" loading="lazy" width="48" height="48"></span> Owoce</button>
+            <button class="hero-tab" data-img="packshot-kanapki.webp" data-alt="Kanapki dla pracowników" onclick="heroTabClick(this)"><span class="tab-icon"><img src="icon-kanapki.svg" alt="Ikona kanapek" style="height:15px;width:auto;vertical-align:-2px;" loading="lazy" width="48" height="48"></span> Kanapki</button>
+            <button class="hero-tab" data-img="packshot-sniadaniowe.webp" data-alt="Produkty śniadaniowe" onclick="heroTabClick(this)"><span class="tab-icon"><img src="icon-sniadania.svg" alt="Ikona śniadań" style="height:20px;width:auto;vertical-align:-3px;" loading="lazy" width="48" height="48"></span> Sniadania</button>
+            <button class="hero-tab" data-img="packshot-soki.webp" data-alt="Świeże soki" onclick="heroTabClick(this)"><span class="tab-icon"><img src="icon-soki.svg" alt="Ikona soków" style="height:24px;width:auto;vertical-align:-4px;margin-right:-2px;" loading="lazy" width="48" height="48"></span> Soki</button>
+            <button class="hero-tab" data-img="packshot-bakalie.webp" data-alt="Bakalie i suszone owoce" onclick="heroTabClick(this)"><span class="tab-icon"><img src="icon-bakalie.svg" alt="Ikona bakalii" style="height:20px;width:auto;vertical-align:-3px;" loading="lazy" width="48" height="48"></span> Bakalie</button>
+            <button class="hero-tab hero-tab--red" data-img="box-lody.webp" data-alt="Lody do biura" onclick="heroTabClick(this)"><span class="tab-icon"><img src="icon-lody.svg" alt="Ikona lodów" style="height:22px;width:auto;vertical-align:-4px;" loading="lazy" width="48" height="48"></span> Lody</button>
         </div>
-        <a href="zapytanie.html" class="hero-trial-cta">Sprawdź darmowy <span class="trial-br"><br></span>dzień próbny!</a>
     </div>
 </div>
 
@@ -784,7 +804,6 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
                     <a href="zapytanie.html" class="btn btn-red-solid btn-arrow">Zamów bezpłatną wycenę</a>
                     <a href="oferta.html" class="btn btn-outline">Zobacz pełną ofertę →</a>
                 </div>
-                <p class="meta-text">Odpowiadamy w ciągu 24h · Darmowa dostawa próbna · Wsparcie we wdrożeniu · Elastyczna współpraca</p>
             </div>
             <div class="hero-image scale-in">
                 <img id="hero-product-img" src="hero-box.webp" alt="Paczka DailyFruits pełna świeżych owoców do biura" fetchpriority="high" width="800" height="484">
@@ -857,7 +876,72 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
     </div>
 </section>
 
-<!-- WAVE: features → how -->
+<!-- OFFER -->
+<section class="offer-section">
+    <div class="container">
+        <div class="section-top reveal">
+            <div class="sticker sticker-yellow" style="transform:rotate(2deg)">Co dostarczamy</div>
+            <h2 style="margin-top:20px">Jedno miejsce, <span class="fun">cała oferta</span></h2>
+            <p>Owoce, warzywa, kanapki, kawa, soki – wszystko w jednej dostawie, od jednego partnera.</p>
+        </div>
+        <div class="offer-grid">
+            <div class="offer-card offer-card--tall reveal" data-delay="1">
+                <img src="packshot-owoce.webp" alt="Owoce do biura" loading="lazy" width="600" height="740">
+                <div class="offer-card-body"><h3>Owoce do biura</h3><p>Selekcjonowane owoce, zawsze świeże i dojrzałe. Podstawa Owocowych Czwartków.</p><a href="oferta.html" class="offer-link">Zobacz więcej →</a></div>
+            </div>
+            <div class="offer-card reveal" data-delay="2">
+                <img src="packshot-kanapki.webp" alt="Kanapki i lunche" loading="lazy" width="600" height="486">
+                <div class="offer-card-body"><h3>Kanapki i lunche</h3><p>Zdrowe zestawy z najlepszych składników. Kanapkowe Wtorki w Twoim biurze.</p><a href="kanapki-do-biura.html" class="offer-link">Zobacz więcej →</a></div>
+            </div>
+            <div class="offer-card reveal" data-delay="3">
+                <img src="packshot-fingerfoods.webp" alt="Finger foods" loading="lazy" width="600" height="571">
+                <div class="offer-card-body"><h3>Finger foods</h3><p>Eleganckie przekąski na spotkania — bruschetta, kanapeczki, koreczki. Imponuj gościom.</p><a href="oferta.html" class="offer-link">Zobacz więcej →</a></div>
+            </div>
+            <div class="offer-card reveal" data-delay="1">
+                <img src="packshot-sniadaniowe.webp" alt="Produkty śniadaniowe" loading="lazy" width="600" height="476">
+                <div class="offer-card-body"><h3>Produkty śniadaniowe</h3><p>Musli, jogurty, granola. Poranny rytuał dla całego zespołu.</p><a href="oferta.html" class="offer-link">Zobacz więcej →</a></div>
+            </div>
+            <div class="offer-card offer-card--tall reveal" data-delay="2">
+                <img src="packshot-bakalie.webp" alt="Bakalie i przekąski" loading="lazy" width="600" height="824">
+                <div class="offer-card-body"><h3>Bakalie i suszone owoce</h3><p>Orzechy, suszone owoce i zdrowe przekąski na cały tydzień.</p><a href="oferta.html" class="offer-link">Zobacz więcej →</a></div>
+            </div>
+            <div class="offer-card reveal" data-delay="3">
+                <img src="packshot-soki.webp" alt="Świeże soki" loading="lazy" width="600" height="610">
+                <div class="offer-card-body"><h3>Świeże soki</h3><p>Tłoczone na zimno ze świeżych owoców i warzyw. Smoothie Monday ready.</p><a href="oferta.html" class="offer-link">Zobacz więcej →</a></div>
+            </div>
+        </div>
+
+        <!-- Deep offer links -->
+        <div class="reveal" style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:48px;">
+            <a href="kanapki-do-biura.html" class="deep-offer-card">
+                <div class="deep-offer-icon"><img src="icons/icon-sandwich.webp" alt="Ikona kanapki" width="40" height="40" loading="lazy"></div>
+                <div class="deep-offer-content">
+                    <h3>Kanapki do biura</h3>
+                    <p>Świeże kanapki i lunche z dostawą do Twojego biura</p>
+                </div>
+                <span class="deep-offer-arrow">→</span>
+            </a>
+            <a href="catering-firmowy.html" class="deep-offer-card">
+                <div class="deep-offer-icon"><img src="icons/icon-party.webp" alt="Ikona imprezy" width="40" height="40" loading="lazy"></div>
+                <div class="deep-offer-content">
+                    <h3>Catering firmowy</h3>
+                    <p>Profesjonalne zestawy na spotkania, eventy i szkolenia</p>
+                </div>
+                <span class="deep-offer-arrow">→</span>
+            </a>
+            <a href="programy-zywieniowe.html" class="deep-offer-card">
+                <div class="deep-offer-icon"><img src="icons/icon-meditation.webp" alt="Ikona medytacji" width="40" height="40" loading="lazy"></div>
+                <div class="deep-offer-content">
+                    <h3>Programy żywieniowe</h3>
+                    <p>Edukacja zdrowotna i wellbeing dla zespołu</p>
+                </div>
+                <span class="deep-offer-arrow">→</span>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- WAVE: offer → how -->
 <div class="wave-divider" style="background:var(--white)">
     <svg viewBox="0 0 1440 60" preserveAspectRatio="none"><path d="M0,40 C360,0 720,60 1080,20 C1260,5 1380,30 1440,15 L1440,60 L0,60Z" fill="#FFFFFF"/></svg>
 </div>
@@ -877,20 +961,39 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
             <div class="how-card reveal"><div class="how-num">4</div><h3>Dostarczamy</h3><p>Do biura lub do domu. Sterylnie, na czas, bez wysiłku z Waszej strony.</p></div>
             <div class="how-card reveal"><div class="how-num">5</div><h3>Smakujecie</h3><p>Zespół cieszy się rytuałem. Owocowe Czwartki startują!</p></div>
         </div>
-        <div class="how-buttons">
-            <a href="zapytanie.html" class="btn btn-red-solid btn-arrow">Zamów bezpłatną wycenę</a>
-            <a href="oferta.html" class="btn btn-outline">Zobacz pełną ofertę</a>
-        </div>
+    </div>
+</section>
+
+<!-- CARD MARQUEE (illustrated icons) -->
+<section class="card-marquee" aria-label="Ilustracje DailyFruits">
+    <div class="card-marquee-track">
+        <div class="card-marquee-item"><img src="karta-33.webp" alt="Truskawka — świeże owoce" loading="lazy" width="400" height="533"><video src="karta-33.mp4" muted loop playsinline preload="none"></video></div>
+        <div class="card-marquee-item"><img src="karta-22.webp" alt="Uśmiech — zadowolony zespół" loading="lazy" width="400" height="533"><video src="karta-22.mp4" muted loop playsinline preload="none"></video></div>
+        <div class="card-marquee-item"><img src="karta-11.webp" alt="Wellbeing — równowaga i zdrowie" loading="lazy" width="400" height="533"><video src="karta-11.mp4" muted loop playsinline preload="none"></video></div>
+        <div class="card-marquee-item"><img src="karta-44.webp" alt="Jabłko — zdrowe przekąski" loading="lazy" width="400" height="533"><video src="karta-44.mp4" muted loop playsinline preload="none"></video></div>
+        <div class="card-marquee-item"><img src="karta-55.webp" alt="Partnerstwo — współpraca" loading="lazy" width="400" height="533"><video src="karta-55.mp4" muted loop playsinline preload="none"></video></div>
+        <div class="card-marquee-item"><img src="karta-33.webp" alt="Truskawka" loading="lazy" width="400" height="533"><video src="karta-33.mp4" muted loop playsinline preload="none"></video></div>
+        <div class="card-marquee-item"><img src="karta-22.webp" alt="Uśmiech" loading="lazy" width="400" height="533"><video src="karta-22.mp4" muted loop playsinline preload="none"></video></div>
+        <div class="card-marquee-item"><img src="karta-11.webp" alt="Wellbeing" loading="lazy" width="400" height="533"><video src="karta-11.mp4" muted loop playsinline preload="none"></video></div>
+        <div class="card-marquee-item"><img src="karta-44.webp" alt="Jabłko" loading="lazy" width="400" height="533"><video src="karta-44.mp4" muted loop playsinline preload="none"></video></div>
+        <div class="card-marquee-item"><img src="karta-55.webp" alt="Partnerstwo" loading="lazy" width="400" height="533"><video src="karta-55.mp4" muted loop playsinline preload="none"></video></div>
+        <div class="card-marquee-item"><img src="karta-33.webp" alt="Truskawka" loading="lazy" width="400" height="533"><video src="karta-33.mp4" muted loop playsinline preload="none"></video></div>
+        <div class="card-marquee-item"><img src="karta-22.webp" alt="Uśmiech" loading="lazy" width="400" height="533"><video src="karta-22.mp4" muted loop playsinline preload="none"></video></div>
+        <div class="card-marquee-item"><img src="karta-11.webp" alt="Wellbeing" loading="lazy" width="400" height="533"><video src="karta-11.mp4" muted loop playsinline preload="none"></video></div>
+        <div class="card-marquee-item"><img src="karta-44.webp" alt="Jabłko" loading="lazy" width="400" height="533"><video src="karta-44.mp4" muted loop playsinline preload="none"></video></div>
+        <div class="card-marquee-item"><img src="karta-55.webp" alt="Partnerstwo" loading="lazy" width="400" height="533"><video src="karta-55.mp4" muted loop playsinline preload="none"></video></div>
+        <div class="card-marquee-item"><img src="karta-33.webp" alt="Truskawka" loading="lazy" width="400" height="533"><video src="karta-33.mp4" muted loop playsinline preload="none"></video></div>
+        <div class="card-marquee-item"><img src="karta-22.webp" alt="Uśmiech" loading="lazy" width="400" height="533"><video src="karta-22.mp4" muted loop playsinline preload="none"></video></div>
+        <div class="card-marquee-item"><img src="karta-11.webp" alt="Wellbeing" loading="lazy" width="400" height="533"><video src="karta-11.mp4" muted loop playsinline preload="none"></video></div>
+        <div class="card-marquee-item"><img src="karta-44.webp" alt="Jabłko" loading="lazy" width="400" height="533"><video src="karta-44.mp4" muted loop playsinline preload="none"></video></div>
+        <div class="card-marquee-item"><img src="karta-55.webp" alt="Partnerstwo" loading="lazy" width="400" height="533"><video src="karta-55.mp4" muted loop playsinline preload="none"></video></div>
     </div>
 </section>
 
 <!-- WAVE: how → stats -->
 <div class="wave-wrap">
-    <div class="apple-deco" style="width:140px;height:164px;left:5%;bottom:-80px;">
-        <img src="apple-deco.svg" alt="Dekoracja jabłko DailyFruits" loading="lazy" width="400" height="300">
-    </div>
     <div class="wave-divider" style="background:var(--white)">
-        <svg viewBox="0 0 1440 60" preserveAspectRatio="none"><path d="M0,30 C320,60 640,0 960,40 C1120,55 1300,10 1440,25 L1440,60 L0,60Z" fill="#1B5E3A"/></svg>
+        <svg viewBox="0 0 1440 60" preserveAspectRatio="none"><path d="M0,30 C320,60 640,0 960,40 C1120,55 1300,10 1440,25 L1440,60 L0,60Z" fill="#E8F5E9"/></svg>
     </div>
 </div>
 
@@ -906,31 +1009,9 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
     </div>
 </section>
 
-<!-- MARQUEE TICKER (r352-style) -->
-<section class="marquee-section">
-    <div class="marquee-track">
-        <div class="marquee-item"><span class="dot"></span><span class="highlight">Owoce</span></div>
-        <div class="marquee-item"><span class="dot"></span>Kanapki</div>
-        <div class="marquee-item"><span class="dot"></span><span class="highlight">Bakalie</span></div>
-        <div class="marquee-item"><span class="dot"></span>Soki</div>
-        <div class="marquee-item"><span class="dot"></span><span class="highlight">Śniadania</span></div>
-        <div class="marquee-item"><span class="dot"></span>Wellbeing</div>
-        <div class="marquee-item"><span class="dot"></span><span class="highlight">Zdrowie</span></div>
-        <div class="marquee-item"><span class="dot"></span>Energia</div>
-        <div class="marquee-item"><span class="dot"></span><span class="highlight">Owoce</span></div>
-        <div class="marquee-item"><span class="dot"></span>Kanapki</div>
-        <div class="marquee-item"><span class="dot"></span><span class="highlight">Bakalie</span></div>
-        <div class="marquee-item"><span class="dot"></span>Soki</div>
-        <div class="marquee-item"><span class="dot"></span><span class="highlight">Śniadania</span></div>
-        <div class="marquee-item"><span class="dot"></span>Wellbeing</div>
-        <div class="marquee-item"><span class="dot"></span><span class="highlight">Zdrowie</span></div>
-        <div class="marquee-item"><span class="dot"></span>Energia</div>
-    </div>
-</section>
-
 <!-- WAVE: stats → benefits -->
 <div class="wave-wrap">
-    <div class="wave-divider" style="background:var(--green-dark)">
+    <div class="wave-divider" style="background:#E8F5E9">
         <svg viewBox="0 0 1440 60" preserveAspectRatio="none"><path d="M0,20 C480,60 960,0 1440,35 L1440,60 L0,60Z" fill="#FFF8D8"/></svg>
     </div>
 </div>
@@ -995,125 +1076,9 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
     </div>
 </section>
 
-<!-- SCROLL-SCRUB FRAMES -->
-<div id="scrollFrameWrap" style="width:100%;margin:0;padding:0;line-height:0;">
-    <canvas id="scrollCanvas" style="width:100%;display:block;"></canvas>
-</div>
-
-<!-- OFFER -->
-<section class="offer-section">
-    <div class="container">
-        <div class="section-top reveal">
-            <div class="sticker sticker-yellow" style="transform:rotate(2deg)">Co dostarczamy</div>
-            <h2 style="margin-top:20px">Jedno miejsce, <span class="fun">cała oferta</span></h2>
-            <p>Owoce, warzywa, kanapki, kawa, soki – wszystko w jednej dostawie, od jednego partnera.</p>
-        </div>
-        <div class="offer-grid">
-            <div class="offer-card reveal" data-delay="1">
-                <img src="box_owoce_2.webp" alt="Owoce do biura" loading="lazy" width="400" height="300">
-                <div class="offer-card-body"><h3>Owoce do biura</h3><p>Selekcjonowane owoce, zawsze świeże i dojrzałe. Podstawa Owocowych Czwartków.</p><a href="oferta.html" class="offer-link">Zobacz więcej →</a></div>
-            </div>
-            <div class="offer-card reveal" data-delay="2">
-                <img src="box-kanapki1.webp" alt="Kanapki i lunche" loading="lazy" width="400" height="300">
-                <div class="offer-card-body"><h3>Kanapki i lunche</h3><p>Zdrowe zestawy z najlepszych składników. Kanapkowe Wtorki w Twoim biurze.</p><a href="kanapki-do-biura.html" class="offer-link">Zobacz więcej →</a></div>
-            </div>
-            <div class="offer-card reveal" data-delay="3">
-                <img src="box-kawki.webp" alt="Kawa do firmy" loading="lazy" width="400" height="300">
-                <div class="offer-card-body"><h3>Kawa do firmy</h3><p>Kawa z Małej Palarni w ziarnach. Świeża, lokalna, z charakterem.</p><a href="oferta.html" class="offer-link">Zobacz więcej →</a></div>
-            </div>
-            <div class="offer-card reveal" data-delay="1">
-                <img src="box-sniadaniowe.webp" alt="Produkty śniadaniowe" loading="lazy" width="400" height="300">
-                <div class="offer-card-body"><h3>Produkty śniadaniowe</h3><p>Musli, jogurty, granola. Poranny rytuał dla całego zespołu.</p><a href="oferta.html" class="offer-link">Zobacz więcej →</a></div>
-            </div>
-            <div class="offer-card reveal" data-delay="2">
-                <img src="box-bakalie1.webp" alt="Bakalie i suszone" loading="lazy" width="400" height="300">
-                <div class="offer-card-body"><h3>Bakalie i suszone</h3><p>Orzechy, suszone owoce i zdrowe przekąski na cały tydzień.</p><a href="oferta.html" class="offer-link">Zobacz więcej →</a></div>
-            </div>
-            <div class="offer-card reveal" data-delay="3">
-                <img src="box-soki1.webp" alt="Świeże soki" loading="lazy" width="400" height="300">
-                <div class="offer-card-body"><h3>Świeże soki</h3><p>Tłoczone na zimno ze świeżych owoców i warzyw. Smoothie Monday ready.</p><a href="oferta.html" class="offer-link">Zobacz więcej →</a></div>
-            </div>
-        </div>
-
-        <!-- Deep offer links -->
-        <div class="reveal" style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:48px;">
-            <a href="kanapki-do-biura.html" class="deep-offer-card">
-                <div class="deep-offer-icon"><img src="icons/icon-sandwich.webp" alt="Ikona kanapki" width="40" height="40" loading="lazy"></div>
-                <div class="deep-offer-content">
-                    <h3>Kanapki do biura</h3>
-                    <p>Świeże kanapki i lunche z dostawą do Twojego biura</p>
-                </div>
-                <span class="deep-offer-arrow">→</span>
-            </a>
-            <a href="catering-firmowy.html" class="deep-offer-card">
-                <div class="deep-offer-icon"><img src="icons/icon-party.webp" alt="Ikona imprezy" width="40" height="40" loading="lazy"></div>
-                <div class="deep-offer-content">
-                    <h3>Catering firmowy</h3>
-                    <p>Profesjonalne zestawy na spotkania, eventy i szkolenia</p>
-                </div>
-                <span class="deep-offer-arrow">→</span>
-            </a>
-            <a href="programy-zywieniowe.html" class="deep-offer-card">
-                <div class="deep-offer-icon"><img src="icons/icon-meditation.webp" alt="Ikona medytacji" width="40" height="40" loading="lazy"></div>
-                <div class="deep-offer-content">
-                    <h3>Programy żywieniowe</h3>
-                    <p>Edukacja zdrowotna i wellbeing dla zespołu</p>
-                </div>
-                <span class="deep-offer-arrow">→</span>
-            </a>
-        </div>
-    </div>
-</section>
-
-<!-- WAVE: offer → ecosystem -->
+<!-- WAVE: benefits → testimonials -->
 <div class="wave-wrap">
-    <div class="apple-deco" style="width:150px;height:175px;right:12%;bottom:-85px;">
-        <img src="apple-deco.svg" alt="Dekoracja jabłko DailyFruits" loading="lazy" width="400" height="300">
-    </div>
-    <div class="wave-divider" style="background:var(--white)">
-        <svg viewBox="0 0 1440 60" preserveAspectRatio="none"><path d="M0,40 C360,0 720,55 1080,15 C1260,5 1380,35 1440,20 L1440,60 L0,60Z" fill="#1B5E3A"/></svg>
-    </div>
-</div>
-
-<!-- ECOSYSTEM -->
-<section class="ecosystem" id="ecosystem">
-    <div class="container">
-        <div class="section-top reveal">
-            <div class="sticker sticker-lime" style="transform:rotate(-1deg)">Ekosystem BetterWorkplace</div>
-            <h2 style="margin-top:20px;color:#fff">Jeden partner do <span class="fun">całego wellbeingu</span></h2>
-            <p style="max-width:560px;margin:12px auto 0;color:rgba(255,255,255,0.65);font-size:16px;line-height:1.6">Zamiast czterech dostawców i&nbsp;dziesięciu faktur — jeden ekosystem, który łączy jedzenie, budżety, biuro i&nbsp;prezenty.</p>
-        </div>
-        <div class="eco-grid">
-            <div class="eco-card reveal">
-                <h3><span class="eco-highlight">Daily</span>Fruits + Foods</h3>
-                <p>Owoce, kanapki, kawa, snacki — jedno zamówienie, jedna faktura, zero komplikacji.</p>
-                <span class="eco-tag">Żywienie</span>
-            </div>
-            <div class="eco-card reveal">
-                <h3><span class="eco-highlight">Team</span>Budget</h3>
-                <p>Budżet żywieniowy per pracownik. Zespół wybiera, Ty kontrolujesz koszty.</p>
-                <span class="eco-tag">Budżety</span>
-            </div>
-            <div class="eco-card reveal">
-                <h3><span class="eco-highlight">Better</span>Office</h3>
-                <p>Od kawy po środki czystości — wszystko dla sprawnego biura w jednym miejscu.</p>
-                <span class="eco-tag">Biuro</span>
-            </div>
-            <div class="eco-card reveal">
-                <h3><span class="eco-highlight">Send</span>Gift</h3>
-                <p>Welcome packi, zestawy świąteczne, podziękowania — wysyłasz jednym kliknięciem.</p>
-                <span class="eco-tag">Prezenty</span>
-            </div>
-        </div>
-        <div class="reveal" style="text-align:center;margin-top:56px;">
-            <a href="https://betterworkplace.pl" target="_blank" rel="noopener noreferrer" class="btn-eco-cta" style="display:inline-flex;align-items:center;gap:8px;padding:16px 36px;background:linear-gradient(135deg,var(--lime),#6db833);color:var(--green-dark);font-weight:800;font-size:15px;border-radius:60px;text-decoration:none;transition:transform 0.3s,box-shadow 0.3s;box-shadow:0 4px 24px rgba(141,198,63,0.25);">Poznaj cały ekosystem <span style="font-size:18px">→</span></a>
-        </div>
-    </div>
-</section>
-
-<!-- WAVE: ecosystem → testimonials -->
-<div class="wave-wrap">
-    <div class="wave-divider" style="background:var(--green-dark)">
+    <div class="wave-divider" style="background:var(--yellow-bg)">
         <svg viewBox="0 0 1440 60" preserveAspectRatio="none"><path d="M0,15 C240,55 480,0 720,40 C960,65 1200,10 1440,30 L1440,60 L0,60Z" fill="#FFF9E0"/></svg>
     </div>
 </div>
@@ -1220,6 +1185,11 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
     </div>
 </section>
 
+<!-- SCROLL-SCRUB FRAMES -->
+<div id="scrollFrameWrap" style="width:100%;margin:0;padding:0;line-height:0;">
+    <canvas id="scrollCanvas" style="width:100%;display:block;"></canvas>
+</div>
+
 <!-- FAQ -->
 <section class="faq-section" id="faq" style="position:relative;overflow:hidden;">
     <div class="container">
@@ -1263,6 +1233,16 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
                 <span>✓ Wycena w 24h</span>
                 <span>✓ Darmowy dzień próbny</span>
             </div>
+        </div>
+    </div>
+</section>
+
+<!-- ECOSYSTEM BANNER -->
+<section style="padding:32px 0;background:var(--cream);">
+    <div class="container">
+        <div class="reveal" style="display:flex;align-items:center;justify-content:center;gap:16px;flex-wrap:wrap;text-align:center;">
+            <span style="font-size:14px;color:var(--green-dark);opacity:0.7;">DailyFruits to część ekosystemu</span>
+            <a href="https://betterworkplace.pl" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:8px;font-size:15px;font-weight:800;color:var(--green-dark);text-decoration:none;padding:10px 24px;border:2px solid rgba(27,94,58,0.15);border-radius:60px;transition:all 0.3s;" onmouseover="this.style.background='var(--green-dark)';this.style.color='#fff';this.style.borderColor='var(--green-dark)'" onmouseout="this.style.background='';this.style.color='var(--green-dark)';this.style.borderColor='rgba(27,94,58,0.15)'">BetterWorkplace <span style="font-size:12px;opacity:0.5;">→</span></a>
         </div>
     </div>
 </section>
@@ -1842,6 +1822,20 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 })();
 
+
+/* Card marquee — hover play video */
+document.querySelectorAll('.card-marquee-item').forEach(function(card) {
+    var vid = card.querySelector('video');
+    if (!vid) return;
+    card.addEventListener('mouseenter', function() {
+        vid.currentTime = 0;
+        vid.play().catch(function(){});
+    });
+    card.addEventListener('mouseleave', function() {
+        vid.pause();
+        vid.currentTime = 0;
+    });
+});
 
 </script>
 </body>
