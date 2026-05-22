@@ -272,29 +272,29 @@ body.bw .c-cta-bar a{background:#1E293B;border-color:#1E293B}
 body.bw .c-cta-bar a:hover{background:transparent;color:#1E293B}
 body.bw .hc-input:focus{border-color:#3B82F6;box-shadow:0 0 0 3px rgba(59,130,246,.15)}
 body.bw .hc-pre.on{background:#1E293B;border-color:#1E293B}
-/* ─── PASSWORD GATE ─── */
-.pw-gate{position:fixed;inset:0;z-index:99999;background:var(--cream);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:16px;padding:24px}
+/* ─── PASSWORD GATE (BW theme) ─── */
+.pw-gate{position:fixed;inset:0;z-index:99999;background:#0F172A;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:16px;padding:24px}
 .pw-gate.hidden{display:none}
 .pw-gate-logo{display:flex;align-items:center;gap:12px;margin-bottom:8px}
-.pw-gate-logo img{height:40px}
-.pw-gate-logo span{font-size:16px;font-weight:900;color:var(--green-dark)}
-.pw-gate p{font-size:13px;color:rgba(61,90,30,.5);text-align:center;max-width:300px}
+.pw-gate-logo img{height:48px}
+.pw-gate-logo span{font-size:16px;font-weight:900;color:#fff}
+.pw-gate p{font-size:13px;color:rgba(255,255,255,.45);text-align:center;max-width:300px}
 .pw-gate-form{display:flex;gap:8px;align-items:center}
-.pw-gate-input{padding:10px 16px;border:2px solid rgba(27,94,58,.12);border-radius:var(--radius-sm);font-family:var(--font);font-size:14px;font-weight:600;color:var(--green-dark);background:var(--white);width:200px;text-align:center;transition:all .3s}
-.pw-gate-input:focus{outline:none;border-color:var(--lime);box-shadow:0 0 0 3px rgba(141,198,63,.15)}
+.pw-gate-input{padding:10px 16px;border:2px solid rgba(255,255,255,.12);border-radius:var(--radius-sm);font-family:var(--font);font-size:14px;font-weight:600;color:#fff;background:rgba(255,255,255,.06);width:200px;text-align:center;transition:all .3s}
+.pw-gate-input::placeholder{color:rgba(255,255,255,.3)}
+.pw-gate-input:focus{outline:none;border-color:#3B82F6;box-shadow:0 0 0 3px rgba(59,130,246,.2)}
 .pw-gate-input.error{border-color:#E43020;animation:shake .4s ease}
 @keyframes shake{0%,100%{transform:translateX(0)}20%,60%{transform:translateX(-6px)}40%,80%{transform:translateX(6px)}}
-.pw-gate-btn{padding:10px 24px;border-radius:var(--radius-sm);border:none;background:var(--green-dark);color:#fff;font-family:var(--font);font-size:13px;font-weight:700;cursor:pointer;transition:all .3s}
-.pw-gate-btn:hover{background:var(--lime);color:var(--green-dark)}
+.pw-gate-btn{padding:10px 24px;border-radius:var(--radius-sm);border:none;background:#3B82F6;color:#fff;font-family:var(--font);font-size:13px;font-weight:700;cursor:pointer;transition:all .3s}
+.pw-gate-btn:hover{background:#2563EB;color:#fff}
 </style>
 </head>
-<body>
+<body class="bw">
 
-<!-- Password gate -->
+<!-- Password gate (BW themed) -->
 <div class="pw-gate" id="pwGate">
   <div class="pw-gate-logo">
-    <img src="fruitttt.svg" alt="DailyFruits" width="40" height="40">
-    <span>Katalog produktów</span>
+    <img src="bw-logo-white.svg" alt="Better Workplace" height="48">
   </div>
   <p>Katalog przeznaczony dla zespołu handlowego. Podaj hasło dostępu.</p>
   <form class="pw-gate-form" onsubmit="return checkPw(event)">
@@ -323,8 +323,8 @@ if(sessionStorage.getItem('katalog_auth')==='1'){document.getElementById('pwGate
 <!-- Top bar: logo + category tabs -->
 <div class="topbar">
     <div class="topbar-logo" id="brandLogo">
-        <img src="fruitttt.svg" alt="DailyFruits" width="26" height="26" id="logoImg">
-        <img id="logoBW" src="bw-logo-white.svg" alt="Better Workplace" height="26" style="display:none">
+        <img src="fruitttt.svg" alt="DailyFruits" width="26" height="26" id="logoImg" style="display:none">
+        <img id="logoBW" src="bw-logo-white.svg" alt="Better Workplace" height="26">
     </div>
     <div class="divider"></div>
     <!-- Row 1: Kategorie produktowe -->
@@ -362,7 +362,7 @@ if(sessionStorage.getItem('katalog_auth')==='1'){document.getElementById('pwGate
 
 <!-- Bottom trust bar -->
 <div class="trust-bar">
-    <span><strong>DailyFruits</strong> — ponad 2 500 klientów biznesowych</span>
+    <span><strong>Better Workplace</strong> — ponad 2 500 klientów biznesowych</span>
     <span class="trust-sep">·</span>
     <span>15 lat doświadczenia</span>
     <span class="trust-sep">·</span>
@@ -372,12 +372,12 @@ if(sessionStorage.getItem('katalog_auth')==='1'){document.getElementById('pwGate
     <span class="trust-sep">·</span>
     <span>ul. Modułowa 3, 05-090 Raszyn</span>
     <span class="trust-sep">·</span>
-    <span id="trustEmail">zapytania@dailyfruits.pl</span>
+    <span id="trustEmail">zapytania@betterworkplace.pl</span>
     <span class="trust-sep">·</span>
     <div class="brand-toggle-wrap">
-        <span class="brand-toggle-label active" id="lblDF">DF</span>
-        <button class="brand-toggle" id="brandToggle" onclick="toggleBrand()" aria-label="Switch brand"></button>
-        <span class="brand-toggle-label" id="lblBW">BW</span>
+        <span class="brand-toggle-label" id="lblDF">DF</span>
+        <button class="brand-toggle on" id="brandToggle" onclick="toggleBrand()" aria-label="Switch brand"></button>
+        <span class="brand-toggle-label active" id="lblBW">BW</span>
     </div>
 </div>
 
@@ -596,7 +596,7 @@ function switchCat(c) {
 }
 
 // ═══ BRAND TOGGLE ═══
-let isBW = false;
+let isBW = true;
 function toggleBrand() {
     isBW = !isBW;
     document.body.classList.toggle('bw', isBW);
@@ -679,7 +679,8 @@ function cBuildCats(){
   CATS.forEach(c=>{
     const d=document.createElement('div');
     d.className='c-cat'+(cSelCats.has(c.id)?' on':'');
-    d.innerHTML=`<span class="cc">${cSelCats.has(c.id)?'✓':''}</span><span class="ci">${c.icon}</span><h4>${c.name}</h4><p>${c.desc}</p><div class="cf">od ${c.fromPrice.toFixed(0)} PLN / os. / tydz.</div>`;
+    const fpLo=Math.round(c.fromPrice*0.85*10)/10,fpHi=Math.round(c.fromPrice*1.15*10)/10;
+    d.innerHTML=`<span class="cc">${cSelCats.has(c.id)?'✓':''}</span><span class="ci">${c.icon}</span><h4>${c.name}</h4><p>${c.desc}</p><div class="cf">${fpLo}–${fpHi} PLN / os. / tydz.</div>`;
     d.addEventListener('click',()=>{
       if(cSelCats.has(c.id))cSelCats.delete(c.id);else cSelCats.add(c.id);
       cBuildCats();
@@ -700,10 +701,10 @@ function cBuildTiers(){
   ts.forEach(t=>{
     let tp=0,fl=[];
     CATS.filter(c=>cSelCats.has(c.id)).forEach(c=>{const ti=c.tiers[t];tp+=ti.pricePerPerson;fl.push({name:c.name,pkg:ti.name})});
-    const mp=(tp*4.33).toFixed(0);
+    const mpBase=tp*4.33,mpLo=Math.round(mpBase*0.85),mpHi=Math.round(mpBase*1.15);
     const d=document.createElement('div');
     d.className='c-tier'+(t==='standard'?' rec':'')+(cSelTier===t?' on':'');
-    d.innerHTML=`<h4>${lb[t]}</h4><div class="td">${ds[t]}</div><div class="tp">~${mp} <small>PLN</small><span class="tpu">na osobę / miesiąc netto</span></div><ul class="tf">${fl.map(f=>`<li><span class="tk">✓</span>${f.name}: ${f.pkg}</li>`).join('')}</ul>`;
+    d.innerHTML=`<h4>${lb[t]}</h4><div class="td">${ds[t]}</div><div class="tp">${mpLo}–${mpHi} <small>PLN</small><span class="tpu">na osobę / miesiąc netto</span></div><ul class="tf">${fl.map(f=>`<li><span class="tk">✓</span>${f.name}: ${f.pkg}</li>`).join('')}</ul>`;
     d.addEventListener('click',()=>{cSelTier=t;cBuildTiers();document.getElementById('cBtn3').disabled=false});
     w.appendChild(d);
   });
@@ -718,12 +719,13 @@ function cBuildResults(){
     const t=c.tiers[cSelTier],wt=t.pricePerPerson*cHc;tw+=wt;
     cards.push({icon:c.icon,name:c.name,pkg:t.name,items:t.items,freq:t.freq,pp:t.pricePerPerson,wt});
   });
-  const tm=tw*4.33,pm=(tm/cHc).toFixed(0);
-  document.getElementById('cResHero').innerHTML=`<div class="bn">~${pm} PLN</div><div class="bl">na osobę / miesiąc netto · wariant ${lb[cSelTier]}</div><div class="ss"><div><strong>${cHc}</strong><span>pracowników</span></div><div><strong>${cSelCats.size}</strong><span>kategori${cSelCats.size===1?'a':cSelCats.size<5?'e':'i'}</span></div><div><strong>~${Math.round(tm).toLocaleString('pl')} PLN</strong><span>łącznie / mies.</span></div></div>`;
+  const tm=tw*4.33,pmLo=Math.round((tm*0.85)/cHc),pmHi=Math.round((tm*1.15)/cHc),tmLo=Math.round(tm*0.85),tmHi=Math.round(tm*1.15);
+  document.getElementById('cResHero').innerHTML=`<div class="bn">${pmLo}–${pmHi} PLN</div><div class="bl">na osobę / miesiąc netto · wariant ${lb[cSelTier]}</div><div class="ss"><div><strong>${cHc}</strong><span>pracowników</span></div><div><strong>${cSelCats.size}</strong><span>kategori${cSelCats.size===1?'a':cSelCats.size<5?'e':'i'}</span></div><div><strong>${tmLo.toLocaleString('pl')}–${tmHi.toLocaleString('pl')} PLN</strong><span>łącznie / mies.</span></div></div>`;
   const cw=document.getElementById('cResCards');cw.innerHTML='';
   cards.forEach(c=>{
     const d=document.createElement('div');d.className='c-res-card';
-    d.innerHTML=`<div class="ri">${c.icon}</div><div class="rb"><h5>${c.name}</h5><p><strong>${c.pkg}</strong> · ${c.freq}</p><div class="rit">${c.items.join(' · ')}</div></div><div class="rp"><strong>${c.pp.toFixed(0)} PLN</strong><span>/ os. / tydz.</span></div>`;
+    const ppLo=Math.round(c.pp*0.85*10)/10,ppHi=Math.round(c.pp*1.15*10)/10;
+    d.innerHTML=`<div class="ri">${c.icon}</div><div class="rb"><h5>${c.name}</h5><p><strong>${c.pkg}</strong> · ${c.freq}</p><div class="rit">${c.items.join(' · ')}</div></div><div class="rp"><strong>${ppLo}–${ppHi} PLN</strong><span>/ os. / tydz.</span></div>`;
     cw.appendChild(d);
   });
 }
