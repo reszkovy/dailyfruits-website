@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Katalog produktów — DailyFruits / Better Workplace</title>
+<meta name="description" content="Pełny katalog produktów Better Workplace — owoce, warzywa, śniadania, napoje, catering na spotkania, pakiety do biura, zestawy integracyjne, kanapki i sałatki.">
+<link rel="icon" type="image/png" href="favicon_.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+@font-face{font-family:'Achiko';src:url('Achiko.woff2') format('woff2'),url('Achiko.ttf') format('truetype');font-weight:400;font-style:normal;font-display:swap}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --green-dark:#1B5E3A;--lime:#8DC63F;--lime-pale:#D5E8A0;--cream:#FFF9E0;
+  --white:#FFFFFF;--gray:#3D5A1E;--radius:16px;--radius-sm:12px;--radius-pill:100px;
+  --font:'DM Sans',sans-serif;--font-fun:'Achiko','Lobster',cursive;
+  --shadow-sm:0 2px 8px rgba(27,94,58,.06);--shadow-md:0 8px 32px rgba(27,94,58,.08);
+  --shadow-lg:0 16px 64px rgba(27,94,58,.12);--transition:all .3s cubic-bezier(.4,0,.2,1)
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--font);color:var(--green-dark);background:var(--cream);-webkit-font-smoothing:antialiased;min-height:100vh;min-height:100dvh;overflow-x:hidden}
+img{max-width:100%;height:auto;display:block}
+
+/* ═══ HERO LANDING ═══ */
+.hero{min-height:100vh;min-height:100dvh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:40px 24px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(141,198,63,.08) 0%,transparent 60%);pointer-events:none}
+.hero-logo{display:flex;align-items:center;gap:12px;margin-bottom:12px;position:relative;z-index:1}
+.hero-logo img{height:42px}
+.hero-logo span{font-size:18px;font-weight:900;letter-spacing:-.3px}
+.hero-tagline{font-size:15px;color:rgba(61,90,30,.45);text-align:center;margin-bottom:48px;max-width:400px;line-height:1.5;position:relative;z-index:1}
+.hero-title{font-family:var(--font-fun);font-size:clamp(32px,5vw,48px);font-weight:400;color:var(--green-dark);text-align:center;margin-bottom:8px;letter-spacing:-.5px;position:relative;z-index:1}
+
+.cat-tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;width:100%;max-width:800px;position:relative;z-index:1}
+.cat-tile{background:var(--white);border-radius:var(--radius);padding:28px 20px;text-align:center;cursor:pointer;transition:var(--transition);border:2px solid transparent;position:relative;overflow:hidden}
+.cat-tile::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(141,198,63,.04),transparent);pointer-events:none;transition:opacity .3s;opacity:0}
+.cat-tile:hover{transform:translateY(-4px);box-shadow:var(--shadow-md);border-color:rgba(141,198,63,.2)}
+.cat-tile:hover::after{opacity:1}
+.cat-tile:active{transform:translateY(-1px)}
+.cat-tile-icon{font-size:36px;margin-bottom:12px;display:block;transition:transform .3s}
+.cat-tile:hover .cat-tile-icon{transform:scale(1.15)}
+.cat-tile h3{font-size:14px;font-weight:800;color:var(--green-dark);margin-bottom:3px}
+.cat-tile p{font-size:11px;color:rgba(61,90,30,.4);line-height:1.4}
+.cat-tile .tile-count{display:inline-block;margin-top:10px;font-size:10px;font-weight:700;color:var(--lime);background:rgba(141,198,63,.1);padding:3px 12px;border-radius:var(--radius-pill);filter:brightness(.75)}
+
+.hero-footer{position:absolute;bottom:24px;display:flex;align-items:center;gap:8px;font-size:11px;color:rgba(61,90,30,.25);z-index:1}
+.hero-footer span{opacity:.5}
+
+/* ═══ STICKY NAV ═══ */
+.sticky-nav{position:fixed;top:0;left:0;right:0;z-index:100;background:var(--green-dark);padding:0 20px;display:flex;align-items:center;height:52px;gap:8px;transform:translateY(-100%);transition:transform .35s cubic-bezier(.4,0,.2,1);box-shadow:0 4px 24px rgba(27,94,58,.15)}
+.sticky-nav.visible{transform:translateY(0)}
+.sticky-nav-logo{display:flex;align-items:center;gap:8px;flex-shrink:0;margin-right:8px;cursor:pointer}
+.sticky-nav-logo img{height:24px}
+.sticky-nav-logo span{font-size:12px;font-weight:800;color:#fff;white-space:nowrap}
+.nav-divider{width:1px;height:24px;background:rgba(255,255,255,.12);flex-shrink:0}
+.nav-pills{display:flex;align-items:center;gap:6px;overflow-x:auto;scrollbar-width:none;flex:1;-webkit-overflow-scrolling:touch}
+.nav-pills::-webkit-scrollbar{display:none}
+.nav-pill{display:inline-flex;align-items:center;gap:5px;padding:6px 16px;border-radius:var(--radius-pill);font-size:12px;font-weight:700;cursor:pointer;border:none;background:rgba(255,255,255,.07);color:rgba(255,255,255,.6);transition:var(--transition);white-space:nowrap;flex-shrink:0;font-family:var(--font)}
+.nav-pill:hover{background:rgba(255,255,255,.14);color:#fff}
+.nav-pill.active{background:var(--lime);color:var(--green-dark)}
+.nav-pill-icon{font-size:14px}
+
+/* ═══ CATEGORY VIEW ═══ */
+.catalog-view{display:none;min-height:100vh;min-height:100dvh;padding:72px 24px 40px}
+.catalog-view.active{display:block}
+.catalog-header{max-width:1200px;margin:0 auto 28px;display:flex;align-items:center;gap:16px}
+.catalog-header h1{font-size:clamp(24px,3.5vw,36px);font-weight:900;letter-spacing:-.5px;flex:1}
+.catalog-header .product-count{font-size:13px;color:rgba(61,90,30,.4);font-weight:500}
+
+.products-pitch{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:20px;max-width:1200px;margin:0 auto}
+
+/* ═══ PITCH CARD ═══ */
+.pitch-card{background:var(--white);border-radius:var(--radius);overflow:hidden;cursor:pointer;transition:var(--transition);border:2px solid transparent;position:relative}
+.pitch-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-md);border-color:rgba(141,198,63,.15)}
+.pitch-card:active{transform:translateY(-1px)}
+.pitch-card-img{background:rgba(27,94,58,.015);display:flex;align-items:center;justify-content:center;height:220px;padding:16px;overflow:hidden;position:relative}
+.pitch-card-img img{max-height:190px;max-width:90%;object-fit:contain;transition:transform .4s cubic-bezier(.4,0,.2,1)}
+.pitch-card:hover .pitch-card-img img{transform:scale(1.06)}
+.pitch-card-img .no-img{display:flex;flex-direction:column;align-items:center;gap:8px;color:rgba(27,94,58,.15)}
+.pitch-card-img .no-img svg{opacity:.5}
+.pitch-card-body{padding:16px 20px 20px}
+.pitch-card-body h3{font-size:15px;font-weight:800;color:var(--green-dark);line-height:1.3;margin-bottom:4px}
+.pitch-card-body .pitch-sub{font-size:12px;color:rgba(61,90,30,.4);line-height:1.4;margin-bottom:10px}
+.pitch-card-body .pitch-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.pitch-ppl{display:inline-flex;align-items:center;gap:4px;font-size:11px;font-weight:600;color:var(--green-dark);background:rgba(141,198,63,.1);padding:4px 10px;border-radius:var(--radius-pill)}
+.pitch-ppl svg{opacity:.5;flex-shrink:0}
+.pitch-items{font-size:11px;color:rgba(61,90,30,.35);font-weight:500}
+
+/* ═══ FULLSCREEN DETAIL ═══ */
+.detail-overlay{position:fixed;inset:0;z-index:200;background:rgba(27,94,58,.5);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);display:none;align-items:stretch;justify-content:center;padding:0}
+.detail-overlay.open{display:flex}
+.detail-full{background:var(--white);width:100%;max-width:100%;display:flex;overflow:hidden;position:relative;animation:detailIn .4s cubic-bezier(.4,0,.2,1)}
+@keyframes detailIn{from{opacity:0;transform:scale(.97)}to{opacity:1;transform:scale(1)}}
+
+.detail-close{position:absolute;top:20px;right:20px;width:44px;height:44px;border-radius:50%;border:none;background:rgba(27,94,58,.06);color:var(--green-dark);cursor:pointer;font-size:20px;display:flex;align-items:center;justify-content:center;transition:var(--transition);z-index:10}
+.detail-close:hover{background:rgba(27,94,58,.12);transform:rotate(90deg)}
+
+.detail-img-side{flex:1;display:flex;align-items:center;justify-content:center;background:var(--cream);padding:40px;min-height:100vh;min-height:100dvh;position:relative}
+.detail-img-side img{max-width:80%;max-height:70vh;object-fit:contain;border-radius:var(--radius-sm)}
+.detail-img-side .no-photo{display:flex;flex-direction:column;align-items:center;gap:12px;color:rgba(27,94,58,.15);font-size:13px}
+
+.detail-info-side{width:440px;flex-shrink:0;padding:60px 40px 40px;overflow-y:auto;display:flex;flex-direction:column;scrollbar-width:thin;scrollbar-color:rgba(27,94,58,.08) transparent}
+.detail-info-side::-webkit-scrollbar{width:4px}
+.detail-info-side::-webkit-scrollbar-thumb{background:rgba(27,94,58,.08);border-radius:2px}
+
+.detail-cat-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--lime);margin-bottom:12px;filter:brightness(.7)}
+.detail-name{font-size:clamp(22px,3vw,32px);font-weight:900;color:var(--green-dark);line-height:1.2;letter-spacing:-.3px;margin-bottom:6px}
+.detail-sub{font-size:14px;color:rgba(61,90,30,.45);margin-bottom:20px;line-height:1.5}
+.detail-ppl{display:inline-flex;align-items:center;gap:6px;background:rgba(141,198,63,.1);color:var(--green-dark);font-size:13px;font-weight:700;padding:8px 16px;border-radius:var(--radius-pill);margin-bottom:28px}
+.detail-ppl svg{flex-shrink:0;opacity:.5}
+.detail-section-title{font-size:14px;font-weight:800;color:var(--green-dark);margin-bottom:12px;padding-bottom:8px;border-bottom:3px solid var(--lime);display:inline-block}
+.detail-contents{list-style:none;padding:0;margin-bottom:32px}
+.detail-contents li{font-size:13px;color:var(--gray);padding:8px 0;display:flex;align-items:baseline;gap:8px;border-bottom:1px solid rgba(27,94,58,.04);line-height:1.4}
+.detail-contents li::before{content:'✓';color:var(--lime);font-weight:800;font-size:12px;flex-shrink:0}
+.detail-contents li:last-child{border-bottom:none}
+
+/* Detail nav arrows */
+.detail-nav{display:flex;gap:8px;margin-top:auto;padding-top:24px}
+.detail-nav-btn{flex:1;padding:12px;border-radius:var(--radius-sm);border:1.5px solid rgba(27,94,58,.08);background:transparent;cursor:pointer;font-family:var(--font);font-size:12px;font-weight:700;color:var(--green-dark);transition:var(--transition);display:flex;align-items:center;gap:8px}
+.detail-nav-btn:hover{background:var(--cream);border-color:rgba(27,94,58,.15)}
+.detail-nav-btn.next{justify-content:flex-end;text-align:right}
+.detail-nav-btn .arrow{font-size:18px;opacity:.4}
+.detail-nav-btn .nav-label{display:flex;flex-direction:column;gap:2px}
+.detail-nav-btn .nav-label small{font-size:10px;color:rgba(61,90,30,.35);font-weight:500}
+
+/* ═══ CALC CTA (floating) ═══ */
+.calc-fab{position:fixed;bottom:24px;right:24px;z-index:50;display:none;align-items:center;gap:8px;padding:14px 28px;border-radius:var(--radius-pill);font-size:13px;font-weight:800;cursor:pointer;border:none;background:var(--green-dark);color:#fff;font-family:var(--font);transition:var(--transition);box-shadow:0 8px 32px rgba(27,94,58,.25);letter-spacing:.3px}
+.calc-fab:hover{transform:translateY(-2px);box-shadow:0 12px 40px rgba(27,94,58,.3)}
+.calc-fab:active{transform:translateY(0)}
+.calc-fab.visible{display:inline-flex}
+.calc-fab svg{flex-shrink:0}
+
+/* ═══ MODAL OVERLAY ═══ */
+.modal-backdrop{position:fixed;inset:0;z-index:9999;background:rgba(27,94,58,.6);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);display:none;align-items:center;justify-content:center;padding:20px}
+.modal-backdrop.open{display:flex}
+.modal{background:var(--white);border-radius:var(--radius);width:100%;max-width:860px;max-height:90vh;overflow-y:auto;position:relative;box-shadow:var(--shadow-lg);scrollbar-width:thin;scrollbar-color:rgba(27,94,58,.1) transparent}
+.modal::-webkit-scrollbar{width:5px}
+.modal::-webkit-scrollbar-thumb{background:rgba(27,94,58,.1);border-radius:3px}
+.modal-close{position:absolute;top:14px;right:14px;width:36px;height:36px;border-radius:50%;border:none;background:rgba(27,94,58,.06);color:var(--green-dark);cursor:pointer;font-size:18px;display:flex;align-items:center;justify-content:center;transition:var(--transition);z-index:10}
+.modal-close:hover{background:rgba(27,94,58,.12)}
+
+/* ═══ CALCULATOR STYLES ═══ */
+.calc-inner{padding:32px 36px 36px}
+.calc-inner h2{font-family:var(--font);font-size:22px;font-weight:900;color:var(--green-dark);text-align:center;margin-bottom:4px;letter-spacing:-.3px}
+.calc-intro{text-align:center;font-size:13px;color:rgba(61,90,30,.5);margin-bottom:24px}
+.c-steps{display:flex;align-items:center;justify-content:center;gap:4px;margin-bottom:28px;flex-wrap:wrap}
+.c-pill{display:flex;align-items:center;gap:6px;padding:7px 16px;border-radius:var(--radius-pill);font-size:12px;font-weight:700;font-family:var(--font);background:var(--white);border:1.5px solid rgba(27,94,58,.12);color:rgba(61,90,30,.4);transition:var(--transition)}
+.c-pill.active{background:var(--green-dark);border-color:var(--green-dark);color:#fff}
+.c-pill.done{background:var(--cream);border-color:var(--lime);color:var(--lime)}
+.c-pill .cn{width:20px;height:20px;border-radius:50%;background:rgba(27,94,58,.06);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:800}
+.c-pill.active .cn{background:rgba(255,255,255,.2)}
+.c-pill.done .cn{background:var(--lime);color:var(--green-dark)}
+.c-conn{width:20px;height:1.5px;background:rgba(27,94,58,.1);border-radius:2px}
+.c-conn.done{background:var(--lime)}
+.c-panel{display:none;animation:cFade .4s ease}
+.c-panel.vis{display:block}
+@keyframes cFade{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+.hc-card{background:var(--cream);border-radius:var(--radius);padding:36px 32px;max-width:420px;margin:0 auto;text-align:center}
+.hc-card h3{font-family:var(--font);font-size:18px;font-weight:800;color:var(--green-dark);margin-bottom:4px}
+.hc-card>p{color:rgba(61,90,30,.45);font-size:12px;margin-bottom:20px}
+.hc-input{width:160px;font-size:42px;font-weight:900;font-family:var(--font);text-align:center;border:2px solid rgba(27,94,58,.12);border-radius:var(--radius-sm);padding:10px;color:var(--green-dark);background:var(--white);transition:var(--transition)}
+.hc-input:focus{outline:none;border-color:var(--lime);box-shadow:0 0 0 3px rgba(141,198,63,.15)}
+.hc-input::placeholder{color:rgba(61,90,30,.25);font-weight:300}
+.hc-label{font-size:11px;color:rgba(61,90,30,.35);margin:6px 0 16px;display:block}
+.hc-presets{display:flex;gap:6px;justify-content:center;flex-wrap:wrap;margin-bottom:20px}
+.hc-pre{padding:6px 16px;border-radius:var(--radius-pill);border:1.5px solid rgba(27,94,58,.1);background:transparent;font-size:12px;font-weight:600;color:rgba(61,90,30,.5);cursor:pointer;transition:var(--transition);font-family:var(--font)}
+.hc-pre:hover{border-color:var(--green-dark);color:var(--green-dark)}
+.hc-pre.on{background:var(--green-dark);border-color:var(--green-dark);color:#fff}
+.c-cats{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px;margin-bottom:20px}
+.c-cat{background:var(--cream);border-radius:var(--radius-sm);padding:16px;border:1.5px solid transparent;cursor:pointer;transition:var(--transition);position:relative;user-select:none}
+.c-cat:hover{border-color:rgba(27,94,58,.1);transform:translateY(-1px);box-shadow:0 4px 16px rgba(27,94,58,.05)}
+.c-cat.on{border-color:var(--lime);background:rgba(141,198,63,.08)}
+.c-cat .cc{position:absolute;top:12px;right:12px;width:22px;height:22px;border-radius:50%;border:1.5px solid rgba(27,94,58,.1);display:flex;align-items:center;justify-content:center;font-size:11px;color:transparent;transition:var(--transition)}
+.c-cat.on .cc{background:var(--lime);border-color:var(--lime);color:var(--green-dark)}
+.c-cat .ci{font-size:22px;margin-bottom:8px;display:block}
+.c-cat h4{font-family:var(--font);font-size:13px;font-weight:800;color:var(--green-dark);margin-bottom:2px}
+.c-cat p{font-size:11px;color:rgba(61,90,30,.4);line-height:1.4}
+.c-cat .cf{font-size:11px;font-weight:700;color:var(--lime);margin-top:6px;filter:brightness(.7)}
+.c-tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:20px}
+.c-tier{background:var(--cream);border-radius:var(--radius-sm);padding:24px 16px 20px;border:1.5px solid transparent;cursor:pointer;transition:var(--transition);text-align:center;position:relative}
+.c-tier:hover{border-color:rgba(27,94,58,.1);transform:translateY(-1px);box-shadow:0 4px 16px rgba(27,94,58,.05)}
+.c-tier.on{border-color:var(--lime);background:rgba(141,198,63,.08)}
+.c-tier.rec::before{content:'Popularne';position:absolute;top:-9px;left:50%;transform:translateX(-50%);background:var(--lime);color:var(--green-dark);font-size:9px;font-weight:800;font-family:var(--font);padding:3px 12px;border-radius:var(--radius-pill);text-transform:uppercase;letter-spacing:.5px;white-space:nowrap}
+.c-tier h4{font-family:var(--font);font-size:16px;font-weight:800;color:var(--green-dark);margin-bottom:2px}
+.c-tier .td{font-size:11px;color:rgba(61,90,30,.4);margin-bottom:14px;line-height:1.4}
+.c-tier .tp{font-family:var(--font);font-size:30px;font-weight:900;color:var(--green-dark);line-height:1;letter-spacing:-.5px}
+.c-tier .tp small{font-size:13px;font-weight:600}
+.c-tier .tpu{font-size:10px;color:rgba(61,90,30,.35);display:block;margin-top:4px}
+.c-tier .tf{list-style:none;text-align:left;margin-top:14px;font-size:11px;color:rgba(61,90,30,.6);padding:0}
+.c-tier .tf li{padding:5px 0;border-bottom:1px solid rgba(27,94,58,.04);display:flex;align-items:start;gap:6px;line-height:1.3}
+.c-tier .tf li:last-child{border:none}
+.c-tier .tf .tk{color:var(--lime);font-weight:800;flex-shrink:0;filter:brightness(.75)}
+.c-res-hero{background:var(--green-dark);border-radius:var(--radius);padding:36px 28px;text-align:center;color:#fff;margin-bottom:20px}
+.c-res-hero .bn{font-family:var(--font);font-size:clamp(36px,6vw,56px);font-weight:900;line-height:1;letter-spacing:-1px}
+.c-res-hero .bl{font-size:12px;opacity:.55;margin-top:6px;font-weight:400}
+.c-res-hero .ss{display:flex;justify-content:center;gap:32px;margin-top:20px;flex-wrap:wrap}
+.c-res-hero .ss div{text-align:center}
+.c-res-hero .ss strong{font-family:var(--font);font-size:22px;font-weight:700;display:block}
+.c-res-hero .ss span{font-size:10px;opacity:.45;text-transform:uppercase;letter-spacing:.8px}
+.c-res-cards{display:grid;gap:8px;margin-bottom:20px}
+.c-res-card{background:var(--cream);border-radius:var(--radius-sm);padding:16px 18px;display:grid;grid-template-columns:auto 1fr auto;gap:14px;align-items:center}
+.c-res-card .ri{width:40px;height:40px;border-radius:8px;background:rgba(141,198,63,.12);display:flex;align-items:center;justify-content:center;font-size:18px}
+.c-res-card h5{font-family:var(--font);font-size:13px;font-weight:800;color:var(--green-dark);margin-bottom:1px}
+.c-res-card .rb p{font-size:11px;color:rgba(61,90,30,.4)}
+.c-res-card .rb .rit{font-size:10px;color:rgba(61,90,30,.35);margin-top:3px;line-height:1.5}
+.c-res-card .rp{text-align:right}
+.c-res-card .rp strong{font-family:var(--font);font-size:17px;font-weight:800;color:var(--green-dark);display:block}
+.c-res-card .rp span{font-size:10px;color:rgba(61,90,30,.35)}
+.c-cta-bar{background:var(--cream);border-radius:var(--radius-sm);padding:24px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.c-cta-bar p{font-size:12px;color:rgba(61,90,30,.45);line-height:1.5}
+.c-cta-bar p strong{color:var(--green-dark);display:block;font-family:var(--font);font-size:15px;font-weight:800;margin-bottom:2px}
+.c-cta-bar a{background:var(--green-dark);color:#fff;padding:10px 28px;border-radius:var(--radius-pill);text-decoration:none;font-weight:700;font-size:13px;font-family:var(--font);transition:var(--transition);white-space:nowrap;border:1.5px solid var(--green-dark)}
+.c-cta-bar a:hover{background:transparent;color:var(--green-dark)}
+.c-btn-row{display:flex;justify-content:center;gap:8px;margin-top:4px}
+.c-btn{padding:9px 24px;border-radius:var(--radius-pill);font-size:12px;font-weight:700;cursor:pointer;border:1.5px solid transparent;font-family:var(--font);transition:var(--transition)}
+.c-btn-go{background:var(--green-dark);color:#fff;border-color:var(--green-dark)}
+.c-btn-go:hover{background:var(--lime);color:var(--green-dark);border-color:var(--lime)}
+.c-btn-go:disabled{opacity:.3;cursor:not-allowed;background:var(--green-dark);color:#fff}
+.c-btn-back{background:transparent;color:rgba(61,90,30,.5);border-color:rgba(27,94,58,.1)}
+.c-btn-back:hover{border-color:var(--green-dark);color:var(--green-dark)}
+
+/* ═══ RESPONSIVE ═══ */
+@media(max-width:1024px){
+  .detail-info-side{width:380px;padding:48px 32px 32px}
+  .products-pitch{grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px}
+  .c-tiers{grid-template-columns:1fr}
+  .calc-inner{padding:24px 20px 28px}
+}
+@media(max-width:768px){
+  .hero{padding:32px 20px}
+  .cat-tiles{grid-template-columns:repeat(2,1fr);gap:10px}
+  .cat-tile{padding:20px 16px}
+  .cat-tile-icon{font-size:28px;margin-bottom:8px}
+  .cat-tile h3{font-size:13px}
+  .detail-full{flex-direction:column}
+  .detail-img-side{min-height:40vh;min-height:40dvh;padding:24px}
+  .detail-img-side img{max-height:35vh}
+  .detail-info-side{width:100%;flex:1;padding:24px 20px 20px}
+  .detail-name{font-size:22px}
+  .products-pitch{grid-template-columns:repeat(2,1fr);gap:12px}
+  .pitch-card-img{height:160px}
+  .pitch-card-body{padding:12px 14px 16px}
+  .pitch-card-body h3{font-size:13px}
+  .catalog-view{padding:64px 16px 32px}
+  .sticky-nav-logo span{display:none}
+  .nav-pill{font-size:11px;padding:5px 12px}
+  .calc-fab{bottom:16px;right:16px;padding:12px 20px;font-size:12px}
+  .c-cats{grid-template-columns:1fr 1fr}
+  .c-res-card{grid-template-columns:1fr;text-align:center}
+  .c-res-card .rp{text-align:center}
+  .c-cta-bar{flex-direction:column;text-align:center}
+  .modal{max-height:95vh;border-radius:var(--radius-sm)}
+  .modal-backdrop{padding:10px}
+}
+@media(max-width:480px){
+  .cat-tiles{grid-template-columns:repeat(2,1fr);gap:8px}
+  .cat-tile{padding:16px 12px}
+  .cat-tile-icon{font-size:24px}
+  .products-pitch{grid-template-columns:1fr}
+  .pitch-card-img{height:200px}
+}
+
+/* ═══ BETTERWORKPLACE THEME ═══ */
+body.bw{--green-dark:#1E293B;--lime:#3B82F6;--lime-pale:#BFDBFE;--cream:#F8FAFC;--gray:#475569;--font-fun:var(--font)}
+body.bw .sticky-nav{background:#0F172A}
+body.bw .nav-pill.active{background:#3B82F6;color:#fff}
+body.bw .pitch-card{background:#F1F5F9;border-color:transparent}
+body.bw .pitch-card:hover{border-color:rgba(59,130,246,.2)}
+body.bw .pitch-card-img{background:rgba(30,41,59,.02)}
+body.bw .detail-section-title{border-bottom-color:#3B82F6}
+body.bw .detail-contents li::before{color:#3B82F6}
+body.bw .detail-ppl{background:rgba(59,130,246,.08);color:#1E293B}
+body.bw .cat-tile:hover{border-color:rgba(59,130,246,.2)}
+body.bw .cat-tile .tile-count{color:#3B82F6;background:rgba(59,130,246,.08);filter:none}
+body.bw .detail-cat-label{color:#3B82F6;filter:none}
+body.bw .detail-img-side{background:#F8FAFC}
+body.bw .calc-fab{background:#1E293B;box-shadow:0 8px 32px rgba(30,41,59,.25)}
+body.bw .calc-fab:hover{box-shadow:0 12px 40px rgba(30,41,59,.3)}
+body.bw .modal-backdrop{background:rgba(15,23,42,.6)}
+body.bw .c-pill.active{background:#1E293B;border-color:#1E293B}
+body.bw .c-pill.done{border-color:#3B82F6;color:#3B82F6}
+body.bw .c-pill.done .cn{background:#3B82F6;color:#fff}
+body.bw .c-conn.done{background:#3B82F6}
+body.bw .c-cat.on{border-color:#3B82F6;background:rgba(59,130,246,.06)}
+body.bw .c-cat.on .cc{background:#3B82F6;border-color:#3B82F6;color:#fff}
+body.bw .c-cat .cf{color:#3B82F6;filter:none}
+body.bw .c-tier.on{border-color:#3B82F6;background:rgba(59,130,246,.06)}
+body.bw .c-tier .tf .tk{color:#3B82F6;filter:none}
+body.bw .c-tier.rec::before{background:#3B82F6;color:#fff}
+body.bw .c-res-hero{background:#1E293B}
+body.bw .c-btn-go{background:#1E293B;border-color:#1E293B}
+body.bw .c-btn-go:hover{background:#3B82F6;border-color:#3B82F6;color:#fff}
+body.bw .c-cta-bar a{background:#1E293B;border-color:#1E293B}
+body.bw .c-cta-bar a:hover{background:transparent;color:#1E293B}
+body.bw .hc-input:focus{border-color:#3B82F6;box-shadow:0 0 0 3px rgba(59,130,246,.15)}
+body.bw .hc-pre.on{background:#1E293B;border-color:#1E293B}
+body.bw .hero::before{background:radial-gradient(ellipse at 50% 0%,rgba(59,130,246,.06) 0%,transparent 60%)}
+</style>
+</head>
+<body>
+
+<!-- ═══ HERO LANDING ═══ -->
+<section class="hero" id="heroSection">
+  <div class="hero-logo" id="heroLogo">
+    <img src="fruitttt.svg" alt="DailyFruits" width="42" height="42" id="heroLogoDF">
+    <img id="heroLogoBW" src="bw-logo-white.svg" alt="Better Workplace" height="36" style="display:none">
+    <span id="heroBrandName">DailyFruits</span>
+  </div>
+  <h1 class="hero-title" id="heroTitle"><span class="fun">Katalog</span> abonamentowy</h1>
+  <p class="hero-tagline">Wszystko, czego potrzebuje Twoje biuro — owoce, przekąski, napoje, catering i kawa. Wybierz kategorię.</p>
+
+  <div class="cat-tiles" id="catTiles"></div>
+
+  <div class="hero-footer">
+    <span>ul. Modułowa 3, 05-090 Raszyn</span>
+    <span>·</span>
+    <span id="heroEmail">zapytania@dailyfruits.pl</span>
+    <span>·</span>
+    <span>ponad 2 500 klientów biznesowych</span>
+  </div>
+</section>
+
+<!-- ═══ STICKY NAV ═══ -->
+<nav class="sticky-nav" id="stickyNav">
+  <div class="sticky-nav-logo" onclick="goHome()">
+    <img src="fruitttt.svg" alt="DailyFruits" width="24" height="24" id="navLogoDF">
+    <img id="navLogoBW" src="bw-logo-white.svg" alt="Better Workplace" height="22" style="display:none">
+    <span id="navBrandName">DailyFruits</span>
+  </div>
+  <div class="nav-divider"></div>
+  <div class="nav-pills" id="navPills"></div>
+</nav>
+
+<!-- ═══ CATALOG VIEW (products grid) ═══ -->
+<section class="catalog-view" id="catalogView">
+  <div class="catalog-header">
+    <h1 id="catalogTitle"></h1>
+    <span class="product-count" id="catalogCount"></span>
+  </div>
+  <div class="products-pitch" id="productsGrid"></div>
+</section>
+
+<!-- ═══ FULLSCREEN PRODUCT DETAIL ═══ -->
+<div class="detail-overlay" id="detailOverlay">
+  <div class="detail-full" id="detailFull">
+    <button class="detail-close" onclick="closeDetail()">✕</button>
+    <div class="detail-img-side" id="detailImg"></div>
+    <div class="detail-info-side" id="detailInfo"></div>
+  </div>
+</div>
+
+<!-- ═══ CALCULATOR FAB ═══ -->
+<button class="calc-fab" id="calcFab" onclick="openCalc()">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="10" x2="8" y2="10.01"/><line x1="12" y1="10" x2="12" y2="10.01"/><line x1="16" y1="10" x2="16" y2="10.01"/><line x1="8" y1="14" x2="8" y2="14.01"/><line x1="12" y1="14" x2="12" y2="14.01"/><line x1="16" y1="14" x2="16" y2="14.01"/><line x1="8" y1="18" x2="16" y2="18"/></svg>
+  Kalkulator
+</button>
+
+<!-- ═══ CALCULATOR MODAL ═══ -->
+<div class="modal-backdrop" id="calcModal">
+<div class="modal">
+<button class="modal-close" onclick="closeCalc()">✕</button>
+<div class="calc-inner">
+<h2>Dobierz program do zespołu</h2>
+<p class="calc-intro">Podaj liczbę osób, wybierz kategorie i wariant — pokażemy koszt na osobę.</p>
+<div class="c-steps">
+  <div class="c-pill active" id="cp1"><span class="cn">1</span>Zespół</div>
+  <div class="c-conn" id="cc1"></div>
+  <div class="c-pill" id="cp2"><span class="cn">2</span>Kategorie</div>
+  <div class="c-conn" id="cc2"></div>
+  <div class="c-pill" id="cp3"><span class="cn">3</span>Wariant</div>
+  <div class="c-conn" id="cc3"></div>
+  <div class="c-pill" id="cp4"><span class="cn">4</span>Wynik</div>
+</div>
+<div class="c-panel vis" id="cp-1">
+  <div class="hc-card">
+    <h3>Ile osób liczy zespół?</h3>
+    <p>Na tej podstawie dobierzemy pakiety i częstotliwość dostaw.</p>
+    <input type="number" class="hc-input" id="cHc" placeholder="50" min="1" max="10000">
+    <span class="hc-label">liczba pracowników w lokalizacji</span>
+    <div class="hc-presets">
+      <button class="hc-pre" data-v="20">do 20</button>
+      <button class="hc-pre" data-v="50">~50</button>
+      <button class="hc-pre" data-v="100">~100</button>
+      <button class="hc-pre" data-v="200">~200</button>
+      <button class="hc-pre" data-v="500">500+</button>
+    </div>
+    <div class="c-btn-row">
+      <button class="c-btn c-btn-go" id="cBtn1" disabled>Dalej — wybierz kategorie</button>
+    </div>
+  </div>
+</div>
+<div class="c-panel" id="cp-2">
+  <div style="text-align:center;margin-bottom:20px">
+    <h3 style="font-size:18px;font-weight:800;color:var(--green-dark)">Jakie benefity Cię interesują?</h3>
+    <p style="font-size:12px;color:rgba(61,90,30,.4);margin-top:4px">Wybierz jedną lub więcej kategorii. Dla <strong id="cHcEcho" style="color:var(--green-dark)">50</strong> pracowników.</p>
+  </div>
+  <div class="c-cats" id="cCatGrid"></div>
+  <div class="c-btn-row">
+    <button class="c-btn c-btn-back" onclick="cGo(1)">Wróć</button>
+    <button class="c-btn c-btn-go" id="cBtn2" disabled>Dalej — wybierz wariant</button>
+  </div>
+</div>
+<div class="c-panel" id="cp-3">
+  <div style="text-align:center;margin-bottom:20px">
+    <h3 style="font-size:18px;font-weight:800;color:var(--green-dark)">Wybierz wariant programu</h3>
+    <p style="font-size:12px;color:rgba(61,90,30,.4);margin-top:4px">Ceny orientacyjne netto/mies. dla <strong id="cHcEcho2" style="color:var(--green-dark)">50</strong> osób.</p>
+  </div>
+  <div class="c-tiers" id="cTiers"></div>
+  <div class="c-btn-row">
+    <button class="c-btn c-btn-back" onclick="cGo(2)">Wróć</button>
+    <button class="c-btn c-btn-go" id="cBtn3" disabled>Zobacz rekomendację</button>
+  </div>
+</div>
+<div class="c-panel" id="cp-4">
+  <div class="c-res-hero" id="cResHero"></div>
+  <div class="c-res-cards" id="cResCards"></div>
+  <div class="c-cta-bar">
+    <p><strong>Chcesz wdrożyć ten program?</strong>Wyślij zapytanie — odezwiemy się w ciągu 24h z indywidualną wyceną.</p>
+    <a href="mailto:zapytania@betterworkplace.pl" id="calcCTA">Złóż zapytanie</a>
+  </div>
+  <div class="c-btn-row" style="margin-top:12px">
+    <button class="c-btn c-btn-back" onclick="cGo(1)">Przelicz ponownie</button>
+  </div>
+</div>
+</div>
+</div>
+</div>
+
+<script>
+// ═══════════════════════════════════════════
+// PRODUCT DATA (verified 100% against source)
+// ═══════════════════════════════════════════
+const P = [
+    {id:"ow-1",cat:"owoce",name:"Zestaw TYLKO WITAMINY",sub:"Jabłka, banany, owoce sezonowe",ppl:"30–40",img:"katalog/owoce-tylko-witaminy.webp",contents:["2 kg jabłek","2 kg bananów","3 kg owoców sezonowych"]},
+    {id:"ow-2",cat:"owoce",name:"Zestaw OWOCOWY KLASYK",sub:"Jabłka i banany — klasyczny duet",ppl:"30–40",img:"katalog/owoce-owocowy-klasyk.webp",contents:["3,5 kg jabłek","3,5 kg bananów"]},
+    {id:"ow-3",cat:"owoce",name:"Zestaw MIX Z EGZOTYKĄ",sub:"Jabłka, banany, sezonowe, egzotyczne",ppl:"25–35",img:"katalog/owoce-mix-egzotyka.webp",contents:["2 kg jabłek","1 kg bananów","2 kg owoców sezonowych","1,5 kg owoców egzotycznych"]},
+    {id:"ow-4",cat:"owoce",name:"Zestaw WARZYWNY MINI",sub:"Świeże warzywa do biurowej kuchni",ppl:"10–15",img:"katalog/warzywa-mini.webp",contents:["Ogórek zielony","Papryka","Pomidory","Sałata masłowa","Rzodkiewka, pęczek","Marchew"]},
+    {id:"ow-5",cat:"owoce",name:"Zestaw OWOCOWA MOC",sub:"Największy zestaw owocowy",ppl:"50–70",img:"katalog/owoce-owocowa-moc.webp",contents:["5 kg jabłek","5 kg bananów","4 kg owoców sezonowych"]},
+
+    {id:"sn-1",cat:"sniadania",name:"Śniadanie 1",sub:"Ciabatty, wędliny, sery, jogurty, granola",ppl:"15–20",img:"katalog/sniadanie-1.webp",contents:["20 x ciabatta, 60 g","Dżem truskawkowy","1,5 kg jabłek","Kiełbasa Sucha Krakowska 90 g, Dolina Dobra","Masło, 200 g","Ogórek kiszony, Cook, 900 ml","Ogórek zielony","Pasztet z indyka 180 g, Bacówka","0,7 kg pomidorów","Rzodkiewka, pęczek","Sałata lollo bionda","Schab wędzony 100 g, Dolina Dobra","Ser żółty Gouda 135 g, Hochland","Szynka soczysta 100 g, Dolina Dobra","Bakalie MIX 400 g, Hebar","4 x Jogurt owoce leśne 150 g, Mlekovita","Crunchy klasyczne 350 g, Sante","Hummus klasyczny 115 g, Sante","Hummus z suszonymi pomidorami 115 g, Sante","Jogurt naturalny 150 g, Mlekovita","Serek naturalny 150 g, Bieluch"]},
+    {id:"sn-2",cat:"sniadania",name:"Śniadanie 2",sub:"Bagietki, croissanty, sery, orzechy",ppl:"10–15",img:"katalog/sniadanie-2.webp",contents:["5 x Bagietka ciemna, 110 g","4 x Serek wiejski 150 g, Piątnica","4 x Ciabatta, 60 g","Twaróg delikatny naturalny 150 g, President","4 x Croissant maślany","Ser Brie Naturalny 125 g, President","1,5 kg gruszek","Migdały 65 g, Hebar","Orzechy laskowe 65 g, Hebar","Masło, 200 g","0,3 kg pomidorów","Rzodkiewka, pęczek, 150 g","Sałata lollo bionda","Ser żółty Gouda 135 g, Hochland","Konfitura morelowa 370 g, Bonne Maman","Szynka soczysta 100 g, Dolina Dobra"]},
+    {id:"sn-3",cat:"sniadania",name:"Śniadanie 3",sub:"Bagietki, hummus, camembert, wege opcje",ppl:"10–15",img:"katalog/sniadanie-3.webp",contents:["8 x Bagietka ciemna, 110 g","2 x Kiełbasa Sucha Krakowska 90 g, Dolina Dobra","Ogórek zielony","Hummus klasyczny 180 g, Sante","Papryka","Pomidory","Rzodkiewka, pęczek, 150 g","Sałata masłowa","Mozzarella kulki","Wafle ryżowe extra cienkie 110 g, Sante","Ser Camembert Naturalny 120 g, President","Pasztet wegański z pieczonymi warzywami BIO 190 g, VEGA UP","Pasta ze słonecznika z pomidorami Lovege 175 g, Sante","Tarczyński Exclusive Kabanosy drobiowe z wieprzowiną 105 g","Hummus klasyczny 115 g, Sante","2 x Serek naturalny 150 g, Bieluch"]},
+
+    {id:"na-1",cat:"napoje",name:"Pakiet nawodnieniowy MEDIUM",sub:"Soki NFC, woda kokosowa, smoothie",ppl:"30–40",img:"katalog/napoje-medium.webp",contents:["40 x Pakiet soków NFC","12 x Coconaut Naturalna woda kokosowa niegazowana 320 ml, Questfood","10 x Napój Fanta Orange 330 ml, puszka","8 x Smoothie gęste jabłko Mango + Brzoskwinia 215 ml, Bracia Sadownicy"]},
+    {id:"na-2",cat:"napoje",name:"Pakiet nawodnieniowy LUX",sub:"Soki NFC, kombucha, lemoniada, energy",ppl:"30–40",img:"katalog/napoje-lux.webp",contents:["40 x Pakiet soków NFC","4 x Kombucha Classic Green 250 ml, Forever Young","10 x Napój Sprite 330 ml, puszka","10 x Lemoniada BIO z limonką 275 ml, Rembowscy","6 x Energy Focus shot 100 ml, Chias Brothers"]},
+    {id:"na-3",cat:"napoje",name:"Pakiet nawodnieniowy BASIC",sub:"Soki NFC, lemoniada, sok musujący",ppl:"20–30",img:"katalog/napoje-basic.webp",contents:["20 x Pakiet soków NFC","10 x Lemoniada BIO z limonką 275 ml, Rembowscy","10 x Sok musujący jabłko-mięta 275 ml, Bracia Sadownicy","10 x Napój Coca-Cola 330 ml, puszka"]},
+    {id:"na-4",cat:"napoje",name:"Zestaw izotoniczny",sub:"Cytryny, pomarańcze, miód, mięta",ppl:"15–20",img:"katalog/napoje-izotoniczny.webp",contents:["3 kg cytryn","2 kg pomarańczy","Miód Dobre Krafty 350 g","Mięta, doniczka"]},
+    {id:"na-5",cat:"napoje",name:"Zestaw lemoniadowy",sub:"Cytryny, limonki, ogórek, imbir, mięta",ppl:"15–20",img:"katalog/napoje-lemoniadowy.webp",contents:["2 x Ogórek zielony","2 kg cytryn","0,25 kg limonek","Imbir","3 x Mięta, doniczka"]},
+    {id:"na-6",cat:"napoje",name:"Zestaw herbaciany",sub:"Herbata, cytryny, miód, mięta, sitka",ppl:"15–20",img:"katalog/napoje-herbaciany.webp",contents:["1 kg cytryn","4 x Herbata, tuba, Dobre Krafty","2 x Mięta, doniczka","5 x Sitko do herbaty","Imbir","Miód Dobre Krafty, 350 g"]},
+    {id:"na-7",cat:"napoje",name:"Zestaw rozgrzewający",sub:"Cytryny, grejpfruty, przyprawy, syrop",ppl:"20–30",img:"katalog/napoje-rozgrzewajacy.webp",contents:["1 kg cytryn","Imbir","Mięta, doniczka","Miód Dobre Krafty, 350 g","2 x Goździki op. 10 g, Prymat/Kamis","2 x Cynamon cały 14 g, Prymat","Anyż gwiazdki 8 g, Kotanyi/Kamis","Syrop do herbaty malinowy 500 ml, Rembowscy","Jarzębina do herbaty 200 g, Bacówka","Konfitura z czarnego bzu 200 g, Dobre Krafty","Cytrynki z cynamonem 270 g, Ogródek Dziadunia","Herbata czarna 100 torebek, Black Label, Teekanne","2 kg grejpfrutów"]},
+
+    {id:"sp-1",cat:"spotkania",name:"Spotkanie biznesowe LUX",sub:"Finger food, warzywa, smoothie, bakalie",ppl:"20–25",img:"katalog/spotkanie-lux.webp",contents:["2 x Fingers Food — zestaw 21 szt.","12 x Warzywa w kubeczkach","6 x Smoothie gęste jabłko Banan + Kokos 215 ml, Bracia Sadownicy","6 x Smoothie gęste jabłko Mango + Brzoskwinia 215 ml, Bracia Sadownicy","12 x Bakalie MIX 65 g, Hebar"]},
+    {id:"sp-2",cat:"spotkania",name:"Spotkanie biznesowe kameralne",sub:"Finger food, słodkie przekąski, soki",ppl:"10–15",img:"katalog/spotkanie-kameralne.webp",contents:["Fingers Food — zestaw 21 szt.","Zestaw słodkich przekąsek 20 szt.","5 x Lemoniada BIO z limonką 275 ml, Rembowscy","5 x Sok tłoczony gruszkowy 250 ml, Rembowscy","6 x Bakalie MIX 65 g, Hebar"]},
+    {id:"sp-3",cat:"spotkania",name:"Spotkanie biznesowe owocowo-wytrawne",sub:"Finger food, owoce, bakalie, soki NFC",ppl:"15–20",img:"katalog/spotkanie-owocowo-wytrawne.webp",contents:["Fingers Food — zestaw 21 szt.","2 kg bananów","2 kg jabłek","2 kg owoców sezonowych","12 x Bakalie MIX 65 g, Hebar","12 x Soki NFC"]},
+
+    {id:"bi-1",cat:"biuro",name:"Do biura na co dzień — zestaw 1",sub:"Owoce, warzywa, soki NFC, ciasteczka, bakalie",ppl:"15–20",img:"katalog/biuro-zestaw-1.webp",contents:["2 kg jabłek","2 kg bananów","Ogórek zielony","0,5 kg pomidorów","20 x Soki NFC, wytłoczka","5 x Ciasteczka zbożowe bez cukru morelowe 50 g, Sante","6 x Ciasteczka zbożowe bez cukru kakaowe 50 g, Sante","5 x Ciasteczka zbożowe bez cukru jagoda 50 g, Sante","16 x Bakalie MIX 65 g, Hebar"]},
+    {id:"bi-2",cat:"biuro",name:"Do biura na co dzień — zestaw 2",sub:"Owoce, warzywa, soki NFC, batony, chipsy",ppl:"15–20",img:"katalog/biuro-zestaw-2.webp",contents:["2 kg jabłek","2 kg bananów","Ogórek zielony","0,5 kg pomidorów","20 x Soki NFC, wytłoczka","5 x Baton Crunchy żurawina z maliną 40 g, Sante","5 x Baton owocowy Nerkowiec & Kokos 35 g, Dobra Kaloria","5 x Chips z jabłka z sokiem z mango 18 g, Crispy Natural","16 x Bakalie MIX 65 g, Hebar"]},
+    {id:"bi-3",cat:"biuro",name:"Zestaw batonów i ciasteczek — 26 szt.",sub:"13 rodzajów batonów i ciasteczek",ppl:"13–20",img:"katalog/batony-ciasteczka-26.webp",contents:["2 x Ciasteczka zbożowe bez cukru morelowe 50 g, Sante","2 x Ciasteczka zbożowe bez cukru kakaowe 50 g, Sante","2 x Ciasteczka zbożowe bez cukru jagoda 50 g, Sante","2 x Baton Crunchy Banan z czekoladą 40 g, Sante","2 x Baton Crunchy Śliwka 40 g, Sante","2 x Baton Granola owsiany z czekoladą 40 g, Sante","2 x BA! baton zbożowy żurawina i pomarańcza 38 g, Bakalland","2 x BA! baton zbożowy 5 ziaren z miodem 38 g, Bakalland","2 x BA! Baton banan i zboża 40 g, Bakalland","2 x Baton proteinowy krem orzechowy i sól 45 g, Dobra Kaloria","2 x Baton owocowy Orzeszki & Czekolada 35 g, Dobra Kaloria","2 x Baton Go On Proteinowy Crisp Ciastko-Karmel 50 g, Sante","2 x Baton Go On Proteinowy Crisp Orzech-Karmel 50 g, Sante"]},
+    {id:"bi-4",cat:"biuro",name:"Zestaw batonów i przekąsek — 24 szt.",sub:"Kulki Mocy, chipsy jabłkowe, batony owocowe",ppl:"12–18",img:"katalog/batony-przekaski-24.webp",contents:["8 x Kulki Mocy kakao & nuta limonki 65 g, Dobra Kaloria","4 x Chips z jabłka 18 g, Crispy Natural","6 x Baton owocowy Jabłko & Cynamon 35 g, Dobra Kaloria","6 x Baton owocowy Chrupiący Orzech 35 g, Dobra Kaloria"]},
+    {id:"bi-5",cat:"biuro",name:"Zestaw batonów i przekąsek — 28 szt.",sub:"Batony, ciasteczka keto, bakalie",ppl:"14–20",img:"katalog/batony-przekaski-28.webp",contents:["5 x Baton owocowy Jabłko & Cynamon 35 g, Dobra Kaloria","5 x Baton owocowy Chrupiący Orzech 35 g, Dobra Kaloria","3 x Ciasteczko Keto sernik i biała czekolada 50 g, Frank & Oli","4 x Ciasteczko Peanut Butter Chocolate 50 g, Frank & Oli","6 x Bakalie MIX 65 g, Hebar, torebka","5 x Baton proteinowy krem orzechowy i wanilia 45 g, Dobra Kaloria"]},
+    {id:"bi-6",cat:"biuro",name:"Zestaw batonów — 30 szt.",sub:"Batony Crunchy Sante — 3 smaki",ppl:"15–25",img:"katalog/batony-30.webp",contents:["10 x Baton Crunchy Śliwka 40 g, Sante","10 x Baton Crunchy żurawina z maliną 40 g, Sante","10 x Baton Crunchy orzechowy z migdałami 35 g, Sante"]},
+    {id:"bi-7",cat:"biuro",name:"Zestaw słodkich przekąsek — 40 szt.",sub:"Ptysie, bite, gofry, muffinki",ppl:"20–30",img:"katalog/slodkie-40.webp",contents:["8 x Ptysie z bitą śmietaną, 12,5 g","6 x Bite z nadzieniem z białej czekolady, 25 g","12 x Mini gofry, ok. 15 g/szt.","6 x Bite z nadzieniem karmelowym, 25 g/szt.","8 x Muffinki amerykańskie mini czekoladowe, 15 g"]},
+    {id:"bi-8",cat:"biuro",name:"Zestaw słodkich przekąsek — 31 szt., wariant 1",sub:"Ptysie, gofry, bite karmelowe, muffinki",ppl:"15–20",img:"katalog/slodkie-31-v1.webp",contents:["8 x Ptysie z bitą śmietaną, 12,5 g","10 x Mini gofry, ok. 15 g/szt.","6 x Bite z nadzieniem karmelowym, 25 g/szt.","7 x Muffinki amerykańskie mini czekoladowe, 15 g"]},
+    {id:"bi-9",cat:"biuro",name:"Zestaw słodkich przekąsek — 31 szt., wariant 2",sub:"Muffinki waniliowe, ptysie, bite owocowe, gofry",ppl:"15–20",img:"katalog/slodkie-31-v2.webp",contents:["7 x Muffinki amerykańskie mini waniliowe, 15 g","8 x Ptysie z bitą śmietaną, 12,5 g","6 x Bite z nadzieniem z czerwonych owoców","10 x Mini gofry, ok. 15 g/szt."]},
+
+    {id:"in-1",cat:"integracje",name:"Zestaw Farant — na firmową imprezę",sub:"Chipsy, soki, piwo, wino, orzeszki",ppl:"20–30",img:"katalog/integracja-farant-1.webp",contents:["5 x Chipsy Lay's papryka 130 g, Fritolay","5 x Chipsy Lay's solone 130 g, Fritolay","5 x Chipsy Lay's zielona cebulka 130 g, Fritolay","20 x Soki NFC, wytłoczka","24 x Piwo bezalkoholowe 0,5 l, Miłosław","5 x Piwo Żywiec 500 ml","5 x Orzeszki ziemne prażone niesolone 400 g, Hebar","3 x Wino czerwone 750 ml, Mastro Angelo Primitivo","3 x Wino białe 750 ml, Pietrame Pinot Grigio"]},
+    {id:"in-2",cat:"integracje",name:"Zestaw tylko przekąski",sub:"Chipsy, snacki, bakalie, batony, chipsy jabłkowe",ppl:"15–25",img:"katalog/integracja-przekaski-1.webp",contents:["4 x Chipsy Original 40 g, Pringles","4 x Chipsy słodka papryka 40 g, Pringles","2 x Snacki popcornowe paprykowe POP'N CHRUP 35 g, Sante","2 x Snacki popcornowe sól morska POP'N CHRUP 35 g, Sante","15 x Bakalie MIX 65 g, Hebar, torebka","1 x Zestaw batonów i ciasteczek 1, 26 szt.","7 x Chips z jabłka 18 g, Crispy Natural","3 x Chips z jabłka z sokiem z mango 18 g, Crispy Natural","10 x Chipsy z jabłek 20 g, POLA"]},
+
+    {id:"ka-1",cat:"kanapki",name:"Office Box",sub:"Pakiet 18 kanapek — mix mięsnych i wege",ppl:"9–12",img:"katalog/kanapki-office-box.webp",contents:["Pakiet 18 kanapek","Mix kanapek mięsnych i wegetariańskich","Stała podstawa + rotujące smaki dla większej różnorodności"]},
+    {id:"ka-2",cat:"kanapki",name:"Office Box Plus",sub:"Kanapki i bajgle — większy wybór",ppl:"12–15",img:"katalog/kanapki-office-box-plus.webp",contents:["Pakiet kanapek i bajgli","Większy wybór","Stała podstawa + rotujące smaki dla większej różnorodności"]},
+    {id:"ka-3",cat:"kanapki",name:"Factory Box",sub:"Pakiet 40 kanapek",ppl:"20–25",img:"katalog/kanapki-factory-box.webp",contents:["Pakiet 40 kanapek","Stała podstawa + rotujące smaki dla większej różnorodności"]},
+    {id:"ka-4",cat:"kanapki",name:"Factory Box Plus",sub:"Pakiet 60 kanapek",ppl:"30–40",img:"katalog/kanapki-factory-box-plus.webp",contents:["Pakiet 60 kanapek","Stała podstawa + rotujące smaki dla większej różnorodności"]},
+
+    {id:"sa-1",cat:"salatki",ppl:"1",name:"Sałatka grecka",sub:"Wege",img:"katalog/salatka-placeholder.webp",contents:["Sałata z pomidorem, ogórkiem, oliwkami, fetą, czerwoną cebulą oraz sosem vinegrette"]},
+    {id:"sa-2",cat:"salatki",ppl:"1",name:"Sałatka z burakiem",sub:"Wege",img:"katalog/salatka-burak.webp",contents:["Burak, ogórek, camembert, orzechy włoskie, miks sałat i sos balsamico"]},
+    {id:"sa-3",cat:"salatki",ppl:"1",name:"Sałatka z jajkiem",sub:"Wege",img:"katalog/salatka-placeholder.webp",contents:["Jajko gotowane, twaróg wędzony, ogórek, rzodkiewka, pomidor, słonecznik i sos koperkowy"]},
+    {id:"sa-4",cat:"salatki",ppl:"1",name:"Sałatka śródziemnomorska wegańska",sub:"Wegańska",img:"katalog/salatka-srodziemnomorska.webp",contents:["Ogórek, papryka, pomidorki, oliwki, suszone pomidory, kapary, słonecznik i sos z wegańskim pesto"]},
+    {id:"sa-5",cat:"salatki",ppl:"1",name:"Bowl z hummusem i kurczakiem",sub:"Mięsna",img:"katalog/salatka-hummus-bowl.webp",contents:["Hummus, ogórek, pomidor koktajlowy, kalarepa, marchewka, kurczak i miks sałat"]},
+    {id:"sa-6",cat:"salatki",ppl:"1",name:"Sałatka hawajska",sub:"Mięsna",img:"katalog/salatka-hawajska.webp",contents:["Kurczak, kukurydza, ananas, papryka i sos curry"]},
+    {id:"sa-7",cat:"salatki",ppl:"1",name:"Sałatka meksykańska",sub:"Mięsna",img:"katalog/salatka-meksykanska.webp",contents:["Kurczak, papryka, kukurydza, czerwona fasola, ananas i natka pietruszki, z sosem pomidorowo-paprykowym"]},
+    {id:"sa-8",cat:"salatki",ppl:"1",name:"Sałatka z prosciutto crudo",sub:"Mięsna",img:"katalog/salatka-placeholder.webp",contents:["Prosciutto crudo, suszone pomidory, ogórek zielony, oliwki, mozzarella mini, pestki dyni i dressing na bazie oliwy"]},
+
+    {id:"kw-1",cat:"kawa",ppl:"",name:"Aromatyczne ziarna prosto z palarni",sub:"Kawa w abonamencie do biura",img:"katalog/kawa-ziarna.webp",contents:["Bez magazynowania","Bez pośredników","Wypalane tradycyjnymi metodami"]},
+    {id:"kw-2",cat:"kawa",ppl:"",name:"Pełen serwis kawowy",sub:"Ekspresy, kawa, mleko, środki czyszczące",img:"katalog/kawa-ekspresy.webp",contents:["Kawa w abonamencie","Dzierżawa ekspresów do kawy","Dostawy środków czyszczących, mleka i cukru","Proste rozliczenie na jednej fakturze"]}
+];
+
+// ═══ CATEGORY CONFIG ═══
+const CATEGORIES = [
+    {id:'owoce',icon:'🍎',label:'Owoce i warzywa',desc:'Świeże zestawy owocowe i warzywne'},
+    {id:'sniadania',icon:'🥐',label:'Śniadania',desc:'Gotowe pakiety śniadaniowe'},
+    {id:'napoje',icon:'🧃',label:'Napoje',desc:'Soki NFC, smoothie, lemoniady'},
+    {id:'biuro',icon:'📦',label:'Na co dzień',desc:'Batony, przekąski, ciasteczka'},
+    {id:'spotkania',icon:'🤝',label:'Spotkania',desc:'Catering na spotkania biznesowe'},
+    {id:'integracje',icon:'🎉',label:'Integracje',desc:'Zestawy na firmowe imprezy'},
+    {id:'kanapki',icon:'🥪',label:'Kanapki',desc:'Świeże kanapki i bajgle'},
+    {id:'salatki',icon:'🥗',label:'Sałatki',desc:'Sałatki wege i mięsne'},
+    {id:'kawa',icon:'☕',label:'Kawa',desc:'Kawa z palarni i ekspresy'}
+];
+
+let currentCat = null;
+let currentProduct = null;
+let isBW = false;
+
+// ═══ HERO: CATEGORY TILES ═══
+function buildHeroTiles() {
+    const container = document.getElementById('catTiles');
+    container.innerHTML = CATEGORIES.map(c => {
+        const count = P.filter(p => p.cat === c.id).length;
+        return `<div class="cat-tile" onclick="openCategory('${c.id}')">
+            <span class="cat-tile-icon">${c.icon}</span>
+            <h3>${c.label}</h3>
+            <p>${c.desc}</p>
+            <span class="tile-count">${count} ${count === 1 ? 'produkt' : count < 5 ? 'produkty' : 'produktów'}</span>
+        </div>`;
+    }).join('');
+}
+
+// ═══ NAV PILLS ═══
+function buildNavPills() {
+    const nav = document.getElementById('navPills');
+    nav.innerHTML = CATEGORIES.map(c =>
+        `<button class="nav-pill${currentCat === c.id ? ' active' : ''}" onclick="openCategory('${c.id}')">
+            <span class="nav-pill-icon">${c.icon}</span>${c.label}
+        </button>`
+    ).join('');
+}
+
+// ═══ OPEN CATEGORY ═══
+function openCategory(catId) {
+    currentCat = catId;
+    currentProduct = null;
+
+    // Hide hero, show catalog
+    document.getElementById('heroSection').style.display = 'none';
+    document.getElementById('catalogView').classList.add('active');
+    document.getElementById('stickyNav').classList.add('visible');
+    document.getElementById('calcFab').classList.add('visible');
+
+    // Update nav
+    buildNavPills();
+
+    // Update header
+    const catInfo = CATEGORIES.find(c => c.id === catId);
+    const items = P.filter(p => p.cat === catId);
+    document.getElementById('catalogTitle').textContent = catInfo.label;
+    document.getElementById('catalogCount').textContent = `${items.length} ${items.length === 1 ? 'produkt' : items.length < 5 ? 'produkty' : 'produktów'}`;
+
+    // Render pitch cards
+    const grid = document.getElementById('productsGrid');
+    grid.innerHTML = items.map(p => {
+        const imgContent = p.img
+            ? `<img src="${p.img}" alt="${p.name}" loading="lazy">`
+            : `<div class="no-img"><svg width="64" height="64" viewBox="0 0 80 80" fill="none"><rect width="80" height="80" rx="12" fill="rgba(27,94,58,.04)"/><path d="M28 52V34a2 2 0 012-2h20a2 2 0 012 2v18a2 2 0 01-2 2H30a2 2 0 01-2-2z" stroke="rgba(27,94,58,.15)" stroke-width="1.5"/><circle cx="36" cy="40" r="3" stroke="rgba(27,94,58,.15)" stroke-width="1.5"/><path d="M28 48l8-6 6 4 6-8 4 5" stroke="rgba(27,94,58,.15)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>`;
+        const pplBadge = p.ppl ? `<span class="pitch-ppl"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>~${p.ppl} os.</span>` : '';
+        const itemsPreview = p.contents.length > 2
+            ? `<span class="pitch-items">${p.contents.slice(0, 2).join(' · ')} +${p.contents.length - 2}</span>`
+            : `<span class="pitch-items">${p.contents.join(' · ')}</span>`;
+        return `<div class="pitch-card" onclick="openDetail('${p.id}')">
+            <div class="pitch-card-img">${imgContent}</div>
+            <div class="pitch-card-body">
+                <h3>${p.name}</h3>
+                <p class="pitch-sub">${p.sub}</p>
+                <div class="pitch-meta">${pplBadge}${itemsPreview}</div>
+            </div>
+        </div>`;
+    }).join('');
+
+    window.scrollTo({top: 0, behavior: 'instant'});
+}
+
+// ═══ PRODUCT DETAIL (fullscreen) ═══
+function openDetail(productId) {
+    currentProduct = productId;
+    const p = P.find(x => x.id === productId);
+    if (!p) return;
+
+    const catInfo = CATEGORIES.find(c => c.id === p.cat);
+    const items = P.filter(x => x.cat === p.cat);
+    const idx = items.findIndex(x => x.id === productId);
+    const prev = idx > 0 ? items[idx - 1] : null;
+    const next = idx < items.length - 1 ? items[idx + 1] : null;
+
+    // Image side
+    const imgSide = document.getElementById('detailImg');
+    if (p.img) {
+        imgSide.innerHTML = `<img src="${p.img}" alt="${p.name}">`;
+    } else {
+        imgSide.innerHTML = `<div class="no-photo"><svg width="120" height="120" viewBox="0 0 120 120" fill="none"><rect width="120" height="120" rx="16" fill="rgba(27,94,58,.03)"/><path d="M38 82V50a3 3 0 013-3h38a3 3 0 013 3v32a3 3 0 01-3 3H41a3 3 0 01-3-3z" stroke="rgba(27,94,58,.12)" stroke-width="2"/><circle cx="50" cy="60" r="5" stroke="rgba(27,94,58,.12)" stroke-width="2"/><path d="M38 74l12-9 9 6 9-12 6 7.5" stroke="rgba(27,94,58,.12)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>brak zdjęcia</div>`;
+    }
+
+    // Info side
+    const infoSide = document.getElementById('detailInfo');
+    const pplHTML = p.ppl ? `<div class="detail-ppl"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>~${p.ppl} osób / dzień</div>` : '';
+
+    let navHTML = '<div class="detail-nav">';
+    if (prev) {
+        navHTML += `<button class="detail-nav-btn" onclick="event.stopPropagation();openDetail('${prev.id}')"><span class="arrow">←</span><span class="nav-label"><small>Poprzedni</small>${prev.name}</span></button>`;
+    } else {
+        navHTML += '<div></div>';
+    }
+    if (next) {
+        navHTML += `<button class="detail-nav-btn next" onclick="event.stopPropagation();openDetail('${next.id}')"><span class="nav-label"><small>Następny</small>${next.name}</span><span class="arrow">→</span></button>`;
+    }
+    navHTML += '</div>';
+
+    infoSide.innerHTML = `
+        <div class="detail-cat-label">${catInfo.icon} ${catInfo.label}</div>
+        <h2 class="detail-name">${p.name}</h2>
+        <p class="detail-sub">${p.sub}</p>
+        ${pplHTML}
+        <h3 class="detail-section-title">${p.contents.length === 1 ? 'Skład' : 'Co zawiera zestaw?'}</h3>
+        <ul class="detail-contents">${p.contents.map(c => `<li>${c}</li>`).join('')}</ul>
+        ${navHTML}`;
+
+    document.getElementById('detailOverlay').classList.add('open');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeDetail() {
+    document.getElementById('detailOverlay').classList.remove('open');
+    document.body.style.overflow = '';
+    currentProduct = null;
+}
+
+// ═══ BACK TO HERO ═══
+function goHome() {
+    currentCat = null;
+    document.getElementById('heroSection').style.display = '';
+    document.getElementById('catalogView').classList.remove('active');
+    document.getElementById('stickyNav').classList.remove('visible');
+    document.getElementById('calcFab').classList.remove('visible');
+    window.scrollTo({top: 0, behavior: 'instant'});
+}
+
+// ═══ KEYBOARD NAV ═══
+document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') {
+        if (document.getElementById('calcModal').classList.contains('open')) {
+            closeCalc();
+        } else if (document.getElementById('detailOverlay').classList.contains('open')) {
+            closeDetail();
+        } else if (currentCat) {
+            goHome();
+        }
+    }
+    // Arrow keys in detail
+    if (document.getElementById('detailOverlay').classList.contains('open') && currentProduct) {
+        const items = P.filter(x => x.cat === currentCat);
+        const idx = items.findIndex(x => x.id === currentProduct);
+        if (e.key === 'ArrowLeft' && idx > 0) openDetail(items[idx - 1].id);
+        if (e.key === 'ArrowRight' && idx < items.length - 1) openDetail(items[idx + 1].id);
+    }
+});
+
+// Close detail on backdrop click
+document.getElementById('detailOverlay').addEventListener('click', e => {
+    if (e.target === e.currentTarget) closeDetail();
+});
+
+// ═══ BRAND TOGGLE (Ctrl+B or logo triple-click) ═══
+let logoClickCount = 0, logoClickTimer = null;
+function handleLogoClick() {
+    logoClickCount++;
+    clearTimeout(logoClickTimer);
+    logoClickTimer = setTimeout(() => { logoClickCount = 0; }, 600);
+    if (logoClickCount >= 3) {
+        logoClickCount = 0;
+        toggleBrand();
+    }
+}
+document.addEventListener('keydown', e => {
+    if ((e.ctrlKey || e.metaKey) && e.key === 'b') {
+        e.preventDefault();
+        toggleBrand();
+    }
+});
+
+function toggleBrand() {
+    isBW = !isBW;
+    document.body.classList.toggle('bw', isBW);
+    // Hero logos
+    document.getElementById('heroLogoDF').style.display = isBW ? 'none' : 'block';
+    document.getElementById('heroLogoBW').style.display = isBW ? 'block' : 'none';
+    document.getElementById('heroBrandName').textContent = isBW ? 'Better Workplace' : 'DailyFruits';
+    // Nav logos
+    document.getElementById('navLogoDF').style.display = isBW ? 'none' : 'block';
+    document.getElementById('navLogoBW').style.display = isBW ? 'block' : 'none';
+    document.getElementById('navBrandName').textContent = isBW ? 'Better Workplace' : 'DailyFruits';
+    // Hero email
+    document.getElementById('heroEmail').textContent = isBW ? 'zapytania@betterworkplace.pl' : 'zapytania@dailyfruits.pl';
+    // Hero title
+    document.getElementById('heroTitle').innerHTML = isBW
+        ? 'Katalog abonamentowy'
+        : '<span class="fun">Katalog</span> abonamentowy';
+    // Calc CTA
+    const cta = document.getElementById('calcCTA');
+    if (cta) cta.href = isBW ? 'mailto:zapytania@betterworkplace.pl' : 'mailto:zapytania@dailyfruits.pl';
+}
+
+// ═══ CALCULATOR LOGIC ═══
+const CATS = [
+  {id:'owoce',icon:'🍎',name:'Owoce i warzywa',desc:'Świeże owoce i warzywa do firmowej kuchni.',fromPrice:2.5,tiers:{ekonomiczny:{name:'Owocowy Klasyk',items:['3,5 kg jabłek','3,5 kg bananów'],pricePerPerson:2.5,freq:'1x/tydz.'},standard:{name:'Mix z Egzotyką',items:['2 kg jabłek','1 kg bananów','2 kg owoców sezonowych','1,5 kg owoców egzotycznych'],pricePerPerson:4.2,freq:'1x/tydz.'},premium:{name:'Owocowa Moc + Warzywny',items:['5 kg jabłek','5 kg bananów','4 kg owoców sezonowych','Ogórek, papryka, pomidory, sałata, rzodkiewka, marchew'],pricePerPerson:6.8,freq:'2x/tydz.'}}},
+  {id:'sniadania',icon:'🥐',name:'Zestawy śniadaniowe',desc:'Gotowe pakiety śniadaniowe — integracja od rana.',fromPrice:5,tiers:{ekonomiczny:{name:'Śniadanie klasyczne',items:['Ciabatty, masło, dżem','Wędliny: krakowska, schab, szynka','Ser gouda, hummus','Sałata, ogórek, pomidory'],pricePerPerson:5,freq:'1x/tydz.'},standard:{name:'Śniadanie premium',items:['Bagietki ciemne, croissanty','Ser Brie, twaróg, serek wiejski','Gruszki, migdały, orzechy','Konfitura Bonne Maman'],pricePerPerson:7.5,freq:'1x/tydz.'},premium:{name:'Śniadanie fit',items:['Bagietki, wafle ryżowe','Hummus, pasta słonecznikowa, pasztet wegański','Camembert, mozzarella','Kabanosy, serek naturalny'],pricePerPerson:9,freq:'2x/mies.'}}},
+  {id:'napoje',icon:'🧃',name:'Napoje do biura',desc:'Soki NFC, smoothie, lemoniady, kombucha.',fromPrice:3,tiers:{ekonomiczny:{name:'Pakiet Basic',items:['20x soki NFC','10x lemoniada BIO','10x sok musujący jabłko-mięta','10x Coca-Cola 330ml'],pricePerPerson:3,freq:'1x/tydz.'},standard:{name:'Pakiet Medium',items:['40x soki NFC','12x woda kokosowa','10x Fanta Orange','8x smoothie mango+brzoskwinia'],pricePerPerson:5,freq:'1x/tydz.'},premium:{name:'Pakiet Lux',items:['40x soki NFC','4x kombucha','10x Sprite','10x lemoniada BIO','6x Energy Focus shot'],pricePerPerson:7.5,freq:'1x/tydz.'}}},
+  {id:'kanapki',icon:'🥪',name:'Kanapki i sałatki',desc:'Świeże kanapki ze składników z dnia dostawy.',fromPrice:8,tiers:{ekonomiczny:{name:'Office Box',items:['18 kanapek mix','Mięsne + wegetariańskie','Rotujące smaki'],pricePerPerson:8,freq:'2x/tydz.'},standard:{name:'Office Box Plus',items:['Kanapki + bajgle','Większy wybór smaków','Rotujące smaki'],pricePerPerson:11,freq:'2x/tydz.'},premium:{name:'Factory Box Plus',items:['60 kanapek','Menu mięsne i wege','Sałatki: grecka, hawajska, śródziemnomorska','Autorskie dressingi'],pricePerPerson:14,freq:'codziennie'}}},
+  {id:'przekaski',icon:'🍫',name:'Przekąski i batony',desc:'Batony, ciasteczka, bakalie, chipsy jabłkowe.',fromPrice:2,tiers:{ekonomiczny:{name:'Zestaw batonów 30 szt.',items:['10x Crunchy Śliwka','10x Crunchy żurawina','10x Crunchy orzechowy'],pricePerPerson:2,freq:'1x/tydz.'},standard:{name:'Batony i ciasteczka 26 szt.',items:['Ciasteczka zbożowe Sante','Batony Crunchy i BA!','Batony proteinowe','Batony Go On Proteinowy'],pricePerPerson:3.5,freq:'1x/tydz.'},premium:{name:'Pełny pakiet codzienny',items:['2 kg jabłek + 2 kg bananów','Ogórek, pomidory','20x soki NFC','Batony, ciasteczka, chipsy jabłkowe','16x bakalie mix'],pricePerPerson:6,freq:'1x/tydz.'}}},
+  {id:'catering',icon:'🍽',name:'Catering na spotkania',desc:'Finger food, smoothie, bakalie — gotowe pakiety.',fromPrice:15,tiers:{ekonomiczny:{name:'Owocowo-wytrawne',items:['Finger food 21 szt.','2 kg bananów + 2 kg jabłek','2 kg owoców sezonowych','12x bakalie mix, 12x soki NFC'],pricePerPerson:15,freq:'na zamówienie'},standard:{name:'Kameralne',items:['Finger food 21 szt.','Zestaw słodkich przekąsek 20 szt.','5x lemoniada BIO','5x sok gruszkowy, 6x bakalie'],pricePerPerson:22,freq:'na zamówienie'},premium:{name:'Spotkanie Lux',items:['2x finger food 21 szt.','12x warzywa w kubeczkach','6x smoothie banan+kokos','6x smoothie mango+brzoskwinia','12x bakalie mix'],pricePerPerson:35,freq:'na zamówienie'}}},
+  {id:'integracja',icon:'🎉',name:'Zestawy integracyjne',desc:'Przekąski, napoje i wino na firmowe imprezy.',fromPrice:10,tiers:{ekonomiczny:{name:'Tylko przekąski',items:['Chipsy Pringles 2 smaki','Popcorn Sante','15x bakalie mix','Batony i ciasteczka','Chipsy jabłkowe'],pricePerPerson:10,freq:'na zamówienie'},standard:{name:'Farant',items:["Chipsy Lay's 3 smaki",'20x soki NFC','24x piwo bezalkoholowe Miłosław','5x piwo Żywiec','Orzeszki prażone'],pricePerPerson:18,freq:'na zamówienie'},premium:{name:'Farant Premium',items:['Chipsy, orzeszki, bakalie','20x soki NFC','24x piwo bezalkoholowe','5x piwo Żywiec','3x wino Primitivo, 3x Pinot Grigio'],pricePerPerson:28,freq:'na zamówienie'}}},
+  {id:'kawa',icon:'☕',name:'Kawa i ekspresy',desc:'Kawa z palarni w abonamencie + dzierżawa ekspresów.',fromPrice:4,tiers:{ekonomiczny:{name:'Kawa abonamentowa',items:['Kawa ziarnista z palarni','Dostawa cykliczna','Cukier i mleko w zestawie'],pricePerPerson:4,freq:'abonament'},standard:{name:'Kawa + ekspres',items:['Kawa ziarnista z palarni','Dzierżawa ekspresu','Środki czyszczące','Mleko, cukier'],pricePerPerson:7,freq:'abonament'},premium:{name:'Pełen serwis kawowy',items:['Kawa premium z palarni','Ekspres wysokiej klasy','Pełen serwis i konserwacja','Mleko, cukier, syropy','Herbaty premium Dobre Krafty'],pricePerPerson:12,freq:'abonament'}}}
+];
+
+let cStep=1, cHc=0, cSelCats=new Set(), cSelTier='';
+
+function openCalc(){document.getElementById('calcModal').classList.add('open');document.getElementById('cHc').focus()}
+function closeCalc(){document.getElementById('calcModal').classList.remove('open')}
+document.getElementById('calcModal').addEventListener('click',e=>{if(e.target===e.currentTarget)closeCalc()});
+
+function cGo(n){
+  cStep=n;
+  document.querySelectorAll('.c-panel').forEach(p=>p.classList.remove('vis'));
+  document.getElementById('cp-'+n).classList.add('vis');
+  for(let i=1;i<=4;i++){
+    const p=document.getElementById('cp'+i);
+    p.classList.remove('active','done');
+    if(i<n)p.classList.add('done');else if(i===n)p.classList.add('active');
+    if(i<4)document.getElementById('cc'+i).classList.toggle('done',i<n);
+  }
+}
+
+const cHcIn=document.getElementById('cHc'), cBtn1=document.getElementById('cBtn1');
+cHcIn.addEventListener('input',()=>{
+  cHc=parseInt(cHcIn.value)||0;
+  cBtn1.disabled=cHc<1;
+  document.querySelectorAll('.hc-pre').forEach(b=>b.classList.toggle('on',parseInt(b.dataset.v)===cHc));
+});
+document.querySelectorAll('.hc-pre').forEach(b=>{
+  b.addEventListener('click',()=>{cHcIn.value=b.dataset.v;cHcIn.dispatchEvent(new Event('input'))});
+});
+cBtn1.addEventListener('click',()=>{
+  if(cHc<1)return;
+  document.getElementById('cHcEcho').textContent=cHc;
+  document.getElementById('cHcEcho2').textContent=cHc;
+  cBuildCats();
+  cGo(2);
+});
+
+function cBuildCats(){
+  const g=document.getElementById('cCatGrid');g.innerHTML='';
+  CATS.forEach(c=>{
+    const d=document.createElement('div');
+    d.className='c-cat'+(cSelCats.has(c.id)?' on':'');
+    d.innerHTML=`<span class="cc">${cSelCats.has(c.id)?'✓':''}</span><span class="ci">${c.icon}</span><h4>${c.name}</h4><p>${c.desc}</p><div class="cf">od ${c.fromPrice.toFixed(0)} PLN / os. / tydz.</div>`;
+    d.addEventListener('click',()=>{
+      if(cSelCats.has(c.id))cSelCats.delete(c.id);else cSelCats.add(c.id);
+      cBuildCats();
+      document.getElementById('cBtn2').disabled=cSelCats.size===0;
+    });
+    g.appendChild(d);
+  });
+}
+document.getElementById('cBtn2').addEventListener('click',()=>{if(cSelCats.size===0)return;cBuildTiers();cGo(3)});
+
+function cBuildTiers(){
+  const w=document.getElementById('cTiers');
+  const ts=['ekonomiczny','standard','premium'];
+  const lb={ekonomiczny:'Ekonomiczny',standard:'Standard',premium:'Premium'};
+  const ds={ekonomiczny:'Solidna baza — sprawdzone produkty w dobrej cenie.',standard:'Różnorodność i jakość w optymalnej cenie.',premium:'Pełen program — premium produkty, max różnorodność.'};
+  w.innerHTML='';
+  ts.forEach(t=>{
+    let tp=0,fl=[];
+    CATS.filter(c=>cSelCats.has(c.id)).forEach(c=>{const ti=c.tiers[t];tp+=ti.pricePerPerson;fl.push({name:c.name,pkg:ti.name})});
+    const mp=(tp*4.33).toFixed(0);
+    const d=document.createElement('div');
+    d.className='c-tier'+(t==='standard'?' rec':'')+(cSelTier===t?' on':'');
+    d.innerHTML=`<h4>${lb[t]}</h4><div class="td">${ds[t]}</div><div class="tp">~${mp} <small>PLN</small><span class="tpu">na osobę / miesiąc netto</span></div><ul class="tf">${fl.map(f=>`<li><span class="tk">✓</span>${f.name}: ${f.pkg}</li>`).join('')}</ul>`;
+    d.addEventListener('click',()=>{cSelTier=t;cBuildTiers();document.getElementById('cBtn3').disabled=false});
+    w.appendChild(d);
+  });
+}
+document.getElementById('cBtn3').addEventListener('click',()=>{if(!cSelTier)return;cBuildResults();cGo(4)});
+
+function cBuildResults(){
+  const lb={ekonomiczny:'Ekonomiczny',standard:'Standard',premium:'Premium'};
+  let tw=0,cards=[];
+  CATS.filter(c=>cSelCats.has(c.id)).forEach(c=>{
+    const t=c.tiers[cSelTier],wt=t.pricePerPerson*cHc;tw+=wt;
+    cards.push({icon:c.icon,name:c.name,pkg:t.name,items:t.items,freq:t.freq,pp:t.pricePerPerson,wt});
+  });
+  const tm=tw*4.33,pm=(tm/cHc).toFixed(0);
+  document.getElementById('cResHero').innerHTML=`<div class="bn">~${pm} PLN</div><div class="bl">na osobę / miesiąc netto · wariant ${lb[cSelTier]}</div><div class="ss"><div><strong>${cHc}</strong><span>pracowników</span></div><div><strong>${cSelCats.size}</strong><span>kategori${cSelCats.size===1?'a':cSelCats.size<5?'e':'i'}</span></div><div><strong>~${Math.round(tm).toLocaleString('pl')} PLN</strong><span>łącznie / mies.</span></div></div>`;
+  const cw=document.getElementById('cResCards');cw.innerHTML='';
+  cards.forEach(c=>{
+    const d=document.createElement('div');d.className='c-res-card';
+    d.innerHTML=`<div class="ri">${c.icon}</div><div class="rb"><h5>${c.name}</h5><p><strong>${c.pkg}</strong> · ${c.freq}</p><div class="rit">${c.items.join(' · ')}</div></div><div class="rp"><strong>${c.pp.toFixed(0)} PLN</strong><span>/ os. / tydz.</span></div>`;
+    cw.appendChild(d);
+  });
+}
+
+// ═══ INIT ═══
+buildHeroTiles();
+buildNavPills();
+
+// Hero logo click for hidden brand toggle
+document.getElementById('heroLogo').addEventListener('click', handleLogoClick);
+document.querySelector('.sticky-nav-logo').addEventListener('click', e => {
+    // Only go home on single click, triple-click toggles brand
+    handleLogoClick();
+});
+</script>
+</body>
+</html>
