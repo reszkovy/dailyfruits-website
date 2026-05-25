@@ -91,7 +91,9 @@ img{max-width:100%;height:auto;display:block}
 .p-card-items{font-size:10px;color:rgba(61,90,30,.3);font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}
 
 /* ─── BOTTOM ACTION BAR ─── */
-.calc-cta,.why-cta{display:inline-flex;align-items:center;gap:5px;padding:5px 14px;border-radius:var(--radius-pill);font-size:10px;font-weight:800;cursor:pointer;border:none;font-family:var(--font);transition:all .25s;white-space:nowrap;letter-spacing:.3px}
+.calc-cta,.why-cta,.dl-cta{display:inline-flex;align-items:center;gap:5px;padding:5px 14px;border-radius:var(--radius-pill);font-size:10px;font-weight:800;cursor:pointer;border:none;font-family:var(--font);transition:all .25s;white-space:nowrap;letter-spacing:.3px;text-decoration:none}
+.dl-cta{background:#1B5E3A;color:#fff}
+.dl-cta:hover{background:#14472B;transform:translateY(-1px)}
 .calc-cta{background:#D32F2F;color:#fff}
 .calc-cta:hover{background:#B71C1C;transform:translateY(-1px)}
 .why-cta{background:var(--green-dark);color:#fff}
@@ -234,7 +236,7 @@ body.bw .cat-fn-stat{color:rgba(30,41,59,.45);background:rgba(30,41,59,.03);bord
     .topbar-logo span{display:none}
     .tab-row-label{display:none}
     .tab-row{gap:4px}
-    .calc-cta,.why-cta{padding:6px 12px;font-size:10px}
+    .calc-cta,.why-cta,.dl-cta{padding:6px 12px;font-size:10px}
     .brand-toggle-wrap{gap:4px}
     .hero-card{flex-direction:column}
     .hero-card-inner{padding:16px 16px 12px}
@@ -275,7 +277,7 @@ body.bw .kat-tab.active{background:#1f0b09;color:#fff;border-color:#1f0b09}
 body.bw .p-card{background:#fff;border-color:transparent;border-radius:var(--radius)}
 body.bw .p-card:hover{border-color:rgba(255,105,33,.12);box-shadow:0 8px 28px rgba(31,11,9,.06)}
 body.bw .p-card.active{border-color:#ff6921;box-shadow:0 0 0 1.5px #ff6921}
-body.bw .p-card-img{background:#faf8f6}
+body.bw .p-card-img{background:#fff}
 body.bw .p-card-body{background:#fff}
 body.bw .p-card-body h3{color:#1f0b09}
 body.bw .p-card-ppl{background:rgba(255,105,33,.08);color:#553935}
@@ -291,6 +293,8 @@ body.bw .why-cta{background:#1f0b09;box-shadow:none}
 body.bw .why-cta:hover{background:#2e1414}
 body.bw .calc-cta{background:#ff6921;box-shadow:none}
 body.bw .calc-cta:hover{background:#e85a15}
+body.bw .dl-cta{background:#553935;box-shadow:none}
+body.bw .dl-cta:hover{background:#1f0b09}
 body.bw .grid-panel::-webkit-scrollbar-thumb{background:rgba(31,11,9,.1)}
 body.bw .modal-backdrop{background:rgba(31,11,9,.55)}
 body.bw .hero-card{border-radius:var(--radius)}
@@ -419,6 +423,7 @@ if(sessionStorage.getItem('katalog_auth')==='1'){document.getElementById('pwGate
     <span class="trust-sep">·</span>
     <button class="why-cta" onclick="openWhy()"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>DLACZEGO WARTO</button>
     <button class="calc-cta" onclick="openCalc()"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="10" x2="8" y2="10.01"/><line x1="12" y1="10" x2="12" y2="10.01"/><line x1="16" y1="10" x2="16" y2="10.01"/><line x1="8" y1="14" x2="8" y2="14.01"/><line x1="12" y1="14" x2="12" y2="14.01"/><line x1="16" y1="14" x2="16" y2="14.01"/><line x1="8" y1="18" x2="16" y2="18"/></svg>OBLICZ</button>
+    <a class="dl-cta" href="katalog/katalog-produktowy-betterworkplace.pdf" download><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>POBIERZ KATALOG</a>
 </div>
 
 <!-- Why Modal -->
@@ -735,9 +740,9 @@ const CAT_DESCS = {
 };
 const CAT_EMOJIS = {owoce:'🍎',sniadania:'🥐',napoje:'🧃',kanapki:'🥪',salatki:'🥗',kawa:'☕',biuro:'📦',spotkania:'🤝',integracje:'🎉'};
 const CAT_COLORS = {
-  owoce:'#F0F9E8',sniadania:'#FFF3E6',napoje:'#EBF0FF',
-  kanapki:'#FFF8E1',salatki:'#E8F5E9',kawa:'#F5F0EB',
-  biuro:'#F0F7E4',spotkania:'#FCEEF5',integracje:'#FFF0F0'
+  owoce:'#fff',sniadania:'#fff',napoje:'#fff',
+  kanapki:'#fff',salatki:'#fff',kawa:'#fff',
+  biuro:'#fff',spotkania:'#fff',integracje:'#fff'
 };
 const CAT_ACCENTS = {
   owoce:'#4CAF50',sniadania:'#E8913A',napoje:'#5B7FDB',
@@ -745,9 +750,9 @@ const CAT_ACCENTS = {
   biuro:'#7CB342',spotkania:'#CE6BA1',integracje:'#EF5350'
 };
 const BW_COLORS = {
-  owoce:'#faf5ef',sniadania:'#faf3ed',napoje:'#f5f2ef',
-  kanapki:'#faf6f0',salatki:'#f5f3ef',kawa:'#f3efeb',
-  biuro:'#f7f4ef',spotkania:'#faf0f0',integracje:'#faf2ef'
+  owoce:'#fef7f2',sniadania:'#fdf6f0',napoje:'#f0f3f8',
+  kanapki:'#fdf8f0',salatki:'#f2f6f0',kawa:'#f5f2f0',
+  biuro:'#f5f6f0',spotkania:'#f8f0f3',integracje:'#fdf2f0'
 };
 const BW_ACCENTS = {
   owoce:'#ff6921',sniadania:'#c4702a',napoje:'#485a80',

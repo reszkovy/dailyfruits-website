@@ -53,4 +53,22 @@
   <url><loc>https://dailyfruits.pl/owoce-do-biura-bialystok</loc><lastmod>2026-04-27</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://dailyfruits.pl/owoce-do-biura-rzeszow</loc><lastmod>2026-04-27</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://dailyfruits.pl/owoce-do-biura-kielce</loc><lastmod>2026-04-27</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <!-- Oferta podstrony (nowe SEO podstrony) -->
+  <url><loc>https://dailyfruits.pl/oferta/skrzynki-abonamentowe</loc><lastmod>2026-05-25</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://dailyfruits.pl/oferta/soki-i-syropy</loc><lastmod>2026-05-25</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://dailyfruits.pl/oferta/warzywa-krojone</loc><lastmod>2026-05-25</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://dailyfruits.pl/oferta/zestawy-indywidualne</loc><lastmod>2026-05-25</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://dailyfruits.pl/oferta/zestawy-sniadaniowe</loc><lastmod>2026-05-25</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://dailyfruits.pl/oferta/programy-zywieniowe-i-edukacyjne</loc><lastmod>2026-05-25</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://dailyfruits.pl/oferta/bakalie-i-owoce-suszone</loc><lastmod>2026-05-25</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://dailyfruits.pl/oferta/przechowywanie-i-ekspozycja</loc><lastmod>2026-05-25</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://dailyfruits.pl/oferta/firmowy-dzien-zdrowia</loc><lastmod>2026-05-25</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://dailyfruits.pl/oferta/produkty-ekologiczne</loc><lastmod>2026-05-25</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://dailyfruits.pl/oferta/zestawy-batonow-i-ciastek</loc><lastmod>2026-05-25</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+
+  <!-- Strony prawne -->
+  <url><loc>https://dailyfruits.pl/kontakt</loc><lastmod>2026-05-25</lastmod><changefreq>yearly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://dailyfruits.pl/polityka-prywatnosci</loc><lastmod>2026-05-25</lastmod><changefreq>yearly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://dailyfruits.pl/regulamin</loc><lastmod>2026-05-25</lastmod><changefreq>yearly</changefreq><priority>0.3</priority></url>
+
 </urlset>
