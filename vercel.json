@@ -42,6 +42,27 @@
     { "source": "/blog/catering-przekaski-i-menu-na-konferencje-o-czym-musisz-pamietac/", "destination": "/wpis-catering-konferencja.html", "statusCode": 301 },
     { "source": "/blog/employer-branding-2021/", "destination": "/wpis-employer-branding.html", "statusCode": 301 },
     { "source": "/blog/praca-zdalna-a-dieta-co-jesc-na-home-office/", "destination": "/wpis-praca-zdalna-dieta.html", "statusCode": 301 },
-    { "source": "/blog/ile-wody-powinno-sie-pic-dziennie/", "destination": "/wpis-ile-wody.html", "statusCode": 301 }
+    { "source": "/blog/ile-wody-powinno-sie-pic-dziennie/", "destination": "/wpis-ile-wody.html", "statusCode": 301 },
+
+    { "source": "/dailyfruits-welcome-pack/", "destination": "/dailyfruits-welcome-pack", "statusCode": 301 },
+    { "source": "/paczki-dla-pracownikow-zdalnych/", "destination": "/paczki-dla-pracownikow-zdalnych", "statusCode": 301 },
+    { "source": "/paczki-dla-dzieci-pracownikow/", "destination": "/paczki-dla-dzieci-pracownikow", "statusCode": 301 },
+    { "source": "/pracuj-z-nami/", "destination": "/pracuj-z-nami", "statusCode": 301 },
+    { "source": "/baza-wiedzy/", "destination": "/baza-wiedzy", "statusCode": 301 },
+    { "source": "/polityka-jakosci/", "destination": "/polityka-jakosci", "statusCode": 301 },
+    { "source": "/dla-pracodawcy/", "destination": "/dla-pracodawcy", "statusCode": 301 },
+    { "source": "/dla-pracownika/", "destination": "/dla-pracownika", "statusCode": 301 },
+    { "source": "/upominki-dla-pracownikow/", "destination": "/upominki-dla-pracownikow", "statusCode": 301 },
+    { "source": "/faq/", "destination": "/faq", "statusCode": 301 },
+
+    { "source": "/dostawa-owocow-w-krakowie/", "destination": "/owoce-do-biura-krakow", "statusCode": 301 },
+    { "source": "/owoce-i-warzywa-do-biura/", "destination": "/oferta", "statusCode": 301 },
+    { "source": "/oferta/kanapki-dla-pracownikow/", "destination": "/kanapki-do-biura", "statusCode": 301 },
+    { "source": "/produkty-spozywcze/", "destination": "/oferta", "statusCode": 301 },
+    { "source": "/dlaczego-dailyfruits/", "destination": "/o-nas", "statusCode": 301 },
+    { "source": "/media-i-prasa/", "destination": "/baza-wiedzy", "statusCode": 301 },
+    { "source": "/prywatnosc/", "destination": "/polityka-prywatnosci", "statusCode": 301 },
+    { "source": "/aktualnosci/", "destination": "/blog", "statusCode": 301 },
+    { "source": "/katalog/", "destination": "/katalog-produktow", "statusCode": 301 }
   ]
 }

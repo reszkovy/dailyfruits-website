@@ -72,4 +72,17 @@
   <url><loc>https://dailyfruits.pl/polityka-prywatnosci</loc><lastmod>2026-05-25</lastmod><changefreq>yearly</changefreq><priority>0.3</priority></url>
   <url><loc>https://dailyfruits.pl/regulamin</loc><lastmod>2026-05-25</lastmod><changefreq>yearly</changefreq><priority>0.3</priority></url>
 
+
+  <!-- Migracja ze starej dailyfruits.pl -->
+  <url><loc>https://dailyfruits.pl/dailyfruits-welcome-pack</loc><lastmod>2026-05-25</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://dailyfruits.pl/paczki-dla-pracownikow-zdalnych</loc><lastmod>2026-05-25</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://dailyfruits.pl/paczki-dla-dzieci-pracownikow</loc><lastmod>2026-05-25</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://dailyfruits.pl/pracuj-z-nami</loc><lastmod>2026-05-25</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://dailyfruits.pl/baza-wiedzy</loc><lastmod>2026-05-25</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://dailyfruits.pl/polityka-jakosci</loc><lastmod>2026-05-25</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://dailyfruits.pl/dla-pracodawcy</loc><lastmod>2026-05-25</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://dailyfruits.pl/dla-pracownika</loc><lastmod>2026-05-25</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://dailyfruits.pl/upominki-dla-pracownikow</loc><lastmod>2026-05-25</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://dailyfruits.pl/faq</loc><lastmod>2026-05-25</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+
 </urlset>
