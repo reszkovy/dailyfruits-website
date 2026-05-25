@@ -185,8 +185,8 @@ img{max-width:100%;height:auto;display:block}
 .hero-card{border-radius:var(--radius);position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;padding:12px;transition:background .4s ease;box-shadow:0 2px 12px rgba(0,0,0,.06)}
 .hero-card-inner{display:none}
 .hero-card-img{display:flex;align-items:center;justify-content:center;width:100%;height:100%}
-.hero-card-img img{width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 6px 28px rgba(0,0,0,.1));transition:transform .6s cubic-bezier(.4,0,.2,1)}
-.hero-card:hover .hero-card-img img{transform:scale(1.04)}
+.hero-card-img img,.hero-card-img video{width:100%;height:100%;object-fit:cover;border-radius:var(--radius);filter:drop-shadow(0 6px 28px rgba(0,0,0,.1));transition:transform .6s cubic-bezier(.4,0,.2,1)}
+.hero-card:hover .hero-card-img img,.hero-card:hover .hero-card-img video{transform:scale(1.04)}
 
 /* ─── RESPONSIVE ─── */
 @media(max-width:1200px){
@@ -217,7 +217,7 @@ img{max-width:100%;height:auto;display:block}
     .brand-toggle-wrap{gap:4px}
     .hero-card{padding:14px 14px 0}
     .hero-card-inner h2{font-size:20px;letter-spacing:-.8px}
-    .hero-card-img img{max-height:120px}
+    .hero-card-img img,.hero-card-img video{max-height:120px}
     .modal{max-height:95vh;border-radius:var(--radius-sm)}
     .modal-backdrop{padding:10px}
     .c-cats{grid-template-columns:1fr 1fr}
@@ -339,7 +339,7 @@ if(sessionStorage.getItem('katalog_auth')==='1'){document.getElementById('pwGate
     <!-- Row 1: Kategorie produktowe -->
     <div class="tab-row">
         <span class="tab-row-label">Produkty</span>
-        <button class="kat-tab active" data-cat="owoce">🍎 Owoce <span class="tc">5</span></button>
+        <button class="kat-tab active" data-cat="owoce">🍎 Owoce i warzywa <span class="tc">5</span></button>
         <button class="kat-tab" data-cat="sniadania">🥐 Śniadania <span class="tc">3</span></button>
         <button class="kat-tab" data-cat="napoje">🧃 Napoje <span class="tc">7</span></button>
         <button class="kat-tab" data-cat="kanapki">🥪 Kanapki <span class="tc">4</span></button>
@@ -550,15 +550,18 @@ function renderGrid() {
     const emoji = CAT_EMOJIS[cat]||'';
     const desc = CAT_DESCS[cat]||'';
     const heroSrc = CAT_HEROES[cat]||'';
-    const heroImgHTML = heroSrc ? `<img src="${heroSrc}" alt="${label}">` : '';
+    const heroVid = CAT_VIDEOS[cat]||'';
     const countWord = count===1?'zestaw':count<5?'zestawy':'zestawów';
+    const heroMedia = heroVid
+        ? `<div class="hero-card-img"><video src="${heroVid}" autoplay muted loop playsinline disablepictureinpicture></video></div>`
+        : heroSrc ? `<div class="hero-card-img"><img src="${heroSrc}" alt="${label}"></div>` : '';
     const heroCard = `<div class="hero-card" style="background:${CAT_COLORS[cat]||''}">
         <div class="hero-card-inner">
             <h2>${label}</h2>
             <div class="hero-desc">${desc}</div>
             <div class="hero-count">${count} ${countWord}</div>
         </div>
-        ${heroSrc ? `<div class="hero-card-img"><img src="${heroSrc}" alt="${label}"></div>` : ''}
+        ${heroMedia}
     </div>`;
     const cards = items.map(p => {
         const pplBadge = p.ppl ? `<span class="p-card-ppl"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>~${p.ppl}</span>` : '';
@@ -605,7 +608,7 @@ function pick(id) {
     renderDetail();
 }
 
-const CAT_LABELS = {owoce:'Owoce',sniadania:'Śniadania',napoje:'Napoje',spotkania:'Spotkania',biuro:'Na co dzień',integracje:'Integracje',kanapki:'Kanapki',salatki:'Sałatki',kawa:'Kawa'};
+const CAT_LABELS = {owoce:'Owoce i warzywa',sniadania:'Śniadania',napoje:'Napoje',spotkania:'Spotkania',biuro:'Na co dzień',integracje:'Integracje',kanapki:'Kanapki',salatki:'Sałatki',kawa:'Kawa'};
 const CAT_COUNTS = {owoce:5,sniadania:3,napoje:7,spotkania:3,biuro:9,integracje:2,kanapki:4,salatki:8,kawa:2};
 const CAT_HEROES = {
   owoce:'katalog/hero/owoce.webp',sniadania:'katalog/hero/sniadania.webp',
@@ -613,6 +616,12 @@ const CAT_HEROES = {
   salatki:'katalog/hero/salatki.webp',kawa:'katalog/hero/kawa.webp',
   biuro:'katalog/hero/biuro.webp',spotkania:'katalog/hero/spotkania.webp',
   integracje:'katalog/hero/integracje.webp'
+};
+const CAT_VIDEOS = {
+  owoce:'video/hero-owoce.mp4',kanapki:'video/hero-kanapki.mp4',
+  sniadania:'video/hero-sniadania.mp4',napoje:'video/hero-napoje.mp4',
+  kawa:'video/hero-kawa.mp4',spotkania:'video/hero-spotkania.mp4',
+  salatki:'video/hero-salatki.mp4'
 };
 const CAT_DESCS = {
   owoce:'Klasyczne zestawy owocowe i warzywne do firmowej kuchni.',
