@@ -61,6 +61,9 @@ img{max-width:100%;height:auto;display:block}
 .contents-list li{font-size:12px;color:var(--gray);padding:4px 0;display:flex;align-items:baseline;gap:6px;border-bottom:1px solid rgba(27,94,58,.03)}
 .contents-list li::before{content:'✓';color:var(--cat-accent,var(--lime));font-weight:700;font-size:11px;flex-shrink:0}
 .contents-list li:last-child{border-bottom:none}
+.detail-cta{display:block;width:100%;margin-top:20px;padding:12px 20px;border-radius:var(--radius-sm);border:none;background:var(--green-dark);color:#fff;font-family:var(--font);font-size:13px;font-weight:700;cursor:pointer;text-align:center;text-decoration:none;transition:all .25s;letter-spacing:.2px}
+.detail-cta:hover{background:var(--lime);color:var(--green-dark);transform:translateY(-1px);box-shadow:0 4px 16px rgba(27,94,58,.2)}
+.detail-cta-hint{text-align:center;font-size:10px;color:rgba(27,94,58,.3);margin-top:6px}
 
 /* Placeholder image card */
 .p-card-img svg{opacity:.6}
@@ -87,10 +90,13 @@ img{max-width:100%;height:auto;display:block}
 .p-card-ppl svg{opacity:.5;flex-shrink:0}
 .p-card-items{font-size:10px;color:rgba(61,90,30,.3);font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}
 
-/* ─── CALC CTA BUTTON ─── */
-.calc-cta{position:fixed;right:20px;bottom:20px;z-index:100;display:inline-flex;align-items:center;gap:6px;padding:10px 22px;border-radius:var(--radius-pill);font-size:12px;font-weight:800;cursor:pointer;border:none;background:#D32F2F;color:#fff;font-family:var(--font);transition:all .25s;white-space:nowrap;letter-spacing:.3px;box-shadow:0 4px 20px rgba(211,47,47,.35)}
-.calc-cta:hover{background:#B71C1C;box-shadow:0 6px 28px rgba(211,47,47,.45);transform:translateY(-2px)}
-.calc-cta svg{flex-shrink:0}
+/* ─── BOTTOM ACTION BAR ─── */
+.calc-cta,.why-cta{display:inline-flex;align-items:center;gap:5px;padding:5px 14px;border-radius:var(--radius-pill);font-size:10px;font-weight:800;cursor:pointer;border:none;font-family:var(--font);transition:all .25s;white-space:nowrap;letter-spacing:.3px}
+.calc-cta{background:#D32F2F;color:#fff}
+.calc-cta:hover{background:#B71C1C;transform:translateY(-1px)}
+.why-cta{background:var(--green-dark);color:#fff}
+.why-cta:hover{background:#14472B;transform:translateY(-1px)}
+.calc-cta svg,.why-cta svg{flex-shrink:0}
 
 /* ─── MODAL OVERLAY ─── */
 .modal-backdrop{position:fixed;inset:0;z-index:9999;background:rgba(27,94,58,.6);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);display:none;align-items:center;justify-content:center;padding:20px}
@@ -181,12 +187,27 @@ img{max-width:100%;height:auto;display:block}
 .c-btn-back{background:transparent;color:rgba(61,90,30,.5);border-color:rgba(27,94,58,.1)}
 .c-btn-back:hover{border-color:var(--green-dark);color:var(--green-dark)}
 
-/* ─── HERO CARD (first item in grid) ─── */
-.hero-card{border-radius:var(--radius);position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;padding:12px;transition:background .4s ease;box-shadow:0 2px 12px rgba(0,0,0,.06)}
-.hero-card-inner{display:none}
-.hero-card-img{display:flex;align-items:center;justify-content:center;width:100%;height:100%}
-.hero-card-img img,.hero-card-img video{width:100%;height:100%;object-fit:cover;border-radius:var(--radius);filter:drop-shadow(0 6px 28px rgba(0,0,0,.1));transition:transform .6s cubic-bezier(.4,0,.2,1)}
+/* ─── HERO CARD (split: text left + media right) ─── */
+.hero-card{grid-column:1/-1;border-radius:var(--radius);position:relative;overflow:hidden;display:flex;align-items:stretch;transition:background .4s ease;box-shadow:0 2px 12px rgba(0,0,0,.06)}
+.hero-card-inner{display:flex;flex-direction:column;justify-content:flex-start;flex:1;min-width:0;padding:24px 28px 24px 32px;overflow-y:auto;scrollbar-width:thin;scrollbar-color:rgba(27,94,58,.1) transparent}
+.hero-card-inner h2{font-family:var(--font);font-size:22px;font-weight:800;color:var(--green-dark);margin-bottom:10px;letter-spacing:-.5px;line-height:1.2}
+.hero-card-img{flex:0 0 44%;max-width:44%;aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.hero-card-img img,.hero-card-img video{width:100%;height:100%;object-fit:cover;transition:transform .6s cubic-bezier(.4,0,.2,1)}
 .hero-card:hover .hero-card-img img,.hero-card:hover .hero-card-img video{transform:scale(1.04)}
+/* footnotes inside hero */
+.cat-fn-intro{font-size:12.5px;line-height:1.7;color:rgba(27,94,58,.65);margin-bottom:12px}
+.cat-fn-subtitle{font-size:12px;font-weight:700;color:var(--green-dark);margin-bottom:6px;text-transform:uppercase;letter-spacing:.3px;opacity:.7}
+.cat-fn-list{list-style:none;padding:0;margin:0}
+.cat-fn-list li{position:relative;padding-left:16px;font-size:11.5px;line-height:1.6;color:rgba(27,94,58,.6);margin-bottom:4px}
+.cat-fn-list li::before{content:'';position:absolute;left:0;top:7px;width:5px;height:5px;border-radius:50%;background:var(--cat-accent,var(--lime));opacity:.5}
+.cat-fn-stat{font-size:11.5px;line-height:1.6;color:rgba(27,94,58,.55);margin:8px 0;padding:8px 12px;background:rgba(27,94,58,.03);border-radius:var(--radius-sm);border-left:3px solid var(--cat-accent,var(--lime))}
+.cat-fn-sub-section{margin-top:10px}
+.cat-fn-sub-section .cat-fn-subtitle{font-size:11.5px;margin-bottom:4px}
+body.bw .hero-card-inner h2{color:var(--green-dark)}
+body.bw .cat-fn-intro{color:rgba(30,41,59,.55)}
+body.bw .cat-fn-subtitle{color:var(--green-dark)}
+body.bw .cat-fn-list li{color:rgba(30,41,59,.5)}
+body.bw .cat-fn-stat{color:rgba(30,41,59,.45);background:rgba(30,41,59,.03);border-left-color:var(--cat-accent)}
 
 /* ─── RESPONSIVE ─── */
 @media(max-width:1200px){
@@ -213,11 +234,14 @@ img{max-width:100%;height:auto;display:block}
     .topbar-logo span{display:none}
     .tab-row-label{display:none}
     .tab-row{gap:4px}
-    .calc-cta{right:14px;bottom:14px;padding:8px 16px;font-size:11px}
+    .calc-cta,.why-cta{padding:6px 12px;font-size:10px}
     .brand-toggle-wrap{gap:4px}
-    .hero-card{padding:14px 14px 0}
-    .hero-card-inner h2{font-size:20px;letter-spacing:-.8px}
-    .hero-card-img img,.hero-card-img video{max-height:120px}
+    .hero-card{flex-direction:column}
+    .hero-card-inner{padding:16px 16px 12px}
+    .hero-card-inner h2{font-size:18px}
+    .hero-card-img{flex:none;max-width:100%;height:160px}
+    .cat-fn-intro{font-size:11px}
+    .cat-fn-list li{font-size:10.5px}
     .modal{max-height:95vh;border-radius:var(--radius-sm)}
     .modal-backdrop{padding:10px}
     .c-cats{grid-template-columns:1fr 1fr}
@@ -254,11 +278,17 @@ body.bw .p-card-ppl{background:rgba(59,130,246,.08);color:#1E293B}
 body.bw .detail-body h3{border-bottom-color:#3B82F6}
 body.bw .contents-list li::before{color:#3B82F6}
 body.bw .ppl-badge{background:rgba(59,130,246,.1);color:#1E293B}
+body.bw .detail-cta{background:#3B82F6}
+body.bw .detail-cta:hover{background:#2563EB;color:#fff}
+body.bw .why-cta{background:#1E293B}
+body.bw .calc-cta{background:#DC2626}
 body.bw .trust-bar{background:#fff;border-top-color:rgba(15,23,42,.06)}
 body.bw .detail-panel{background:#fff}
 body.bw .detail-img-wrap{background:rgba(30,41,59,.02)}
 body.bw .calc-cta{background:#3B82F6;box-shadow:0 2px 12px rgba(59,130,246,.3)}
 body.bw .calc-cta:hover{background:#2563EB;box-shadow:0 4px 20px rgba(59,130,246,.4)}
+body.bw .why-cta{background:#1E293B;box-shadow:0 2px 12px rgba(30,41,59,.3)}
+body.bw .why-cta:hover{background:#0F172A;box-shadow:0 4px 20px rgba(30,41,59,.4)}
 body.bw .grid-panel::-webkit-scrollbar-thumb{background:rgba(30,41,59,.12)}
 body.bw .p-card:hover{box-shadow:0 6px 20px rgba(30,41,59,.07)}
 body.bw .p-card-body h3{color:#1E293B}
@@ -353,8 +383,7 @@ if(sessionStorage.getItem('katalog_auth')==='1'){document.getElementById('pwGate
         <button class="kat-tab" data-cat="spotkania">🤝 Spotkania <span class="tc">3</span></button>
         <button class="kat-tab" data-cat="integracje">🎉 Integracje <span class="tc">2</span></button>
     </div>
-    <button class="calc-cta" onclick="openCalc()"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="10" x2="8" y2="10.01"/><line x1="12" y1="10" x2="12" y2="10.01"/><line x1="16" y1="10" x2="16" y2="10.01"/><line x1="8" y1="14" x2="8" y2="14.01"/><line x1="12" y1="14" x2="12" y2="14.01"/><line x1="16" y1="14" x2="16" y2="14.01"/><line x1="8" y1="18" x2="16" y2="18"/></svg>OBLICZ</button>
-</div>
+    </div>
 
 <!-- Main split view -->
 <div class="main">
@@ -364,13 +393,13 @@ if(sessionStorage.getItem('katalog_auth')==='1'){document.getElementById('pwGate
     </div>
     <!-- Right: detail panel -->
     <div class="detail-panel" id="detail">
-        <div class="detail-empty"><span>👈</span>Wybierz produkt z listy</div>
+        <div class="detail-empty"><span>👈</span>Wybierz produkt z listy<br><br><a href="https://dailyfruits.pl/zapytanie" class="detail-cta" target="_blank" style="max-width:240px;margin:0 auto">Zapytaj o wycenę</a><div class="detail-cta-hint">Odpowiadamy w ciągu 24h</div></div>
     </div>
 </div>
 
-<!-- Bottom trust bar -->
+<!-- Bottom bar: trust signals + actions -->
 <div class="trust-bar">
-    <span><strong>Better Workplace</strong> — ponad 2 500 klientów biznesowych</span>
+    <span>Ponad 2 500 klientów biznesowych</span>
     <span class="trust-sep">·</span>
     <span>15 lat doświadczenia</span>
     <span class="trust-sep">·</span>
@@ -378,15 +407,64 @@ if(sessionStorage.getItem('katalog_auth')==='1'){document.getElementById('pwGate
     <span class="trust-sep">·</span>
     <span>Model abonamentowy — jedna faktura</span>
     <span class="trust-sep">·</span>
-    <span>ul. Modułowa 3, 05-090 Raszyn</span>
-    <span class="trust-sep">·</span>
-    <span id="trustEmail">zapytania@betterworkplace.pl</span>
-    <span class="trust-sep">·</span>
     <div class="brand-toggle-wrap">
         <span class="brand-toggle-label" id="lblDF">DF</span>
         <button class="brand-toggle on" id="brandToggle" onclick="toggleBrand()" aria-label="Switch brand"></button>
         <span class="brand-toggle-label active" id="lblBW">BW</span>
     </div>
+    <span class="trust-sep">·</span>
+    <button class="why-cta" onclick="openWhy()"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>DLACZEGO WARTO</button>
+    <button class="calc-cta" onclick="openCalc()"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="10" x2="8" y2="10.01"/><line x1="12" y1="10" x2="12" y2="10.01"/><line x1="16" y1="10" x2="16" y2="10.01"/><line x1="8" y1="14" x2="8" y2="14.01"/><line x1="12" y1="14" x2="12" y2="14.01"/><line x1="16" y1="14" x2="16" y2="14.01"/><line x1="8" y1="18" x2="16" y2="18"/></svg>OBLICZ</button>
+</div>
+
+<!-- Why Modal -->
+<div class="modal-backdrop" id="whyModal">
+<div class="modal" style="max-width:620px">
+<button class="modal-close" onclick="closeWhy()">✕</button>
+<div style="padding:32px 28px 28px">
+    <h2 style="font-family:var(--font);font-size:22px;font-weight:900;color:var(--green-dark);margin-bottom:6px;letter-spacing:-.3px">Dlaczego warto?</h2>
+    <p style="font-size:12px;color:rgba(27,94,58,.4);margin-bottom:20px">Ponad 2500 klientów biznesowych nam zaufało</p>
+    <p style="font-size:13px;line-height:1.7;color:rgba(27,94,58,.7);margin-bottom:24px">Better Workplace to partner dla firm, które chcą uprościć codzienną organizację benefitów żywieniowych i wyposażenia firmowej kuchni. Łączymy produkty, logistykę, obsługę i rozliczenie w jeden spójny ekosystem.</p>
+    <h3 style="font-family:var(--font);font-size:14px;font-weight:800;color:var(--green-dark);margin-bottom:16px">Co zyskujecie?</h3>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+        <div style="background:rgba(27,94,58,.03);border-radius:var(--radius-sm);padding:16px;display:flex;gap:12px;align-items:flex-start">
+            <img src="icons/icon-box.webp" alt="" width="40" height="40" style="flex-shrink:0">
+            <div>
+                <div style="font-size:12px;font-weight:700;color:var(--green-dark);margin-bottom:4px">Kompleksowa obsługa</div>
+                <div style="font-size:11px;line-height:1.5;color:rgba(27,94,58,.55)">Wszystko, czego potrzebuje firmowa kuchnia, w ramach jednej współpracy — od owoców po ekspresy.</div>
+            </div>
+        </div>
+        <div style="background:rgba(27,94,58,.03);border-radius:var(--radius-sm);padding:16px;display:flex;gap:12px;align-items:flex-start">
+            <img src="icons/icon-clipboard.webp" alt="" width="40" height="40" style="flex-shrink:0">
+            <div>
+                <div style="font-size:12px;font-weight:700;color:var(--green-dark);margin-bottom:4px">Minimum formalności</div>
+                <div style="font-size:11px;line-height:1.5;color:rgba(27,94,58,.55)">Model abonamentowy porządkuje dostawy i rozliczenia. Wszystko na jednej fakturze.</div>
+            </div>
+        </div>
+        <div style="background:rgba(27,94,58,.03);border-radius:var(--radius-sm);padding:16px;display:flex;gap:12px;align-items:flex-start">
+            <img src="icons/icon-building-green.webp" alt="" width="40" height="40" style="flex-shrink:0">
+            <div>
+                <div style="font-size:12px;font-weight:700;color:var(--green-dark);margin-bottom:4px">Standard w całej Polsce</div>
+                <div style="font-size:11px;line-height:1.5;color:rgba(27,94,58,.55)">Spójny poziom obsługi dla firm jednooddziałowych i organizacji wielolokalizacyjnych.</div>
+            </div>
+        </div>
+        <div style="background:rgba(27,94,58,.03);border-radius:var(--radius-sm);padding:16px;display:flex;gap:12px;align-items:flex-start">
+            <img src="icons/icon-trophy.webp" alt="" width="40" height="40" style="flex-shrink:0">
+            <div>
+                <div style="font-size:12px;font-weight:700;color:var(--green-dark);margin-bottom:4px">15 lat doświadczenia</div>
+                <div style="font-size:11px;line-height:1.5;color:rgba(27,94,58,.55)">Własna logistyka w całym kraju, odpowiednie warunki przechowywania i transportu.</div>
+            </div>
+        </div>
+        <div style="background:rgba(27,94,58,.03);border-radius:var(--radius-sm);padding:16px;grid-column:1/-1;display:flex;gap:12px;align-items:flex-start">
+            <img src="icons/icon-refresh.webp" alt="" width="40" height="40" style="flex-shrink:0">
+            <div>
+                <div style="font-size:12px;font-weight:700;color:var(--green-dark);margin-bottom:4px">Ekologiczne podejście</div>
+                <div style="font-size:11px;line-height:1.5;color:rgba(27,94,58,.55)">Dostarczamy produkty w wielorazowych drewnianych skrzynkach lub biodegradowalnych kartonach.</div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
 </div>
 
 <!-- Calculator Modal -->
@@ -555,11 +633,24 @@ function renderGrid() {
     const heroMedia = heroVid
         ? `<div class="hero-card-img"><video src="${heroVid}" autoplay muted loop playsinline disablepictureinpicture></video></div>`
         : heroSrc ? `<div class="hero-card-img"><img src="${heroSrc}" alt="${label}"></div>` : '';
+    const fn = CAT_FOOTNOTES[cat];
+    let fnHTML = '';
+    if (fn) {
+        if (fn.intro) fnHTML += `<p class="cat-fn-intro">${fn.intro}</p>`;
+        if (fn.stat) fnHTML += `<div class="cat-fn-stat">${fn.stat}</div>`;
+        if (fn.subtitle && fn.points) {
+            fnHTML += `<div class="cat-fn-subtitle">${fn.subtitle}</div><ul class="cat-fn-list">${fn.points.map(p=>`<li>${p}</li>`).join('')}</ul>`;
+        }
+        if (fn.sections) {
+            fn.sections.forEach(s => {
+                fnHTML += `<div class="cat-fn-sub-section"><div class="cat-fn-subtitle">${s.subtitle}</div><ul class="cat-fn-list">${s.points.map(p=>`<li>${p}</li>`).join('')}</ul></div>`;
+            });
+        }
+    }
     const heroCard = `<div class="hero-card" style="background:${CAT_COLORS[cat]||''}">
         <div class="hero-card-inner">
             <h2>${label}</h2>
-            <div class="hero-desc">${desc}</div>
-            <div class="hero-count">${count} ${countWord}</div>
+            ${fnHTML}
         </div>
         ${heroMedia}
     </div>`;
@@ -583,7 +674,7 @@ function renderGrid() {
 function renderDetail() {
     const d = document.getElementById('detail');
     if (!sel) {
-        d.innerHTML = '<div class="detail-empty"><span>👈</span>Wybierz produkt z listy</div>';
+        d.innerHTML = '<div class="detail-empty"><span>👈</span>Wybierz produkt z listy<br><br><a href="https://dailyfruits.pl/zapytanie" class="detail-cta" target="_blank" style="max-width:240px;margin:0 auto">Zapytaj o wycenę</a><div class="detail-cta-hint">Odpowiadamy w ciągu 24h</div></div>';
         return;
     }
     const p = P.find(x => x.id === sel);
@@ -599,6 +690,8 @@ function renderDetail() {
             ${pplHTML}
             <h3>${p.contents.length === 1 ? 'Skład' : 'Co zawiera zestaw?'}</h3>
             <ul class="contents-list">${p.contents.map(c => `<li>${c}</li>`).join('')}</ul>
+            <a href="https://dailyfruits.pl/zapytanie" class="detail-cta" target="_blank">Zapytaj o wycenę</a>
+            <div class="detail-cta-hint">Odpowiadamy w ciągu 24h</div>
         </div>`;
 }
 
@@ -645,6 +738,103 @@ const CAT_ACCENTS = {
   kanapki:'#F9A825',salatki:'#66BB6A',kawa:'#8D6E63',
   biuro:'#7CB342',spotkania:'#CE6BA1',integracje:'#EF5350'
 };
+const CAT_FOOTNOTES = {
+  owoce:{
+    intro:'Codzienna porcja świeżych produktów w biurze to jeden z najprostszych sposobów na wspieranie zdrowych nawyków w zespole. Nasze zestawy owocowe i warzywne trafiają prosto z rynku hurtowego do firmowej kuchni — bez zbędnych pośredników.',
+    subtitle:'Co warto wiedzieć?',
+    points:[
+      'Obsługujemy ponad 800 ton owoców i warzyw miesięcznie dla biur w całej Polsce.',
+      'Z naszych dostaw korzysta ponad 300 000 pracowników tygodniowo.',
+      'Każdy zestaw jest ręcznie kompletowany w dniu dostawy — bez magazynowania.',
+      'Rotacja sezonowa: dostosowujemy skład do pory roku i dostępności najlepszych produktów.',
+      'Owoce do biura to najprostszy benefit, który realnie wpływa na samopoczucie zespołu.'
+    ]
+  },
+  sniadania:{
+    intro:'Śniadanie w biurze może być czymś więcej niż posiłkiem — to rytuał, który buduje zespół i daje energię na cały dzień. Nasze zestawy śniadaniowe to gotowe pakiety na poranny team breakfast.',
+    subtitle:'Jak to działa?',
+    points:[
+      'Zestawy dostarczamy rano, gotowe do podania — bez przygotowania po stronie biura.',
+      'Skład dopasowany do wielkości zespołu: od 5 do 200+ osób.',
+      'Stała rotacja menu — nowe pozycje co sezon, żeby się nie znudziło.',
+      'Idealne na poniedziałkowe kick-offy, spotkania all-hands i team breakfasty.'
+    ]
+  },
+  napoje:{
+    intro:'Dobre nawodnienie to codzienny element komfortu pracy. Oferujemy szeroką gamę napojów — od soków NFC, przez smoothie, po kombuchy i lemoniady kraftowe.',
+    subtitle:'Dlaczego warto zadbać o nawodnienie pracowników?',
+    points:[
+      'Nawet lekkie odwodnienie obniża koncentrację i produktywność o 15–20%.',
+      'Napoje w biurze to benefit, z którego korzysta dosłownie każdy — codziennie.',
+      'Oferujemy produkty bez dodatku cukru, konserwantów i sztucznych barwników.',
+      'Elastyczne dostawy: od codziennych po cotygodniowe — dopasowane do zużycia.'
+    ]
+  },
+  spotkania:{
+    intro:'Spotkanie biznesowe to moment, w którym liczy się energia, koncentracja i wrażenie. Profesjonalny catering spotkań pokazuje, że firma dba o detale.',
+    stat:'36% pracowników przyznaje, że przychodzi na spotkania głodna. 68% uważa, że głód obniża ich efektywność podczas meetingów.',
+    subtitle:'Co oferujemy?',
+    points:[
+      'Finger food, kanapki koktajlowe, mini desery — gotowe do podania.',
+      'Smoothie bar i fresh bar — na życzenie z obsługą na miejscu.',
+      'Zestawy dopasowane do formatu: board meeting, warsztat, all-hands, event kliencki.',
+      'Zamówienie możliwe z 24h wyprzedzeniem — express service w miastach obsługiwanych dziennie.'
+    ]
+  },
+  biuro:{
+    intro:'Gdy pracownicy oczekują czegoś więcej niż owoców — dostarczamy kompletny program codziennych dostaw do biura. Owoce, przekąski, napoje i zdrowe snacki w jednym abonamencie.',
+    subtitle:'Jak działa program?',
+    points:[
+      'Jeden abonament — wiele kategorii: owoce, bakalie, batony, napoje, kawy.',
+      'Elastyczny budżet: od 5 PLN/os/dzień. Skaluje się z zespołem.',
+      'Dedykowany opiekun klienta dobiera skład pod preferencje biura.'
+    ]
+  },
+  integracje:{
+    intro:'Biuro to nie tylko praca — to relacje, które budują lojalność i kulturę firmy. Dostarczamy przekąski, napoje i dodatki na firmowe eventy i spotkania integracyjne.',
+    subtitle:'Dlaczego to wygodne?',
+    points:[
+      'Jedno zamówienie — kompletna dostawa: przekąski, napoje, wino, akcesoria.',
+      'Obsługujemy eventy od 10 do 500+ osób.',
+      'Możliwość personalizacji: logo na opakowaniach, dedykowane zestawy gifting.'
+    ]
+  },
+  kanapki:{
+    intro:'Konkretny posiłek w pracy powinien sycić, ale nie obciążać. Nasze kanapki to autorskie kompozycje ze składników z dnia dostawy — bez półproduktów, bez kompromisów na jakości.',
+    subtitle:'Co wyróżnia nasze kanapki?',
+    points:[
+      'Składniki z dnia dostawy — pieczywo rzemieślnicze, warzywa i białko premium.',
+      'Warianty: klasyczne, fit, vege — coś dla każdego w zespole.',
+      'Wygodne opakowania jednostkowe — idealne do firmowej lodówki.',
+      'Kanapki dla pracowników to koszt uzyskania przychodu firmy (art. 15 ust. 1 ustawy o CIT).'
+    ]
+  },
+  salatki:{
+    intro:'Świeże sałatki to lekka, wygodna opcja na lunch w biurze. Każda porcja jest kompletowana ręcznie w dniu dostawy — z sezonowych składników i bez konserwantów.',
+    subtitle:'Dlaczego warto?',
+    points:[
+      'Pojedyncze porcje w zamkniętych opakowaniach — higienicznie i wygodnie.',
+      'Rotacja sezonowa: nowe smaki co miesiąc na bazie dostępnych składników.',
+      'Dressing osobno — każdy doprawia pod swój gust.'
+    ]
+  },
+  kawa:{
+    intro:'Dobra kawa w firmie to codzienny standard pracy. Oferujemy ziarna z polskich palarni rzemieślniczych oraz pełen serwis kawowy — od ekspresu po akcesoria.',
+    sections:[
+      {subtitle:'Aromatyczne ziarna prosto z palarni',points:[
+        'Współpracujemy z najlepszymi polskimi palarniami specialty.',
+        'Świeżo palona kawa dostarczana w cyklu 2-tygodniowym.',
+        'Blendy dobrane pod ekspresy automatyczne i kolbowe.'
+      ]},
+      {subtitle:'Pełen serwis kawowy',points:[
+        'Dzierżawa ekspresów: automaty, kolbowe, przelewowe.',
+        'Regularne przeglądy i serwis techniczny w cenie.',
+        'Akcesoria: mleko roślinne, syropy, kubki, mieszadełka.',
+        'Dedykowany opiekun — jedno źródło kontaktu na wszystko.'
+      ]}
+    ]
+  }
+};
 function switchCat(c) {
     cat = c; sel = null;
     document.querySelectorAll('.kat-tab').forEach(t => t.classList.toggle('active', t.dataset.cat === c));
@@ -668,11 +858,6 @@ function toggleBrand() {
     // Logo switch
     document.getElementById('logoImg').style.display = isBW ? 'none' : 'block';
     document.getElementById('logoBW').style.display = isBW ? 'block' : 'none';
-    // Trust bar brand name + email
-    const tb = document.querySelector('.trust-bar strong');
-    if (tb) tb.textContent = isBW ? 'Better Workplace' : 'DailyFruits';
-    const te = document.getElementById('trustEmail');
-    if (te) te.textContent = isBW ? 'zapytania@betterworkplace.pl' : 'zapytania@dailyfruits.pl';
     // CTA mailto
     const cta = document.querySelector('.c-cta-bar a');
     if (cta) cta.href = isBW ? 'mailto:zapytania@betterworkplace.pl' : 'mailto:zapytania@dailyfruits.pl';
@@ -703,6 +888,9 @@ let cStep=1, cHc=0, cSelCats=new Set(), cSelTier='';
 function openCalc(){document.getElementById('calcModal').classList.add('open');document.getElementById('cHc').focus()}
 function closeCalc(){document.getElementById('calcModal').classList.remove('open')}
 document.getElementById('calcModal').addEventListener('click',e=>{if(e.target===e.currentTarget)closeCalc()});
+function openWhy(){document.getElementById('whyModal').classList.add('open')}
+function closeWhy(){document.getElementById('whyModal').classList.remove('open')}
+document.getElementById('whyModal').addEventListener('click',e=>{if(e.target===e.currentTarget)closeWhy()});
 
 function cGo(n){
   cStep=n;
