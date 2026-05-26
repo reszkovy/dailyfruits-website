@@ -224,6 +224,56 @@
       "statusCode": 301
     },
     {
+      "source": "/blog/owoce-bez-histaminy-poznaj-je/",
+      "destination": "/wpis-owoce-histamina",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/godziny-posilkow-czyli-kiedy-jesc-sniadanie-obiad-i-kolacje/",
+      "destination": "/wpis-godziny-posilkow",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/owoce-a-potas-poznaj-owoce-bez-potasu-i-te-bogate-w-tego-elektrolitu/",
+      "destination": "/wpis-owoce-potas",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/10-pomyslow-na-zdrowe-sniadanie-do-pracy/",
+      "destination": "/wpis-zdrowe-sniadania",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/jakie-owoce-maja-najwiecej-cynku/",
+      "destination": "/wpis-owoce-cynk",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/jakie-owoce-zaliczamy-do-cytrusow/",
+      "destination": "/wpis-cytrusy",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/jakie-owoce-i-warzywa-mozna-mrozic-i-jak-to-robic/",
+      "destination": "/wpis-mrozenie-owocow",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/ktore-owoce-maja-najmniej-kalorii/",
+      "destination": "/wpis-owoce-niskokaloryczne",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/jakie-owoce-mozna-i-powinno-sie-jesc-w-ciazy-a-jak-nie/",
+      "destination": "/wpis-owoce-ciaza",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/owoce-bez-weglowodanow-i-o-ich-niskiej-zawartosci-poznaj-je/",
+      "destination": "/wpis-owoce-niskoweglowodanowe",
+      "statusCode": 301
+    },
+    {
       "source": "/blog/:path+",
       "destination": "/blog",
       "statusCode": 301
