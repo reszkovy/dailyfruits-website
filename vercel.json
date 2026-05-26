@@ -224,7 +224,7 @@
       "statusCode": 301
     },
     {
-      "source": "/blog/:path*",
+      "source": "/blog/:path+",
       "destination": "/blog",
       "statusCode": 301
     }
