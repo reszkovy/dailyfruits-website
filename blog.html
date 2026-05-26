@@ -226,6 +226,66 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
     </div>
 </section>
 
+<!-- FEATURED POSTS — najczęściej czytane -->
+<style>
+.featured-section { padding: 56px 0 32px; background: var(--cream); }
+.featured-section .section-label { display: inline-block; padding: 6px 14px; background: var(--lime-light); color: var(--green-dark); border-radius: 100px; font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.6px; transform: rotate(-2deg); margin-bottom: 18px; box-shadow: 2px 3px 0 rgba(0,0,0,0.08); }
+.featured-section h2 { font-weight: 900; font-size: clamp(26px, 3vw, 36px); color: var(--green-dark); margin-bottom: 8px; letter-spacing: -0.04em; }
+.featured-section h2 .fun { font-family: var(--font-fun); font-weight: 400; color: var(--lime); font-size: 1.08em; }
+.featured-section .sub { font-size: 15px; color: var(--gray-500); margin-bottom: 36px; }
+.featured-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.featured-card { background: var(--white); border-radius: 20px; overflow: hidden; text-decoration: none; color: inherit; transition: transform 0.35s cubic-bezier(0.16,1,0.3,1), box-shadow 0.35s cubic-bezier(0.16,1,0.3,1); border: 1px solid rgba(27,94,58,0.08); position: relative; display: flex; flex-direction: column; }
+.featured-card:hover { transform: translateY(-6px); box-shadow: 0 16px 40px rgba(27,94,58,0.15); }
+.featured-card .badge { position: absolute; top: 14px; left: 14px; padding: 5px 12px; background: var(--red); color: #fff; font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.6px; border-radius: 100px; z-index: 2; box-shadow: 0 2px 8px rgba(228,48,32,0.3); }
+.featured-card img { width: 100%; height: 200px; object-fit: cover; }
+.featured-card-body { padding: 24px 22px 22px; display: flex; flex-direction: column; flex: 1; }
+.featured-card-meta { display: flex; gap: 12px; align-items: center; margin-bottom: 10px; font-size: 12px; color: var(--gray-500); font-weight: 600; }
+.featured-card-tag { padding: 3px 10px; background: var(--lime-bg); color: var(--green-dark); border-radius: 100px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+.featured-card h3 { font-weight: 800; font-size: 18px; color: var(--green-dark); margin-bottom: 10px; line-height: 1.25; letter-spacing: -0.02em; }
+.featured-card p { font-size: 14px; line-height: 1.55; color: var(--gray-500); margin-bottom: 16px; flex: 1; }
+.featured-card-link { font-size: 14px; font-weight: 700; color: var(--red); }
+@media (max-width: 820px) { .featured-grid { grid-template-columns: 1fr; gap: 16px; } .featured-card img { height: 180px; } }
+</style>
+<section class="featured-section reveal">
+    <div class="container">
+        <div class="section-label">Najczęściej czytane</div>
+        <h2>Najpopularniejsze <span class="fun">artykuły</span></h2>
+        <p class="sub">Trzy wpisy, które rocznie czytają tysiące osób z HR i Office Managementu.</p>
+        <div class="featured-grid">
+            <a href="wpis-cisnienie" class="featured-card" data-category="Zdrowie">
+                <span class="badge">★ #1</span>
+                <img src="0_0-(10).webp" alt="Owoce a ciśnienie krwi" loading="lazy" width="400" height="300">
+                <div class="featured-card-body">
+                    <div class="featured-card-meta"><span class="featured-card-tag">Zdrowie</span><span>10 marca 2022</span></div>
+                    <h3>Jakie owoce i warzywa podnoszą ciśnienie? Dieta przy niskim ciśnieniu</h3>
+                    <p>Dieta a poziom ciśnienia — które owoce i warzywa pomagają regulować ciśnienie krwi w naturalny sposób. Praktyczny przewodnik dla biura.</p>
+                    <span class="featured-card-link">Czytaj artykuł →</span>
+                </div>
+            </a>
+            <a href="wpis-witamina-d" class="featured-card" data-category="Zdrowie">
+                <span class="badge">★ #2</span>
+                <img src="0_2-(6).webp" alt="Witaminy w owocach" loading="lazy" width="400" height="300">
+                <div class="featured-card-body">
+                    <div class="featured-card-meta"><span class="featured-card-tag">Zdrowie</span><span>24 lutego 2022</span></div>
+                    <h3>Jakie owoce mają najwięcej witaminy D? Naturalne źródła witamin</h3>
+                    <p>Witamina D to klucz do odporności zespołu zimą. Lista naturalnych źródeł z owoców i warzyw, plus rekomendacje suplementacji.</p>
+                    <span class="featured-card-link">Czytaj artykuł →</span>
+                </div>
+            </a>
+            <a href="wpis-ile-owocow" class="featured-card" data-category="Zdrowie">
+                <span class="badge">★ #3</span>
+                <img src="0_0-(8).webp" alt="Ile owoców jeść dziennie" loading="lazy" width="400" height="300">
+                <div class="featured-card-body">
+                    <div class="featured-card-meta"><span class="featured-card-tag">Zdrowie</span><span>1 czerwca 2021</span></div>
+                    <h3>Ile owoców jeść dziennie? Kiedy i do której godziny jeść owoce?</h3>
+                    <p>Podstawy zdrowego rytmu — ile porcji owoców dziennie i o jakiej porze. Praktyczne wskazówki dla zespołów pracujących w biurze.</p>
+                    <span class="featured-card-link">Czytaj artykuł →</span>
+                </div>
+            </a>
+        </div>
+    </div>
+</section>
+
 <div class="blog-filters-bar">
     <div class="container">
         <div class="blog-filters">
