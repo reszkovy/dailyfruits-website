@@ -116,8 +116,8 @@
         .products-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
         .product-card { background: var(--white); border-radius: var(--radius); overflow: hidden; transition: transform 0.3s, box-shadow 0.3s; display: flex; flex-direction: column; }
         .product-card:hover { transform: translateY(-6px); box-shadow: 0 16px 48px rgba(27,94,58,0.1); }
-        .product-card-img { position: relative; background: #f8f7f0; padding: 20px; display: flex; align-items: center; justify-content: center; min-height: 220px; }
-        .product-card-img img { width: 90%; height: 200px; object-fit: contain; }
+        .product-card-img { position: relative; background: #ffffff; padding: 24px; display: flex; align-items: center; justify-content: center; min-height: 280px; }
+        .product-card-img img { width: 95%; height: 260px; object-fit: contain; }
 
         /* ─── PACKSHOT TOOLTIP ─── */
         .product-card-img[data-tooltip] { cursor: pointer; }
@@ -165,8 +165,8 @@
 
         @media (max-width: 1280px) { .products-grid { grid-template-columns: repeat(3, 1fr); } }
         @media (max-width: 1024px) { .container { padding: 0 36px; } .products-grid { grid-template-columns: repeat(2, 1fr); } .footer-grid { grid-template-columns: repeat(2, 1fr); } }
-        @media (max-width: 768px) { .container { padding: 0 20px; } .nav-links { display: none; } .nav-buttons .btn-outline { display: none; } .nav-trust { display: none; } .products-grid { grid-template-columns: 1fr; gap: 16px; } .product-card-img { min-height: 240px; padding: 24px; } .product-card-img img { height: 220px; width: 92%; } .product-card-body { padding: 20px; } .product-card-body h3 { font-size: 18px; } .product-card-body p { font-size: 14px; display: block; } .product-badge { font-size: 11px; padding: 5px 12px; top: 14px; left: 14px; } .footer-grid { grid-template-columns: 1fr; } .cta-card { padding: 48px 24px; } .cta-btns { flex-direction: column; align-items: center; } .cta-btns .btn { text-align: center; justify-content: center; width: 100%; } .cat-tabs-wrap { top: 64px; } .cat-tabs { padding: 0 16px; gap: 6px; justify-content: flex-start; flex-wrap: nowrap; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; } .cat-tabs::-webkit-scrollbar { display: none; } .cat-tab { font-size: 13px; padding: 8px 14px; flex-shrink: 0; } }
-        @media (max-width: 480px) { .products-grid { grid-template-columns: 1fr; gap: 14px; } .product-card-img { min-height: 200px; padding: 20px; } .product-card-img img { height: 180px; } .product-card-body h3 { font-size: 17px; } .product-card-body p { font-size: 13px; display: block; } .product-card-body .btn-sm { font-size: 12px; padding: 10px 16px; } }
+        @media (max-width: 768px) { .container { padding: 0 20px; } .nav-links { display: none; } .nav-buttons .btn-outline { display: none; } .nav-trust { display: none; } .products-grid { grid-template-columns: 1fr; gap: 16px; } .product-card-img { min-height: 280px; padding: 24px; background: #ffffff; } .product-card-img img { height: 260px; width: 95%; } .product-card-body { padding: 20px; } .product-card-body h3 { font-size: 18px; } .product-card-body p { font-size: 14px; display: block; } .product-badge { font-size: 11px; padding: 5px 12px; top: 14px; left: 14px; } .footer-grid { grid-template-columns: 1fr; } .cta-card { padding: 48px 24px; } .cta-btns { flex-direction: column; align-items: center; } .cta-btns .btn { text-align: center; justify-content: center; width: 100%; } .cat-tabs-wrap { top: 64px; } .cat-tabs { padding: 0 16px; gap: 6px; justify-content: flex-start; flex-wrap: nowrap; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; } .cat-tabs::-webkit-scrollbar { display: none; } .cat-tab { font-size: 13px; padding: 8px 14px; flex-shrink: 0; } }
+        @media (max-width: 480px) { .products-grid { grid-template-columns: 1fr; gap: 14px; } .product-card-img { min-height: 240px; padding: 20px; background: #ffffff; } .product-card-img img { height: 220px; width: 95%; } .product-card-body h3 { font-size: 17px; } .product-card-body p { font-size: 13px; display: block; } .product-card-body .btn-sm { font-size: 12px; padding: 10px 16px; } }
     
 /* ─── CITY INDEX ─── */
 .city-index { background: #163D28; padding: 48px 0 40px; }
