@@ -194,6 +194,26 @@
       "statusCode": 301
     },
     {
+      "source": "/katalog",
+      "destination": "/katalog-produktow",
+      "statusCode": 301
+    },
+    {
+      "source": "/katalog.html",
+      "destination": "/katalog-produktow",
+      "statusCode": 301
+    },
+    {
+      "source": "/katalog-produktow-v2",
+      "destination": "/katalog-produktow",
+      "statusCode": 301
+    },
+    {
+      "source": "/katalog-produktow-v2.html",
+      "destination": "/katalog-produktow",
+      "statusCode": 301
+    },
+    {
       "source": "/blog/jakie-owoce-i-warzywa-podnosza-cisnienie/",
       "destination": "/wpis-cisnienie",
       "statusCode": 301
