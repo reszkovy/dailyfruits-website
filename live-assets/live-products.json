@@ -1,0 +1,728 @@
+{
+  "sniadania": {
+    "intro": "Czas na najważniejszy posiłek dnia… śniadanie firmowe! Śniadanie to bezsprzecznie najważniejszy posiłek w ciągu dnia! Dostarcza energii niezbędnej do efektywnego rozpoczęcia wszystkich zaplanowanych działań! To również świetna okazja do zintegrowania zespołu.",
+    "og_image": "https://dailyfruits.pl/app/uploads/2020/03/śniadanie.jpg",
+    "products": [
+      {
+        "name": "Śniadanie firmowe standard 25os.",
+        "badge": "polecane",
+        "contents": [
+          "Pakiet produktów z których można zrobić:",
+          "10 porcji – po 2 kanapki (szynka, ser, avokado, masło, humus, pasztet, warzywa)",
+          "5 porcji – twarożek ze szczypiorkiem i rzodkiewką lub konfiturą",
+          "5 porcji – jogurt z / bakaliami / owocami / granolą / miodem",
+          "5 porcji – owsianka z owocami / bakaliami / miodem",
+          "Produkty:",
+          "Chleb Bielański 350g, Putka 2szt.",
+          "Chleb Hetman 350g, Putka 1szt.",
+          "Szynka soczysta 100g, Dolina Dobra 2szt.",
+          "Ser Gouda plastry 150g, Mlekovita 1szt.",
+          "Masło Polskie 82% tłuszczu 10g, Mlekovita 10szt.",
+          "Hummus klasyczny 180g, Sante 1szt.",
+          "Pasztet wegański klasyczny 113g, Sante 1szt.",
+          "Konfitura z truskawek i malin 200g, Spiżarnia Anny Walczyńskiej 1szt.",
+          "Twaróg półtłusty 230g, Mlekovita 5szt.",
+          "Jogurt naturalny 150g, Mlekovita 5szt.",
+          "Miód wielokwiatowy 250g, Huzar 1szt.",
+          "Bakalie MIX 65g, Hebar 5szt.",
+          "Crunchy klasyczne 350g, Sante 1szt.",
+          "Płatki owsiane górskie blyskawiczne 400g, Sante 1szt.",
+          "Rzodkiewka - pęczek 1szt.",
+          "Szczypiorek - pęczek 1szt.",
+          "Pomidor 0.5kg",
+          "Ogórek świeży 0.5kg",
+          "Awokado 1szt.",
+          "Jabłko 0.4kg",
+          "Banan 0.4kg",
+          "Owoce sezonowe podzielne 0.4kg",
+          "Oferta odpowiednia dla firm, które chcą zamówić szybkie, niedrogie śniadanie i zostać przy standardowych dostawach owocowych."
+        ],
+        "img": "https://dailyfruits.pl/app/uploads/2024/03/s2-600x578.jpg"
+      },
+      {
+        "name": "Śniadanie firmowe standard + owoce 25os.",
+        "badge": "polecane",
+        "contents": [
+          "Pakiet produktów z których można zrobić:",
+          "10 porcji – po 2 kanapki (szynka, ser, avokado, masło, humus, pasztet, warzywa)",
+          "5 porcji – twarożek ze szczypiorkiem i rzodkiewką lub konfiturą",
+          "5 porcji – jogurt z / bakaliami / owocami / granolą / miodem",
+          "5 porcji – owsianka z owocami / bakaliami / miodem",
+          "dodatkowo owoce na 2 śniadanie (ok 25szt.)",
+          "Produkty:",
+          "Chleb Bielański 350g, Putka 2szt.",
+          "Chleb Hetman 350g, Putka 1szt.",
+          "Szynka soczysta 100g, Dolina Dobra 2szt.",
+          "Ser Gouda plastry 150g, Mlekovita 1szt.",
+          "Masło Polskie 82% tłuszczu 10g, Mlekovita 10szt.",
+          "Pasztet wegański klasyczny 113g, Sante 1szt.",
+          "Hummus klasyczny 180g, Sante 1szt.",
+          "Konfitura z truskawek i malin 200g, Spiżarnia Anny Walczyńskiej 1szt.",
+          "Twaróg półtłusty 230g, Mlekovita 5szt.",
+          "Jogurt naturalny 150g, Mlekovita 5szt.",
+          "Miód wielokwiatowy 250g, Huzar 1szt.",
+          "Bakalie MIX 65g, Hebar 5szt.",
+          "Crunchy klasyczne 350g, Sante 1szt.",
+          "Płatki owsiane górskie blyskawiczne 400g, Sante 1szt.",
+          "Rzodkiewka - pęczek 1szt.",
+          "Szczypiorek - pęczek 1szt.",
+          "Pomidor 0.5kg",
+          "Ogórek świeży 0.5kg",
+          "Awokado 1szt.",
+          "Jabłko 1.5kg",
+          "Banan 2kg",
+          "Owoce sezonowe podzielne 1.5kg",
+          "Oferta odpowiednia dla firm, które chcą zastąpć skrzynki z owocami czymś zupełnie innym ale nie chcą do końca rezygnować z owoców, dlatego w tej opcji oprócz zestawu do przygotowania 25 śniadań są owoce w zestawie ok 25 szt."
+        ],
+        "img": "https://dailyfruits.pl/app/uploads/2024/03/s8-600x600.jpg"
+      },
+      {
+        "name": "Śniadanie firmowe standard + przekąski na 2 śniadanie, bakalie, owoce, soki, 25 os.",
+        "badge": null,
+        "contents": [
+          "Pakiet produktów z których można zrobić:",
+          "10 porcji – po 2 kanapki (szynka, ser, masło, humus, warzywa)",
+          "5 porcji – twarożek ze szczypiorkiem i rzodkiewką lub konfiturą",
+          "5 porcji – jogurt z / bakaliami / owocami / granolą / miodem",
+          "5 porcji – owsianka z owocami / bakaliami / miodem",
+          "dodatkowo przekąski na 2 śniadanie – owoce, soki, bakalie",
+          "Produkty:",
+          "Chleb Bielański 350g, Putka 2szt.",
+          "Chleb Hetman 350g, Putka 1szt.",
+          "Szynka soczysta 100g, Dolina Dobra 2szt.",
+          "Ser Gouda plastry 150g, Mlekovita 1szt.",
+          "Masło Polskie 82% tłuszczu 10g, Mlekovita 10szt.",
+          "Hummus klasyczny 180g, Sante 1szt.",
+          "Konfitura z truskawek i malin 200g, Spiżarnia Anny Walczyńskiej 1szt.",
+          "Twaróg półtłusty 230g, Mlekovita 5szt.",
+          "Jogurt naturalny 150g, Mlekovita 5szt.",
+          "Miód wielokwiatowy 250g, Huzar 1szt.",
+          "Bakalie MIX 65g, Hebar 10szt.",
+          "Crunchy klasyczne 350g, Sante 1szt.",
+          "Płatki owsiane górskie blyskawiczne 400g, Sante 1szt.",
+          "Rzodkiewka - pęczek 1szt.",
+          "Szczypiorek - pęczek 1szt.",
+          "Pomidor 0.5kg",
+          "Ogórek świeży 0.5kg",
+          "Awokado 1szt.",
+          "Jabłko 1kg",
+          "Banan 1kg",
+          "Owoce sezonowe podzielne 1kg",
+          "Sok jabłko 200ml, Sady Wincenta 10szt.",
+          "Oferta odpowiednia dla firm, które chcą zastąpić aktualną ofertę czymś nowym, w tym zestawie są produkty śniadaniowe na 25 porcji śniadań a oprócz tego na 2 śniadanie 30 przekąsek – owoc, lub soczek lub bakalie."
+        ],
+        "img": "https://dailyfruits.pl/app/uploads/2024/03/s4-600x592.jpg"
+      },
+      {
+        "name": "Śniadanie firmowe premium 30os.",
+        "badge": null,
+        "contents": [
+          "Pakiet produktów z których można zrobić:",
+          "15 porcji – po 2 kanapki (szynka, ser, masło, humus, warzywa, mozarella, inne)",
+          "5 porcji – twarożek ze szczypiorkiem i rzodkiewką lub konfiturą",
+          "5 porcji – jogurt z / bakaliami / owocami / granolą / miodem",
+          "5 porcji – owsianka z owocami / bakaliami / miodem",
+          "Produkty:",
+          "Chleb Bielański 350g, Putka 2szt.",
+          "Chleb Hetman 350g, Putka 2szt.",
+          "Szynka soczysta 100g, Dolina Dobra 3szt.",
+          "Ser Gouda plastry 150g, Mlekovita 1szt.",
+          "Masło Polskie 82% tłuszczu 10g, Mlekovita 15szt.",
+          "Mozzarella Classic Kulka 125g, Mlekovita 1szt.",
+          "Ser Pleśniowy Camembert LaPolle naturalny Cylinder 120g, Mlekovita 1szt.",
+          "Smalczyk wegański z boczniakiem Lovege 170g, Sante 1szt.",
+          "Pomidory suszone z ziołami w oleju 270g, Devaldano 1szt.",
+          "Hummus klasyczny 180g, Sante 1szt.",
+          "Konfitura z truskawek i malin 200g, Spiżarnia Anny Walczyńskiej 1szt.",
+          "Twaróg półtłusty 230g, Mlekovita 5szt.",
+          "Jogurt naturalny 150g, Mlekovita 5szt.",
+          "Miód wielokwiatowy 250g, Huzar 1szt.",
+          "Bakalie MIX 65g, Hebar 5szt.",
+          "Crunchy klasyczne 350g, Sante 1szt.",
+          "Płatki owsiane górskie blyskawiczne 400g, Sante 1szt.",
+          "Rzodkiewka - pęczek 1szt.",
+          "Szczypiorek - pęczek 1szt.",
+          "Pomidor 0.5kg",
+          "Ogórek świeży 0.5kg",
+          "Awokado 1szt.",
+          "Jabłko 0.4kg",
+          "Banan 0.4kg",
+          "Owoce sezonowe podzielne 0.4kg",
+          "Oferta odpowiednia dla firm, które zamawiają owoce i inne przekąski oraz chcą dodatkowo zamówić dzień śniadaniowy bardziej premium, w tym zestawie oprócz wszystkich produktów ze śniadania standardowego znajdują się dodatkowo mozarella, ser pleśniowy, pomidory suszone, smalczyk wegański, w zestawie jest więcej sera i wędlin."
+        ],
+        "img": "https://dailyfruits.pl/app/uploads/2024/03/s6.jpg"
+      },
+      {
+        "name": "Śniadanie firmowe premium + przekąski na 2 śniadanie, owoce, bakalie 30 os.",
+        "badge": null,
+        "contents": [
+          "Pakiet produktów z których można zrobić:",
+          "15 porcji – po 2 kanapki (szynka, ser, masło, humus, pasztet, warzywa, mozarella, inne)",
+          "5 porcji – twarożek ze szczypiorkiem i rzodkiewką lub konfiturą",
+          "5 porcji – jogurt z / bakaliami / owocami / granolą / miodem",
+          "5 porcji – owsianka z owocami / bakaliami / miodem",
+          "dodatkowo przekąski na 2 śniadanie – owoce premium, bakalie",
+          "Produkty:",
+          "Chleb Bielański 350g, Putka 2szt.",
+          "Chleb Hetman 350g, Putka 2szt.",
+          "Szynka soczysta 100g, Dolina Dobra 3szt.",
+          "Ser Gouda plastry 150g, Mlekovita 2szt.",
+          "Masło Polskie 82% tłuszczu 10g, Mlekovita 15szt.",
+          "Mozzarella Classic Kulka 125g, Mlekovita 1szt.",
+          "Ser Pleśniowy Camembert LaPolle naturalny Cylinder 120g, Mlekovita 1szt.",
+          "Smalczyk wegański z boczniakiem Lovege 170g, Sante 1szt.",
+          "Pomidory suszone z ziołami w oleju 270g, Devaldano 1szt.",
+          "Pasztet wegański klasyczny 113g, Sante 1szt.",
+          "Hummus klasyczny 180g, Sante 1szt.",
+          "Konfitura z truskawek i malin 200g, Spiżarnia Anny Walczyńskiej 1szt.",
+          "Twaróg półtłusty 230g, Mlekovita 5szt.",
+          "Jogurt naturalny 150g, Mlekovita 5szt.",
+          "Miód wielokwiatowy 250g, Huzar 1szt.",
+          "Bakalie MIX 65g, Hebar 15szt.",
+          "Crunchy klasyczne 350g, Sante 1szt.",
+          "Płatki owsiane górskie blyskawiczne 400g, Sante 1szt.",
+          "Rzodkiewka - pęczek 1szt.",
+          "Szczypiorek - pęczek 1szt.",
+          "Pomidor 0.5kg",
+          "Ogórek świeży 0.5kg",
+          "Awokado 1szt.",
+          "Jabłko 1kg",
+          "Banan 1kg",
+          "Owoce sezonowe podzielne 1kg",
+          "Owoce sezonowe premium 1kg",
+          "Oferta zawiera nawięcej produktów do przygotowania bogatego śniadania, znajdują się w nim wszystkie produkty z zestawu premium a oprócz tego przekąski na 2 śniadanie dla 30 osób do wyboru: owoce lub bakalie."
+        ],
+        "img": "https://dailyfruits.pl/app/uploads/2024/03/s7-600x600.jpg"
+      },
+      {
+        "name": "Warzywa krojne",
+        "badge": null,
+        "contents": ["MIX krojonych warzyw, 500 g"],
+        "img": "https://dailyfruits.pl/app/uploads/2020/02/mix-warzyw-tacka-600x389.jpg"
+      },
+      {
+        "name": "Pomidorki koktajlowe",
+        "badge": null,
+        "contents": ["Pomidorki koktajlowe, umyte, 500 g"],
+        "img": "https://dailyfruits.pl/app/uploads/2020/02/cherry.png"
+      },
+      {
+        "name": "Rzodkiewka",
+        "badge": null,
+        "contents": ["Rzodkiewka obrana, umyta, 500 g"],
+        "img": "https://dailyfruits.pl/app/uploads/2020/02/rzodkiewka.png"
+      },
+      {
+        "name": "Kalarepa krojona",
+        "badge": null,
+        "contents": ["Kalarepa krojona, 500 g"],
+        "img": "https://dailyfruits.pl/app/uploads/2020/02/kalarepa.png"
+      },
+      {
+        "name": "Papryka krojona",
+        "badge": null,
+        "contents": ["Papryka czerwona, krojona, 500 g"],
+        "img": "https://dailyfruits.pl/app/uploads/2020/04/21_papryka-krojona-tacka-600x373.jpg"
+      },
+      {
+        "name": "Ogórek kwaszony",
+        "badge": null,
+        "contents": ["Ogórek kwaszony, krojony, 500 g"],
+        "img": "https://dailyfruits.pl/app/uploads/2020/02/kiszony.png"
+      },
+      {
+        "name": "Ogórek krojony",
+        "badge": "polecane",
+        "contents": ["Ogórek krojony, 500 g"],
+        "img": "https://dailyfruits.pl/app/uploads/2020/02/ogórek.png"
+      },
+      {
+        "name": "Marchewka krojona",
+        "badge": "polecane",
+        "contents": ["Marchewka krojona i obrana, 500 g"],
+        "img": "https://dailyfruits.pl/app/uploads/2020/02/marchewka-krojona-500-g-1-600x436.jpg"
+      },
+      {
+        "name": "Miody",
+        "badge": null,
+        "contents": ["Miód Skarby Rotocza, 400g", "wielokwiatowy", "gryczany", "lipowy"],
+        "img": "https://dailyfruits.pl/app/uploads/2020/02/miód-skarby-roztocza-600x600.png"
+      },
+      {
+        "name": "Do pieczywa",
+        "badge": null,
+        "contents": [
+          "Serek wiejski, 200 g, 5 szt.",
+          "Serek naturalny, 150 g, 2 szt.",
+          "Hummus klasyczny, 180 g, 1 szt.",
+          "Hummus oliwkowy, 180 g, 1 szt.",
+          "Hummus suszone pomidory, 180 g, 1 szt.",
+          "Dżem 100%, truskawkowy, 220 g, 1 szt.",
+          "Dżem 100%, czarna porzeczka, 220 g, 1 szt."
+        ],
+        "img": "https://dailyfruits.pl/app/uploads/2020/02/do-pieczywa-600x600.png"
+      },
+      {
+        "name": "Pieczywo",
+        "badge": null,
+        "contents": [
+          "chleb razowy tradycyjny, 400 g",
+          "pieczywo chrupkie tradycyjne, 150 g",
+          "pieczywo chrupkie razowe, 150 g",
+          "wafle ryżowe naturalne, 110 g",
+          "wafle ryżowe ze słonecznikiem, 110 g"
+        ],
+        "img": "https://dailyfruits.pl/app/uploads/2020/02/do-pieczywa_Obszar-roboczy-1-600x600.png"
+      },
+      {
+        "name": "Do płatków",
+        "badge": null,
+        "contents": [
+          "jogurt naturalny, 180 g",
+          "jogurt owocowy bez cukru, 150 g",
+          "mix bakali – mieszanka studencka, 400 g",
+          "napój owsiany bez cukru, 1 l",
+          "napój ryżowy, bez cukru"
+        ],
+        "img": "https://dailyfruits.pl/app/uploads/2020/02/do-płatków-600x600.png"
+      },
+      {
+        "name": "Płatki i musli",
+        "badge": null,
+        "contents": [
+          "musli LO bez cukru",
+          "musli LO bez cukru, z granatem i jagodami",
+          "musli tradycje",
+          "musli owocowe",
+          "musli tropikalne",
+          "crunchy klasyczne",
+          "płatki owsiane górskie"
+        ],
+        "img": "https://dailyfruits.pl/app/uploads/2020/02/Musli-600x600.png"
+      },
+      {
+        "name": "Zestaw jogurtów",
+        "badge": null,
+        "contents": [
+          "jogurty naturalne, zestaw 20 szt.",
+          "jogurty owocowe bez cukru, zestaw 20 szt.",
+          "serki wiejskie, zestaw 12 szt.",
+          "serki naturalne, zestaw 12 szt."
+        ],
+        "img": "https://dailyfruits.pl/app/uploads/2020/02/serek-wiejski-paletka-600x341.jpg"
+      }
+    ]
+  },
+  "soki": {
+    "intro": "Sok NFC (Skrót NFC – not from concentrate) to sok, który nie został poddany procesowi koncentracji po jego wytłoczeniu, co pomaga zachować pełnię jego wartości. Delikatna pasteryzacja czyni go bezpiecznym do spożycia bez dużych strat składników mineralnych. Pijąc sok NFC, pijesz sok niemalże świeżo wyciśnięty, bez dodatków cukrów, wody, barwników!",
+    "og_image": "https://dailyfruits.pl/app/uploads/2020/03/kategoria-soki.jpg",
+    "products": [
+      {
+        "name": "Soki NFC „Sady Wincenta” 5 l",
+        "badge": null,
+        "contents": ["jabłko", "jabłko-gruszka", "jabłko-marchewka", "jabłko-aronia", "jabłko-pomarańcza", "wieloowocowy", "jabłko-wiśnia", "pomarańcza"],
+        "img": "https://dailyfruits.pl/app/uploads/2020/01/Soki-NFC-„Sady-Wincenta”-5-l-1.jpg"
+      },
+      {
+        "name": "Soki „Rodziny Rembowskich” 250 ml",
+        "badge": "premium",
+        "contents": ["jabłko", "jabłko-wiśnia", "jabłko-porzeczka", "jabłko-mięta", "pomarańcza", "jabłko-aronia", "jabłko z przyprawami korzennymi"],
+        "img": "https://dailyfruits.pl/app/uploads/2020/01/produkt-soki-rodziny-rembowskich.jpg"
+      },
+      {
+        "name": "Soki Dailyfruits w kubkach 200 ml",
+        "badge": "polecane",
+        "contents": ["jabłko", "jabłko-gruszka", "jabłko-marchewka", "jabłko-pomarańcza", "wieloowocowy"],
+        "img": "https://dailyfruits.pl/app/uploads/2020/01/Soki-Dailyfruits.jpg"
+      },
+      {
+        "name": "Soki „Sady Wincenta” 330 ml",
+        "badge": null,
+        "contents": ["jabłko", "jabłko-gruszka", "jabłko-marchewka", "jabłko-wiśnia", "jabłko-porzeczka", "jabłko-aronia", "wieloowocowy"],
+        "img": "https://dailyfruits.pl/app/uploads/2020/01/Sady-Wincenta-330-ml_Obszar-roboczy-1.jpg"
+      },
+      {
+        "name": "Soki „Cymes” 250 ml",
+        "badge": "premium",
+        "contents": ["słodki grejpfrut", "pomarańcza", "marchewka", "mandarynka", "jabłko", "ananas", "burak", "grejpfrut"],
+        "img": "https://dailyfruits.pl/app/uploads/2020/01/cymes-600x529.jpg"
+      },
+      {
+        "name": "Soki „Zielona Tłocznia” 200 ml",
+        "badge": null,
+        "contents": ["malina", "aronia", "czarny bez", "porzeczka"],
+        "img": "https://dailyfruits.pl/app/uploads/2020/01/produkt-soki-zielona-tlocznia-200-ml.jpg"
+      },
+      {
+        "name": "Syropy „Zielona Tłocznia” 400 ml",
+        "badge": null,
+        "contents": ["malina z cukrem", "malina z miodem", "czarny bez z miodem"],
+        "img": "https://dailyfruits.pl/app/uploads/2020/01/produkt-soki-zielona-tlocznia-400-ml.jpg"
+      },
+      {
+        "name": "Syropy „Rembowskich” 500 ml",
+        "badge": null,
+        "contents": ["malina", "wiśnia"],
+        "img": "https://dailyfruits.pl/app/uploads/2020/01/produkt-syropy-rebmowskich.jpg"
+      }
+    ]
+  },
+  "warzywa": {
+    "intro": "Zdrowe przekąski dla pracowników, gotowe do spożycia. Sprawdzą się w biurach i zakładach produkcyjnych. Pakowane w papierowe kubeczki z pokrywką.",
+    "og_image": "https://dailyfruits.pl/app/uploads/2020/04/kategoria-krojone.jpg",
+    "products": [
+      {
+        "name": "Warzywa MIX 150 g II",
+        "badge": null,
+        "contents": ["Warzywa MIX 150 g", "30% marchewki", "70% mix papryka, ogórek, pomidorki", "zestaw 12 szt."],
+        "img": "https://dailyfruits.pl/app/uploads/2020/01/zestaw-warzyw-krojonych-12szt-tacka-600x459.jpg"
+      },
+      {
+        "name": "Warzywa MIX 150 g I",
+        "badge": null,
+        "contents": ["Warzywa MIX 150 g", "50% marchewki", "50% mix papryka, ogórek, pomidorki", "zestaw 12 szt."],
+        "img": "https://dailyfruits.pl/app/uploads/2020/01/zestaw-warzyw-krojonych-12szt-tacka-600x459.jpg"
+      },
+      {
+        "name": "Marchewka krojona 150 g",
+        "badge": null,
+        "contents": ["Warzywa marchewka 150 g", "zestaw 12 szt."],
+        "img": "https://dailyfruits.pl/app/uploads/2020/01/Marchew-krojona-600x452.jpg"
+      },
+      {
+        "name": "Warzywa krojne",
+        "badge": null,
+        "contents": ["MIX krojonych warzyw, 500 g"],
+        "img": "https://dailyfruits.pl/app/uploads/2020/02/mix-warzyw-tacka-600x389.jpg"
+      },
+      {
+        "name": "Rzodkiewka",
+        "badge": null,
+        "contents": ["Rzodkiewka obrana, umyta, 500 g"],
+        "img": "https://dailyfruits.pl/app/uploads/2020/02/rzodkiewka.png"
+      },
+      {
+        "name": "Pomidorki koktajlowe",
+        "badge": null,
+        "contents": ["Pomidorki koktajlowe, umyte, 500 g"],
+        "img": "https://dailyfruits.pl/app/uploads/2020/02/cherry.png"
+      },
+      {
+        "name": "Papryka krojona",
+        "badge": null,
+        "contents": ["Papryka czerwona, krojona, 500 g"],
+        "img": "https://dailyfruits.pl/app/uploads/2020/04/21_papryka-krojona-tacka-600x373.jpg"
+      },
+      {
+        "name": "Ogórek kwaszony",
+        "badge": null,
+        "contents": ["Ogórek kwaszony, krojony, 500 g"],
+        "img": "https://dailyfruits.pl/app/uploads/2020/02/kiszony.png"
+      },
+      {
+        "name": "Ogórek krojony",
+        "badge": "polecane",
+        "contents": ["Ogórek krojony, 500 g"],
+        "img": "https://dailyfruits.pl/app/uploads/2020/02/ogórek.png"
+      },
+      {
+        "name": "Marchewka krojona",
+        "badge": "polecane",
+        "contents": ["Marchewka krojona i obrana, 500 g"],
+        "img": "https://dailyfruits.pl/app/uploads/2020/02/marchewka-krojona-500-g-1-600x436.jpg"
+      },
+      {
+        "name": "Kalarepa krojona",
+        "badge": null,
+        "contents": ["Kalarepa krojona, 500 g"],
+        "img": "https://dailyfruits.pl/app/uploads/2020/02/kalarepa.png"
+      }
+    ]
+  },
+  "spotkania": {
+    "intro": null,
+    "error": "404 Not Found — strona https://dailyfruits.pl/oferta/zestawy-na-spotkania-firmowe/ nie istnieje na live (link w menu prowadzi do 'Strony nie znaleziono'). Zweryfikowano podwójnie 2026-06-07.",
+    "products": []
+  },
+  "batony": {
+    "intro": "Zdrowe przekąski dla Twoich pracowników! Daj swoim pracownikom lepszą alternatywę zamiast niezdrowych łakoci z dodatkiem cukru.",
+    "og_image": "https://dailyfruits.pl/app/uploads/2020/04/kategoria-batony.jpg",
+    "products": [
+      {
+        "name": "Zestaw batonów Dobra Kaloria – 20 szt.",
+        "badge": null,
+        "contents": [
+          "Dostępne smaki:",
+          "Solony orzech",
+          "kokos, nuta pomarańczy",
+          "Chrupiący orzech",
+          "Kakao, orzech",
+          "Kokos, orzech",
+          "Kawa, orzech",
+          "Jabłko, cynamon",
+          "Superfoods goji, figa",
+          "Superfoods spirulina, cytryna",
+          "Superfoods ziarna kakaowca",
+          "Superfooods kakowiec, mięta",
+          "Superfoods pomarańcza, pyłek pszeczeli"
+        ],
+        "img": "https://dailyfruits.pl/app/uploads/2020/04/DOBRA-KALORIA-600x677.png"
+      },
+      {
+        "name": "Zestaw ciastek 300 g – 3 op.",
+        "badge": null,
+        "contents": ["3 opakowania, po 300 g", "kakaowe, z morelą, z żurawiną"],
+        "img": "https://dailyfruits.pl/app/uploads/2020/04/Ciasteczka-zbozowe-400-g-600x600.png"
+      },
+      {
+        "name": "Zestaw ciastek 50 g – 20szt.",
+        "badge": null,
+        "contents": ["Kakaowe, z morelą, z żurawiną"],
+        "img": "https://dailyfruits.pl/app/uploads/2020/04/ciasteczka-zbozowe-30g-600x600.png"
+      }
+    ]
+  },
+  "dzien_zdrowia": {
+    "intro": "Dzień zdrowia dla firm to indywidualna propozycja aktywności dla Twojej firmy. Usługi dietetyczne, wykłady o zdrowym żywieniu, wspólne wyciskanie soków, śniadania z pracownikami, burza mózgów – razem z nami masz realny wpływ na zdrowie pracowników.",
+    "og_image": "https://dailyfruits.pl/app/uploads/2020/03/firmowy-dzień-zdrowia.jpeg",
+    "products": [
+      {
+        "name": "Wykład dietetyka – 8 tematów do wyboru (online lub stacjonarnie)",
+        "badge": "polecane",
+        "contents": [
+          "Dlaczego warto zmieniać nawyki żywieniowe?",
+          "Żywieniowe wspomaganie pamięci i koncentracji.",
+          "Owoce? Wyciśnij z nich jak najwięcej zdrowia",
+          "Jak czytać etykiety?",
+          "Co nas truje – co nas ratuje?",
+          "Fakty i mity dietetyczne.",
+          "Zdrowo, szybko, budżetowo – jak zacząć lepiej jeść?",
+          "Żywieniowe wspomaganie odporności – domowa apteczka pełna zdrowia."
+        ],
+        "img": "https://dailyfruits.pl/app/uploads/2020/02/szkolenia_Obszar-roboczy-1.jpg"
+      },
+      {
+        "name": "Indywidualne spotkania z dietetykiem z analizą składu ciała",
+        "badge": "polecane",
+        "contents": [
+          "Spotkanie z dietetykiem rekomendowane jest na około 15 minut. Część czasu przeznaczona jest na analizę składu ciała z omówieniem wyniku, a następnie przeprowadzana jest konsultacja dietetyka z pracownikiem.",
+          "Spotkanie może być doskonałym wstępem do dużej zmiany, uświadomieniu ewentualnych problemów i nakierowaniu na właściwy sposób działania. Regularne wizyty dietetyka w firmie pozwolą objąć pracowników stałą, kompleksową opieką dietetyczną."
+        ],
+        "img": "https://dailyfruits.pl/app/uploads/2020/02/Bez-nazwy-2_Obszar-roboczy-1-600x558.png"
+      },
+      {
+        "name": "Ankieta nawyków żywieniowych",
+        "badge": null,
+        "contents": ["Badanie nawyków pracowników wraz z analizą odpowiedzi"],
+        "img": "https://dailyfruits.pl/app/uploads/2020/02/ankieta-01-600x540.jpg"
+      },
+      {
+        "name": "Materiały edukacyjne",
+        "badge": null,
+        "contents": [
+          "spersonalizowane plakaty edukacyjne",
+          "comiesięczne ulotki edukacyjne w skrzynkach",
+          "przepiśniki i piramida zdrowego żywienia",
+          "kalendarz motywacyjny",
+          "wiele innych!"
+        ],
+        "img": "https://dailyfruits.pl/app/uploads/2020/02/materiały-edukacyjne-600x508.jpg"
+      },
+      {
+        "name": "Event sokowy",
+        "badge": null,
+        "contents": ["Wyciskanie świeżych soków owocowych i warzywnych w firmie"],
+        "img": "https://dailyfruits.pl/app/uploads/2020/02/event-sok.jpg"
+      },
+      {
+        "name": "Zestaw soków tłoczonych NFC Dailyfruits 200 ml, 20 szt.",
+        "badge": "polecane",
+        "contents": ["jabłko", "jabłko-gruszka", "jabłko-marchewka", "jabłko-pomarańcza", "wieloowocowy"],
+        "img": "https://dailyfruits.pl/app/uploads/2020/01/zestaw-soków-na-palecie-20szt-DF-mix-600x379.jpg"
+      },
+      {
+        "name": "Zestaw warzyw krojonych 12 szt.",
+        "badge": null,
+        "contents": ["(12 x 150 g) Warzywa myte, obrane, pokrojone w słupki.", "mix warzyw: marchewka, ogórek, pomidorki koktajlowe"],
+        "img": "https://dailyfruits.pl/app/uploads/2020/01/zestaw-warzyw-krojonych-12szt-tacka-600x459.jpg"
+      },
+      {
+        "name": "Zestaw bakalii i owoców suszonych 20szt.",
+        "badge": "nowość!",
+        "contents": [
+          "Bakalie MIX 45 g",
+          "Bakalie MIX 65 g",
+          "Chipsy bananowe 70 g",
+          "Daktyle suszone 65 g",
+          "Morele suszone 65 g",
+          "Śliwki suszone 65 g",
+          "Żurawina suszona 65 g"
+        ],
+        "img": "https://dailyfruits.pl/app/uploads/2020/02/Etykiety_bakalie-wizualizacja-szkic.jpg"
+      },
+      {
+        "name": "Zestaw Premium MIX 1 +",
+        "badge": "polecane",
+        "contents": ["2 kg jabłek", "3 kg bananów", "3 kg owoców sezonowych", "1 kg winogron / owoców miękkich"],
+        "img": "https://dailyfruits.pl/app/uploads/2020/01/5_skrzynka-banan-i-owoce-sezonowe-600x434.jpg"
+      }
+    ]
+  },
+  "programy": {
+    "intro": "Zaplanuj z nami drugoplanowy program żywieniowy dla Twojej firmy! Dbaj o zdrowie swoich pracowników i wspieraj ich w codziennych działaniach zdrowotnych.",
+    "og_image": "https://dailyfruits.pl/app/uploads/2020/03/kategoria-edukacja.jpg",
+    "products": [
+      {
+        "name": "Wykład dietetyka – 8 tematów do wyboru (online lub stacjonarnie)",
+        "badge": "polecane",
+        "contents": [
+          "Dlaczego warto zmieniać nawyki żywieniowe?",
+          "Żywieniowe wspomaganie pamięci i koncentracji.",
+          "Owoce? Wyciśnij z nich jak najwięcej zdrowia",
+          "Jak czytać etykiety?",
+          "Co nas truje – co nas ratuje?",
+          "Fakty i mity dietetyczne.",
+          "Zdrowo, szybko, budżetowo – jak zacząć lepiej jeść?",
+          "Żywieniowe wspomaganie odporności – domowa apteczka pełna zdrowia."
+        ],
+        "img": "https://dailyfruits.pl/app/uploads/2020/02/szkolenia_Obszar-roboczy-1.jpg"
+      },
+      {
+        "name": "Indywidualne spotkania z dietetykiem z analizą składu ciała",
+        "badge": "polecane",
+        "contents": [
+          "Spotkanie z dietetykiem rekomendowane jest na około 15 minut. Część czasu przeznaczona jest na analizę składu ciała z omówieniem wyniku, a następnie przeprowadzana jest konsultacja dietetyka z pracownikiem.",
+          "Spotkanie może być doskonałym wstępem do dużej zmiany, uświadomieniu ewentualnych problemów i nakierowaniu na właściwy sposób działania. Regularne wizyty dietetyka w firmie pozwolą objąć pracowników stałą, kompleksową opieką dietetyczną."
+        ],
+        "img": "https://dailyfruits.pl/app/uploads/2020/02/Bez-nazwy-2_Obszar-roboczy-1-600x558.png"
+      },
+      {
+        "name": "Materiały edukacyjne",
+        "badge": null,
+        "contents": [
+          "spersonalizowane plakaty edukacyjne",
+          "comiesięczne ulotki edukacyjne w skrzynkach",
+          "przepiśniki i piramida zdrowego żywienia",
+          "kalendarz motywacyjny",
+          "wiele innych!"
+        ],
+        "img": "https://dailyfruits.pl/app/uploads/2020/02/materiały-edukacyjne-600x508.jpg"
+      }
+    ]
+  },
+  "ekspozycja": {
+    "intro": "Jak przechowywać i wyeksponować? Dla Twojej wygody proponujemy ekspozytory i urządzenia chłodnicze do wygodnego przechowywania i prezentacji produktów. Wypożycz za niewielką miesięczną opłatą.",
+    "og_image": "https://dailyfruits.pl/app/uploads/2020/03/kategoria-przechowywanie.jpg",
+    "products": [
+      {
+        "name": "Ekspozytor drewniany",
+        "badge": "polecane",
+        "contents": [
+          "Bardzo estetyczny, pasuje do najbardziej wyszukanego wystroju Twojego biura.",
+          "Wymiary:",
+          "Wysokość: 156 cm",
+          "Szerokość: 50 cm",
+          "Głębokość: 33 cm"
+        ],
+        "img": "https://dailyfruits.pl/app/uploads/2020/02/ekspozytor-drewniany.jpg"
+      },
+      {
+        "name": "Ekspozytor metalowy",
+        "badge": null,
+        "contents": [
+          "Wykorzystywany głównie w zakładach produkcyjnych z uwagi na jego trwałość.",
+          "Wymiary:",
+          "Wysokość: 151 cm",
+          "Szerokość: 77 cm",
+          "Głębokość: 40 cm"
+        ],
+        "img": "https://dailyfruits.pl/app/uploads/2020/01/34_stojak_metalowy-600x953.jpg"
+      },
+      {
+        "name": "Lodówka Whirpool",
+        "badge": "polecane",
+        "contents": [
+          "Niektóre produkty, takie jak krojone warzywa i owoce, jogurty czy soki jednodniowe powinny być przechowywane w temperaturze od 2 do 6°C.",
+          "Nasza lodówka pomieści produkty dla nawet 180 osób.",
+          "Wymiary:",
+          "Wysokość: 204 cm",
+          "Szerokość: 57 cm",
+          "Głębokość: 54 cm"
+        ],
+        "img": "https://dailyfruits.pl/app/uploads/2020/01/lodówka-600x771.jpg"
+      }
+    ]
+  },
+  "indywidualne": {
+    "intro": "Zamów zestawy indywidualne pełne zdrowia. Każdy zestaw jest osobno foliowany, przygotowany w bezpiecznych warunkach. To świetna opcja, gdy zależy ci na przekazaniu pakietu osobno dla każdego pracownika. Zestawy składają się z owoców, warzyw, soków, bakalii i innych zdrowych produktów.",
+    "og_image": "https://dailyfruits.pl/app/uploads/2020/06/tacka-zmienione-333.jpg",
+    "products": [
+      {
+        "name": "Owoce i sok",
+        "badge": null,
+        "contents": ["jabłko 0,2 kg", "owoce sezonowe 0,2 kg", "sok NFC 200 ml jabłkowy"],
+        "img": "https://dailyfruits.pl/app/uploads/2020/06/zestawy-0604-600x509.jpg"
+      },
+      {
+        "name": "Owoce i sok MAX",
+        "badge": null,
+        "contents": ["jabłko 0,2 kg", "owoce sezonowe 0,2 kg", "banan 0,2 kg", "sok NFC 200 ml jabłkowy"],
+        "img": "https://dailyfruits.pl/app/uploads/2020/06/zestawy-0604-600x509.jpg"
+      },
+      {
+        "name": "Zestaw Go",
+        "badge": null,
+        "contents": ["jabłko 0,2 kg", "bakalie MIX 65 g, 1 szt.", "daktyle szuszone 65 g, 1 szt.", "baton owocowy kawa & orzech 1 szt.", "sok NFC 200 ml jabłkowy"],
+        "img": "https://dailyfruits.pl/app/uploads/2020/06/zestawy-0605-600x509.jpg"
+      },
+      {
+        "name": "Zestaw Go Max",
+        "badge": null,
+        "contents": ["jabłko 0,2 kg", "bakalie MIX 65 g, 1 szt.", "morele suszone 65 g, 1 szt.", "baton owocowy jabłko & cynamon, 1 szt.", "baton owocowy kawa & orzech, 1 szt."],
+        "img": "https://dailyfruits.pl/app/uploads/2020/06/zestawy-0605-600x509.jpg"
+      },
+      {
+        "name": "Zestaw Odporność",
+        "badge": null,
+        "contents": ["jabłko 0,2 kg", "cytryna 0,15 kg", "sok NFC 200 ml jabłkowy", "imbir korzeń 0,1 kg"],
+        "img": "https://dailyfruits.pl/app/uploads/2020/06/zestawy-0602-600x509.jpg"
+      },
+      {
+        "name": "Zestaw Odporność Max",
+        "badge": null,
+        "contents": ["jabłko 0,2 kg", "cytryna 0,15 kg", "sok malinowy do herbaty Zielona Tłocznia 200 ml", "imbir korzeń 0,15 kg"],
+        "img": "https://dailyfruits.pl/app/uploads/2020/06/zestawy-0602-600x509.jpg"
+      },
+      {
+        "name": "Zestaw Power",
+        "badge": null,
+        "contents": ["jabłko 0,2 kg", "bakalie MIX 65 g, 1 szt.", "baton owocowy kawa & orzech 1 szt.", "sok NFC 200 ml jabłkowy"],
+        "img": "https://dailyfruits.pl/app/uploads/2020/06/zestawy-0606-600x509.jpg"
+      },
+      {
+        "name": "Zestaw Power Max",
+        "badge": null,
+        "contents": ["jabłko 0,2 kg", "banan 0,2 kg", "bakalie MIX 65 g, 1 szt.", "baton owocowy kawa & orzech 1 szt.", "sok NFC 200 ml jabłkowy"],
+        "img": "https://dailyfruits.pl/app/uploads/2020/06/zestawy-0606-600x509.jpg"
+      }
+    ]
+  },
+  "ekologiczne": {
+    "intro": "Stopniowo rozszerzamy ofertę o produkty od certyfikowanych ekologicznych upraw.",
+    "og_image": "https://dailyfruits.pl/app/uploads/2020/04/kategoria-ekologiczne.jpg",
+    "products": [
+      {
+        "name": "Żywność ekologiczna",
+        "badge": null,
+        "contents": [
+          "Poznaj ofertę ekologicznych produktów!",
+          "Poza klasycznymi produktami proponujemy również certyfikowane produkty rolnictwa ekologicznego.",
+          "Przechowujemy i konfekcjonujemy je według najwyższych standardów jakości oraz dostarczamy je w specjalnych skrzynkach.",
+          "Zapytaj nas o szczegóły",
+          "Certyfikat kod Eco: PL-ECO-09"
+        ],
+        "img": "https://dailyfruits.pl/app/uploads/2020/02/eco-produkty.jpg"
+      }
+    ]
+  }
+}
