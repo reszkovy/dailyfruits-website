@@ -35,8 +35,11 @@ PROMPT = (
     "Take this real product photo and improve it: pure white seamless studio background, "
     "soft diffused studio lighting, gentle realistic shadow under the product, "
     "centered composition with even margins on all sides. "
-    "Keep the actual product, its packaging, labels, text and contents EXACTLY as in the "
-    "original photo — do not add, remove, replace or alter any products, items or text. "
+    "Keep the actual food products, their quantities, arrangement and composition unchanged — "
+    "do not add, remove or replace any items. "
+    "IMPORTANT: if any packaging, wrapper, box or bottle shows a brand name, logo or trademark, "
+    "remove the branding completely — replace it with clean, plain, unbranded packaging of the "
+    "same shape, material and color, with no text or logos. "
     "Photorealistic, sharp, high-end food photography look."
 )
 
