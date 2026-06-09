@@ -5,3 +5,7 @@ paczka_02/
 ux-audit/
 packshoty dostawcy/
 __pycache__/
+live-assets/*.jpg
+live-assets/*.jpeg
+live-assets/*.png
+live-assets/elevated/
