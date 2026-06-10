@@ -300,32 +300,32 @@
     },
     {
       "source": "/oferta/skrzynki-abonamentowe/",
-      "destination": "/oferta#owoce",
+      "destination": "/oferta",
       "statusCode": 301
     },
     {
       "source": "/oferta/zestawy-sniadaniowe/",
-      "destination": "/oferta#sniadania",
+      "destination": "/oferta",
       "statusCode": 301
     },
     {
       "source": "/oferta/bakalie-i-owoce-suszone/",
-      "destination": "/oferta#bakalie",
+      "destination": "/oferta",
       "statusCode": 301
     },
     {
       "source": "/oferta/soki-i-syropy/",
-      "destination": "/oferta#soki",
+      "destination": "/oferta",
       "statusCode": 301
     },
     {
       "source": "/oferta/warzywa-krojone/",
-      "destination": "/oferta#owoce",
+      "destination": "/oferta",
       "statusCode": 301
     },
     {
       "source": "/oferta/zestawy-batonow-i-ciastek/",
-      "destination": "/oferta#bakalie",
+      "destination": "/oferta",
       "statusCode": 301
     },
     {
