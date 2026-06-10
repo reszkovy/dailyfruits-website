@@ -357,11 +357,6 @@
       "source": "/oferta/programy-zywieniowe-i-edukacyjne/",
       "destination": "/programy-zywieniowe",
       "statusCode": 301
-    },
-    {
-      "source": "/otwarte-innowacje/",
-      "destination": "/o-nas",
-      "statusCode": 301
     }
   ]
 }
