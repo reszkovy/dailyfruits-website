@@ -69,8 +69,6 @@
 
   <!-- Strony prawne -->
   <url><loc>https://dailyfruits.pl/kontakt</loc><lastmod>2026-05-25</lastmod><changefreq>yearly</changefreq><priority>0.5</priority></url>
-  <url><loc>https://dailyfruits.pl/polityka-prywatnosci</loc><lastmod>2026-05-25</lastmod><changefreq>yearly</changefreq><priority>0.3</priority></url>
-  <url><loc>https://dailyfruits.pl/regulamin</loc><lastmod>2026-05-25</lastmod><changefreq>yearly</changefreq><priority>0.3</priority></url>
 
 
   <!-- Migracja ze starej dailyfruits.pl -->

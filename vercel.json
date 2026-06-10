@@ -297,6 +297,71 @@
       "source": "/blog/:path+",
       "destination": "/blog",
       "statusCode": 301
+    },
+    {
+      "source": "/oferta/skrzynki-abonamentowe/",
+      "destination": "/oferta#owoce",
+      "statusCode": 301
+    },
+    {
+      "source": "/oferta/zestawy-sniadaniowe/",
+      "destination": "/oferta#sniadania",
+      "statusCode": 301
+    },
+    {
+      "source": "/oferta/bakalie-i-owoce-suszone/",
+      "destination": "/oferta#bakalie",
+      "statusCode": 301
+    },
+    {
+      "source": "/oferta/soki-i-syropy/",
+      "destination": "/oferta#soki",
+      "statusCode": 301
+    },
+    {
+      "source": "/oferta/warzywa-krojone/",
+      "destination": "/oferta#owoce",
+      "statusCode": 301
+    },
+    {
+      "source": "/oferta/zestawy-batonow-i-ciastek/",
+      "destination": "/oferta#bakalie",
+      "statusCode": 301
+    },
+    {
+      "source": "/oferta/produkty-ekologiczne/",
+      "destination": "/oferta",
+      "statusCode": 301
+    },
+    {
+      "source": "/oferta/przechowywanie-i-ekspozycja/",
+      "destination": "/oferta",
+      "statusCode": 301
+    },
+    {
+      "source": "/oferta/zestawy-indywidualne/",
+      "destination": "/oferta",
+      "statusCode": 301
+    },
+    {
+      "source": "/oferta/zestawy-na-spotkania-firmowe/",
+      "destination": "/catering-firmowy",
+      "statusCode": 301
+    },
+    {
+      "source": "/oferta/firmowy-dzien-zdrowia/",
+      "destination": "/programy-zywieniowe",
+      "statusCode": 301
+    },
+    {
+      "source": "/oferta/programy-zywieniowe-i-edukacyjne/",
+      "destination": "/programy-zywieniowe",
+      "statusCode": 301
+    },
+    {
+      "source": "/otwarte-innowacje/",
+      "destination": "/o-nas",
+      "statusCode": 301
     }
   ]
 }
