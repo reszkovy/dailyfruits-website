@@ -251,37 +251,7 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
     <div class="container">
         <div class="form-layout">
             <div class="form-card reveal">
-                <form id="contactForm">
-                    <div class="form-group"><label for="fullname">Imię i nazwisko</label><input type="text" id="fullname" name="fullname" required placeholder="Jan Kowalski"></div>
-                    <div class="form-row">
-                        <div class="form-group"><label for="email">Email</label><input type="email" id="email" name="email" required placeholder="jan.kowalski@firma.pl"></div>
-                        <div class="form-group"><label for="phone">Telefon</label><input type="tel" id="phone" name="phone" required placeholder="+48 123 456 789"></div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group"><label for="company">Nazwa firmy</label><input type="text" id="company" name="company" required placeholder="ABC sp. z o.o."></div>
-                        <div class="form-group"><label for="role">Twoja rola</label><select id="role" name="role"><option value="">Wybierz</option><option>Office Manager</option><option>HR Manager / HR Director</option><option>Facility Manager</option><option>CEO / Zarząd</option><option>Inna</option></select></div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group"><label for="city">Miasto</label><input type="text" id="city" name="city" required placeholder="np. Warszawa"></div>
-                        <div class="form-group"><label for="employees">Liczba pracowników</label><select id="employees" name="employees" required><option value="">Wybierz</option><option value="1-20">1–20</option><option value="21-50">21–50</option><option value="51-100">51–100</option><option value="101-250">101–250</option><option value="251-500">251–500</option><option value="500+">500+</option></select></div>
-                    </div>
-                    <div style="margin-bottom:22px">
-                        <span class="checkbox-label">Interesujące produkty</span>
-                        <div class="checkbox-grid">
-                            <label class="checkbox-item"><input type="checkbox" name="products" value="owoce"> <img src="icons/icon-apple.webp" alt="Ikona owoców" width="20" height="20" loading="lazy" style="display:inline-block;vertical-align:middle"> Owoce dla pracowników</label>
-                            <label class="checkbox-item"><input type="checkbox" name="products" value="kanapki"> <img src="icons/icon-sandwich.webp" alt="Ikona kanapki" width="20" height="20" loading="lazy" style="display:inline-block;vertical-align:middle"> Kanapki i sałatki</label>
-                            <label class="checkbox-item"><input type="checkbox" name="products" value="napoje"> <img src="icons/icon-juice-box.webp" alt="Ikona napoju" width="20" height="20" loading="lazy" style="display:inline-block;vertical-align:middle"> Napoje</label>
-                            <label class="checkbox-item"><input type="checkbox" name="products" value="śniadania"> <img src="icons/icon-cereal-bowl.webp" alt="Ikona śniadań" width="20" height="20" loading="lazy" style="display:inline-block;vertical-align:middle"> Produkty śniadaniowe</label>
-                            <label class="checkbox-item"><input type="checkbox" name="products" value="przekaski"> <img src="icons/icon-avocado.webp" alt="Ikona przekąsek" width="20" height="20" loading="lazy" style="display:inline-block;vertical-align:middle"> Przekąski na co dzień</label>
-                            <label class="checkbox-item"><input type="checkbox" name="products" value="kawa"> <img src="icons/icon-coffee.webp" alt="Ikona kawy" width="20" height="20" loading="lazy" style="display:inline-block;vertical-align:middle"> Kawa do biura</label>
-                            <label class="checkbox-item"><input type="checkbox" name="products" value="upominki"> <img src="icons/icon-gift.webp" alt="Ikona prezentu" width="20" height="20" loading="lazy" style="display:inline-block;vertical-align:middle"> Upominki dla pracowników</label>
-                            <label class="checkbox-item"><input type="checkbox" name="products" value="catering"> <img src="icons/icon-party.webp" alt="Ikona cateringu" width="20" height="20" loading="lazy" style="display:inline-block;vertical-align:middle"> Catering na spotkania</label>
-                        </div>
-                    </div>
-                    <div class="form-group"><label for="message">Dodatkowe informacje</label><textarea id="message" name="message" placeholder="Opowiedz nam o potrzebach Twojego biura..."></textarea></div>
-                    <div class="form-submit"><button type="submit" class="btn btn-red-solid">Wyślij zapytanie →</button></div>
-                </form>
-                <div class="form-success" id="formSuccess"><div class="success-icon">✓</div><h2>Dziękujemy!</h2><p>Twoje zapytanie zostało wysłane. Skontaktujemy się w ciągu 24 godzin z propozycją dopasowaną do Twojego biura.</p></div>
+                <iframe id="bwp-form" src="https://betterworkplace.pl/kontakt/zapytanie-embed" title="Formularz zapytania DailyFruits" style="width:100%;min-height:720px;border:none;display:block;background:transparent;border-radius:12px;" loading="lazy"></iframe><h2>Dziękujemy!</h2><p>Twoje zapytanie zostało wysłane. Skontaktujemy się w ciągu 24 godzin z propozycją dopasowaną do Twojego biura.</p></div>
             </div>
 
             <div class="info-card-wrap">
@@ -360,7 +330,6 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
     });
 
     // ─── FORM SUBMIT ───
-    document.getElementById('contactForm').addEventListener('submit', e => { e.preventDefault(); document.getElementById('contactForm').style.display = 'none'; document.getElementById('formSuccess').classList.add('show'); });
 </script>
 
 <div class="mobile-sticky-cta" id="mobileCta" style="display:none!important">
@@ -437,6 +406,18 @@ document.addEventListener('DOMContentLoaded', function() {
         var calcFired = false;
         calcSliders.forEach(function(s) { s.addEventListener('input', function() { if (!calcFired) { calcFired = true; dataLayer.push({ event: 'calculator_used', page: location.pathname }); }});});
     }
+});
+</script>
+<script>
+const BRAND = 'Daily fruits';
+window.addEventListener('message', function(e) {
+  if (e.data && e.data.type === 'bwp:request-info') {
+    e.source.postMessage({ type: 'bwp:info', url: window.location.href, referrer: document.referrer, brand: BRAND }, '*');
+  }
+  if (e.data && e.data.type === 'bwp:resize') {
+    var f = document.getElementById('bwp-form');
+    if (f) f.style.height = e.data.height + 'px';
+  }
 });
 </script>
 <script src="transition.js"></script>
