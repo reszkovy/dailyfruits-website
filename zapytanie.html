@@ -249,7 +249,29 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
 
 <section class="form-section">
     <div class="container">
-        <iframe id="bwp-form" src="https://betterworkplace.pl/kontakt/zapytanie-embed" title="Formularz zapytania DailyFruits" style="width:100%;max-width:720px;margin:0 auto;min-height:1500px;border:none;display:block;background:transparent;" loading="lazy"></iframe>
+        <div class="form-card reveal" style="max-width:760px;margin:0 auto;">
+            <form id="bwpForm" novalidate>
+                <h2 style="font-size:20px;color:var(--green-dark);margin:0 0 18px;">Dane kontaktowe</h2>
+                <div class="form-row">
+                    <div class="form-group"><label for="first_name">Imię <span style="color:var(--red)">*</span></label><input type="text" id="first_name" name="first_name" required placeholder="np. Jan"></div>
+                    <div class="form-group"><label for="last_name">Nazwisko <span style="color:var(--red)">*</span></label><input type="text" id="last_name" name="last_name" required placeholder="np. Kowalski"></div>
+                </div>
+                <div class="form-group"><label for="email">Email służbowy <span style="color:var(--red)">*</span></label><input type="email" id="email" name="email" required placeholder="np. jan.kowalski@firma.pl"></div>
+                <div class="form-group"><label for="phone">Telefon <span style="color:var(--red)">*</span></label><input type="tel" id="phone" name="phone" required placeholder="111 222 333"></div>
+
+                <h2 style="font-size:20px;color:var(--green-dark);margin:32px 0 18px;">Dane firmy</h2>
+                <div class="form-group"><label for="nip">NIP <span style="color:var(--red)">*</span></label><input type="text" id="nip" name="nip" required inputmode="numeric" placeholder="np. 6793077034"></div>
+                <div class="form-group"><label for="company">Nazwa firmy</label><input type="text" id="company" name="company" placeholder="ABC sp. z o.o."></div>
+
+                <h2 style="font-size:20px;color:var(--green-dark);margin:32px 0 18px;">Zadaj pytanie</h2>
+                <div class="form-group"><label for="message">Wiadomość (opcjonalnie)</label><textarea id="message" name="message" placeholder="Np. interesują nas owoce i kawa dla 50 osób w biurze w Warszawie."></textarea></div>
+
+                <label class="checkbox-item" style="margin:8px 0 18px;"><input type="checkbox" name="newsletter" value="1"> Chcę otrzymywać od BetterWorkplace Sp. z o.o. newsletter o tematyce benefitów pozapłacowych.</label>
+                <p style="font-size:13px;line-height:1.6;color:var(--gray-500);margin-bottom:22px;">Wysyłając ten formularz, wyrażasz zgodę na przetwarzanie Twoich danych przez BetterWorkplace Sp. z&nbsp;o.o. w celu realizacji zapytania. Więcej w <a href="polityka-prywatnosci" style="color:var(--green-dark);text-decoration:underline;">Polityce prywatności</a>.</p>
+                <div class="form-submit"><button type="submit" class="btn btn-red-solid">Chcę otrzymać ofertę →</button></div>
+            </form>
+            <div class="form-success" id="formSuccess"><div class="success-icon">✓</div><h2>Dziękujemy!</h2><p>Twoje zapytanie zostało wysłane. Skontaktujemy się w ciągu 24 godzin z propozycją dopasowaną do Twojego biura.</p></div>
+        </div>
     </div>
 </section>
 
@@ -388,16 +410,40 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 </script>
 <script>
-const BRAND = 'Daily fruits';
-window.addEventListener('message', function(e) {
-  if (e.data && e.data.type === 'bwp:request-info') {
-    e.source.postMessage({ type: 'bwp:info', url: window.location.href, referrer: document.referrer, brand: BRAND }, '*');
-  }
-  if (e.data && e.data.type === 'bwp:resize') {
-    var f = document.getElementById('bwp-form');
-    if (f) f.style.height = e.data.height + 'px';
-  }
-});
+(function(){
+  var form = document.getElementById('bwpForm');
+  if (!form) return;
+  var BRAND = 'Daily fruits';
+  // ⬇⬇ PUNKT PODPIĘCIA BWP: wstaw tu endpoint/metodę z opcji 2 (render w DOM) ⬇⬇
+  var BWP_ENDPOINT = ''; // np. 'https://betterworkplace.pl/api/inquiry' — do uzupełnienia od BWP
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    var btn = form.querySelector('button[type=submit]');
+    // prosta walidacja wymaganych pól
+    var ok = true;
+    form.querySelectorAll('[required]').forEach(function(i){
+      if (!i.value.trim()) { i.style.borderColor = 'var(--red)'; ok = false; } else { i.style.borderColor = ''; }
+    });
+    if (!ok) return;
+    var data = {};
+    new FormData(form).forEach(function(v,k){ data[k] = v; });
+    data.brand = BRAND;
+    data.url = window.location.href;
+    data.referrer = document.referrer;
+    if (window.dataLayer) dataLayer.push({ event: 'form_submit', form_name: 'zapytanie', brand: BRAND });
+    btn.textContent = 'Wysyłanie...'; btn.disabled = true;
+    var done = function(){ form.style.display = 'none'; document.getElementById('formSuccess').classList.add('show'); window.scrollTo({top: form.getBoundingClientRect().top + window.scrollY - 160, behavior:'smooth'}); };
+    if (BWP_ENDPOINT) {
+      fetch(BWP_ENDPOINT, { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(data) })
+        .then(function(r){ done(); })
+        .catch(function(){ btn.textContent = 'Spróbuj ponownie'; btn.disabled = false; });
+    } else {
+      // brak endpointu — pokaz sukces (do czasu podpiecia BWP)
+      console.warn('BWP_ENDPOINT nieustawiony — dane:', data);
+      done();
+    }
+  });
+})();
 </script>
 <script src="transition.js"></script>
 <script src="mn.js?v=4"></script>
