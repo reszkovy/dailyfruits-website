@@ -143,7 +143,7 @@
         .hero-sticker { position: absolute; bottom: -16px; right: 24px; z-index: 3; }
 
         /* ─── HERO CATEGORY TABS (full-width bar) ─── */
-        .hero-tabs-bar { background: var(--lime-bg); border-bottom: 2px solid rgba(27,94,58,0.08); margin-top: 108px; overflow: visible; position: relative; }
+        .hero-tabs-bar { background: var(--lime-bg); border-bottom: 2px solid rgba(27,94,58,0.08); margin-top: 108px; overflow: visible; position: relative;; position: relative; z-index: 8; }
         .hero-tabs-inner { display: flex; align-items: center; justify-content: center; padding: 14px 48px; max-width: 1440px; margin: 0 auto; position: relative; }
         .hero-tabs-label { position: absolute; left: 48px; font-size: 13px; font-weight: 700; color: var(--green-dark); opacity: 0.5; line-height: 1.35; flex-shrink: 0; }
         .hero-tabs { display: flex; justify-content: center; gap: 4px; overflow: visible; }
@@ -627,12 +627,14 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
         /* ─── HERO IMG HOVER CTA (hi-cta) ─── */
         .hero-img-link { position: relative; display: flex; align-items: center; justify-content: center; height: 100%; cursor: pointer; outline: none; -webkit-tap-highlight-color: transparent; }
         .hero-img-link img { transition: opacity 0.4s ease, transform 0.55s cubic-bezier(0.22,1,0.36,1) !important; }
-        .hero-img-link:hover img:not(.switching), .hero-img-link:focus-visible img:not(.switching) { transform: scale(1.04) translateY(-6px) rotate(-0.5deg); }
+        .hero-img-link img { transform-origin: 50% 18%; }
+        .hero-img-link:hover img:not(.switching), .hero-img-link:focus-visible img:not(.switching) { transform: scale(1.04) rotate(-0.5deg); }
         .hero-img-cta { position: absolute; left: 50%; bottom: 6px; transform: translate(-50%, 16px) scale(0.94); opacity: 0; display: inline-flex; align-items: center; gap: 8px; background: var(--green-dark); color: #fff; padding: 13px 28px; border-radius: var(--radius-pill); font-weight: 700; font-size: 15px; box-shadow: 0 12px 32px rgba(27,94,58,0.35); transition: opacity 0.35s ease, transform 0.55s cubic-bezier(0.22,1,0.36,1); pointer-events: none; white-space: nowrap; z-index: 6; }
         .hero-img-cta .fun { font-family: var(--font-fun); font-weight: 400; font-size: 19px; color: var(--yellow); }
         .hero-img-cta .hi-arrow { transition: transform 0.4s cubic-bezier(0.22,1,0.36,1); }
         .hero-img-link:hover .hero-img-cta, .hero-img-link:focus-visible .hero-img-cta { opacity: 1; transform: translate(-50%, 0) scale(1); }
         .hero-img-link:hover .hi-arrow { transform: translateX(4px); }
+        .hero-img-link.is-salatki { align-items: flex-start; }
         .hero-img-link.is-salatki img { height: 114%; }
         @media (hover: none) { .hero-img-cta { display: none; } }
         @media (prefers-reduced-motion: reduce) { .hero-img-link img, .hero-img-cta, .hi-arrow { transition: none !important; } .hero-img-link:hover img { transform: none; } }
