@@ -2,7 +2,7 @@
 <html lang="pl">
 <head>
 <!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-XXXXXXX');</script>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-FVTBKWW');</script>
 <!-- End Google Tag Manager -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -292,7 +292,7 @@
 </head>
 <body>
 <!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-XXXXXXX" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-FVTBKWW" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <a href="#main" class="skip-link">Przejdź do treści</a>
 
@@ -650,7 +650,7 @@
             <a href="owoce-do-biura-bydgoszcz">Bydgoszcz</a>
             <a href="owoce-do-biura-bialystok">Białystok</a>
             <a href="owoce-do-biura-rzeszow">Rzeszów</a>
-            <a href="owoce-do-biura-kielce">Kielce</a>
+            <a href="owoce-do-biura-kielce">Kielce</a> <a href="/owoce-do-biura-gliwice">Gliwice</a>
         </div>
     </div>
 </section>
@@ -998,12 +998,9 @@ setTimeout(function() { document.querySelectorAll('.reveal').forEach(function(el
             window.dataLayer.push({ event: 'calc_lead_submit', lead_email: payload.email, lead_config: payload.config });
         }
 
-        /* Show success, hide form */
-        document.getElementById('calcLeadForm').style.display = 'none';
-        document.getElementById('leadSuccess').style.display = 'block';
-
-        /* Send to backend (same pattern as zapytanie.html — currently front-end only) */
-        console.log('Calc lead:', JSON.stringify(payload));
+        /* Przekierowanie do centralnego formularza (embed BWP) — bez fake-success */
+        try { sessionStorage.setItem('df_lead_draft', JSON.stringify(payload)); } catch(e) {}
+        window.location.href = '/zapytanie?from=kalkulator';
     };
 })();
 </script>
