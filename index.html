@@ -820,12 +820,12 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
     <div class="hero-tabs-inner">
         <span class="hero-tabs-label">Dopasuj zamówienie<br>do potrzeb firmy:</span>
         <div class="hero-tabs">
-            <button class="hero-tab active" data-img="hero-master-box.webp" data-alt="Paczka DailyFruits pełna świeżych owoców do biura" onclick="heroTabClick(this)"><span class="tab-icon"><img src="icon-owoce.svg" alt="Ikona owoców" class="inline-icon" loading="lazy" width="48" height="48"></span> Owoce</button>
-            <button class="hero-tab" data-img="packshot-kanapki.webp" data-alt="Kanapki dla pracowników" onclick="heroTabClick(this)"><span class="tab-icon"><img src="icon-kanapki.svg" alt="Ikona kanapek" style="height:15px;width:auto;vertical-align:-2px;" loading="lazy" width="48" height="48"></span> Kanapki</button>
-            <button class="hero-tab" data-img="packshot-sniadaniowe.webp" data-alt="Produkty śniadaniowe" onclick="heroTabClick(this)"><span class="tab-icon"><img src="icon-sniadania.svg" alt="Ikona śniadań" style="height:20px;width:auto;vertical-align:-3px;" loading="lazy" width="48" height="48"></span> Poranek</button>
-            <button class="hero-tab" data-img="packshot-soki.webp" data-alt="Świeże soki" onclick="heroTabClick(this)"><span class="tab-icon"><img src="icon-soki.svg" alt="Ikona soków" style="height:24px;width:auto;vertical-align:-4px;margin-right:-2px;" loading="lazy" width="48" height="48"></span> Soki</button>
-            <button class="hero-tab" data-img="packshot-bakalie.webp" data-alt="Bakalie i suszone owoce" onclick="heroTabClick(this)"><span class="tab-icon"><img src="icon-bakalie.svg" alt="Ikona bakalii" style="height:20px;width:auto;vertical-align:-3px;" loading="lazy" width="48" height="48"></span> Bakalie</button>
-            <button class="hero-tab hero-tab--red" data-img="packshot-lody.webp" data-alt="Lody do biura" onclick="heroTabClick(this)"><span class="tab-icon"><img src="icon-lody.svg" alt="Ikona lodów" style="height:22px;width:auto;vertical-align:-4px;" loading="lazy" width="48" height="48"></span> Lody</button>
+            <button class="hero-tab active" data-cat="owoce" data-img="hero-master-box.webp" data-alt="Paczka DailyFruits pełna świeżych owoców do biura" onclick="heroTabClick(this)"><span class="tab-icon"><img src="icon-owoce.svg" alt="Ikona owoców" class="inline-icon" loading="lazy" width="48" height="48"></span> Owoce</button>
+            <button class="hero-tab" data-cat="kanapki" data-img="packshot-kanapki.webp" data-alt="Kanapki dla pracowników" onclick="heroTabClick(this)"><span class="tab-icon"><img src="icon-kanapki.svg" alt="Ikona kanapek" style="height:15px;width:auto;vertical-align:-2px;" loading="lazy" width="48" height="48"></span> Kanapki</button>
+            <button class="hero-tab" data-cat="sniadania" data-img="packshot-sniadaniowe.webp" data-alt="Produkty śniadaniowe" onclick="heroTabClick(this)"><span class="tab-icon"><img src="icon-sniadania.svg" alt="Ikona śniadań" style="height:20px;width:auto;vertical-align:-3px;" loading="lazy" width="48" height="48"></span> Poranek</button>
+            <button class="hero-tab" data-cat="soki" data-img="packshot-soki.webp" data-alt="Świeże soki" onclick="heroTabClick(this)"><span class="tab-icon"><img src="icon-soki.svg" alt="Ikona soków" style="height:24px;width:auto;vertical-align:-4px;margin-right:-2px;" loading="lazy" width="48" height="48"></span> Soki</button>
+            <button class="hero-tab" data-cat="bakalie" data-img="packshot-bakalie.webp" data-alt="Bakalie i suszone owoce" onclick="heroTabClick(this)"><span class="tab-icon"><img src="icon-bakalie.svg" alt="Ikona bakalii" style="height:20px;width:auto;vertical-align:-3px;" loading="lazy" width="48" height="48"></span> Bakalie</button>
+            <button class="hero-tab" data-cat="salatki" data-img="katalog/salatka-grecka.webp" data-alt="Świeże sałatki do biura" onclick="heroTabClick(this)"><span class="tab-icon"><img src="icon-salatki.svg" alt="Ikona sałatek" style="height:20px;width:auto;vertical-align:-3px;" loading="lazy" width="48" height="48"></span> <span style="font-family:var(--font);font-weight:700;font-size:15px;">Sałatki</span></button>
         </div>
     </div>
 </div>
@@ -844,7 +844,7 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
                 </div>
                 <div class="hero-buttons">
                     <a href="zapytanie" class="btn btn-red-solid btn-arrow">Zamów bezpłatną wycenę</a>
-                    <a href="oferta" class="btn btn-outline">Zobacz pełną ofertę →</a>
+                    <a href="oferta" id="heroOfferLink" class="btn btn-outline">Zobacz pełną ofertę →</a>
                 </div>
             </div>
             <div class="hero-image scale-in">
@@ -1682,6 +1682,8 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
         if (tab.classList.contains('active')) return;
         document.querySelectorAll('.hero-tab').forEach(t => t.classList.remove('active'));
         tab.classList.add('active');
+        var ol = document.getElementById('heroOfferLink');
+        if (ol && tab.dataset.cat) { ol.href = 'oferta#' + tab.dataset.cat; }
         heroImg.classList.add('switching');
         setTimeout(() => {
             heroImg.src = tab.dataset.img;

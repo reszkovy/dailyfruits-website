@@ -1033,5 +1033,19 @@ document.addEventListener('DOMContentLoaded', function() {
   }, true);
 })();
 </script>
+<script>
+/* cat-hash-router: /oferta#kanapki otwiera wlasciwy tab */
+(function(){
+  function go(){
+    var h=(location.hash||'').replace('#','');
+    if(!h) return;
+    var btn=document.querySelector('.cat-tab[data-cat="'+h+'"]');
+    if(btn && !btn.classList.contains('active')) btn.click();
+  }
+  document.addEventListener('DOMContentLoaded', go);
+  window.addEventListener('hashchange', go);
+  if(document.readyState!=='loading') go();
+})();
+</script>
 </body>
 </html><!-- sync-test -->
