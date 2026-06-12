@@ -21,7 +21,21 @@ details{background:#fff;border:1px solid var(--line);border-radius:10px;margin-b
 summary{cursor:pointer;font-weight:600;padding:12px 0;font-size:14px}
 details p{font-size:14px;color:#333;padding-bottom:12px;margin:0;white-space:pre-wrap}
 .foot{color:var(--mut);font-size:12px;margin-top:32px;text-align:center}
-</style></head><body><div class="wrap">
+
+        /* ─── PAGE TRANSITIONS (pt-vt) ─── */
+        @view-transition { navigation: auto; }
+        ::view-transition-old(root) { animation: 200ms cubic-bezier(0.22,1,0.36,1) both pt-out; }
+        ::view-transition-new(root) { animation: 340ms cubic-bezier(0.22,1,0.36,1) both pt-in; }
+        @keyframes pt-out { to { opacity: 0; transform: translateY(-10px); } }
+        @keyframes pt-in { from { opacity: 0; transform: translateY(12px); } }
+        html.pt-leave body { opacity: 0; transform: translateY(-10px); transition: opacity 0.18s ease, transform 0.18s cubic-bezier(0.22,1,0.36,1); }
+        html.pt-enter body { opacity: 0; }
+        html.pt-enter-active body { opacity: 1; transform: none; transition: opacity 0.3s ease, transform 0.3s cubic-bezier(0.22,1,0.36,1); }
+        @media (prefers-reduced-motion: reduce) {
+            ::view-transition-old(root), ::view-transition-new(root) { animation: none; }
+            html.pt-leave body, html.pt-enter body { opacity: 1; transform: none; transition: none; }
+        }
+    </style></head><body><div class="wrap">
 <h1>🏛️ Council Verdict — DailyFruits launch readiness</h1>
 <div class="sub">Analiza porównawcza: nowa strona (Vercel) vs żywa dailyfruits.pl (WordPress). 5 doradców → peer review → synteza.</div>
 <div class="q"><b>Pytanie:</b> Czy nowa strona DailyFruits jest gotowa zastąpić żywą dailyfruits.pl w launchu? Gdzie wygrywa/przegrywa i co MUSI być przed cutoverem?</div>
@@ -87,4 +101,28 @@ details p{font-size:14px;color:#333;padding-bottom:12px;margin:0;white-space:pre
 <details><summary>📋 Highlighty peer review</summary><p>Najmocniejsze głosy: Kontrarian (twarde gate'y) + Executor (sekwencja wykonawcza) + First Principles (rollout etapowy jako derisking). Największy blind spot (jednomyślnie): Ekspansjonista — romantyzuje SaaS/leverage na zepsutym lejku. Co WSZYSCY przeoczyli: baseline konwersji starej strony (brak punktu odniesienia), handoff/follow-up leada (CRM, autoresponder), RODO formularza, rollback plan (DNS TTL), audyt slugów 1:1 + sitemap/canonical/staging-noindex + backlinki, widoczne ceny i kanał telefoniczny dla B2B.</p></details>
 
 <div class="foot">Wygenerowano przez LLM Council · DailyFruits launch readiness</div>
-</div></body></html>
+</div><script>
+/* pt-vt: przejscia miedzy stronami — View Transitions API + fallback fade (Firefox) */
+(function(){
+  var vt = !!document.startViewTransition;
+  if (vt) return; /* cross-document VT robi to natywnie przez CSS */
+  var de = document.documentElement;
+  de.classList.add('pt-enter');
+  function enter(){ requestAnimationFrame(function(){ de.classList.add('pt-enter-active'); de.classList.remove('pt-enter'); setTimeout(function(){ de.classList.remove('pt-enter-active'); }, 400); }); }
+  if (document.readyState === 'complete' || document.readyState === 'interactive') enter(); else document.addEventListener('DOMContentLoaded', enter);
+  window.addEventListener('pageshow', function(e){ if (e.persisted) { de.classList.remove('pt-leave','pt-enter'); } });
+  document.addEventListener('click', function(e){
+    var a = e.target.closest && e.target.closest('a[href]');
+    if (!a) return;
+    var href = a.getAttribute('href');
+    if (!href || href.charAt(0) === '#' || a.target === '_blank' || a.hasAttribute('download')) return;
+    if (/^(https?:)?\/\//.test(href) && a.host !== location.host) return;
+    if (/^(mailto:|tel:|javascript:)/.test(href)) return;
+    if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0) return;
+    e.preventDefault();
+    de.classList.add('pt-leave');
+    setTimeout(function(){ location.href = a.href; }, 170);
+  }, true);
+})();
+</script>
+</body></html>
