@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="533" viewBox="0 0 800 533">
+<rect width="800" height="533" fill="#FFF9E0"/>
+<rect x="14" y="14" width="772" height="505" fill="none" stroke="#CBB892" stroke-width="3" stroke-dasharray="14 10" rx="18"/>
+<g transform="translate(400,225)" fill="none" stroke="#1B5E3A" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" opacity="0.55">
+<rect x="-65" y="-32" width="130" height="92" rx="14"/><circle cx="0" cy="14" r="26"/><path d="M-28 -32 L-16 -52 H16 L28 -32"/>
+</g>
+<text x="400" y="345" text-anchor="middle" font-family="DM Sans, Arial, sans-serif" font-size="30" font-weight="700" fill="#1B5E3A" opacity="0.75">Packshot do dodania</text>
+</svg>
