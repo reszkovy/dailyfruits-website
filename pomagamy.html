@@ -263,19 +263,13 @@
         }
 
         .fun-alt{font-family:var(--font, "DM Sans", sans-serif) !important;font-weight:900 !important;letter-spacing:-0.02em;}
-    
-        /* ─── PAGE TRANSITIONS (pt-vt) ─── */
-        @view-transition { navigation: auto; }
-        ::view-transition-old(root) { animation: 200ms cubic-bezier(0.22,1,0.36,1) both pt-out; }
-        ::view-transition-new(root) { animation: 340ms cubic-bezier(0.22,1,0.36,1) both pt-in; }
-        @keyframes pt-out { to { opacity: 0; transform: translateY(-10px); } }
-        @keyframes pt-in { from { opacity: 0; transform: translateY(12px); } }
-        html.pt-leave body { opacity: 0; transform: translateY(-10px); transition: opacity 0.18s ease, transform 0.18s cubic-bezier(0.22,1,0.36,1); }
-        html.pt-enter body { opacity: 0; }
-        html.pt-enter-active body { opacity: 1; transform: none; transition: opacity 0.3s ease, transform 0.3s cubic-bezier(0.22,1,0.36,1); }
+        /* ─── PAGE TRANSITIONS v2 (pt-vt): jednolity crossfade ─── */
+        html.pt-out body { opacity: 0 !important; transition: opacity 0.18s ease !important; }
+        html.pt-in body { animation: ptFadeIn 0.32s ease both; }
+        @keyframes ptFadeIn { from { opacity: 0; } to { opacity: 1; } }
         @media (prefers-reduced-motion: reduce) {
-            ::view-transition-old(root), ::view-transition-new(root) { animation: none; }
-            html.pt-leave body, html.pt-enter body { opacity: 1; transform: none; transition: none; }
+            html.pt-out body { opacity: 1 !important; transition: none !important; }
+            html.pt-in body { animation: none; }
         }
     
         /* ─── MOBILE HEADER UNIFY (mh-unify) ─── */
@@ -308,7 +302,7 @@
             {"@type": "Question", "name": "Czy zamawiając w DailyFruits wspieramy działania społeczne?", "acceptedAnswer": {"@type": "Answer", "text": "Tak — część naszych przychodów i produktów jest regularnie przekazywana na cele społeczne. Owoce z drobnymi skazami trafiają do ZOO i Banków Żywności."}},
             {"@type": "Question", "name": "Co to jest akcja wspieram?", "acceptedAnswer": {"@type": "Answer", "text": "Akcja wspieram to inicjatywa uruchomiona podczas pandemii COVID-19, w ramach której klienci DailyFruits mogli przekierować zamówienia biurowe do szpitali i organizacji pomocowych. Przekazaliśmy 80 ton owoców."}},
             {"@type": "Question", "name": "Czy DailyFruits wspiera ogrody zoologiczne?", "acceptedAnswer": {"@type": "Answer", "text": "Tak — regularnie dostarczamy owoce do ZOO Warszawa i ZOO Kraków. Jesteśmy opiekunem piżmowołu Rambo w warszawskim ogrodzie zoologicznym. Owoce z drobnymi skazami estetycznymi trafiają do zwierząt zamiast na śmieci."}},
-            {"@type": "Question", "name": "Jak moja firma może dołączyć do inicjatyw DailyFruits?", "acceptedAnswer": {"@type": "Answer", "text": "Każde zamówienie w DailyFruits pośrednio wspiera nasze inicjatywy społeczne. Możesz również skontaktować sie z nami, aby zorganizować dedykowaną akcję charytatywną dla swoich pracowników."}}
+            {"@type": "Question", "name": "Jak moja firma może dołączyć do inicjatyw DailyFruits?", "acceptedAnswer": {"@type": "Answer", "text": "Każde zamówienie w DailyFruits pośrednio wspiera nasze inicjatywy społeczne. Możesz również skontaktować się z nami, aby zorganizować dedykowaną akcję charytatywną dla swoich pracowników."}}
         ]
     }
     </script>
@@ -356,7 +350,7 @@
             <div class="city-hero-text reveal">
                 <div class="sticker sticker-red" style="transform:rotate(-2deg);display:inline-block;margin-bottom:16px">CSR</div>
                 <h1>Pomagamy &mdash; bo <span class="fun">dzielenie sie</span> jest w naszym DNA</h1>
-                <p>Pomagamy innym, nie jesteśmy obojętni &mdash; wokół nas jest tylu potrzebujących, a my staramy sie jak tylko potrafimy. Wspierane przez nas akcję są dla nas cennym doświadczeniem. Pomaganie jest fajne &mdash; bardzo starannie podchodzimy do powierzonych nam obowiązków!</p>
+                <p>Pomagamy innym, nie jesteśmy obojętni &mdash; wokół nas jest tylu potrzebujących, a my staramy się jak tylko potrafimy. Wspierane przez nas akcję są dla nas cennym doświadczeniem. Pomaganie jest fajne &mdash; bardzo starannie podchodzimy do powierzonych nam obowiązków!</p>
                 <div class="city-hero-buttons">
                     <a href="oferta" class="btn btn-green">Poznaj naszą ofertę &rarr;</a>
                     <a href="dostawcy" class="btn btn-outline" style="color:var(--green-dark);border-color:var(--green-dark)">Nasi dostawcy</a>
@@ -462,13 +456,13 @@
             <div class="ecosystem-card">
                 <img class="card-photo" src="https://dailyfruits.pl/app/uploads/2020/05/Fundacja-Unicorn-1024x719.png" alt="Stowarzyszenie UNICORN - wsparcie dzieci z chorobami onkologicznymi" loading="lazy">
                 <h3>Stowarzyszenie UNICORN</h3>
-                <p>Mamy świadomość, jak bardzo może być wyniszczająca choroba onkologiczna, dlatego wspieramy wszelkie akcję, dzieki którym nie tylko leki leczą. Wspieramy rehabilitację i edukację, jak i pomoc rodzinna, które wspólnie zmagają sie z trudnosciami dnia codziennego.</p>
+                <p>Mamy świadomość, jak bardzo może być wyniszczająca choroba onkologiczna, dlatego wspieramy wszelkie akcję, dzięki którym nie tylko leki leczą. Wspieramy rehabilitację i edukację, jak i pomoc rodzinna, które wspólnie zmagają się z trudnościami dnia codziennego.</p>
                 <span class="ecosystem-tag tag-people">Dzieci</span>
             </div>
             <div class="ecosystem-card">
                 <img class="card-photo" src="https://dailyfruits.pl/app/uploads/2016/01/nebo2.jpg" alt="Fundacja NEBO - cotygodniowe dostawy owoców" loading="lazy">
                 <h3>Fundacja NEBO</h3>
-                <p>Zdajemy sobie sprawę, że na świecie jest dużo osob, które potrzebują wsparcia, dlatego staramy sie dzielić z innymi. Raz w tygodniu do podopiecznych i wszystkich, którzy korzystają z pomocy fundacji, dostarczamy skrzynki soczystych świeżych owoców.</p>
+                <p>Zdajemy sobie sprawę, że na świecie jest dużo osób, które potrzebują wsparcia, dlatego staramy się dzielić z innymi. Raz w tygodniu do podopiecznych i wszystkich, którzy korzystają z pomocy fundacji, dostarczamy skrzynki soczystych świeżych owoców.</p>
                 <span class="ecosystem-tag tag-people">Regularne dostawy</span>
             </div>
             <div class="ecosystem-card">
@@ -524,7 +518,7 @@
                 <img src="https://dailyfruits.pl/app/uploads/2020/05/PANDA-206x300.png" alt="ZOO Warszawa - piżmowół Rambo" loading="lazy" style="width:100%;height:160px;object-fit:cover;object-position:center;border-radius:var(--radius) var(--radius) 0 0;margin-bottom:16px">
                 <div style="padding:0 24px">
                 <h3 style="font-size:17px;margin-bottom:8px">ZOO Warszawa + Kraków</h3>
-                <p style="font-size:14px;line-height:1.6">Nasze owoce podlegają skrupulatnej selekcji. Wszystkie te, które mają drobne wady, lekkie odgniecenia czy male skazy, ale wciaz nadają sie do jedzenia, wysyłamy nieodplatnie do Warszawskiego i Krakowskiego Ogrodu Zoologicznego. Jesteśmy opiekunem piżmowołu &bdquo;Rambo&rdquo;.</p>
+                <p style="font-size:14px;line-height:1.6">Nasze owoce podlegają skrupulatnej selekcji. Wszystkie te, które mają drobne wady, lekkie odgniecenia czy male skazy, ale wciąż nadają się do jedzenia, wysyłamy nieodpłatnie do Warszawskiego i Krakowskiego Ogrodu Zoologicznego. Jesteśmy opiekunem piżmowołu &bdquo;Rambo&rdquo;.</p>
                 </div>
             </div>
             <div style="background:var(--lime-bg);padding:0 0 24px 0;border-radius:var(--radius);text-align:center;transition:transform 0.3s,box-shadow 0.3s;overflow:hidden" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 12px 36px rgba(27,94,58,0.1)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
@@ -572,7 +566,7 @@
 
             <p>Od 24. finału Wielkiej Orkiestry Świątecznej Pomocy jesteśmy stałym partnerem &mdash; dostarczamy tysiące jabłek do sztabu głównego, organizujemy bezpłatne porady dietetyczne i wspieramy przychodnie we współpracy że ZnanyLekarz. To partnerstwo, które wykracza daleko poza jednorazowe akcję.</p>
 
-            <p>Wierzymy, że firma cateringowa obsługująca <a href="oferta" style="color:var(--lime);font-weight:700;text-decoration:underline">2000+ biur w Polsce</a> ma obowiązek dzielenia sie z tymi, którzy tego potrzebują. Owoce z drobnymi skazami estetycznymi trafiają do <a href="dostawcy" style="color:var(--lime);font-weight:700;text-decoration:underline">współpracujących ogrodów zoologicznych</a> i Banków Żywności zamiast na śmieci. Każde zamówienie w DailyFruits pośrednio wspiera nasze inicjatywy społeczne &mdash; to nie deklaracja, to codzienna praktyka.</p>
+            <p>Wierzymy, że firma cateringowa obsługująca <a href="oferta" style="color:var(--lime);font-weight:700;text-decoration:underline">2000+ biur w Polsce</a> ma obowiązek dzielenia się z tymi, którzy tego potrzebują. Owoce z drobnymi skazami estetycznymi trafiają do <a href="dostawcy" style="color:var(--lime);font-weight:700;text-decoration:underline">współpracujących ogrodów zoologicznych</a> i Banków Żywności zamiast na śmieci. Każde zamówienie w DailyFruits pośrednio wspiera nasze inicjatywy społeczne &mdash; to nie deklaracja, to codzienna praktyka.</p>
         </div>
     </div>
 </section>
@@ -615,7 +609,7 @@
             </div>
             <div class="faq-item reveal" role="listitem">
                 <button class="faq-q" aria-expanded="false"><span>Jak moja firma może dołączyć do inicjatyw DailyFruits?</span></button>
-                <div class="faq-a" hidden><div class="faq-a-inner">Każde zamówienie w DailyFruits pośrednio wspiera nasze inicjatywy społeczne. Możesz również skontaktować sie z nami, aby zorganizować dedykowaną akcję charytatywną dla swoich pracowników &mdash; od zbiórki owoców po wspólną wizytę w ogrodzie zoologicznym.</div></div>
+                <div class="faq-a" hidden><div class="faq-a-inner">Każde zamówienie w DailyFruits pośrednio wspiera nasze inicjatywy społeczne. Możesz również skontaktować się z nami, aby zorganizować dedykowaną akcję charytatywną dla swoich pracowników &mdash; od zbiórki owoców po wspólną wizytę w ogrodzie zoologicznym.</div></div>
             </div>
         </div>
     </div>
@@ -779,26 +773,23 @@ document.querySelectorAll('.faq-q').forEach(function(btn) {
 <script src="transition.js"></script>
 <script src="mn.js?v=4"></script>
 <script>
-/* pt-vt: przejscia miedzy stronami — View Transitions API + fallback fade (Firefox) */
+/* pt-vt v2: plynny fade-out/fade-in miedzy stronami (wszystkie przegladarki) */
 (function(){
-  var vt = !!document.startViewTransition;
-  if (vt) return; /* cross-document VT robi to natywnie przez CSS */
   var de = document.documentElement;
-  de.classList.add('pt-enter');
-  function enter(){ requestAnimationFrame(function(){ de.classList.add('pt-enter-active'); de.classList.remove('pt-enter'); setTimeout(function(){ de.classList.remove('pt-enter-active'); }, 400); }); }
-  if (document.readyState === 'complete' || document.readyState === 'interactive') enter(); else document.addEventListener('DOMContentLoaded', enter);
-  window.addEventListener('pageshow', function(e){ if (e.persisted) { de.classList.remove('pt-leave','pt-enter'); } });
+  de.classList.add('pt-in');
+  setTimeout(function(){ de.classList.remove('pt-in'); }, 400);
+  window.addEventListener('pageshow', function(e){ if (e.persisted) de.classList.remove('pt-out','pt-in'); });
   document.addEventListener('click', function(e){
     var a = e.target.closest && e.target.closest('a[href]');
     if (!a) return;
     var href = a.getAttribute('href');
     if (!href || href.charAt(0) === '#' || a.target === '_blank' || a.hasAttribute('download')) return;
-    if (/^(https?:)?\/\//.test(href) && a.host !== location.host) return;
     if (/^(mailto:|tel:|javascript:)/.test(href)) return;
+    if (a.host && a.host !== location.host) return;
     if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0) return;
     e.preventDefault();
-    de.classList.add('pt-leave');
-    setTimeout(function(){ location.href = a.href; }, 170);
+    de.classList.add('pt-out');
+    setTimeout(function(){ location.href = a.href; }, 180);
   }, true);
 })();
 </script>

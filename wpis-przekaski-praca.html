@@ -122,19 +122,13 @@
         @media (max-width: 480px) { .logo-img { height: 40px; } .btn-nav-cta { padding: 7px 14px; font-size: 12px; } .nav-inner { gap: 8px; } }
     .skip-link{position:absolute;top:-100%;left:50%;transform:translateX(-50%);background:var(--green-dark);color:#fff;padding:10px 24px;border-radius:0 0 8px 8px;font-size:14px;font-weight:600;z-index:10000;text-decoration:none;transition:top 0.2s}.skip-link:focus{top:0}:focus-visible{outline:3px solid #8DC63F;outline-offset:2px;border-radius:4px}
     section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px}.city-index,footer{content-visibility:auto;contain-intrinsic-size:auto 200px}
-
-        /* ─── PAGE TRANSITIONS (pt-vt) ─── */
-        @view-transition { navigation: auto; }
-        ::view-transition-old(root) { animation: 200ms cubic-bezier(0.22,1,0.36,1) both pt-out; }
-        ::view-transition-new(root) { animation: 340ms cubic-bezier(0.22,1,0.36,1) both pt-in; }
-        @keyframes pt-out { to { opacity: 0; transform: translateY(-10px); } }
-        @keyframes pt-in { from { opacity: 0; transform: translateY(12px); } }
-        html.pt-leave body { opacity: 0; transform: translateY(-10px); transition: opacity 0.18s ease, transform 0.18s cubic-bezier(0.22,1,0.36,1); }
-        html.pt-enter body { opacity: 0; }
-        html.pt-enter-active body { opacity: 1; transform: none; transition: opacity 0.3s ease, transform 0.3s cubic-bezier(0.22,1,0.36,1); }
+        /* ─── PAGE TRANSITIONS v2 (pt-vt): jednolity crossfade ─── */
+        html.pt-out body { opacity: 0 !important; transition: opacity 0.18s ease !important; }
+        html.pt-in body { animation: ptFadeIn 0.32s ease both; }
+        @keyframes ptFadeIn { from { opacity: 0; } to { opacity: 1; } }
         @media (prefers-reduced-motion: reduce) {
-            ::view-transition-old(root), ::view-transition-new(root) { animation: none; }
-            html.pt-leave body, html.pt-enter body { opacity: 1; transform: none; transition: none; }
+            html.pt-out body { opacity: 1 !important; transition: none !important; }
+            html.pt-in body { animation: none; }
         }
     
         /* ─── MOBILE HEADER UNIFY (mh-unify) ─── */
@@ -285,7 +279,7 @@
         <h2 class="reveal">Przeczytaj również</h2>
         <div class="related-grid">
             <a href="wpis-ile-owocow" class="related-card reveal">
-                <img src="0_0-(8).webp" alt="Ile owoców jesc dziennie" class="related-card-img" loading="lazy" width="400" height="300">
+                <img src="0_0-(8).webp" alt="Ile owoców jeść dziennie" class="related-card-img" loading="lazy" width="400" height="300">
                 <div class="related-card-body">
                     <span class="related-card-date">1 czerwca 2021</span>
                     <h3>Ile owoców jeść dziennie? Kiedy i do której godziny?</h3>
@@ -381,26 +375,23 @@
 <script src="transition.js"></script>
 <script src="mn.js?v=4"></script>
 <script>
-/* pt-vt: przejscia miedzy stronami — View Transitions API + fallback fade (Firefox) */
+/* pt-vt v2: plynny fade-out/fade-in miedzy stronami (wszystkie przegladarki) */
 (function(){
-  var vt = !!document.startViewTransition;
-  if (vt) return; /* cross-document VT robi to natywnie przez CSS */
   var de = document.documentElement;
-  de.classList.add('pt-enter');
-  function enter(){ requestAnimationFrame(function(){ de.classList.add('pt-enter-active'); de.classList.remove('pt-enter'); setTimeout(function(){ de.classList.remove('pt-enter-active'); }, 400); }); }
-  if (document.readyState === 'complete' || document.readyState === 'interactive') enter(); else document.addEventListener('DOMContentLoaded', enter);
-  window.addEventListener('pageshow', function(e){ if (e.persisted) { de.classList.remove('pt-leave','pt-enter'); } });
+  de.classList.add('pt-in');
+  setTimeout(function(){ de.classList.remove('pt-in'); }, 400);
+  window.addEventListener('pageshow', function(e){ if (e.persisted) de.classList.remove('pt-out','pt-in'); });
   document.addEventListener('click', function(e){
     var a = e.target.closest && e.target.closest('a[href]');
     if (!a) return;
     var href = a.getAttribute('href');
     if (!href || href.charAt(0) === '#' || a.target === '_blank' || a.hasAttribute('download')) return;
-    if (/^(https?:)?\/\//.test(href) && a.host !== location.host) return;
     if (/^(mailto:|tel:|javascript:)/.test(href)) return;
+    if (a.host && a.host !== location.host) return;
     if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0) return;
     e.preventDefault();
-    de.classList.add('pt-leave');
-    setTimeout(function(){ location.href = a.href; }, 170);
+    de.classList.add('pt-out');
+    setTimeout(function(){ location.href = a.href; }, 180);
   }, true);
 })();
 </script>

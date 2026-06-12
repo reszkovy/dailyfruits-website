@@ -265,19 +265,13 @@
             .hero-stat-ring { width: 160px; height: 160px; }
             .hero-stat-ring .big-num { font-size: 44px; }
         }
-
-        /* ─── PAGE TRANSITIONS (pt-vt) ─── */
-        @view-transition { navigation: auto; }
-        ::view-transition-old(root) { animation: 200ms cubic-bezier(0.22,1,0.36,1) both pt-out; }
-        ::view-transition-new(root) { animation: 340ms cubic-bezier(0.22,1,0.36,1) both pt-in; }
-        @keyframes pt-out { to { opacity: 0; transform: translateY(-10px); } }
-        @keyframes pt-in { from { opacity: 0; transform: translateY(12px); } }
-        html.pt-leave body { opacity: 0; transform: translateY(-10px); transition: opacity 0.18s ease, transform 0.18s cubic-bezier(0.22,1,0.36,1); }
-        html.pt-enter body { opacity: 0; }
-        html.pt-enter-active body { opacity: 1; transform: none; transition: opacity 0.3s ease, transform 0.3s cubic-bezier(0.22,1,0.36,1); }
+        /* ─── PAGE TRANSITIONS v2 (pt-vt): jednolity crossfade ─── */
+        html.pt-out body { opacity: 0 !important; transition: opacity 0.18s ease !important; }
+        html.pt-in body { animation: ptFadeIn 0.32s ease both; }
+        @keyframes ptFadeIn { from { opacity: 0; } to { opacity: 1; } }
         @media (prefers-reduced-motion: reduce) {
-            ::view-transition-old(root), ::view-transition-new(root) { animation: none; }
-            html.pt-leave body, html.pt-enter body { opacity: 1; transform: none; transition: none; }
+            html.pt-out body { opacity: 1 !important; transition: none !important; }
+            html.pt-in body { animation: none; }
         }
     
         /* ─── MOBILE HEADER UNIFY (mh-unify) ─── */
@@ -306,11 +300,11 @@
         "mainEntity": [
             {"@type": "Question", "name": "Skad pochodza owoce dostarczane do biur?", "acceptedAnswer": {"@type": "Answer", "text": "Współpracujemy z 12 certyfikowanymi dostawcami — od rodzinnych sadownikow z Mazowsza po najwiekszych importerow cytrusow w Polsce. Owoce krajowe pochodza z sadow prowadzonych w systemie Integrowanej Produkcji, a tropikalne od partnerow z certyfikatem Rainforest Alliance i Fair Trade."}},
             {"@type": "Question", "name": "Jakie certyfikaty posiadaja dostawcy DailyFruits?", "acceptedAnswer": {"@type": "Answer", "text": "Wymagamy co najmniej jednego z czterech standardow: Fair Trade, GlobalG.A.P., Rainforest Alliance lub Integrowana Produkcja. Wiekszosc naszych partnerow spelnia dwa lub więcej standardow jednoczesnie."}},
-            {"@type": "Question", "name": "Ile owoców miesiecznie dostarcza DailyFruits?", "acceptedAnswer": {"@type": "Answer", "text": "Nasz lancuch dostaw obsluguje ponad 200 ton owoców miesiecznie, dostarczanych do biur w całej Polsce."}},
+            {"@type": "Question", "name": "Ile owoców miesiecznie dostarcza DailyFruits?", "acceptedAnswer": {"@type": "Answer", "text": "Nasz łańcuch dostaw obsługuje ponad 200 ton owoców miesiecznie, dostarczanych do biur w całej Polsce."}},
             {"@type": "Question", "name": "Co sie dzieje z owocami które nie spelniaja standardow jakości?", "acceptedAnswer": {"@type": "Answer", "text": "Owoce z drobnymi skazami estetycznymi przekazujemy do współpracujących ogrodów zoologicznych (ZOO Warszawa i Kraków) oraz Banków Żywności. Nic sie nie marnuje."}},
             {"@type": "Question", "name": "Czy moge zostac dostawca DailyFruits?", "acceptedAnswer": {"@type": "Answer", "text": "Tak — szukamy certyfikowanych sadownikow i dystrybutorów, którzy moga zapewnic regularne dostawy w najwyzszej jakości. Wyslij zapytanie przez formularz kontaktowy."}},
-            {"@type": "Question", "name": "Jak DailyFruits kontroluje jakość owoców?", "acceptedAnswer": {"@type": "Answer", "text": "Kazda partia jest kontrolowana pod katem świeżości, dojrzalosci i warunkow transportu. Stosujemy system HACCP i wewnetrzne audyty jakości — od momentu odbioru od dostawcy do dostarczenia do biura klienta."}},
-            {"@type": "Question", "name": "Czy DailyFruits dostarcza owoce ekologiczne?", "acceptedAnswer": {"@type": "Answer", "text": "Czesc naszych dostawcow posiada certyfikaty ekologiczne. Na zyczenie klienta mozemy skomponowac koszyk wylacznie z owoców eko. Wszystkie owoce — również konwencjonalne — pochodza z certyfikowanych upraw o najwyzszych standardach."}}
+            {"@type": "Question", "name": "Jak DailyFruits kontroluje jakość owoców?", "acceptedAnswer": {"@type": "Answer", "text": "Każda partia jest kontrolowana pod katem świeżości, dojrzalosci i warunkow transportu. Stosujemy system HACCP i wewnetrzne audyty jakości — od momentu odbioru od dostawcy do dostarczenia do biura klienta."}},
+            {"@type": "Question", "name": "Czy DailyFruits dostarcza owoce ekologiczne?", "acceptedAnswer": {"@type": "Answer", "text": "Część naszych dostawców posiada certyfikaty ekologiczne. Na zyczenie klienta mozemy skomponowac koszyk wylacznie z owoców eko. Wszystkie owoce — również konwencjonalne — pochodza z certyfikowanych upraw o najwyzszych standardach."}}
         ]
     }
     </script>
@@ -447,7 +441,7 @@
         <div class="marquee-item"><span class="dot"></span> <span class="highlight">Rainforest Alliance</span></div>
         <div class="marquee-item"><span class="dot"></span> Integrowana Produkcja</div>
         <div class="marquee-item"><span class="dot"></span> <span class="highlight">200+ ton / miesiąc</span></div>
-        <div class="marquee-item"><span class="dot"></span> 12 dostawcow</div>
+        <div class="marquee-item"><span class="dot"></span> 12 dostawców</div>
         <div class="marquee-item"><span class="dot"></span> <span class="highlight">Cała Polska</span></div>
         <div class="marquee-item"><span class="dot"></span> Zero waste</div>
         <!-- duplicate for seamless loop -->
@@ -456,7 +450,7 @@
         <div class="marquee-item"><span class="dot"></span> <span class="highlight">Rainforest Alliance</span></div>
         <div class="marquee-item"><span class="dot"></span> Integrowana Produkcja</div>
         <div class="marquee-item"><span class="dot"></span> <span class="highlight">200+ ton / miesiąc</span></div>
-        <div class="marquee-item"><span class="dot"></span> 12 dostawcow</div>
+        <div class="marquee-item"><span class="dot"></span> 12 dostawców</div>
         <div class="marquee-item"><span class="dot"></span> <span class="highlight">Cała Polska</span></div>
         <div class="marquee-item"><span class="dot"></span> Zero waste</div>
     </div>
@@ -643,23 +637,23 @@
             </div>
             <div class="faq-item reveal" role="listitem">
                 <button class="faq-q" aria-expanded="false"><span>Ile owoców miesiecznie dostarcza DailyFruits?</span></button>
-                <div class="faq-a" hidden><div class="faq-a-inner">Nasz lancuch dostaw obsluguje ponad 200 ton owoców miesiecznie, dostarczanych do biur w całej Polsce. Obejmuje to owoce świeże, bakalie, soki i przekaski zdrowotne.</div></div>
+                <div class="faq-a" hidden><div class="faq-a-inner">Nasz łańcuch dostaw obsługuje ponad 200 ton owoców miesiecznie, dostarczanych do biur w całej Polsce. Obejmuje to owoce świeże, bakalie, soki i przekaski zdrowotne.</div></div>
             </div>
             <div class="faq-item reveal" role="listitem">
-                <button class="faq-q" aria-expanded="false"><span>Co sie dzieje z owocami, które nie spelniaja standardow?</span></button>
+                <button class="faq-q" aria-expanded="false"><span>Co się dzieje z owocami, które nie spełniają standardów?</span></button>
                 <div class="faq-a" hidden><div class="faq-a-inner">Owoce z drobnymi skazami estetycznymi przekazujemy do współpracujących ogrodów zoologicznych (ZOO Warszawa i Kraków) oraz Banków Żywności. Nic sie nie marnuje &mdash; to część naszej polityki zero waste i społecznej odpowiedzialności.</div></div>
             </div>
             <div class="faq-item reveal" role="listitem">
                 <button class="faq-q" aria-expanded="false"><span>Czy moge zostac dostawca DailyFruits?</span></button>
-                <div class="faq-a" hidden><div class="faq-a-inner">Tak &mdash; szukamy certyfikowanych sadownikow i dystrybutorów, którzy moga zapewnic regularne dostawy w najwyzszej jakości. Wyslij zapytanie przez formularz kontaktowy, a nasz zespol zakupow skontaktuje sie w ciagu 48 godzin.</div></div>
+                <div class="faq-a" hidden><div class="faq-a-inner">Tak &mdash; szukamy certyfikowanych sadownikow i dystrybutorów, którzy moga zapewnic regularne dostawy w najwyzszej jakości. Wyslij zapytanie przez formularz kontaktowy, a nasz zespół zakupów skontaktuje się w ciągu 48 godzin.</div></div>
             </div>
             <div class="faq-item reveal" role="listitem">
                 <button class="faq-q" aria-expanded="false"><span>Jak DailyFruits kontroluje jakość owoców?</span></button>
-                <div class="faq-a" hidden><div class="faq-a-inner">Kazda partia jest kontrolowana pod katem świeżości, dojrzalosci i warunkow transportu. Stosujemy system HACCP i wewnetrzne audyty jakości &mdash; od momentu odbioru od dostawcy do dostarczenia do biura klienta. Dodatkowo, regularne testy laboratoryjne potwierdzaja brak pozostalosci pestycydow.</div></div>
+                <div class="faq-a" hidden><div class="faq-a-inner">Każda partia jest kontrolowana pod katem świeżości, dojrzalosci i warunkow transportu. Stosujemy system HACCP i wewnetrzne audyty jakości &mdash; od momentu odbioru od dostawcy do dostarczenia do biura klienta. Dodatkowo, regularne testy laboratoryjne potwierdzaja brak pozostalosci pestycydow.</div></div>
             </div>
             <div class="faq-item reveal" role="listitem">
                 <button class="faq-q" aria-expanded="false"><span>Czy DailyFruits dostarcza owoce ekologiczne?</span></button>
-                <div class="faq-a" hidden><div class="faq-a-inner">Czesc naszych dostawcow posiada certyfikaty ekologiczne. Na zyczenie klienta mozemy skomponowac koszyk wylacznie z owoców eko. Wszystkie owoce &mdash; również konwencjonalne &mdash; pochodza z certyfikowanych upraw o najwyzszych standardach bezpieczenstwa.</div></div>
+                <div class="faq-a" hidden><div class="faq-a-inner">Część naszych dostawców posiada certyfikaty ekologiczne. Na zyczenie klienta mozemy skomponowac koszyk wylacznie z owoców eko. Wszystkie owoce &mdash; również konwencjonalne &mdash; pochodza z certyfikowanych upraw o najwyzszych standardach bezpieczenstwa.</div></div>
             </div>
         </div>
     </div>
@@ -827,26 +821,23 @@ document.querySelectorAll('.faq-q').forEach(function(btn) {
 <script src="transition.js"></script>
 <script src="mn.js?v=4"></script>
 <script>
-/* pt-vt: przejscia miedzy stronami — View Transitions API + fallback fade (Firefox) */
+/* pt-vt v2: plynny fade-out/fade-in miedzy stronami (wszystkie przegladarki) */
 (function(){
-  var vt = !!document.startViewTransition;
-  if (vt) return; /* cross-document VT robi to natywnie przez CSS */
   var de = document.documentElement;
-  de.classList.add('pt-enter');
-  function enter(){ requestAnimationFrame(function(){ de.classList.add('pt-enter-active'); de.classList.remove('pt-enter'); setTimeout(function(){ de.classList.remove('pt-enter-active'); }, 400); }); }
-  if (document.readyState === 'complete' || document.readyState === 'interactive') enter(); else document.addEventListener('DOMContentLoaded', enter);
-  window.addEventListener('pageshow', function(e){ if (e.persisted) { de.classList.remove('pt-leave','pt-enter'); } });
+  de.classList.add('pt-in');
+  setTimeout(function(){ de.classList.remove('pt-in'); }, 400);
+  window.addEventListener('pageshow', function(e){ if (e.persisted) de.classList.remove('pt-out','pt-in'); });
   document.addEventListener('click', function(e){
     var a = e.target.closest && e.target.closest('a[href]');
     if (!a) return;
     var href = a.getAttribute('href');
     if (!href || href.charAt(0) === '#' || a.target === '_blank' || a.hasAttribute('download')) return;
-    if (/^(https?:)?\/\//.test(href) && a.host !== location.host) return;
     if (/^(mailto:|tel:|javascript:)/.test(href)) return;
+    if (a.host && a.host !== location.host) return;
     if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0) return;
     e.preventDefault();
-    de.classList.add('pt-leave');
-    setTimeout(function(){ location.href = a.href; }, 170);
+    de.classList.add('pt-out');
+    setTimeout(function(){ location.href = a.href; }, 180);
   }, true);
 })();
 </script>

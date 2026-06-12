@@ -353,6 +353,8 @@
         .reveal[data-delay="3"] { transition-delay: 0.36s; }
         .reveal[data-delay="4"] { transition-delay: 0.48s; }
         .reveal[data-delay="5"] { transition-delay: 0.60s; }
+        /* Cascading sibling stagger (~70ms) — JS sets --d per grid child */
+        .reveal[data-stagger] { transition-delay: var(--d, 0s); }
 
         /* ─── NOISE TEXTURE OVERLAY (premium grain) ─── */
         .noise-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 9999; opacity: 0.028; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E"); mix-blend-mode: overlay; }
@@ -377,7 +379,7 @@
         .hero-image:hover img { transform: scale(1.02); }
 
         /* ─── TEXT SPLIT ANIMATION ─── */
-        .split-heading .word { display: inline-block; opacity: 0; transform: translateY(30px); transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
+        .split-heading .word { display: inline-block; opacity: 0; transform: translateY(30px); transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1), transform 0.6s cubic-bezier(0.22, 1, 0.36, 1); }
         .split-heading.vis .word { opacity: 1; transform: translateY(0); }
 
         /* ─── SCALE-IN for images ─── */
@@ -442,6 +444,23 @@
 
         /* ─── COUNTER ANIMATION ─── */
         .stat-number { display: inline-block; }
+
+        /* ─── UNIFIED CARD MICRO-INTERACTIONS (framer-class) ─── */
+        .deep-offer-card, .benefit-card, .test-card { transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.3s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.3s cubic-bezier(0.22, 1, 0.36, 1), background 0.3s cubic-bezier(0.22, 1, 0.36, 1); }
+        .deep-offer-card:hover, .benefit-card:hover, .test-card:hover { transform: translateY(-6px); box-shadow: 0 16px 40px rgba(27,94,58,0.12); }
+        .btn:active { transform: scale(0.97) !important; transition-duration: 0.12s; }
+
+        /* ─── FAQ STAGGER REVEAL ─── */
+        .faq-stagger .faq-item { opacity: 0; transform: translateY(16px); transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1), transform 0.7s cubic-bezier(0.22, 1, 0.36, 1); transition-delay: var(--d, 0s); }
+        .faq-stagger.faq-vis .faq-item { opacity: 1; transform: translateY(0); }
+
+        /* ─── REDUCED MOTION: kill entrance/hover motion ─── */
+        @media (prefers-reduced-motion: reduce) {
+            .reveal, .scale-in, .slide-left, .slide-right, .split-heading .word, .faq-stagger .faq-item { opacity: 1 !important; transform: none !important; filter: none !important; transition: none !important; }
+            .btn:active { transform: none !important; }
+            .deep-offer-card:hover, .benefit-card:hover, .test-card:hover, .offer-card:hover, .how-card:hover, .eco-card:hover { transform: none; }
+            .card-marquee-track, .marquee-track, .logo-bar-track, .test-slider { animation: none !important; }
+        }
 
         /* ─── RESPONSIVE ─── */
         @media (max-width: 1024px) {
@@ -586,19 +605,13 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
             #scrollFrameWrap { aspect-ratio: 1 / 1; overflow: hidden; }
             #scrollCanvas { width: 100% !important; height: 100% !important; object-fit: cover; object-position: center; }
         }
-    
-        /* ─── PAGE TRANSITIONS (pt-vt) ─── */
-        @view-transition { navigation: auto; }
-        ::view-transition-old(root) { animation: 200ms cubic-bezier(0.22,1,0.36,1) both pt-out; }
-        ::view-transition-new(root) { animation: 340ms cubic-bezier(0.22,1,0.36,1) both pt-in; }
-        @keyframes pt-out { to { opacity: 0; transform: translateY(-10px); } }
-        @keyframes pt-in { from { opacity: 0; transform: translateY(12px); } }
-        html.pt-leave body { opacity: 0; transform: translateY(-10px); transition: opacity 0.18s ease, transform 0.18s cubic-bezier(0.22,1,0.36,1); }
-        html.pt-enter body { opacity: 0; }
-        html.pt-enter-active body { opacity: 1; transform: none; transition: opacity 0.3s ease, transform 0.3s cubic-bezier(0.22,1,0.36,1); }
+        /* ─── PAGE TRANSITIONS v2 (pt-vt): jednolity crossfade ─── */
+        html.pt-out body { opacity: 0 !important; transition: opacity 0.18s ease !important; }
+        html.pt-in body { animation: ptFadeIn 0.32s ease both; }
+        @keyframes ptFadeIn { from { opacity: 0; } to { opacity: 1; } }
         @media (prefers-reduced-motion: reduce) {
-            ::view-transition-old(root), ::view-transition-new(root) { animation: none; }
-            html.pt-leave body, html.pt-enter body { opacity: 1; transform: none; transition: none; }
+            html.pt-out body { opacity: 1 !important; transition: none !important; }
+            html.pt-in body { animation: none; }
         }
     
         /* ─── MOBILE HEADER UNIFY (mh-unify) ─── */
@@ -620,7 +633,7 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
         "alternateName": "DailyFruits by BetterWorkplace",
         "url": "https://dailyfruits.pl",
         "logo": "https://dailyfruits.pl/animacja_11.svg",
-        "description": "Dostawy świeżych owoców, kanapek, soków i&nbsp;zdrowych przekąsek do biur i&nbsp;zakładów pracy w&nbsp;całej Polsce.",
+        "description": "Dostawy świeżych owoców, kanapek, soków i zdrowych przekąsek do biur i zakładów pracy w całej Polsce.",
         "email": "kontakt@dailyfruits.pl",
         "telephone": "+48228680499",
         "address": {
@@ -682,7 +695,7 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
                 "name": "Co zyskam zapewniając owoce dla pracowników?",
                 "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "Zyskasz szacunek i&nbsp;lojalność pracowników, a&nbsp;przede wszystkim przyczynisz się do poprawy ich zdrowia i&nbsp;produktywności. Owoce do biura to jeden z&nbsp;najtańszych benefitów, który daje natychmiastowy efekt."
+                    "text": "Zyskasz szacunek i lojalność pracowników, a przede wszystkim przyczynisz się do poprawy ich zdrowia i produktywności. Owoce do biura to jeden z najtańszych benefitów, który daje natychmiastowy efekt."
                 }
             },
             {
@@ -690,7 +703,7 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
                 "name": "Ile kosztuje dostawa owoców do firmy?",
                 "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "Koszt zależy od liczby pracowników i&nbsp;wybranych produktów. Średnio to od 2 do 5 zł na osobę dziennie. Dostawa jest bezpłatna. Wyślij zapytanie, a&nbsp;przygotujemy spersonalizowaną wycenę w&nbsp;ciągu 24h."
+                    "text": "Koszt zależy od liczby pracowników i wybranych produktów. Średnio to od 2 do 5 zł na osobę dziennie. Dostawa jest bezpłatna. Wyślij zapytanie, a przygotujemy spersonalizowaną wycenę w ciągu 24h."
                 }
             },
             {
@@ -698,7 +711,7 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
                 "name": "W jakich miastach dostarczacie?",
                 "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "Dostarczamy w&nbsp;całej Polsce - Warszawa, Kraków, Wrocław, Poznań, Katowice, Łódź, Gdańsk, Szczecin, Lublin, Gdynia, Gliwice, Bydgoszcz, Rzeszów i&nbsp;wiele więcej."
+                    "text": "Dostarczamy w całej Polsce - Warszawa, Kraków, Wrocław, Poznań, Katowice, Łódź, Gdańsk, Szczecin, Lublin, Gdynia, Gliwice, Bydgoszcz, Rzeszów i wiele więcej."
                 }
             },
             {
@@ -706,15 +719,15 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
                 "name": "Jak szybko mogę zacząć?",
                 "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "Pierwsza dostawa może dotrzeć już w 24h od złożenia zamówienia. Wyślij zapytanie, a&nbsp;nasz team skontaktuje się z&nbsp;propozycją dopasowaną do Twojego biura."
+                    "text": "Pierwsza dostawa może dotrzeć już w 24h od złożenia zamówienia. Wyślij zapytanie, a nasz team skontaktuje się z propozycją dopasowaną do Twojego biura."
                 }
             },
             {
                 "@type": "Question",
-                "name": "Czy mogę zmieniać zamówienie w&nbsp;trakcie abonamentu?",
+                "name": "Czy mogę zmieniać zamówienie w trakcie abonamentu?",
                 "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "Tak, abonament jest w&nbsp;pełni elastyczny. Możesz zmieniać produkty, częstotliwość i&nbsp;ilość w&nbsp;dowolnym momencie. Zero zobowiązań, zero kar za rezygnację."
+                    "text": "Tak, abonament jest w pełni elastyczny. Możesz zmieniać produkty, częstotliwość i ilość w dowolnym momencie. Zero zobowiązań, zero kar za rezygnację."
                 }
             }
         ]
@@ -725,7 +738,7 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
   "name": "DailyFruits",
-  "description": "Dostawy świeżych owoców, kanapek, soków i&nbsp;zdrowych przekąsek do biur i&nbsp;zakładów pracy w&nbsp;całej Polsce.",
+  "description": "Dostawy świeżych owoców, kanapek, soków i zdrowych przekąsek do biur i zakładów pracy w całej Polsce.",
   "url": "https://dailyfruits.pl",
   "telephone": "+48228680499",
   "email": "kontakt@dailyfruits.pl",
@@ -807,7 +820,7 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
         <div class="hero-tabs">
             <button class="hero-tab active" data-img="hero-master-box.webp" data-alt="Paczka DailyFruits pełna świeżych owoców do biura" onclick="heroTabClick(this)"><span class="tab-icon"><img src="icon-owoce.svg" alt="Ikona owoców" class="inline-icon" loading="lazy" width="48" height="48"></span> Owoce</button>
             <button class="hero-tab" data-img="packshot-kanapki.webp" data-alt="Kanapki dla pracowników" onclick="heroTabClick(this)"><span class="tab-icon"><img src="icon-kanapki.svg" alt="Ikona kanapek" style="height:15px;width:auto;vertical-align:-2px;" loading="lazy" width="48" height="48"></span> Kanapki</button>
-            <button class="hero-tab" data-img="packshot-sniadaniowe.webp" data-alt="Produkty śniadaniowe" onclick="heroTabClick(this)"><span class="tab-icon"><img src="icon-sniadania.svg" alt="Ikona śniadań" style="height:20px;width:auto;vertical-align:-3px;" loading="lazy" width="48" height="48"></span> Sniadania</button>
+            <button class="hero-tab" data-img="packshot-sniadaniowe.webp" data-alt="Produkty śniadaniowe" onclick="heroTabClick(this)"><span class="tab-icon"><img src="icon-sniadania.svg" alt="Ikona śniadań" style="height:20px;width:auto;vertical-align:-3px;" loading="lazy" width="48" height="48"></span> Śniadania</button>
             <button class="hero-tab" data-img="packshot-soki.webp" data-alt="Świeże soki" onclick="heroTabClick(this)"><span class="tab-icon"><img src="icon-soki.svg" alt="Ikona soków" style="height:24px;width:auto;vertical-align:-4px;margin-right:-2px;" loading="lazy" width="48" height="48"></span> Soki</button>
             <button class="hero-tab" data-img="packshot-bakalie.webp" data-alt="Bakalie i suszone owoce" onclick="heroTabClick(this)"><span class="tab-icon"><img src="icon-bakalie.svg" alt="Ikona bakalii" style="height:20px;width:auto;vertical-align:-3px;" loading="lazy" width="48" height="48"></span> Bakalie</button>
             <button class="hero-tab hero-tab--red" data-img="packshot-lody.webp" data-alt="Lody do biura" onclick="heroTabClick(this)"><span class="tab-icon"><img src="icon-lody.svg" alt="Ikona lodów" style="height:22px;width:auto;vertical-align:-4px;" loading="lazy" width="48" height="48"></span> Lody</button>
@@ -1166,7 +1179,7 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
                 <img src="icons/icon-handshake.webp" alt="Ikona uścisku dłoni" width="32" height="32" loading="lazy" style="flex-shrink:0">
                 <div>
                     <h3 style="font-size:15px;font-weight:800;color:var(--green-dark);margin-bottom:4px">Certyfikowani dostawcy</h3>
-                    <p style="font-size:13px;line-height:1.5;color:var(--gray);margin:0">Fair Trade, GlobalG.A.P., Rainforest Alliance - poznaj nasz lancuch dostaw</p>
+                    <p style="font-size:13px;line-height:1.5;color:var(--gray);margin:0">Fair Trade, GlobalG.A.P., Rainforest Alliance - poznaj nasz łańcuch dostaw</p>
                 </div>
                 <span style="font-size:18px;color:var(--lime);flex-shrink:0;margin-left:auto">→</span>
             </a>
@@ -1530,18 +1543,23 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
         Array.from(tempDiv.childNodes).forEach(wrapWords);
         heading.innerHTML = tempDiv.innerHTML;
 
-        // Stagger delays
+        // Stagger delays (~60ms/word — full claim readable in <1.5s)
         heading.querySelectorAll('.word').forEach((w, i) => {
-            w.style.transitionDelay = `${i * 0.08}s`;
+            w.style.transitionDelay = `${i * 0.06}s`;
         });
 
-        // Observe
-        const splitObs = new IntersectionObserver(entries => {
-            entries.forEach(e => {
-                if (e.isIntersecting) { e.target.classList.add('vis'); splitObs.unobserve(e.target); }
-            });
-        }, { threshold: 0.2 });
-        splitObs.observe(heading);
+        // First paint: heading in viewport reveals IMMEDIATELY (no scroll/loader wait)
+        const hRect = heading.getBoundingClientRect();
+        if (hRect.top < window.innerHeight && hRect.bottom > 0) {
+            requestAnimationFrame(() => requestAnimationFrame(() => heading.classList.add('vis')));
+        } else {
+            const splitObs = new IntersectionObserver(entries => {
+                entries.forEach(e => {
+                    if (e.isIntersecting) { e.target.classList.add('vis'); splitObs.unobserve(e.target); }
+                });
+            }, { threshold: 0.2 });
+            splitObs.observe(heading);
+        }
     });
 
     // ─── COUNTER ANIMATION ───
@@ -1554,7 +1572,7 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
                 if (match) {
                     const target = parseInt(match[1].replace(/\s/g, ''));
                     const suffix = match[2];
-                    const duration = 1800;
+                    const duration = 900;
                     const start = performance.now();
                     function step(now) {
                         const progress = Math.min((now - start) / duration, 1);
@@ -1569,7 +1587,9 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
             }
         });
     }, { threshold: 0.5 });
-    document.querySelectorAll('.stat-number').forEach(el => counterObs.observe(el));
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        document.querySelectorAll('.stat-number').forEach(el => counterObs.observe(el));
+    }
 
     // ─── PARALLAX on decorative fruit elements ───
     const fruitDecos = document.querySelectorAll('.fruit-deco');
@@ -1856,17 +1876,53 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 })();
 
-/* ─── STAGGERED GRID REVEALS ─── */
+/* ─── STAGGERED GRID REVEALS (~70ms cascade via --d) ─── */
 (function(){
-    var grids = document.querySelectorAll('.how-grid, .offer-grid, .benefits-grid-six, .eco-grid');
+    var grids = document.querySelectorAll('.features-grid, .how-grid, .offer-grid, .benefits-grid-six, .eco-grid, .stats-grid');
     grids.forEach(function(grid) {
         var cards = grid.querySelectorAll('.reveal');
         cards.forEach(function(card, i) {
             if (!card.getAttribute('data-delay')) {
-                card.setAttribute('data-delay', String(i + 1));
+                card.setAttribute('data-delay', String(Math.min(i + 1, 5)));
             }
+            card.setAttribute('data-stagger', '');
+            card.style.setProperty('--d', (i * 70) + 'ms');
         });
     });
+    /* FAQ items: cascading reveal (own observer, once) */
+    var faqList = document.querySelector('.faq-list');
+    if (faqList && !window.matchMedia('(prefers-reduced-motion: reduce)').matches && 'IntersectionObserver' in window) {
+        faqList.querySelectorAll('.faq-item').forEach(function(item, i) {
+            item.style.setProperty('--d', (Math.min(i, 7) * 70) + 'ms');
+        });
+        faqList.classList.add('faq-stagger');
+        var faqObs = new IntersectionObserver(function(entries) {
+            entries.forEach(function(en) {
+                if (en.isIntersecting) { faqList.classList.add('faq-vis'); faqObs.disconnect(); }
+            });
+        }, { threshold: 0.05, rootMargin: '0px 0px -20px 0px' });
+        faqObs.observe(faqList);
+        setTimeout(function(){ faqList.classList.add('faq-vis'); }, 4000);
+    }
+})();
+
+/* ─── HERO IMAGE SUBTLE PARALLAX (max 24px, rAF, transform-only) ─── */
+(function(){
+    var img = document.getElementById('hero-product-img');
+    if (!img) return;
+    var mqReduce = window.matchMedia('(prefers-reduced-motion: reduce)');
+    var mqMobile = window.matchMedia('(max-width: 767px)');
+    var ticking = false;
+    function update() {
+        ticking = false;
+        if (mqReduce.matches || mqMobile.matches) { img.style.transform = ''; return; }
+        var y = Math.min(window.scrollY * 0.06, 24);
+        img.style.transform = y > 0.5 ? 'translateY(' + (-y).toFixed(1) + 'px)' : '';
+    }
+    window.addEventListener('scroll', function(){
+        if (!ticking) { ticking = true; requestAnimationFrame(update); }
+    }, { passive: true });
+    update();
 })();
 
 
@@ -1886,26 +1942,23 @@ document.querySelectorAll('.card-marquee-item').forEach(function(card) {
 
 </script>
 <script>
-/* pt-vt: przejscia miedzy stronami — View Transitions API + fallback fade (Firefox) */
+/* pt-vt v2: plynny fade-out/fade-in miedzy stronami (wszystkie przegladarki) */
 (function(){
-  var vt = !!document.startViewTransition;
-  if (vt) return; /* cross-document VT robi to natywnie przez CSS */
   var de = document.documentElement;
-  de.classList.add('pt-enter');
-  function enter(){ requestAnimationFrame(function(){ de.classList.add('pt-enter-active'); de.classList.remove('pt-enter'); setTimeout(function(){ de.classList.remove('pt-enter-active'); }, 400); }); }
-  if (document.readyState === 'complete' || document.readyState === 'interactive') enter(); else document.addEventListener('DOMContentLoaded', enter);
-  window.addEventListener('pageshow', function(e){ if (e.persisted) { de.classList.remove('pt-leave','pt-enter'); } });
+  de.classList.add('pt-in');
+  setTimeout(function(){ de.classList.remove('pt-in'); }, 400);
+  window.addEventListener('pageshow', function(e){ if (e.persisted) de.classList.remove('pt-out','pt-in'); });
   document.addEventListener('click', function(e){
     var a = e.target.closest && e.target.closest('a[href]');
     if (!a) return;
     var href = a.getAttribute('href');
     if (!href || href.charAt(0) === '#' || a.target === '_blank' || a.hasAttribute('download')) return;
-    if (/^(https?:)?\/\//.test(href) && a.host !== location.host) return;
     if (/^(mailto:|tel:|javascript:)/.test(href)) return;
+    if (a.host && a.host !== location.host) return;
     if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0) return;
     e.preventDefault();
-    de.classList.add('pt-leave');
-    setTimeout(function(){ location.href = a.href; }, 170);
+    de.classList.add('pt-out');
+    setTimeout(function(){ location.href = a.href; }, 180);
   }, true);
 })();
 </script>
