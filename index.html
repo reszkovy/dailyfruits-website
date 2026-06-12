@@ -623,6 +623,18 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
             .logo-sub { display: inline-block !important; border-left: 1px solid rgba(255,255,255,0.25) !important; padding-left: 8px !important; margin: 0 !important; font-size: 8px !important; align-self: center !important; opacity: 0.6 !important; }
             .nav-links, .nav-trust { display: none !important; }
         }
+    
+        /* ─── HERO IMG HOVER CTA (hi-cta) ─── */
+        .hero-img-link { position: relative; display: flex; align-items: center; justify-content: center; height: 100%; cursor: pointer; outline: none; -webkit-tap-highlight-color: transparent; }
+        .hero-img-link img { transition: opacity 0.4s ease, transform 0.55s cubic-bezier(0.22,1,0.36,1) !important; }
+        .hero-img-link:hover img:not(.switching), .hero-img-link:focus-visible img:not(.switching) { transform: scale(1.04) translateY(-6px) rotate(-0.5deg); }
+        .hero-img-cta { position: absolute; left: 50%; bottom: 26px; transform: translate(-50%, 16px) scale(0.94); opacity: 0; display: inline-flex; align-items: center; gap: 8px; background: var(--green-dark); color: #fff; padding: 13px 28px; border-radius: var(--radius-pill); font-weight: 700; font-size: 15px; box-shadow: 0 12px 32px rgba(27,94,58,0.35); transition: opacity 0.35s ease, transform 0.55s cubic-bezier(0.22,1,0.36,1); pointer-events: none; white-space: nowrap; z-index: 6; }
+        .hero-img-cta .fun { font-family: var(--font-fun); font-weight: 400; font-size: 19px; color: var(--yellow); }
+        .hero-img-cta .hi-arrow { transition: transform 0.4s cubic-bezier(0.22,1,0.36,1); }
+        .hero-img-link:hover .hero-img-cta, .hero-img-link:focus-visible .hero-img-cta { opacity: 1; transform: translate(-50%, 0) scale(1); }
+        .hero-img-link:hover .hi-arrow { transform: translateX(4px); }
+        @media (hover: none) { .hero-img-cta { display: none; } }
+        @media (prefers-reduced-motion: reduce) { .hero-img-link img, .hero-img-cta, .hi-arrow { transition: none !important; } .hero-img-link:hover img { transform: none; } }
     </style>
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://dailyfruits.pl/">
@@ -848,7 +860,10 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
                 </div>
             </div>
             <div class="hero-image scale-in">
-                <img id="hero-product-img" src="hero-master-box.webp" alt="Skrzynka DailyFruits pełna świeżych owoców — jabłka, ananas, banany, kiwi i cytrusy" fetchpriority="high" width="800" height="535">
+                <a href="oferta" id="heroImgLink" class="hero-img-link" aria-label="Sprawdź pełną ofertę">
+                    <img id="hero-product-img" src="hero-master-box.webp" alt="Skrzynka DailyFruits pełna świeżych owoców — jabłka, ananas, banany, kiwi i cytrusy" fetchpriority="high" width="800" height="535">
+                    <span class="hero-img-cta"><span class="fun">Zobacz</span> ofertę <span class="hi-arrow" aria-hidden="true">→</span></span>
+                </a>
             </div>
         </div>
     </div>
@@ -1683,7 +1698,11 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
         document.querySelectorAll('.hero-tab').forEach(t => t.classList.remove('active'));
         tab.classList.add('active');
         var ol = document.getElementById('heroOfferLink');
-        if (ol && tab.dataset.cat) { ol.href = 'oferta#' + tab.dataset.cat; }
+        var il = document.getElementById('heroImgLink');
+        if (tab.dataset.cat) {
+            if (ol) ol.href = 'oferta#' + tab.dataset.cat;
+            if (il) il.href = 'oferta#' + tab.dataset.cat;
+        }
         heroImg.classList.add('switching');
         setTimeout(() => {
             heroImg.src = tab.dataset.img;
