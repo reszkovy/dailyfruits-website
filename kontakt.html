@@ -394,7 +394,10 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
     });
 
     // ─── FORM SUBMIT ───
-    document.getElementById('contactForm').addEventListener('submit', e => { e.preventDefault(); document.getElementById('contactForm').style.display = 'none'; document.getElementById('formSuccess').classList.add('show'); });
+    var contactForm = document.getElementById('contactForm');
+    if (contactForm) {
+        contactForm.addEventListener('submit', e => { e.preventDefault(); contactForm.style.display = 'none'; document.getElementById('formSuccess').classList.add('show'); });
+    }
 </script>
 
 <div class="mobile-sticky-cta" id="mobileCta" style="display:none!important">
