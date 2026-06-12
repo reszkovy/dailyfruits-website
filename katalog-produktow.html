@@ -476,6 +476,15 @@ body.bw .hc-pre.on{background:#1f0b09;border-color:#1f0b09}
             ::view-transition-old(root), ::view-transition-new(root) { animation: none; }
             html.pt-leave body, html.pt-enter body { opacity: 1; transform: none; transition: none; }
         }
+    
+        /* ─── MOBILE HEADER UNIFY (mh-unify) ─── */
+        @media (max-width: 768px) {
+            .nav-inner { padding: 10px 20px !important; }
+            .logo-img { height: 38px !important; width: auto !important; }
+            .logo-wrap { flex-direction: row !important; gap: 8px !important; align-items: center !important; }
+            .logo-sub { display: inline-block !important; border-left: 1px solid rgba(255,255,255,0.25) !important; padding-left: 8px !important; margin: 0 !important; font-size: 8px !important; align-self: center !important; opacity: 0.6 !important; }
+            .nav-links, .nav-trust { display: none !important; }
+        }
     </style>
 </head>
 <body class="bw">
@@ -512,7 +521,7 @@ if(sessionStorage.getItem('katalog_auth')==='1'){document.getElementById('pwGate
 <!-- Top bar: logo + category tabs -->
 <div class="topbar">
     <div class="topbar-logo" id="brandLogo">
-        <img src="fruitttt.svg" alt="DailyFruits" width="26" height="26" id="logoImg" style="display:none">
+        <img src="animacja_11.svg" alt="DailyFruits" width="26" height="26" id="logoImg" style="display:none">
         <img id="logoBW" src="bw-logo.svg" alt="Better Workplace" height="26">
     </div>
     <div class="divider"></div>

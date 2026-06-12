@@ -76,6 +76,15 @@ a { text-decoration: none; color: inherit; }
             ::view-transition-old(root), ::view-transition-new(root) { animation: none; }
             html.pt-leave body, html.pt-enter body { opacity: 1; transform: none; transition: none; }
         }
+    
+        /* ─── MOBILE HEADER UNIFY (mh-unify) ─── */
+        @media (max-width: 768px) {
+            .nav-inner { padding: 10px 20px !important; }
+            .logo-img { height: 38px !important; width: auto !important; }
+            .logo-wrap { flex-direction: row !important; gap: 8px !important; align-items: center !important; }
+            .logo-sub { display: inline-block !important; border-left: 1px solid rgba(255,255,255,0.25) !important; padding-left: 8px !important; margin: 0 !important; font-size: 8px !important; align-self: center !important; opacity: 0.6 !important; }
+            .nav-links, .nav-trust { display: none !important; }
+        }
     </style>
     <script type="application/ld+json">
 {
@@ -95,7 +104,7 @@ a { text-decoration: none; color: inherit; }
     "name": "DailyFruits by Betterworkplace Sp. z o.o.",
     "logo": {
       "@type": "ImageObject",
-      "url": "https://dailyfruits.pl/fruitttt.svg"
+      "url": "https://dailyfruits.pl/animacja_11.svg"
     }
   },
   "mainEntityOfPage": "https://dailyfruits.pl/wpis-cytrusy"
@@ -107,7 +116,7 @@ a { text-decoration: none; color: inherit; }
 <!-- NAV -->
 <header>
     <div class="nav-inner">
-        <div class="logo-wrap"><a href="/"><img src="fruitttt.svg" alt="DailyFruits — owoce, kanapki, soki, przekąski i więcej do biura" class="logo-img" loading="lazy" width="64" height="64"></a><a href="https://betterworkplace.pl" target="_blank" rel="noopener noreferrer" class="logo-sub">by BetterWorkplace</a></div>
+        <div class="logo-wrap"><a href="/"><img src="animacja_11.svg" alt="DailyFruits — owoce, kanapki, soki, przekąski i więcej do biura" class="logo-img" loading="lazy" width="76" height="40"></a><a href="https://betterworkplace.pl" target="_blank" rel="noopener noreferrer" class="logo-sub">by BetterWorkplace</a></div>
         <nav><ul class="nav-links">
             <li><a href="oferta">Oferta</a></li>
             <li><a href="dostawa">Dostawa</a></li>
@@ -189,7 +198,7 @@ a { text-decoration: none; color: inherit; }
         <div class="footer-grid">
             <div class="footer-brand">
                 <div style="display:flex;align-items:center;gap:16px;">
-                    <img src="fruitttt.svg" alt="DailyFruits logo" style="height:56px;filter:brightness(10);" loading="lazy" width="56" height="56">
+                    <img src="animacja_11.svg" alt="DailyFruits logo" style="height:56px;filter:brightness(10);" loading="lazy" width="56" height="56">
                     <img src="dailyfoods-logo.svg" alt="DailyFoods" style="height:56px;" loading="lazy" width="64" height="64">
                 </div>
                 <p>Zdrowsze jedzenie, lepsza praca – zaczynając od kuchni. Część ekosystemu BetterWorkplace.</p>
