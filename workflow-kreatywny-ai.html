@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Workflow kreatywny AI-first — od konceptu do kreacji</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --green:#1B5E3A; --green-mid:#347550; --lime:#8DC63F; --lime-pale:#D5E8A0;
+  --red:#E43020; --yellow:#FFF200; --cream:#FFF9E0; --white:#fff;
+  --ink:#1B5E3A; --muted:#5a6b5f; --line:#e3e7dc;
+  --mj:#7E57C2; --canva:#2E9BD6;
+  --font:'DM Sans',system-ui,sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:var(--font);background:var(--cream);color:var(--ink);line-height:1.6;padding:48px 24px 80px}
+.wrap{max-width:1180px;margin:0 auto}
+.kicker{display:inline-block;font-size:12px;font-weight:900;letter-spacing:.14em;text-transform:uppercase;color:var(--green-mid);background:var(--lime-pale);padding:6px 14px;border-radius:100px;margin-bottom:16px}
+h1{font-size:clamp(30px,4.6vw,52px);font-weight:900;letter-spacing:-.03em;line-height:1.05;margin-bottom:14px}
+h1 .accent{color:var(--lime)}
+.lead{font-size:17px;color:var(--muted);max-width:760px;margin-bottom:44px}
+
+/* ── PIPELINE ── */
+.pipe{position:relative;display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-bottom:18px}
+.node{background:var(--white);border:1px solid var(--line);border-radius:18px;padding:22px 20px 20px;position:relative;box-shadow:0 8px 24px rgba(27,94,58,.06)}
+.node .num{position:absolute;top:-14px;left:20px;width:30px;height:30px;border-radius:50%;background:var(--green);color:#fff;font-weight:900;font-size:14px;display:flex;align-items:center;justify-content:center}
+.node .ico{font-size:30px;line-height:1;margin-bottom:10px}
+.node .tool{font-size:11px;font-weight:900;letter-spacing:.1em;text-transform:uppercase;color:var(--green-mid);margin-bottom:6px}
+.node h3{font-size:18px;font-weight:900;letter-spacing:-.02em;margin-bottom:8px}
+.node p{font-size:13.5px;color:var(--muted)}
+.node .out{margin-top:12px;font-size:12px;font-weight:700;color:var(--green);border-top:1px dashed var(--line);padding-top:10px}
+.node .out span{font-weight:900}
+.arrow{position:absolute;top:50%;right:-15px;transform:translateY(-50%);z-index:2;color:var(--lime);font-size:22px;font-weight:900}
+.node:last-child .arrow{display:none}
+
+/* parallel lane */
+.parallel{margin-top:8px;display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.lane-label{grid-column:1/3;display:flex;align-items:center;gap:10px;font-size:12px;font-weight:900;letter-spacing:.12em;text-transform:uppercase;color:var(--canva)}
+.connector{grid-column:4;display:flex;justify-content:center;align-items:center;gap:8px;color:var(--green-mid);font-size:12px;font-weight:800}
+.branch{position:relative;margin:6px 0 22px}
+.branch-line{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;align-items:stretch}
+.spacer{}
+.canva-node{grid-column:4;background:var(--white);border:2px solid var(--canva);border-radius:18px;padding:20px;position:relative;box-shadow:0 8px 24px rgba(46,155,214,.12)}
+.canva-node .num{background:var(--canva)}
+.canva-node .tool{color:var(--canva)}
+.loop{grid-column:1/4;display:flex;align-items:center;justify-content:flex-end;gap:14px;padding-right:8px}
+.loop-text{text-align:right;font-size:13.5px;color:var(--muted);max-width:520px}
+.loop-text b{color:var(--green)}
+.loop-arrow{font-size:30px;color:var(--canva);font-weight:900}
+
+/* merge node */
+.merge{margin-top:10px;background:linear-gradient(180deg,#fff, #fbfdf6);border:2px solid var(--green);border-radius:18px;padding:22px 24px;display:flex;align-items:center;gap:18px;box-shadow:0 10px 28px rgba(27,94,58,.1)}
+.merge .ico{font-size:34px}
+.merge h3{font-size:19px;font-weight:900;margin-bottom:4px}
+.merge p{font-size:14px;color:var(--muted)}
+
+/* why */
+.why{margin-top:48px;display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.why .card{background:var(--green);color:#eafde9;border-radius:18px;padding:24px}
+.why .card h4{font-size:15px;font-weight:900;color:#fff;margin-bottom:8px;display:flex;gap:8px;align-items:center}
+.why .card p{font-size:13.5px;color:#c8e6cd}
+.why .card .big{font-family:var(--font);font-weight:900;font-size:30px;color:var(--lime);line-height:1;margin-bottom:6px;letter-spacing:-.02em}
+
+.legend{margin-top:38px;display:flex;flex-wrap:wrap;gap:18px;font-size:12.5px;color:var(--muted)}
+.legend span{display:flex;align-items:center;gap:7px;font-weight:700}
+.dot{width:12px;height:12px;border-radius:4px;display:inline-block}
+footer{margin-top:46px;border-top:1px solid var(--line);padding-top:18px;font-size:12px;color:var(--muted)}
+
+@media(max-width:900px){
+  .pipe,.parallel,.branch-line{grid-template-columns:1fr}
+  .arrow{right:50%;top:auto;bottom:-22px;transform:translateX(50%) rotate(90deg)}
+  .canva-node,.connector,.lane-label,.loop{grid-column:1}
+  .loop{justify-content:flex-start}.loop-text{text-align:left}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <span class="kicker">Proces · AI-first creative pipeline</span>
+  <h1>Od konceptu do gotowej kreacji <span class="accent">w jednym przepływie</span></h1>
+  <p class="lead">Powtarzalny workflow, który zamienia strategiczny pomysł w spójne, on-brand kreacje. Każdy etap ma jedno wyjście, które zasila następny — bez chaosu, z jednym masterem na końcu. Canva działa równolegle do Figmy i wraca do niej na konsolidację.</p>
+
+  <!-- LINEAR SPINE -->
+  <div class="pipe">
+    <div class="node">
+      <div class="num">1</div>
+      <div class="ico">🧭</div>
+      <div class="tool">Strategia</div>
+      <h3>Generujemy koncept</h3>
+      <p>Big idea, grupy docelowe, linie komunikacyjne i KPI. Fundament, z którego wychodzi cała reszta.</p>
+      <div class="out">Wyjście: <span>koncept + linie copy</span></div>
+      <div class="arrow">→</div>
+    </div>
+    <div class="node">
+      <div class="num">2</div>
+      <div class="ico">🗂️</div>
+      <div class="tool">FigJam</div>
+      <h3>Porządkujemy w FigJam</h3>
+      <p>Tablica koncepcyjna: strategia, tiery, koncepty i prompty w jednym miejscu — do iteracji i akceptacji kierunku.</p>
+      <div class="out">Wyjście: <span>board koncepcyjny</span></div>
+      <div class="arrow">→</div>
+    </div>
+    <div class="node">
+      <div class="num">3</div>
+      <div class="ico">🎨</div>
+      <div class="tool">Midjourney</div>
+      <h3>Budujemy assety</h3>
+      <p>Generacja ujęć pod konkretne linie, spójny styl przez moodboard. Jeden prompt = jedna kreatywna koncepcja.</p>
+      <div class="out">Wyjście: <span>obrazy / wizualizacje</span></div>
+      <div class="arrow">→</div>
+    </div>
+    <div class="node">
+      <div class="num">4</div>
+      <div class="ico">🟢</div>
+      <div class="tool">Figma · master</div>
+      <h3>Przenosimy do Figmy</h3>
+      <p>Assety + brandbook (tokeny, fonty, ton) składają się w gotowe kreacje on-brand. To jest źródło prawdy.</p>
+      <div class="out">Wyjście: <span>kreacje 1:1 · 4:5 · 9:16</span></div>
+    </div>
+  </div>
+
+  <!-- PARALLEL CANVA LANE -->
+  <div class="parallel">
+    <div class="lane-label">▤ Tor równoległy</div>
+    <div class="connector">odgałęzienie z Figmy ↓</div>
+  </div>
+  <div class="branch">
+    <div class="branch-line">
+      <div class="loop">
+        <div class="loop-text">Z Figmy bierzemy on-brand bazę i <b>równolegle</b> pracujemy w Canvie: szybkie warianty, resize pod formaty, eksport do dystrybucji. Render z Figmy wchodzi do Canvy 1:1 — spójność zachowana.</div>
+        <div class="loop-arrow">⟶</div>
+      </div>
+      <div class="canva-node">
+        <div class="num">5</div>
+        <div class="ico">🔵</div>
+        <div class="tool">Canva · równolegle</div>
+        <h3>Wariacje i dystrybucja</h3>
+        <p>Brand kit + szablony + szybki resize. Skalowanie ilości, nie ustalanie kierunku.</p>
+        <div class="out">Wyjście: <span>warianty / eksporty</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MERGE BACK -->
+  <div class="merge">
+    <div class="ico">🔁</div>
+    <div>
+      <h3>6 · Powrót do Figmy — konsolidacja</h3>
+      <p>Po zakończeniu w Canvie wszystko wraca do Figmy: jeden master, jedna wersja prawdy, spójny brand i porządek wersjonowania. Pętla domknięta — gotowe do skalowania kolejnych kampanii.</p>
+    </div>
+  </div>
+
+  <!-- WHY -->
+  <div class="why">
+    <div class="card">
+      <div class="big">1 master</div>
+      <h4>Jedno źródło prawdy</h4>
+      <p>Figma trzyma finalny stan. Koniec z dziesiątkami rozjechanych plików i wersji „final_v3_ostateczna".</p>
+    </div>
+    <div class="card">
+      <div class="big">×N</div>
+      <h4>Leverage, nie dłubanina</h4>
+      <p>Standaryzacja etapów i promptów = ten sam proces produkuje kolejne kampanie szybciej, bez utraty jakości.</p>
+    </div>
+    <div class="card">
+      <div class="big">100%</div>
+      <h4>Spójność brandu</h4>
+      <p>Brandbook wpięty w Figmę pilnuje tokenów i tonu. Canva przyspiesza ilość, Figma chroni jakość.</p>
+    </div>
+  </div>
+
+  <div class="legend">
+    <span><i class="dot" style="background:var(--green)"></i>Tor główny (strategia → master)</span>
+    <span><i class="dot" style="background:var(--mj)"></i>Generacja assetów (Midjourney)</span>
+    <span><i class="dot" style="background:var(--canva)"></i>Tor równoległy (Canva)</span>
+    <span><i class="dot" style="background:var(--lime)"></i>Przepływ między etapami</span>
+  </div>
+
+  <footer>Workflow kreatywny AI-first · DailyFruits / BetterWorkplace · dokument procesowy</footer>
+</div>
+</body>
+</html>
