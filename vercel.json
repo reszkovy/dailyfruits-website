@@ -302,6 +302,11 @@
       "source": "/oferta/zestawy-na-spotkania-firmowe/",
       "destination": "/catering-firmowy",
       "statusCode": 301
+    },
+    {
+      "source": "/owoce-do-biura-kielce",
+      "destination": "/dostawa",
+      "statusCode": 301
     }
   ]
 }
