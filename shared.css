@@ -139,3 +139,9 @@ footer{background:var(--green-dark);padding:60px 0 32px;color:#fff}
 .badge-fun{font-family:var(--font-fun);font-size:38px;color:var(--lime);line-height:1}
 .label-muted{font-size:13px;font-weight:700;color:var(--green-dark);opacity:0.6;line-height:1.2}
 @media(max-width:768px){.nav-links,.nav-trust,.hero-tabs-label,.hero-trial-cta{display:none!important}.nav-buttons .btn,.nav-buttons .nav-trust{display:none!important}.nav-buttons{gap:0}.mn-burger{display:flex}.mobile-sticky-cta{display:none!important}.floating-badge{display:none!important}.container{padding:0 20px}.nav-inner{padding:10px 20px}.footer-grid{grid-template-columns:1fr}}
+
+.cat-index{background:var(--green-dark);padding:6px 0 0}
+.cat-index-links{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:4px 12px;max-width:920px;margin:0 auto;padding:8px 16px 0}
+.cat-index-label{font-size:10.5px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:rgba(255,255,255,.30)}
+.cat-index-links a{font-size:11px;color:rgba(255,255,255,.26);transition:color .2s}
+.cat-index-links a:hover{color:rgba(255,255,255,.6)}
