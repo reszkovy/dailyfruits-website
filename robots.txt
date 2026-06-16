@@ -2,6 +2,19 @@ User-agent: *
 Allow: /
 Disallow: /app/uploads/
 Disallow: /*.json$
+# Strony wewnetrzne / robocze - poza indeksem
+Disallow: /admin
+Disallow: /brief
+Disallow: /oferta-v2
+Disallow: /frameworkdf
+Disallow: /box-visualizations
+Disallow: /social-media-formaty
+Disallow: /workflow-kreatywny-ai
+Disallow: /DailyFruits-Case-Study
+Disallow: /DailyFruits-SEO-Raport
+Disallow: /case-study-allegro
+Disallow: /council-report-*
+
 
 Sitemap: https://dailyfruits.pl/sitemap.xml
 
