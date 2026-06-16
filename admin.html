@@ -111,8 +111,8 @@
 <!-- LOGIN -->
 <div class="login-wrap" id="loginView">
     <div class="login-box">
-        <h1>🍋 DailyFruits CMS</h1>
-        <p>Panel zarządzania blogiem</p>
+        <h1>🍋 DailyFruits CMS</h1>
+        <p>Panel zarządzania blogiem</p>
         <input type="password" id="passwordInput" placeholder="Wpisz hasło..." autocomplete="current-password">
         <button onclick="doLogin()">Zaloguj się</button>
         <div class="login-error" id="loginError">Nieprawidłowe hasło</div>
@@ -122,7 +122,7 @@
 <!-- DASHBOARD -->
 <div class="dashboard" id="dashboardView">
     <div class="topbar">
-        <h1>🍋 DailyFruits CMS</h1>
+        <h1>🍋 DailyFruits CMS</h1>
         <div class="topbar-actions">
             <a href="https://dailyfruits.pl/blog" target="_blank" class="btn-sm btn-logout">Zobacz blog →</a>
             <button class="btn-sm btn-logout" onclick="doLogout()">Wyloguj</button>
@@ -132,7 +132,7 @@
     <!-- POST LIST -->
     <div class="content" id="postListView">
         <div class="post-list-header">
-            <h2>Artykuły blogowe</h2>
+            <h2>Artykuły blogowe</h2>
             <span class="post-count" id="postCount"></span>
         </div>
         <div id="postList">
@@ -144,7 +144,7 @@
     <div class="content editor" id="editorView">
         <div class="editor-header">
             <button class="btn btn-back" onclick="showList()">← Wróć</button>
-            <h2 id="editorTitle">Edytuj artykuł</h2>
+            <h2 id="editorTitle">Edytuj artykuł</h2>
             <button class="btn btn-preview" onclick="previewPost()">Podgląd</button>
             <button class="btn btn-save" onclick="savePost()">💾 Zapisz</button>
         </div>
@@ -177,7 +177,7 @@
             <div class="field">
                 <label>Meta description (SEO)</label>
                 <input type="text" id="editDescription" placeholder="Krótki opis do Google (max 160 znaków)">
-                <div class="field-help">Maks. 160 znaków - widoczny w wynikach wyszukiwania</div>
+                <div class="field-help">Maks. 160 znaków - widoczny w wynikach wyszukiwania</div>
             </div>
             <div class="field">
                 <label>Zajawka (na karcie bloga)</label>
@@ -185,7 +185,7 @@
             </div>
             <div class="field">
                 <label>Treść artykułu (HTML)</label>
-                <textarea id="editBody" placeholder="<h2>Nagłówek sekcji</h2><p>Tekst akapitu...</p>"></textarea>
+                <textarea id="editBody" placeholder="<h2>Nagłówek sekcji</h2><p>Tekst akapitu...</p>"></textarea>
                 <div class="field-help">Używaj tagów HTML: &lt;h2&gt;, &lt;h3&gt;, &lt;p&gt;, &lt;ul&gt;, &lt;li&gt;, &lt;strong&gt;, &lt;em&gt;</div>
             </div>
         </div>
