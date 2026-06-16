@@ -625,28 +625,16 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
             <p style="max-width:520px;margin:12px auto 40px;">Wypełnij formularz — odezwiemy się w ciągu 24 godzin z propozycją dopasowaną do Twojego biura.</p>
         </div>
         <div class="oferta-form-wrap reveal">
-            <form id="ofertaContactForm">
-                <div class="oferta-form-grid">
-                    <div class="oferta-form-field"><label for="oc-name">Imię i nazwisko</label><input type="text" id="oc-name" name="fullname" required placeholder="Jan Kowalski"></div>
-                    <div class="oferta-form-field"><label for="oc-company">Firma</label><input type="text" id="oc-company" name="company" required placeholder="ABC sp. z o.o."></div>
-                </div>
-                <div class="oferta-form-grid">
-                    <div class="oferta-form-field"><label for="oc-email">Email</label><input type="email" id="oc-email" name="email" required placeholder="jan@firma.pl"></div>
-                    <div class="oferta-form-field"><label for="oc-phone">Telefon</label><input type="tel" id="oc-phone" name="phone" placeholder="+48 123 456 789"></div>
-                </div>
-                <div class="oferta-form-grid">
-                    <div class="oferta-form-field"><label for="oc-city">Miasto</label><input type="text" id="oc-city" name="city" required placeholder="np. Warszawa"></div>
-                    <div class="oferta-form-field"><label for="oc-employees">Liczba pracowników</label><select id="oc-employees" name="employees" required><option value="">Wybierz</option><option value="1-20">1–20</option><option value="21-50">21–50</option><option value="51-100">51–100</option><option value="101-250">101–250</option><option value="251-500">251–500</option><option value="500+">500+</option></select></div>
-                </div>
-                <div class="oferta-form-field"><label for="oc-message">Czego szukasz?</label><textarea id="oc-message" name="message" placeholder="Owoce, kanapki, częstotliwość dostaw, budżet..."></textarea></div>
-                <div style="margin-top:28px;"><button type="submit" class="oferta-form-submit">Wyślij zapytanie →</button></div>
-                <p style="text-align:center;font-size:13px;color:var(--gray);opacity:0.6;margin-top:14px;">🔒 Twoje dane są bezpieczne. Odpowiadamy w ciągu 24h w dni robocze.</p>
-            </form>
-            <div id="ofertaFormSuccess" style="display:none;text-align:center;padding:56px 32px;">
-                <div style="width:64px;height:64px;border-radius:50%;background:var(--lime);display:flex;align-items:center;justify-content:center;margin:0 auto 20px;font-size:28px;color:#fff;">✓</div>
-                <h2 style="margin-bottom:10px;">Dziękujemy!</h2>
-                <p style="max-width:380px;margin:0 auto;">Twoje zapytanie zostało wysłane. Skontaktujemy się w ciągu 24 godzin z dopasowaną ofertą.</p>
-                <a href="/" class="btn btn-green" style="margin-top:24px;display:inline-block;">Wróć na stronę główną</a>
+            <!-- BWP (Better Workplace) official embed — auto-resize + brand passthrough -->
+            <iframe
+              id="bwp-form"
+              src="https://betterworkplace.pl/kontakt/zapytanie-embed?marketing=1"
+              style="width:100%;border:none;display:block;min-height:600px">
+            </iframe>
+            <div class="bwp-fallback" style="margin-top:18px;padding:16px 20px;background:rgba(141,198,63,0.10);border:1px solid rgba(141,198,63,0.45);border-radius:14px;font-size:14.5px;line-height:1.6;">
+                <strong>Wolisz szybciej?</strong> Zadzwoń: <a href="tel:+48228680499" style="font-weight:900;color:var(--green-dark, #1B5E3A);">22 868 04 99</a>
+                albo napisz: <a href="mailto:kontakt@dailyfruits.pl?subject=Zapytanie%20ofertowe%20DailyFruits" style="font-weight:900;color:var(--green-dark, #1B5E3A);">kontakt@dailyfruits.pl</a>
+                — odpowiadamy w ciągu 24 h.
             </div>
         </div>
     </div>
@@ -833,33 +821,24 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
     });
 </script>
 
-<!-- Contact form handler -->
+<!-- BWP embed handler: auto-resize + brand passthrough (jak na /zapytanie) -->
 <script>
-(function() {
-    var form = document.getElementById('ofertaContactForm');
-    if (!form) return;
-    form.addEventListener('submit', function(e) {
-        e.preventDefault();
-        var btn = form.querySelector('button[type="submit"]');
-        btn.textContent = 'Wysyłanie...';
-        btn.disabled = true;
-        var data = new FormData(form);
-        var payload = {};
-        data.forEach(function(v, k) { payload[k] = v; });
-        payload.source = 'oferta-page';
-        payload.timestamp = new Date().toISOString();
-        if (window.dataLayer) {
-            dataLayer.push({ event: 'form_submit', form_name: 'oferta_contact', page: '/oferta.html' });
-        }
-        // Przekierowanie do centralnego formularza (embed BWP) — bez fake-success
-        try { sessionStorage.setItem('df_lead_draft', JSON.stringify(payload)); } catch(e) {}
-        window.location.href = '/zapytanie?from=oferta';
-    });
-    // Focus styles
-    form.querySelectorAll('input, select, textarea').forEach(function(el) {
-        el.addEventListener('focus', function() { this.style.boxShadow = '0 0 0 2px #8DC63F'; });
-        el.addEventListener('blur', function() { this.style.boxShadow = ''; });
-    });
+(function(){
+  var BRAND = 'Daily fruits';
+  window.addEventListener('message', function(e) {
+    if (e.data?.type === 'bwp:request-info') {
+      e.source.postMessage({
+        type: 'bwp:info',
+        url: window.location.href,
+        referrer: document.referrer,
+        brand: BRAND
+      }, '*');
+    }
+    if (e.data?.type === 'bwp:resize') {
+      var f = document.getElementById('bwp-form');
+      if (f) f.style.height = e.data.height + 'px';
+    }
+  });
 })();
 </script>
 
