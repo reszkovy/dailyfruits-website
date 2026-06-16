@@ -44,6 +44,8 @@ a { text-decoration: none; color: inherit; }
 .page-hero h1 { font-weight: 900; font-size: clamp(36px, 5vw, 56px); color: var(--green-dark); line-height: 1.05; letter-spacing: -0.04em; margin-bottom: 14px; }
 .page-hero h1 .fun { font-family: var(--font-fun); font-weight: 400; color: var(--lime); font-size: 1.08em; }
 .page-hero .tagline { font-size: 19px; color: var(--gray); max-width: 640px; line-height: 1.5; }
+        .page-hero .hero-deco { position: absolute; right: 4%; top: 50%; transform: translateY(-50%); width: min(32%, 340px); height: auto; z-index: 1; pointer-events: none; filter: drop-shadow(0 18px 30px rgba(27,94,58,0.16)); }
+        @media (max-width: 820px) { .page-hero .hero-deco { display: none; } }
 
 .intro-section { padding: 64px 0; background: var(--white); }
 .intro-section .container { max-width: 820px; }
@@ -151,6 +153,7 @@ a { text-decoration: none; color: inherit; }
         <h1>Upominki dla pracowników</h1>
         <p class="tagline">Paczki świąteczne i okolicznościowe</p>
     </div>
+    <img class="hero-deco" src="upominki-packshot.webp" alt="Pudełko upominkowe pełne owoców z zieloną wstążką" loading="eager" width="600" height="583">
 </section>
 
 <section class="intro-section">
