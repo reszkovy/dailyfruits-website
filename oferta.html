@@ -85,6 +85,11 @@
         /* ─── CATEGORY TABS ─── */
         .cat-tabs-wrap { position: sticky; top: 108px; z-index: 50; background: var(--cream); padding: 16px 0; border-bottom: 1px solid rgba(27,94,58,0.08); }
         .cat-tabs { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; max-width: 1240px; margin: 0 auto; padding: 0 48px; }
+        .cat-groups { display: flex; flex-direction: column; gap: 12px; max-width: 1240px; margin: 0 auto; padding: 0 48px; }
+        .cat-group { display: flex; align-items: center; justify-content: center; gap: 12px; flex-wrap: wrap; }
+        .cat-group + .cat-group { padding-top: 12px; border-top: 1px dashed rgba(27,94,58,0.18); }
+        .cat-group-label { font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.7px; color: var(--gray-500); opacity: 0.7; white-space: nowrap; }
+        .cat-group .cat-tabs { padding: 0; max-width: none; margin: 0; }
         .cat-tab { display: inline-flex; align-items: center; gap: 6px; padding: 10px 22px; border-radius: var(--radius-pill); font-family: var(--font); font-size: 14px; font-weight: 700; cursor: pointer; border: 2px solid transparent; background: transparent; color: var(--green-dark); transition: all 0.35s cubic-bezier(0.16,1,0.3,1); white-space: nowrap; position: relative; }
         .cat-tab:hover { background: rgba(141,198,63,0.2); transform: translateY(-2px) scale(1.04); box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
         .cat-tab:hover img { transform: scale(1.2) rotate(-8deg); }
@@ -372,16 +377,26 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
 <h1 class="hero-in" style="margin-top:108px;padding:24px 0 0;text-align:center;font-family:'Achiko',sans-serif;font-size:clamp(28px,4vw,38px);font-weight:400;color: var(--green-dark);">Pełna oferta DailyFruits & DailyFoods</h1>
 <p class="hero-in hero-in-2" style="text-align:center;font-size:15px;color: var(--gray-500);margin:8px auto 0;max-width:520px;">Owoce, śniadania, napoje, catering, kanapki, sałatki i wiele więcej — wszystko w jednej dostawie.</p>
 <div class="cat-tabs-wrap mt-20" id="catTabs">
-    <div class="cat-tabs" role="tablist" aria-label="Kategorie produktów">
-        <button class="cat-tab active" role="tab" aria-selected="true" data-cat="owoce"><img src="icon-owoce.svg" alt="Ikona owoców" style="height:18px" loading="lazy" width="48" height="48"> Owoce i warzywa <span class="cat-count">5</span></button>
-        <button class="cat-tab" role="tab" aria-selected="false" data-cat="sniadania"><img src="icon-sniadania.svg" alt="Ikona śniadaniowa" style="height:18px" loading="lazy" width="48" height="48"> Poranek <span class="cat-count">3</span></button>
-        <button class="cat-tab" role="tab" aria-selected="false" data-cat="soki"><img src="icon-soki.svg" alt="Ikona napojów" style="height:20px" loading="lazy" width="48" height="48"> Napoje <span class="cat-count">7</span></button>
-        <button class="cat-tab" role="tab" aria-selected="false" data-cat="kawa"><img src="icon-kawa.svg" alt="Ikona kawy" style="height:18px" loading="lazy" width="48" height="48"> Kawa <span class="cat-count">3</span></button>
-        <button class="cat-tab" role="tab" aria-selected="false" data-cat="catering"><img src="icon-kanapki.svg" alt="Ikona cateringu" style="height:14px" loading="lazy" width="48" height="48"> Catering <span class="cat-count">9</span></button>
-        <button class="cat-tab" role="tab" aria-selected="false" data-cat="bakalie"><img src="icon-bakalie.svg" alt="Ikona pakietów przekąsek" style="height:18px" loading="lazy" width="48" height="48"> Pakiety <span class="cat-count">6</span></button>
-        <button class="cat-tab" role="tab" aria-selected="false" data-cat="kanapki"><img src="icon-kanapki.svg" alt="Ikona kanapek" style="height:14px" loading="lazy" width="48" height="48"> Kanapki <span class="cat-count">4</span></button>
-        <button class="cat-tab" role="tab" aria-selected="false" data-cat="salatki"><img src="icon-salatki.svg" alt="Ikona sałatek" style="height:18px" loading="lazy" width="48" height="48"> Sałatki <span class="cat-count">8</span></button>
-        <button class="cat-tab" role="tab" aria-selected="false" data-cat="integracyjne"><img src="icon-extra.svg" alt="Ikona zestawów integracyjnych" style="height:18px" loading="lazy" width="48" height="48"> Integracyjne <span class="cat-count">2</span></button>
+    <div class="cat-groups">
+        <div class="cat-group">
+            <span class="cat-group-label">Produkty</span>
+            <div class="cat-tabs" role="tablist" aria-label="Kategorie produktowe">
+                <button class="cat-tab active" role="tab" aria-selected="true" data-cat="owoce"><img src="icon-owoce.svg" alt="Ikona owoców" style="height:18px" loading="lazy" width="48" height="48"> Owoce i warzywa <span class="cat-count">5</span></button>
+                <button class="cat-tab" role="tab" aria-selected="false" data-cat="sniadania"><img src="icon-sniadania.svg" alt="Ikona śniadaniowa" style="height:18px" loading="lazy" width="48" height="48"> Śniadanie <span class="cat-count">3</span></button>
+                <button class="cat-tab" role="tab" aria-selected="false" data-cat="soki"><img src="icon-soki.svg" alt="Ikona napojów" style="height:20px" loading="lazy" width="48" height="48"> Napoje <span class="cat-count">7</span></button>
+                <button class="cat-tab" role="tab" aria-selected="false" data-cat="kawa"><img src="icon-kawa.svg" alt="Ikona kawy" style="height:18px" loading="lazy" width="48" height="48"> Kawa <span class="cat-count">3</span></button>
+                <button class="cat-tab" role="tab" aria-selected="false" data-cat="kanapki"><img src="icon-kanapki.svg" alt="Ikona kanapek" style="height:14px" loading="lazy" width="48" height="48"> Kanapki <span class="cat-count">4</span></button>
+                <button class="cat-tab" role="tab" aria-selected="false" data-cat="salatki"><img src="icon-salatki.svg" alt="Ikona sałatek" style="height:18px" loading="lazy" width="48" height="48"> Sałatki <span class="cat-count">8</span></button>
+                <button class="cat-tab" role="tab" aria-selected="false" data-cat="bakalie"><img src="icon-bakalie.svg" alt="Ikona pakietów przekąsek" style="height:18px" loading="lazy" width="48" height="48"> Pakiety <span class="cat-count">6</span></button>
+            </div>
+        </div>
+        <div class="cat-group">
+            <span class="cat-group-label">Na wydarzenia</span>
+            <div class="cat-tabs" role="tablist" aria-label="Kategorie na wydarzenia">
+                <button class="cat-tab" role="tab" aria-selected="false" data-cat="catering"><img src="icon-kanapki.svg" alt="Ikona cateringu" style="height:14px" loading="lazy" width="48" height="48"> Catering <span class="cat-count">9</span></button>
+                <button class="cat-tab" role="tab" aria-selected="false" data-cat="integracyjne"><img src="icon-extra.svg" alt="Ikona zestawów integracyjnych" style="height:18px" loading="lazy" width="48" height="48"> Integracyjne <span class="cat-count">2</span></button>
+            </div>
+        </div>
     </div>
 </div>
 
