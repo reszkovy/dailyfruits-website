@@ -177,7 +177,7 @@
             <div class="field">
                 <label>Meta description (SEO)</label>
                 <input type="text" id="editDescription" placeholder="Krótki opis do Google (max 160 znaków)">
-                <div class="field-help">Maks. 160 znaków — widoczny w wynikach wyszukiwania</div>
+                <div class="field-help">Maks. 160 znaków - widoczny w wynikach wyszukiwania</div>
             </div>
             <div class="field">
                 <label>Zajawka (na karcie bloga)</label>
@@ -323,17 +323,17 @@ async function savePost() {
     let html = currentPostHtml;
 
     // Update <title>
-    html = html.replace(/<title>.*?<\/title>/, `<title>${escHtml(title)} – DailyFruits Blog</title>`);
+    html = html.replace(/<title>.*?<\/title>/, `<title>${escHtml(title)} - DailyFruits Blog</title>`);
 
     // Update meta description
     html = html.replace(/(<meta name="description" content=").*?"/, `$1${escAttr(description)}"`);
 
     // Update OG tags
-    html = html.replace(/(<meta property="og:title" content=").*?"/, `$1${escAttr(title)} – DailyFruits Blog"`);
+    html = html.replace(/(<meta property="og:title" content=").*?"/, `$1${escAttr(title)} - DailyFruits Blog"`);
     html = html.replace(/(<meta property="og:description" content=").*?"/, `$1${escAttr(description)}"`);
 
     // Update twitter tags
-    html = html.replace(/(<meta name="twitter:title" content=").*?"/, `$1${escAttr(title)} – DailyFruits"`);
+    html = html.replace(/(<meta name="twitter:title" content=").*?"/, `$1${escAttr(title)} - DailyFruits"`);
     html = html.replace(/(<meta name="twitter:description" content=").*?"/, `$1${escAttr(description)}"`);
 
     // Update H1
@@ -362,7 +362,7 @@ async function savePost() {
             body: JSON.stringify({
                 html: html,
                 sha: currentPostSha,
-                commitMessage: `CMS: update ${currentPost.filename} — ${title}`
+                commitMessage: `CMS: update ${currentPost.filename} - ${title}`
             })
         });
 
