@@ -16,8 +16,9 @@
       s = s.replace(ONE, function (m, p, w) { return p + w + NBSP; });
     }
     s = s.replace(TWO, function (m, p, w) { return p + w + NBSP; });
-    // myślnik/dywiz jako pauza: trzymaj z poprzedzającym słowem (nie zaczyna linii)
-    s = s.replace(/(\S)[ \t]+([-–—])[ \t]+/g, '$1' + NBSP + '$2 ');
+    // myślnik/dywiz jako pauza: NIE może kończyć wiersza - przyklej go do słowa następnego
+    // (spacja przed myślnikiem łamliwa, twarda spacja po myślniku => "- słowo" schodzą razem)
+    s = s.replace(/[ \t]+([-–—])[ \t]+/g, ' $1' + NBSP);
     return s;
   }
 
