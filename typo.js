@@ -10,10 +10,13 @@
   var ONE = /(^|[\s( „"»])([aiouwzAIOUWZ])[ \t]+/g;
   var TWO = /(^|[\s( „"»])(do|we|ze|za|na|od|po|to|że|by|si|np|tj|nr)[ \t]+/gi;
 
+  // jednoliterowy wyraz dowiązany z OBU stron: "...zdrowie i satysfakcję" => nigdy "i słowo" samo w wierszu
+  var ONE_BOTH = /([ \t])([aiouwzAIOUWZ])([ \t ])/g;
   function glue(t) {
     var s = t;
     for (var i = 0; i < 2; i++) {                  // 2x dla ciągów typu "i o tym"
       s = s.replace(ONE, function (m, p, w) { return p + w + NBSP; });
+      s = s.replace(ONE_BOTH, function (m, a, w, b) { return NBSP + w + NBSP; });
     }
     s = s.replace(TWO, function (m, p, w) { return p + w + NBSP; });
     // myślnik/dywiz jako pauza: NIE może kończyć wiersza - przyklej go do słowa następnego
