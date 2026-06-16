@@ -18,6 +18,8 @@
       s = s.replace(ONE, function (m, p, w) { return p + w + NBSP; });
       s = s.replace(ONE_BOTH, function (m, a, w, b) { return NBSP + w + NBSP; });
     }
+    // pierwsze słowo nowego zdania nie może zostać samo na końcu wiersza - sklej je z następnym
+    s = s.replace(/([.!?…][  ])([0-9A-Za-zŻŹĆĄŚĘŁÓŃżźćąśęłóń„"]+)[ \t]/g, function (m, a, w) { return a + w + NBSP; });
     s = s.replace(TWO, function (m, p, w) { return p + w + NBSP; });
     // myślnik/dywiz jako pauza: NIE może kończyć wiersza - przyklej go do słowa następnego
     // (spacja przed myślnikiem łamliwa, twarda spacja po myślniku => "- słowo" schodzą razem)
