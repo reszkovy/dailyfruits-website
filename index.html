@@ -403,6 +403,8 @@
         .card-marquee-item:hover { transform: rotate(0) scale(1.08); box-shadow: 0 12px 36px rgba(27,94,58,0.2); z-index: 2; }
         .card-marquee-item img { width: 100%; height: auto; display: block; }
         .card-marquee-item video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 1; pointer-events: none; }
+        /* iOS/touch: nie renderuj <video> (autoplay blokowany -> Safari pokazuje natywne kontrolki). Zostaje czysty poster. */
+        @media (hover: none), (pointer: coarse) { .card-marquee-item video { display: none !important; } }
         @keyframes card-slide { 0% { transform: translateX(0); } 100% { transform: translateX(-25%); } }
         @media (max-width: 768px) {
             .card-marquee { padding: 16px 0 24px; }
