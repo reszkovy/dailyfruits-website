@@ -307,6 +307,201 @@
       "source": "/owoce-do-biura-kielce",
       "destination": "/dostawa",
       "statusCode": 301
+    },
+    {
+      "source": "/oferta/soki-i-syropy/",
+      "destination": "/oferta/soki-i-syropy",
+      "statusCode": 301
+    },
+    {
+      "source": "/oferta/produkty-ekologiczne/",
+      "destination": "/oferta/produkty-ekologiczne",
+      "statusCode": 301
+    },
+    {
+      "source": "/oferta/firmowy-dzien-zdrowia/",
+      "destination": "/oferta/firmowy-dzien-zdrowia",
+      "statusCode": 301
+    },
+    {
+      "source": "/oferta/zestawy-indywidualne/",
+      "destination": "/oferta/zestawy-indywidualne",
+      "statusCode": 301
+    },
+    {
+      "source": "/oferta/programy-zywieniowe-i-edukacyjne/",
+      "destination": "/oferta/programy-zywieniowe-i-edukacyjne",
+      "statusCode": 301
+    },
+    {
+      "source": "/oferta/skrzynki-abonamentowe/",
+      "destination": "/oferta/skrzynki-abonamentowe",
+      "statusCode": 301
+    },
+    {
+      "source": "/oferta/bakalie-i-owoce-suszone/",
+      "destination": "/oferta/bakalie-i-owoce-suszone",
+      "statusCode": 301
+    },
+    {
+      "source": "/oferta/przechowywanie-i-ekspozycja/",
+      "destination": "/oferta/przechowywanie-i-ekspozycja",
+      "statusCode": 301
+    },
+    {
+      "source": "/oferta/warzywa-krojone/",
+      "destination": "/oferta/warzywa-krojone",
+      "statusCode": 301
+    },
+    {
+      "source": "/oferta/zestawy-sniadaniowe/",
+      "destination": "/oferta/zestawy-sniadaniowe",
+      "statusCode": 301
+    },
+    {
+      "source": "/owoce-do-biura-katowice/",
+      "destination": "/owoce-do-biura-katowice",
+      "statusCode": 301
+    },
+    {
+      "source": "/owoce-do-biura-wroclaw/",
+      "destination": "/owoce-do-biura-wroclaw",
+      "statusCode": 301
+    },
+    {
+      "source": "/upominki/",
+      "destination": "/upominki-dla-pracownikow",
+      "statusCode": 301
+    },
+    {
+      "source": "/zestawy-upominkowe-dla-firm/",
+      "destination": "/upominki-dla-pracownikow",
+      "statusCode": 301
+    },
+    {
+      "source": "/prezenty-wielkanoc/",
+      "destination": "/upominki-dla-pracownikow",
+      "statusCode": 301
+    },
+    {
+      "source": "/prezenty-dla-pracownika-boze-narodzenie/",
+      "destination": "/upominki-dla-pracownikow",
+      "statusCode": 301
+    },
+    {
+      "source": "/easter-kits-for-your-employees/",
+      "destination": "/upominki-dla-pracownikow",
+      "statusCode": 301
+    },
+    {
+      "source": "/pomagamy-innym/",
+      "destination": "/pomagamy",
+      "statusCode": 301
+    },
+    {
+      "source": "/owoce-na-konferencje/",
+      "destination": "/catering-firmowy",
+      "statusCode": 301
+    },
+    {
+      "source": "/live-cooking/",
+      "destination": "/catering-firmowy",
+      "statusCode": 301
+    },
+    {
+      "source": "/owoce-dla-pracownikow/",
+      "destination": "/oferta",
+      "statusCode": 301
+    },
+    {
+      "source": "/wellness/",
+      "destination": "/programy-zywieniowe",
+      "statusCode": 301
+    },
+    {
+      "source": "/ekologia/",
+      "destination": "/oferta/produkty-ekologiczne",
+      "statusCode": 301
+    },
+    {
+      "source": "/wycena/",
+      "destination": "/zapytanie",
+      "statusCode": 301
+    },
+    {
+      "source": "/zapytanie-nowe/",
+      "destination": "/zapytanie",
+      "statusCode": 301
+    },
+    {
+      "source": "/dziekujemy-za-zapytanie/",
+      "destination": "/zapytanie",
+      "statusCode": 301
+    },
+    {
+      "source": "/zywieniowe-nawyki/",
+      "destination": "/wpis-nawyki-raport",
+      "statusCode": 301
+    },
+    {
+      "source": "/raport-wplyw-pracy-zdalnej-na-nawyki-zywieniowe-polakow/",
+      "destination": "/wpis-nawyki-raport",
+      "statusCode": 301
+    },
+    {
+      "source": "/ebook/",
+      "destination": "/baza-wiedzy",
+      "statusCode": 301
+    },
+    {
+      "source": "/plakaty-informacyjne/",
+      "destination": "/baza-wiedzy",
+      "statusCode": 301
+    },
+    {
+      "source": "/kreatywnosc-w-pracy/",
+      "destination": "/baza-wiedzy",
+      "statusCode": 301
+    },
+    {
+      "source": "/tlusty-czwartek/",
+      "destination": "/oferta",
+      "statusCode": 301
+    },
+    {
+      "source": "/thank-you-page-katowice/",
+      "destination": "/owoce-do-biura-katowice",
+      "statusCode": 301
+    },
+    {
+      "source": "/paczki-dla-dzieci-pracownikow2/",
+      "destination": "/paczki-dla-dzieci-pracownikow",
+      "statusCode": 301
+    },
+    {
+      "source": "/cart/",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/checkout/",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/platnosc/",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/zamowienie/",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/pakowanie/",
+      "destination": "/",
+      "statusCode": 301
     }
   ]
 }
