@@ -209,7 +209,19 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
             .logo-sub { display: inline-block !important; border-left: 1px solid rgba(255,255,255,0.25) !important; padding-left: 8px !important; margin: 0 !important; font-size: 8px !important; align-self: center !important; opacity: 0.6 !important; }
             .nav-links, .nav-trust { display: none !important; }
         }
-    </style>
+    
+/* kontakt: 2 kolumny - dane / formularz */
+.contact-2col{display:grid;grid-template-columns:0.82fr 1.18fr;gap:26px;align-items:start}
+.contact-side{display:flex;flex-direction:column;gap:14px}
+.contact-side .contact-card{text-align:left;padding:18px 20px;display:flex;gap:14px;align-items:center}
+.contact-side .contact-card .icon-wrap{margin:0;width:46px;height:46px;flex-shrink:0}
+.contact-side .contact-card .icon-wrap img{width:22px;height:22px}
+.contact-side .contact-card h3{margin-bottom:2px;font-size:12px}
+.contact-side .contact-card .big{font-size:18px;margin-bottom:2px}
+.contact-form-card{background:#fff;border-radius:var(--radius-lg);box-shadow:0 18px 44px rgba(27,94,58,0.10);border:1px solid rgba(27,94,58,0.08);padding:18px}
+.contact-form-card iframe{width:100%;border:none;display:block;min-height:560px;border-radius:14px}
+@media(max-width:860px){.contact-2col{grid-template-columns:1fr}}
+</style>
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://dailyfruits.pl/kontakt">
 <script type="application/ld+json">
@@ -325,70 +337,25 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
 
 <section class="contact-section">
     <div class="container">
-        <div class="contact-grid">
-            <div class="contact-card reveal">
-                <div class="icon-wrap"><img src="icons/icon-juice-box.webp" alt="Ikona telefonu" loading="lazy" width="32" height="32"></div>
-                <h3>Telefon</h3>
-                <div class="big"><a href="tel:+48228680499">22 868 04 99</a></div>
-                <p class="note">pon-pt, 8:00-16:00</p>
-            </div>
-            <div class="contact-card reveal">
-                <div class="icon-wrap"><img src="icons/icon-handshake.webp" alt="Ikona maila" loading="lazy" width="32" height="32"></div>
-                <h3>Email</h3>
-                <div class="big"><a href="mailto:zapytania@betterworkplace.pl">zapytania@betterworkplace.pl</a></div>
-                <p class="note">odpowiadamy w ciągu 24h</p>
-            </div>
-            <div class="contact-card reveal">
-                <div class="icon-wrap"><img src="icons/icon-building-red.webp" alt="Ikona adresu" loading="lazy" width="32" height="32"></div>
-                <h3>Adres</h3>
-                <div class="big">ul. Modułowa 3<br>05-090 Raszyn</div>
-                <p class="note">woj. mazowieckie</p>
-            </div>
-        </div>
-
-        <div class="info-block reveal">
-            <div>
-                <h2>Wolisz <span class="fun">formularz?</span></h2>
-                <p>Wypełnij krótkie zapytanie - wrócimy z propozycją dopasowaną do potrzeb Twojego biura w ciągu 24 godzin. Bez zobowiązań, bez kruczków.</p>
-                <ul>
-                    <li>Sprawdź, zanim zdecydujesz</li>
-                    <li>Elastyczny skład i częstotliwość - dopasowane do Waszych potrzeb</li>
-                    <li>Dostawy w największych miastach</li>
-                </ul>
-                <div class="cta-row">
-                    <a href="#formularz" class="btn btn-red-solid btn-arrow">Złóż zapytanie</a>
-                    <a href="oferta" class="btn btn-outline">Zobacz ofertę →</a>
+        <div class="contact-2col">
+            <div class="contact-side reveal">
+                <div class="contact-card">
+                    <div class="icon-wrap"><img src="icons/icon-juice-box.webp" alt="Telefon" loading="lazy" width="22" height="22"></div>
+                    <div><h3>Telefon</h3><div class="big"><a href="tel:+48228680499">22 868 04 99</a></div><p class="note">pon-pt, 8:00-16:00</p></div>
+                </div>
+                <div class="contact-card">
+                    <div class="icon-wrap"><img src="icons/icon-handshake.webp" alt="Email" loading="lazy" width="22" height="22"></div>
+                    <div><h3>Email</h3><div class="big" style="font-size:15px;word-break:break-word;"><a href="mailto:zapytania@betterworkplace.pl">zapytania@betterworkplace.pl</a></div><p class="note">odpowiadamy w ciagu 24h</p></div>
+                </div>
+                <div class="contact-card">
+                    <div class="icon-wrap"><img src="icons/icon-building-red.webp" alt="Adres" loading="lazy" width="22" height="22"></div>
+                    <div><h3>Adres</h3><div class="big" style="font-size:16px;">ul. Modulowa 3, 05-090 Raszyn</div><p class="note">BetterWorkplace Sp. z o.o. &middot; NIP 6793077034 &middot; REGON 122432943</p></div>
                 </div>
             </div>
-            <div class="company-data">
-                <h3>Dane firmy</h3>
-                <dl>
-                    <dt>Spółka</dt>
-                    <dd>BetterWorkplace Sp. z o.o.</dd>
-                    <dt>Adres</dt>
-                    <dd>ul. Modułowa 3<br>05-090 Raszyn</dd>
-                    <dt>NIP</dt>
-                    <dd>6793077034</dd>
-                    <dt>REGON</dt>
-                    <dd>122432943</dd>
-                </dl>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- FORMULARZ BEZPŁATNEJ WYCENY -->
-<section id="formularz" style="background:var(--cream);padding:56px 0 8px;">
-    <div class="container">
-        <div style="max-width:680px;margin:0 auto 32px;text-align:center;" class="reveal">
-            <div class="sticker sticker-yellow">Bezpłatna wycena</div>
-            <h2 class="mt-20"><span class="fun fun-alt">Zamów</span> bezpłatną wycenę</h2>
-            <p style="max-width:520px;margin:12px auto 0;">Wypełnij formularz - odezwiemy się w ciągu 24 godzin z propozycją dopasowaną do Twojego biura. Bez zobowiązań.</p>
-        </div>
-        <div class="reveal" style="max-width:760px;margin:0 auto;background:#fff;border-radius:24px;box-shadow:0 18px 44px rgba(27,94,58,0.10);padding:14px;">
-            <iframe id="bwp-form" title="Formularz bezpłatnej wyceny DailyFruits" src="https://betterworkplace.pl/kontakt/zapytanie-embed?marketing=1" style="width:100%;border:none;display:block;min-height:620px;border-radius:16px;"></iframe>
-            <div style="margin-top:14px;padding:14px 18px;background:rgba(141,198,63,0.10);border:1px solid rgba(141,198,63,0.45);border-radius:14px;font-size:14px;line-height:1.6;text-align:center;">
-                <strong>Wolisz bezpośrednio?</strong> Zadzwoń: <a href="tel:+48228680499" style="font-weight:800;color:var(--green-dark);">22 868 04 99</a> albo napisz: <a href="mailto:zapytania@betterworkplace.pl" style="font-weight:800;color:var(--green-dark);">zapytania@betterworkplace.pl</a>
+            <div class="contact-form-card reveal" id="formularz">
+                <div style="text-align:center;margin-bottom:12px;"><span class="sticker sticker-yellow">Bezplatna wycena</span><h2 style="font-size:23px;margin-top:10px;"><span class="fun fun-alt">Zamow</span> wycene</h2></div>
+                <iframe id="bwp-form" title="Formularz bezplatnej wyceny DailyFruits" src="https://betterworkplace.pl/kontakt/zapytanie-embed?marketing=1"></iframe>
+                <div style="margin-top:12px;padding:11px 16px;background:rgba(141,198,63,0.10);border:1px solid rgba(141,198,63,0.45);border-radius:12px;font-size:13px;line-height:1.5;text-align:center;">Wolisz bezposrednio? Zadzwon <a href="tel:+48228680499" style="font-weight:800;color:var(--green-dark);">22 868 04 99</a> lub napisz <a href="mailto:zapytania@betterworkplace.pl" style="font-weight:800;color:var(--green-dark);">zapytania@betterworkplace.pl</a></div>
             </div>
         </div>
     </div>
