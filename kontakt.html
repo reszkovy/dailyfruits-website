@@ -211,8 +211,9 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
         }
     
 /* kontakt: 2 kolumny - dane / formularz */
-.contact-2col{display:grid;grid-template-columns:0.82fr 1.18fr;gap:26px;align-items:start}
-.contact-side{display:flex;flex-direction:column;gap:14px}
+.contact-2col{display:grid;grid-template-columns:0.82fr 1.18fr;gap:26px;align-items:stretch}
+.contact-side{display:flex;flex-direction:column;gap:16px;justify-content:space-between}
+.contact-side .contact-card{flex:1;justify-content:flex-start}
 .contact-side .contact-card{text-align:left;padding:18px 20px;display:flex;gap:14px;align-items:center}
 .contact-side .contact-card .icon-wrap{margin:0;width:46px;height:46px;flex-shrink:0}
 .contact-side .contact-card .icon-wrap img{width:22px;height:22px}
@@ -360,7 +361,6 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
             <div class="contact-form-card reveal" id="formularz">
                 <div style="text-align:center;margin-bottom:12px;"><span class="sticker sticker-yellow">Bezpłatna wycena</span><h2 style="font-size:23px;margin-top:10px;"><span class="fun fun-alt">Zamów</span> wycenę</h2></div>
                 <iframe id="bwp-form" title="Formularz bezpłatnej wyceny DailyFruits" src="https://betterworkplace.pl/kontakt/zapytanie-embed?marketing=1"></iframe>
-                <div style="margin-top:12px;padding:11px 16px;background:rgba(141,198,63,0.10);border:1px solid rgba(141,198,63,0.45);border-radius:12px;font-size:13px;line-height:1.5;text-align:center;">Wolisz bezpośrednio? Zadzwoń <a href="tel:+48228680499" style="font-weight:800;color:var(--green-dark);">22 868 04 99</a> lub napisz <a href="mailto:zapytania@betterworkplace.pl" style="font-weight:800;color:var(--green-dark);">zapytania@betterworkplace.pl</a></div>
             </div>
         </div>
     </div>
