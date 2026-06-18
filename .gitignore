@@ -14,3 +14,9 @@ _dokumenty/
 _skrypty/
 _r3loop/
 zdjecia blog/
+
+# surowe packshoty (uzywamy packshots/*.webp)
+/Packshots/
+image 79.png
+2415.png
+/fingery_01/
