@@ -1,0 +1,63 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  # BRAMKA BLOKUJACA: chroni przed regresjami struktury (balans <style>, domkniecie
+  # dokumentu, obecnosc shared.css). Zielona dzis -> kazda przyszla zmiana masowa
+  # ktora to zepsuje zatrzyma deploy.
+  validate-structure:
+    name: Walidacja struktury (blokuje)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python3 scripts/validate.py
+
+  # RAPORT-ONLY (ratchet): htmlhint zglasza znany dlug (25 plikow z niezamknietym
+  # <div>). NIE blokuje. Po naprawieniu divow usun `continue-on-error`, by gate stal sie scisly.
+  htmlhint:
+    name: htmlhint (raport, nie blokuje)
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: npx --yes htmlhint "*.html" "oferta/**/*.html" --config .htmlhintrc
+
+  # INFORMACYJNIE: budzet wydajnosci/SEO/best-practices na kluczowych stronach.
+  lighthouse:
+    name: Lighthouse (informacyjnie)
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Wystaw serwer statyczny
+        run: npx --yes http-server . -p 8080 -s &
+      - name: Poczekaj na serwer
+        run: npx --yes wait-on http://localhost:8080/index.html
+      - name: Lighthouse CI
+        uses: treosh/lighthouse-ci-action@v12
+        with:
+          urls: |
+            http://localhost:8080/index.html
+            http://localhost:8080/oferta.html
+            http://localhost:8080/kontakt.html
+          uploadArtifacts: true
+          temporaryPublicStorage: true
+          runs: 1
