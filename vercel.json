@@ -299,6 +299,27 @@
       "statusCode": 301
     },
     {
+      "source": "/blog/:path+/",
+      "destination": "/blog",
+      "statusCode": 301
+    },
+    { "source": "/obowiazek-informacyjny/", "destination": "/polityka-prywatnosci", "statusCode": 301 },
+    { "source": "/dostawcy-copy/", "destination": "/dostawcy", "statusCode": 301 },
+    { "source": "/kontakt-copy-2/", "destination": "/kontakt", "statusCode": 301 },
+    { "source": "/zestawy-na-spotkania-firmowe/", "destination": "/catering-firmowy", "statusCode": 301 },
+    { "source": "/zamowienie-krakow-copy/", "destination": "/zapytanie", "statusCode": 301 },
+    { "source": "/dailyfruits-home-homeoffice-copy/", "destination": "/", "statusCode": 301 },
+    { "source": "/checkout-copy/", "destination": "/", "statusCode": 301 },
+    { "source": "/planer-dailymotywacja2021/", "destination": "/baza-wiedzy", "statusCode": 301 },
+    { "source": "/ankieta/", "destination": "/", "statusCode": 301 },
+    { "source": "/ankieta-olx/", "destination": "/", "statusCode": 301 },
+    { "source": "/ankieta-olx-marzec-2022/", "destination": "/", "statusCode": 301 },
+    { "source": "/ankieta-firma-x/", "destination": "/", "statusCode": 301 },
+    { "source": "/ankieta-preferencji/", "destination": "/", "statusCode": 301 },
+    { "source": "/ankieta-preferencji-grana/", "destination": "/", "statusCode": 301 },
+    { "source": "/dietetyka-ankieta-preferencji-freudenberg-sealing/", "destination": "/", "statusCode": 301 },
+    { "source": "/edukacja-zywieniowa-ankieta-po-udziale-w-wydarzeniu/", "destination": "/", "statusCode": 301 },
+    {
       "source": "/oferta/zestawy-na-spotkania-firmowe/",
       "destination": "/catering-firmowy",
       "statusCode": 301
