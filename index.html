@@ -203,10 +203,7 @@ h2 { font-family: var(--font); font-weight: 900; font-size: clamp(28px, 3.5vw, 4
 .city-pill { display: block; background: var(--white); padding: 10px 14px; border-radius: var(--radius-pill); font-size: 13px; font-weight: 700; text-align: center; color: var(--green-dark); border: 2px solid rgba(27,94,58,0.08); transition: all 0.2s; text-decoration: none; }
 a.city-pill:hover { background: var(--lime); color: var(--green-dark); border-color: var(--lime); }
 .faq-q:hover { color: var(--lime); }
-.faq-icon { width: 36px; height: 36px; border-radius: 50%; background: rgba(141,198,63,0.15); display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: all 0.4s cubic-bezier(0.16,1,0.3,1); font-size: 0; }
-.faq-icon::after { content: ''; display: block; width: 16px; height: 14px; background: url("data:image/svg+xml,%3Csvg viewBox='0 0 219 191' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M209.884 59.0475C214.187 60.2087 217.232 64.0499 217.341 68.5054L218.469 114.758C218.574 119.061 215.914 122.949 211.864 124.409L39.139 186.699C33.9498 188.571 28.2252 185.886 26.3452 180.7L15.9853 152.121C14.0709 146.84 16.881 141.018 22.2069 139.232L127.617 103.879C136.827 100.79 136.664 87.7222 127.368 84.8975C88.237 73.0061 48.9383 61.5681 9.47212 51.7133C4.20737 50.3987 0.917487 45.1492 2.06756 39.8461L8.53735 10.0131C9.72811 4.52238 15.2089 1.08528 20.653 2.4737C84.568 18.774 146.42 41.9206 209.884 59.0475Z' fill='%231B5E3A'/%3E%3C/svg%3E") no-repeat center / contain; transition: transform 0.4s cubic-bezier(0.16,1,0.3,1); transform: rotate(90deg); }
-.faq-item.open .faq-icon { background: var(--lime); }
-.faq-item.open .faq-icon::after { filter: brightness(0) invert(1); transform: rotate(-90deg); }
+/* .faq-icon przeniesione do shared.css (uniwersalny styl FAQ) */
 .faq-a-inner { padding: 0 0 22px; font-size: 15px; line-height: 1.8; color: var(--gray); }
 .faq-item.faq-hidden { display: none; }
 .faq-more-btn { display: block; margin: 24px auto 0; padding: 12px 32px; border-radius: var(--radius-pill); border: 2px solid var(--green-dark); background: transparent; color: var(--green-dark); font-family: var(--font); font-weight: 700; font-size: 14px; cursor: pointer; transition: all 0.2s; }
