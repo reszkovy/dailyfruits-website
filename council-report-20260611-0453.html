@@ -3,42 +3,43 @@
 <title>Council - DailyFruits launch readiness</title>
 <style>
 :root{--ink:#1a1a1a;--mut:#666;--line:#e6e4dc;--bg:#faf9f5;--accent:#1B5E3A;--red:#c0392b;--amber:#9a6a00;--green:#2d7a3f}
-*{box-sizing:border-box}body{font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:var(--bg);color:var(--ink);line-height:1.6;margin:0;padding:32px 18px 64px}
+body{font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:var(--bg);color:var(--ink);line-height:1.6;margin:0;padding:32px 18px 64px}
 .wrap{max-width:860px;margin:0 auto}
-h1{font-size:24px;margin:0 0 4px}.sub{color:var(--mut);font-size:14px;margin-bottom:24px}
+h1{font-size:24px;margin:0 0 4px}
+.sub{color:var(--mut);font-size:14px;margin-bottom:24px}
 .q{background:#fff;border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:0 10px 10px 0;padding:14px 18px;font-size:15px;margin-bottom:28px}
 h2{font-size:13px;text-transform:uppercase;letter-spacing:.08em;color:var(--accent);margin:30px 0 10px;border-bottom:1px solid var(--line);padding-bottom:6px}
 .verdict{background:#fff;border:1px solid var(--line);border-radius:12px;padding:6px 22px 18px;margin-bottom:18px}
-.verdict h3{font-size:15px;margin:18px 0 6px}.verdict p,.verdict li{font-size:14.5px}
+.verdict h3{font-size:15px;margin:18px 0 6px}
+.verdict p,.verdict li{font-size:14.5px}
 .rec{background:#f0f6f1;border:1px solid #cfe3d4;border-radius:12px;padding:18px 22px}
 .first{background:var(--accent);color:#fff;border-radius:12px;padding:18px 22px;margin-top:14px}
 .first b{display:block;font-size:13px;text-transform:uppercase;letter-spacing:.06em;opacity:.8;margin-bottom:6px}
 .spectrum{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0 24px}
 .chip{flex:1;min-width:150px;border:1px solid var(--line);border-radius:10px;padding:12px;background:#fff;font-size:13px}
 .chip b{display:block;font-size:13px;margin-bottom:4px}
-.chip.stop{border-top:3px solid var(--red)}.chip.go{border-top:3px solid var(--green)}.chip.mid{border-top:3px solid var(--amber)}
+.chip.stop{border-top:3px solid var(--red)}
+.chip.go{border-top:3px solid var(--green)}
+.chip.mid{border-top:3px solid var(--amber)}
 details{background:#fff;border:1px solid var(--line);border-radius:10px;margin-bottom:8px;padding:0 16px}
 summary{cursor:pointer;font-weight:600;padding:12px 0;font-size:14px}
 details p{font-size:14px;color:#333;padding-bottom:12px;margin:0;white-space:pre-wrap}
 .foot{color:var(--mut);font-size:12px;margin-top:32px;text-align:center}
-        /* ─── PAGE TRANSITIONS v2 (pt-vt): jednolity crossfade ─── */
-        html.pt-out body { opacity: 0 !important; transition: opacity 0.18s ease !important; }
-        html.pt-in body { animation: ptFadeIn 0.32s ease both; }
-        @keyframes ptFadeIn { from { opacity: 0; } to { opacity: 1; } }
-        @media (prefers-reduced-motion: reduce) {
+html.pt-out body { opacity: 0 !important; transition: opacity 0.18s ease !important; }
+html.pt-in body { animation: ptFadeIn 0.32s ease both; }
+@keyframes ptFadeIn { from { opacity: 0; } to { opacity: 1; } }
+@media (prefers-reduced-motion: reduce) {
             html.pt-out body { opacity: 1 !important; transition: none !important; }
             html.pt-in body { animation: none; }
         }
-    
-        /* ─── MOBILE HEADER UNIFY (mh-unify) ─── */
-        @media (max-width: 768px) {
+@media (max-width: 768px) {
             .nav-inner { padding: 10px 20px !important; }
             .logo-img { height: 38px !important; width: auto !important; }
             .logo-wrap { flex-direction: row !important; gap: 8px !important; align-items: center !important; }
             .logo-sub { display: inline-block !important; border-left: 1px solid rgba(255,255,255,0.25) !important; padding-left: 8px !important; margin: 0 !important; font-size: 8px !important; align-self: center !important; opacity: 0.6 !important; }
             .nav-links, .nav-trust { display: none !important; }
         }
-    </style></head><body><div class="wrap">
+</style></head><body><div class="wrap">
 <h1>🏛️ Council Verdict - DailyFruits launch readiness</h1>
 <div class="sub">Analiza porównawcza: nowa strona (Vercel) vs żywa dailyfruits.pl (WordPress). 5 doradców → peer review → synteza.</div>
 <div class="q"><b>Pytanie:</b> Czy nowa strona DailyFruits jest gotowa zastąpić żywą dailyfruits.pl w launchu? Gdzie wygrywa/przegrywa i co MUSI być przed cutoverem?</div>

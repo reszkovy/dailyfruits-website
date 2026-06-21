@@ -17,61 +17,53 @@
     <noscript><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700;900&display=swap" rel="stylesheet"></noscript>
     <link rel="stylesheet" href="shared.css?v=5">
 <style>
-        @font-face { font-family: 'Achiko'; src: url('Achiko.woff2') format('woff2'), url('Achiko.ttf') format('truetype'); font-weight: 400; font-style: normal; font-display: swap; }
-        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-        :root {
+@font-face { font-family: 'Achiko'; src: url('Achiko.woff2') format('woff2'), url('Achiko.ttf') format('truetype'); font-weight: 400; font-style: normal; font-display: swap; }
+:root {
             --green-dark: #1B5E3A; --lime: #8DC63F; --lime-light: #A4C348;
             --yellow: #FFF200; --red: #E43020; --cream: #FFF9E0;
             --white: #FFFFFF; --gray: #3D5A1E; --dark: #1B5E3A;
             --radius-pill: 100px; --font: 'DM Sans', sans-serif; --font-fun: 'Achiko', cursive;
         }
-        html, body { height: 100%; }
-        body { font-family: var(--font); color: var(--dark); background: var(--cream); display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 48px; }
-        .error-code { font-family: var(--font-fun); font-size: clamp(80px, 15vw, 160px); color: var(--lime); line-height: 1; margin-bottom: 8px; }
-        h1 { font-weight: 900; font-size: clamp(24px, 3vw, 36px); color: var(--green-dark); margin-bottom: 12px; letter-spacing: -0.04em; }
-        p { font-size: 16px; line-height: 1.7; color: var(--gray); max-width: 440px; margin-bottom: 32px; }
-        .btn { display: inline-flex; align-items: center; gap: 8px; padding: 14px 32px; border-radius: var(--radius-pill); font-family: var(--font); font-weight: 700; font-size: 15px; border: 2px solid transparent; cursor: pointer; transition: all 0.2s; text-decoration: none; }
-        .btn-green { background: var(--green-dark); color: #fff; }
-        .btn-green:hover { background: var(--green-dark-hover); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(27,94,58,0.3); }
-        .btn-outline { background: transparent; color: var(--red); border-color: var(--red); margin-left: 12px; }
-        .btn-outline:hover { background: var(--red); color: #fff; }
-        .links { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
-        .quick-links { margin-top: 48px; display: flex; gap: 24px; flex-wrap: wrap; justify-content: center; }
-        .quick-links a { font-size: 14px; font-weight: 700; color: var(--lime); transition: color 0.2s; }
-        .quick-links a:hover { color: var(--green-dark); }
-    
-        @media (max-width: 480px) {
-            /* Nav extra-small */
+html, body { height: 100%; }
+body { font-family: var(--font); color: var(--dark); background: var(--cream); display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 48px; }
+.error-code { font-family: var(--font-fun); font-size: clamp(80px, 15vw, 160px); color: var(--lime); line-height: 1; margin-bottom: 8px; }
+h1 { font-weight: 900; font-size: clamp(24px, 3vw, 36px); color: var(--green-dark); margin-bottom: 12px; letter-spacing: -0.04em; }
+p { font-size: 16px; line-height: 1.7; color: var(--gray); max-width: 440px; margin-bottom: 32px; }
+.btn { display: inline-flex; align-items: center; gap: 8px; padding: 14px 32px; border-radius: var(--radius-pill); font-family: var(--font); font-weight: 700; font-size: 15px; border: 2px solid transparent; cursor: pointer; transition: all 0.2s; text-decoration: none; }
+.btn-outline { background: transparent; color: var(--red); border-color: var(--red); margin-left: 12px; }
+.links { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
+.quick-links { margin-top: 48px; display: flex; gap: 24px; flex-wrap: wrap; justify-content: center; }
+.quick-links a { font-size: 14px; font-weight: 700; color: var(--lime); transition: color 0.2s; }
+.quick-links a:hover { color: var(--green-dark); }
+@media (max-width: 480px) {
+            
             .logo-img { height: 56px; }
             .btn-nav-cta { padding: 7px 14px; font-size: 12px; }
             .nav-inner { gap: 8px; }
-            /* Hero stats: prevent overflow */
+            
             .hero-stats { flex-wrap: wrap; gap: 16px 24px; }
             .hero-stat { min-width: auto; }
-            /* Hero buttons: full-width stack */
+            
             .hero-buttons { flex-direction: column; }
             .hero-buttons .btn { width: 100%; text-align: center; justify-content: center; }
-            /* Footer: tighter padding */
+            
             footer .container { padding: 0 16px; }
         }
-        /* ─── PAGE TRANSITIONS v2 (pt-vt): jednolity crossfade ─── */
-        html.pt-out body { opacity: 0 !important; transition: opacity 0.18s ease !important; }
-        html.pt-in body { animation: ptFadeIn 0.32s ease both; }
-        @keyframes ptFadeIn { from { opacity: 0; } to { opacity: 1; } }
-        @media (prefers-reduced-motion: reduce) {
+html.pt-out body { opacity: 0 !important; transition: opacity 0.18s ease !important; }
+html.pt-in body { animation: ptFadeIn 0.32s ease both; }
+@keyframes ptFadeIn { from { opacity: 0; } to { opacity: 1; } }
+@media (prefers-reduced-motion: reduce) {
             html.pt-out body { opacity: 1 !important; transition: none !important; }
             html.pt-in body { animation: none; }
         }
-    
-        /* ─── MOBILE HEADER UNIFY (mh-unify) ─── */
-        @media (max-width: 768px) {
+@media (max-width: 768px) {
             .nav-inner { padding: 10px 20px !important; }
             .logo-img { height: 38px !important; width: auto !important; }
             .logo-wrap { flex-direction: row !important; gap: 8px !important; align-items: center !important; }
             .logo-sub { display: inline-block !important; border-left: 1px solid rgba(255,255,255,0.25) !important; padding-left: 8px !important; margin: 0 !important; font-size: 8px !important; align-self: center !important; opacity: 0.6 !important; }
             .nav-links, .nav-trust { display: none !important; }
         }
-    </style>
+</style>
 <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
 </head>
 <body>

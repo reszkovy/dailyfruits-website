@@ -7,112 +7,82 @@
 <title>DailyFruits - Wizualizacje pudełek</title>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700;900&display=swap" rel="stylesheet">
 <style>
-  @font-face { font-family: 'Achiko'; src: url('Achiko.woff2') format('woff2'), url('Achiko.ttf') format('truetype'); }
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  body { font-family: 'DM Sans', sans-serif; background: #FFF9E0; min-height: 100vh; padding: 60px 40px; }
-
-  h1 { text-align: center; color: var(--green-dark); font-size: 42px; font-weight: 900; margin-bottom: 8px; letter-spacing: -0.04em; }
-  h1 span { font-family: 'Achiko', cursive; color: #8DC63F; font-weight: 400; font-size: 1.05em; }
-  .subtitle { text-align: center; color: #526B08; font-size: 15px; margin-bottom: 60px; opacity: 0.6; }
-
-  .boxes-grid { display: flex; gap: 48px; justify-content: center; flex-wrap: wrap; max-width: 1400px; margin: 0 auto; }
-
-  .box-card { background: #fff; border-radius: 24px; padding: 48px 40px 36px; flex: 1; min-width: 320px; max-width: 420px; text-align: center; box-shadow: 0 8px 40px rgba(27,94,58,0.06); transition: transform 0.4s cubic-bezier(0.16,1,0.3,1); }
-  .box-card:hover { transform: translateY(-8px); }
-
-  .box-label { display: inline-block; padding: 6px 16px; border-radius: 100px; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px; }
-  .label-small { background: #D5E8A0; color: var(--green-dark); }
-  .label-medium { background: #FFF200; color: var(--green-dark); }
-  .label-large { background: #F06878; color: #fff; }
-
-  .scene { width: 280px; height: 260px; perspective: 800px; margin: 0 auto 28px; display: flex; align-items: center; justify-content: center; }
-
-  .box-3d { position: relative; transform-style: preserve-3d; animation: spin 12s ease-in-out infinite; }
-  .box-card:nth-child(2) .box-3d { animation-delay: -4s; }
-  .box-card:nth-child(3) .box-3d { animation-delay: -8s; }
-
-  @keyframes spin {
+@font-face { font-family: 'Achiko'; src: url('Achiko.woff2') format('woff2'), url('Achiko.ttf') format('truetype'); }
+body { font-family: 'DM Sans', sans-serif; background: #FFF9E0; min-height: 100vh; padding: 60px 40px; }
+h1 { text-align: center; color: var(--green-dark); font-size: 42px; font-weight: 900; margin-bottom: 8px; letter-spacing: -0.04em; }
+h1 span { font-family: 'Achiko', cursive; color: #8DC63F; font-weight: 400; font-size: 1.05em; }
+.subtitle { text-align: center; color: #526B08; font-size: 15px; margin-bottom: 60px; opacity: 0.6; }
+.boxes-grid { display: flex; gap: 48px; justify-content: center; flex-wrap: wrap; max-width: 1400px; margin: 0 auto; }
+.box-card { background: #fff; border-radius: 24px; padding: 48px 40px 36px; flex: 1; min-width: 320px; max-width: 420px; text-align: center; box-shadow: 0 8px 40px rgba(27,94,58,0.06); transition: transform 0.4s cubic-bezier(0.16,1,0.3,1); }
+.box-card:hover { transform: translateY(-8px); }
+.box-label { display: inline-block; padding: 6px 16px; border-radius: 100px; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px; }
+.label-small { background: #D5E8A0; color: var(--green-dark); }
+.label-medium { background: #FFF200; color: var(--green-dark); }
+.label-large { background: #F06878; color: #fff; }
+.scene { width: 280px; height: 260px; perspective: 800px; margin: 0 auto 28px; display: flex; align-items: center; justify-content: center; }
+.box-3d { position: relative; transform-style: preserve-3d; animation: spin 12s ease-in-out infinite; }
+.box-card:nth-child(2) .box-3d { animation-delay: -4s; }
+.box-card:nth-child(3) .box-3d { animation-delay: -8s; }
+@keyframes spin {
     0%, 100% { transform: rotateX(-15deg) rotateY(-25deg); }
     25% { transform: rotateX(-12deg) rotateY(-35deg); }
     50% { transform: rotateX(-18deg) rotateY(-20deg); }
     75% { transform: rotateX(-10deg) rotateY(-30deg); }
   }
-
-  .face { position: absolute; backface-visibility: hidden; display: flex; align-items: center; justify-content: center; overflow: hidden; }
-
-  /* ─── BOX 1: Small 280×88×176 scaled to ~140×44×88 ─── */
-  .box1 { width: 140px; height: 88px; transform-style: preserve-3d; transform: translateZ(-22px); }
-  .box1 .front  { width: 140px; height: 88px; background: linear-gradient(135deg, #1B5E3A 0%, #2a7a4f 100%); transform: translateZ(22px); border: 1px solid rgba(255,255,255,0.1); }
-  .box1 .back   { width: 140px; height: 88px; background: #17512f; transform: translateZ(-22px) rotateY(180deg); }
-  .box1 .left   { width: 44px; height: 88px; background: linear-gradient(135deg, #145028 0%, #1B5E3A 100%); transform: rotateY(-90deg) translateZ(0px); left: 0; }
-  .box1 .right  { width: 44px; height: 88px; background: linear-gradient(135deg, #1B5E3A 0%, #145028 100%); transform: rotateY(90deg) translateZ(140px); right: 0; }
-  .box1 .top    { width: 140px; height: 44px; background: linear-gradient(135deg, #8DC63F 0%, #A4C348 100%); transform: rotateX(90deg) translateZ(0px); top: 0; }
-  .box1 .bottom { width: 140px; height: 44px; background: #145028; transform: rotateX(-90deg) translateZ(88px); bottom: 0; }
-
-  /* ─── BOX 2: Medium 380×88×276 scaled to ~152×35×110 ─── */
-  .box2 { width: 152px; height: 110px; transform-style: preserve-3d; transform: translateZ(-17px); }
-  .box2 .front  { width: 152px; height: 110px; background: linear-gradient(135deg, #1B5E3A 0%, #2a7a4f 100%); transform: translateZ(17px); border: 1px solid rgba(255,255,255,0.1); }
-  .box2 .back   { width: 152px; height: 110px; background: #17512f; transform: translateZ(-17px) rotateY(180deg); }
-  .box2 .left   { width: 35px; height: 110px; background: linear-gradient(135deg, #145028 0%, #1B5E3A 100%); transform: rotateY(-90deg) translateZ(0px); left: 0; }
-  .box2 .right  { width: 35px; height: 110px; background: linear-gradient(135deg, #1B5E3A 0%, #145028 100%); transform: rotateY(90deg) translateZ(152px); right: 0; }
-  .box2 .top    { width: 152px; height: 35px; background: linear-gradient(135deg, #FFF200 0%, #FFF566 100%); transform: rotateX(90deg) translateZ(0px); top: 0; }
-  .box2 .bottom { width: 152px; height: 35px; background: #145028; transform: rotateX(-90deg) translateZ(110px); bottom: 0; }
-
-  /* ─── BOX 3: Large 590×89×362 scaled to ~170×26×104 ─── */
-  .box3 { width: 170px; height: 104px; transform-style: preserve-3d; transform: translateZ(-13px); }
-  .box3 .front  { width: 170px; height: 104px; background: linear-gradient(135deg, #1B5E3A 0%, #2a7a4f 100%); transform: translateZ(13px); border: 1px solid rgba(255,255,255,0.1); }
-  .box3 .back   { width: 170px; height: 104px; background: #17512f; transform: translateZ(-13px) rotateY(180deg); }
-  .box3 .left   { width: 26px; height: 104px; background: linear-gradient(135deg, #145028 0%, #1B5E3A 100%); transform: rotateY(-90deg) translateZ(0px); left: 0; }
-  .box3 .right  { width: 26px; height: 104px; background: linear-gradient(135deg, #1B5E3A 0%, #145028 100%); transform: rotateY(90deg) translateZ(170px); right: 0; }
-  .box3 .top    { width: 170px; height: 26px; background: linear-gradient(135deg, #F06878 0%, #f88898 100%); transform: rotateX(90deg) translateZ(0px); top: 0; }
-  .box3 .bottom { width: 170px; height: 26px; background: #145028; transform: rotateX(-90deg) translateZ(104px); bottom: 0; }
-
-  /* ─── LOGO ON FRONT FACE ─── */
-  .face-logo { position: absolute; display: flex; flex-direction: column; align-items: center; gap: 4px; }
-  .face-logo img { height: 28px; filter: brightness(10); }
-  .face-logo .brand-name { font-family: 'DM Sans', sans-serif; font-weight: 900; font-size: 10px; color: rgba(255,255,255,0.7); letter-spacing: 2px; text-transform: uppercase; }
-  .face-logo .tagline { font-size: 7px; color: rgba(255,255,255,0.4); letter-spacing: 0.5px; }
-
-  /* ─── SIDE STRIPE ─── */
-  .side-stripe { position: absolute; bottom: 0; left: 0; right: 0; height: 4px; }
-  .stripe-lime { background: #8DC63F; }
-  .stripe-yellow { background: #FFF200; }
-  .stripe-coral { background: #F06878; }
-
-  /* ─── TOP FACE ICON ─── */
-  .top-icon { font-size: 24px; opacity: 0.6; }
-
-  /* ─── INFO ─── */
-  .box-title { font-size: 20px; font-weight: 900; color: var(--green-dark); margin-bottom: 4px; }
-  .box-dims { font-size: 13px; color: #526B08; opacity: 0.5; margin-bottom: 12px; font-weight: 700; }
-  .box-desc { font-size: 14px; color: #526B08; line-height: 1.6; opacity: 0.7; }
-  .box-project { display: inline-block; margin-top: 12px; font-size: 11px; font-weight: 700; color: var(--green-dark); background: #D5E8A0; padding: 4px 12px; border-radius: 100px; opacity: 0.6; }
-
-  /* ─── FOOTER ─── */
-  .footer-note { text-align: center; margin-top: 60px; font-size: 13px; color: #526B08; opacity: 0.4; }
-
-  /* ─── SHADOW UNDER BOXES ─── */
-  .box-shadow { width: 120px; height: 12px; background: radial-gradient(ellipse, rgba(27,94,58,0.12) 0%, transparent 70%); margin: 0 auto; border-radius: 50%; margin-top: -10px; }
-  .box-card:nth-child(2) .box-shadow { width: 140px; }
-  .box-card:nth-child(3) .box-shadow { width: 160px; }
-        /* ─── PAGE TRANSITIONS v2 (pt-vt): jednolity crossfade ─── */
-        html.pt-out body { opacity: 0 !important; transition: opacity 0.18s ease !important; }
-        html.pt-in body { animation: ptFadeIn 0.32s ease both; }
-        @keyframes ptFadeIn { from { opacity: 0; } to { opacity: 1; } }
-        @media (prefers-reduced-motion: reduce) {
+.face { position: absolute; backface-visibility: hidden; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+.box1 { width: 140px; height: 88px; transform-style: preserve-3d; transform: translateZ(-22px); }
+.box1 .front  { width: 140px; height: 88px; background: linear-gradient(135deg, #1B5E3A 0%, #2a7a4f 100%); transform: translateZ(22px); border: 1px solid rgba(255,255,255,0.1); }
+.box1 .back   { width: 140px; height: 88px; background: #17512f; transform: translateZ(-22px) rotateY(180deg); }
+.box1 .left   { width: 44px; height: 88px; background: linear-gradient(135deg, #145028 0%, #1B5E3A 100%); transform: rotateY(-90deg) translateZ(0px); left: 0; }
+.box1 .right  { width: 44px; height: 88px; background: linear-gradient(135deg, #1B5E3A 0%, #145028 100%); transform: rotateY(90deg) translateZ(140px); right: 0; }
+.box1 .top    { width: 140px; height: 44px; background: linear-gradient(135deg, #8DC63F 0%, #A4C348 100%); transform: rotateX(90deg) translateZ(0px); top: 0; }
+.box1 .bottom { width: 140px; height: 44px; background: #145028; transform: rotateX(-90deg) translateZ(88px); bottom: 0; }
+.box2 { width: 152px; height: 110px; transform-style: preserve-3d; transform: translateZ(-17px); }
+.box2 .front  { width: 152px; height: 110px; background: linear-gradient(135deg, #1B5E3A 0%, #2a7a4f 100%); transform: translateZ(17px); border: 1px solid rgba(255,255,255,0.1); }
+.box2 .back   { width: 152px; height: 110px; background: #17512f; transform: translateZ(-17px) rotateY(180deg); }
+.box2 .left   { width: 35px; height: 110px; background: linear-gradient(135deg, #145028 0%, #1B5E3A 100%); transform: rotateY(-90deg) translateZ(0px); left: 0; }
+.box2 .right  { width: 35px; height: 110px; background: linear-gradient(135deg, #1B5E3A 0%, #145028 100%); transform: rotateY(90deg) translateZ(152px); right: 0; }
+.box2 .top    { width: 152px; height: 35px; background: linear-gradient(135deg, #FFF200 0%, #FFF566 100%); transform: rotateX(90deg) translateZ(0px); top: 0; }
+.box2 .bottom { width: 152px; height: 35px; background: #145028; transform: rotateX(-90deg) translateZ(110px); bottom: 0; }
+.box3 { width: 170px; height: 104px; transform-style: preserve-3d; transform: translateZ(-13px); }
+.box3 .front  { width: 170px; height: 104px; background: linear-gradient(135deg, #1B5E3A 0%, #2a7a4f 100%); transform: translateZ(13px); border: 1px solid rgba(255,255,255,0.1); }
+.box3 .back   { width: 170px; height: 104px; background: #17512f; transform: translateZ(-13px) rotateY(180deg); }
+.box3 .left   { width: 26px; height: 104px; background: linear-gradient(135deg, #145028 0%, #1B5E3A 100%); transform: rotateY(-90deg) translateZ(0px); left: 0; }
+.box3 .right  { width: 26px; height: 104px; background: linear-gradient(135deg, #1B5E3A 0%, #145028 100%); transform: rotateY(90deg) translateZ(170px); right: 0; }
+.box3 .top    { width: 170px; height: 26px; background: linear-gradient(135deg, #F06878 0%, #f88898 100%); transform: rotateX(90deg) translateZ(0px); top: 0; }
+.box3 .bottom { width: 170px; height: 26px; background: #145028; transform: rotateX(-90deg) translateZ(104px); bottom: 0; }
+.face-logo { position: absolute; display: flex; flex-direction: column; align-items: center; gap: 4px; }
+.face-logo img { height: 28px; filter: brightness(10); }
+.face-logo .brand-name { font-family: 'DM Sans', sans-serif; font-weight: 900; font-size: 10px; color: rgba(255,255,255,0.7); letter-spacing: 2px; text-transform: uppercase; }
+.face-logo .tagline { font-size: 7px; color: rgba(255,255,255,0.4); letter-spacing: 0.5px; }
+.side-stripe { position: absolute; bottom: 0; left: 0; right: 0; height: 4px; }
+.stripe-lime { background: #8DC63F; }
+.stripe-yellow { background: #FFF200; }
+.stripe-coral { background: #F06878; }
+.top-icon { font-size: 24px; opacity: 0.6; }
+.box-title { font-size: 20px; font-weight: 900; color: var(--green-dark); margin-bottom: 4px; }
+.box-dims { font-size: 13px; color: #526B08; opacity: 0.5; margin-bottom: 12px; font-weight: 700; }
+.box-desc { font-size: 14px; color: #526B08; line-height: 1.6; opacity: 0.7; }
+.box-project { display: inline-block; margin-top: 12px; font-size: 11px; font-weight: 700; color: var(--green-dark); background: #D5E8A0; padding: 4px 12px; border-radius: 100px; opacity: 0.6; }
+.footer-note { text-align: center; margin-top: 60px; font-size: 13px; color: #526B08; opacity: 0.4; }
+.box-shadow { width: 120px; height: 12px; background: radial-gradient(ellipse, rgba(27,94,58,0.12) 0%, transparent 70%); margin: 0 auto; border-radius: 50%; margin-top: -10px; }
+.box-card:nth-child(2) .box-shadow { width: 140px; }
+.box-card:nth-child(3) .box-shadow { width: 160px; }
+html.pt-out body { opacity: 0 !important; transition: opacity 0.18s ease !important; }
+html.pt-in body { animation: ptFadeIn 0.32s ease both; }
+@keyframes ptFadeIn { from { opacity: 0; } to { opacity: 1; } }
+@media (prefers-reduced-motion: reduce) {
             html.pt-out body { opacity: 1 !important; transition: none !important; }
             html.pt-in body { animation: none; }
         }
-    
-        /* ─── MOBILE HEADER UNIFY (mh-unify) ─── */
-        @media (max-width: 768px) {
+@media (max-width: 768px) {
             .nav-inner { padding: 10px 20px !important; }
             .logo-img { height: 38px !important; width: auto !important; }
             .logo-wrap { flex-direction: row !important; gap: 8px !important; align-items: center !important; }
             .logo-sub { display: inline-block !important; border-left: 1px solid rgba(255,255,255,0.25) !important; padding-left: 8px !important; margin: 0 !important; font-size: 8px !important; align-self: center !important; opacity: 0.6 !important; }
             .nav-links, .nav-trust { display: none !important; }
         }
-    </style>
+</style>
 </head>
 <body>
 

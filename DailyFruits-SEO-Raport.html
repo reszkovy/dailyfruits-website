@@ -7,11 +7,9 @@
 <title>DailyFruits - Raport SEO & Performance</title>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700;900&display=swap" rel="stylesheet">
 <style>
-*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 :root{--green:#1B5E3A;--lime:#8DC63F;--cream:#FFF9E0;--white:#FFFFFF;--gray:#3D5A1E;--red:#E43020;--bg:#F8F7F2}
 body{font-family:'DM Sans',sans-serif;background:var(--bg);color:#2a2a2a;line-height:1.7;-webkit-font-smoothing:antialiased}
 .report{max-width:900px;margin:0 auto;padding:40px 24px 80px}
-
 .cover{background:var(--green);color:#fff;border-radius:24px;padding:64px 56px;margin-bottom:48px;position:relative;overflow:hidden}
 .cover::after{content:'';position:absolute;right:-60px;top:-60px;width:300px;height:300px;border-radius:50%;background:rgba(141,198,63,0.12)}
 .cover h1{font-size:clamp(32px,5vw,48px);font-weight:900;line-height:1.1;margin-bottom:8px}
@@ -22,17 +20,14 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:#2a2a2a;line-he
 .cover-stat{background:rgba(255,255,255,0.08);border-radius:16px;padding:20px 16px;text-align:center}
 .cover-stat .num{font-size:32px;font-weight:900;color:var(--lime);line-height:1}
 .cover-stat .label{font-size:12px;color:rgba(255,255,255,0.5);margin-top:4px;text-transform:uppercase;letter-spacing:0.5px}
-
 section{margin-bottom:48px}
 h2{font-size:28px;font-weight:900;color:var(--green);margin-bottom:24px;padding-bottom:12px;border-bottom:3px solid var(--lime)}
 h3{font-size:18px;font-weight:700;color:var(--green);margin:28px 0 12px}
 p{font-size:15px;margin-bottom:14px;color:#444}
 strong{color:var(--green)}
-
 .card{background:var(--white);border-radius:16px;padding:28px 32px;margin-bottom:16px;border:1px solid rgba(27,94,58,0.08)}
 .card h3{margin-top:0}
 .card-accent{border-left:4px solid var(--lime)}
-
 table{width:100%;border-collapse:collapse;margin:16px 0 24px;font-size:14px;border-radius:12px;overflow:hidden}
 thead{background:var(--green);color:#fff}
 th{padding:12px 16px;text-align:left;font-weight:700;font-size:13px;text-transform:uppercase;letter-spacing:0.5px}
@@ -40,38 +35,31 @@ td{padding:11px 16px;border-bottom:1px solid #eee}
 tr:nth-child(even){background:rgba(141,198,63,0.04)}
 tr:hover{background:rgba(141,198,63,0.08)}
 td:first-child{font-weight:600;color:var(--green)}
-
 .tag{display:inline-block;padding:3px 10px;border-radius:100px;font-size:11px;font-weight:700;margin-right:4px}
 .tag-green{background:rgba(141,198,63,0.15);color:#3B6D11}
 .tag-red{background:rgba(228,48,32,0.1);color:#c0392b}
 .tag-blue{background:rgba(52,117,80,0.1);color: var(--green-dark)}
 .tag-gray{background:rgba(0,0,0,0.05);color: var(--gray-500)}
-
 .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
 .metric-card{background:var(--white);border-radius:16px;padding:24px;border:1px solid rgba(27,94,58,0.08);text-align:center}
 .metric-card .num{font-size:36px;font-weight:900;color:var(--green);line-height:1}
 .metric-card .label{font-size:13px;color: var(--gray-400);margin-top:6px}
-
 .schema-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:16px 0 24px}
 .schema-card{background:var(--white);border-radius:12px;padding:20px;border:1px solid rgba(27,94,58,0.08);text-align:center}
 .schema-card .icon{font-size:28px;margin-bottom:8px}
 .schema-card .name{font-size:14px;font-weight:700;color:var(--green)}
 .schema-card .desc{font-size:12px;color: var(--gray-400);margin-top:4px}
-
 .timeline{position:relative;padding-left:28px;margin:16px 0}
 .timeline::before{content:'';position:absolute;left:8px;top:4px;bottom:4px;width:2px;background:var(--lime)}
 .timeline-item{position:relative;margin-bottom:20px}
 .timeline-item::before{content:'';position:absolute;left:-24px;top:6px;width:12px;height:12px;border-radius:50%;background:var(--lime);border:2px solid var(--white)}
 .timeline-item h4{font-size:14px;font-weight:700;color:var(--green);margin-bottom:2px}
 .timeline-item p{font-size:13px;margin:0;color: var(--gray-500)}
-
 .city-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:16px 0}
 .city-chip{background:var(--white);border:1px solid rgba(27,94,58,0.1);border-radius:10px;padding:10px 12px;text-align:center}
 .city-chip .name{font-size:13px;font-weight:700;color:var(--green)}
 .city-chip .stat{font-size:11px;color:var(--lime);font-weight:700}
-
 .footer-note{text-align:center;font-size:12px;color:#aaa;margin-top:64px;padding-top:24px;border-top:1px solid #e0e0e0}
-
 @media(max-width:768px){
 .cover{padding:40px 28px}
 .cover-stats{grid-template-columns:repeat(2,1fr)}
@@ -85,24 +73,21 @@ body{background:#fff}
 .cover{break-after:page}
 section{break-inside:avoid}
 }
-        /* ─── PAGE TRANSITIONS v2 (pt-vt): jednolity crossfade ─── */
-        html.pt-out body { opacity: 0 !important; transition: opacity 0.18s ease !important; }
-        html.pt-in body { animation: ptFadeIn 0.32s ease both; }
-        @keyframes ptFadeIn { from { opacity: 0; } to { opacity: 1; } }
-        @media (prefers-reduced-motion: reduce) {
+html.pt-out body { opacity: 0 !important; transition: opacity 0.18s ease !important; }
+html.pt-in body { animation: ptFadeIn 0.32s ease both; }
+@keyframes ptFadeIn { from { opacity: 0; } to { opacity: 1; } }
+@media (prefers-reduced-motion: reduce) {
             html.pt-out body { opacity: 1 !important; transition: none !important; }
             html.pt-in body { animation: none; }
         }
-    
-        /* ─── MOBILE HEADER UNIFY (mh-unify) ─── */
-        @media (max-width: 768px) {
+@media (max-width: 768px) {
             .nav-inner { padding: 10px 20px !important; }
             .logo-img { height: 38px !important; width: auto !important; }
             .logo-wrap { flex-direction: row !important; gap: 8px !important; align-items: center !important; }
             .logo-sub { display: inline-block !important; border-left: 1px solid rgba(255,255,255,0.25) !important; padding-left: 8px !important; margin: 0 !important; font-size: 8px !important; align-self: center !important; opacity: 0.6 !important; }
             .nav-links, .nav-trust { display: none !important; }
         }
-    </style>
+</style>
 </head>
 <body>
 <div class="report">

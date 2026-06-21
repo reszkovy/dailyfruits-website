@@ -7,104 +7,84 @@
     <meta name="robots" content="noindex, nofollow">
     <link rel="icon" type="image/png" href="favicon_.png">
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        :root {
+:root {
             --green: #1B5E3A; --lime: #8DC63F; --cream: #FFF9E0;
             --white: #FFFFFF; --gray: #6B7280; --light: #F3F4F6;
             --radius: 12px; --font: 'DM Sans', -apple-system, sans-serif;
         }
-        body { font-family: var(--font); background: var(--light); min-height: 100vh; }
-
-        /* Login */
-        .login-wrap { display: flex; align-items: center; justify-content: center; min-height: 100vh; padding: 20px; }
-        .login-box { background: var(--white); padding: 48px; border-radius: var(--radius); box-shadow: 0 4px 24px rgba(0,0,0,0.08); max-width: 400px; width: 100%; text-align: center; }
-        .login-box h1 { font-size: 24px; color: var(--green); margin-bottom: 8px; }
-        .login-box p { color: var(--gray); font-size: 14px; margin-bottom: 24px; }
-        .login-box input { width: 100%; padding: 12px 16px; border: 2px solid #E5E7EB; border-radius: 8px; font-size: 15px; outline: none; transition: border 0.2s; }
-        .login-box input:focus { border-color: var(--lime); }
-        .login-box button { width: 100%; padding: 12px; background: var(--green); color: white; border: none; border-radius: 8px; font-size: 15px; font-weight: 600; cursor: pointer; margin-top: 16px; transition: background 0.2s; }
-        .login-box button:hover { background: #245a3a; }
-        .login-error { color: #E43020; font-size: 13px; margin-top: 12px; display: none; }
-
-        /* Dashboard */
-        .dashboard { display: none; }
-        .topbar { background: var(--green); color: white; padding: 16px 32px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 100; }
-        .topbar h1 { font-size: 18px; font-weight: 700; }
-        .topbar-actions { display: flex; gap: 12px; align-items: center; }
-        .topbar .btn-sm { padding: 8px 16px; border-radius: 8px; font-size: 13px; font-weight: 600; border: none; cursor: pointer; transition: all 0.2s; }
-        .btn-logout { background: rgba(255,255,255,0.15); color: white; }
-        .btn-logout:hover { background: rgba(255,255,255,0.25); }
-
-        /* Post list */
-        .content { max-width: 1000px; margin: 32px auto; padding: 0 24px; }
-        .post-list-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; }
-        .post-list-header h2 { font-size: 20px; color: var(--green); }
-        .post-count { color: var(--gray); font-size: 14px; }
-
-        .post-item { background: var(--white); border-radius: var(--radius); padding: 20px 24px; margin-bottom: 12px; display: flex; align-items: center; gap: 16px; cursor: pointer; transition: all 0.2s; border: 2px solid transparent; }
-        .post-item:hover { border-color: var(--lime); transform: translateY(-1px); box-shadow: 0 4px 12px rgba(0,0,0,0.06); }
-        .post-item-info { flex: 1; }
-        .post-item-title { font-weight: 700; font-size: 15px; color: var(--green); margin-bottom: 4px; }
-        .post-item-meta { font-size: 13px; color: var(--gray); display: flex; gap: 12px; align-items: center; }
-        .post-item-tag { background: rgba(141,198,63,0.15); color: var(--green); padding: 2px 10px; border-radius: 20px; font-size: 12px; font-weight: 600; }
-        .post-item-arrow { color: var(--gray); font-size: 20px; }
-
-        /* Editor */
-        .editor { display: none; }
-        .editor-header { display: flex; align-items: center; gap: 16px; margin-bottom: 24px; }
-        .editor-header h2 { font-size: 20px; color: var(--green); flex: 1; }
-        .btn { padding: 10px 20px; border-radius: 8px; font-size: 14px; font-weight: 600; border: none; cursor: pointer; transition: all 0.2s; }
-        .btn-back { background: var(--light); color: var(--green); }
-        .btn-back:hover { background: #E5E7EB; }
-        .btn-save { background: var(--lime); color: var(--green); }
-        .btn-save:hover { background: #7ab835; }
-        .btn-preview { background: var(--white); color: var(--green); border: 2px solid var(--green); }
-        .btn-preview:hover { background: var(--cream); }
-
-        .editor-form { background: var(--white); border-radius: var(--radius); padding: 32px; }
-        .field { margin-bottom: 20px; }
-        .field label { display: block; font-weight: 600; font-size: 13px; color: var(--green); margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.5px; }
-        .field input, .field select, .field textarea { width: 100%; padding: 10px 14px; border: 2px solid #E5E7EB; border-radius: 8px; font-size: 14px; font-family: var(--font); outline: none; transition: border 0.2s; }
-        .field input:focus, .field select:focus, .field textarea:focus { border-color: var(--lime); }
-        .field textarea { min-height: 400px; font-family: 'SF Mono', 'Fira Code', monospace; font-size: 13px; line-height: 1.6; resize: vertical; }
-        .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-        .field-help { font-size: 12px; color: var(--gray); margin-top: 4px; }
-
-        /* Toast */
-        .toast { position: fixed; bottom: 24px; right: 24px; background: var(--green); color: white; padding: 14px 24px; border-radius: 8px; font-size: 14px; font-weight: 600; transform: translateY(100px); opacity: 0; transition: all 0.3s; z-index: 1000; }
-        .toast.show { transform: translateY(0); opacity: 1; }
-        .toast.error { background: #E43020; }
-
-        /* Loading */
-        .loading { text-align: center; padding: 60px; color: var(--gray); }
-        .spinner { width: 32px; height: 32px; border: 3px solid var(--light); border-top-color: var(--lime); border-radius: 50%; animation: spin 0.6s linear infinite; margin: 0 auto 12px; }
-        @keyframes spin { to { transform: rotate(360deg); } }
-
-        @media (max-width: 640px) {
+body { font-family: var(--font); background: var(--light); min-height: 100vh; }
+.login-wrap { display: flex; align-items: center; justify-content: center; min-height: 100vh; padding: 20px; }
+.login-box { background: var(--white); padding: 48px; border-radius: var(--radius); box-shadow: 0 4px 24px rgba(0,0,0,0.08); max-width: 400px; width: 100%; text-align: center; }
+.login-box h1 { font-size: 24px; color: var(--green); margin-bottom: 8px; }
+.login-box p { color: var(--gray); font-size: 14px; margin-bottom: 24px; }
+.login-box input { width: 100%; padding: 12px 16px; border: 2px solid #E5E7EB; border-radius: 8px; font-size: 15px; outline: none; transition: border 0.2s; }
+.login-box input:focus { border-color: var(--lime); }
+.login-box button { width: 100%; padding: 12px; background: var(--green); color: white; border: none; border-radius: 8px; font-size: 15px; font-weight: 600; cursor: pointer; margin-top: 16px; transition: background 0.2s; }
+.login-box button:hover { background: #245a3a; }
+.login-error { color: #E43020; font-size: 13px; margin-top: 12px; display: none; }
+.dashboard { display: none; }
+.topbar { background: var(--green); color: white; padding: 16px 32px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 100; }
+.topbar h1 { font-size: 18px; font-weight: 700; }
+.topbar-actions { display: flex; gap: 12px; align-items: center; }
+.topbar .btn-sm { padding: 8px 16px; border-radius: 8px; font-size: 13px; font-weight: 600; border: none; cursor: pointer; transition: all 0.2s; }
+.btn-logout { background: rgba(255,255,255,0.15); color: white; }
+.btn-logout:hover { background: rgba(255,255,255,0.25); }
+.content { max-width: 1000px; margin: 32px auto; padding: 0 24px; }
+.post-list-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; }
+.post-list-header h2 { font-size: 20px; color: var(--green); }
+.post-count { color: var(--gray); font-size: 14px; }
+.post-item { background: var(--white); border-radius: var(--radius); padding: 20px 24px; margin-bottom: 12px; display: flex; align-items: center; gap: 16px; cursor: pointer; transition: all 0.2s; border: 2px solid transparent; }
+.post-item:hover { border-color: var(--lime); transform: translateY(-1px); box-shadow: 0 4px 12px rgba(0,0,0,0.06); }
+.post-item-info { flex: 1; }
+.post-item-title { font-weight: 700; font-size: 15px; color: var(--green); margin-bottom: 4px; }
+.post-item-meta { font-size: 13px; color: var(--gray); display: flex; gap: 12px; align-items: center; }
+.post-item-tag { background: rgba(141,198,63,0.15); color: var(--green); padding: 2px 10px; border-radius: 20px; font-size: 12px; font-weight: 600; }
+.post-item-arrow { color: var(--gray); font-size: 20px; }
+.editor { display: none; }
+.editor-header { display: flex; align-items: center; gap: 16px; margin-bottom: 24px; }
+.editor-header h2 { font-size: 20px; color: var(--green); flex: 1; }
+.btn-back { background: var(--light); color: var(--green); }
+.btn-back:hover { background: #E5E7EB; }
+.btn-save { background: var(--lime); color: var(--green); }
+.btn-save:hover { background: #7ab835; }
+.btn-preview { background: var(--white); color: var(--green); border: 2px solid var(--green); }
+.btn-preview:hover { background: var(--cream); }
+.editor-form { background: var(--white); border-radius: var(--radius); padding: 32px; }
+.field { margin-bottom: 20px; }
+.field label { display: block; font-weight: 600; font-size: 13px; color: var(--green); margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.5px; }
+.field input, .field select, .field textarea { width: 100%; padding: 10px 14px; border: 2px solid #E5E7EB; border-radius: 8px; font-size: 14px; font-family: var(--font); outline: none; transition: border 0.2s; }
+.field input:focus, .field select:focus, .field textarea:focus { border-color: var(--lime); }
+.field textarea { min-height: 400px; font-family: 'SF Mono', 'Fira Code', monospace; font-size: 13px; line-height: 1.6; resize: vertical; }
+.field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.field-help { font-size: 12px; color: var(--gray); margin-top: 4px; }
+.toast { position: fixed; bottom: 24px; right: 24px; background: var(--green); color: white; padding: 14px 24px; border-radius: 8px; font-size: 14px; font-weight: 600; transform: translateY(100px); opacity: 0; transition: all 0.3s; z-index: 1000; }
+.toast.show { transform: translateY(0); opacity: 1; }
+.toast.error { background: #E43020; }
+.loading { text-align: center; padding: 60px; color: var(--gray); }
+.spinner { width: 32px; height: 32px; border: 3px solid var(--light); border-top-color: var(--lime); border-radius: 50%; animation: spin 0.6s linear infinite; margin: 0 auto 12px; }
+@keyframes spin { to { transform: rotate(360deg); } }
+@media (max-width: 640px) {
             .content { padding: 0 16px; margin: 20px auto; }
             .post-item { padding: 16px; }
             .editor-form { padding: 20px; }
             .field-row { grid-template-columns: 1fr; }
             .topbar { padding: 12px 16px; }
         }
-        /* ─── PAGE TRANSITIONS v2 (pt-vt): jednolity crossfade ─── */
-        html.pt-out body { opacity: 0 !important; transition: opacity 0.18s ease !important; }
-        html.pt-in body { animation: ptFadeIn 0.32s ease both; }
-        @keyframes ptFadeIn { from { opacity: 0; } to { opacity: 1; } }
-        @media (prefers-reduced-motion: reduce) {
+html.pt-out body { opacity: 0 !important; transition: opacity 0.18s ease !important; }
+html.pt-in body { animation: ptFadeIn 0.32s ease both; }
+@keyframes ptFadeIn { from { opacity: 0; } to { opacity: 1; } }
+@media (prefers-reduced-motion: reduce) {
             html.pt-out body { opacity: 1 !important; transition: none !important; }
             html.pt-in body { animation: none; }
         }
-    
-        /* ─── MOBILE HEADER UNIFY (mh-unify) ─── */
-        @media (max-width: 768px) {
+@media (max-width: 768px) {
             .nav-inner { padding: 10px 20px !important; }
             .logo-img { height: 38px !important; width: auto !important; }
             .logo-wrap { flex-direction: row !important; gap: 8px !important; align-items: center !important; }
             .logo-sub { display: inline-block !important; border-left: 1px solid rgba(255,255,255,0.25) !important; padding-left: 8px !important; margin: 0 !important; font-size: 8px !important; align-self: center !important; opacity: 0.6 !important; }
             .nav-links, .nav-trust { display: none !important; }
         }
-    </style>
+</style>
 </head>
 <body>
 
