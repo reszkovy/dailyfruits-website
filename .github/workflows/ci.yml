@@ -29,12 +29,10 @@ jobs:
       - name: Spojnosc includes (_includes vs strony)
         run: node scripts/build.js --check
 
-  # RAPORT-ONLY (ratchet): htmlhint zglasza znany dlug (25 plikow z niezamknietym
-  # <div>). NIE blokuje. Po naprawieniu divow usun `continue-on-error`, by gate stal sie scisly.
+  # BLOKUJACA: 25 plikow z niezamknietym <div> naprawione -> gate scisly.
   htmlhint:
-    name: htmlhint (raport, nie blokuje)
+    name: htmlhint (blokuje)
     runs-on: ubuntu-latest
-    continue-on-error: true
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
