@@ -23,6 +23,11 @@ jobs:
         with:
           python-version: '3.12'
       - run: python3 scripts/validate.py
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Spojnosc includes (_includes vs strony)
+        run: node scripts/build.js --check
 
   # RAPORT-ONLY (ratchet): htmlhint zglasza znany dlug (25 plikow z niezamknietym
   # <div>). NIE blokuje. Po naprawieniu divow usun `continue-on-error`, by gate stal sie scisly.
