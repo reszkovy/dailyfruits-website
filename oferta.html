@@ -105,6 +105,12 @@
 .skladniki li { font-size: 14.5px; color: var(--green-dark); padding: 7px 0; border-bottom: 1px solid rgba(27,94,58,0.10); display: flex; align-items: center; gap: 8px; }
 .skladniki li:last-child { border-bottom: none; }
 .skladniki li::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--lime); flex-shrink: 0; }
+.sklad-more { margin: -12px 0 18px; flex: 1; }
+.sklad-more > summary { cursor: pointer; font-size: 13px; font-weight: 800; color: var(--green-mid); list-style: none; padding: 6px 0; display: inline-flex; align-items: center; gap: 6px; }
+.sklad-more > summary::-webkit-details-marker { display: none; }
+.sklad-more > summary::after { content: '▾'; font-size: 11px; }
+.sklad-more[open] > summary::after { content: '▴'; }
+.sklad-more .skladniki { margin: 4px 0 0; }
 .product-card-body .btn-sm { display: inline-flex; align-items: center; gap: 5px; padding: 13px 22px; border-radius: var(--radius-pill); background: var(--green-dark); color: #fff; font-size: 15px; font-weight: 700; transition: all 0.2s; align-self: flex-start; }
 .product-card-body .btn-sm:hover { background: var(--green-dark-hover); transform: translateY(-1px); }
 .product-card-body .btn-sm .fun { font-family: var(--font-fun); font-weight: 400; font-size: 18px; color: var(--yellow); }
@@ -377,16 +383,16 @@ html.pt-in body { animation: ptFadeIn 0.32s ease both; }
     <div class="cat-panel" data-cat="sniadania" role="tabpanel">
         <div class="products-grid">
             <div class="product-card">
-                <div class="product-card-img"><img src="katalog/sniadanie-1.webp" alt="Śniadanie Klasyczne - ciabatta, wędliny, sery, świeże warzywa, jogurty i hummusy" loading="lazy" width="800" height="533"></div>
-                <div class="product-card-body"><h3>Śniadanie Klasyczne</h3><p>Ciabatta ×20, wędliny, sery, świeże warzywa, jogurty i hummusy - klasyczny stół śniadaniowy dla zespołu</p><a href="zapytanie" class="btn-sm"><span class="fun fun-alt">Zamów</span> wycenę →</a></div>
+                <div class="product-card-img"><img src="kat-sniadanie-klasyczne.webp" alt="Śniadanie klasyczne" loading="lazy" width="900" height="517"></div>
+                <div class="product-card-body"><h3>Śniadanie klasyczne</h3><ul class="skladniki"><li>Ciabatta ×20</li><li>Dżem truskawkowy</li><li>Jabłko 1,5 kg</li><li>Kiełbasa Sucha Krakowska w plastrach</li><li>Masło</li></ul><details class="sklad-more"><summary>Pełny skład (+16)</summary><ul class="skladniki"><li>Ogórki kiszone</li><li>Ogórek zielony</li><li>Pasztet z indyka</li><li>Pomidory 0,7 kg</li><li>Rzodkiewka</li><li>Sałata lollo bionda</li><li>Schab wędzony w plastrach</li><li>Ser żółty Gouda w plastrach</li><li>Szynka soczysta w plastrach</li><li>Bakalie MIX 400 g</li><li>Jogurt owoce leśne ×4</li><li>Musli naturalne</li><li>Hummus klasyczny</li><li>Hummus z suszonymi pomidorami</li><li>Jogurt naturalny ×3</li><li>Serek naturalny</li></ul></details><a href="/zapytanie" class="btn-sm"><span class="fun fun-alt">Zamów</span> wycenę →</a></div>
             </div>
             <div class="product-card">
-                <div class="product-card-img"><img src="katalog/p-sniadanie.webp" alt="Śniadanie Premium - zestaw śniadaniowy do biura" loading="lazy" width="800" height="533"></div>
-                <div class="product-card-body"><h3>Śniadanie Premium</h3><p>Ciemne bagietki, croissanty maślane, ser brie, gruszki, orzechy i miód - wersja premium</p><a href="zapytanie" class="btn-sm"><span class="fun fun-alt">Zamów</span> wycenę →</a></div>
+                <div class="product-card-img"><img src="kat-sniadanie-premium.webp" alt="Śniadanie Premium" loading="lazy" width="900" height="515"></div>
+                <div class="product-card-body"><h3>Śniadanie Premium</h3><ul class="skladniki"><li>Bagietka ciemna ×5</li><li>Serek wiejski ×4</li><li>Ciabatta ×4</li><li>Twaróg naturalny</li><li>Croissant maślany ×4</li></ul><details class="sklad-more"><summary>Pełny skład (+11)</summary><ul class="skladniki"><li>Ser Brie Naturalny ×2</li><li>Gruszka 1,5 kg</li><li>Migdały 65 g</li><li>Orzechy laskowe 65 g</li><li>Masło</li><li>Pomidory 0,3 kg</li><li>Rzodkiewka</li><li>Sałata lollo bionda</li><li>Ser żółty Gouda w plastrach</li><li>Konfitura</li><li>Szynka soczysta w plastrach</li></ul></details><a href="/zapytanie" class="btn-sm"><span class="fun fun-alt">Zamów</span> wycenę →</a></div>
             </div>
             <div class="product-card">
-                <div class="product-card-img"><img src="katalog/sniadanie-3.webp" alt="Śniadanie Zrównoważone - bagietki ciemne, hummusy, mozzarella, pasztet wegański" loading="lazy" width="800" height="533"></div>
-                <div class="product-card-body"><h3>Śniadanie Zrównoważone</h3><p>Bagietki ciemne, hummusy, mozzarella, pasztet wegański i pasta słonecznikowa - lżejsza, roślinna baza</p><a href="zapytanie" class="btn-sm"><span class="fun fun-alt">Zamów</span> wycenę →</a></div>
+                <div class="product-card-img"><img src="kat-sniadanie-zrownowazone.webp" alt="Śniadanie Zrównoważone" loading="lazy" width="900" height="515"></div>
+                <div class="product-card-body"><h3>Śniadanie Zrównoważone</h3><ul class="skladniki"><li>Bagietka ciemna ×8</li><li>Kiełbasa Sucha Krakowska w plastrach ×2</li><li>Ogórek zielony</li><li>Hummus klasyczny</li><li>Papryka 0,5 kg</li></ul><details class="sklad-more"><summary>Pełny skład (+11)</summary><ul class="skladniki"><li>Pomidor 0,3 kg</li><li>Rzodkiewka</li><li>Sałata masłowa</li><li>Mozzarella</li><li>Wafle ryżowe</li><li>Ser Camembert Naturalny</li><li>Pasztet wegański z pieczonymi warzywami</li><li>Pasta ze słonecznika z pomidorami</li><li>Kabanosy drobiowe z wieprzowiną</li><li>Hummus klasyczny</li><li>Serek naturalny ×2</li></ul></details><a href="/zapytanie" class="btn-sm"><span class="fun fun-alt">Zamów</span> wycenę →</a></div>
             </div>
         </div>
     </div>
