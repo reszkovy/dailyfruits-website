@@ -68,7 +68,7 @@
 .product-card.subcat-hidden { display: none; }
 @media (max-width: 768px) { .subcat-bar { gap: 6px; overflow-x: auto; flex-wrap: nowrap; -webkit-overflow-scrolling: touch; scrollbar-width: none; padding-bottom: 12px; } .subcat-bar::-webkit-scrollbar { display: none; } .subcat-pill { font-size: 12px; padding: 6px 12px; flex-shrink: 0; } }
 .products-section { padding: 24px 0 80px; position: relative; overflow: hidden; }
-.products-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px; }
+.products-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px; align-items: start; }
 .product-card { background: var(--white); border-radius: var(--radius); overflow: hidden; transition: transform 0.3s, box-shadow 0.3s; display: flex; flex-direction: column; }
 .product-card:hover { transform: translateY(-6px); box-shadow: 0 16px 48px rgba(27,94,58,0.1); }
 .product-card-img { position: relative; background: #ffffff; padding: 16px; display: flex; align-items: center; justify-content: center; height: 230px; }
@@ -101,11 +101,11 @@
 .product-card-body { padding: 26px; flex: 1; display: flex; flex-direction: column; }
 .product-card-body h3 { font-size: 22px; font-weight: 800; margin-bottom: 8px; line-height: 1.25; letter-spacing: -0.02em; }
 .product-card-body p { font-size: 15px; margin: 0 0 16px; flex: 1; line-height: 1.5; color: rgba(0,0,0,.55); }
-.skladniki { list-style: none; margin: 4px 0 18px; padding: 0; flex: 1; }
+.skladniki { list-style: none; margin: 4px 0 18px; padding: 0; }
 .skladniki li { font-size: 14.5px; color: var(--green-dark); padding: 7px 0; border-bottom: 1px solid rgba(27,94,58,0.10); display: flex; align-items: center; gap: 8px; }
 .skladniki li:last-child { border-bottom: none; }
 .skladniki li::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--lime); flex-shrink: 0; }
-.sklad-more { margin: -12px 0 18px; flex: 1; }
+.sklad-more { margin: -12px 0 18px; }
 .sklad-more > summary { cursor: pointer; font-size: 13px; font-weight: 800; color: var(--green-mid); list-style: none; padding: 6px 0; display: inline-flex; align-items: center; gap: 6px; }
 .sklad-more > summary::-webkit-details-marker { display: none; }
 .sklad-more > summary::after { content: '▾'; font-size: 11px; }
