@@ -100,6 +100,10 @@
 .product-card-body { padding: 26px; flex: 1; display: flex; flex-direction: column; }
 .product-card-body h3 { font-size: 22px; font-weight: 800; margin-bottom: 8px; line-height: 1.25; letter-spacing: -0.02em; }
 .product-card-body p { font-size: 15px; margin: 0 0 16px; flex: 1; line-height: 1.5; color: rgba(0,0,0,.55); }
+.skladniki { list-style: none; margin: 4px 0 18px; padding: 0; flex: 1; }
+.skladniki li { font-size: 14.5px; color: var(--green-dark); padding: 7px 0; border-bottom: 1px solid rgba(27,94,58,0.10); display: flex; align-items: center; gap: 8px; }
+.skladniki li:last-child { border-bottom: none; }
+.skladniki li::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--lime); flex-shrink: 0; }
 .product-card-body .btn-sm { display: inline-flex; align-items: center; gap: 5px; padding: 13px 22px; border-radius: var(--radius-pill); background: var(--green-dark); color: #fff; font-size: 15px; font-weight: 700; transition: all 0.2s; align-self: flex-start; }
 .product-card-body .btn-sm:hover { background: var(--green-dark-hover); transform: translateY(-1px); }
 .product-card-body .btn-sm .fun { font-family: var(--font-fun); font-weight: 400; font-size: 18px; color: var(--yellow); }
@@ -320,24 +324,28 @@ html.pt-in body { animation: ptFadeIn 0.32s ease both; }
     <div class="cat-panel active" data-cat="owoce" role="tabpanel">
         <div class="products-grid">
             <div class="product-card">
-                <div class="product-card-img"><img src="katalog/owoce-tylko-witaminy.webp?v=2" alt="TYLKO WITAMINY - jabłka, banany, owoce sezonowe" loading="lazy" width="800" height="533"></div>
-                <div class="product-card-body"><h3>TYLKO WITAMINY</h3><p>Jabłka, banany, owoce sezonowe</p><a href="zapytanie" class="btn-sm"><span class="fun fun-alt">Zamów</span> wycenę →</a></div>
+                <div class="product-card-img"><img src="kat-owoce-tylko-witaminy.webp" alt="Tylko Witaminy - jabłka, banany, owoce sezonowe" loading="lazy" width="900" height="600"></div>
+                <div class="product-card-body"><h3>Tylko Witaminy</h3><ul class="skladniki"><li>Jabłka 2 kg</li><li>Banany 2 kg</li><li>Owoce sezonowe 3 kg</li></ul><a href="/zapytanie" class="btn-sm"><span class="fun fun-alt">Zamów</span> wycenę →</a></div>
             </div>
             <div class="product-card">
-                <div class="product-card-img"><img src="katalog/owoce-owocowy-klasyk.webp" alt="OWOCOWY KLASYK - jabłka i banany" loading="lazy" width="800" height="533"></div>
-                <div class="product-card-body"><h3>OWOCOWY KLASYK</h3><p>Jabłka i banany - klasyczny duet</p><a href="zapytanie" class="btn-sm"><span class="fun fun-alt">Zamów</span> wycenę →</a></div>
+                <div class="product-card-img"><img src="kat-owoce-klasyk.webp" alt="Owocowy Klasyk - jabłka i banany" loading="lazy" width="600" height="600"></div>
+                <div class="product-card-body"><h3>Owocowy Klasyk</h3><ul class="skladniki"><li>Jabłka 3,5 kg</li><li>Banany 3,5 kg</li></ul><a href="/zapytanie" class="btn-sm"><span class="fun fun-alt">Zamów</span> wycenę →</a></div>
             </div>
             <div class="product-card">
-                <div class="product-card-img"><img src="katalog/owoce-mix-egzotyka.webp" alt="MIX EGZOTYKA - jabłka, banany, sezonowe, egzotyczne" loading="lazy" width="800" height="533"></div>
-                <div class="product-card-body"><h3>MIX EGZOTYKA</h3><p>Jabłka, banany, sezonowe, egzotyczne</p><a href="zapytanie" class="btn-sm"><span class="fun fun-alt">Zamów</span> wycenę →</a></div>
+                <div class="product-card-img"><img src="kat-owoce-egzotyka.webp" alt="Mix z egzotyką - jabłka, banany, sezonowe, egzotyczne" loading="lazy" width="900" height="724"></div>
+                <div class="product-card-body"><h3>Mix z egzotyką</h3><ul class="skladniki"><li>Jabłka 2 kg</li><li>Banany 1 kg</li><li>Owoce sezonowe 2 kg</li><li>Owoce egzotyczne 1,5 kg</li></ul><a href="/zapytanie" class="btn-sm"><span class="fun fun-alt">Zamów</span> wycenę →</a></div>
             </div>
             <div class="product-card">
-                <div class="product-card-img"><img src="katalog/warzywa-mini.webp" alt="WARZYWNY MINI - świeże warzywa do biurowej kuchni" loading="lazy" width="800" height="533"></div>
-                <div class="product-card-body"><h3>WARZYWNY MINI</h3><p>Ogórek, papryka, pomidory, sałata, rzodkiewka, marchew</p><a href="zapytanie" class="btn-sm"><span class="fun fun-alt">Zamów</span> wycenę →</a></div>
+                <div class="product-card-img"><img src="kat-owoce-moc.webp" alt="Owocowa Moc - jabłka, banany, owoce sezonowe" loading="lazy" width="900" height="393"></div>
+                <div class="product-card-body"><h3>Owocowa Moc</h3><ul class="skladniki"><li>Jabłka 5 kg</li><li>Banany 5 kg</li><li>Owoce sezonowe 4 kg</li></ul><a href="/zapytanie" class="btn-sm"><span class="fun fun-alt">Zamów</span> wycenę →</a></div>
             </div>
             <div class="product-card">
-                <div class="product-card-img"><img src="katalog/owoce-owocowa-moc.webp" alt="OWOCOWA MOC - największa porcja owoców" loading="lazy" width="800" height="533"></div>
-                <div class="product-card-body"><h3>OWOCOWA MOC</h3><p>5 kg jabłek, 5 kg bananów, 4 kg sezonowych</p><a href="zapytanie" class="btn-sm"><span class="fun fun-alt">Zamów</span> wycenę →</a></div>
+                <div class="product-card-img"><img src="kat-warzywny-mini.webp" alt="Warzywny Mini - świeże warzywa do biura" loading="lazy" width="900" height="834"></div>
+                <div class="product-card-body"><h3>Warzywny Mini</h3><ul class="skladniki"><li>Ogórek zielony</li><li>Papryka 0,25 kg</li><li>Pomidory 0,90 kg</li><li>Pomidory 0,90 kg</li><li>Rzodkiewka</li><li>Marchew 0,60 kg</li></ul><a href="/zapytanie" class="btn-sm"><span class="fun fun-alt">Zamów</span> wycenę →</a></div>
+            </div>
+            <div class="product-card">
+                <div class="product-card-img"><img src="kat-warzywa-krojone.webp" alt="Warzywa Krojone - 12 kubeczków warzyw" loading="lazy" width="900" height="752"></div>
+                <div class="product-card-body"><h3>Warzywa Krojone</h3><ul class="skladniki"><li>12 kubeczków</li><li>Mix marchewek i warzyw sezonowych</li></ul><a href="/zapytanie" class="btn-sm"><span class="fun fun-alt">Zamów</span> wycenę →</a></div>
             </div>
         </div>
     </div>
