@@ -8,7 +8,6 @@
 window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
 gtag('consent','default',{'ad_storage':'denied','analytics_storage':'denied','ad_user_data':'denied','ad_personalization':'denied','functionality_storage':'granted','security_storage':'granted','wait_for_update':500});
-(function(){try{if(localStorage.getItem('df_consent')==='granted'){gtag('consent','update',{'ad_storage':'granted','analytics_storage':'granted','ad_user_data':'granted','ad_personalization':'granted'});}}catch(e){}})();
 </script>
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-FVTBKWW');</script>
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5B7HN67B');</script>
@@ -990,33 +989,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
   <script defer src="/typo.js"></script>
 <!--#include:cookie-banner-->
-<div id="cookieBanner" class="cookie-banner" role="dialog" aria-label="Zgoda na pliki cookie" aria-live="polite" hidden>
-    <div class="cookie-banner-inner">
-        <p class="cookie-banner-text">Używamy plików cookie do analityki i&nbsp;ulepszania strony. Możesz zaakceptować wszystkie albo odrzucić opcjonalne. Więcej w&nbsp;<a href="/polityka-prywatnosci">Polityce prywatności</a>.</p>
-        <div class="cookie-banner-btns">
-            <button type="button" id="cookieReject" class="cookie-btn cookie-btn-ghost">Odrzuć</button>
-            <button type="button" id="cookieAccept" class="cookie-btn cookie-btn-accept">Akceptuję</button>
-        </div>
-    </div>
-</div>
-<script>
-(function () {
-    var b = document.getElementById('cookieBanner');
-    if (!b) return;
-    var saved = null;
-    try { saved = localStorage.getItem('df_consent'); } catch (e) {}
-    if (!saved) b.hidden = false;
-    function decide(v) {
-        try { localStorage.setItem('df_consent', v); } catch (e) {}
-        if (v === 'granted' && typeof gtag === 'function') {
-            gtag('consent', 'update', { 'ad_storage': 'granted', 'analytics_storage': 'granted', 'ad_user_data': 'granted', 'ad_personalization': 'granted' });
-        }
-        b.hidden = true;
-    }
-    document.getElementById('cookieAccept').addEventListener('click', function () { decide('granted'); });
-    document.getElementById('cookieReject').addEventListener('click', function () { decide('denied'); });
-})();
-</script>
+<!-- Zgody cookie obsługuje Usercentrics (ładowany przez GTM-FVTBKWW), tak samo jak na betterworkplace.pl. Własny banner usunięty, by nie dublować CMP. -->
 <!--#endinclude:cookie-banner-->
 </body>
 </html><!-- sync-test -->
