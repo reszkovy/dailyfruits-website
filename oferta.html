@@ -118,7 +118,7 @@ gtag('consent','default',{'ad_storage':'denied','analytics_storage':'denied','ad
 .sklad-more > summary::after { content: '▾'; font-size: 11px; }
 .sklad-more[open] > summary::after { content: '▴'; }
 .sklad-more .skladniki { margin: 4px 0 0; }
-.product-card-body .btn-sm { display: inline-flex; align-items: center; gap: 5px; padding: 13px 22px; border-radius: var(--radius-pill); background: var(--green-dark); color: #fff; font-size: 15px; font-weight: 700; transition: all 0.2s; align-self: flex-start; }
+.product-card-body .btn-sm { display: inline-flex; align-items: center; gap: 5px; padding: 13px 22px; border-radius: var(--radius-pill); background: var(--green-dark); color: #fff; font-size: 15px; font-weight: 700; transition: all 0.2s; align-self: flex-start; margin-top: auto; }
 .product-card-body .btn-sm:hover { background: var(--green-dark-hover); transform: translateY(-1px); }
 .product-card-body .btn-sm .fun { font-family: var(--font-fun); font-weight: 400; font-size: 18px; color: var(--yellow); }
 .footer-brand p { font-size: 14px; color: rgba(255,255,255,0.5); max-width: 280px; margin-top: 12px; }
@@ -355,7 +355,7 @@ html.pt-in body { animation: ptFadeIn 0.32s ease both; }
             </div>
             <div class="product-card">
                 <div class="product-card-img"><img src="kat-warzywny-mini.webp" alt="Warzywny Mini - świeże warzywa do biura" loading="lazy" width="900" height="834"></div>
-                <div class="product-card-body"><h3>Warzywny Mini</h3><ul class="skladniki"><li>Ogórek zielony</li><li>Papryka 0,25 kg</li><li>Pomidory 0,90 kg</li><li>Pomidory 0,90 kg</li><li>Rzodkiewka</li><li>Marchew 0,60 kg</li></ul><a href="/zapytanie" class="btn-sm"><span class="fun fun-alt">Zamów</span> wycenę →</a></div>
+                <div class="product-card-body"><h3>Warzywny Mini</h3><ul class="skladniki"><li>Ogórek zielony</li><li>Papryka 0,25 kg</li><li>Pomidory 0,90 kg</li><li>Pomidory 0,90 kg</li></ul><details class="sklad-more"><summary>Pełny skład (+2)</summary><ul class="skladniki"><li>Rzodkiewka</li><li>Marchew 0,60 kg</li></ul></details><a href="/zapytanie" class="btn-sm"><span class="fun fun-alt">Zamów</span> wycenę →</a></div>
             </div>
             <div class="product-card">
                 <div class="product-card-img"><img src="kat-warzywa-krojone.webp" alt="Warzywa Krojone - 12 kubeczków warzyw" loading="lazy" width="900" height="752"></div>
@@ -391,15 +391,15 @@ html.pt-in body { animation: ptFadeIn 0.32s ease both; }
         <div class="products-grid">
             <div class="product-card">
                 <div class="product-card-img"><img src="kat-sniadanie-klasyczne.webp" alt="Śniadanie klasyczne" loading="lazy" width="900" height="517"></div>
-                <div class="product-card-body"><h3>Śniadanie klasyczne</h3><ul class="skladniki"><li>Ciabatta ×20</li><li>Dżem truskawkowy</li><li>Jabłko 1,5 kg</li><li>Kiełbasa Sucha Krakowska w plastrach</li><li>Masło</li></ul><details class="sklad-more"><summary>Pełny skład (+16)</summary><ul class="skladniki"><li>Ogórki kiszone</li><li>Ogórek zielony</li><li>Pasztet z indyka</li><li>Pomidory 0,7 kg</li><li>Rzodkiewka</li><li>Sałata lollo bionda</li><li>Schab wędzony w plastrach</li><li>Ser żółty Gouda w plastrach</li><li>Szynka soczysta w plastrach</li><li>Bakalie MIX 400 g</li><li>Jogurt owoce leśne ×4</li><li>Musli naturalne</li><li>Hummus klasyczny</li><li>Hummus z suszonymi pomidorami</li><li>Jogurt naturalny ×3</li><li>Serek naturalny</li></ul></details><a href="/zapytanie" class="btn-sm"><span class="fun fun-alt">Zamów</span> wycenę →</a></div>
+                <div class="product-card-body"><h3>Śniadanie klasyczne</h3><ul class="skladniki"><li>Ciabatta ×20</li><li>Dżem truskawkowy</li><li>Jabłko 1,5 kg</li><li>Kiełbasa Sucha Krakowska w plastrach</li></ul><details class="sklad-more"><summary>Pełny skład (+17)</summary><ul class="skladniki"><li>Masło</li><li>Ogórki kiszone</li><li>Ogórek zielony</li><li>Pasztet z indyka</li><li>Pomidory 0,7 kg</li><li>Rzodkiewka</li><li>Sałata lollo bionda</li><li>Schab wędzony w plastrach</li><li>Ser żółty Gouda w plastrach</li><li>Szynka soczysta w plastrach</li><li>Bakalie MIX 400 g</li><li>Jogurt owoce leśne ×4</li><li>Musli naturalne</li><li>Hummus klasyczny</li><li>Hummus z suszonymi pomidorami</li><li>Jogurt naturalny ×3</li><li>Serek naturalny</li></ul></details><a href="/zapytanie" class="btn-sm"><span class="fun fun-alt">Zamów</span> wycenę →</a></div>
             </div>
             <div class="product-card">
                 <div class="product-card-img"><img src="kat-sniadanie-premium.webp" alt="Śniadanie Premium" loading="lazy" width="843" height="500"></div>
-                <div class="product-card-body"><h3>Śniadanie Premium</h3><ul class="skladniki"><li>Bagietka ciemna ×5</li><li>Serek wiejski ×4</li><li>Ciabatta ×4</li><li>Twaróg naturalny</li><li>Croissant maślany ×4</li></ul><details class="sklad-more"><summary>Pełny skład (+11)</summary><ul class="skladniki"><li>Ser Brie Naturalny ×2</li><li>Gruszka 1,5 kg</li><li>Migdały 65 g</li><li>Orzechy laskowe 65 g</li><li>Masło</li><li>Pomidory 0,3 kg</li><li>Rzodkiewka</li><li>Sałata lollo bionda</li><li>Ser żółty Gouda w plastrach</li><li>Konfitura</li><li>Szynka soczysta w plastrach</li></ul></details><a href="/zapytanie" class="btn-sm"><span class="fun fun-alt">Zamów</span> wycenę →</a></div>
+                <div class="product-card-body"><h3>Śniadanie Premium</h3><ul class="skladniki"><li>Bagietka ciemna ×5</li><li>Serek wiejski ×4</li><li>Ciabatta ×4</li><li>Twaróg naturalny</li></ul><details class="sklad-more"><summary>Pełny skład (+12)</summary><ul class="skladniki"><li>Croissant maślany ×4</li><li>Ser Brie Naturalny ×2</li><li>Gruszka 1,5 kg</li><li>Migdały 65 g</li><li>Orzechy laskowe 65 g</li><li>Masło</li><li>Pomidory 0,3 kg</li><li>Rzodkiewka</li><li>Sałata lollo bionda</li><li>Ser żółty Gouda w plastrach</li><li>Konfitura</li><li>Szynka soczysta w plastrach</li></ul></details><a href="/zapytanie" class="btn-sm"><span class="fun fun-alt">Zamów</span> wycenę →</a></div>
             </div>
             <div class="product-card">
                 <div class="product-card-img"><img src="kat-sniadanie-zrownowazone.webp" alt="Śniadanie Zrównoważone" loading="lazy" width="900" height="515"></div>
-                <div class="product-card-body"><h3>Śniadanie Zrównoważone</h3><ul class="skladniki"><li>Bagietka ciemna ×8</li><li>Kiełbasa Sucha Krakowska w plastrach ×2</li><li>Ogórek zielony</li><li>Hummus klasyczny</li><li>Papryka 0,5 kg</li></ul><details class="sklad-more"><summary>Pełny skład (+11)</summary><ul class="skladniki"><li>Pomidor 0,3 kg</li><li>Rzodkiewka</li><li>Sałata masłowa</li><li>Mozzarella</li><li>Wafle ryżowe</li><li>Ser Camembert Naturalny</li><li>Pasztet wegański z pieczonymi warzywami</li><li>Pasta ze słonecznika z pomidorami</li><li>Kabanosy drobiowe z wieprzowiną</li><li>Hummus klasyczny</li><li>Serek naturalny ×2</li></ul></details><a href="/zapytanie" class="btn-sm"><span class="fun fun-alt">Zamów</span> wycenę →</a></div>
+                <div class="product-card-body"><h3>Śniadanie Zrównoważone</h3><ul class="skladniki"><li>Bagietka ciemna ×8</li><li>Kiełbasa Sucha Krakowska w plastrach ×2</li><li>Ogórek zielony</li><li>Hummus klasyczny</li></ul><details class="sklad-more"><summary>Pełny skład (+12)</summary><ul class="skladniki"><li>Papryka 0,5 kg</li><li>Pomidor 0,3 kg</li><li>Rzodkiewka</li><li>Sałata masłowa</li><li>Mozzarella</li><li>Wafle ryżowe</li><li>Ser Camembert Naturalny</li><li>Pasztet wegański z pieczonymi warzywami</li><li>Pasta ze słonecznika z pomidorami</li><li>Kabanosy drobiowe z wieprzowiną</li><li>Hummus klasyczny</li><li>Serek naturalny ×2</li></ul></details><a href="/zapytanie" class="btn-sm"><span class="fun fun-alt">Zamów</span> wycenę →</a></div>
             </div>
         </div>
     </div>
@@ -417,7 +417,7 @@ html.pt-in body { animation: ptFadeIn 0.32s ease both; }
             </div>
             <div class="product-card">
                 <div class="product-card-img"><img src="kat-napoje-premium.webp" alt="Napoje Premium" loading="lazy" width="790" height="453"></div>
-                <div class="product-card-body"><h3>Napoje Premium</h3><ul class="skladniki"><li>Sok NFC, mix smaków 195 ml ×40</li><li>Kombucha Classic Green 250 ml ×4</li><li>Sprite 330 ml ×10</li><li>Lemoniada z limonką 275 ml ×10</li><li>Energy Focus shot 100 ml ×6</li></ul><a href="/zapytanie" class="btn-sm"><span class="fun fun-alt">Zamów</span> wycenę →</a></div>
+                <div class="product-card-body"><h3>Napoje Premium</h3><ul class="skladniki"><li>Sok NFC, mix smaków 195 ml ×40</li><li>Kombucha Classic Green 250 ml ×4</li><li>Sprite 330 ml ×10</li><li>Lemoniada z limonką 275 ml ×10</li></ul><details class="sklad-more"><summary>Pełny skład (+1)</summary><ul class="skladniki"><li>Energy Focus shot 100 ml ×6</li></ul></details><a href="/zapytanie" class="btn-sm"><span class="fun fun-alt">Zamów</span> wycenę →</a></div>
             </div>
             <div class="product-card">
                 <div class="product-card-img"><img src="kat-napoje-izotoniczny.webp" alt="Izotoniczny" loading="lazy" width="900" height="617"></div>
@@ -494,11 +494,11 @@ html.pt-in body { animation: ptFadeIn 0.32s ease both; }
             </div>
             <div class="product-card">
                 <div class="product-card-img"><img src="kat-spotkanie-kameralne.webp" alt="Spotkanie kameralne" loading="lazy" width="900" height="449"></div>
-                <div class="product-card-body"><h3>Spotkanie kameralne</h3><ul class="skladniki"><li>Zestaw Finger Foods (21 szt.)</li><li>Zestaw słodkich przekąsek</li><li>Lemoniada z limonką 275 ml ×5</li><li>Sok tłoczony 250 ml ×5</li><li>Bakalie MIX 65 g ×6</li></ul><a href="/zapytanie" class="btn-sm"><span class="fun fun-alt">Zamów</span> wycenę →</a></div>
+                <div class="product-card-body"><h3>Spotkanie kameralne</h3><ul class="skladniki"><li>Zestaw Finger Foods (21 szt.)</li><li>Zestaw słodkich przekąsek</li><li>Lemoniada z limonką 275 ml ×5</li><li>Sok tłoczony 250 ml ×5</li></ul><details class="sklad-more"><summary>Pełny skład (+1)</summary><ul class="skladniki"><li>Bakalie MIX 65 g ×6</li></ul></details><a href="/zapytanie" class="btn-sm"><span class="fun fun-alt">Zamów</span> wycenę →</a></div>
             </div>
             <div class="product-card">
                 <div class="product-card-img"><img src="kat-owocowo-wytrawne.webp" alt="Owocowo-wytrawne" loading="lazy" width="900" height="373"></div>
-                <div class="product-card-body"><h3>Owocowo-wytrawne</h3><ul class="skladniki"><li>Zestaw Finger Foods (21 szt.)</li><li>Banan 2 kg</li><li>Jabłko 2 kg</li><li>Owoce sezonowe 2 kg</li><li>Bakalie MIX 65 g ×12</li><li>Sok NFC, mix smaków 195 ml ×20</li></ul><a href="/zapytanie" class="btn-sm"><span class="fun fun-alt">Zamów</span> wycenę →</a></div>
+                <div class="product-card-body"><h3>Owocowo-wytrawne</h3><ul class="skladniki"><li>Zestaw Finger Foods (21 szt.)</li><li>Banan 2 kg</li><li>Jabłko 2 kg</li><li>Owoce sezonowe 2 kg</li></ul><details class="sklad-more"><summary>Pełny skład (+2)</summary><ul class="skladniki"><li>Bakalie MIX 65 g ×12</li><li>Sok NFC, mix smaków 195 ml ×20</li></ul></details><a href="/zapytanie" class="btn-sm"><span class="fun fun-alt">Zamów</span> wycenę →</a></div>
             </div>
         </div>
     </div>
@@ -508,11 +508,11 @@ html.pt-in body { animation: ptFadeIn 0.32s ease both; }
         <div class="products-grid">
             <div class="product-card">
                 <div class="product-card-img"><img src="kat-klasyczny.webp" alt="Klasyczny" loading="lazy" width="900" height="380"></div>
-                <div class="product-card-body"><h3>Klasyczny</h3><ul class="skladniki"><li>2 kg Winogrona</li><li>2 kg Owoce sezonowe</li><li>Sok NFC, mix smaków, 195 ml x20</li><li>Ciasteczka zbożowe bez cukru morelowe 50 g x8</li><li>Ciasteczka zbożowe bez cukru kakaowe 50 g x4</li><li>Ciasteczka zbożowe bez cukru jagoda 50 g x8</li><li>Bakalie MIX 65 g x20</li></ul><a href="/zapytanie" class="btn-sm"><span class="fun fun-alt">Zamów</span> wycenę →</a></div>
+                <div class="product-card-body"><h3>Klasyczny</h3><ul class="skladniki"><li>2 kg Winogrona</li><li>2 kg Owoce sezonowe</li><li>Sok NFC, mix smaków, 195 ml x20</li><li>Ciasteczka zbożowe bez cukru morelowe 50 g x8</li></ul><details class="sklad-more"><summary>Pełny skład (+3)</summary><ul class="skladniki"><li>Ciasteczka zbożowe bez cukru kakaowe 50 g x4</li><li>Ciasteczka zbożowe bez cukru jagoda 50 g x8</li><li>Bakalie MIX 65 g x20</li></ul></details><a href="/zapytanie" class="btn-sm"><span class="fun fun-alt">Zamów</span> wycenę →</a></div>
             </div>
             <div class="product-card">
                 <div class="product-card-img"><img src="kat-zroznicowany.webp" alt="Zróżnicowany" loading="lazy" width="900" height="484"></div>
-                <div class="product-card-body"><h3>Zróżnicowany</h3><ul class="skladniki"><li>5 kg Owoce sezonowe</li><li>Sok NFC, mix smaków, 195 ml x20</li><li>Baton Crunchy żurawina z maliną 40 g x10</li><li>Baton owocowy 35 g x10</li><li>Chipsy z jabłka z sokiem z mango 18 g x20</li></ul><a href="/zapytanie" class="btn-sm"><span class="fun fun-alt">Zamów</span> wycenę →</a></div>
+                <div class="product-card-body"><h3>Zróżnicowany</h3><ul class="skladniki"><li>5 kg Owoce sezonowe</li><li>Sok NFC, mix smaków, 195 ml x20</li><li>Baton Crunchy żurawina z maliną 40 g x10</li><li>Baton owocowy 35 g x10</li></ul><details class="sklad-more"><summary>Pełny skład (+1)</summary><ul class="skladniki"><li>Chipsy z jabłka z sokiem z mango 18 g x20</li></ul></details><a href="/zapytanie" class="btn-sm"><span class="fun fun-alt">Zamów</span> wycenę →</a></div>
             </div>
             <div class="product-card">
                 <div class="product-card-img"><img src="kat-kulki-i-chipsy.webp" alt="Kulki i chipsy" loading="lazy" width="607" height="347"></div>
@@ -520,7 +520,7 @@ html.pt-in body { animation: ptFadeIn 0.32s ease both; }
             </div>
             <div class="product-card">
                 <div class="product-card-img"><img src="kat-batony-i-bakalie.webp" alt="Batony i bakalie" loading="lazy" width="594" height="328"></div>
-                <div class="product-card-body"><h3>Batony i bakalie</h3><ul class="skladniki"><li>Baton owocowy 35 g x10</li><li>Ciasteczko Keto 50 g x3</li><li>Ciasteczko 50 g x4</li><li>Bakalie MIX 65 g x6</li><li>Baton proteinowy 45 g x5</li></ul><a href="/zapytanie" class="btn-sm"><span class="fun fun-alt">Zamów</span> wycenę →</a></div>
+                <div class="product-card-body"><h3>Batony i bakalie</h3><ul class="skladniki"><li>Baton owocowy 35 g x10</li><li>Ciasteczko Keto 50 g x3</li><li>Ciasteczko 50 g x4</li><li>Bakalie MIX 65 g x6</li></ul><details class="sklad-more"><summary>Pełny skład (+1)</summary><ul class="skladniki"><li>Baton proteinowy 45 g x5</li></ul></details><a href="/zapytanie" class="btn-sm"><span class="fun fun-alt">Zamów</span> wycenę →</a></div>
             </div>
             <div class="product-card">
                 <div class="product-card-img"><img src="kat-batony-crunchy.webp" alt="Batony Crunchy" loading="lazy" width="583" height="333"></div>
@@ -528,7 +528,7 @@ html.pt-in body { animation: ptFadeIn 0.32s ease both; }
             </div>
             <div class="product-card">
                 <div class="product-card-img"><img src="kat-mix-batonow-i-ciasteczek.webp" alt="Mix batonów i ciasteczek" loading="lazy" width="789" height="468"></div>
-                <div class="product-card-body"><h3>Mix batonów i ciasteczek</h3><ul class="skladniki"><li>Ciasteczka zbożowe bez cukru morelowe 50 g x2</li><li>Ciasteczka zbożowe bez cukru kakaowe 50 g x2</li><li>Ciasteczka zbożowe bez cukru jagoda 50 g x2</li><li>Baton Crunchy Banan z czekoladą 40 g x2</li><li>Baton Crunchy Śliwka 40 g x2</li></ul><details class="sklad-more"><summary>Pełny skład (+7)</summary><ul class="skladniki"><li>Baton Granola owsiany z czekoladą 40 g x2</li><li>Baton zbożowy żurawina i pomarańcza 38 g x2</li><li>Baton zbożowy 5 ziaren z miodem 38 g x2</li><li>Baton banan i zboża 40 g x2</li><li>Baton proteinowy 45 g x2</li><li>Baton owocowy 35 g x2</li><li>Baton proteinowy 50 g x4</li></ul></details><a href="/zapytanie" class="btn-sm"><span class="fun fun-alt">Zamów</span> wycenę →</a></div>
+                <div class="product-card-body"><h3>Mix batonów i ciasteczek</h3><ul class="skladniki"><li>Ciasteczka zbożowe bez cukru morelowe 50 g x2</li><li>Ciasteczka zbożowe bez cukru kakaowe 50 g x2</li><li>Ciasteczka zbożowe bez cukru jagoda 50 g x2</li><li>Baton Crunchy Banan z czekoladą 40 g x2</li></ul><details class="sklad-more"><summary>Pełny skład (+8)</summary><ul class="skladniki"><li>Baton Crunchy Śliwka 40 g x2</li><li>Baton Granola owsiany z czekoladą 40 g x2</li><li>Baton zbożowy żurawina i pomarańcza 38 g x2</li><li>Baton zbożowy 5 ziaren z miodem 38 g x2</li><li>Baton banan i zboża 40 g x2</li><li>Baton proteinowy 45 g x2</li><li>Baton owocowy 35 g x2</li><li>Baton proteinowy 50 g x4</li></ul></details><a href="/zapytanie" class="btn-sm"><span class="fun fun-alt">Zamów</span> wycenę →</a></div>
             </div>
         </div>
     </div>
@@ -576,11 +576,11 @@ html.pt-in body { animation: ptFadeIn 0.32s ease both; }
         <div class="products-grid">
             <div class="product-card">
                 <div class="product-card-img"><img src="kat-integracja-na-impreze-firmowa.webp" alt="Integracja na imprezę firmową" loading="lazy" width="693" height="725"></div>
-                <div class="product-card-body"><h3>Integracja na imprezę firmową</h3><ul class="skladniki"><li>Chipsy Lay's papryka 130 g ×5</li><li>Chipsy Lay's solone 130 g ×5</li><li>Chipsy Lay's zielona cebulka 130 g ×5</li><li>Sok NFC, mix smaków 195 ml ×20</li><li>Piwo bezalkoholowe 500 ml ×24</li></ul><details class="sklad-more"><summary>Pełny skład (+4)</summary><ul class="skladniki"><li>Piwo alkoholowe 500 ml ×5</li><li>Orzeszki ziemne prażone niesolone 400 g ×5</li><li>Wino czerwone 750 ml ×3</li><li>Wino białe 750 ml ×3</li></ul></details><a href="/zapytanie" class="btn-sm"><span class="fun fun-alt">Zamów</span> wycenę →</a></div>
+                <div class="product-card-body"><h3>Integracja na imprezę firmową</h3><ul class="skladniki"><li>Chipsy Lay's papryka 130 g ×5</li><li>Chipsy Lay's solone 130 g ×5</li><li>Chipsy Lay's zielona cebulka 130 g ×5</li><li>Sok NFC, mix smaków 195 ml ×20</li></ul><details class="sklad-more"><summary>Pełny skład (+5)</summary><ul class="skladniki"><li>Piwo bezalkoholowe 500 ml ×24</li><li>Piwo alkoholowe 500 ml ×5</li><li>Orzeszki ziemne prażone niesolone 400 g ×5</li><li>Wino czerwone 750 ml ×3</li><li>Wino białe 750 ml ×3</li></ul></details><a href="/zapytanie" class="btn-sm"><span class="fun fun-alt">Zamów</span> wycenę →</a></div>
             </div>
             <div class="product-card">
                 <div class="product-card-img"><img src="kat-tylko-przekaski.webp" alt="Tylko przekąski" loading="lazy" width="763" height="425"></div>
-                <div class="product-card-body"><h3>Tylko przekąski</h3><ul class="skladniki"><li>Chipsy Original 40 g ×4</li><li>Chipsy słodka papryka 40 g ×4</li><li>Snacki popcornowe 35 g ×4</li><li>Bakalie MIX 65 g ×15</li><li>Zestaw batonów i ciasteczek (26 szt.)</li></ul><details class="sklad-more"><summary>Pełny skład (+3)</summary><ul class="skladniki"><li>Chipsy z gruszki 18 g ×7</li><li>Chipsy z jabłka z sokiem z mango 18 g ×3</li><li>Chipsy z jabłek 20 g ×10</li></ul></details><a href="/zapytanie" class="btn-sm"><span class="fun fun-alt">Zamów</span> wycenę →</a></div>
+                <div class="product-card-body"><h3>Tylko przekąski</h3><ul class="skladniki"><li>Chipsy Original 40 g ×4</li><li>Chipsy słodka papryka 40 g ×4</li><li>Snacki popcornowe 35 g ×4</li><li>Bakalie MIX 65 g ×15</li></ul><details class="sklad-more"><summary>Pełny skład (+4)</summary><ul class="skladniki"><li>Zestaw batonów i ciasteczek (26 szt.)</li><li>Chipsy z gruszki 18 g ×7</li><li>Chipsy z jabłka z sokiem z mango 18 g ×3</li><li>Chipsy z jabłek 20 g ×10</li></ul></details><a href="/zapytanie" class="btn-sm"><span class="fun fun-alt">Zamów</span> wycenę →</a></div>
             </div>
         </div>
     </div>
@@ -766,6 +766,41 @@ html.pt-in body { animation: ptFadeIn 0.32s ease both; }
             }
         });
     });
+</script>
+
+<script>
+    // ─── RÓWNE WYSOKOŚCI KART (symetria) — wyrównuje widoczne karty aktywnego panelu ───
+    // align-items:start zostaje, więc rozwinięcie details nie rozciąga sąsiadów.
+    (function () {
+        function equalize() {
+            // mobile (1 kolumna) — bez wyrównywania, zero zbędnej pustki
+            if (window.innerWidth <= 768) {
+                document.querySelectorAll('.product-card-body').forEach(function (b) { b.style.minHeight = ''; });
+                return;
+            }
+            var panel = document.querySelector('.cat-panel.active');
+            if (!panel || panel.offsetParent === null) return; // panel jeszcze niewidoczny — nie ruszaj
+            var bodies = Array.prototype.slice.call(panel.querySelectorAll('.product-card:not(.subcat-hidden) .product-card-body'));
+            if (bodies.length < 2) return; // brak czego wyrównywać — NIE resetuj (by nie zostawić pustki)
+            bodies.forEach(function (b) { b.style.minHeight = ''; }); // reset, by zmierzyć naturalną wysokość
+            var max = 0;
+            bodies.forEach(function (b) { var h = b.getBoundingClientRect().height; if (h > max) max = h; });
+            if (max <= 0) return; // niemierzalne (ukryte) — zostaw
+            bodies.forEach(function (b) { b.style.minHeight = Math.ceil(max) + 'px'; });
+        }
+        function schedule() { requestAnimationFrame(equalize); }
+        // wiele prób — łapie późną inicjalizację zakładek i animację panelu
+        ['DOMContentLoaded', 'load'].forEach(function (ev) { window.addEventListener(ev, schedule); });
+        [150, 500, 1000, 1800].forEach(function (d) { setTimeout(equalize, d); });
+        var rt; window.addEventListener('resize', function () { clearTimeout(rt); rt = setTimeout(equalize, 150); });
+        // przelicz po zmianie zakładki / podkategorii (po animacji panelu)
+        document.addEventListener('click', function (e) {
+            if (e.target.closest && (e.target.closest('.cat-tab') || e.target.closest('.subcat-pill'))) {
+                setTimeout(equalize, 120); setTimeout(equalize, 450);
+            }
+        });
+        window.__equalizeCards = equalize;
+    })();
 </script>
 
 
