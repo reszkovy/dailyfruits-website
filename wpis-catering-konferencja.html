@@ -32,7 +32,7 @@ gtag('consent','default',{'ad_storage':'denied','analytics_storage':'denied','ad
     <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700;900&display=swap">
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700;900&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
     <noscript><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700;900&display=swap" rel="stylesheet"></noscript>
-    <link rel="stylesheet" href="shared.css?v=6">
+    <link rel="stylesheet" href="shared.css?v=7">
 <style>
 @font-face { font-family: 'Achiko'; src: url('Achiko.woff2') format('woff2'), url('Achiko.ttf') format('truetype'); font-weight: 400; font-style: normal; font-display: swap; }
 :root {
@@ -354,27 +354,6 @@ html.pt-in body>:not(header) { animation: ptFadeIn 0.32s ease both; }
 </script>
 <script src="transition.js"></script>
 <script src="mn.js?v=4"></script>
-<script>
-/* pt-vt v2: plynny fade-out/fade-in miedzy stronami (wszystkie przegladarki) */
-(function(){
-  var de = document.documentElement;
-  de.classList.add('pt-in');
-  setTimeout(function(){ de.classList.remove('pt-in'); }, 400);
-  window.addEventListener('pageshow', function(e){ if (e.persisted) de.classList.remove('pt-out','pt-in'); });
-  document.addEventListener('click', function(e){
-    var a = e.target.closest && e.target.closest('a[href]');
-    if (!a) return;
-    var href = a.getAttribute('href');
-    if (!href || href.charAt(0) === '#' || a.target === '_blank' || a.hasAttribute('download')) return;
-    if (/^(mailto:|tel:|javascript:)/.test(href)) return;
-    if (a.host && a.host !== location.host) return;
-    if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0) return;
-    e.preventDefault();
-    de.classList.add('pt-out');
-    setTimeout(function(){ location.href = a.href; }, 180);
-  }, true);
-})();
-</script>
   <script defer src="/track.js"></script>
   <script defer src="/typo.js"></script>
 <!--#include:cookie-banner-->
