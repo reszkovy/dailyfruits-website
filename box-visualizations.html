@@ -68,12 +68,12 @@ h1 span { font-family: 'Achiko', cursive; color: #8DC63F; font-weight: 400; font
 .box-shadow { width: 120px; height: 12px; background: radial-gradient(ellipse, rgba(27,94,58,0.12) 0%, transparent 70%); margin: 0 auto; border-radius: 50%; margin-top: -10px; }
 .box-card:nth-child(2) .box-shadow { width: 140px; }
 .box-card:nth-child(3) .box-shadow { width: 160px; }
-html.pt-out body { opacity: 0 !important; transition: opacity 0.18s ease !important; }
-html.pt-in body { animation: ptFadeIn 0.32s ease both; }
+html.pt-out body>:not(header) { opacity: 0 !important; transition: opacity 0.18s ease !important; }
+html.pt-in body>:not(header) { animation: ptFadeIn 0.32s ease both; }
 @keyframes ptFadeIn { from { opacity: 0; } to { opacity: 1; } }
 @media (prefers-reduced-motion: reduce) {
-            html.pt-out body { opacity: 1 !important; transition: none !important; }
-            html.pt-in body { animation: none; }
+            html.pt-out body>:not(header) { opacity: 1 !important; transition: none !important; }
+            html.pt-in body>:not(header) { animation: none; }
         }
 @media (max-width: 768px) {
             .nav-inner { padding: 10px 20px !important; }

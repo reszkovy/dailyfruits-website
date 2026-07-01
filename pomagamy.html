@@ -183,12 +183,12 @@ section:nth-child(n+3){content-visibility:auto;contain-intrinsic-size:auto 500px
             .env-grid { grid-template-columns: 1fr !important; }
         }
 .fun-alt{font-family:var(--font, "DM Sans", sans-serif) !important;font-weight:900 !important;letter-spacing:-0.02em;}
-html.pt-out body { opacity: 0 !important; transition: opacity 0.18s ease !important; }
-html.pt-in body { animation: ptFadeIn 0.32s ease both; }
+html.pt-out body>:not(header) { opacity: 0 !important; transition: opacity 0.18s ease !important; }
+html.pt-in body>:not(header) { animation: ptFadeIn 0.32s ease both; }
 @keyframes ptFadeIn { from { opacity: 0; } to { opacity: 1; } }
 @media (prefers-reduced-motion: reduce) {
-            html.pt-out body { opacity: 1 !important; transition: none !important; }
-            html.pt-in body { animation: none; }
+            html.pt-out body>:not(header) { opacity: 1 !important; transition: none !important; }
+            html.pt-in body>:not(header) { animation: none; }
         }
 @media (max-width: 768px) {
             .nav-inner { padding: 10px 20px !important; }

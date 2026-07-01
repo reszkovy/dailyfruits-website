@@ -88,12 +88,12 @@ gtag('consent','default',{'ad_storage':'denied','analytics_storage':'denied','ad
     
         .fun-alt{font-family:var(--font, "DM Sans", sans-serif) !important;font-weight:900 !important;letter-spacing:-0.02em;}
         /* ─── PAGE TRANSITIONS v2 (pt-vt): jednolity crossfade ─── */
-        html.pt-out body { opacity: 0 !important; transition: opacity 0.18s ease !important; }
-        html.pt-in body { animation: ptFadeIn 0.32s ease both; }
+        html.pt-out body>:not(header) { opacity: 0 !important; transition: opacity 0.18s ease !important; }
+        html.pt-in body>:not(header) { animation: ptFadeIn 0.32s ease both; }
         @keyframes ptFadeIn { from { opacity: 0; } to { opacity: 1; } }
         @media (prefers-reduced-motion: reduce) {
-            html.pt-out body { opacity: 1 !important; transition: none !important; }
-            html.pt-in body { animation: none; }
+            html.pt-out body>:not(header) { opacity: 1 !important; transition: none !important; }
+            html.pt-in body>:not(header) { animation: none; }
         }
     
         /* ─── MOBILE HEADER UNIFY (mh-unify) ─── */

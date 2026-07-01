@@ -338,12 +338,12 @@ body { font-family: var(--font); background: var(--bg); color: var(--text); line
     #scoreGrid { grid-template-columns: 1fr !important; }
 }
         /* ─── PAGE TRANSITIONS v2 (pt-vt): jednolity crossfade ─── */
-        html.pt-out body { opacity: 0 !important; transition: opacity 0.18s ease !important; }
-        html.pt-in body { animation: ptFadeIn 0.32s ease both; }
+        html.pt-out body>:not(header) { opacity: 0 !important; transition: opacity 0.18s ease !important; }
+        html.pt-in body>:not(header) { animation: ptFadeIn 0.32s ease both; }
         @keyframes ptFadeIn { from { opacity: 0; } to { opacity: 1; } }
         @media (prefers-reduced-motion: reduce) {
-            html.pt-out body { opacity: 1 !important; transition: none !important; }
-            html.pt-in body { animation: none; }
+            html.pt-out body>:not(header) { opacity: 1 !important; transition: none !important; }
+            html.pt-in body>:not(header) { animation: none; }
         }
     
         /* ─── MOBILE HEADER UNIFY (mh-unify) ─── */

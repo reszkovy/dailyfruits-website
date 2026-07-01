@@ -70,12 +70,12 @@ body { font-family: var(--font); background: var(--light); min-height: 100vh; }
             .field-row { grid-template-columns: 1fr; }
             .topbar { padding: 12px 16px; }
         }
-html.pt-out body { opacity: 0 !important; transition: opacity 0.18s ease !important; }
-html.pt-in body { animation: ptFadeIn 0.32s ease both; }
+html.pt-out body>:not(header) { opacity: 0 !important; transition: opacity 0.18s ease !important; }
+html.pt-in body>:not(header) { animation: ptFadeIn 0.32s ease both; }
 @keyframes ptFadeIn { from { opacity: 0; } to { opacity: 1; } }
 @media (prefers-reduced-motion: reduce) {
-            html.pt-out body { opacity: 1 !important; transition: none !important; }
-            html.pt-in body { animation: none; }
+            html.pt-out body>:not(header) { opacity: 1 !important; transition: none !important; }
+            html.pt-in body>:not(header) { animation: none; }
         }
 @media (max-width: 768px) {
             .nav-inner { padding: 10px 20px !important; }

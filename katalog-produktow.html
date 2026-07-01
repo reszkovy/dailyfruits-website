@@ -428,12 +428,12 @@ body.bw .hc-pre.on{background:#1f0b09;border-color:#1f0b09}
 @keyframes shake{0%,100%{transform:translateX(0)}20%,60%{transform:translateX(-6px)}40%,80%{transform:translateX(6px)}}
 .pw-gate-btn{padding:10px 24px;border-radius:var(--radius-pill);border:none;background:#ff6921;color:#fff;font-family:var(--font);font-size:13px;font-weight:700;cursor:pointer;transition:all .3s}
 .pw-gate-btn:hover{background:#e85a15;color:#fff}
-html.pt-out body { opacity: 0 !important; transition: opacity 0.18s ease !important; }
-html.pt-in body { animation: ptFadeIn 0.32s ease both; }
+html.pt-out body>:not(header) { opacity: 0 !important; transition: opacity 0.18s ease !important; }
+html.pt-in body>:not(header) { animation: ptFadeIn 0.32s ease both; }
 @keyframes ptFadeIn { from { opacity: 0; } to { opacity: 1; } }
 @media (prefers-reduced-motion: reduce) {
-            html.pt-out body { opacity: 1 !important; transition: none !important; }
-            html.pt-in body { animation: none; }
+            html.pt-out body>:not(header) { opacity: 1 !important; transition: none !important; }
+            html.pt-in body>:not(header) { animation: none; }
         }
 @media (max-width: 768px) {
             .nav-inner { padding: 10px 20px !important; }
