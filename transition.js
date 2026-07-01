@@ -10,6 +10,7 @@
 
   var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var transitioning = false;
+  var navTimer = null;
   var EASE_OUT = 'cubic-bezier(.25,.46,.45,.94)';
   var EASE_IN  = 'cubic-bezier(.22,1,.36,1)';
 
@@ -41,7 +42,7 @@
         el.style.transition = 'opacity 150ms ease';
         el.style.opacity = '0';
       });
-      setTimeout(function () { window.location.href = href; }, 160);
+      navTimer = setTimeout(function () { window.location.href = href; }, 160);
       return;
     }
 
@@ -60,7 +61,7 @@
     });
 
     var totalTime = 400 + Math.min(els.length * 25, 150);
-    setTimeout(function () { window.location.href = href; }, totalTime);
+    navTimer = setTimeout(function () { window.location.href = href; }, totalTime);
   }
 
   // ─── ENTER ───
@@ -158,4 +159,23 @@
     function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
     requestAnimationFrame(raf);
   }
+
+  // ─── Back/forward (bfcache) ──────────────────────────────────────────
+  // Gdy user klika "wstecz", przegladarka przywraca strone z bfcache
+  // ZAMROZONA w stanie wyjscia: sekcje wygaszone/rozmyte, overlay podniesiony,
+  // a zaplanowany navTimer wznawia sie i przenosi DO PRZODU (zle miejsce).
+  // Na pageshow(persisted) czyscimy timer i cofamy caly stan wyjscia.
+  window.addEventListener('pageshow', function (e) {
+    if (!e.persisted) return;
+    if (navTimer) { clearTimeout(navTimer); navTimer = null; }
+    transitioning = false;
+    try { sessionStorage.removeItem('df-transition'); } catch (err) {}
+    overlay.style.transition = 'none';
+    overlay.style.opacity = '0';
+    var sel = 'body > section, body > main, body > footer, body > .wave-divider, body > .marquee-section, body > .photo-break, body > #scrollFrameWrap';
+    Array.prototype.slice.call(document.querySelectorAll(sel)).forEach(function (el) {
+      if (el.id === 'dfOverlay') return;
+      el.style.transition = ''; el.style.opacity = ''; el.style.transform = ''; el.style.filter = '';
+    });
+  });
 })();
