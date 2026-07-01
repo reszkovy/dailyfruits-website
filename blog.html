@@ -50,7 +50,7 @@ gtag('consent','default',{'ad_storage':'denied','analytics_storage':'denied','ad
 .page-hero h1 { font-size: clamp(28px, 3.5vw, 44px); }
 .page-hero p { max-width: 520px; margin: 8px auto 0; font-size: 15px; }
 .blog-filters-bar { position: fixed; top: 84px; left: 0; right: 0; z-index: 89; background: #163D28; padding: 10px 0; box-shadow: 0 4px 20px rgba(22,61,40,0.15); animation: blogBarSlide 0.6s cubic-bezier(0.22,1,0.36,1) 0.12s both !important; }
-@keyframes blogBarSlide { from { transform: translateY(-100%); } to { transform: translateY(0); } }
+@keyframes blogBarSlide { from { transform: translateY(calc(-100% - 30px)); } to { transform: translateY(0); } }
 @media (prefers-reduced-motion: reduce) { .blog-filters-bar { animation: none !important; } }
 .page-hero { margin-top: 148px !important; }
 .blog-filters { display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; }
