@@ -35,6 +35,7 @@ gtag('consent','default',{'ad_storage':'denied','analytics_storage':'denied','ad
     <noscript><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700;900&display=swap" rel="stylesheet"></noscript>
     <link rel="stylesheet" href="shared.css?v=7">
 <style>
+.hero-tabs-bar{display:none!important} /* submenu na home wylaczone tymczasowo */
 @font-face {
             font-family: 'Achiko';
             src: url('Achiko.woff2') format('woff2'), url('Achiko.ttf') format('truetype');
@@ -1812,5 +1813,6 @@ document.querySelectorAll('.card-marquee-item').forEach(function(card) {
 <!--#include:cookie-banner-->
 <!-- Zgody cookie obsługuje Usercentrics (ładowany przez GTM-FVTBKWW), tak samo jak na betterworkplace.pl. Własny banner usunięty, by nie dublować CMP. -->
 <!--#endinclude:cookie-banner-->
+<script>/* SAFETY: tresc nigdy nie moze zostac pusta (reveal startuje z opacity:0 i zalezy od JS). */(function(){function all(){var r=document.querySelectorAll('.reveal:not(.vis)');for(var i=0;i<r.length;i++)r[i].classList.add('vis');}function vis(){var r=document.querySelectorAll('.reveal:not(.vis)');for(var i=0;i<r.length;i++){var b=r[i].getBoundingClientRect();if(b.top<innerHeight+120&&b.bottom>-120)r[i].classList.add('vis');}}window.addEventListener('pageshow',function(e){if(e.persisted)all();});window.addEventListener('load',function(){setTimeout(vis,1200);});})();</script>
 </body>
 </html>
