@@ -155,6 +155,10 @@ footer{background:var(--green-dark);padding:60px 0 32px;color:#fff}
 /* ── Strony miast: przycisk-row pod gridem oferty (pelna szerokosc, wycentrowany) ── */
 .offer-mini-grid > div:not(.offer-mini-card){grid-column:1 / -1}
 
+/* ── Strony miast: sekcja "nam ufa" (logistics-grid bez display:grid -> karty stackowaly sie na pelna szerokosc) ── */
+.logistics-grid{display:grid;gap:36px 48px}
+@media(max-width:768px){.logistics-grid{grid-template-columns:1fr !important}}
+
 /* ── Cookie consent banner ── */
 .cookie-banner{position:fixed;bottom:0;left:0;right:0;z-index:9995;background:var(--green-dark);color:#fff;box-shadow:0 -4px 24px rgba(0,0,0,.18)}
 .cookie-banner[hidden]{display:none}
