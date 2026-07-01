@@ -665,6 +665,8 @@ html.pt-in body>:not(header) { animation: ptFadeIn 0.32s ease both; }
             document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
             const filter = btn.dataset.filter;
+            const featured = document.querySelector('.featured-section');
+            if (featured) featured.style.display = (filter === 'all') ? '' : 'none';
             document.querySelectorAll('.blog-card').forEach(card => {
                 if (filter === 'all' || card.dataset.category === filter) {
                     card.classList.remove('hidden');
