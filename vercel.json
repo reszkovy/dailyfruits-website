@@ -49,6 +49,11 @@
   "cleanUrls": true,
   "redirects": [
     {
+      "source": "/case-study-allegro",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
       "source": "/blog/jak-przetrwac-lato-w-biurze/",
       "destination": "/wpis-lato-biuro.html",
       "statusCode": 301
