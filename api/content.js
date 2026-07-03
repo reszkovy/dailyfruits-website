@@ -140,6 +140,11 @@ function extractTexts(html) {
         const altStart = m.index + token.indexOf(altM[0]) + 5;
         items.push({ id: id++, start: altStart, end: altStart + altM[1].length, text: decode(altM[1]), tag: 'img-alt', section: lastSection, kind: 'attr' });
       }
+      const srcM = token.match(/\bsrc="([^"]*)"/);
+      if (srcM && !skipDepthTag && !/^data:/.test(srcM[1])) {
+        const srcStart = m.index + token.indexOf(srcM[0]) + 5;
+        items.push({ id: id++, start: srcStart, end: srcStart + srcM[1].length, text: srcM[1], tag: 'img-src', section: lastSection, kind: 'img-src' });
+      }
     }
     if (VOID_TAGS.has(name)) continue;
     const selfClosed = token.endsWith('/>');
@@ -171,10 +176,89 @@ function applyEdits(html, edits) {
     if (decode(current.trim()) !== decode(String(e.old).trim())) {
       throw new Error(`Tekst zmienil sie w miedzyczasie ("${String(e.old).slice(0, 40)}..."). Odswiez strone i sprobuj ponownie.`);
     }
-    const enc = e.kind === 'attr' ? encodeAttr(String(e.text)) : encodeNode(String(e.text));
+    let enc;
+    if (e.kind === 'img-src') {
+      if (!/^[a-zA-Z0-9_/.-]+\.(webp|jpg|jpeg|png|svg|avif)$/.test(String(e.text))) throw new Error('Nieprawidlowa sciezka obrazka');
+      enc = String(e.text);
+    } else {
+      enc = e.kind === 'attr' ? encodeAttr(String(e.text)) : encodeNode(String(e.text));
+    }
     html = html.slice(0, e.start) + enc + html.slice(e.end);
   }
   return html;
+}
+
+// ─── PRODUKTY (oferta.html: panele data-cat → siatki kart) ───
+
+function scanProducts(html) {
+  const panels = [];
+  const panelRe = /<div class="cat-panel[^"]*" data-cat="([a-z0-9-]+)"[^>]*>/g;
+  let pm;
+  while ((pm = panelRe.exec(html)) !== null) panels.push({ cat: pm[1], at: pm.index });
+
+  const products = [];
+  const cardRe = /<div class="product-card"[^>]*>/g;
+  let cm;
+  while ((cm = cardRe.exec(html)) !== null) {
+    const start = cm.index;
+    // skan glebokosci: znajdz domkniecie karty
+    const divRe = /<div\b|<\/div>/g;
+    divRe.lastIndex = start;
+    let depth = 0, end = -1, t;
+    while ((t = divRe.exec(html)) !== null) {
+      depth += t[0] === '<div' ? 1 : -1;
+      if (depth === 0) { end = t.index + 6; break; }
+    }
+    if (end < 0) continue;
+    const slice = html.slice(start, end);
+    const panel = [...panels].reverse().find(p => p.at < start);
+    const name = (slice.match(/<h3>([\s\S]*?)<\/h3>/) || [])[1] || '';
+    const img = slice.match(/<img src="([^"]*)"(?:\s+alt="([^"]*)")?/) || [];
+    const desc = (slice.match(/<\/h3>\s*<p>([\s\S]*?)<\/p>/) || [])[1] || '';
+    const lis = [...slice.matchAll(/<li>([\s\S]*?)<\/li>/g)].map(x => decode(x[1]));
+    products.push({
+      cat: panel ? panel.cat : '?', start, end,
+      name: decode(name), image: img[1] || '', alt: decode(img[2] || ''),
+      desc: decode(desc), skladniki: lis
+    });
+  }
+  return products;
+}
+
+function buildCard(f) {
+  const lis = (f.skladniki || []).map(s => `<li>${encodeNode(s)}</li>`).join('');
+  const desc = f.desc ? `<p>${encodeNode(f.desc)}</p>` : '';
+  return `            <div class="product-card">
+                <div class="product-card-img"><img src="${encodeAttr(f.image || 'hero-box.webp')}" alt="${encodeAttr(f.alt || f.name || '')}" loading="lazy" width="900" height="600"></div>
+                <div class="product-card-body"><h3>${encodeNode(f.name)}</h3>${desc}<ul class="skladniki">${lis}</ul></div>
+            </div>`;
+}
+
+function updateCardInPlace(slice, f) {
+  const S = s => String(s).replace(/\$/g, '$$$$');
+  slice = slice.replace(/(<h3>)[\s\S]*?(<\/h3>)/, `$1${S(encodeNode(f.name))}$2`);
+  slice = slice.replace(/(<img src=")[^"]*(")/, `$1${S(encodeAttr(f.image))}$2`);
+  slice = slice.replace(/(<img[^>]*alt=")[^"]*(")/, `$1${S(encodeAttr(f.alt || f.name))}$2`);
+  const lis = (f.skladniki || []).map(s => `<li>${encodeNode(s)}</li>`).join('');
+  slice = slice.replace(/(<ul class="skladniki">)[\s\S]*?(<\/ul>)/, `$1${S(lis)}$2`);
+  if (f.desc !== undefined) {
+    if (/(<\/h3>)\s*<p>[\s\S]*?<\/p>/.test(slice)) {
+      slice = f.desc
+        ? slice.replace(/(<\/h3>)\s*<p>[\s\S]*?<\/p>/, `$1<p>${S(encodeNode(f.desc))}</p>`)
+        : slice.replace(/(<\/h3>)\s*<p>[\s\S]*?<\/p>/, '$1');
+    } else if (f.desc) {
+      slice = slice.replace(/(<\/h3>)/, `$1<p>${S(encodeNode(f.desc))}</p>`);
+    }
+  }
+  return slice;
+}
+
+function validProduct(f) {
+  if (!f || typeof f.name !== 'string' || !f.name.trim() || f.name.length > 80) return 'Nazwa produktu wymagana (max 80 znakow)';
+  if (f.image && !/^[a-zA-Z0-9_/.-]+\.(webp|jpg|jpeg|png|svg|avif)$/.test(f.image)) return 'Nieprawidlowa sciezka obrazka';
+  if (!Array.isArray(f.skladniki)) return 'skladniki musza byc lista';
+  if (f.skladniki.some(s => typeof s !== 'string' || s.length > 160)) return 'Nieprawidlowy skladnik';
+  return null;
 }
 
 // ─── STRONY ───
@@ -310,7 +394,61 @@ export default async function handler(req, res) {
       return res.status(200).json({ ok: true, commit, changed: files.length });
     }
 
-    return res.status(400).json({ error: 'Nieznana akcja. Dostepne: pages, texts, menu' });
+    if (method === 'GET' && action === 'products') {
+      const file = await readFile('oferta.html');
+      if (!file) return res.status(500).json({ error: 'Nie mozna pobrac oferta.html' });
+      const products = scanProducts(file.content).map((p, i) => ({ ...p, index: i }));
+      const cats = [...new Set(products.map(p => p.cat))];
+      return res.status(200).json({ sha: file.sha, cats, products });
+    }
+
+    if (method === 'PUT' && action === 'products') {
+      const { sha, op, index, expectName, fields } = req.body || {};
+      if (!sha || !op) return res.status(400).json({ error: 'sha i op wymagane' });
+
+      const file = await readFile('oferta.html');
+      if (!file) return res.status(500).json({ error: 'Nie mozna pobrac oferta.html' });
+      if (file.sha !== sha) return res.status(409).json({ error: 'Oferta zmienila sie w miedzyczasie — odswiez i sprobuj ponownie' });
+
+      const products = scanProducts(file.content);
+      let html = file.content;
+      let message;
+
+      if (op === 'add') {
+        const err = validProduct(fields);
+        if (err) return res.status(400).json({ error: err });
+        const cat = String(fields.cat || '');
+        const panelM = html.match(new RegExp(`<div class="cat-panel[^"]*" data-cat="${cat.replace(/[^a-z0-9-]/g, '')}"[^>]*>\\s*<div class="products-grid">\\n?`));
+        if (!panelM) return res.status(400).json({ error: 'Nie znaleziono kategorii ' + cat });
+        const at = panelM.index + panelM[0].length;
+        html = html.slice(0, at) + buildCard(fields) + '\n' + html.slice(at);
+        message = `CMS: nowy produkt "${fields.name}" (${cat})`;
+      } else {
+        const p = products[Number(index)];
+        if (!p) return res.status(404).json({ error: 'Nie znaleziono produktu' });
+        if (expectName && p.name !== expectName) return res.status(409).json({ error: 'Lista produktow zmienila sie — odswiez i sprobuj ponownie' });
+
+        if (op === 'update') {
+          const err = validProduct(fields);
+          if (err) return res.status(400).json({ error: err });
+          const updated = updateCardInPlace(html.slice(p.start, p.end), fields);
+          html = html.slice(0, p.start) + updated + html.slice(p.end);
+          message = `CMS: aktualizacja produktu "${fields.name}"`;
+        } else if (op === 'delete') {
+          let end = p.end;
+          while (html[end] === '\n' || html[end] === ' ') end++;
+          html = html.slice(0, p.start) + html.slice(end);
+          message = `CMS: usuniecie produktu "${p.name}"`;
+        } else {
+          return res.status(400).json({ error: 'Nieznana operacja: ' + op });
+        }
+      }
+
+      const commit = await commitFiles([{ path: 'oferta.html', content: html }], message);
+      return res.status(200).json({ ok: true, commit });
+    }
+
+    return res.status(400).json({ error: 'Nieznana akcja. Dostepne: pages, texts, menu, products' });
   } catch (err) {
     return res.status(500).json({ error: err.message });
   }
