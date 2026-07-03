@@ -1,7 +1,7 @@
 _r3loop/
 
 # Strony wewnetrzne / robocze - NIE deployowac publicznie
-admin.html
+# (admin.html deployowany celowo: panel CMS, chroniony haslem CMS_PASSWORD + noindex)
 brief.html
 council-report-20260611-0453.html
 DailyFruits-SEO-Raport.html
