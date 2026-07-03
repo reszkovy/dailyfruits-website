@@ -352,6 +352,22 @@ export default async function handler(req, res) {
       return res.status(200).json({ pages: await listPages() });
     }
 
+    // Status wdrozenia commita (Vercel raportuje deploymenty do GitHuba)
+    if (method === 'GET' && action === 'deploy-status') {
+      const commit = String(req.query.commit || '');
+      if (!/^[0-9a-f]{7,40}$/.test(commit)) return res.status(400).json({ error: 'Nieprawidlowy commit' });
+      const depRes = await gh(`/repos/${repo()}/deployments?sha=${commit}&per_page=1`);
+      if (!depRes.ok) return res.status(200).json({ state: 'unknown' });
+      const deps = await depRes.json();
+      if (!deps.length) return res.status(200).json({ state: 'pending' });
+      const stRes = await gh(`/repos/${repo()}/deployments/${deps[0].id}/statuses?per_page=1`);
+      if (!stRes.ok) return res.status(200).json({ state: 'unknown' });
+      const sts = await stRes.json();
+      const s = sts.length ? sts[0].state : 'pending';
+      const state = s === 'success' ? 'success' : (s === 'failure' || s === 'error' ? 'error' : 'pending');
+      return res.status(200).json({ state });
+    }
+
     if (method === 'GET' && action === 'texts') {
       if (!safePage(page)) return res.status(400).json({ error: 'Nieprawidlowa strona' });
       if ((await nonPublicFiles()).has(page)) return res.status(403).json({ error: 'Ta strona nie jest publiczna — edycja z panelu wylaczona' });

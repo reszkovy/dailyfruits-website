@@ -49,6 +49,11 @@ input, textarea, select { font-family: var(--font); font-size: 15px; }
 .btn-danger { background: transparent; border: 2px solid #FECACA; color: var(--red); }
 .btn-danger:hover { background: #FEF2F2; border-color: var(--red); }
 .btn[disabled] { opacity: 0.55; cursor: wait; }
+.pub-status { font-size: 13px; font-weight: 700; padding: 7px 14px; border-radius: 100px; display: none; }
+.pub-status.pending { display: inline-block; background: rgba(255,242,0,0.18); color: #FFF566; animation: pubPulse 1.4s ease-in-out infinite; }
+.pub-status.success { display: inline-block; background: rgba(141,198,63,0.25); color: #D5E8A0; }
+.pub-status.error { display: inline-block; background: rgba(228,48,32,0.25); color: #F5C4B3; }
+@keyframes pubPulse { 50% { opacity: 0.55; } }
 
 .wrap { max-width: 980px; margin: 0 auto; padding: 28px 20px 80px; }
 .list-head { display: flex; gap: 12px; align-items: center; margin-bottom: 18px; flex-wrap: wrap; }
@@ -182,6 +187,7 @@ input, textarea, select { font-family: var(--font); font-size: 15px; }
     <div class="topbar">
         <h1>daily<span>fruits</span> CMS</h1>
         <div class="topbar-actions">
+            <span class="pub-status" id="pubStatus"></span>
             <a class="btn btn-sm btn-ghost" href="/blog" target="_blank" rel="noopener">Zobacz blog ↗</a>
             <button class="btn btn-sm btn-ghost" onclick="doLogout()">Wyloguj</button>
         </div>
@@ -681,7 +687,7 @@ async function savePost() {
         if (mode === 'new') { mode = 'edit'; currentSlug = data.slug; $('slugField').style.display = 'none'; $('deleteBtn').style.display = ''; }
         dirty = false;
         (data.warnings || []).forEach(w => console.warn('CMS:', w));
-        $('deployNote').textContent = 'Opublikowano — zmiany na stronie za ok. 1 minutę.';
+        trackDeploy(data.commit);
         toast('Zapisano i opublikowano ✓');
     } catch (e) { toast('Błąd: ' + e.message, true); }
     finally { btn.disabled = false; btn.textContent = 'Zapisz i opublikuj'; }
@@ -695,11 +701,41 @@ async function deletePost() {
         const res = await fetch(`${API}/posts?action=delete&slug=${currentSlug}`, { method: 'DELETE', headers: { 'X-CMS-Token': token } });
         const data = await res.json();
         if (!data.ok) { toast(data.error || 'Błąd usuwania', true); return; }
+        trackDeploy(data.commit);
         toast('Artykuł usunięty');
         dirty = false;
         showList(); loadPosts();
     } catch (e) { toast('Błąd: ' + e.message, true); }
     finally { btn.disabled = false; }
+}
+
+// ─── STATUS PUBLIKACJI ───
+let pubTimer = null;
+function trackDeploy(commit) {
+    if (!commit) return;
+    const el = $('pubStatus');
+    clearInterval(pubTimer);
+    el.className = 'pub-status pending';
+    el.textContent = '⏳ Publikowanie…';
+    let tries = 0;
+    pubTimer = setInterval(async () => {
+        tries++;
+        if (tries > 30) { clearInterval(pubTimer); el.className = 'pub-status'; return; }
+        try {
+            const res = await fetch(`${API}/content?action=deploy-status&commit=${commit}`, { headers: { 'X-CMS-Token': token } });
+            const data = await res.json();
+            if (data.state === 'success') {
+                clearInterval(pubTimer);
+                el.className = 'pub-status success';
+                el.textContent = '✓ Opublikowano — zmiany są na stronie';
+                setTimeout(() => { el.className = 'pub-status'; }, 30000);
+            } else if (data.state === 'error') {
+                clearInterval(pubTimer);
+                el.className = 'pub-status error';
+                el.textContent = '⚠ Publikacja nie powiodła się';
+            }
+        } catch (e) { /* kolejna proba */ }
+    }, 8000);
 }
 
 // ─── POMOCNICZE ───
@@ -950,7 +986,7 @@ async function savePageTexts() {
         const data = await res.json();
         if (!data.ok) { toast(data.error || 'Błąd zapisu', true); if (res.status === 409) loadPageTexts(); return; }
         dirty = false;
-        $('pagesNote').textContent = `Zapisano ${edits.length} zmian — na stronie za ok. 1 minutę.`;
+        trackDeploy(data.commit);
         toast('Zapisano ✓');
         loadPageTexts();
     } catch (e) { toast('Błąd: ' + e.message, true); }
@@ -1034,22 +1070,26 @@ async function prodRequest(body) {
     });
     const data = await res.json();
     if (!data.ok) { toast(data.error || 'Błąd zapisu', true); if (res.status === 409) loadProducts(); return false; }
-    return true;
+    return data;
 }
 async function saveProduct(idx) {
     const p = prodAll.find(x => x.index === idx);
     const fields = prodFields(idx, p);
     if (!fields.name) { toast('Nazwa jest wymagana', true); return; }
-    if (await prodRequest({ op: 'update', index: idx, expectName: p.name, fields })) {
+    const r = await prodRequest({ op: 'update', index: idx, expectName: p.name, fields });
+    if (r) {
         dirty = false; delete prodImageValues[idx];
-        toast('Produkt zapisany ✓ — na stronie za ~1 min');
+        trackDeploy(r.commit);
+        toast('Produkt zapisany ✓');
         loadProducts();
     }
 }
 async function deleteProduct(idx) {
     const p = prodAll.find(x => x.index === idx);
     if (!confirm(`Usunąć produkt "${p.name}" z oferty?`)) return;
-    if (await prodRequest({ op: 'delete', index: idx, expectName: p.name })) {
+    const r = await prodRequest({ op: 'delete', index: idx, expectName: p.name });
+    if (r) {
+        trackDeploy(r.commit);
         toast('Produkt usunięty');
         loadProducts();
     }
@@ -1096,8 +1136,10 @@ async function createProduct() {
         skladniki: $('pskl-new').value.split('\n').map(s => s.trim()).filter(Boolean)
     };
     if (!fields.name) { toast('Nazwa jest wymagana', true); return; }
-    if (await prodRequest({ op: 'add', fields })) {
-        toast('Produkt dodany ✓ — na stronie za ~1 min');
+    const r = await prodRequest({ op: 'add', fields });
+    if (r) {
+        trackDeploy(r.commit);
+        toast('Produkt dodany ✓');
         loadProducts();
     }
 }
@@ -1132,7 +1174,8 @@ async function saveMenu() {
         const data = await res.json();
         if (!data.ok) { toast(data.error || 'Błąd zapisu', true); return; }
         dirty = false;
-        $('menuNote').textContent = `Zaktualizowano ${data.changed} plików — zmiany na stronie za ok. 1 minutę.`;
+        $('menuNote').textContent = `Zaktualizowano ${data.changed} plików.`;
+        trackDeploy(data.commit);
         toast('Menu zapisane ✓');
     } catch (e) { toast('Błąd: ' + e.message, true); }
     finally { btn.disabled = false; btn.textContent = 'Zapisz menu'; }
