@@ -1030,10 +1030,13 @@ function renderVisual() {
 function bindVisual(frame) {
     const doc = frame.contentDocument;
     if (!doc) return;
-    // blokada nawigacji i formularzy
+    // blokada nawigacji i formularzy (fokus do edycji dziala na mousedown,
+    // wiec linki blokujemy bezwarunkowo — takze te z edytowalnym tekstem)
     doc.addEventListener('click', e => {
-        const a = e.target.closest && e.target.closest('a');
-        if (a && !e.target.closest('[data-cms]')) e.preventDefault();
+        if (e.target.closest && e.target.closest('a')) e.preventDefault();
+    }, true);
+    doc.addEventListener('auxclick', e => {
+        if (e.target.closest && e.target.closest('a')) e.preventDefault();
     }, true);
     doc.addEventListener('submit', e => e.preventDefault(), true);
 
