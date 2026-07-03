@@ -482,6 +482,36 @@ export default async function handler(req, res) {
       return res.status(200).json({ ok: true, commit });
     }
 
+    // WERSJONOWANIE: historia zmian pliku (strony lub wpisu)
+    if (method === 'GET' && action === 'history') {
+      const pg = String(req.query.page || '');
+      if (!/^(oferta\/)?[a-z0-9-]+\.html$/.test(pg) || pg === 'admin.html') return res.status(400).json({ error: 'Nieprawidlowa strona' });
+      if ((await nonPublicFiles()).has(pg)) return res.status(403).json({ error: 'Strona niepubliczna' });
+      const r = await gh(`/repos/${repo()}/commits?sha=${branch()}&path=${encodeURIComponent(pg)}&per_page=30`);
+      if (!r.ok) return res.status(500).json({ error: 'Nie mozna pobrac historii' });
+      const commits = await r.json();
+      const items = commits.map(c => ({
+        sha: c.sha,
+        date: c.commit.author.date,
+        message: (c.commit.message || '').split('\n')[0].slice(0, 120)
+      }));
+      return res.status(200).json({ items });
+    }
+
+    // WERSJONOWANIE: przywrocenie wersji (jako NOWY commit — nic nie ginie)
+    if (method === 'POST' && action === 'revert') {
+      const { page: pg, commit } = req.body || {};
+      if (!/^(oferta\/)?[a-z0-9-]+\.html$/.test(String(pg || '')) || pg === 'admin.html') return res.status(400).json({ error: 'Nieprawidlowa strona' });
+      if (!commit || !/^[0-9a-f]{7,40}$/.test(commit)) return res.status(400).json({ error: 'commit wymagany' });
+      if ((await nonPublicFiles()).has(pg)) return res.status(403).json({ error: 'Strona niepubliczna' });
+      const old = await readFile(pg, commit);
+      if (!old) return res.status(404).json({ error: 'Nie znaleziono tej wersji pliku' });
+      const cur = await readFile(pg);
+      if (cur && cur.content === old.content) return res.status(200).json({ ok: true, commit: null, note: 'Ta wersja jest juz aktualna' });
+      const sha = await commitFiles([{ path: pg, content: old.content }], `CMS: przywrocenie wersji ${pg} (${commit.slice(0, 7)})`);
+      return res.status(200).json({ ok: true, commit: sha });
+    }
+
     // KOSZ: lista usunietych produktow
     if (method === 'GET' && action === 'product-trash') {
       const cRes = await gh(`/repos/${repo()}/commits?sha=${branch()}&per_page=100`);
@@ -534,7 +564,7 @@ export default async function handler(req, res) {
       return res.status(200).json({ ok: true, commit: sha, name });
     }
 
-    return res.status(400).json({ error: 'Nieznana akcja. Dostepne: pages, texts, menu, products, deploy-status, product-trash, product-restore' });
+    return res.status(400).json({ error: 'Nieznana akcja. Dostepne: pages, texts, menu, products, deploy-status, history, revert, product-trash, product-restore' });
   } catch (err) {
     return res.status(500).json({ error: err.message });
   }
