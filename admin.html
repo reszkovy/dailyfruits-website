@@ -6,168 +6,265 @@
     <title>DailyFruits CMS</title>
     <meta name="robots" content="noindex, nofollow">
     <link rel="icon" type="image/png" href="favicon_.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700;900&display=swap" rel="stylesheet">
     <style>
 :root {
-            --green: #1B5E3A; --lime: #8DC63F; --cream: #FFF9E0;
-            --white: #FFFFFF; --gray: #6B7280; --light: #F3F4F6;
-            --radius: 12px; --font: 'DM Sans', -apple-system, sans-serif;
-        }
-body { font-family: var(--font); background: var(--light); min-height: 100vh; }
-.login-wrap { display: flex; align-items: center; justify-content: center; min-height: 100vh; padding: 20px; }
+    --green: #1B5E3A; --green-mid: #347550; --lime: #8DC63F; --lime-bg: #F4F9E8;
+    --cream: #FFF9E0; --white: #FFFFFF; --gray: #6B7280; --light: #F3F4F6;
+    --red: #E43020; --border: #E5E7EB;
+    --radius: 12px; --font: 'DM Sans', -apple-system, sans-serif;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: var(--font); background: var(--light); min-height: 100vh; color: #1F2937; }
+button { font-family: var(--font); cursor: pointer; }
+input, textarea, select { font-family: var(--font); font-size: 15px; }
+
+.login-wrap { display: none; align-items: center; justify-content: center; min-height: 100vh; padding: 20px; }
 .login-box { background: var(--white); padding: 48px; border-radius: var(--radius); box-shadow: 0 4px 24px rgba(0,0,0,0.08); max-width: 400px; width: 100%; text-align: center; }
 .login-box h1 { font-size: 24px; color: var(--green); margin-bottom: 8px; }
 .login-box p { color: var(--gray); font-size: 14px; margin-bottom: 24px; }
-.login-box input { width: 100%; padding: 12px 16px; border: 2px solid #E5E7EB; border-radius: 8px; font-size: 15px; outline: none; transition: border 0.2s; }
+.login-box input { width: 100%; padding: 12px 16px; border: 2px solid var(--border); border-radius: 8px; outline: none; transition: border 0.2s; }
 .login-box input:focus { border-color: var(--lime); }
-.login-box button { width: 100%; padding: 12px; background: var(--green); color: white; border: none; border-radius: 8px; font-size: 15px; font-weight: 600; cursor: pointer; margin-top: 16px; transition: background 0.2s; }
-.login-box button:hover { background: #245a3a; }
-.login-error { color: #E43020; font-size: 13px; margin-top: 12px; display: none; }
+.login-box button { width: 100%; padding: 12px; background: var(--green); color: white; border: none; border-radius: 8px; font-size: 15px; font-weight: 700; margin-top: 16px; transition: background 0.2s; }
+.login-box button:hover { background: var(--green-mid); }
+.login-error { color: var(--red); font-size: 13px; margin-top: 12px; display: none; }
+
 .dashboard { display: none; }
-.topbar { background: var(--green); color: white; padding: 16px 32px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 100; }
-.topbar h1 { font-size: 18px; font-weight: 700; }
-.topbar-actions { display: flex; gap: 12px; align-items: center; }
-.topbar .btn-sm { padding: 8px 16px; border-radius: 8px; font-size: 13px; font-weight: 600; border: none; cursor: pointer; transition: all 0.2s; }
-.btn-logout { background: rgba(255,255,255,0.15); color: white; }
-.btn-logout:hover { background: rgba(255,255,255,0.25); }
-.content { max-width: 1000px; margin: 32px auto; padding: 0 24px; }
-.post-list-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; }
-.post-list-header h2 { font-size: 20px; color: var(--green); }
-.post-count { color: var(--gray); font-size: 14px; }
-.post-item { background: var(--white); border-radius: var(--radius); padding: 20px 24px; margin-bottom: 12px; display: flex; align-items: center; gap: 16px; cursor: pointer; transition: all 0.2s; border: 2px solid transparent; }
-.post-item:hover { border-color: var(--lime); transform: translateY(-1px); box-shadow: 0 4px 12px rgba(0,0,0,0.06); }
-.post-item-info { flex: 1; }
-.post-item-title { font-weight: 700; font-size: 15px; color: var(--green); margin-bottom: 4px; }
-.post-item-meta { font-size: 13px; color: var(--gray); display: flex; gap: 12px; align-items: center; }
-.post-item-tag { background: rgba(141,198,63,0.15); color: var(--green); padding: 2px 10px; border-radius: 20px; font-size: 12px; font-weight: 600; }
-.post-item-arrow { color: var(--gray); font-size: 20px; }
-.editor { display: none; }
-.editor-header { display: flex; align-items: center; gap: 16px; margin-bottom: 24px; }
-.editor-header h2 { font-size: 20px; color: var(--green); flex: 1; }
-.btn-back { background: var(--light); color: var(--green); }
-.btn-back:hover { background: #E5E7EB; }
-.btn-save { background: var(--lime); color: var(--green); }
-.btn-save:hover { background: #7ab835; }
-.btn-preview { background: var(--white); color: var(--green); border: 2px solid var(--green); }
-.btn-preview:hover { background: var(--cream); }
-.editor-form { background: var(--white); border-radius: var(--radius); padding: 32px; }
-.field { margin-bottom: 20px; }
-.field label { display: block; font-weight: 600; font-size: 13px; color: var(--green); margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.5px; }
-.field input, .field select, .field textarea { width: 100%; padding: 10px 14px; border: 2px solid #E5E7EB; border-radius: 8px; font-size: 14px; font-family: var(--font); outline: none; transition: border 0.2s; }
-.field input:focus, .field select:focus, .field textarea:focus { border-color: var(--lime); }
-.field textarea { min-height: 400px; font-family: 'SF Mono', 'Fira Code', monospace; font-size: 13px; line-height: 1.6; resize: vertical; }
-.field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-.field-help { font-size: 12px; color: var(--gray); margin-top: 4px; }
-.toast { position: fixed; bottom: 24px; right: 24px; background: var(--green); color: white; padding: 14px 24px; border-radius: 8px; font-size: 14px; font-weight: 600; transform: translateY(100px); opacity: 0; transition: all 0.3s; z-index: 1000; }
-.toast.show { transform: translateY(0); opacity: 1; }
-.toast.error { background: #E43020; }
-.loading { text-align: center; padding: 60px; color: var(--gray); }
-.spinner { width: 32px; height: 32px; border: 3px solid var(--light); border-top-color: var(--lime); border-radius: 50%; animation: spin 0.6s linear infinite; margin: 0 auto 12px; }
+.topbar { background: var(--green); color: white; padding: 14px 28px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 100; }
+.topbar h1 { font-size: 17px; font-weight: 700; }
+.topbar h1 span { color: var(--lime); }
+.topbar-actions { display: flex; gap: 10px; align-items: center; }
+.btn { display: inline-flex; align-items: center; gap: 8px; padding: 10px 20px; border-radius: 8px; font-size: 14px; font-weight: 700; border: none; transition: all 0.2s; text-decoration: none; }
+.btn-sm { padding: 8px 14px; font-size: 13px; }
+.btn-lime { background: var(--lime); color: var(--green); }
+.btn-lime:hover { filter: brightness(1.06); }
+.btn-ghost { background: rgba(255,255,255,0.15); color: white; }
+.btn-ghost:hover { background: rgba(255,255,255,0.25); }
+.btn-green { background: var(--green); color: white; }
+.btn-green:hover { background: var(--green-mid); }
+.btn-outline { background: transparent; border: 2px solid var(--border); color: #374151; }
+.btn-outline:hover { border-color: var(--lime); }
+.btn-danger { background: transparent; border: 2px solid #FECACA; color: var(--red); }
+.btn-danger:hover { background: #FEF2F2; border-color: var(--red); }
+.btn[disabled] { opacity: 0.55; cursor: wait; }
+
+.wrap { max-width: 980px; margin: 0 auto; padding: 28px 20px 80px; }
+.list-head { display: flex; gap: 12px; align-items: center; margin-bottom: 18px; flex-wrap: wrap; }
+.list-head input[type="search"] { flex: 1; min-width: 220px; padding: 11px 16px; border: 2px solid var(--border); border-radius: 8px; outline: none; background: var(--white); }
+.list-head input[type="search"]:focus { border-color: var(--lime); }
+.chips { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 18px; }
+.chip { padding: 6px 14px; border-radius: 100px; font-size: 12px; font-weight: 700; border: 2px solid var(--border); background: var(--white); color: var(--gray); }
+.chip.active { background: var(--lime); border-color: var(--lime); color: var(--green); }
+.post-list { background: var(--white); border-radius: var(--radius); box-shadow: 0 1px 4px rgba(0,0,0,0.05); overflow: hidden; }
+.post-item { display: flex; align-items: center; gap: 16px; padding: 14px 20px; border-bottom: 1px solid var(--light); cursor: pointer; transition: background 0.15s; }
+.post-item:hover { background: var(--lime-bg); }
+.post-item:last-child { border-bottom: none; }
+.post-thumb { width: 64px; height: 48px; object-fit: cover; border-radius: 6px; flex-shrink: 0; background: var(--light); }
+.post-item-info { flex: 1; min-width: 0; }
+.post-item-title { font-weight: 700; font-size: 15px; margin-bottom: 3px; }
+.post-item-meta { font-size: 12.5px; color: var(--gray); display: flex; gap: 10px; align-items: center; }
+.post-item-tag { background: var(--lime-bg); color: var(--green); padding: 2px 10px; border-radius: 100px; font-weight: 700; font-size: 11px; }
+.post-item-arrow { color: #D1D5DB; font-size: 20px; }
+.loading { padding: 48px; text-align: center; color: var(--gray); font-size: 14px; }
+.spinner { width: 26px; height: 26px; border: 3px solid var(--border); border-top-color: var(--lime); border-radius: 50%; margin: 0 auto 12px; animation: spin 0.8s linear infinite; }
 @keyframes spin { to { transform: rotate(360deg); } }
-@media (max-width: 640px) {
-            .content { padding: 0 16px; margin: 20px auto; }
-            .post-item { padding: 16px; }
-            .editor-form { padding: 20px; }
-            .field-row { grid-template-columns: 1fr; }
-            .topbar { padding: 12px 16px; }
-        }
-html.pt-out body>:not(header) { opacity: 0 !important; transition: opacity 0.18s ease !important; }
-html.pt-in body>:not(header) { animation: ptFadeIn 0.32s ease both; }
-@keyframes ptFadeIn { from { opacity: 0; } to { opacity: 1; } }
-@media (prefers-reduced-motion: reduce) {
-            html.pt-out body>:not(header) { opacity: 1 !important; transition: none !important; }
-            html.pt-in body>:not(header) { animation: none; }
-        }
-@media (max-width: 768px) {
-            .nav-inner { padding: 10px 20px !important; }
-            .logo-img { height: 38px !important; width: auto !important; }
-            .logo-wrap { flex-direction: row !important; gap: 8px !important; align-items: center !important; }
-            .logo-sub { display: inline-block !important; border-left: 1px solid rgba(255,255,255,0.25) !important; padding-left: 8px !important; margin: 0 !important; font-size: 8px !important; align-self: center !important; opacity: 0.6 !important; }
-            .nav-links, .nav-trust { display: none !important; }
-        }
-</style>
+
+.editor-view { display: none; }
+.editor-grid { display: grid; grid-template-columns: 1fr 300px; gap: 22px; align-items: start; }
+.card { background: var(--white); border-radius: var(--radius); box-shadow: 0 1px 4px rgba(0,0,0,0.05); padding: 22px; margin-bottom: 18px; }
+.card h2 { font-size: 14px; text-transform: uppercase; letter-spacing: 0.5px; color: var(--green); margin-bottom: 16px; }
+.field { margin-bottom: 16px; }
+.field:last-child { margin-bottom: 0; }
+.field label { display: block; font-size: 13px; font-weight: 700; margin-bottom: 6px; color: #374151; }
+.field input, .field textarea, .field select { width: 100%; padding: 10px 14px; border: 2px solid var(--border); border-radius: 8px; outline: none; transition: border 0.2s; background: var(--white); }
+.field input:focus, .field textarea:focus { border-color: var(--lime); }
+.field-help { font-size: 12px; color: var(--gray); margin-top: 5px; }
+.field-help.over { color: var(--red); font-weight: 700; }
+.title-input { font-size: 20px !important; font-weight: 700; }
+.hero-preview { width: 100%; border-radius: 8px; display: block; margin-bottom: 10px; background: var(--light); min-height: 80px; object-fit: cover; }
+
+.toolbar { display: flex; gap: 4px; flex-wrap: wrap; padding: 8px; border: 2px solid var(--border); border-bottom: none; border-radius: 8px 8px 0 0; background: #FAFAFA; position: sticky; top: 60px; z-index: 50; }
+.tbtn { padding: 7px 11px; border: none; background: transparent; border-radius: 6px; font-size: 13px; font-weight: 700; color: #374151; }
+.tbtn:hover { background: var(--lime-bg); color: var(--green); }
+.tbtn.active { background: var(--lime); color: var(--green); }
+.tsep { width: 1px; background: var(--border); margin: 4px 6px; }
+
+.rte { border: 2px solid var(--border); border-radius: 0 0 8px 8px; padding: 22px 26px; min-height: 380px; outline: none; background: var(--white); font-size: 16px; line-height: 1.7; color: #3D4A3D; }
+.rte:focus { border-color: var(--lime); }
+.rte h2 { font-size: 26px; color: #1F2937; margin: 26px 0 14px; text-transform: none; letter-spacing: normal; }
+.rte h3 { font-size: 20px; color: #1F2937; margin: 22px 0 10px; }
+.rte p { margin: 0 0 14px; }
+.rte ul, .rte ol { margin: 0 0 16px; padding-left: 24px; }
+.rte li { margin-bottom: 6px; }
+.rte a { color: var(--green); font-weight: 700; }
+.rte img { max-width: 100%; height: auto; border-radius: 10px; margin: 8px 0; }
+.rte .article-highlight { background: var(--cream); border-left: 4px solid var(--lime); padding: 16px 20px; border-radius: 8px; margin: 18px 0; }
+.src-editor { display: none; width: 100%; min-height: 380px; border: 2px solid var(--border); border-radius: 0 0 8px 8px; padding: 16px; font-family: ui-monospace, monospace; font-size: 13px; line-height: 1.5; outline: none; resize: vertical; }
+
+.action-bar { position: fixed; bottom: 0; left: 0; right: 0; background: var(--white); border-top: 1px solid var(--border); padding: 12px 28px; display: none; align-items: center; gap: 12px; z-index: 90; box-shadow: 0 -4px 16px rgba(0,0,0,0.05); }
+.action-bar .grow { flex: 1; }
+.deploy-note { font-size: 12.5px; color: var(--gray); }
+
+.modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 200; align-items: center; justify-content: center; padding: 24px; }
+.modal-box { background: var(--white); border-radius: var(--radius); max-width: 860px; width: 100%; max-height: 90vh; overflow: auto; }
+.modal-head { display: flex; justify-content: space-between; align-items: center; padding: 16px 24px; border-bottom: 1px solid var(--border); position: sticky; top: 0; background: var(--white); }
+.modal-head h3 { font-size: 15px; color: var(--green); }
+.modal-body { padding: 28px 34px; }
+.preview-meta { display: flex; gap: 14px; align-items: center; margin-bottom: 18px; }
+.preview-date { font-size: 13px; font-weight: 700; color: var(--lime); text-transform: uppercase; letter-spacing: 0.5px; }
+.preview-tag { padding: 4px 12px; border-radius: 100px; font-size: 11px; font-weight: 700; text-transform: uppercase; background: var(--lime-bg); color: var(--green); }
+.preview-title { font-size: 32px; line-height: 1.15; color: var(--green); margin-bottom: 16px; font-weight: 900; }
+.preview-hero { width: 100%; border-radius: 12px; margin-bottom: 20px; }
+.preview-body { font-size: 16px; line-height: 1.7; color: #3D4A3D; }
+.preview-body h2 { font-size: 26px; margin: 26px 0 14px; color: #1F2937; }
+.preview-body h3 { font-size: 20px; margin: 22px 0 10px; color: #1F2937; }
+.preview-body p { margin-bottom: 14px; }
+.preview-body ul { padding-left: 24px; margin-bottom: 16px; }
+.preview-body img { max-width: 100%; border-radius: 10px; }
+.preview-body .article-highlight { background: var(--cream); border-left: 4px solid var(--lime); padding: 16px 20px; border-radius: 8px; margin: 18px 0; }
+
+.toast { position: fixed; bottom: 84px; left: 50%; transform: translateX(-50%) translateY(20px); background: var(--green); color: white; padding: 12px 24px; border-radius: 100px; font-size: 14px; font-weight: 700; opacity: 0; pointer-events: none; transition: all 0.3s; z-index: 300; max-width: 90vw; }
+.toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+.toast.error { background: var(--red); }
+
+@media (max-width: 860px) {
+    .editor-grid { grid-template-columns: 1fr; }
+    .toolbar { top: 56px; }
+    .wrap { padding: 20px 14px 120px; }
+    .action-bar { flex-wrap: wrap; padding: 10px 14px; }
+}
+    </style>
 </head>
 <body>
 
-<!-- LOGIN -->
 <div class="login-wrap" id="loginView">
     <div class="login-box">
-        <h1>🍋 DailyFruits CMS</h1>
-        <p>Panel zarządzania blogiem</p>
-        <input type="password" id="passwordInput" placeholder="Wpisz hasło..." autocomplete="current-password">
+        <h1>DailyFruits CMS</h1>
+        <p>Panel zarządzania blogiem</p>
+        <input type="password" id="passwordInput" placeholder="Hasło" autocomplete="current-password">
         <button onclick="doLogin()">Zaloguj się</button>
         <div class="login-error" id="loginError">Nieprawidłowe hasło</div>
     </div>
 </div>
 
-<!-- DASHBOARD -->
 <div class="dashboard" id="dashboardView">
     <div class="topbar">
-        <h1>🍋 DailyFruits CMS</h1>
+        <h1>daily<span>fruits</span> CMS</h1>
         <div class="topbar-actions">
-            <a href="https://dailyfruits.pl/blog" target="_blank" class="btn-sm btn-logout">Zobacz blog →</a>
-            <button class="btn-sm btn-logout" onclick="doLogout()">Wyloguj</button>
+            <a class="btn btn-sm btn-ghost" href="/blog" target="_blank" rel="noopener">Zobacz blog ↗</a>
+            <button class="btn btn-sm btn-ghost" onclick="doLogout()">Wyloguj</button>
         </div>
     </div>
 
-    <!-- POST LIST -->
-    <div class="content" id="postListView">
-        <div class="post-list-header">
-            <h2>Artykuły blogowe</h2>
-            <span class="post-count" id="postCount"></span>
+    <div class="wrap" id="postListView">
+        <div class="list-head">
+            <input type="search" id="searchInput" placeholder="Szukaj artykułu..." oninput="renderPostList()">
+            <button class="btn btn-lime" onclick="newPost()">+ Nowy artykuł</button>
         </div>
-        <div id="postList">
-            <div class="loading"><div class="spinner"></div>Ładowanie artykułów...</div>
+        <div class="chips" id="categoryChips"></div>
+        <div class="post-list" id="postList"><div class="loading"><div class="spinner"></div>Ładowanie artykułów...</div></div>
+    </div>
+
+    <div class="wrap editor-view" id="editorView">
+        <div style="margin-bottom:16px;"><button class="btn btn-sm btn-outline" onclick="confirmBack()">← Wszystkie artykuły</button></div>
+        <div class="editor-grid">
+            <div>
+                <div class="card">
+                    <div class="field">
+                        <label for="editTitle">Tytuł artykułu</label>
+                        <input type="text" id="editTitle" class="title-input" placeholder="Np. Owocowe czwartki w biurze" oninput="onTitleInput()">
+                    </div>
+                    <div class="field" id="slugField">
+                        <label for="editSlug">Adres (slug)</label>
+                        <input type="text" id="editSlug" placeholder="owocowe-czwartki">
+                        <div class="field-help">Adres artykułu: dailyfruits.pl/wpis-<b id="slugPreview">...</b></div>
+                    </div>
+                </div>
+                <div class="card">
+                    <h2>Treść artykułu</h2>
+                    <div class="toolbar" id="toolbar">
+                        <button class="tbtn" data-cmd="formatBlock" data-val="p" title="Akapit">Akapit</button>
+                        <button class="tbtn" data-cmd="formatBlock" data-val="h2" title="Nagłówek">H2</button>
+                        <button class="tbtn" data-cmd="formatBlock" data-val="h3" title="Podnagłówek">H3</button>
+                        <span class="tsep"></span>
+                        <button class="tbtn" data-cmd="bold" title="Pogrubienie"><b>B</b></button>
+                        <button class="tbtn" data-cmd="italic" title="Kursywa"><i>I</i></button>
+                        <span class="tsep"></span>
+                        <button class="tbtn" data-cmd="insertUnorderedList" title="Lista">• Lista</button>
+                        <button class="tbtn" onclick="addLink()" title="Link">🔗 Link</button>
+                        <button class="tbtn" onclick="bodyImageInput.click()" title="Obrazek">🖼 Obrazek</button>
+                        <button class="tbtn" onclick="addHighlight()" title="Wyróżniona ramka">✦ Ramka</button>
+                        <span class="tsep"></span>
+                        <button class="tbtn" data-cmd="undo" title="Cofnij">↶</button>
+                        <button class="tbtn" data-cmd="redo" title="Ponów">↷</button>
+                        <span class="tsep"></span>
+                        <button class="tbtn" id="srcToggle" onclick="toggleSource()" title="Kod HTML">HTML</button>
+                    </div>
+                    <div class="rte" id="rte" contenteditable="true"></div>
+                    <textarea class="src-editor" id="srcEditor" spellcheck="false"></textarea>
+                    <input type="file" id="bodyImageInput" accept=".webp,.jpg,.jpeg,.png,.avif" style="display:none" onchange="uploadBodyImage(this)">
+                </div>
+            </div>
+            <div>
+                <div class="card">
+                    <h2>Publikacja</h2>
+                    <div class="field">
+                        <label for="editCategory">Kategoria</label>
+                        <input type="text" id="editCategory" list="categoryList" placeholder="Np. Zdrowie">
+                        <datalist id="categoryList"></datalist>
+                    </div>
+                    <div class="field">
+                        <label for="editDate">Data publikacji</label>
+                        <input type="date" id="editDate">
+                        <div class="field-help">Na stronie: <b id="datePreview">—</b></div>
+                    </div>
+                </div>
+                <div class="card">
+                    <h2>Obraz główny</h2>
+                    <img class="hero-preview" id="heroPreview" src="favicon_.png" alt="Podgląd obrazu głównego">
+                    <input type="file" id="heroImageInput" accept=".webp,.jpg,.jpeg,.png,.avif" style="display:none" onchange="uploadHeroImage(this)">
+                    <button class="btn btn-sm btn-outline" style="width:100%;justify-content:center;" onclick="heroImageInput.click()">Zmień obraz</button>
+                    <div class="field-help" id="heroPath" style="word-break:break-all;"></div>
+                </div>
+                <div class="card">
+                    <h2>SEO i zajawka</h2>
+                    <div class="field">
+                        <label for="editDescription">Meta description</label>
+                        <textarea id="editDescription" rows="3" placeholder="Krótki opis do Google" oninput="counter(this,'descCount',160)"></textarea>
+                        <div class="field-help" id="descCount">0 / 160 znaków</div>
+                    </div>
+                    <div class="field">
+                        <label for="editExcerpt">Zajawka (karta na blogu)</label>
+                        <textarea id="editExcerpt" rows="3" placeholder="Tekst widoczny na liście artykułów" oninput="counter(this,'excCount',220)"></textarea>
+                        <div class="field-help" id="excCount">0 / 220 znaków</div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
-    <!-- EDITOR -->
-    <div class="content editor" id="editorView">
-        <div class="editor-header">
-            <button class="btn btn-back" onclick="showList()">← Wróć</button>
-            <h2 id="editorTitle">Edytuj artykuł</h2>
-            <button class="btn btn-preview" onclick="previewPost()">Podgląd</button>
-            <button class="btn btn-save" onclick="savePost()">💾 Zapisz</button>
+    <div class="action-bar" id="actionBar">
+        <button class="btn btn-danger btn-sm" id="deleteBtn" onclick="deletePost()">Usuń artykuł</button>
+        <div class="grow"></div>
+        <span class="deploy-note" id="deployNote"></span>
+        <button class="btn btn-outline" onclick="showPreview()">Podgląd</button>
+        <button class="btn btn-green" id="saveBtn" onclick="savePost()">Zapisz i opublikuj</button>
+    </div>
+</div>
+
+<div class="modal" id="previewModal">
+    <div class="modal-box">
+        <div class="modal-head">
+            <h3>Podgląd artykułu</h3>
+            <button class="btn btn-sm btn-outline" onclick="previewModal.style.display='none'">Zamknij</button>
         </div>
-        <div class="editor-form">
-            <div class="field">
-                <label>Tytuł artykułu (H1)</label>
-                <input type="text" id="editTitle" placeholder="Np. Kolagen w owocach i warzywach">
-            </div>
-            <div class="field-row">
-                <div class="field">
-                    <label>Kategoria</label>
-                    <select id="editCategory">
-                        <option value="Zdrowie">Zdrowie</option>
-                        <option value="Poradnik">Poradnik</option>
-                        <option value="HR">HR</option>
-                        <option value="Integracja">Integracja</option>
-                        <option value="Biuro">Biuro</option>
-                        <option value="Raport">Raport</option>
-                        <option value="Eventy">Eventy</option>
-                        <option value="Edukacja">Edukacja</option>
-                        <option value="ESG">ESG</option>
-                        <option value="Wellbeing">Wellbeing</option>
-                    </select>
-                </div>
-                <div class="field">
-                    <label>Data publikacji</label>
-                    <input type="text" id="editDate" placeholder="Np. 2 maja 2026">
-                </div>
-            </div>
-            <div class="field">
-                <label>Meta description (SEO)</label>
-                <input type="text" id="editDescription" placeholder="Krótki opis do Google (max 160 znaków)">
-                <div class="field-help">Maks. 160 znaków - widoczny w wynikach wyszukiwania</div>
-            </div>
-            <div class="field">
-                <label>Zajawka (na karcie bloga)</label>
-                <input type="text" id="editExcerpt" placeholder="Krótki tekst widoczny na liście artykułów">
-            </div>
-            <div class="field">
-                <label>Treść artykułu (HTML)</label>
-                <textarea id="editBody" placeholder="<h2>Nagłówek sekcji</h2><p>Tekst akapitu...</p>"></textarea>
-                <div class="field-help">Używaj tagów HTML: &lt;h2&gt;, &lt;h3&gt;, &lt;p&gt;, &lt;ul&gt;, &lt;li&gt;, &lt;strong&gt;, &lt;em&gt;</div>
-            </div>
+        <div class="modal-body">
+            <div class="preview-meta"><span class="preview-date" id="pvDate"></span><span class="preview-tag" id="pvTag"></span></div>
+            <div class="preview-title" id="pvTitle"></div>
+            <img class="preview-hero" id="pvHero" src="favicon_.png" alt="">
+            <div class="preview-body" id="pvBody"></div>
         </div>
     </div>
 </div>
@@ -178,227 +275,384 @@ html.pt-in body>:not(header) { animation: ptFadeIn 0.32s ease both; }
 const API = '/api';
 let token = localStorage.getItem('cms_token') || '';
 let posts = [];
-let currentPost = null;
-let currentPostSha = '';
-let currentPostHtml = '';
+let categories = [];
+let activeCategory = 'all';
+let mode = 'edit'; // 'edit' | 'new'
+let currentSlug = null;
+let dirty = false;
+
+const $ = id => document.getElementById(id);
+const MONTHS = ['stycznia','lutego','marca','kwietnia','maja','czerwca','lipca','sierpnia','września','października','listopada','grudnia'];
 
 // ─── AUTH ───
 async function doLogin() {
-    const pw = document.getElementById('passwordInput').value;
     try {
-        const res = await fetch(`${API}/auth`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ password: pw })
-        });
+        const res = await fetch(`${API}/auth`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ password: $('passwordInput').value }) });
         const data = await res.json();
-        if (data.ok) {
-            token = data.token;
-            localStorage.setItem('cms_token', token);
-            showDashboard();
-        } else {
-            document.getElementById('loginError').style.display = 'block';
-        }
-    } catch (e) {
-        document.getElementById('loginError').style.display = 'block';
-    }
+        if (data.ok) { token = data.token; localStorage.setItem('cms_token', token); showDashboard(); }
+        else $('loginError').style.display = 'block';
+    } catch (e) { $('loginError').style.display = 'block'; }
 }
-
 function doLogout() {
-    token = '';
-    localStorage.removeItem('cms_token');
-    document.getElementById('dashboardView').style.display = 'none';
-    document.getElementById('loginView').style.display = 'flex';
+    token = ''; localStorage.removeItem('cms_token');
+    $('dashboardView').style.display = 'none';
+    $('loginView').style.display = 'flex';
 }
+$('passwordInput').addEventListener('keydown', e => { if (e.key === 'Enter') doLogin(); });
 
-document.getElementById('passwordInput').addEventListener('keydown', e => {
-    if (e.key === 'Enter') doLogin();
-});
-
-// ─── DASHBOARD ───
+// ─── LISTA ───
 async function showDashboard() {
-    document.getElementById('loginView').style.display = 'none';
-    document.getElementById('dashboardView').style.display = 'block';
+    $('loginView').style.display = 'none';
+    $('dashboardView').style.display = 'block';
+    showList();
     await loadPosts();
 }
-
 async function loadPosts() {
-    document.getElementById('postList').innerHTML = '<div class="loading"><div class="spinner"></div>Ładowanie artykułów...</div>';
+    $('postList').innerHTML = '<div class="loading"><div class="spinner"></div>Ładowanie artykułów...</div>';
     try {
         const res = await fetch(`${API}/posts?action=list`, { headers: { 'X-CMS-Token': token } });
         if (res.status === 401) { doLogout(); return; }
         const data = await res.json();
         posts = data.posts || [];
+        categories = data.categories || [];
+        $('categoryList').innerHTML = categories.map(c => `<option value="${escA(c)}"></option>`).join('');
+        renderChips();
         renderPostList();
     } catch (e) {
-        document.getElementById('postList').innerHTML = '<div class="loading">Błąd ładowania. Sprawdź konfigurację.</div>';
+        $('postList').innerHTML = '<div class="loading">Błąd ładowania. Odśwież stronę.</div>';
     }
 }
-
+function renderChips() {
+    const counts = {};
+    posts.forEach(p => { counts[p.category] = (counts[p.category] || 0) + 1; });
+    let html = `<button class="chip${activeCategory === 'all' ? ' active' : ''}" onclick="setCat('all')">Wszystkie (${posts.length})</button>`;
+    html += categories.map(c => `<button class="chip${activeCategory === c ? ' active' : ''}" onclick="setCat('${escA(c)}')">${escH(c)} (${counts[c] || 0})</button>`).join('');
+    $('categoryChips').innerHTML = html;
+}
+function setCat(c) { activeCategory = c; renderChips(); renderPostList(); }
 function renderPostList() {
-    document.getElementById('postCount').textContent = `${posts.length} artykułów`;
-    if (posts.length === 0) {
-        document.getElementById('postList').innerHTML = '<div class="loading">Brak artykułów</div>';
-        return;
-    }
-    const html = posts.map(p => `
+    const q = ($('searchInput').value || '').toLowerCase();
+    const items = posts.filter(p =>
+        (activeCategory === 'all' || p.category === activeCategory) &&
+        (!q || p.title.toLowerCase().includes(q) || p.slug.includes(q)));
+    if (!items.length) { $('postList').innerHTML = '<div class="loading">Brak artykułów</div>'; return; }
+    $('postList').innerHTML = items.map(p => `
         <div class="post-item" onclick="editPost('${p.slug}')">
+            <img class="post-thumb" src="${escA(p.image || 'favicon_.png')}" alt="" loading="lazy">
             <div class="post-item-info">
-                <div class="post-item-title">${escHtml(p.title)}</div>
-                <div class="post-item-meta">
-                    <span>${p.date || 'Brak daty'}</span>
-                    ${p.category ? `<span class="post-item-tag">${p.category}</span>` : ''}
-                </div>
+                <div class="post-item-title">${escH(p.title)}</div>
+                <div class="post-item-meta"><span>${escH(p.date || 'brak daty')}</span>${p.category ? `<span class="post-item-tag">${escH(p.category)}</span>` : ''}</div>
             </div>
             <div class="post-item-arrow">›</div>
-        </div>
-    `).join('');
-    document.getElementById('postList').innerHTML = html;
+        </div>`).join('');
 }
 
-// ─── EDITOR ───
+// ─── EDYTOR ───
+function openEditor() {
+    $('postListView').style.display = 'none';
+    $('editorView').style.display = 'block';
+    $('actionBar').style.display = 'flex';
+    dirty = false;
+    window.scrollTo(0, 0);
+}
+function showList() {
+    $('editorView').style.display = 'none';
+    $('actionBar').style.display = 'none';
+    $('postListView').style.display = 'block';
+    currentSlug = null;
+}
+function confirmBack() {
+    if (dirty && !confirm('Masz niezapisane zmiany. Wyjść bez zapisu?')) return;
+    showList();
+    loadPosts();
+}
 async function editPost(slug) {
-    document.getElementById('postListView').style.display = 'none';
-    document.getElementById('editorView').style.display = 'block';
-    document.getElementById('editorTitle').textContent = 'Ładowanie...';
-
+    mode = 'edit'; currentSlug = slug;
+    openEditor();
+    $('slugField').style.display = 'none';
+    $('deleteBtn').style.display = '';
+    $('rte').innerHTML = '<p style="color:#9CA3AF">Ładowanie...</p>';
     try {
         const res = await fetch(`${API}/posts?action=get&slug=${slug}`, { headers: { 'X-CMS-Token': token } });
-        if (!res.ok) { toast('Nie można załadować artykułu', true); return; }
-        const data = await res.json();
-        currentPost = data.post;
-        currentPostSha = data.post.sha;
-        currentPostHtml = data.post.rawHtml;
-
-        document.getElementById('editorTitle').textContent = 'Edytuj: ' + (currentPost.title || currentPost.slug);
-        document.getElementById('editTitle').value = cleanHtml(currentPost.h1 || currentPost.title || '');
-        document.getElementById('editCategory').value = currentPost.category || 'Zdrowie';
-        document.getElementById('editDate').value = currentPost.dateDisplay || '';
-        document.getElementById('editDescription').value = currentPost.description || '';
-        document.getElementById('editExcerpt').value = currentPost.excerpt || '';
-        document.getElementById('editBody').value = formatHtml(currentPost.body || '');
-    } catch (e) {
-        toast('Błąd: ' + e.message, true);
-    }
+        if (!res.ok) { toast('Nie można załadować artykułu', true); showList(); return; }
+        const { post } = await res.json();
+        $('editTitle').value = post.h1 ? stripT(post.h1) : post.title;
+        $('editCategory').value = post.category || '';
+        setDateFromDisplay(post.dateDisplay);
+        $('editDescription').value = post.description || '';
+        $('editExcerpt').value = post.excerpt || '';
+        setHero(post.heroImage || post.cardImage || '');
+        $('rte').innerHTML = post.body || '<p></p>';
+        if (post.structure === 'none') toast('Uwaga: nietypowa struktura wpisu — edycja treści może nie zadziałać', true);
+        counter($('editDescription'), 'descCount', 160);
+        counter($('editExcerpt'), 'excCount', 220);
+        $('deployNote').textContent = '';
+        dirty = false;
+    } catch (e) { toast('Błąd: ' + e.message, true); }
+}
+function newPost() {
+    mode = 'new'; currentSlug = null;
+    openEditor();
+    $('slugField').style.display = '';
+    $('deleteBtn').style.display = 'none';
+    $('editTitle').value = ''; $('editSlug').value = ''; $('slugPreview').textContent = '...';
+    $('editCategory').value = '';
+    const t = new Date();
+    $('editDate').value = t.toISOString().slice(0, 10);
+    updateDatePreview();
+    $('editDescription').value = ''; $('editExcerpt').value = '';
+    setHero('');
+    $('rte').innerHTML = '<p></p>';
+    counter($('editDescription'), 'descCount', 160);
+    counter($('editExcerpt'), 'excCount', 220);
+    $('deployNote').textContent = '';
 }
 
-function showList() {
-    document.getElementById('editorView').style.display = 'none';
-    document.getElementById('postListView').style.display = 'block';
-    currentPost = null;
+// Pasek narzędzi
+document.querySelectorAll('#toolbar .tbtn[data-cmd]').forEach(b => {
+    b.addEventListener('mousedown', e => e.preventDefault());
+    b.addEventListener('click', () => { document.execCommand(b.dataset.cmd, false, b.dataset.val || null); $('rte').focus(); markDirty(); });
+});
+function addLink() {
+    const url = prompt('Adres linku (https://...):');
+    if (!url) return;
+    document.execCommand('createLink', false, url);
+    markDirty();
+}
+function addHighlight() {
+    const sel = window.getSelection();
+    const text = sel && sel.toString() ? sel.toString() : 'Treść wyróżnienia...';
+    document.execCommand('insertHTML', false, `<div class="article-highlight"><p>${escH(text)}</p></div><p></p>`);
+    markDirty();
+}
+function toggleSource() {
+    const rte = $('rte'), src = $('srcEditor'), btn = $('srcToggle');
+    if (src.style.display === 'block') {
+        rte.innerHTML = src.value;
+        src.style.display = 'none'; rte.style.display = 'block';
+        btn.classList.remove('active');
+    } else {
+        src.value = cleanBody(rte.innerHTML);
+        rte.style.display = 'none'; src.style.display = 'block';
+        btn.classList.add('active');
+    }
+}
+$('rte').addEventListener('input', markDirty);
+$('srcEditor').addEventListener('input', markDirty);
+['editTitle','editCategory','editDate','editDescription','editExcerpt'].forEach(id => $(id).addEventListener('input', markDirty));
+function markDirty() { dirty = true; }
+window.addEventListener('beforeunload', e => { if (dirty) { e.preventDefault(); e.returnValue = ''; } });
+
+// ─── DATY ───
+function updateDatePreview() {
+    const v = $('editDate').value;
+    $('datePreview').textContent = v ? displayDate(v) : '—';
+}
+$('editDate').addEventListener('input', updateDatePreview);
+function displayDate(iso) {
+    const [y, m, d] = iso.split('-').map(Number);
+    return `${d} ${MONTHS[m - 1]} ${y}`;
+}
+function setDateFromDisplay(disp) {
+    const m = (disp || '').match(/(\d{1,2})\s+(\S+)\s+(\d{4})/);
+    if (m) {
+        const mi = MONTHS.indexOf(m[2].toLowerCase());
+        if (mi >= 0) { $('editDate').value = `${m[3]}-${String(mi + 1).padStart(2, '0')}-${String(m[1]).padStart(2, '0')}`; updateDatePreview(); return; }
+    }
+    $('editDate').value = '';
+    $('datePreview').textContent = disp || '—';
 }
 
-async function savePost() {
-    if (!currentPost || !currentPostHtml) return;
-
-    const title = document.getElementById('editTitle').value.trim();
-    const category = document.getElementById('editCategory').value;
-    const date = document.getElementById('editDate').value.trim();
-    const description = document.getElementById('editDescription').value.trim();
-    const body = document.getElementById('editBody').value.trim();
-
-    if (!title) { toast('Tytuł jest wymagany', true); return; }
-
-    // Replace content in the raw HTML
-    let html = currentPostHtml;
-
-    // Update <title>
-    html = html.replace(/<title>.*?<\/title>/, `<title>${escHtml(title)} - DailyFruits Blog</title>`);
-
-    // Update meta description
-    html = html.replace(/(<meta name="description" content=").*?"/, `$1${escAttr(description)}"`);
-
-    // Update OG tags
-    html = html.replace(/(<meta property="og:title" content=").*?"/, `$1${escAttr(title)} - DailyFruits Blog"`);
-    html = html.replace(/(<meta property="og:description" content=").*?"/, `$1${escAttr(description)}"`);
-
-    // Update twitter tags
-    html = html.replace(/(<meta name="twitter:title" content=").*?"/, `$1${escAttr(title)} - DailyFruits"`);
-    html = html.replace(/(<meta name="twitter:description" content=").*?"/, `$1${escAttr(description)}"`);
-
-    // Update H1
-    html = html.replace(/<h1 class="article-title"[^>]*>[\s\S]*?<\/h1>/, `<h1 class="article-title">${title}</h1>`);
-
-    // Update date
-    if (date) {
-        html = html.replace(/<time[^>]*>.*?<\/time>/, `<time datetime="${date}">${date}</time>`);
+// ─── SLUG ───
+function slugify(s) {
+    const map = { 'ą':'a','ć':'c','ę':'e','ł':'l','ń':'n','ó':'o','ś':'s','ź':'z','ż':'z' };
+    return s.toLowerCase().replace(/[ąćęłńóśźż]/g, c => map[c]).replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '').slice(0, 60);
+}
+function onTitleInput() {
+    if (mode === 'new' && !$('editSlug').dataset.touched) {
+        $('editSlug').value = slugify($('editTitle').value);
+        $('slugPreview').textContent = $('editSlug').value || '...';
     }
+}
+$('editSlug').addEventListener('input', function () { this.dataset.touched = '1'; this.value = slugify(this.value); $('slugPreview').textContent = this.value || '...'; });
 
-    // Update category badge
-    html = html.replace(/<span class="article-tag"[^>]*>.*?<\/span>/, `<span class="article-tag">${category}</span>`);
-
-    // Update article body
-    if (body) {
-        html = html.replace(/(<div class="article-body">)[\s\S]*?(<\/div>\s*<\/article>)/, `$1\n${body}\n$2`);
-    }
-
-    // Update data-category on card (for breadcrumb)
-    html = html.replace(/(data-category=").*?"/, `$1${category}"`);
-
+// ─── OBRAZKI ───
+let heroImagePath = '';
+function setHero(path) {
+    heroImagePath = path || '';
+    $('heroPreview').src = path ? '/' + path.replace(/^\//, '') : 'favicon_.png';
+    $('heroPath').textContent = path || 'Nie wybrano — zostanie użyty obraz z szablonu';
+}
+async function uploadFile(file) {
+    const b64 = await new Promise((ok, err) => {
+        const r = new FileReader();
+        r.onload = () => ok(r.result.split(',')[1]);
+        r.onerror = err;
+        r.readAsDataURL(file);
+    });
+    const res = await fetch(`${API}/posts?action=upload`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'X-CMS-Token': token },
+        body: JSON.stringify({ filename: file.name, contentBase64: b64 })
+    });
+    const data = await res.json();
+    if (!data.ok) throw new Error(data.error || 'Błąd uploadu');
+    return data.path;
+}
+async function uploadHeroImage(input) {
+    if (!input.files[0]) return;
+    toast('Wysyłanie obrazu...');
+    try { setHero(await uploadFile(input.files[0])); markDirty(); toast('Obraz wgrany'); }
+    catch (e) { toast(e.message, true); }
+    input.value = '';
+}
+async function uploadBodyImage(input) {
+    if (!input.files[0]) return;
+    toast('Wysyłanie obrazu...');
     try {
-        const res = await fetch(`${API}/posts?action=update&slug=${currentPost.slug}`, {
-            method: 'PUT',
-            headers: { 'Content-Type': 'application/json', 'X-CMS-Token': token },
-            body: JSON.stringify({
-                html: html,
-                sha: currentPostSha,
-                commitMessage: `CMS: update ${currentPost.filename} - ${title}`
-            })
-        });
+        const path = await uploadFile(input.files[0]);
+        $('rte').focus();
+        document.execCommand('insertHTML', false, `<img src="${escA(path)}" alt="" loading="lazy"><p></p>`);
+        markDirty(); toast('Obraz wstawiony');
+    } catch (e) { toast(e.message, true); }
+    input.value = '';
+}
 
-        const data = await res.json();
-        if (data.ok) {
-            currentPostSha = data.sha;
-            currentPostHtml = html;
-            toast('Zapisano! Deploy za ~30s');
-        } else {
-            toast('Błąd: ' + (data.error || 'nieznany'), true);
-        }
-    } catch (e) {
-        toast('Błąd zapisu: ' + e.message, true);
+// ─── CZYSZCZENIE HTML z edytora ───
+function cleanBody(html) {
+    const root = document.createElement('div');
+    root.innerHTML = html;
+    const ALLOWED = { P:1, H2:1, H3:1, UL:1, OL:1, LI:1, STRONG:1, EM:1, A:1, IMG:1, BR:1, DIV:1 };
+    (function walk(node) {
+        [...node.children].forEach(el => {
+            walk(el);
+            let tag = el.tagName;
+            if (tag === 'B') { replaceTag(el, 'strong'); return; }
+            if (tag === 'I') { replaceTag(el, 'em'); return; }
+            if (tag === 'H1' || tag === 'H4' || tag === 'H5') { replaceTag(el, 'h3'); return; }
+            if (tag === 'SPAN' || tag === 'FONT') { unwrap(el); return; }
+            if (!ALLOWED[tag]) { unwrap(el); return; }
+            if (tag === 'DIV' && !el.classList.contains('article-highlight')) { replaceTag(el, 'p'); return; }
+            [...el.attributes].forEach(a => {
+                const keep = (tag === 'A' && ['href','target','rel'].includes(a.name)) ||
+                             (tag === 'IMG' && ['src','alt','loading','width','height'].includes(a.name)) ||
+                             (tag === 'DIV' && a.name === 'class' && el.classList.contains('article-highlight'));
+                if (!keep) el.removeAttribute(a.name);
+            });
+            if (tag === 'A') { el.setAttribute('rel', 'noopener'); }
+            if (tag === 'IMG' && !el.getAttribute('loading')) el.setAttribute('loading', 'lazy');
+        });
+    })(root);
+    root.querySelectorAll('p').forEach(p => { if (!p.textContent.trim() && !p.querySelector('img')) p.remove(); });
+    return [...root.children].map(el => '            ' + el.outerHTML).join('\n\n');
+    function unwrap(el) { while (el.firstChild) el.parentNode.insertBefore(el.firstChild, el); el.remove(); }
+    function replaceTag(el, t) {
+        const n = document.createElement(t);
+        while (el.firstChild) n.appendChild(el.firstChild);
+        el.parentNode.replaceChild(n, el);
     }
 }
 
-function previewPost() {
-    if (!currentPost) return;
-    window.open(`https://dailyfruits.pl/${currentPost.filename}`, '_blank');
+// ─── PODGLĄD ───
+function showPreview() {
+    $('pvDate').textContent = $('editDate').value ? displayDate($('editDate').value) : '';
+    $('pvTag').textContent = $('editCategory').value || '—';
+    $('pvTitle').textContent = $('editTitle').value || 'Bez tytułu';
+    $('pvHero').src = heroImagePath ? '/' + heroImagePath : 'favicon_.png';
+    $('pvBody').innerHTML = getBodyHtml();
+    $('previewModal').style.display = 'flex';
+}
+function getBodyHtml() {
+    if ($('srcEditor').style.display === 'block') return $('srcEditor').value;
+    return cleanBody($('rte').innerHTML);
 }
 
-// ─── UTILS ───
-function escHtml(s) { return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
-function escAttr(s) { return s.replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
-function cleanHtml(s) { return s.replace(/<[^>]*>/g, '').replace(/&nbsp;/g, ' ').trim(); }
+// ─── ZAPIS / NOWY / USUWANIE ───
+function collectFields() {
+    return {
+        title: $('editTitle').value.trim(),
+        category: $('editCategory').value.trim(),
+        dateDisplay: $('editDate').value ? displayDate($('editDate').value) : $('datePreview').textContent.replace('—', '').trim(),
+        dateISO: $('editDate').value || undefined,
+        description: $('editDescription').value.trim(),
+        excerpt: $('editExcerpt').value.trim(),
+        heroImage: heroImagePath || undefined,
+        body: getBodyHtml()
+    };
+}
+async function savePost() {
+    const fields = collectFields();
+    if (!fields.title) { toast('Tytuł jest wymagany', true); return; }
+    if (!fields.category) { toast('Kategoria jest wymagana', true); return; }
+    if (!fields.dateDisplay) { toast('Data jest wymagana', true); return; }
 
-function formatHtml(html) {
-    // Basic pretty-print for editing
-    return html
-        .replace(/>\s+</g, '>\n<')
-        .replace(/<\/(h[1-6]|p|ul|ol|li|div|blockquote)>/g, '</$1>\n')
-        .replace(/<(h[1-6]|ul|ol|blockquote)/g, '\n<$1')
-        .trim();
+    const btn = $('saveBtn');
+    btn.disabled = true; btn.textContent = 'Zapisywanie...';
+    try {
+        let res;
+        if (mode === 'new') {
+            fields.slug = $('editSlug').value;
+            if (!fields.slug) { toast('Slug jest wymagany', true); return; }
+            res = await fetch(`${API}/posts?action=create`, {
+                method: 'POST', headers: { 'Content-Type': 'application/json', 'X-CMS-Token': token },
+                body: JSON.stringify({ fields })
+            });
+        } else {
+            res = await fetch(`${API}/posts?action=update&slug=${currentSlug}`, {
+                method: 'PUT', headers: { 'Content-Type': 'application/json', 'X-CMS-Token': token },
+                body: JSON.stringify({ fields })
+            });
+        }
+        const data = await res.json();
+        if (!data.ok) { toast(data.error || 'Błąd zapisu', true); return; }
+        if (mode === 'new') { mode = 'edit'; currentSlug = data.slug; $('slugField').style.display = 'none'; $('deleteBtn').style.display = ''; }
+        dirty = false;
+        (data.warnings || []).forEach(w => console.warn('CMS:', w));
+        $('deployNote').textContent = 'Opublikowano — zmiany na stronie za ok. 1 minutę.';
+        toast('Zapisano i opublikowano ✓');
+    } catch (e) { toast('Błąd: ' + e.message, true); }
+    finally { btn.disabled = false; btn.textContent = 'Zapisz i opublikuj'; }
+}
+async function deletePost() {
+    if (!currentSlug) return;
+    if (!confirm(`Na pewno usunąć artykuł "wpis-${currentSlug}"? Tej operacji nie można cofnąć z poziomu panelu.`)) return;
+    const btn = $('deleteBtn');
+    btn.disabled = true;
+    try {
+        const res = await fetch(`${API}/posts?action=delete&slug=${currentSlug}`, { method: 'DELETE', headers: { 'X-CMS-Token': token } });
+        const data = await res.json();
+        if (!data.ok) { toast(data.error || 'Błąd usuwania', true); return; }
+        toast('Artykuł usunięty');
+        dirty = false;
+        showList(); loadPosts();
+    } catch (e) { toast('Błąd: ' + e.message, true); }
+    finally { btn.disabled = false; }
 }
 
+// ─── POMOCNICZE ───
+function counter(el, id, max) {
+    const n = el.value.length;
+    $(id).textContent = `${n} / ${max} znaków`;
+    $(id).classList.toggle('over', n > max);
+}
+function escH(s) { return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+function escA(s) { return String(s).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;'); }
+function stripT(s) { const d = document.createElement('div'); d.innerHTML = s; return d.textContent.trim(); }
 function toast(msg, isError) {
-    const t = document.getElementById('toast');
+    const t = $('toast');
     t.textContent = msg;
     t.className = 'toast show' + (isError ? ' error' : '');
-    setTimeout(() => t.className = 'toast', 3000);
+    setTimeout(() => t.className = 'toast', 3500);
 }
 
 // ─── INIT ───
 if (token) {
-    // Verify token is still valid
     fetch(`${API}/posts?action=list`, { headers: { 'X-CMS-Token': token } })
         .then(r => { if (r.ok) showDashboard(); else doLogout(); })
         .catch(() => doLogout());
 } else {
-    document.getElementById('loginView').style.display = 'flex';
+    $('loginView').style.display = 'flex';
 }
 </script>
-  <script defer src="/typo.js"></script>
-<!--#include:cookie-banner-->
-<!-- Zgody cookie obsługuje Usercentrics (ładowany przez GTM-FVTBKWW), tak samo jak na betterworkplace.pl. Własny banner usunięty, by nie dublować CMP. -->
-<!--#endinclude:cookie-banner-->
-<script>/* SAFETY: Safari bfcache - "wstecz" ZAWSZE laduje swieza, dzialajaca strone (koniec z zamrozonym/polamanym stanem po powrocie). Zaden display-toggle, zadne przechwytywanie - czysty reload tylko przy restore z cache. */(function(){window.addEventListener('pageshow',function(e){if(e.persisted){window.location.reload();}});window.addEventListener('load',function(){setTimeout(function(){var r=document.querySelectorAll('.reveal:not(.vis)');for(var i=0;i<r.length;i++){var b=r[i].getBoundingClientRect();if(b.top<innerHeight+120&&b.bottom>-120)r[i].classList.add('vis');}},1200);});})();</script>
 </body>
 </html>
