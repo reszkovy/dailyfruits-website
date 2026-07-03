@@ -198,6 +198,7 @@ input, textarea, select { font-family: var(--font); font-size: 15px; }
         <button class="tab" id="tabPages" onclick="switchTab('pages')">Strony</button>
         <button class="tab" id="tabProducts" onclick="switchTab('products')">Produkty</button>
         <button class="tab" id="tabMenu" onclick="switchTab('menu')">Menu</button>
+        <button class="tab" id="tabTrash" onclick="switchTab('trash')">Kosz</button>
     </div>
 
     <div class="wrap" id="postListView">
@@ -298,6 +299,14 @@ input, textarea, select { font-family: var(--font); font-size: 15px; }
             <div class="field-help" style="margin-top:8px;">Edytujesz treść — układ i styl strony pozostają nietknięte. Zmienione pola podświetlają się na zielono.</div>
         </div>
         <div id="pageFields"></div>
+    </div>
+
+    <div class="wrap" id="trashView" style="display:none;">
+        <div class="card">
+            <h2>Usunięte wpisy i produkty</h2>
+            <div class="field-help" style="margin-bottom:14px;">Wszystko, co usunięto z panelu, można przywrócić jednym kliknięciem — wróci na stronę w ~1 min.</div>
+            <div id="trashList"><div class="loading"><div class="spinner"></div>Ładowanie kosza...</div></div>
+        </div>
     </div>
 
     <div class="action-bar" id="pagesBar">
@@ -764,7 +773,7 @@ function switchTab(tab) {
     if (dirty && !confirm('Masz niezapisane zmiany. Przełączyć bez zapisu?')) return;
     dirty = false;
     activeTab = tab;
-    ['Blog', 'Pages', 'Products', 'Menu'].forEach(t => $('tab' + t).classList.toggle('active', t.toLowerCase() === tab));
+    ['Blog', 'Pages', 'Products', 'Menu', 'Trash'].forEach(t => $('tab' + t).classList.toggle('active', t.toLowerCase() === tab));
     $('postListView').style.display = tab === 'blog' ? 'block' : 'none';
     $('editorView').style.display = 'none';
     $('actionBar').style.display = 'none';
@@ -772,9 +781,52 @@ function switchTab(tab) {
     $('pagesView').style.display = tab === 'pages' ? 'block' : 'none';
     $('productsView').style.display = tab === 'products' ? 'block' : 'none';
     $('menuView').style.display = tab === 'menu' ? 'block' : 'none';
+    $('trashView').style.display = tab === 'trash' ? 'block' : 'none';
     if (tab === 'pages' && !pagesLoaded) loadPages();
     if (tab === 'products' && !prodLoaded) loadProducts();
     if (tab === 'menu' && !menuLoaded) loadMenu();
+    if (tab === 'trash') loadTrash();
+}
+
+// ─── KOSZ ───
+async function loadTrash() {
+    $('trashList').innerHTML = '<div class="loading"><div class="spinner"></div>Ładowanie kosza...</div>';
+    try {
+        const [pRes, prRes] = await Promise.all([
+            fetch(`${API}/posts?action=trash`, { headers: { 'X-CMS-Token': token } }),
+            fetch(`${API}/content?action=product-trash`, { headers: { 'X-CMS-Token': token } })
+        ]);
+        const posts = (await pRes.json()).items || [];
+        const prods = (await prRes.json()).items || [];
+        const all = [
+            ...posts.map(i => ({ ...i, type: 'post', label: 'wpis-' + i.slug })),
+            ...prods.map(i => ({ ...i, type: 'product', label: i.name }))
+        ].sort((a, b) => new Date(b.date) - new Date(a.date));
+        if (!all.length) { $('trashList').innerHTML = '<div class="loading">Kosz jest pusty 🎉</div>'; return; }
+        $('trashList').innerHTML = all.map(i => `
+            <div class="menu-row">
+                <span class="post-item-tag">${i.type === 'post' ? 'Wpis' : 'Produkt'}</span>
+                <span style="flex:1;font-weight:700;">${escH(i.label)}</span>
+                <span class="deploy-note">${new Date(i.date).toLocaleDateString('pl-PL')}</span>
+                <button class="btn btn-sm btn-green" onclick="restoreTrash('${i.type}','${i.commit}',this)">Przywróć</button>
+            </div>`).join('');
+    } catch (e) { $('trashList').innerHTML = '<div class="loading">Błąd ładowania kosza</div>'; }
+}
+async function restoreTrash(type, commit, btn) {
+    btn.disabled = true; btn.textContent = 'Przywracanie...';
+    try {
+        const url = type === 'post' ? `${API}/posts?action=restore` : `${API}/content?action=product-restore`;
+        const res = await fetch(url, {
+            method: 'POST', headers: { 'Content-Type': 'application/json', 'X-CMS-Token': token },
+            body: JSON.stringify({ commit })
+        });
+        const data = await res.json();
+        if (!data.ok) { toast(data.error || 'Błąd przywracania', true); return; }
+        trackDeploy(data.commit);
+        toast('Przywrócono ✓');
+        loadTrash();
+    } catch (e) { toast('Błąd: ' + e.message, true); }
+    finally { btn.disabled = false; btn.textContent = 'Przywróć'; }
 }
 
 // ─── EDYCJA TREŚCI STRON ───

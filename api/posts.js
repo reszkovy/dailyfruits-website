@@ -12,6 +12,7 @@
 //
 // Zapisy wielu plikow ida JEDNYM commitem (Git Data API) => jeden deploy Vercela.
 
+import crypto from 'node:crypto';
 import { SITE_URL, BLOG, UPLOAD } from './_config.js';
 
 const GITHUB_API = 'https://api.github.com';
@@ -22,8 +23,8 @@ const branch = () => process.env.GITHUB_BRANCH || 'main';
 function verifyAuth(req) {
   const auth = req.headers['x-cms-token'];
   if (!auth || !process.env.CMS_PASSWORD) return false;
-  const decoded = Buffer.from(auth, 'base64').toString();
-  return decoded === `cms:${process.env.CMS_PASSWORD}`;
+  const expected = crypto.createHmac('sha256', process.env.CMS_PASSWORD).update('df-cms-session-v1').digest('hex');
+  return Buffer.from(auth, 'base64').toString() === `cms:${expected}`;
 }
 
 async function gh(path, options = {}) {
@@ -39,8 +40,8 @@ async function gh(path, options = {}) {
   return res;
 }
 
-async function readFile(path) {
-  const res = await gh(`/repos/${repo()}/contents/${encodeURIComponent(path)}?ref=${branch()}`);
+async function readFile(path, ref) {
+  const res = await gh(`/repos/${repo()}/contents/${encodeURIComponent(path)}?ref=${ref || branch()}`);
   if (!res.ok) return null;
   const data = await res.json();
   return { content: Buffer.from(data.content, 'base64').toString('utf-8'), sha: data.sha };
@@ -263,11 +264,6 @@ const todayISO = () => new Date().toISOString().slice(0, 10);
 // ─── HANDLER ───
 
 export default async function handler(req, res) {
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, X-CMS-Token');
-
-  if (req.method === 'OPTIONS') return res.status(200).end();
   if (!verifyAuth(req)) return res.status(401).json({ error: 'Unauthorized' });
 
   const { method } = req;
@@ -404,6 +400,75 @@ export default async function handler(req, res) {
 
       const commit = await commitFiles(files, `CMS: usuniecie wpisu wpis-${safeSlug}`);
       return res.status(200).json({ ok: true, commit });
+    }
+
+    // KOSZ: lista usunietych wpisow (z historii commitow CMS)
+    if (method === 'GET' && action === 'trash') {
+      const cRes = await gh(`/repos/${repo()}/commits?sha=${branch()}&per_page=100`);
+      if (!cRes.ok) return res.status(500).json({ error: 'Nie mozna pobrac historii' });
+      const commits = await cRes.json();
+      const blog = await readFile(BLOG.listPage);
+      const existing = new Set();
+      if (blog) {
+        let em;
+        const exRe = /<a href="wpis-([a-z0-9-]+)"/g;
+        while ((em = exRe.exec(blog.content)) !== null) existing.add(em[1]);
+      }
+      const seen = new Set();
+      const items = [];
+      for (const c of commits) {
+        const m = c.commit.message.match(/^CMS: usuniecie wpisu wpis-([a-z0-9-]+)/);
+        if (m && !seen.has(m[1])) {
+          seen.add(m[1]);
+          if (!existing.has(m[1])) items.push({ slug: m[1], commit: c.sha, date: c.commit.author.date });
+        }
+      }
+      return res.status(200).json({ items });
+    }
+
+    // KOSZ: przywrocenie wpisu (plik + karta + sitemap z commita sprzed usuniecia)
+    if (method === 'POST' && action === 'restore') {
+      const { commit } = req.body || {};
+      if (!commit || !/^[0-9a-f]{7,40}$/.test(commit)) return res.status(400).json({ error: 'commit wymagany' });
+
+      const cRes = await gh(`/repos/${repo()}/commits/${commit}`);
+      if (!cRes.ok) return res.status(404).json({ error: 'Nie znaleziono commita' });
+      const cData = await cRes.json();
+      const m = cData.commit.message.match(/^CMS: usuniecie wpisu wpis-([a-z0-9-]+)/);
+      if (!m || !cData.parents.length) return res.status(400).json({ error: 'To nie jest commit usuniecia wpisu' });
+      const slug = m[1];
+      const parentSha = cData.parents[0].sha;
+
+      const exists = await readFile(`${BLOG.postPrefix}${slug}.html`);
+      if (exists) return res.status(409).json({ error: `Wpis wpis-${slug} juz istnieje — nie ma czego przywracac` });
+
+      const old = await readFile(`${BLOG.postPrefix}${slug}.html`, parentSha);
+      if (!old) return res.status(404).json({ error: 'Nie znaleziono pliku wpisu w historii' });
+
+      const fields = extractPost(old.content, slug);
+      fields.slug = slug;
+      const oldBlog = await readFile(BLOG.listPage, parentSha);
+      if (oldBlog) {
+        const cm = oldBlog.content.match(cardRegex(slug));
+        if (cm) {
+          fields.excerpt = stripTags((cm[0].match(/<p>([\s\S]*?)<\/p>/) || [])[1] || '');
+          fields.heroImage = (cm[0].match(/<img src="([^"]*)"/) || [])[1] || fields.heroImage;
+        }
+      }
+      fields.title = fields.h1 || fields.title;
+
+      const files = [{ path: `${BLOG.postPrefix}${slug}.html`, content: old.content }];
+      const blog = await readFile(BLOG.listPage);
+      if (blog) {
+        let b = upsertCard(blog.content, fields, { insert: true });
+        b = rebuildFilters(b);
+        files.push({ path: BLOG.listPage, content: b });
+      }
+      const sitemap = await readFile('sitemap.xml');
+      if (sitemap) files.push({ path: 'sitemap.xml', content: sitemapUpsert(sitemap.content, slug, todayISO()) });
+
+      const sha = await commitFiles(files, `CMS: przywrocenie wpisu wpis-${slug}`);
+      return res.status(200).json({ ok: true, commit: sha, slug });
     }
 
     if (method === 'POST' && action === 'upload') {
