@@ -49,6 +49,12 @@ input, textarea, select { font-family: var(--font); font-size: 15px; }
 .btn-danger { background: transparent; border: 2px solid #FECACA; color: var(--red); }
 .btn-danger:hover { background: #FEF2F2; border-color: var(--red); }
 .btn[disabled] { opacity: 0.55; cursor: wait; }
+.view-toggle { display: inline-flex; gap: 4px; background: var(--light); border-radius: 100px; padding: 4px; margin-top: 12px; }
+.vt-btn { padding: 8px 18px; border: none; border-radius: 100px; background: transparent; font-size: 13px; font-weight: 700; color: var(--gray); }
+.vt-btn.active { background: var(--green); color: white; }
+.url-bar { max-width: 980px; margin: 18px auto -8px; padding: 0 20px; display: flex; gap: 10px; }
+.url-bar input { flex: 1; padding: 11px 16px; border: 2px solid var(--border); border-radius: 100px; outline: none; background: var(--white); font-size: 14px; }
+.url-bar input:focus { border-color: var(--lime); }
 .pub-status { font-size: 13px; font-weight: 700; padding: 7px 14px; border-radius: 100px; display: none; }
 .pub-status.pending { display: inline-block; background: rgba(255,242,0,0.18); color: #FFF566; animation: pubPulse 1.4s ease-in-out infinite; }
 .pub-status.success { display: inline-block; background: rgba(141,198,63,0.25); color: #D5E8A0; }
@@ -201,6 +207,11 @@ input, textarea, select { font-family: var(--font); font-size: 15px; }
         <button class="tab" id="tabTrash" onclick="switchTab('trash')">Kosz</button>
     </div>
 
+    <div class="url-bar">
+        <input type="text" id="globalUrlInput" placeholder="Wklej link do miejsca, które chcesz zmienić — np. https://dailyfruits.pl/dostawa albo link do wpisu" onkeydown="if(event.key==='Enter')openByUrl()" onpaste="setTimeout(openByUrl, 60)">
+        <button class="btn btn-green btn-sm" onclick="openByUrl()">Edytuj</button>
+    </div>
+
     <div class="wrap" id="postListView">
         <div class="list-head">
             <input type="search" id="searchInput" placeholder="Szukaj artykułu..." oninput="renderPostList()">
@@ -295,8 +306,16 @@ input, textarea, select { font-family: var(--font); font-size: 15px; }
                 <select class="page-select" id="pageSelect" onchange="loadPageTexts()" style="flex:1;"></select>
                 <a class="btn btn-outline btn-sm" id="viewPageBtn" href="/" target="_blank" rel="noopener" style="display:none;white-space:nowrap;">Pokaż na stronie ↗</a>
             </div>
+            <div class="view-toggle" id="viewToggle" style="display:none;">
+                <button class="vt-btn active" id="vtVisual" onclick="setPagesMode('visual')">Edycja na stronie</button>
+                <button class="vt-btn" id="vtList" onclick="setPagesMode('list')">Lista pól</button>
+            </div>
             <input type="search" id="fieldSearch" placeholder="Szukaj w polach tej strony..." oninput="filterFields()" style="width:100%;margin-top:12px;padding:10px 14px;border:2px solid var(--border);border-radius:8px;outline:none;display:none;">
-            <div class="field-help" style="margin-top:8px;">Edytujesz treść — układ i styl strony pozostają nietknięte. Zmienione pola podświetlają się na zielono.</div>
+            <div class="field-help" style="margin-top:8px;" id="pagesHint">Edytujesz treść — układ i styl strony pozostają nietknięte. Zmienione pola podświetlają się na zielono.</div>
+        </div>
+        <div id="visualWrap" style="display:none;">
+            <div class="field-help" style="margin:0 0 8px;">Kliknij dowolny tekst na stronie i pisz. Kliknij zdjęcie, żeby je podmienić. SEO i opisy zdjęć znajdziesz w widoku „Lista pól".</div>
+            <iframe id="visualFrame" title="Edycja na stronie" style="width:100%;height:calc(100vh - 320px);min-height:520px;border:2px solid var(--border);border-radius:12px;background:#fff;"></iframe>
         </div>
         <div id="pageFields"></div>
     </div>
@@ -423,7 +442,13 @@ function renderChips() {
 }
 function setCat(c) { activeCategory = c; renderChips(); renderPostList(); }
 function renderPostList() {
-    const q = ($('searchInput').value || '').toLowerCase();
+    let q = ($('searchInput').value || '').toLowerCase().trim();
+    if (/^https?:\/\//.test(q) || q.startsWith('/')) {
+        try {
+            const path = (/^https?:\/\//.test(q) ? new URL(q).pathname : q).replace(/^\/+|\/+$/g, '').replace(/\.html$/, '');
+            q = path.replace(/^wpis-/, '');
+        } catch (e) { /* zostaw jak jest */ }
+    }
     const items = posts.filter(p =>
         (activeCategory === 'all' || p.category === activeCategory) &&
         (!q || p.title.toLowerCase().includes(q) || p.slug.includes(q)));
@@ -838,45 +863,98 @@ function pageName(p) {
     if (PAGE_NAMES[p]) return PAGE_NAMES[p];
     return p.replace('oferta/', '').replace('.html', '').replace(/-/g, ' ').replace(/^./, c => c.toUpperCase());
 }
+let allPages = [];
 async function loadPages() {
     pagesLoaded = true;
     try {
         const res = await fetch(`${API}/content?action=pages`, { headers: { 'X-CMS-Token': token } });
         const data = await res.json();
+        allPages = data.pages || [];
         const groups = {};
-        (data.pages || []).forEach(p => { (groups[p.group] = groups[p.group] || []).push(p); });
+        allPages.forEach(p => { (groups[p.group] = groups[p.group] || []).push(p); });
         $('pageSelect').innerHTML = '<option value="">— wybierz stronę —</option>' +
             Object.entries(groups).map(([g, ps]) =>
                 `<optgroup label="${escA(g)}">` + ps.map(p => `<option value="${escA(p.path)}">${escH(pageName(p.path))} (${p.path})</option>`).join('') + '</optgroup>'
             ).join('');
     } catch (e) { toast('Błąd ładowania listy stron', true); pagesLoaded = false; }
 }
+
+// Wklejenie linka → otwarcie wlasciwej strony (albo wpisu w zakladce Blog)
+function urlToPath(raw) {
+    let s = String(raw || '').trim();
+    if (!s) return null;
+    try { if (/^https?:\/\//i.test(s)) s = new URL(s).pathname; } catch (e) { return null; }
+    s = s.replace(/^\/+|\/+$/g, '').replace(/\.html$/, '').replace(/[?#].*$/, '');
+    return decodeURIComponent(s);
+}
+async function openByUrl() {
+    const raw = $('globalUrlInput').value.trim();
+    const path = urlToPath(raw);
+    if (path === null || raw === '') return;
+    if (/^wpis-[a-z0-9-]+$/.test(path)) {
+        $('globalUrlInput').value = '';
+        switchTab('blog');
+        editPost(path.replace(/^wpis-/, ''));
+        toast('Otwieram wpis do edycji');
+        return;
+    }
+    if (!allPages.length) await loadPages();
+    const file = (path === '' ? 'index.html' : path + '.html');
+    const hit = allPages.find(p => p.path === file);
+    if (hit) {
+        $('globalUrlInput').value = '';
+        if (activeTab !== 'pages') switchTab('pages');
+        $('pageSelect').value = hit.path;
+        loadPageTexts();
+        toast('Otwieram: ' + pageName(hit.path));
+    } else if (/^https?:\/\//i.test(raw) || path.length > 2) {
+        toast('Nie znaleziono strony dla tego linka (albo nie jest publiczna)', true);
+    }
+}
+let pageValues = {}; // wspolny magazyn wartosci dla OBU widokow: {id: aktualna wartosc}
+let pageRawHtml = '';
+let pagesMode = localStorage.getItem('cms_pages_mode') || 'visual';
 async function loadPageTexts() {
     const page = $('pageSelect').value;
     $('pagesNote').textContent = '';
-    if (!page) { $('pageFields').innerHTML = ''; $('pagesBar').style.display = 'none'; return; }
-    $('pageFields').innerHTML = '<div class="loading"><div class="spinner"></div>Ładowanie tekstów...</div>';
+    if (!page) { $('pageFields').innerHTML = ''; $('visualWrap').style.display = 'none'; $('viewToggle').style.display = 'none'; $('pagesBar').style.display = 'none'; return; }
+    $('pageFields').innerHTML = '<div class="loading"><div class="spinner"></div>Ładowanie strony...</div>';
     try {
-        const res = await fetch(`${API}/content?action=texts&page=${encodeURIComponent(page)}`, { headers: { 'X-CMS-Token': token } });
+        const res = await fetch(`${API}/content?action=texts&page=${encodeURIComponent(page)}&raw=1`, { headers: { 'X-CMS-Token': token } });
         const data = await res.json();
         if (!res.ok) { toast(data.error || 'Błąd', true); return; }
         pageSha = data.sha; pageItems = data.items || [];
-        Object.keys(pageImageValues).forEach(k => delete pageImageValues[k]);
+        pageRawHtml = data.html || '';
+        pageValues = {};
         if (!pageHistories[page]) {
             const originals = {};
             pageItems.forEach(i => { originals[i.id] = { text: i.text, tag: i.tag }; });
             pageHistories[page] = { originals, stack: [], redo: [] };
         }
         curHist = pageHistories[page];
-        renderPageFields();
+        $('viewToggle').style.display = pageRawHtml ? 'inline-flex' : 'none';
+        renderActiveView();
         $('pagesBar').style.display = 'flex';
         $('viewPageBtn').style.display = '';
         $('viewPageBtn').href = '/' + page.replace(/\.html$/, '').replace(/^index$/, '');
-        $('fieldSearch').style.display = '';
         $('fieldSearch').value = '';
         dirty = false;
         updatePagesBar();
     } catch (e) { toast('Błąd: ' + e.message, true); }
+}
+function setPagesMode(mode) {
+    pagesMode = mode;
+    localStorage.setItem('cms_pages_mode', mode);
+    renderActiveView();
+}
+function renderActiveView() {
+    const visual = pagesMode === 'visual' && pageRawHtml;
+    $('vtVisual').classList.toggle('active', visual);
+    $('vtList').classList.toggle('active', !visual);
+    $('fieldSearch').style.display = visual ? 'none' : '';
+    $('visualWrap').style.display = visual ? 'block' : 'none';
+    $('pageFields').style.display = visual ? 'none' : 'block';
+    if (visual) renderVisual(); else renderPageFields();
 }
 function badgeFor(i) {
     if (i.tag === 'title' || i.tag === 'meta') return '<span class="tag-badge seo">SEO</span>';
@@ -888,11 +966,13 @@ function badgeFor(i) {
 function renderPageFields() {
     let html = '', lastSection = null;
     pageItems.forEach(i => {
+        const val = getFieldValue(i.id);
+        const chg = val !== i.text ? ' changed' : '';
         if (i.section !== lastSection) { html += `<div class="section-title">${escH(i.section)}</div>`; lastSection = i.section; }
         if (i.kind === 'img-src') {
-            html += `<div class="tfield" id="tf-${i.id}"><div class="img-field"><img src="/${escA(i.text)}" alt="" loading="lazy"><span class="fname" data-fname="${i.id}">${escH(i.text)}</span><button class="btn btn-sm btn-outline" onclick="changePageImage(${i.id})">Zmień zdjęcie</button></div></div>`;
+            html += `<div class="tfield${chg}" id="tf-${i.id}"><div class="img-field"><img src="/${escA(val)}" alt="" loading="lazy"><span class="fname" data-fname="${i.id}">${escH(val)}</span><button class="btn btn-sm btn-outline" onclick="changePageImage(${i.id})">Zmień zdjęcie</button></div></div>`;
         } else {
-            html += `<div class="tfield" id="tf-${i.id}"><div class="tmeta">${badgeFor(i)}</div><textarea data-id="${i.id}" rows="1">${escH(i.text)}</textarea></div>`;
+            html += `<div class="tfield${chg}" id="tf-${i.id}"><div class="tmeta">${badgeFor(i)}</div><textarea data-id="${i.id}" rows="1">${escH(val)}</textarea></div>`;
         }
     });
     $('pageFields').innerHTML = `<div class="card">${html}</div>`;
@@ -907,47 +987,162 @@ function renderPageFields() {
         });
         t.addEventListener('input', () => {
             autosize(t);
-            const item = pageItems.find(x => x.id === Number(t.dataset.id));
+            const id = Number(t.dataset.id);
+            const item = pageItems.find(x => x.id === id);
+            if (t.value === item.text) delete pageValues[id]; else pageValues[id] = t.value;
             t.closest('.tfield').classList.toggle('changed', t.value !== item.text);
             markDirty();
             updatePagesBar();
         });
     });
 }
+
+// ─── EDYTOR WIZUALNY (edycja bezposrednio na kopii strony) ───
+const VISUAL_CSS = `
+.reveal,.scale-in,.slide-left,.slide-right,[class*="split-heading"] *{opacity:1!important;transform:none!important;animation:none!important;transition:none!important;visibility:visible!important}
+[data-cms]{cursor:text;border-radius:3px}
+[data-cms]:hover{outline:2px dashed #8DC63F;outline-offset:2px;background:rgba(141,198,63,.10)}
+[data-cms]:focus{outline:2px solid #8DC63F;outline-offset:2px;background:rgba(253,255,244,.95)}
+[data-cms].cms-changed{background:rgba(141,198,63,.18)}
+img[data-cms-img]{cursor:pointer}
+img[data-cms-img]:hover{outline:3px dashed #8DC63F;outline-offset:3px}
+html{scroll-behavior:auto!important}
+`;
+function normTxt(s) { return String(s).replace(/ /g, ' ').replace(/\s+/g, ' ').trim(); }
+function renderVisual() {
+    let html = pageRawHtml;
+    html = html.replace(/<script\b[\s\S]*?<\/script>/gi, '').replace(/<noscript\b[\s\S]*?<\/noscript>/gi, '');
+    html = html.replace(/<head([^>]*)>/i, `<head$1><base href="${location.origin}/"><style>${VISUAL_CSS}</style>`);
+    const frame = $('visualFrame');
+    frame.onload = () => bindVisual(frame);
+    frame.srcdoc = html;
+}
+function bindVisual(frame) {
+    const doc = frame.contentDocument;
+    if (!doc) return;
+    // blokada nawigacji i formularzy
+    doc.addEventListener('click', e => {
+        const a = e.target.closest && e.target.closest('a');
+        if (a && !e.target.closest('[data-cms]')) e.preventDefault();
+    }, true);
+    doc.addEventListener('submit', e => e.preventDefault(), true);
+
+    // parowanie tekstow inwentarza z text node'ami (po kolejnosci wystapien)
+    const walker = doc.createTreeWalker(doc.body, NodeFilter.SHOW_TEXT, {
+        acceptNode: n => normTxt(n.nodeValue) ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_REJECT
+    });
+    const textNodes = [];
+    while (walker.nextNode()) textNodes.push(walker.currentNode);
+    let cursor = 0;
+    pageItems.filter(i => i.kind === 'node' && i.tag !== 'title').forEach(item => {
+        for (let k = cursor; k < textNodes.length; k++) {
+            if (normTxt(textNodes[k].nodeValue) === normTxt(item.text)) {
+                const span = doc.createElement('span');
+                span.setAttribute('data-cms', item.id);
+                span.setAttribute('contenteditable', 'true');
+                span.setAttribute('spellcheck', 'false');
+                textNodes[k].parentNode.replaceChild(span, textNodes[k]);
+                span.textContent = getFieldValue(item.id);
+                if (getFieldValue(item.id) !== item.text) span.classList.add('cms-changed');
+                cursor = k + 1;
+                break;
+            }
+        }
+    });
+    // zdjecia
+    let imgCursor = 0;
+    const imgs = [...doc.images];
+    pageItems.filter(i => i.kind === 'img-src').forEach(item => {
+        for (let k = imgCursor; k < imgs.length; k++) {
+            if ((imgs[k].getAttribute('src') || '') === item.text) {
+                imgs[k].setAttribute('data-cms-img', item.id);
+                const cur = getFieldValue(item.id);
+                if (cur !== item.text) imgs[k].src = '/' + cur;
+                imgCursor = k + 1;
+                break;
+            }
+        }
+    });
+
+    // edycja tekstu: focus->snapshot, input->store, blur->undo
+    doc.addEventListener('focusin', e => {
+        const el = e.target.closest && e.target.closest('[data-cms]');
+        if (el) el.dataset.startVal = el.textContent;
+    });
+    doc.addEventListener('input', e => {
+        const el = e.target.closest && e.target.closest('[data-cms]');
+        if (!el) return;
+        const id = Number(el.getAttribute('data-cms'));
+        const item = pageItems.find(x => x.id === id);
+        const v = el.textContent;
+        if (v === item.text) delete pageValues[id]; else pageValues[id] = v;
+        el.classList.toggle('cms-changed', v !== item.text);
+        markDirty();
+        updatePagesBar();
+    });
+    doc.addEventListener('focusout', e => {
+        const el = e.target.closest && e.target.closest('[data-cms]');
+        if (!el) return;
+        const v = el.textContent;
+        if (el.dataset.startVal !== undefined && v !== el.dataset.startVal) {
+            pushUndo({ id: Number(el.getAttribute('data-cms')), tag: 'text', prev: el.dataset.startVal, next: v });
+            el.dataset.startVal = v;
+        }
+    });
+    // wklejanie jako czysty tekst
+    doc.addEventListener('paste', e => {
+        const el = e.target.closest && e.target.closest('[data-cms]');
+        if (!el) return;
+        e.preventDefault();
+        const txt = (e.clipboardData || frame.contentWindow.clipboardData).getData('text/plain');
+        frame.contentDocument.execCommand('insertText', false, txt);
+    });
+    // klik w zdjecie = podmiana
+    doc.addEventListener('click', e => {
+        const img = e.target.closest && e.target.closest('img[data-cms-img]');
+        if (!img) return;
+        e.preventDefault();
+        changePageImage(Number(img.getAttribute('data-cms-img')));
+    });
+}
 function countPageChanges() {
     let n = 0;
-    $('pageFields').querySelectorAll('textarea').forEach(t => {
-        const item = pageItems.find(x => x.id === Number(t.dataset.id));
-        if (item && t.value !== item.text) n++;
-    });
-    Object.entries(pageImageValues).forEach(([id, path]) => {
+    Object.entries(pageValues).forEach(([id, v]) => {
         const item = pageItems.find(x => x.id === Number(id));
-        if (item && path !== item.text) n++;
+        if (item && v !== item.text) n++;
     });
     return n;
 }
 function getFieldValue(id) {
     const item = pageItems.find(x => x.id === id);
     if (!item) return undefined;
-    if (item.kind === 'img-src') return pageImageValues[id] !== undefined ? pageImageValues[id] : item.text;
-    const t = $('pageFields').querySelector(`textarea[data-id="${id}"]`);
-    return t ? t.value : undefined;
+    return pageValues[id] !== undefined ? pageValues[id] : item.text;
 }
 function setFieldValue(id, val) {
     const item = pageItems.find(x => x.id === id);
     if (!item) return;
+    if (val === item.text) delete pageValues[id]; else pageValues[id] = val;
+    // widok listy (jesli wyrenderowany)
     const tf = $(`tf-${id}`);
-    if (item.kind === 'img-src') {
-        if (val === item.text) delete pageImageValues[id]; else pageImageValues[id] = val;
-        const f = tf.querySelector(`[data-fname="${id}"]`);
-        f.textContent = val;
-        tf.querySelector('img').src = '/' + val;
-    } else {
-        const t = tf.querySelector('textarea');
-        t.value = val;
-        autosize(t);
+    if (tf) {
+        if (item.kind === 'img-src') {
+            const f = tf.querySelector(`[data-fname="${id}"]`);
+            if (f) { f.textContent = val; tf.querySelector('img').src = '/' + val; }
+        } else {
+            const t = tf.querySelector('textarea');
+            if (t) { t.value = val; autosize(t); }
+        }
+        tf.classList.toggle('changed', val !== item.text);
     }
-    tf.classList.toggle('changed', val !== item.text);
+    // widok wizualny (jesli wyrenderowany)
+    const doc = $('visualFrame').contentDocument;
+    if (doc) {
+        const span = doc.querySelector(`[data-cms="${id}"]`);
+        if (span && span.textContent !== val) span.textContent = val;
+        if (span) span.classList.toggle('cms-changed', val !== item.text);
+        const img = doc.querySelector(`img[data-cms-img="${id}"]`);
+        if (img) img.src = '/' + val;
+    }
     updatePagesBar();
 }
 function updatePagesBar() {
@@ -1005,7 +1200,6 @@ function restoreSession() {
     if (n) { markDirty(); toast(`Przywrócono ${n} pól do stanu początkowego`); }
     else toast('Wszystko już jest w stanie początkowym');
 }
-const pageImageValues = {};
 async function changePageImage(id) {
     const input = document.createElement('input');
     input.type = 'file'; input.accept = '.webp,.jpg,.jpeg,.png,.avif';
@@ -1014,8 +1208,7 @@ async function changePageImage(id) {
         toast('Wysyłanie obrazu...');
         try {
             const path = await uploadFile(input.files[0]);
-            const item = pageItems.find(x => x.id === id);
-            pushUndo({ id, tag: 'img', prev: pageImageValues[id] !== undefined ? pageImageValues[id] : item.text, next: path });
+            pushUndo({ id, tag: 'img', prev: getFieldValue(id), next: path });
             setFieldValue(id, path);
             markDirty();
             toast('Obraz wgrany — zapisz zmiany, aby opublikować');
@@ -1045,13 +1238,9 @@ function filterFields() {
 async function savePageTexts() {
     const page = $('pageSelect').value;
     const edits = [];
-    $('pageFields').querySelectorAll('textarea').forEach(t => {
-        const item = pageItems.find(x => x.id === Number(t.dataset.id));
-        if (item && t.value !== item.text) edits.push({ start: item.start, end: item.end, old: item.text, text: t.value, kind: item.kind });
-    });
-    Object.entries(pageImageValues).forEach(([id, path]) => {
+    Object.entries(pageValues).forEach(([id, v]) => {
         const item = pageItems.find(x => x.id === Number(id));
-        if (item && path !== item.text) edits.push({ start: item.start, end: item.end, old: item.text, text: path, kind: 'img-src' });
+        if (item && v !== item.text) edits.push({ start: item.start, end: item.end, old: item.text, text: v, kind: item.kind });
     });
     if (!edits.length) { toast('Brak zmian do zapisania'); return; }
     const btn = $('pagesSaveBtn');

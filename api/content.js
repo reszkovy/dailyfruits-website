@@ -375,7 +375,9 @@ export default async function handler(req, res) {
       if ((await nonPublicFiles()).has(page)) return res.status(403).json({ error: 'Ta strona nie jest publiczna — edycja z panelu wylaczona' });
       const file = await readFile(page);
       if (!file) return res.status(404).json({ error: 'Nie znaleziono strony' });
-      return res.status(200).json({ sha: file.sha, items: extractTexts(file.content) });
+      const out = { sha: file.sha, items: extractTexts(file.content) };
+      if (req.query.raw === '1') out.html = file.content; // dla edytora wizualnego
+      return res.status(200).json(out);
     }
 
     if (method === 'PUT' && action === 'texts') {
