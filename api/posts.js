@@ -12,8 +12,9 @@
 //
 // Zapisy wielu plikow ida JEDNYM commitem (Git Data API) => jeden deploy Vercela.
 
+import { SITE_URL, BLOG, UPLOAD } from './_config.js';
+
 const GITHUB_API = 'https://api.github.com';
-const SITE_URL = 'https://dailyfruits.pl';
 
 const repo = () => process.env.GITHUB_REPO;
 const branch = () => process.env.GITHUB_BRANCH || 'main';
@@ -139,7 +140,7 @@ function splicePost(html, f) {
   rep(/(<meta name="description" content=")[^"]*(")/, `$1${R(escAttr(f.description || ''))}$2`, 'meta description');
   rep(/(<meta property="og:title" content=")[^"]*(")/, `$1${R(escAttr(fullTitle))}$2`, 'og:title');
   rep(/(<meta property="og:description" content=")[^"]*(")/, `$1${R(escAttr(f.description || ''))}$2`, 'og:description');
-  if (f.slug) rep(/(<meta property="og:url" content=")[^"]*(")/, `$1${SITE_URL}/wpis-${f.slug}$2`, 'og:url');
+  if (f.slug) rep(/(<meta property="og:url" content=")[^"]*(")/, `$1${SITE_URL}/${BLOG.postPrefix}${f.slug}$2`, 'og:url');
   if (f.heroImage) {
     const abs = /^https?:/.test(f.heroImage) ? f.heroImage : `${SITE_URL}/${f.heroImage}`;
     rep(/(<meta property="og:image" content=")[^"]*(")/, `$1${R(escAttr(abs))}$2`, 'og:image');
@@ -169,9 +170,10 @@ function splicePost(html, f) {
 
 // ─── BLOG.HTML: karty + filtry ───
 
+// MARKUP: szablon karty wpisu — dostosuj przy przenoszeniu na inna strone (README-CMS)
 function cardHtml(f) {
   return `            <a href="wpis-${f.slug}" class="blog-card reveal" data-category="${escAttr(f.category)}">
-                <img src="${escAttr(f.heroImage || 'blog-fakty-mity-hero.webp')}" alt="${escAttr(stripTags(f.title))}" class="blog-card-img" loading="lazy" width="400" height="300">
+                <img src="${escAttr(f.heroImage || BLOG.fallbackHero)}" alt="${escAttr(stripTags(f.title))}" class="blog-card-img" loading="lazy" width="400" height="300">
                 <div class="blog-card-body">
                     <span class="blog-card-date">${f.dateDisplay}</span>
                     <span class="blog-card-tag">${escAttr(f.category)}</span>
@@ -182,6 +184,7 @@ function cardHtml(f) {
             </a>`;
 }
 
+// MARKUP: selektory kart/list bloga — dostosuj przy przenoszeniu
 function cardRegex(slug) {
   return new RegExp(`[ \\t]*<a href="wpis-${esc(slug)}"[^>]*class="blog-card[\\s\\S]*?<\\/a>\\n?`);
 }
@@ -231,14 +234,14 @@ function rebuildFilters(blogHtml) {
 // ─── SITEMAP ───
 
 function sitemapUpsert(xml, slug, isoDate) {
-  const line = `  <url><loc>${SITE_URL}/wpis-${slug}</loc><lastmod>${isoDate}</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>`;
-  const re = new RegExp(`[ \\t]*<url><loc>${esc(SITE_URL)}/wpis-${esc(slug)}</loc>[^\\n]*\\n?`);
+  const line = `  <url><loc>${SITE_URL}/${BLOG.postPrefix}${slug}</loc><lastmod>${isoDate}</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>`;
+  const re = new RegExp(`[ \\t]*<url><loc>${esc(SITE_URL)}/${esc(BLOG.postPrefix)}${esc(slug)}</loc>[^\\n]*\\n?`);
   if (re.test(xml)) return xml.replace(re, line + '\n');
   return xml.replace(/(<\/urlset>)/, `${line}\n$1`);
 }
 
 function sitemapRemove(xml, slug) {
-  return xml.replace(new RegExp(`[ \\t]*<url><loc>${esc(SITE_URL)}/wpis-${esc(slug)}</loc>[^\\n]*\\n?`), '');
+  return xml.replace(new RegExp(`[ \\t]*<url><loc>${esc(SITE_URL)}/${esc(BLOG.postPrefix)}${esc(slug)}</loc>[^\\n]*\\n?`), '');
 }
 
 // ─── WALIDACJA POL ───
@@ -273,7 +276,7 @@ export default async function handler(req, res) {
 
   try {
     if (method === 'GET' && action === 'list') {
-      const blog = await readFile('blog.html');
+      const blog = await readFile(BLOG.listPage);
       if (!blog) return res.status(500).json({ error: 'Nie mozna pobrac blog.html' });
 
       const posts = [];
@@ -287,13 +290,13 @@ export default async function handler(req, res) {
     }
 
     if (method === 'GET' && action === 'get' && safeSlug) {
-      const file = await readFile(`wpis-${safeSlug}.html`);
+      const file = await readFile(`${BLOG.postPrefix}${safeSlug}.html`);
       if (!file) return res.status(404).json({ error: 'Nie znaleziono wpisu' });
       const post = extractPost(file.content, safeSlug);
       post.sha = file.sha;
       post.rawHtml = file.content;
 
-      const blog = await readFile('blog.html');
+      const blog = await readFile(BLOG.listPage);
       if (blog) {
         const cm = blog.content.match(cardRegex(safeSlug));
         if (cm) {
@@ -326,18 +329,18 @@ export default async function handler(req, res) {
       const errors = validateFields(fields);
       if (errors.length) return res.status(400).json({ error: errors.join('; ') });
 
-      const file = await readFile(`wpis-${safeSlug}.html`);
+      const file = await readFile(`${BLOG.postPrefix}${safeSlug}.html`);
       if (!file) return res.status(404).json({ error: 'Nie znaleziono wpisu' });
 
       const { html: newHtml, warnings } = splicePost(file.content, fields);
 
-      const files = [{ path: `wpis-${safeSlug}.html`, content: newHtml }];
-      const blog = await readFile('blog.html');
+      const files = [{ path: `${BLOG.postPrefix}${safeSlug}.html`, content: newHtml }];
+      const blog = await readFile(BLOG.listPage);
       if (blog) {
         let b = upsertCard(blog.content, fields, { insert: false });
         b = syncFeaturedCard(b, fields);
         b = rebuildFilters(b);
-        if (b !== blog.content) files.push({ path: 'blog.html', content: b });
+        if (b !== blog.content) files.push({ path: BLOG.listPage, content: b });
       }
       const sitemap = await readFile('sitemap.xml');
       if (sitemap) {
@@ -355,15 +358,15 @@ export default async function handler(req, res) {
       const errors = validateFields(fields, { forCreate: true });
       if (errors.length) return res.status(400).json({ error: errors.join('; ') });
 
-      const exists = await readFile(`wpis-${fields.slug}.html`);
+      const exists = await readFile(`${BLOG.postPrefix}${fields.slug}.html`);
       if (exists) return res.status(409).json({ error: `Wpis wpis-${fields.slug} juz istnieje` });
 
       // Szkielet = najnowszy istniejacy wpis (pierwsza karta w blog.html)
-      const blog = await readFile('blog.html');
+      const blog = await readFile(BLOG.listPage);
       if (!blog) return res.status(500).json({ error: 'Nie mozna pobrac blog.html' });
       const first = blog.content.match(/<a href="wpis-([a-z0-9-]+)"[^>]*class="blog-card/);
       if (!first) return res.status(500).json({ error: 'Brak wpisu-szkieletu w blog.html' });
-      const ref = await readFile(`wpis-${first[1]}.html`);
+      const ref = await readFile(`${BLOG.postPrefix}${first[1]}.html`);
       if (!ref) return res.status(500).json({ error: 'Nie mozna pobrac wpisu-szkieletu' });
 
       const { html: newHtml, warnings } = splicePost(ref.content, fields);
@@ -372,8 +375,8 @@ export default async function handler(req, res) {
       b = rebuildFilters(b);
 
       const files = [
-        { path: `wpis-${fields.slug}.html`, content: newHtml },
-        { path: 'blog.html', content: b }
+        { path: `${BLOG.postPrefix}${fields.slug}.html`, content: newHtml },
+        { path: BLOG.listPage, content: b }
       ];
       const sitemap = await readFile('sitemap.xml');
       if (sitemap) files.push({ path: 'sitemap.xml', content: sitemapUpsert(sitemap.content, fields.slug, fields.dateISO || todayISO()) });
@@ -383,15 +386,15 @@ export default async function handler(req, res) {
     }
 
     if (method === 'DELETE' && action === 'delete' && safeSlug) {
-      const file = await readFile(`wpis-${safeSlug}.html`);
+      const file = await readFile(`${BLOG.postPrefix}${safeSlug}.html`);
       if (!file) return res.status(404).json({ error: 'Nie znaleziono wpisu' });
 
-      const files = [{ path: `wpis-${safeSlug}.html`, delete: true }];
-      const blog = await readFile('blog.html');
+      const files = [{ path: `${BLOG.postPrefix}${safeSlug}.html`, delete: true }];
+      const blog = await readFile(BLOG.listPage);
       if (blog) {
         let b = removeCard(blog.content, safeSlug);
         b = rebuildFilters(b);
-        files.push({ path: 'blog.html', content: b });
+        files.push({ path: BLOG.listPage, content: b });
       }
       const sitemap = await readFile('sitemap.xml');
       if (sitemap) {
@@ -406,13 +409,13 @@ export default async function handler(req, res) {
     if (method === 'POST' && action === 'upload') {
       const { filename, contentBase64 } = req.body || {};
       if (!filename || !contentBase64) return res.status(400).json({ error: 'filename i contentBase64 wymagane' });
-      if (contentBase64.length > 6 * 1024 * 1024) return res.status(413).json({ error: 'Plik za duzy (max ~4 MB)' });
+      if (contentBase64.length > UPLOAD.maxBase64Bytes) return res.status(413).json({ error: 'Plik za duzy (max ~4 MB)' });
 
       const map = { 'ą': 'a', 'ć': 'c', 'ę': 'e', 'ł': 'l', 'ń': 'n', 'ó': 'o', 'ś': 's', 'ź': 'z', 'ż': 'z' };
       const clean = filename.toLowerCase()
         .replace(/[ąćęłńóśźż]/g, c => map[c])
         .replace(/[^a-z0-9.-]/g, '-').replace(/-+/g, '-');
-      if (!/\.(webp|jpg|jpeg|png|svg|avif)$/.test(clean)) return res.status(400).json({ error: 'Dozwolone: webp, jpg, png, svg, avif' });
+      if (!UPLOAD.allowedExt.test(clean)) return res.status(400).json({ error: 'Dozwolone: webp, jpg, png, svg, avif' });
 
       const existing = await readFile(clean);
       const path = existing ? clean.replace(/(\.[a-z]+)$/, `-${Date.now().toString(36)}$1`) : clean;

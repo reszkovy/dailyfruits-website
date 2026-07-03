@@ -290,8 +290,12 @@ input, textarea, select { font-family: var(--font); font-size: 15px; }
     <div class="wrap" id="pagesView" style="display:none;">
         <div class="card">
             <h2>Wybierz stronę do edycji</h2>
-            <select class="page-select" id="pageSelect" onchange="loadPageTexts()"></select>
-            <div class="field-help" style="margin-top:8px;">Edytujesz teksty — układ, zdjęcia i styl strony pozostają nietknięte. Zmienione pola podświetlają się na zielono.</div>
+            <div style="display:flex;gap:10px;align-items:center;">
+                <select class="page-select" id="pageSelect" onchange="loadPageTexts()" style="flex:1;"></select>
+                <a class="btn btn-outline btn-sm" id="viewPageBtn" href="/" target="_blank" rel="noopener" style="display:none;white-space:nowrap;">Pokaż na stronie ↗</a>
+            </div>
+            <input type="search" id="fieldSearch" placeholder="Szukaj w polach tej strony..." oninput="filterFields()" style="width:100%;margin-top:12px;padding:10px 14px;border:2px solid var(--border);border-radius:8px;outline:none;display:none;">
+            <div class="field-help" style="margin-top:8px;">Edytujesz treść — układ i styl strony pozostają nietknięte. Zmienione pola podświetlają się na zielono.</div>
         </div>
         <div id="pageFields"></div>
     </div>
@@ -814,6 +818,10 @@ async function loadPageTexts() {
         curHist = pageHistories[page];
         renderPageFields();
         $('pagesBar').style.display = 'flex';
+        $('viewPageBtn').style.display = '';
+        $('viewPageBtn').href = '/' + page.replace(/\.html$/, '').replace(/^index$/, '');
+        $('fieldSearch').style.display = '';
+        $('fieldSearch').value = '';
         dirty = false;
         updatePagesBar();
     } catch (e) { toast('Błąd: ' + e.message, true); }
@@ -964,6 +972,24 @@ async function changePageImage(id) {
     input.click();
 }
 function autosize(t) { t.style.height = 'auto'; t.style.height = (t.scrollHeight + 4) + 'px'; }
+function filterFields() {
+    const q = $('fieldSearch').value.trim().toLowerCase();
+    const fields = $('pageFields').querySelectorAll('.tfield');
+    fields.forEach(f => {
+        const item = pageItems.find(x => `tf-${x.id}` === f.id);
+        const cur = item ? String(getFieldValue(item.id) || '') : '';
+        const hay = (cur + ' ' + (item ? item.text + ' ' + item.section : '')).toLowerCase();
+        f.style.display = !q || hay.includes(q) ? '' : 'none';
+    });
+    $('pageFields').querySelectorAll('.section-title').forEach(st => {
+        let el = st.nextElementSibling, any = false;
+        while (el && !el.classList.contains('section-title')) {
+            if (el.classList.contains('tfield') && el.style.display !== 'none') { any = true; break; }
+            el = el.nextElementSibling;
+        }
+        st.style.display = !q || any ? '' : 'none';
+    });
+}
 async function savePageTexts() {
     const page = $('pageSelect').value;
     const edits = [];
