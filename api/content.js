@@ -14,6 +14,8 @@
 // pozostaje nietknieta. (Helpery GitHub celowo skopiowane z posts.js — funkcje
 // serverless bundlowane sa osobno.)
 
+import { PAGES, PRODUCTS } from './_config.js';
+
 const GITHUB_API = 'https://api.github.com';
 
 const repo = () => process.env.GITHUB_REPO;
@@ -190,6 +192,7 @@ function applyEdits(html, edits) {
 
 // ─── PRODUKTY (oferta.html: panele data-cat → siatki kart) ───
 
+// MARKUP: selektory paneli/kart produktow — dostosuj przy przenoszeniu (README-CMS)
 function scanProducts(html) {
   const panels = [];
   const panelRe = /<div class="cat-panel[^"]*" data-cat="([a-z0-9-]+)"[^>]*>/g;
@@ -229,7 +232,7 @@ function buildCard(f) {
   const lis = (f.skladniki || []).map(s => `<li>${encodeNode(s)}</li>`).join('');
   const desc = f.desc ? `<p>${encodeNode(f.desc)}</p>` : '';
   return `            <div class="product-card">
-                <div class="product-card-img"><img src="${encodeAttr(f.image || 'hero-box.webp')}" alt="${encodeAttr(f.alt || f.name || '')}" loading="lazy" width="900" height="600"></div>
+                <div class="product-card-img"><img src="${encodeAttr(f.image || PRODUCTS.fallbackImage)}" alt="${encodeAttr(f.alt || f.name || '')}" loading="lazy" width="900" height="600"></div>
                 <div class="product-card-body"><h3>${encodeNode(f.name)}</h3>${desc}<ul class="skladniki">${lis}</ul></div>
             </div>`;
 }
@@ -263,7 +266,7 @@ function validProduct(f) {
 
 // ─── STRONY ───
 
-const PAGE_EXCLUDE = /^(admin|404|wpis-.*)\.html$/;
+const PAGE_EXCLUDE = PAGES.excludePattern;
 
 // Publiczne = wdrazane. Pliki wykluczone w .vercelignore (strony robocze)
 // nie sa dostepne w panelu.
@@ -273,12 +276,13 @@ function parseVercelignore(content) {
     .filter(l => l && !l.startsWith('#') && !l.endsWith('/')));
 }
 async function nonPublicFiles() {
-  const f = await readFile('.vercelignore');
+  const f = await readFile(PAGES.ignoreFile);
   return parseVercelignore(f ? f.content : '');
 }
 
 async function listPages() {
-  const [root, oferta, ignored] = await Promise.all([listDir(''), listDir('oferta'), nonPublicFiles()]);
+  const extraDir = PAGES.extraDirs[0] || 'oferta';
+  const [root, oferta, ignored] = await Promise.all([listDir(''), listDir(extraDir), nonPublicFiles()]);
   const pages = [];
   for (const f of root) {
     if (f.type === 'file' && f.name.endsWith('.html') && !PAGE_EXCLUDE.test(f.name) && !ignored.has(f.name)) {
@@ -306,6 +310,7 @@ function safePage(page) {
 
 // ─── MENU ───
 
+// MARKUP: selektory nawigacji — dostosuj przy przenoszeniu (README-CMS)
 function parseMenu(html) {
   const navM = html.match(/<ul class="nav-links">([\s\S]*?)<\/ul>/);
   const items = [];
@@ -425,7 +430,7 @@ export default async function handler(req, res) {
     }
 
     if (method === 'GET' && action === 'products') {
-      const file = await readFile('oferta.html');
+      const file = await readFile(PRODUCTS.page);
       if (!file) return res.status(500).json({ error: 'Nie mozna pobrac oferta.html' });
       const products = scanProducts(file.content).map((p, i) => ({ ...p, index: i }));
       const cats = [...new Set(products.map(p => p.cat))];
@@ -436,7 +441,7 @@ export default async function handler(req, res) {
       const { sha, op, index, expectName, fields } = req.body || {};
       if (!sha || !op) return res.status(400).json({ error: 'sha i op wymagane' });
 
-      const file = await readFile('oferta.html');
+      const file = await readFile(PRODUCTS.page);
       if (!file) return res.status(500).json({ error: 'Nie mozna pobrac oferta.html' });
       if (file.sha !== sha) return res.status(409).json({ error: 'Oferta zmienila sie w miedzyczasie — odswiez i sprobuj ponownie' });
 
@@ -474,7 +479,7 @@ export default async function handler(req, res) {
         }
       }
 
-      const commit = await commitFiles([{ path: 'oferta.html', content: html }], message);
+      const commit = await commitFiles([{ path: PRODUCTS.page, content: html }], message);
       return res.status(200).json({ ok: true, commit });
     }
 
