@@ -310,6 +310,7 @@ input, textarea, select { font-family: var(--font); font-size: 15px; }
             <div style="display:flex;gap:10px;align-items:center;">
                 <select class="page-select" id="pageSelect" onchange="loadPageTexts()" style="flex:1;"></select>
                 <a class="btn btn-outline btn-sm" id="viewPageBtn" href="/" target="_blank" rel="noopener" style="display:none;white-space:nowrap;">Pokaż na stronie ↗</a>
+                <button class="btn btn-outline btn-sm" id="historyBtn" onclick="openHistory($('pageSelect').value, 'page')" style="display:none;white-space:nowrap;">Historia</button>
             </div>
             <div class="view-toggle" id="viewToggle" style="display:none;">
                 <button class="vt-btn active" id="vtVisual" onclick="setPagesMode('visual')">Edycja na stronie</button>
@@ -369,6 +370,7 @@ input, textarea, select { font-family: var(--font); font-size: 15px; }
         <button class="btn btn-danger btn-sm" id="deleteBtn" onclick="deletePost()">Usuń artykuł</button>
         <div class="grow"></div>
         <span class="deploy-note" id="deployNote"></span>
+        <button class="btn btn-outline" id="histBlogBtn" onclick="openHistory('wpis-' + currentSlug + '.html', 'post')">Historia</button>
         <button class="btn btn-outline" onclick="showPreview()">Podgląd</button>
         <button class="btn btn-green" id="saveBtn" onclick="savePost()">Zapisz i opublikuj</button>
     </div>
@@ -385,6 +387,19 @@ input, textarea, select { font-family: var(--font); font-size: 15px; }
             <div class="preview-title" id="pvTitle"></div>
             <img class="preview-hero" id="pvHero" src="favicon_.png" alt="">
             <div class="preview-body" id="pvBody"></div>
+        </div>
+    </div>
+</div>
+
+<div class="modal" id="historyModal">
+    <div class="modal-box" style="max-width:640px;">
+        <div class="modal-head">
+            <h3>Historia zmian</h3>
+            <button class="btn btn-sm btn-outline" onclick="historyModal.style.display='none'">Zamknij</button>
+        </div>
+        <div class="modal-body" style="padding:18px 24px;">
+            <div class="field-help" style="margin-bottom:14px;">Przywrócenie wersji samo jest nową zmianą w historii — nic nie ginie i zawsze można wrócić.</div>
+            <div id="historyList"><div class="loading"><div class="spinner"></div>Ładowanie historii...</div></div>
         </div>
     </div>
 </div>
@@ -497,6 +512,7 @@ async function editPost(slug) {
     openEditor();
     $('slugField').style.display = 'none';
     $('deleteBtn').style.display = '';
+    $('histBlogBtn').style.display = '';
     $('rte').innerHTML = '<p style="color:#9CA3AF">Ładowanie...</p>';
     try {
         const res = await fetch(`${API}/posts?action=get&slug=${slug}`, { headers: { 'X-CMS-Token': token } });
@@ -521,6 +537,7 @@ function newPost() {
     openEditor();
     $('slugField').style.display = '';
     $('deleteBtn').style.display = 'none';
+    $('histBlogBtn').style.display = 'none';
     $('editTitle').value = ''; $('editSlug').value = ''; $('slugPreview').textContent = '...';
     $('editCategory').value = '';
     const t = new Date();
@@ -785,6 +802,51 @@ function trackDeploy(commit) {
     }, 8000);
 }
 
+// ─── HISTORIA WERSJI ───
+let historyCtx = null;
+async function openHistory(page, kind) {
+    if (!page) return;
+    historyCtx = { page, kind };
+    $('historyModal').style.display = 'flex';
+    $('historyList').innerHTML = '<div class="loading"><div class="spinner"></div>Ładowanie historii...</div>';
+    try {
+        const res = await fetch(`${API}/content?action=history&page=${encodeURIComponent(page)}`, { headers: { 'X-CMS-Token': token } });
+        const data = await res.json();
+        if (!res.ok) { $('historyList').innerHTML = `<div class="loading">${escH(data.error || 'Błąd')}</div>`; return; }
+        if (!data.items.length) { $('historyList').innerHTML = '<div class="loading">Brak historii</div>'; return; }
+        $('historyList').innerHTML = data.items.map((it, n) => `
+            <div class="menu-row">
+                <div style="flex:1;min-width:0;">
+                    <div style="font-weight:700;font-size:14px;">${escH(it.message)}</div>
+                    <div class="deploy-note">${new Date(it.date).toLocaleString('pl-PL', {dateStyle:'medium', timeStyle:'short'})}</div>
+                </div>
+                ${n === 0
+                    ? '<span class="post-item-tag">Aktualna</span>'
+                    : `<button class="btn btn-sm btn-green" onclick="restoreVersion('${it.sha}', this)">Przywróć</button>`}
+            </div>`).join('');
+    } catch (e) { $('historyList').innerHTML = '<div class="loading">Błąd ładowania</div>'; }
+}
+async function restoreVersion(sha, btn) {
+    if (!historyCtx) return;
+    if (!confirm('Przywrócić tę wersję? Obecna wersja zostanie w historii.')) return;
+    btn.disabled = true; btn.textContent = 'Przywracanie...';
+    try {
+        const res = await fetch(`${API}/content?action=revert`, {
+            method: 'POST', headers: { 'Content-Type': 'application/json', 'X-CMS-Token': token },
+            body: JSON.stringify({ page: historyCtx.page, commit: sha })
+        });
+        const data = await res.json();
+        if (!data.ok) { toast(data.error || 'Błąd przywracania', true); return; }
+        if (!data.commit) { toast(data.note || 'Ta wersja jest już aktualna'); return; }
+        trackDeploy(data.commit);
+        toast('Wersja przywrócona ✓');
+        $('historyModal').style.display = 'none';
+        dirty = false;
+        if (historyCtx.kind === 'post') editPost(currentSlug); else loadPageTexts();
+    } catch (e) { toast('Błąd: ' + e.message, true); }
+    finally { btn.disabled = false; btn.textContent = 'Przywróć'; }
+}
+
 // ─── POMOCNICZE ───
 function counter(el, id, max) {
     const n = el.value.length;
@@ -945,6 +1007,7 @@ async function loadPageTexts() {
         renderActiveView();
         $('pagesBar').style.display = 'flex';
         $('viewPageBtn').style.display = '';
+        $('historyBtn').style.display = '';
         $('viewPageBtn').href = '/' + page.replace(/\.html$/, '').replace(/^index$/, '');
         $('fieldSearch').value = '';
         dirty = false;
