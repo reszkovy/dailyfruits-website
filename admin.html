@@ -291,6 +291,7 @@ input, textarea, select { font-family: var(--font); font-size: 15px; }
     <div class="wrap" id="pagesView" style="display:none;">
         <div class="card">
             <h2>Wybierz stronę do edycji</h2>
+            <input type="text" id="pageUrlInput" placeholder="Wklej link do strony, np. https://dailyfruits.pl/dostawa — albo wybierz z listy poniżej" onkeydown="if(event.key==='Enter')openByUrl()" onpaste="setTimeout(openByUrl, 50)" style="width:100%;margin-bottom:12px;padding:10px 14px;border:2px solid var(--border);border-radius:8px;outline:none;">
             <div style="display:flex;gap:10px;align-items:center;">
                 <select class="page-select" id="pageSelect" onchange="loadPageTexts()" style="flex:1;"></select>
                 <a class="btn btn-outline btn-sm" id="viewPageBtn" href="/" target="_blank" rel="noopener" style="display:none;white-space:nowrap;">Pokaż na stronie ↗</a>
@@ -423,7 +424,13 @@ function renderChips() {
 }
 function setCat(c) { activeCategory = c; renderChips(); renderPostList(); }
 function renderPostList() {
-    const q = ($('searchInput').value || '').toLowerCase();
+    let q = ($('searchInput').value || '').toLowerCase().trim();
+    if (/^https?:\/\//.test(q) || q.startsWith('/')) {
+        try {
+            const path = (/^https?:\/\//.test(q) ? new URL(q).pathname : q).replace(/^\/+|\/+$/g, '').replace(/\.html$/, '');
+            q = path.replace(/^wpis-/, '');
+        } catch (e) { /* zostaw jak jest */ }
+    }
     const items = posts.filter(p =>
         (activeCategory === 'all' || p.category === activeCategory) &&
         (!q || p.title.toLowerCase().includes(q) || p.slug.includes(q)));
@@ -838,18 +845,50 @@ function pageName(p) {
     if (PAGE_NAMES[p]) return PAGE_NAMES[p];
     return p.replace('oferta/', '').replace('.html', '').replace(/-/g, ' ').replace(/^./, c => c.toUpperCase());
 }
+let allPages = [];
 async function loadPages() {
     pagesLoaded = true;
     try {
         const res = await fetch(`${API}/content?action=pages`, { headers: { 'X-CMS-Token': token } });
         const data = await res.json();
+        allPages = data.pages || [];
         const groups = {};
-        (data.pages || []).forEach(p => { (groups[p.group] = groups[p.group] || []).push(p); });
+        allPages.forEach(p => { (groups[p.group] = groups[p.group] || []).push(p); });
         $('pageSelect').innerHTML = '<option value="">— wybierz stronę —</option>' +
             Object.entries(groups).map(([g, ps]) =>
                 `<optgroup label="${escA(g)}">` + ps.map(p => `<option value="${escA(p.path)}">${escH(pageName(p.path))} (${p.path})</option>`).join('') + '</optgroup>'
             ).join('');
     } catch (e) { toast('Błąd ładowania listy stron', true); pagesLoaded = false; }
+}
+
+// Wklejenie linka → otwarcie wlasciwej strony (albo wpisu w zakladce Blog)
+function urlToPath(raw) {
+    let s = String(raw || '').trim();
+    if (!s) return null;
+    try { if (/^https?:\/\//i.test(s)) s = new URL(s).pathname; } catch (e) { return null; }
+    s = s.replace(/^\/+|\/+$/g, '').replace(/\.html$/, '').replace(/[?#].*$/, '');
+    return decodeURIComponent(s);
+}
+function openByUrl() {
+    const path = urlToPath($('pageUrlInput').value);
+    if (path === null) return;
+    if (/^wpis-[a-z0-9-]+$/.test(path)) {
+        $('pageUrlInput').value = '';
+        switchTab('blog');
+        editPost(path.replace(/^wpis-/, ''));
+        toast('Otwieram wpis w zakładce Blog');
+        return;
+    }
+    const file = (path === '' ? 'index.html' : path + '.html');
+    const hit = allPages.find(p => p.path === file);
+    if (hit) {
+        $('pageUrlInput').value = '';
+        $('pageSelect').value = hit.path;
+        loadPageTexts();
+        toast('Otwieram: ' + pageName(hit.path));
+    } else if (/^https?:\/\//i.test($('pageUrlInput').value.trim()) || path.length > 2) {
+        toast('Nie znaleziono strony dla tego linka (albo nie jest publiczna)', true);
+    }
 }
 async function loadPageTexts() {
     const page = $('pageSelect').value;
