@@ -49,6 +49,9 @@ input, textarea, select { font-family: var(--font); font-size: 15px; }
 .btn-danger { background: transparent; border: 2px solid #FECACA; color: var(--red); }
 .btn-danger:hover { background: #FEF2F2; border-color: var(--red); }
 .btn[disabled] { opacity: 0.55; cursor: wait; }
+.url-bar { max-width: 980px; margin: 18px auto -8px; padding: 0 20px; display: flex; gap: 10px; }
+.url-bar input { flex: 1; padding: 11px 16px; border: 2px solid var(--border); border-radius: 100px; outline: none; background: var(--white); font-size: 14px; }
+.url-bar input:focus { border-color: var(--lime); }
 .pub-status { font-size: 13px; font-weight: 700; padding: 7px 14px; border-radius: 100px; display: none; }
 .pub-status.pending { display: inline-block; background: rgba(255,242,0,0.18); color: #FFF566; animation: pubPulse 1.4s ease-in-out infinite; }
 .pub-status.success { display: inline-block; background: rgba(141,198,63,0.25); color: #D5E8A0; }
@@ -201,6 +204,11 @@ input, textarea, select { font-family: var(--font); font-size: 15px; }
         <button class="tab" id="tabTrash" onclick="switchTab('trash')">Kosz</button>
     </div>
 
+    <div class="url-bar">
+        <input type="text" id="globalUrlInput" placeholder="Wklej link do miejsca, które chcesz zmienić — np. https://dailyfruits.pl/dostawa albo link do wpisu" onkeydown="if(event.key==='Enter')openByUrl()" onpaste="setTimeout(openByUrl, 60)">
+        <button class="btn btn-green btn-sm" onclick="openByUrl()">Edytuj</button>
+    </div>
+
     <div class="wrap" id="postListView">
         <div class="list-head">
             <input type="search" id="searchInput" placeholder="Szukaj artykułu..." oninput="renderPostList()">
@@ -291,7 +299,6 @@ input, textarea, select { font-family: var(--font); font-size: 15px; }
     <div class="wrap" id="pagesView" style="display:none;">
         <div class="card">
             <h2>Wybierz stronę do edycji</h2>
-            <input type="text" id="pageUrlInput" placeholder="Wklej link do strony, np. https://dailyfruits.pl/dostawa — albo wybierz z listy poniżej" onkeydown="if(event.key==='Enter')openByUrl()" onpaste="setTimeout(openByUrl, 50)" style="width:100%;margin-bottom:12px;padding:10px 14px;border:2px solid var(--border);border-radius:8px;outline:none;">
             <div style="display:flex;gap:10px;align-items:center;">
                 <select class="page-select" id="pageSelect" onchange="loadPageTexts()" style="flex:1;"></select>
                 <a class="btn btn-outline btn-sm" id="viewPageBtn" href="/" target="_blank" rel="noopener" style="display:none;white-space:nowrap;">Pokaż na stronie ↗</a>
@@ -869,24 +876,27 @@ function urlToPath(raw) {
     s = s.replace(/^\/+|\/+$/g, '').replace(/\.html$/, '').replace(/[?#].*$/, '');
     return decodeURIComponent(s);
 }
-function openByUrl() {
-    const path = urlToPath($('pageUrlInput').value);
-    if (path === null) return;
+async function openByUrl() {
+    const raw = $('globalUrlInput').value.trim();
+    const path = urlToPath(raw);
+    if (path === null || raw === '') return;
     if (/^wpis-[a-z0-9-]+$/.test(path)) {
-        $('pageUrlInput').value = '';
+        $('globalUrlInput').value = '';
         switchTab('blog');
         editPost(path.replace(/^wpis-/, ''));
-        toast('Otwieram wpis w zakładce Blog');
+        toast('Otwieram wpis do edycji');
         return;
     }
+    if (!allPages.length) await loadPages();
     const file = (path === '' ? 'index.html' : path + '.html');
     const hit = allPages.find(p => p.path === file);
     if (hit) {
-        $('pageUrlInput').value = '';
+        $('globalUrlInput').value = '';
+        if (activeTab !== 'pages') switchTab('pages');
         $('pageSelect').value = hit.path;
         loadPageTexts();
         toast('Otwieram: ' + pageName(hit.path));
-    } else if (/^https?:\/\//i.test($('pageUrlInput').value.trim()) || path.length > 2) {
+    } else if (/^https?:\/\//i.test(raw) || path.length > 2) {
         toast('Nie znaleziono strony dla tego linka (albo nie jest publiczna)', true);
     }
 }
