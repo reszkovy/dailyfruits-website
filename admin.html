@@ -129,6 +129,35 @@ input, textarea, select { font-family: var(--font); font-size: 15px; }
 .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
 .toast.error { background: var(--red); }
 
+.tabs-bar { background: var(--white); border-bottom: 1px solid var(--border); padding: 0 28px; display: flex; gap: 4px; position: sticky; top: 52px; z-index: 95; }
+.tab { padding: 13px 18px; border: none; background: transparent; font-size: 14px; font-weight: 700; color: var(--gray); border-bottom: 3px solid transparent; }
+.tab.active { color: var(--green); border-bottom-color: var(--lime); }
+.page-select { width: 100%; padding: 11px 14px; border: 2px solid var(--border); border-radius: 8px; background: var(--white); font-weight: 700; }
+.section-title { font-size: 13px; font-weight: 700; color: var(--green); background: var(--lime-bg); padding: 8px 14px; border-radius: 8px; margin: 22px 0 10px; }
+.tfield { margin-bottom: 12px; }
+.tfield .tmeta { display: flex; gap: 8px; align-items: center; margin-bottom: 4px; }
+.tag-badge { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; padding: 2px 8px; border-radius: 100px; background: var(--light); color: var(--gray); }
+.tag-badge.h { background: var(--lime); color: var(--green); }
+.tag-badge.seo { background: #FEF3C7; color: #92400E; }
+.tfield textarea { width: 100%; padding: 9px 12px; border: 2px solid var(--border); border-radius: 8px; outline: none; resize: none; overflow: hidden; line-height: 1.5; }
+.tfield textarea:focus { border-color: var(--lime); }
+.tfield.changed textarea { border-color: var(--lime); background: #FDFFF4; }
+.menu-row { display: flex; gap: 10px; align-items: center; margin-bottom: 10px; }
+.menu-row .href { font-size: 12.5px; color: var(--gray); font-family: ui-monospace, monospace; min-width: 110px; }
+.menu-row input { flex: 1; padding: 9px 12px; border: 2px solid var(--border); border-radius: 8px; outline: none; }
+.menu-row input:focus { border-color: var(--lime); }
+.img-field { display: flex; gap: 12px; align-items: center; padding: 8px 0; }
+.img-field img { height: 52px; max-width: 90px; object-fit: contain; border-radius: 6px; background: var(--light); }
+.img-field .fname { flex: 1; font-size: 12.5px; color: var(--gray); font-family: ui-monospace, monospace; word-break: break-all; }
+.prod-card { background: var(--white); border-radius: var(--radius); box-shadow: 0 1px 4px rgba(0,0,0,0.05); padding: 18px 20px; margin-bottom: 14px; display: grid; grid-template-columns: 120px 1fr; gap: 18px; align-items: start; }
+.prod-card .pimg { text-align: center; }
+.prod-card .pimg img { width: 110px; height: 90px; object-fit: contain; border-radius: 8px; background: var(--light); margin-bottom: 8px; }
+.prod-card input, .prod-card textarea { width: 100%; padding: 9px 12px; border: 2px solid var(--border); border-radius: 8px; outline: none; margin-bottom: 8px; }
+.prod-card input:focus, .prod-card textarea:focus { border-color: var(--lime); }
+.prod-card .pname { font-weight: 700; font-size: 16px; }
+.prod-actions { display: flex; gap: 8px; justify-content: flex-end; }
+@media (max-width: 640px) { .prod-card { grid-template-columns: 1fr; } }
+
 @media (max-width: 860px) {
     .editor-grid { grid-template-columns: 1fr; }
     .toolbar { top: 56px; }
@@ -156,6 +185,13 @@ input, textarea, select { font-family: var(--font); font-size: 15px; }
             <a class="btn btn-sm btn-ghost" href="/blog" target="_blank" rel="noopener">Zobacz blog ↗</a>
             <button class="btn btn-sm btn-ghost" onclick="doLogout()">Wyloguj</button>
         </div>
+    </div>
+
+    <div class="tabs-bar">
+        <button class="tab active" id="tabBlog" onclick="switchTab('blog')">Blog</button>
+        <button class="tab" id="tabPages" onclick="switchTab('pages')">Strony</button>
+        <button class="tab" id="tabProducts" onclick="switchTab('products')">Produkty</button>
+        <button class="tab" id="tabMenu" onclick="switchTab('menu')">Menu</button>
     </div>
 
     <div class="wrap" id="postListView">
@@ -241,6 +277,37 @@ input, textarea, select { font-family: var(--font); font-size: 15px; }
                         <div class="field-help" id="excCount">0 / 220 znaków</div>
                     </div>
                 </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="wrap" id="pagesView" style="display:none;">
+        <div class="card">
+            <h2>Wybierz stronę do edycji</h2>
+            <select class="page-select" id="pageSelect" onchange="loadPageTexts()"></select>
+            <div class="field-help" style="margin-top:8px;">Edytujesz teksty — układ, zdjęcia i styl strony pozostają nietknięte. Zmienione pola podświetlają się na zielono.</div>
+        </div>
+        <div id="pageFields"></div>
+        <div style="display:flex;gap:12px;align-items:center;justify-content:flex-end;margin-top:6px;">
+            <span class="deploy-note" id="pagesNote"></span>
+            <button class="btn btn-green" id="pagesSaveBtn" onclick="savePageTexts()" style="display:none;">Zapisz zmiany</button>
+        </div>
+    </div>
+
+    <div class="wrap" id="productsView" style="display:none;">
+        <div class="chips" id="prodCats"></div>
+        <div id="prodList"><div class="loading"><div class="spinner"></div>Ładowanie produktów...</div></div>
+        <input type="file" id="prodImageInput" accept=".webp,.jpg,.jpeg,.png,.avif" style="display:none">
+    </div>
+
+    <div class="wrap" id="menuView" style="display:none;">
+        <div class="card">
+            <h2>Pozycje menu (górna nawigacja + menu mobilne)</h2>
+            <div id="menuRows"><div class="loading"><div class="spinner"></div>Ładowanie...</div></div>
+            <div class="field-help" style="margin-top:10px;">Zmieniasz etykiety — adresy stron pozostają bez zmian. Zapis zaktualizuje nawigację na wszystkich ~90 podstronach jednym deployem.</div>
+            <div style="display:flex;gap:12px;align-items:center;justify-content:flex-end;margin-top:14px;">
+                <span class="deploy-note" id="menuNote"></span>
+                <button class="btn btn-green" id="menuSaveBtn" onclick="saveMenu()">Zapisz menu</button>
             </div>
         </div>
     </div>
@@ -643,6 +710,322 @@ function toast(msg, isError) {
     t.textContent = msg;
     t.className = 'toast show' + (isError ? ' error' : '');
     setTimeout(() => t.className = 'toast', 3500);
+}
+
+// ─── ZAKŁADKI ───
+let activeTab = 'blog';
+function switchTab(tab) {
+    if (dirty && !confirm('Masz niezapisane zmiany. Przełączyć bez zapisu?')) return;
+    dirty = false;
+    activeTab = tab;
+    ['Blog', 'Pages', 'Products', 'Menu'].forEach(t => $('tab' + t).classList.toggle('active', t.toLowerCase() === tab));
+    $('postListView').style.display = tab === 'blog' ? 'block' : 'none';
+    $('editorView').style.display = 'none';
+    $('actionBar').style.display = 'none';
+    $('pagesView').style.display = tab === 'pages' ? 'block' : 'none';
+    $('productsView').style.display = tab === 'products' ? 'block' : 'none';
+    $('menuView').style.display = tab === 'menu' ? 'block' : 'none';
+    if (tab === 'pages' && !pagesLoaded) loadPages();
+    if (tab === 'products' && !prodLoaded) loadProducts();
+    if (tab === 'menu' && !menuLoaded) loadMenu();
+}
+
+// ─── EDYCJA TREŚCI STRON ───
+let pagesLoaded = false, menuLoaded = false;
+let pageSha = null, pageItems = [];
+
+const PAGE_NAMES = { 'index.html': 'Strona główna', 'oferta.html': 'Oferta', 'dostawa.html': 'Dostawa', 'o-nas.html': 'O nas', 'kontakt.html': 'Kontakt', 'zapytanie.html': 'Zapytanie ofertowe', 'blog.html': 'Blog (nagłówki)' };
+function pageName(p) {
+    if (PAGE_NAMES[p]) return PAGE_NAMES[p];
+    return p.replace('oferta/', '').replace('.html', '').replace(/-/g, ' ').replace(/^./, c => c.toUpperCase());
+}
+async function loadPages() {
+    pagesLoaded = true;
+    try {
+        const res = await fetch(`${API}/content?action=pages`, { headers: { 'X-CMS-Token': token } });
+        const data = await res.json();
+        const groups = {};
+        (data.pages || []).forEach(p => { (groups[p.group] = groups[p.group] || []).push(p); });
+        $('pageSelect').innerHTML = '<option value="">— wybierz stronę —</option>' +
+            Object.entries(groups).map(([g, ps]) =>
+                `<optgroup label="${escA(g)}">` + ps.map(p => `<option value="${escA(p.path)}">${escH(pageName(p.path))} (${p.path})</option>`).join('') + '</optgroup>'
+            ).join('');
+    } catch (e) { toast('Błąd ładowania listy stron', true); pagesLoaded = false; }
+}
+async function loadPageTexts() {
+    const page = $('pageSelect').value;
+    $('pagesSaveBtn').style.display = 'none';
+    $('pagesNote').textContent = '';
+    if (!page) { $('pageFields').innerHTML = ''; return; }
+    $('pageFields').innerHTML = '<div class="loading"><div class="spinner"></div>Ładowanie tekstów...</div>';
+    try {
+        const res = await fetch(`${API}/content?action=texts&page=${encodeURIComponent(page)}`, { headers: { 'X-CMS-Token': token } });
+        const data = await res.json();
+        if (!res.ok) { toast(data.error || 'Błąd', true); return; }
+        pageSha = data.sha; pageItems = data.items || [];
+        Object.keys(pageImageValues).forEach(k => delete pageImageValues[k]);
+        renderPageFields();
+        $('pagesSaveBtn').style.display = '';
+        dirty = false;
+    } catch (e) { toast('Błąd: ' + e.message, true); }
+}
+function badgeFor(i) {
+    if (i.tag === 'title' || i.tag === 'meta') return '<span class="tag-badge seo">SEO</span>';
+    if (/^h[1-3]$/.test(i.tag)) return '<span class="tag-badge h">Nagłówek</span>';
+    if (i.tag === 'img-alt') return '<span class="tag-badge">Opis zdjęcia</span>';
+    if (i.tag === 'a' || i.tag === 'button') return '<span class="tag-badge">Przycisk / link</span>';
+    return '';
+}
+function renderPageFields() {
+    let html = '', lastSection = null;
+    pageItems.forEach(i => {
+        if (i.section !== lastSection) { html += `<div class="section-title">${escH(i.section)}</div>`; lastSection = i.section; }
+        if (i.kind === 'img-src') {
+            html += `<div class="tfield" id="tf-${i.id}"><div class="img-field"><img src="/${escA(i.text)}" alt="" loading="lazy"><span class="fname" data-fname="${i.id}">${escH(i.text)}</span><button class="btn btn-sm btn-outline" onclick="changePageImage(${i.id})">Zmień zdjęcie</button></div></div>`;
+        } else {
+            html += `<div class="tfield" id="tf-${i.id}"><div class="tmeta">${badgeFor(i)}</div><textarea data-id="${i.id}" rows="1">${escH(i.text)}</textarea></div>`;
+        }
+    });
+    $('pageFields').innerHTML = `<div class="card">${html}</div>`;
+    $('pageFields').querySelectorAll('textarea').forEach(t => {
+        autosize(t);
+        t.addEventListener('input', () => {
+            autosize(t);
+            const item = pageItems.find(x => x.id === Number(t.dataset.id));
+            t.closest('.tfield').classList.toggle('changed', t.value !== item.text);
+            markDirty();
+        });
+    });
+}
+const pageImageValues = {};
+async function changePageImage(id) {
+    const input = document.createElement('input');
+    input.type = 'file'; input.accept = '.webp,.jpg,.jpeg,.png,.avif';
+    input.onchange = async () => {
+        if (!input.files[0]) return;
+        toast('Wysyłanie obrazu...');
+        try {
+            const path = await uploadFile(input.files[0]);
+            pageImageValues[id] = path;
+            const f = $('pageFields').querySelector(`[data-fname="${id}"]`);
+            f.textContent = path;
+            f.closest('.img-field').querySelector('img').src = '/' + path;
+            f.closest('.tfield').classList.add('changed');
+            markDirty();
+            toast('Obraz wgrany — zapisz zmiany, aby opublikować');
+        } catch (e) { toast(e.message, true); }
+    };
+    input.click();
+}
+function autosize(t) { t.style.height = 'auto'; t.style.height = (t.scrollHeight + 4) + 'px'; }
+async function savePageTexts() {
+    const page = $('pageSelect').value;
+    const edits = [];
+    $('pageFields').querySelectorAll('textarea').forEach(t => {
+        const item = pageItems.find(x => x.id === Number(t.dataset.id));
+        if (item && t.value !== item.text) edits.push({ start: item.start, end: item.end, old: item.text, text: t.value, kind: item.kind });
+    });
+    Object.entries(pageImageValues).forEach(([id, path]) => {
+        const item = pageItems.find(x => x.id === Number(id));
+        if (item && path !== item.text) edits.push({ start: item.start, end: item.end, old: item.text, text: path, kind: 'img-src' });
+    });
+    if (!edits.length) { toast('Brak zmian do zapisania'); return; }
+    const btn = $('pagesSaveBtn');
+    btn.disabled = true; btn.textContent = 'Zapisywanie...';
+    try {
+        const res = await fetch(`${API}/content?action=texts&page=${encodeURIComponent(page)}`, {
+            method: 'PUT', headers: { 'Content-Type': 'application/json', 'X-CMS-Token': token },
+            body: JSON.stringify({ sha: pageSha, edits })
+        });
+        const data = await res.json();
+        if (!data.ok) { toast(data.error || 'Błąd zapisu', true); if (res.status === 409) loadPageTexts(); return; }
+        dirty = false;
+        $('pagesNote').textContent = `Zapisano ${edits.length} zmian — na stronie za ok. 1 minutę.`;
+        toast('Zapisano ✓');
+        loadPageTexts();
+    } catch (e) { toast('Błąd: ' + e.message, true); }
+    finally { btn.disabled = false; btn.textContent = 'Zapisz zmiany'; }
+}
+
+// ─── PRODUKTY ───
+let prodLoaded = false, prodSha = null, prodAll = [], prodCat = null;
+const CAT_NAMES = { owoce: 'Owoce', kanapki: 'Kanapki', sniadania: 'Śniadania', soki: 'Soki', kawa: 'Kawa', catering: 'Catering', bakalie: 'Bakalie', salatki: 'Sałatki', integracyjne: 'Integracyjne' };
+async function loadProducts() {
+    prodLoaded = true;
+    $('prodList').innerHTML = '<div class="loading"><div class="spinner"></div>Ładowanie produktów...</div>';
+    try {
+        const res = await fetch(`${API}/content?action=products`, { headers: { 'X-CMS-Token': token } });
+        const data = await res.json();
+        if (!res.ok) { toast(data.error || 'Błąd', true); prodLoaded = false; return; }
+        prodSha = data.sha; prodAll = data.products || [];
+        if (!prodCat || !data.cats.includes(prodCat)) prodCat = data.cats[0];
+        renderProdChips(data.cats);
+        renderProducts();
+    } catch (e) { toast('Błąd: ' + e.message, true); prodLoaded = false; }
+}
+let prodCats = [];
+function renderProdChips(cats) {
+    if (cats) prodCats = cats;
+    $('prodCats').innerHTML = prodCats.map(c =>
+        `<button class="chip${c === prodCat ? ' active' : ''}" onclick="selectProdCat('${c}')">${escH(CAT_NAMES[c] || c)} (${prodAll.filter(p => p.cat === c).length})</button>`).join('');
+}
+function selectProdCat(c) { prodCat = c; renderProdChips(); renderProducts(); }
+function renderProducts() {
+    const items = prodAll.filter(p => p.cat === prodCat);
+    let html = `<div style="display:flex;justify-content:flex-end;margin-bottom:14px;"><button class="btn btn-lime" onclick="addProductForm()">+ Dodaj produkt</button></div><div id="newProdSlot"></div>`;
+    html += items.map(p => `
+        <div class="prod-card" data-idx="${p.index}">
+            <div class="pimg">
+                <img src="/${escA(p.image)}" alt="" loading="lazy" id="pimg-${p.index}">
+                <button class="btn btn-sm btn-outline" onclick="changeProdImage(${p.index})">Zmień zdjęcie</button>
+            </div>
+            <div>
+                <input class="pname" id="pname-${p.index}" value="${escA(p.name)}" maxlength="80" placeholder="Nazwa produktu">
+                <input id="pdesc-${p.index}" value="${escA(p.desc || '')}" maxlength="200" placeholder="Krótki opis (opcjonalny)">
+                <textarea id="pskl-${p.index}" rows="${Math.max(2, p.skladniki.length)}" placeholder="Składniki — jeden na linię">${escH(p.skladniki.join('\n'))}</textarea>
+                <div class="prod-actions">
+                    <button class="btn btn-sm btn-danger" onclick="deleteProduct(${p.index})">Usuń</button>
+                    <button class="btn btn-sm btn-green" onclick="saveProduct(${p.index})">Zapisz</button>
+                </div>
+            </div>
+        </div>`).join('');
+    $('prodList').innerHTML = html;
+}
+const prodImageValues = {};
+function changeProdImage(idx) {
+    const input = $('prodImageInput');
+    input.onchange = async () => {
+        if (!input.files[0]) return;
+        toast('Wysyłanie obrazu...');
+        try {
+            const path = await uploadFile(input.files[0]);
+            prodImageValues[idx] = path;
+            $(`pimg-${idx}`).src = '/' + path;
+            markDirty();
+            toast('Obraz wgrany — kliknij Zapisz przy produkcie');
+        } catch (e) { toast(e.message, true); }
+        input.value = '';
+    };
+    input.click();
+}
+function prodFields(idx, p) {
+    return {
+        name: $(`pname-${idx}`).value.trim(),
+        desc: $(`pdesc-${idx}`).value.trim(),
+        image: prodImageValues[idx] || p.image,
+        alt: $(`pname-${idx}`).value.trim(),
+        skladniki: $(`pskl-${idx}`).value.split('\n').map(s => s.trim()).filter(Boolean)
+    };
+}
+async function prodRequest(body) {
+    const res = await fetch(`${API}/content?action=products`, {
+        method: 'PUT', headers: { 'Content-Type': 'application/json', 'X-CMS-Token': token },
+        body: JSON.stringify({ sha: prodSha, ...body })
+    });
+    const data = await res.json();
+    if (!data.ok) { toast(data.error || 'Błąd zapisu', true); if (res.status === 409) loadProducts(); return false; }
+    return true;
+}
+async function saveProduct(idx) {
+    const p = prodAll.find(x => x.index === idx);
+    const fields = prodFields(idx, p);
+    if (!fields.name) { toast('Nazwa jest wymagana', true); return; }
+    if (await prodRequest({ op: 'update', index: idx, expectName: p.name, fields })) {
+        dirty = false; delete prodImageValues[idx];
+        toast('Produkt zapisany ✓ — na stronie za ~1 min');
+        loadProducts();
+    }
+}
+async function deleteProduct(idx) {
+    const p = prodAll.find(x => x.index === idx);
+    if (!confirm(`Usunąć produkt "${p.name}" z oferty?`)) return;
+    if (await prodRequest({ op: 'delete', index: idx, expectName: p.name })) {
+        toast('Produkt usunięty');
+        loadProducts();
+    }
+}
+let newProdImage = '';
+function addProductForm() {
+    newProdImage = '';
+    $('newProdSlot').innerHTML = `
+        <div class="prod-card" style="border:2px solid var(--lime);">
+            <div class="pimg">
+                <img src="favicon_.png" alt="" id="pimg-new">
+                <button class="btn btn-sm btn-outline" onclick="changeNewProdImage()">Wybierz zdjęcie</button>
+            </div>
+            <div>
+                <input class="pname" id="pname-new" maxlength="80" placeholder="Nazwa produktu">
+                <input id="pdesc-new" maxlength="200" placeholder="Krótki opis (opcjonalny)">
+                <textarea id="pskl-new" rows="3" placeholder="Składniki — jeden na linię"></textarea>
+                <div class="prod-actions">
+                    <button class="btn btn-sm btn-outline" onclick="newProdSlot.innerHTML=''">Anuluj</button>
+                    <button class="btn btn-sm btn-green" onclick="createProduct()">Dodaj do oferty</button>
+                </div>
+            </div>
+        </div>`;
+    $('pname-new').focus();
+}
+function changeNewProdImage() {
+    const input = $('prodImageInput');
+    input.onchange = async () => {
+        if (!input.files[0]) return;
+        toast('Wysyłanie obrazu...');
+        try { newProdImage = await uploadFile(input.files[0]); $('pimg-new').src = '/' + newProdImage; toast('Obraz wgrany'); }
+        catch (e) { toast(e.message, true); }
+        input.value = '';
+    };
+    input.click();
+}
+async function createProduct() {
+    const fields = {
+        cat: prodCat,
+        name: $('pname-new').value.trim(),
+        desc: $('pdesc-new').value.trim(),
+        image: newProdImage || undefined,
+        alt: $('pname-new').value.trim(),
+        skladniki: $('pskl-new').value.split('\n').map(s => s.trim()).filter(Boolean)
+    };
+    if (!fields.name) { toast('Nazwa jest wymagana', true); return; }
+    if (await prodRequest({ op: 'add', fields })) {
+        toast('Produkt dodany ✓ — na stronie za ~1 min');
+        loadProducts();
+    }
+}
+
+// ─── MENU ───
+let menuData = null;
+async function loadMenu() {
+    menuLoaded = true;
+    try {
+        const res = await fetch(`${API}/content?action=menu`, { headers: { 'X-CMS-Token': token } });
+        menuData = await res.json();
+        if (!res.ok) { toast(menuData.error || 'Błąd', true); menuLoaded = false; return; }
+        $('menuRows').innerHTML = menuData.items.map((it, n) =>
+            `<div class="menu-row"><span class="href">/${escH(it.href)}</span><input data-n="${n}" value="${escA(it.label)}" maxlength="40"></div>`
+        ).join('') + `<div class="menu-row"><span class="href">przycisk CTA</span><input id="menuCta" value="${escA(menuData.cta)}" maxlength="40"></div>`;
+        $('menuRows').querySelectorAll('input').forEach(i => i.addEventListener('input', markDirty));
+    } catch (e) { toast('Błąd ładowania menu', true); menuLoaded = false; }
+}
+async function saveMenu() {
+    if (!menuData) return;
+    const items = menuData.items.map((it, n) => ({ href: it.href, label: $('menuRows').querySelector(`input[data-n="${n}"]`).value.trim() }));
+    if (items.some(i => !i.label)) { toast('Etykieta nie może być pusta', true); return; }
+    const cta = $('menuCta').value.trim();
+    if (!confirm('Zapisać menu? Zmiana obejmie nawigację na wszystkich podstronach.')) return;
+    const btn = $('menuSaveBtn');
+    btn.disabled = true; btn.textContent = 'Zapisywanie...';
+    try {
+        const res = await fetch(`${API}/content?action=menu`, {
+            method: 'PUT', headers: { 'Content-Type': 'application/json', 'X-CMS-Token': token },
+            body: JSON.stringify({ items, cta })
+        });
+        const data = await res.json();
+        if (!data.ok) { toast(data.error || 'Błąd zapisu', true); return; }
+        dirty = false;
+        $('menuNote').textContent = `Zaktualizowano ${data.changed} plików — zmiany na stronie za ok. 1 minutę.`;
+        toast('Menu zapisane ✓');
+    } catch (e) { toast('Błąd: ' + e.message, true); }
+    finally { btn.disabled = false; btn.textContent = 'Zapisz menu'; }
 }
 
 // ─── INIT ───
