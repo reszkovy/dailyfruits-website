@@ -14,6 +14,7 @@
 // pozostaje nietknieta. (Helpery GitHub celowo skopiowane z posts.js — funkcje
 // serverless bundlowane sa osobno.)
 
+import crypto from 'node:crypto';
 import { PAGES, PRODUCTS } from './_config.js';
 
 const GITHUB_API = 'https://api.github.com';
@@ -24,7 +25,8 @@ const branch = () => process.env.GITHUB_BRANCH || 'main';
 function verifyAuth(req) {
   const auth = req.headers['x-cms-token'];
   if (!auth || !process.env.CMS_PASSWORD) return false;
-  return Buffer.from(auth, 'base64').toString() === `cms:${process.env.CMS_PASSWORD}`;
+  const expected = crypto.createHmac('sha256', process.env.CMS_PASSWORD).update('df-cms-session-v1').digest('hex');
+  return Buffer.from(auth, 'base64').toString() === `cms:${expected}`;
 }
 
 async function gh(path, options = {}) {
@@ -39,8 +41,8 @@ async function gh(path, options = {}) {
   });
 }
 
-async function readFile(path) {
-  const res = await gh(`/repos/${repo()}/contents/${encodeURIComponent(path)}?ref=${branch()}`);
+async function readFile(path, ref) {
+  const res = await gh(`/repos/${repo()}/contents/${encodeURIComponent(path)}?ref=${ref || branch()}`);
   if (!res.ok) return null;
   const data = await res.json();
   return { content: Buffer.from(data.content, 'base64').toString('utf-8'), sha: data.sha };
@@ -342,11 +344,6 @@ function replaceMenuLabels(html, items, cta) {
 // ─── HANDLER ───
 
 export default async function handler(req, res) {
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'GET, PUT, OPTIONS');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, X-CMS-Token');
-
-  if (req.method === 'OPTIONS') return res.status(200).end();
   if (!verifyAuth(req)) return res.status(401).json({ error: 'Unauthorized' });
 
   const { method } = req;
@@ -483,7 +480,59 @@ export default async function handler(req, res) {
       return res.status(200).json({ ok: true, commit });
     }
 
-    return res.status(400).json({ error: 'Nieznana akcja. Dostepne: pages, texts, menu, products' });
+    // KOSZ: lista usunietych produktow
+    if (method === 'GET' && action === 'product-trash') {
+      const cRes = await gh(`/repos/${repo()}/commits?sha=${branch()}&per_page=100`);
+      if (!cRes.ok) return res.status(500).json({ error: 'Nie mozna pobrac historii' });
+      const commits = await cRes.json();
+      const cur = await readFile(PRODUCTS.page);
+      const existing = new Set(cur ? scanProducts(cur.content).map(p => p.name) : []);
+      const seen = new Set();
+      const items = [];
+      for (const c of commits) {
+        const m = c.commit.message.match(/^CMS: usuniecie produktu "(.+)"/);
+        if (m && !seen.has(m[1])) {
+          seen.add(m[1]);
+          if (!existing.has(m[1])) items.push({ name: m[1], commit: c.sha, date: c.commit.author.date });
+        }
+      }
+      return res.status(200).json({ items });
+    }
+
+    // KOSZ: przywrocenie produktu (karta z commita sprzed usuniecia, ta sama kategoria)
+    if (method === 'POST' && action === 'product-restore') {
+      const { commit } = req.body || {};
+      if (!commit || !/^[0-9a-f]{7,40}$/.test(commit)) return res.status(400).json({ error: 'commit wymagany' });
+
+      const cRes = await gh(`/repos/${repo()}/commits/${commit}`);
+      if (!cRes.ok) return res.status(404).json({ error: 'Nie znaleziono commita' });
+      const cData = await cRes.json();
+      const m = cData.commit.message.match(/^CMS: usuniecie produktu "(.+)"/);
+      if (!m || !cData.parents.length) return res.status(400).json({ error: 'To nie jest commit usuniecia produktu' });
+      const name = m[1];
+      const parentSha = cData.parents[0].sha;
+
+      const oldOferta = await readFile(PRODUCTS.page, parentSha);
+      if (!oldOferta) return res.status(404).json({ error: 'Nie znaleziono oferty w historii' });
+      const oldProd = scanProducts(oldOferta.content).find(p => p.name === name);
+      if (!oldProd) return res.status(404).json({ error: 'Nie znaleziono produktu w historii' });
+      const cardSlice = oldOferta.content.slice(oldProd.start, oldProd.end);
+
+      const cur = await readFile(PRODUCTS.page);
+      if (!cur) return res.status(500).json({ error: 'Nie mozna pobrac oferty' });
+      if (scanProducts(cur.content).some(p => p.name === name && p.cat === oldProd.cat)) {
+        return res.status(409).json({ error: `Produkt "${name}" juz istnieje w kategorii ${oldProd.cat}` });
+      }
+      const panelM = cur.content.match(new RegExp(`<div class="cat-panel[^"]*" data-cat="${oldProd.cat.replace(/[^a-z0-9-]/g, '')}"[^>]*>\\s*<div class="products-grid">\\n?`));
+      if (!panelM) return res.status(400).json({ error: 'Nie znaleziono kategorii ' + oldProd.cat });
+      const at = panelM.index + panelM[0].length;
+      const html = cur.content.slice(0, at) + cardSlice + '\n' + cur.content.slice(at);
+
+      const sha = await commitFiles([{ path: PRODUCTS.page, content: html }], `CMS: przywrocenie produktu "${name}"`);
+      return res.status(200).json({ ok: true, commit: sha, name });
+    }
+
+    return res.status(400).json({ error: 'Nieznana akcja. Dostepne: pages, texts, menu, products, deploy-status, product-trash, product-restore' });
   } catch (err) {
     return res.status(500).json({ error: err.message });
   }
