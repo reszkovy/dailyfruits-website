@@ -291,10 +291,12 @@ input, textarea, select { font-family: var(--font); font-size: 15px; }
     </div>
 
     <div class="action-bar" id="pagesBar">
+        <button class="btn btn-sm btn-outline" id="undoBtn" onclick="undoPage()" disabled title="Cofnij ostatnią zmianę">↶ Cofnij</button>
+        <button class="btn btn-sm btn-outline" id="redoBtn" onclick="redoPage()" disabled title="Ponów cofniętą zmianę">↷ Ponów</button>
         <span class="deploy-note" id="pagesChanged">Brak zmian</span>
         <div class="grow"></div>
         <span class="deploy-note" id="pagesNote"></span>
-        <button class="btn btn-outline" onclick="discardPageChanges()">Odrzuć zmiany</button>
+        <button class="btn btn-outline" id="restoreBtn" onclick="restoreSession()" disabled title="Przywróć wszystkie pola do stanu z początku sesji">Cofnij wszystko</button>
         <button class="btn btn-green" id="pagesSaveBtn" onclick="savePageTexts()" disabled>Zapisz zmiany</button>
     </div>
 
@@ -768,6 +770,12 @@ async function loadPageTexts() {
         if (!res.ok) { toast(data.error || 'Błąd', true); return; }
         pageSha = data.sha; pageItems = data.items || [];
         Object.keys(pageImageValues).forEach(k => delete pageImageValues[k]);
+        if (!pageHistories[page]) {
+            const originals = {};
+            pageItems.forEach(i => { originals[i.id] = { text: i.text, tag: i.tag }; });
+            pageHistories[page] = { originals, stack: [], redo: [] };
+        }
+        curHist = pageHistories[page];
         renderPageFields();
         $('pagesBar').style.display = 'flex';
         dirty = false;
@@ -794,6 +802,13 @@ function renderPageFields() {
     $('pageFields').innerHTML = `<div class="card">${html}</div>`;
     $('pageFields').querySelectorAll('textarea').forEach(t => {
         autosize(t);
+        t.addEventListener('focus', () => { t.dataset.startVal = t.value; });
+        t.addEventListener('change', () => {
+            if (t.dataset.startVal !== undefined && t.value !== t.dataset.startVal) {
+                pushUndo({ id: Number(t.dataset.id), tag: 'text', prev: t.dataset.startVal, next: t.value });
+                t.dataset.startVal = t.value;
+            }
+        });
         t.addEventListener('input', () => {
             autosize(t);
             const item = pageItems.find(x => x.id === Number(t.dataset.id));
@@ -815,15 +830,84 @@ function countPageChanges() {
     });
     return n;
 }
+function getFieldValue(id) {
+    const item = pageItems.find(x => x.id === id);
+    if (!item) return undefined;
+    if (item.kind === 'img-src') return pageImageValues[id] !== undefined ? pageImageValues[id] : item.text;
+    const t = $('pageFields').querySelector(`textarea[data-id="${id}"]`);
+    return t ? t.value : undefined;
+}
+function setFieldValue(id, val) {
+    const item = pageItems.find(x => x.id === id);
+    if (!item) return;
+    const tf = $(`tf-${id}`);
+    if (item.kind === 'img-src') {
+        if (val === item.text) delete pageImageValues[id]; else pageImageValues[id] = val;
+        const f = tf.querySelector(`[data-fname="${id}"]`);
+        f.textContent = val;
+        tf.querySelector('img').src = '/' + val;
+    } else {
+        const t = tf.querySelector('textarea');
+        t.value = val;
+        autosize(t);
+    }
+    tf.classList.toggle('changed', val !== item.text);
+    updatePagesBar();
+}
 function updatePagesBar() {
     const n = countPageChanges();
     $('pagesChanged').textContent = n === 0 ? 'Brak zmian' : (n === 1 ? '1 zmienione pole' : `Zmienione pola: ${n}`);
     $('pagesSaveBtn').disabled = n === 0;
+    $('undoBtn').disabled = !curHist || !curHist.stack.length;
+    $('redoBtn').disabled = !curHist || !curHist.redo.length;
+    let sessionDiff = n > 0;
+    if (!sessionDiff && curHist) {
+        for (const [id, o] of Object.entries(curHist.originals)) {
+            const cur = getFieldValue(Number(id));
+            if (cur !== undefined && cur !== o.text) { sessionDiff = true; break; }
+        }
+    }
+    $('restoreBtn').disabled = !sessionDiff;
 }
-function discardPageChanges() {
-    if (countPageChanges() > 0 && !confirm('Odrzucić niezapisane zmiany na tej stronie?')) return;
-    dirty = false;
-    loadPageTexts();
+
+// Historia sesji: undo krok po kroku + przywracanie stanu z poczatku sesji (per strona)
+const pageHistories = {};
+let curHist = null;
+function pushUndo(e) {
+    if (!curHist) return;
+    curHist.stack.push(e);
+    curHist.redo = [];
+    updatePagesBar();
+}
+function undoPage() {
+    if (!curHist || !curHist.stack.length) return;
+    const e = curHist.stack.pop();
+    curHist.redo.push(e);
+    setFieldValue(e.id, e.prev);
+    markDirty();
+    toast('Cofnięto zmianę');
+}
+function redoPage() {
+    if (!curHist || !curHist.redo.length) return;
+    const e = curHist.redo.pop();
+    curHist.stack.push(e);
+    setFieldValue(e.id, e.next);
+    markDirty();
+    toast('Ponowiono zmianę');
+}
+function restoreSession() {
+    if (!curHist) return;
+    if (!confirm('Przywrócić wszystkie pola tej strony do stanu z początku sesji? (Jeśli część zmian już zapisano, po przywróceniu kliknij „Zapisz zmiany", aby cofnięcie trafiło na stronę.)')) return;
+    let n = 0;
+    for (const [id, o] of Object.entries(curHist.originals)) {
+        const nid = Number(id);
+        const cur = getFieldValue(nid);
+        if (cur !== undefined && cur !== o.text) { setFieldValue(nid, o.text); n++; }
+    }
+    curHist.stack = []; curHist.redo = [];
+    updatePagesBar();
+    if (n) { markDirty(); toast(`Przywrócono ${n} pól do stanu początkowego`); }
+    else toast('Wszystko już jest w stanie początkowym');
 }
 const pageImageValues = {};
 async function changePageImage(id) {
@@ -834,13 +918,10 @@ async function changePageImage(id) {
         toast('Wysyłanie obrazu...');
         try {
             const path = await uploadFile(input.files[0]);
-            pageImageValues[id] = path;
-            const f = $('pageFields').querySelector(`[data-fname="${id}"]`);
-            f.textContent = path;
-            f.closest('.img-field').querySelector('img').src = '/' + path;
-            f.closest('.tfield').classList.add('changed');
+            const item = pageItems.find(x => x.id === id);
+            pushUndo({ id, tag: 'img', prev: pageImageValues[id] !== undefined ? pageImageValues[id] : item.text, next: path });
+            setFieldValue(id, path);
             markDirty();
-            updatePagesBar();
             toast('Obraz wgrany — zapisz zmiany, aby opublikować');
         } catch (e) { toast(e.message, true); }
     };
