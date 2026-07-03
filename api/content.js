@@ -265,11 +265,23 @@ function validProduct(f) {
 
 const PAGE_EXCLUDE = /^(admin|404|wpis-.*)\.html$/;
 
+// Publiczne = wdrazane. Pliki wykluczone w .vercelignore (strony robocze)
+// nie sa dostepne w panelu.
+function parseVercelignore(content) {
+  return new Set(String(content || '').split('\n')
+    .map(l => l.trim())
+    .filter(l => l && !l.startsWith('#') && !l.endsWith('/')));
+}
+async function nonPublicFiles() {
+  const f = await readFile('.vercelignore');
+  return parseVercelignore(f ? f.content : '');
+}
+
 async function listPages() {
-  const [root, oferta] = await Promise.all([listDir(''), listDir('oferta')]);
+  const [root, oferta, ignored] = await Promise.all([listDir(''), listDir('oferta'), nonPublicFiles()]);
   const pages = [];
   for (const f of root) {
-    if (f.type === 'file' && f.name.endsWith('.html') && !PAGE_EXCLUDE.test(f.name)) {
+    if (f.type === 'file' && f.name.endsWith('.html') && !PAGE_EXCLUDE.test(f.name) && !ignored.has(f.name)) {
       pages.push({ path: f.name, group: f.name === 'index.html' ? 'Glowne' : 'Strony' });
     }
   }
@@ -342,6 +354,7 @@ export default async function handler(req, res) {
 
     if (method === 'GET' && action === 'texts') {
       if (!safePage(page)) return res.status(400).json({ error: 'Nieprawidlowa strona' });
+      if ((await nonPublicFiles()).has(page)) return res.status(403).json({ error: 'Ta strona nie jest publiczna — edycja z panelu wylaczona' });
       const file = await readFile(page);
       if (!file) return res.status(404).json({ error: 'Nie znaleziono strony' });
       return res.status(200).json({ sha: file.sha, items: extractTexts(file.content) });
@@ -349,6 +362,7 @@ export default async function handler(req, res) {
 
     if (method === 'PUT' && action === 'texts') {
       if (!safePage(page)) return res.status(400).json({ error: 'Nieprawidlowa strona' });
+      if ((await nonPublicFiles()).has(page)) return res.status(403).json({ error: 'Ta strona nie jest publiczna — edycja z panelu wylaczona' });
       const { sha, edits } = req.body || {};
       if (!sha || !Array.isArray(edits) || !edits.length) return res.status(400).json({ error: 'sha i edits wymagane' });
       if (edits.length > 300) return res.status(400).json({ error: 'Za duzo edycji naraz' });
