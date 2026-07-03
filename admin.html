@@ -49,6 +49,10 @@ input, textarea, select { font-family: var(--font); font-size: 15px; }
 .btn-danger { background: transparent; border: 2px solid #FECACA; color: var(--red); }
 .btn-danger:hover { background: #FEF2F2; border-color: var(--red); }
 .btn[disabled] { opacity: 0.55; cursor: wait; }
+.hidden-notice { display: flex; align-items: center; gap: 14px; background: #FEF9E7; border: 2px solid #F5D061; border-radius: 10px; padding: 10px 16px; margin: 0 0 10px; font-size: 13.5px; color: #7A5C00; font-weight: 600; }
+.hidden-notice span { flex: 1; }
+.tfield.flash { animation: tfFlash 1.6s ease; }
+@keyframes tfFlash { 0%, 60% { background: #FEF9E7; box-shadow: 0 0 0 3px #F5D061; border-radius: 8px; } 100% { background: transparent; box-shadow: none; } }
 .view-toggle { display: inline-flex; gap: 4px; background: var(--light); border-radius: 100px; padding: 4px; margin-top: 12px; }
 .vt-btn { padding: 8px 18px; border: none; border-radius: 100px; background: transparent; font-size: 13px; font-weight: 700; color: var(--gray); }
 .vt-btn.active { background: var(--green); color: white; }
@@ -315,6 +319,10 @@ input, textarea, select { font-family: var(--font); font-size: 15px; }
         </div>
         <div id="visualWrap" style="display:none;">
             <div class="field-help" style="margin:0 0 8px;">Kliknij dowolny tekst na stronie i pisz. Kliknij zdjęcie, żeby je podmienić. SEO i opisy zdjęć znajdziesz w widoku „Lista pól".</div>
+            <div class="hidden-notice" id="hiddenNotice" style="display:none;">
+                <span id="hiddenNoticeText"></span>
+                <button class="btn btn-sm btn-green" onclick="goToHiddenFields()">Edytuj w liście pól →</button>
+            </div>
             <iframe id="visualFrame" title="Edycja na stronie" style="width:100%;height:calc(100vh - 320px);min-height:520px;border:2px solid var(--border);border-radius:12px;background:#fff;"></iframe>
         </div>
         <div id="pageFields"></div>
@@ -957,11 +965,13 @@ function renderActiveView() {
     if (visual) renderVisual(); else renderPageFields();
 }
 function badgeFor(i) {
-    if (i.tag === 'title' || i.tag === 'meta') return '<span class="tag-badge seo">SEO</span>';
-    if (/^h[1-3]$/.test(i.tag)) return '<span class="tag-badge h">Nagłówek</span>';
-    if (i.tag === 'img-alt') return '<span class="tag-badge">Opis zdjęcia</span>';
-    if (i.tag === 'a' || i.tag === 'button') return '<span class="tag-badge">Przycisk / link</span>';
-    return '';
+    let b = '';
+    if (i.tag === 'title' || i.tag === 'meta') b = '<span class="tag-badge seo">SEO</span>';
+    else if (/^h[1-3]$/.test(i.tag)) b = '<span class="tag-badge h">Nagłówek</span>';
+    else if (i.tag === 'img-alt') b = '<span class="tag-badge">Opis zdjęcia</span>';
+    else if (i.tag === 'a' || i.tag === 'button') b = '<span class="tag-badge">Przycisk / link</span>';
+    if (hiddenOnPage.has(i.id)) b += '<span class="tag-badge seo">Zwinięte na stronie</span>';
+    return b;
 }
 function renderPageFields() {
     let html = '', lastSection = null;
@@ -1020,10 +1030,13 @@ function renderVisual() {
 function bindVisual(frame) {
     const doc = frame.contentDocument;
     if (!doc) return;
-    // blokada nawigacji i formularzy
+    // blokada nawigacji i formularzy (fokus do edycji dziala na mousedown,
+    // wiec linki blokujemy bezwarunkowo — takze te z edytowalnym tekstem)
     doc.addEventListener('click', e => {
-        const a = e.target.closest && e.target.closest('a');
-        if (a && !e.target.closest('[data-cms]')) e.preventDefault();
+        if (e.target.closest && e.target.closest('a')) e.preventDefault();
+    }, true);
+    doc.addEventListener('auxclick', e => {
+        if (e.target.closest && e.target.closest('a')) e.preventDefault();
     }, true);
     doc.addEventListener('submit', e => e.preventDefault(), true);
 
@@ -1104,6 +1117,46 @@ function bindVisual(frame) {
         e.preventDefault();
         changePageImage(Number(img.getAttribute('data-cms-img')));
     });
+
+    // wykryj teksty niewidoczne (zwiniete sekcje, display:none, max-height:0) lub niesparowane
+    const win = frame.contentWindow;
+    const isHiddenDeep = (el) => {
+        const r = el.getBoundingClientRect();
+        if (r.width < 2 && r.height < 2) return true;
+        let n = el;
+        while (n && n !== doc.body) {
+            const cs = win.getComputedStyle(n);
+            if (cs.display === 'none' || cs.visibility === 'hidden' || cs.opacity === '0') return true;
+            if ((cs.overflow === 'hidden' || cs.overflowY === 'hidden') && (parseFloat(cs.maxHeight) === 0 || n.getBoundingClientRect().height < 2)) return true;
+            n = n.parentElement;
+        }
+        return false;
+    };
+    hiddenOnPage.clear();
+    pageItems.filter(i => i.kind === 'node' && i.tag !== 'title').forEach(item => {
+        const span = doc.querySelector(`[data-cms="${item.id}"]`);
+        if (!span || isHiddenDeep(span)) hiddenOnPage.add(item.id);
+    });
+    if (hiddenOnPage.size) {
+        $('hiddenNoticeText').textContent = hiddenOnPage.size === 1
+            ? '1 tekst z tej strony jest zwinięty lub ukryty — nie da się go edytować na podglądzie.'
+            : `${hiddenOnPage.size} tekstów z tej strony jest zwiniętych lub ukrytych (np. rozwijane sekcje) — nie da się ich edytować na podglądzie.`;
+        $('hiddenNotice').style.display = 'flex';
+    } else {
+        $('hiddenNotice').style.display = 'none';
+    }
+}
+const hiddenOnPage = new Set();
+function goToHiddenFields() {
+    setPagesMode('list');
+    setTimeout(() => {
+        const first = [...hiddenOnPage][0];
+        const tf = $(`tf-${first}`);
+        if (tf) {
+            tf.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            hiddenOnPage.forEach(id => { const el = $(`tf-${id}`); if (el) { el.classList.remove('flash'); void el.offsetWidth; el.classList.add('flash'); } });
+        }
+    }, 120);
 }
 function countPageChanges() {
     let n = 0;
