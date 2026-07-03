@@ -288,10 +288,14 @@ input, textarea, select { font-family: var(--font); font-size: 15px; }
             <div class="field-help" style="margin-top:8px;">Edytujesz teksty — układ, zdjęcia i styl strony pozostają nietknięte. Zmienione pola podświetlają się na zielono.</div>
         </div>
         <div id="pageFields"></div>
-        <div style="display:flex;gap:12px;align-items:center;justify-content:flex-end;margin-top:6px;">
-            <span class="deploy-note" id="pagesNote"></span>
-            <button class="btn btn-green" id="pagesSaveBtn" onclick="savePageTexts()" style="display:none;">Zapisz zmiany</button>
-        </div>
+    </div>
+
+    <div class="action-bar" id="pagesBar">
+        <span class="deploy-note" id="pagesChanged">Brak zmian</span>
+        <div class="grow"></div>
+        <span class="deploy-note" id="pagesNote"></span>
+        <button class="btn btn-outline" onclick="discardPageChanges()">Odrzuć zmiany</button>
+        <button class="btn btn-green" id="pagesSaveBtn" onclick="savePageTexts()" disabled>Zapisz zmiany</button>
     </div>
 
     <div class="wrap" id="productsView" style="display:none;">
@@ -722,6 +726,7 @@ function switchTab(tab) {
     $('postListView').style.display = tab === 'blog' ? 'block' : 'none';
     $('editorView').style.display = 'none';
     $('actionBar').style.display = 'none';
+    $('pagesBar').style.display = (tab === 'pages' && $('pageSelect').value) ? 'flex' : 'none';
     $('pagesView').style.display = tab === 'pages' ? 'block' : 'none';
     $('productsView').style.display = tab === 'products' ? 'block' : 'none';
     $('menuView').style.display = tab === 'menu' ? 'block' : 'none';
@@ -754,9 +759,8 @@ async function loadPages() {
 }
 async function loadPageTexts() {
     const page = $('pageSelect').value;
-    $('pagesSaveBtn').style.display = 'none';
     $('pagesNote').textContent = '';
-    if (!page) { $('pageFields').innerHTML = ''; return; }
+    if (!page) { $('pageFields').innerHTML = ''; $('pagesBar').style.display = 'none'; return; }
     $('pageFields').innerHTML = '<div class="loading"><div class="spinner"></div>Ładowanie tekstów...</div>';
     try {
         const res = await fetch(`${API}/content?action=texts&page=${encodeURIComponent(page)}`, { headers: { 'X-CMS-Token': token } });
@@ -765,8 +769,9 @@ async function loadPageTexts() {
         pageSha = data.sha; pageItems = data.items || [];
         Object.keys(pageImageValues).forEach(k => delete pageImageValues[k]);
         renderPageFields();
-        $('pagesSaveBtn').style.display = '';
+        $('pagesBar').style.display = 'flex';
         dirty = false;
+        updatePagesBar();
     } catch (e) { toast('Błąd: ' + e.message, true); }
 }
 function badgeFor(i) {
@@ -794,8 +799,31 @@ function renderPageFields() {
             const item = pageItems.find(x => x.id === Number(t.dataset.id));
             t.closest('.tfield').classList.toggle('changed', t.value !== item.text);
             markDirty();
+            updatePagesBar();
         });
     });
+}
+function countPageChanges() {
+    let n = 0;
+    $('pageFields').querySelectorAll('textarea').forEach(t => {
+        const item = pageItems.find(x => x.id === Number(t.dataset.id));
+        if (item && t.value !== item.text) n++;
+    });
+    Object.entries(pageImageValues).forEach(([id, path]) => {
+        const item = pageItems.find(x => x.id === Number(id));
+        if (item && path !== item.text) n++;
+    });
+    return n;
+}
+function updatePagesBar() {
+    const n = countPageChanges();
+    $('pagesChanged').textContent = n === 0 ? 'Brak zmian' : (n === 1 ? '1 zmienione pole' : `Zmienione pola: ${n}`);
+    $('pagesSaveBtn').disabled = n === 0;
+}
+function discardPageChanges() {
+    if (countPageChanges() > 0 && !confirm('Odrzucić niezapisane zmiany na tej stronie?')) return;
+    dirty = false;
+    loadPageTexts();
 }
 const pageImageValues = {};
 async function changePageImage(id) {
@@ -812,6 +840,7 @@ async function changePageImage(id) {
             f.closest('.img-field').querySelector('img').src = '/' + path;
             f.closest('.tfield').classList.add('changed');
             markDirty();
+            updatePagesBar();
             toast('Obraz wgrany — zapisz zmiany, aby opublikować');
         } catch (e) { toast(e.message, true); }
     };
