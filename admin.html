@@ -752,7 +752,7 @@ async function savePost() {
         dirty = false;
         (data.warnings || []).forEach(w => console.warn('CMS:', w));
         trackDeploy(data.commit);
-        toast('Zapisano i opublikowano ✓');
+        toast('Zapisano ✓ — aktualizacja strony może zająć do minuty');
     } catch (e) { toast('Błąd: ' + e.message, true); }
     finally { btn.disabled = false; btn.textContent = 'Zapisz i opublikuj'; }
 }
@@ -773,28 +773,39 @@ async function deletePost() {
     finally { btn.disabled = false; }
 }
 
-// ─── STATUS PUBLIKACJI ───
-let pubTimer = null;
+// ─── STATUS PUBLIKACJI (odliczanie 60s → 0 + polling stanu deployu) ───
+let pubTimer = null, pubCountdown = null;
+function stopPubTimers() { clearInterval(pubTimer); clearInterval(pubCountdown); }
 function trackDeploy(commit) {
     if (!commit) return;
     const el = $('pubStatus');
-    clearInterval(pubTimer);
+    stopPubTimers();
     el.className = 'pub-status pending';
-    el.textContent = '⏳ Publikowanie…';
+    el.title = 'Aktualizacja może zająć do minuty — możesz pracować dalej, status zaktualizuje się sam.';
+    let secondsLeft = 60;
+    el.textContent = `⏳ Publikowanie… ${secondsLeft} s`;
+    pubCountdown = setInterval(() => {
+        secondsLeft--;
+        if (secondsLeft > 0) {
+            el.textContent = `⏳ Publikowanie… ${secondsLeft} s`;
+        } else {
+            el.textContent = '⏳ Publikowanie trwa dłużej niż zwykle — jeszcze chwila…';
+        }
+    }, 1000);
     let tries = 0;
     pubTimer = setInterval(async () => {
         tries++;
-        if (tries > 30) { clearInterval(pubTimer); el.className = 'pub-status'; return; }
+        if (tries > 30) { stopPubTimers(); el.className = 'pub-status'; return; }
         try {
             const res = await fetch(`${API}/content?action=deploy-status&commit=${commit}`, { headers: { 'X-CMS-Token': token } });
             const data = await res.json();
             if (data.state === 'success') {
-                clearInterval(pubTimer);
+                stopPubTimers();
                 el.className = 'pub-status success';
                 el.textContent = '✓ Opublikowano — zmiany są na stronie';
                 setTimeout(() => { el.className = 'pub-status'; }, 30000);
             } else if (data.state === 'error') {
-                clearInterval(pubTimer);
+                stopPubTimers();
                 el.className = 'pub-status error';
                 el.textContent = '⚠ Publikacja nie powiodła się';
             }
@@ -839,7 +850,7 @@ async function restoreVersion(sha, btn) {
         if (!data.ok) { toast(data.error || 'Błąd przywracania', true); return; }
         if (!data.commit) { toast(data.note || 'Ta wersja jest już aktualna'); return; }
         trackDeploy(data.commit);
-        toast('Wersja przywrócona ✓');
+        toast('Wersja przywrócona ✓ — aktualizacja może zająć do minuty');
         $('historyModal').style.display = 'none';
         dirty = false;
         if (historyCtx.kind === 'post') editPost(currentSlug); else loadPageTexts();
@@ -1371,7 +1382,7 @@ async function savePageTexts() {
         if (!data.ok) { toast(data.error || 'Błąd zapisu', true); if (res.status === 409) loadPageTexts(); return; }
         dirty = false;
         trackDeploy(data.commit);
-        toast('Zapisano ✓');
+        toast('Zapisano ✓ — aktualizacja strony może zająć do minuty');
         loadPageTexts();
     } catch (e) { toast('Błąd: ' + e.message, true); }
     finally { btn.disabled = false; btn.textContent = 'Zapisz zmiany'; }
@@ -1464,7 +1475,7 @@ async function saveProduct(idx) {
     if (r) {
         dirty = false; delete prodImageValues[idx];
         trackDeploy(r.commit);
-        toast('Produkt zapisany ✓');
+        toast('Produkt zapisany ✓ — aktualizacja może zająć do minuty');
         loadProducts();
     }
 }
@@ -1523,7 +1534,7 @@ async function createProduct() {
     const r = await prodRequest({ op: 'add', fields });
     if (r) {
         trackDeploy(r.commit);
-        toast('Produkt dodany ✓');
+        toast('Produkt dodany ✓ — aktualizacja może zająć do minuty');
         loadProducts();
     }
 }
@@ -1560,7 +1571,7 @@ async function saveMenu() {
         dirty = false;
         $('menuNote').textContent = `Zaktualizowano ${data.changed} plików.`;
         trackDeploy(data.commit);
-        toast('Menu zapisane ✓');
+        toast('Menu zapisane ✓ — aktualizacja może zająć do minuty');
     } catch (e) { toast('Błąd: ' + e.message, true); }
     finally { btn.disabled = false; btn.textContent = 'Zapisz menu'; }
 }
