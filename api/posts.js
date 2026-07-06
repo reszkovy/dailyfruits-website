@@ -485,8 +485,8 @@ export default async function handler(req, res) {
       const existing = await readFile(clean);
       const path = existing ? clean.replace(/(\.[a-z]+)$/, `-${Date.now().toString(36)}$1`) : clean;
 
-      await commitFiles([{ path, contentBase64 }], `CMS: upload pliku ${path}`);
-      return res.status(200).json({ ok: true, path });
+      const commit = await commitFiles([{ path, contentBase64 }], `CMS: upload pliku ${path}`);
+      return res.status(200).json({ ok: true, path, commit });
     }
 
     return res.status(400).json({ error: 'Nieznana akcja. Dostepne: list, get, update, create, delete, upload' });

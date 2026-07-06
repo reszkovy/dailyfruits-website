@@ -651,12 +651,12 @@ async function uploadFile(file) {
     });
     const data = await res.json();
     if (!data.ok) throw new Error(data.error || 'Błąd uploadu');
-    return data.path;
+    return { path: data.path, commit: data.commit };
 }
 async function uploadHeroImage(input) {
     if (!input.files[0]) return;
     toast('Wysyłanie obrazu...');
-    try { setHero(await uploadFile(input.files[0])); markDirty(); toast('Obraz wgrany'); }
+    try { const up = await uploadFile(input.files[0]); setHero(up.path); markDirty(); toast('Obraz wgrany'); }
     catch (e) { toast(e.message, true); }
     input.value = '';
 }
@@ -664,35 +664,66 @@ async function uploadBodyImage(input) {
     if (!input.files[0]) return;
     toast('Wysyłanie obrazu...');
     try {
-        const path = await uploadFile(input.files[0]);
+        const { path } = await uploadFile(input.files[0]);
         $('rte').focus();
         document.execCommand('insertHTML', false, `<img src="${escA(path)}" alt="" loading="lazy"><p></p>`);
         markDirty(); toast('Obraz wstawiony');
     } catch (e) { toast(e.message, true); }
     input.value = '';
 }
+let pdfCountdownTimer = null, pdfPollTimer = null;
+function stopPdfTimers() { clearInterval(pdfCountdownTimer); clearInterval(pdfPollTimer); pdfCountdownTimer = null; pdfPollTimer = null; }
 async function uploadPdf(input) {
     const file = input.files[0];
     if (!file) return;
     if (!/\.pdf$/i.test(file.name)) { toast('To nie jest plik PDF', true); input.value = ''; return; }
     if (file.size > 4 * 1024 * 1024) { toast('Plik za duży — maksymalnie 4 MB', true); input.value = ''; return; }
+    stopPdfTimers();
     $('pdfResult').innerHTML = '<div class="loading"><div class="spinner"></div>Wysyłanie PDF...</div>';
     try {
-        const path = await uploadFile(file);
+        const { path, commit } = await uploadFile(file);
         const url = location.origin + '/' + path;
+        if (commit) trackDeploy(commit);
         $('pdfResult').innerHTML =
             '<div style="padding:16px;border:2px solid #cde3a8;border-radius:10px;background:#f6fbe9;">' +
             '<div style="font-weight:700;margin-bottom:8px;">✓ Wgrano: ' + escH(path) + '</div>' +
             '<div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;">' +
             '<input type="text" readonly value="' + escA(url) + '" onclick="this.select()" style="flex:1;min-width:220px;padding:10px 12px;border:1px solid #ccc;border-radius:8px;font-size:14px;">' +
             '<button class="btn btn-sm btn-green" data-url="' + escA(url) + '" onclick="copyPdfLink(this)">Kopiuj link</button>' +
-            '<a class="btn btn-sm btn-outline" href="' + escA(url) + '" target="_blank" rel="noopener">Otwórz ↗</a>' +
+            '<a id="pdfOpenBtn" class="btn btn-sm btn-outline" style="pointer-events:none;opacity:.45;" aria-disabled="true">Otwórz ↗</a>' +
             '</div>' +
-            '<div style="margin-top:8px;font-size:13px;color:#666;">Link zadziała za ~1–2 min (po wdrożeniu na serwer).</div>' +
+            '<div id="pdfStatus" style="margin-top:10px;font-size:14px;font-weight:700;color:#8a6d00;">⏳ Publikowanie… link będzie aktywny za ~90 s</div>' +
             '</div>';
-        toast('PDF wgrany ✓');
-    } catch (e) { $('pdfResult').innerHTML = ''; toast(e.message, true); }
+        pollPdfLive(url);
+        toast('PDF wgrany — trwa publikowanie…');
+    } catch (e) { stopPdfTimers(); $('pdfResult').innerHTML = ''; toast(e.message, true); }
     input.value = '';
+}
+function pollPdfLive(url) {
+    let secondsLeft = 90;
+    const st = () => document.getElementById('pdfStatus');
+    pdfCountdownTimer = setInterval(() => {
+        secondsLeft--;
+        const el = st(); if (!el) { clearInterval(pdfCountdownTimer); return; }
+        el.textContent = secondsLeft > 0
+            ? '⏳ Publikowanie… link będzie aktywny za ~' + secondsLeft + ' s'
+            : '⏳ Publikowanie trwa dłużej niż zwykle — jeszcze chwilę…';
+    }, 1000);
+    let tries = 0;
+    const activate = () => {
+        stopPdfTimers();
+        const el = st(), btn = document.getElementById('pdfOpenBtn');
+        if (el) { el.textContent = '✓ Link aktywny — plik jest online'; el.style.color = '#1B5E3A'; }
+        if (btn) { btn.setAttribute('href', url); btn.setAttribute('target', '_blank'); btn.setAttribute('rel', 'noopener'); btn.style.pointerEvents = ''; btn.style.opacity = ''; btn.removeAttribute('aria-disabled'); }
+    };
+    pdfPollTimer = setInterval(async () => {
+        tries++;
+        if (tries > 60) { clearInterval(pdfPollTimer); const el = st(); if (el) el.textContent = '⏳ Publikacja nietypowo długa — odśwież link za chwilę.'; return; }
+        try {
+            const r = await fetch(url + '?cb=' + Date.now(), { method: 'HEAD', cache: 'no-store' });
+            if (r.ok) activate();
+        } catch (e) { /* kolejna proba */ }
+    }, 4000);
 }
 function copyPdfLink(btn) {
     const u = btn.getAttribute('data-url');
