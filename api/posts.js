@@ -480,12 +480,12 @@ export default async function handler(req, res) {
       const clean = filename.toLowerCase()
         .replace(/[ąćęłńóśźż]/g, c => map[c])
         .replace(/[^a-z0-9.-]/g, '-').replace(/-+/g, '-');
-      if (!UPLOAD.allowedExt.test(clean)) return res.status(400).json({ error: 'Dozwolone: webp, jpg, png, svg, avif' });
+      if (!UPLOAD.allowedExt.test(clean)) return res.status(400).json({ error: 'Dozwolone: webp, jpg, png, svg, avif, pdf' });
 
       const existing = await readFile(clean);
       const path = existing ? clean.replace(/(\.[a-z]+)$/, `-${Date.now().toString(36)}$1`) : clean;
 
-      await commitFiles([{ path, contentBase64 }], `CMS: upload obrazka ${path}`);
+      await commitFiles([{ path, contentBase64 }], `CMS: upload pliku ${path}`);
       return res.status(200).json({ ok: true, path });
     }
 

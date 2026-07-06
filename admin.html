@@ -209,6 +209,7 @@ input, textarea, select { font-family: var(--font); font-size: 15px; }
         <button class="tab" id="tabPages" onclick="switchTab('pages')">Strony</button>
         <button class="tab" id="tabProducts" onclick="switchTab('products')">Produkty</button>
         <button class="tab" id="tabMenu" onclick="switchTab('menu')">Menu</button>
+        <button class="tab" id="tabFiles" onclick="switchTab('files')">Pliki PDF</button>
         <button class="tab" id="tabTrash" onclick="switchTab('trash')">Kosz</button>
     </div>
 
@@ -363,6 +364,16 @@ input, textarea, select { font-family: var(--font); font-size: 15px; }
                 <span class="deploy-note" id="menuNote"></span>
                 <button class="btn btn-green" id="menuSaveBtn" onclick="saveMenu()">Zapisz menu</button>
             </div>
+        </div>
+    </div>
+
+    <div class="wrap" id="filesView" style="display:none;">
+        <div class="card">
+            <h2>Pliki PDF</h2>
+            <div class="field-help" style="margin-bottom:14px;">Wgraj plik PDF — będzie dostępny publicznie pod adresem <b>dailyfruits.pl/nazwa-pliku.pdf</b>. Nazwa jest porządkowana automatycznie (małe litery, bez spacji i polskich znaków). Maksymalny rozmiar: <b>4 MB</b>.</div>
+            <input type="file" id="pdfInput" accept=".pdf,application/pdf" style="display:none" onchange="uploadPdf(this)">
+            <button class="btn btn-lime" onclick="pdfInput.click()">+ Wgraj PDF</button>
+            <div id="pdfResult" style="margin-top:16px;"></div>
         </div>
     </div>
 
@@ -660,6 +671,33 @@ async function uploadBodyImage(input) {
     } catch (e) { toast(e.message, true); }
     input.value = '';
 }
+async function uploadPdf(input) {
+    const file = input.files[0];
+    if (!file) return;
+    if (!/\.pdf$/i.test(file.name)) { toast('To nie jest plik PDF', true); input.value = ''; return; }
+    if (file.size > 4 * 1024 * 1024) { toast('Plik za duży — maksymalnie 4 MB', true); input.value = ''; return; }
+    $('pdfResult').innerHTML = '<div class="loading"><div class="spinner"></div>Wysyłanie PDF...</div>';
+    try {
+        const path = await uploadFile(file);
+        const url = location.origin + '/' + path;
+        $('pdfResult').innerHTML =
+            '<div style="padding:16px;border:2px solid #cde3a8;border-radius:10px;background:#f6fbe9;">' +
+            '<div style="font-weight:700;margin-bottom:8px;">✓ Wgrano: ' + escH(path) + '</div>' +
+            '<div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;">' +
+            '<input type="text" readonly value="' + escA(url) + '" onclick="this.select()" style="flex:1;min-width:220px;padding:10px 12px;border:1px solid #ccc;border-radius:8px;font-size:14px;">' +
+            '<button class="btn btn-sm btn-green" data-url="' + escA(url) + '" onclick="copyPdfLink(this)">Kopiuj link</button>' +
+            '<a class="btn btn-sm btn-outline" href="' + escA(url) + '" target="_blank" rel="noopener">Otwórz ↗</a>' +
+            '</div>' +
+            '<div style="margin-top:8px;font-size:13px;color:#666;">Link zadziała za ~1–2 min (po wdrożeniu na serwer).</div>' +
+            '</div>';
+        toast('PDF wgrany ✓');
+    } catch (e) { $('pdfResult').innerHTML = ''; toast(e.message, true); }
+    input.value = '';
+}
+function copyPdfLink(btn) {
+    const u = btn.getAttribute('data-url');
+    navigator.clipboard.writeText(u).then(() => toast('Skopiowano link')).catch(() => toast('Nie udało się skopiować', true));
+}
 
 // ─── CZYSZCZENIE HTML z edytora ───
 function cleanBody(html) {
@@ -880,7 +918,7 @@ function switchTab(tab) {
     if (dirty && !confirm('Masz niezapisane zmiany. Przełączyć bez zapisu?')) return;
     dirty = false;
     activeTab = tab;
-    ['Blog', 'Pages', 'Products', 'Menu', 'Trash'].forEach(t => $('tab' + t).classList.toggle('active', t.toLowerCase() === tab));
+    ['Blog', 'Pages', 'Products', 'Menu', 'Files', 'Trash'].forEach(t => $('tab' + t).classList.toggle('active', t.toLowerCase() === tab));
     $('postListView').style.display = tab === 'blog' ? 'block' : 'none';
     $('editorView').style.display = 'none';
     $('actionBar').style.display = 'none';
@@ -888,6 +926,7 @@ function switchTab(tab) {
     $('pagesView').style.display = tab === 'pages' ? 'block' : 'none';
     $('productsView').style.display = tab === 'products' ? 'block' : 'none';
     $('menuView').style.display = tab === 'menu' ? 'block' : 'none';
+    $('filesView').style.display = tab === 'files' ? 'block' : 'none';
     $('trashView').style.display = tab === 'trash' ? 'block' : 'none';
     if (tab === 'pages' && !pagesLoaded) loadPages();
     if (tab === 'products' && !prodLoaded) loadProducts();

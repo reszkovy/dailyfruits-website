@@ -51,6 +51,6 @@ export const MENU = {
 
 // ── Upload ──
 export const UPLOAD = {
-  allowedExt: /\.(webp|jpg|jpeg|png|svg|avif)$/,
+  allowedExt: /\.(webp|jpg|jpeg|png|svg|avif|pdf)$/,
   maxBase64Bytes: 6 * 1024 * 1024, // ~4 MB pliku
 };
