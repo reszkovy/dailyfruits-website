@@ -747,9 +747,9 @@ html.pt-in body>:not(header) { animation: ptFadeIn 0.32s ease both; }
         'napoje':       { cat: 'soki',         title: 'Napoje do biura',             desc: 'Soki, smoothie, lemoniady i napoje do biura - gotowe zestawy Basic, Medium i Premium dostarczane regularnie do Twojej firmy.' },
         'kawa':         { cat: 'kawa',         title: 'Kawa do biura',               desc: 'Kawa do biura w abonamencie i pełen serwis kawowy - świeżo palone ziarna z Małej Palarni, dzierżawa ekspresów i jedna faktura.' },
         'kanapki':      { cat: 'kanapki',      title: 'Kanapki do biura',            desc: 'Kanapki do biura - Office Box, Factory Box i zestawy śniadaniowe. Mix mięsny, wegetariański i wegański w regularnej dostawie.' },
-        'salatki':      { cat: 'salatki',      title: 'Sałatki do biura',            desc: 'Sałatki do biura - grecka, meksykańska, hawajska, śródziemnomorska i więcej. Świeże, gotowe zestawy dostarczane do firmy.' },
-        'pakiety':      { cat: 'bakalie',      title: 'Pakiety przekąsek do biura',  desc: 'Pakiety przekąsek do biura - bakalie, batony, sweet boxy i miksy słodko-wytrawne. Gotowe zestawy dla zespołu w jednej dostawie.' },
-        'sniadania':    { cat: 'sniadania',    title: 'Śniadania firmowe',           desc: 'Śniadania firmowe - klasyczne, premium i zrównoważone zestawy śniadaniowe dla zespołu. Kompletny catering śniadaniowy do biura.' },
+        'salatki':      { cat: 'salatki',      title: 'Sałatki do biura', h1: 'Salatki do biura',            desc: 'Sałatki do biura - grecka, meksykańska, hawajska, śródziemnomorska i więcej. Świeże, gotowe zestawy dostarczane do firmy.' },
+        'pakiety':      { cat: 'bakalie',      title: 'Pakiety przekąsek do biura', h1: 'Pakiety do biura',  desc: 'Pakiety przekąsek do biura - bakalie, batony, sweet boxy i miksy słodko-wytrawne. Gotowe zestawy dla zespołu w jednej dostawie.' },
+        'sniadania':    { cat: 'sniadania',    title: 'Śniadania firmowe', h1: 'Sniadania firmowe',           desc: 'Śniadania firmowe - klasyczne, premium i zrównoważone zestawy śniadaniowe dla zespołu. Kompletny catering śniadaniowy do biura.' },
         'catering':     { cat: 'catering',     title: 'Catering firmowy',            desc: 'Catering firmowy - finger foods, spotkania kameralne i premium, zestawy owocowo-wytrawne. Catering na wydarzenia i spotkania w firmie.' },
         'integracyjne': { cat: 'integracyjne', title: 'Zestawy integracyjne',        desc: 'Zestawy integracyjne na imprezy firmowe - jedzenie i przekąski na integrację zespołu. Gotowe pakiety na wydarzenia firmowe.' }
     };
@@ -767,7 +767,7 @@ html.pt-in body>:not(header) { animation: ptFadeIn 0.32s ease both; }
             const ot = document.querySelector('meta[property="og:title"]');
             if (ot) ot.setAttribute('content', c.title + ' - DailyFruits & DailyFoods');
             const h1El = document.getElementById('offerH1');
-            if (h1El) h1El.textContent = c.title;
+            if (h1El) h1El.textContent = c.h1 || c.title;
             const subEl = document.getElementById('offerSub');
             if (subEl && c.desc) subEl.textContent = c.desc;
             const mediaEl = document.getElementById('offerMedia');
