@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
+<base href="/">
 <!--#include:gtm-head-->
 <!-- Google Tag Manager -->
 <!-- Consent Mode v2: domyslnie denied do czasu zgody (RODO/ePrivacy) -->
@@ -792,7 +793,7 @@ html.pt-in body>:not(header) { animation: ptFadeIn 0.32s ease both; }
             tab.setAttribute('aria-selected', 'true');
             const panel = document.querySelector(`.cat-panel[data-cat="${cat}"]`);
             const current = document.querySelector('.cat-panel.active');
-            const showPanel = () => { catPanels.forEach(p => p.classList.remove('active', 'leaving')); if (panel) panel.classList.add('active'); };
+            const showPanel = () => { catPanels.forEach(p => p.classList.remove('active', 'leaving')); if (panel) { panel.classList.add('active'); panel.querySelectorAll('img').forEach(im => { if (!im.complete || !im.naturalWidth) { im.loading = 'eager'; im.src = im.src; } }); } };
             if (smSwapTimer) { clearTimeout(smSwapTimer); smSwapTimer = null; }
             if (panel && current && current !== panel && !SM_RM) {
                 catPanels.forEach(p => { if (p !== current) p.classList.remove('active', 'leaving'); });
