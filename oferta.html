@@ -88,9 +88,11 @@ gtag('consent','default',{'ad_storage':'denied','analytics_storage':'denied','ad
 @media (max-width: 768px) { .subcat-bar { gap: 6px; overflow-x: auto; flex-wrap: nowrap; -webkit-overflow-scrolling: touch; scrollbar-width: none; padding-bottom: 12px; } .subcat-bar::-webkit-scrollbar { display: none; } .subcat-pill { font-size: 12px; padding: 6px 12px; flex-shrink: 0; } }
 .products-section { padding: 24px 0 80px; position: relative; overflow: hidden; }
 .offer-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 36px; flex-wrap: wrap; }
-.offer-head-text { flex: 1 1 340px; min-width: 260px; }
+.offer-head-text { flex: 1 1 340px; min-width: 260px; min-height: 88px; }
 .offer-head-media { flex: 0 1 440px; max-width: 440px; align-self: center; }
 .offer-head-media img { width: 100%; height: auto; aspect-ratio: 44 / 19; object-fit: cover; border-radius: 18px; display: block; box-shadow: 0 10px 30px rgba(27,94,58,.12); }
+.offer-head-ph { width: 100%; aspect-ratio: 44 / 19; border-radius: 18px; background: var(--lime-bg); display: flex; align-items: center; justify-content: center; color: rgba(27,94,58,.3); box-shadow: inset 0 0 0 2px rgba(27,94,58,.09); }
+.offer-head-media img[hidden], .offer-head-ph[hidden] { display: none !important; }
 @media (max-width: 820px) { .offer-head { align-items: flex-start; } .offer-head-media { flex-basis: 100%; max-width: 100%; margin-top: 6px; } }
 .products-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px; align-items: start; }
 .product-card { background: var(--white); border-radius: var(--radius); overflow: hidden; transition: transform 0.3s, box-shadow 0.3s; display: flex; flex-direction: column; }
@@ -326,7 +328,7 @@ html.pt-in body>:not(header) { animation: ptFadeIn 0.32s ease both; }
 <h1 class="hero-in" id="offerH1" style="padding:24px 0 0;text-align:left;font-family:'Achiko',sans-serif;font-size:clamp(28px,4vw,38px);font-weight:400;color: var(--green-dark);">Letnia oferta DailyFruits & DailyFoods</h1>
 <p class="hero-in hero-in-2" id="offerSub" style="text-align:left;font-size:15px;color: var(--gray-500);margin:8px 0 0;max-width:520px;">Owoce, śniadania, napoje, catering, kanapki, sałatki i wiele więcej - wszystko w jednej dostawie.</p>
 </div>
-<div class="offer-head-media" id="offerMedia" hidden><img id="offerMediaImg" alt="" loading="eager" width="440" height="190"></div>
+<div class="offer-head-media" id="offerMedia"><img id="offerMediaImg" alt="" loading="eager" width="440" height="190" hidden><div class="offer-head-ph" id="offerMediaPh" aria-hidden="true"><svg viewBox="0 0 48 48" width="38" height="38" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="10" width="36" height="28" rx="4"/><circle cx="17.5" cy="21" r="3"/><path d="M42 31l-8.5-8.5L18 38"/></svg></div></div>
 </div>
 <div class="cat-tabs-wrap mt-20" id="catTabs">
     <div class="cat-groups">
@@ -756,6 +758,21 @@ html.pt-in body>:not(header) { animation: ptFadeIn 0.32s ease both; }
     const CAT_TO_SLUG = {};
     Object.keys(OFFER_CATS).forEach(s => { CAT_TO_SLUG[OFFER_CATS[s].cat] = s; });
     let suppressOfferPush = false;
+    let mediaSeq = 0;
+    const DEFAULT_OFFER = (function () {
+        const h1 = document.getElementById('offerH1'), sub = document.getElementById('offerSub'), can = document.querySelector('link[rel="canonical"]');
+        return { h1: h1 ? h1.textContent : '', sub: sub ? sub.textContent : '', title: document.title, canonical: can ? can.getAttribute('href') : '' };
+    })();
+    function resetOfferToDefault() {
+        const h1El = document.getElementById('offerH1'); if (h1El) h1El.textContent = DEFAULT_OFFER.h1;
+        const subEl = document.getElementById('offerSub'); if (subEl) subEl.textContent = DEFAULT_OFFER.sub;
+        document.title = DEFAULT_OFFER.title;
+        ++mediaSeq;
+        const mimgEl = document.getElementById('offerMediaImg'); if (mimgEl) mimgEl.hidden = true;
+        const phEl = document.getElementById('offerMediaPh'); if (phEl) phEl.hidden = false;
+        const can = document.querySelector('link[rel="canonical"]'); if (can) can.setAttribute('href', DEFAULT_OFFER.canonical);
+        const ogu = document.querySelector('meta[property="og:url"]'); if (ogu) ogu.setAttribute('content', DEFAULT_OFFER.canonical);
+    }
 
     function updateOfferMeta(slug) {
         const c = OFFER_CATS[slug];
@@ -773,10 +790,13 @@ html.pt-in body>:not(header) { animation: ptFadeIn 0.32s ease both; }
             const mediaEl = document.getElementById('offerMedia');
             const mimgEl = document.getElementById('offerMediaImg');
             if (mediaEl && mimgEl) {
+                const phEl = document.getElementById('offerMediaPh');
+                const seq = ++mediaSeq;
+                mimgEl.hidden = true; if (phEl) phEl.hidden = false;
                 const cand = '/oferta-kat-' + slug + '.webp';
                 const probe = new Image();
-                probe.onload = function () { mimgEl.src = cand; mimgEl.alt = c.title; mediaEl.hidden = false; };
-                probe.onerror = function () { mediaEl.hidden = true; };
+                probe.onload = function () { if (seq !== mediaSeq) return; mimgEl.src = cand; mimgEl.alt = c.title; mimgEl.hidden = false; if (phEl) phEl.hidden = true; };
+                probe.onerror = function () { if (seq !== mediaSeq) return; mimgEl.hidden = true; if (phEl) phEl.hidden = false; };
                 probe.src = cand;
             }
         }
@@ -815,6 +835,7 @@ html.pt-in body>:not(header) { animation: ptFadeIn 0.32s ease both; }
             const panel = document.querySelector(`.cat-panel[data-cat="${cat}"]`);
             const current = document.querySelector('.cat-panel.active');
             const showPanel = () => { catPanels.forEach(p => p.classList.remove('active', 'leaving')); if (panel) { panel.classList.add('active'); panel.querySelectorAll('img[loading="lazy"]').forEach(im => { im.loading = 'eager'; var s = im.getAttribute('src'); if (s) im.src = s; }); } };
+            const wasMidSwap = !!smSwapTimer;
             if (smSwapTimer) { clearTimeout(smSwapTimer); smSwapTimer = null; }
             if (panel && current && current !== panel && !SM_RM) {
                 catPanels.forEach(p => { if (p !== current) p.classList.remove('active', 'leaving'); });
@@ -826,8 +847,15 @@ html.pt-in body>:not(header) { animation: ptFadeIn 0.32s ease both; }
             // (auto-scroll usuniety - psul zmieniajace sie headery, przyklejal submenu do gory)
             // Deep-link: odzwierciedl wybraną kategorię w adresie /oferta/<slug>
             const slug = CAT_TO_SLUG[cat];
-            if (slug && !suppressOfferPush) updateOfferUrl(slug, true);
+            if (slug && !suppressOfferPush) updateOfferUrl(slug, !wasMidSwap);
         });
+    });
+
+    // A11y: powiaz zakladki z panelami (aria-controls / aria-labelledby)
+    catTabs.forEach(function (tab) {
+        var cat = tab.dataset.cat;
+        var panel = document.querySelector('.cat-panel[data-cat="' + cat + '"]');
+        if (panel) { if (!tab.id) tab.id = 'tab-' + cat; if (!panel.id) panel.id = 'panel-' + cat; tab.setAttribute('aria-controls', panel.id); panel.setAttribute('aria-labelledby', tab.id); }
     });
 
     // ─── Wejście bezpośrednie: /oferta/<slug> lub #kategoria ───
@@ -841,17 +869,26 @@ html.pt-in body>:not(header) { animation: ptFadeIn 0.32s ease both; }
             if (OFFER_CATS[h]) slug = h;              // #owoce (slug)
             else if (CAT_TO_SLUG[h]) slug = CAT_TO_SLUG[h]; // #soki (data-cat, wsteczna zgodność)
         }
-        if (slug) activateOfferCat(slug, false);      // replaceState — bez dodatkowego wpisu w historii
+        if (slug) {
+            var _tc = OFFER_CATS[slug].cat, _tp = document.querySelector('.cat-panel[data-cat="' + _tc + '"]');
+            if (_tp) { var _cur = document.querySelector('.cat-panel.active'); if (_cur && _cur !== _tp) _cur.classList.remove('active'); _tp.classList.add('active'); }
+            activateOfferCat(slug, false);            // replaceState + brak flash 120ms
+        }
     })();
 
     // Obsługa przycisków wstecz/dalej
     window.addEventListener('popstate', function() {
         const m = window.location.pathname.match(/\/oferta\/([a-z-]+)\/?$/i);
-        const slug = (m && OFFER_CATS[m[1]]) ? m[1] : 'owoce';
-        const c = OFFER_CATS[slug];
-        const tab = c && document.querySelector(`.cat-tab[data-cat="${c.cat}"]`);
-        if (tab) { suppressOfferPush = true; tab.click(); suppressOfferPush = false; }
-        updateOfferMeta(slug);
+        if (m && OFFER_CATS[m[1]]) {
+            const slug = m[1], c = OFFER_CATS[slug];
+            const tab = c && document.querySelector(`.cat-tab[data-cat="${c.cat}"]`);
+            if (tab) { suppressOfferPush = true; tab.click(); suppressOfferPush = false; }
+            updateOfferMeta(slug);
+        } else {
+            const tab = document.querySelector('.cat-tab[data-cat="owoce"]');
+            if (tab) { suppressOfferPush = true; tab.click(); suppressOfferPush = false; }
+            resetOfferToDefault();
+        }
     });
 
     // Force-load lazy ikon i obrazkow widocznego panelu (lazy w initially-hidden/po scrollu nie zawsze odpala)
