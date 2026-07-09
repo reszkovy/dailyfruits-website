@@ -44,7 +44,7 @@ gtag('consent','default',{'ad_storage':'denied','analytics_storage':'denied','ad
     <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700;900&display=swap">
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700;900&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
     <noscript><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700;900&display=swap" rel="stylesheet"></noscript>
-    <link rel="stylesheet" href="shared.css?v=11">
+    <link rel="stylesheet" href="shared.css?v=12">
 <style>
 @font-face { font-family: 'Achiko'; src: url('Achiko.woff2') format('woff2'), url('Achiko.ttf') format('truetype'); font-weight: 400; font-style: normal; font-display: swap; }
 :root {
@@ -362,5 +362,7 @@ html.pt-in body>:not(header) { animation: ptFadeIn 0.32s ease both; }
 <!-- Zgody cookie obsługuje Usercentrics (ładowany przez GTM-FVTBKWW), tak samo jak na betterworkplace.pl. Własny banner usunięty, by nie dublować CMP. -->
 <!--#endinclude:cookie-banner-->
 <script>/* SAFETY: Safari bfcache - "wstecz" ZAWSZE laduje swieza, dzialajaca strone (koniec z zamrozonym/polamanym stanem po powrocie). Zaden display-toggle, zadne przechwytywanie - czysty reload tylko przy restore z cache. */(function(){window.addEventListener('pageshow',function(e){if(e.persisted){window.location.reload();}});window.addEventListener('load',function(){setTimeout(function(){var r=document.querySelectorAll('.reveal:not(.vis)');for(var i=0;i<r.length;i++){var b=r[i].getBoundingClientRect();if(b.top<innerHeight+120&&b.bottom>-120)r[i].classList.add('vis');}},1200);});})();</script>
+<!-- FLOATING BADGE -->
+<a href="zapytanie" class="floating-badge"><img src="badge-trust.svg" alt="Złóż zapytanie - zaufało nam ponad 2500 firm w Polsce" loading="lazy" width="231" height="68"></a>
 </body>
 </html>

@@ -44,7 +44,7 @@ gtag('consent','default',{'ad_storage':'denied','analytics_storage':'denied','ad
     <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700;900&display=swap">
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700;900&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
     <noscript><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700;900&display=swap" rel="stylesheet"></noscript>
-    <link rel="stylesheet" href="shared.css?v=11">
+    <link rel="stylesheet" href="shared.css?v=12">
 <style>
 @font-face { font-family: 'Achiko'; src: url('Achiko.woff2') format('woff2'), url('Achiko.ttf') format('truetype'); font-weight: 400; font-style: normal; font-display: swap; }
 :root {
@@ -730,6 +730,60 @@ html.pt-in body>:not(header) { animation: ptFadeIn 0.32s ease both; }
     const catTabs = document.querySelectorAll('.cat-tab');
     const catPanels = document.querySelectorAll('.cat-panel');
     let smSwapTimer = null;
+
+    // ─── DEEP-LINK: /oferta/<slug> ↔ zakładki kategorii ───
+    const OFFER_BASE = '/oferta';
+    const OFFER_CATS = {
+        'owoce':        { cat: 'owoce',        title: 'Owoce i warzywa do biura',    desc: 'Świeże owoce i warzywa do biura - klasyczne miksy, egzotyka i warzywa krojone w regularnej dostawie. Jeden partner, jedna faktura.' },
+        'napoje':       { cat: 'soki',         title: 'Napoje do biura',             desc: 'Soki, smoothie, lemoniady i napoje do biura - gotowe zestawy Basic, Medium i Premium dostarczane regularnie do Twojej firmy.' },
+        'kawa':         { cat: 'kawa',         title: 'Kawa do biura',               desc: 'Kawa do biura w abonamencie i pełen serwis kawowy - świeżo palone ziarna z Małej Palarni, dzierżawa ekspresów i jedna faktura.' },
+        'kanapki':      { cat: 'kanapki',      title: 'Kanapki do biura',            desc: 'Kanapki do biura - Office Box, Factory Box i zestawy śniadaniowe. Mix mięsny, wegetariański i wegański w regularnej dostawie.' },
+        'salatki':      { cat: 'salatki',      title: 'Sałatki do biura',            desc: 'Sałatki do biura - grecka, meksykańska, hawajska, śródziemnomorska i więcej. Świeże, gotowe zestawy dostarczane do firmy.' },
+        'pakiety':      { cat: 'bakalie',      title: 'Pakiety przekąsek do biura',  desc: 'Pakiety przekąsek do biura - bakalie, batony, sweet boxy i miksy słodko-wytrawne. Gotowe zestawy dla zespołu w jednej dostawie.' },
+        'sniadania':    { cat: 'sniadania',    title: 'Śniadania firmowe',           desc: 'Śniadania firmowe - klasyczne, premium i zrównoważone zestawy śniadaniowe dla zespołu. Kompletny catering śniadaniowy do biura.' },
+        'catering':     { cat: 'catering',     title: 'Catering firmowy',            desc: 'Catering firmowy - finger foods, spotkania kameralne i premium, zestawy owocowo-wytrawne. Catering na wydarzenia i spotkania w firmie.' },
+        'integracyjne': { cat: 'integracyjne', title: 'Zestawy integracyjne',        desc: 'Zestawy integracyjne na imprezy firmowe - jedzenie i przekąski na integrację zespołu. Gotowe pakiety na wydarzenia firmowe.' }
+    };
+    const CAT_TO_SLUG = {};
+    Object.keys(OFFER_CATS).forEach(s => { CAT_TO_SLUG[OFFER_CATS[s].cat] = s; });
+    let suppressOfferPush = false;
+
+    function updateOfferMeta(slug) {
+        const c = OFFER_CATS[slug];
+        const url = 'https://dailyfruits.pl' + OFFER_BASE + (slug ? '/' + slug : '');
+        if (c) {
+            document.title = c.title + ' - DailyFruits & DailyFoods';
+            const d = document.querySelector('meta[name="description"]');
+            if (d && c.desc) d.setAttribute('content', c.desc);
+            const ot = document.querySelector('meta[property="og:title"]');
+            if (ot) ot.setAttribute('content', c.title + ' - DailyFruits & DailyFoods');
+        }
+        const can = document.querySelector('link[rel="canonical"]');
+        if (can) can.setAttribute('href', url);
+        const ogu = document.querySelector('meta[property="og:url"]');
+        if (ogu) ogu.setAttribute('content', url);
+    }
+
+    function updateOfferUrl(slug, push) {
+        const path = OFFER_BASE + (slug ? '/' + slug : '');
+        try {
+            if (push) history.pushState({ offerCat: slug }, '', path);
+            else history.replaceState({ offerCat: slug }, '', path);
+        } catch (e) {}
+        updateOfferMeta(slug);
+    }
+
+    function activateOfferCat(slug, push) {
+        const c = OFFER_CATS[slug];
+        if (!c) return;
+        const tab = document.querySelector(`.cat-tab[data-cat="${c.cat}"]`);
+        if (!tab) return;
+        suppressOfferPush = true;
+        tab.click();
+        suppressOfferPush = false;
+        updateOfferUrl(slug, push);
+    }
+
     catTabs.forEach(tab => {
         tab.addEventListener('click', () => {
             const cat = tab.dataset.cat;
@@ -753,14 +807,35 @@ html.pt-in body>:not(header) { animation: ptFadeIn 0.32s ease both; }
                 const top = section.getBoundingClientRect().top + window.scrollY - 180;
                 window.scrollTo({ top: Math.max(top, 0), behavior: 'smooth' });
             }
+            // Deep-link: odzwierciedl wybraną kategorię w adresie /oferta/<slug>
+            const slug = CAT_TO_SLUG[cat];
+            if (slug && !suppressOfferPush) updateOfferUrl(slug, true);
         });
     });
-    // Support URL hash for direct category links
-    if (window.location.hash) {
-        const hashCat = window.location.hash.replace('#', '');
-        const matchTab = document.querySelector(`.cat-tab[data-cat="${hashCat}"]`);
-        if (matchTab) matchTab.click();
-    }
+
+    // ─── Wejście bezpośrednie: /oferta/<slug> lub #kategoria ───
+    (function resolveInitialOfferCat() {
+        let slug = null;
+        const m = window.location.pathname.match(/\/oferta\/([a-z-]+)\/?$/i);
+        if (m && OFFER_CATS[m[1]]) {
+            slug = m[1];
+        } else if (window.location.hash) {
+            const h = window.location.hash.replace('#', '');
+            if (OFFER_CATS[h]) slug = h;              // #owoce (slug)
+            else if (CAT_TO_SLUG[h]) slug = CAT_TO_SLUG[h]; // #soki (data-cat, wsteczna zgodność)
+        }
+        if (slug) activateOfferCat(slug, false);      // replaceState — bez dodatkowego wpisu w historii
+    })();
+
+    // Obsługa przycisków wstecz/dalej
+    window.addEventListener('popstate', function() {
+        const m = window.location.pathname.match(/\/oferta\/([a-z-]+)\/?$/i);
+        const slug = (m && OFFER_CATS[m[1]]) ? m[1] : 'owoce';
+        const c = OFFER_CATS[slug];
+        const tab = c && document.querySelector(`.cat-tab[data-cat="${c.cat}"]`);
+        if (tab) { suppressOfferPush = true; tab.click(); suppressOfferPush = false; }
+        updateOfferMeta(slug);
+    });
 
     // ─── SUBCATEGORY FILTER ───
     document.querySelectorAll('.subcat-pill').forEach(pill => {
@@ -1001,5 +1076,7 @@ document.addEventListener('DOMContentLoaded', function() {
 <!-- Zgody cookie obsługuje Usercentrics (ładowany przez GTM-FVTBKWW), tak samo jak na betterworkplace.pl. Własny banner usunięty, by nie dublować CMP. -->
 <!--#endinclude:cookie-banner-->
 <script>/* SAFETY: Safari bfcache - "wstecz" ZAWSZE laduje swieza, dzialajaca strone (koniec z zamrozonym/polamanym stanem po powrocie). Zaden display-toggle, zadne przechwytywanie - czysty reload tylko przy restore z cache. */(function(){window.addEventListener('pageshow',function(e){if(e.persisted){window.location.reload();}});window.addEventListener('load',function(){setTimeout(function(){var r=document.querySelectorAll('.reveal:not(.vis)');for(var i=0;i<r.length;i++){var b=r[i].getBoundingClientRect();if(b.top<innerHeight+120&&b.bottom>-120)r[i].classList.add('vis');}},1200);});})();</script>
+<!-- FLOATING BADGE -->
+<a href="zapytanie" class="floating-badge"><img src="badge-trust.svg" alt="Złóż zapytanie - zaufało nam ponad 2500 firm w Polsce" loading="lazy" width="231" height="68"></a>
 </body>
 </html><!-- sync-test -->

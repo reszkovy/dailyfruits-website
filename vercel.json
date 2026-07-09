@@ -61,15 +61,15 @@
   ],
   "cleanUrls": true,
   "rewrites": [
-    { "source": "/oferta/owoce", "destination": "/oferta.html" },
-    { "source": "/oferta/napoje", "destination": "/oferta.html" },
-    { "source": "/oferta/kawa", "destination": "/oferta.html" },
-    { "source": "/oferta/kanapki", "destination": "/oferta.html" },
-    { "source": "/oferta/salatki", "destination": "/oferta.html" },
-    { "source": "/oferta/pakiety", "destination": "/oferta.html" },
-    { "source": "/oferta/sniadania", "destination": "/oferta.html" },
-    { "source": "/oferta/catering", "destination": "/oferta.html" },
-    { "source": "/oferta/integracyjne", "destination": "/oferta.html" }
+    { "source": "/oferta/owoce", "destination": "/oferta" },
+    { "source": "/oferta/napoje", "destination": "/oferta" },
+    { "source": "/oferta/kawa", "destination": "/oferta" },
+    { "source": "/oferta/kanapki", "destination": "/oferta" },
+    { "source": "/oferta/salatki", "destination": "/oferta" },
+    { "source": "/oferta/pakiety", "destination": "/oferta" },
+    { "source": "/oferta/sniadania", "destination": "/oferta" },
+    { "source": "/oferta/catering", "destination": "/oferta" },
+    { "source": "/oferta/integracyjne", "destination": "/oferta" }
   ],
   "redirects": [
     {
