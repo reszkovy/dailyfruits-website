@@ -814,7 +814,7 @@ html.pt-in body>:not(header) { animation: ptFadeIn 0.32s ease both; }
             tab.setAttribute('aria-selected', 'true');
             const panel = document.querySelector(`.cat-panel[data-cat="${cat}"]`);
             const current = document.querySelector('.cat-panel.active');
-            const showPanel = () => { catPanels.forEach(p => p.classList.remove('active', 'leaving')); if (panel) { panel.classList.add('active'); panel.querySelectorAll('img').forEach(im => { if (!im.complete || !im.naturalWidth) { im.loading = 'eager'; im.src = im.src; } }); } };
+            const showPanel = () => { catPanels.forEach(p => p.classList.remove('active', 'leaving')); if (panel) { panel.classList.add('active'); panel.querySelectorAll('img[loading="lazy"]').forEach(im => { im.loading = 'eager'; var s = im.getAttribute('src'); if (s) im.src = s; }); } };
             if (smSwapTimer) { clearTimeout(smSwapTimer); smSwapTimer = null; }
             if (panel && current && current !== panel && !SM_RM) {
                 catPanels.forEach(p => { if (p !== current) p.classList.remove('active', 'leaving'); });
@@ -823,12 +823,7 @@ html.pt-in body>:not(header) { animation: ptFadeIn 0.32s ease both; }
             } else {
                 showPanel();
             }
-            // Scroll to product section smoothly
-            const section = document.querySelector('.products-section');
-            if (section) {
-                const top = section.getBoundingClientRect().top + window.scrollY - 180;
-                window.scrollTo({ top: Math.max(top, 0), behavior: 'smooth' });
-            }
+            // (auto-scroll usuniety - psul zmieniajace sie headery, przyklejal submenu do gory)
             // Deep-link: odzwierciedl wybraną kategorię w adresie /oferta/<slug>
             const slug = CAT_TO_SLUG[cat];
             if (slug && !suppressOfferPush) updateOfferUrl(slug, true);
@@ -861,12 +856,14 @@ html.pt-in body>:not(header) { animation: ptFadeIn 0.32s ease both; }
 
     // Force-load lazy ikon i obrazkow widocznego panelu (lazy w initially-hidden/po scrollu nie zawsze odpala)
     function forceLoadOfferImgs() {
-        document.querySelectorAll('.cat-tab img, .subcat-pill img, .subcat-bar img, .cat-panel.active img').forEach(function (im) {
-            if (!im.complete || !im.naturalWidth) { im.loading = 'eager'; im.src = im.src; }
+        document.querySelectorAll('.cat-tab img[loading="lazy"], .subcat-pill img[loading="lazy"], .subcat-bar img[loading="lazy"], .cat-panel.active img[loading="lazy"]').forEach(function (im) {
+            im.loading = 'eager';
+            var s = im.getAttribute('src'); if (s) im.src = s;
         });
     }
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', forceLoadOfferImgs); else forceLoadOfferImgs();
+    [150, 400, 900, 1600].forEach(function (d) { setTimeout(forceLoadOfferImgs, d); });
     window.addEventListener('load', forceLoadOfferImgs);
-    setTimeout(forceLoadOfferImgs, 400);
 
     // ─── SUBCATEGORY FILTER ───
     document.querySelectorAll('.subcat-pill').forEach(pill => {
