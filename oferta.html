@@ -838,6 +838,15 @@ html.pt-in body>:not(header) { animation: ptFadeIn 0.32s ease both; }
         updateOfferMeta(slug);
     });
 
+    // Force-load lazy ikon i obrazkow widocznego panelu (lazy w initially-hidden/po scrollu nie zawsze odpala)
+    function forceLoadOfferImgs() {
+        document.querySelectorAll('.cat-tab img, .subcat-pill img, .subcat-bar img, .cat-panel.active img').forEach(function (im) {
+            if (!im.complete || !im.naturalWidth) { im.loading = 'eager'; im.src = im.src; }
+        });
+    }
+    window.addEventListener('load', forceLoadOfferImgs);
+    setTimeout(forceLoadOfferImgs, 400);
+
     // ─── SUBCATEGORY FILTER ───
     document.querySelectorAll('.subcat-pill').forEach(pill => {
         pill.addEventListener('click', () => {
