@@ -784,7 +784,7 @@ html.pt-in body>:not(header) { animation: ptFadeIn 0.32s ease both; }
 
     function updateOfferMeta(slug) {
         const c = OFFER_CATS[slug];
-        const url = 'https://dailyfruits.pl' + OFFER_BASE + (slug ? '/' + slug : '');
+        const url = 'https://dailyfruits.pl' + OFFER_BASE;
         if (c) {
             document.title = c.title + ' - DailyFruits & DailyFoods';
             const d = document.querySelector('meta[name="description"]');
