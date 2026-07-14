@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Dedykowany Generator UTM + Manual</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #fcfbfa;
+            margin: 0;
+            padding: 20px;
+            color: #211915;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            margin-top: 20px;
+        }
+        .header h1 {
+            color: #211915;
+            font-size: 28px;
+            margin: 0;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+        }
+        .header h1 span {
+            color: #f15a24;
+        }
+        .header p {
+            margin: 5px 0 0 0;
+            color: #70635c;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        .main-layout {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 30px;
+            max-width: 1250px;
+            margin: 0 auto;
+        }
+        @media (max-width: 950px) {
+            .main-layout {
+                grid-template-columns: 1fr;
+            }
+        }
+        .card {
+            background: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(33, 25, 21, 0.06);
+            box-sizing: border-box;
+            border: 1px solid #f2ece9;
+        }
+        /* Style Zakładek */
+        .tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 25px;
+            border-bottom: 1px solid #f2ece9;
+            padding-bottom: 15px;
+        }
+        .tab-btn {
+            background-color: #f2ece9;
+            color: #211915;
+            border: none;
+            padding: 10px 18px;
+            font-size: 14px;
+            font-weight: bold;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .tab-btn.active {
+            background-color: #f15a24;
+            color: white;
+        }
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 6px;
+            color: #211915;
+            font-weight: 600;
+            font-size: 14px;
+        }
+        input[type="text"], input[type="date"], select {
+            width: 100%;
+            padding: 11px;
+            border: 1px solid #dcd1cc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 14px;
+            color: #211915;
+            background-color: #fff;
+            font-family: inherit;
+        }
+        input[type="text"]:focus, input[type="date"]:focus, select:focus {
+            border-color: #f15a24;
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(241, 90, 36, 0.15);
+        }
+        .radio-group {
+            display: flex;
+            gap: 20px;
+            margin-top: 5px;
+        }
+        .radio-label {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-weight: normal;
+            font-size: 14px;
+            cursor: pointer;
+        }
+        .radio-label input[type="radio"] {
+            accent-color: #f15a24;
+        }
+        .btn-action {
+            background-color: #f15a24;
+            color: white;
+            border: none;
+            padding: 14px 20px;
+            font-size: 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            font-weight: bold;
+            margin-top: 10px;
+            transition: background 0.2s;
+        }
+        .btn-action:hover {
+            background-color: #d44917;
+        }
+        .result-box {
+            margin-top: 25px;
+            background: #fffcfb;
+            border: 1px solid #f7ece8;
+            padding: 20px;
+            border-radius: 6px;
+        }
+        .url-display {
+            background: #f9f6f5;
+            padding: 12px;
+            border-radius: 4px;
+            word-break: break-all;
+            font-family: monospace;
+            font-size: 13px;
+            border: 1px solid #eaddd8;
+            min-height: 20px;
+            margin-top: 5px;
+            color: #211915;
+        }
+        /* Prawa Kolumna - Manual */
+        .manual h2 {
+            margin-top: 0;
+            font-size: 22px;
+            color: #211915;
+            border-bottom: 2px solid #f2ece9;
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+        }
+        .manual h3 {
+            font-size: 15px;
+            color: #f15a24;
+            margin-top: 22px;
+            margin-bottom: 10px;
+            border-bottom: 1px solid #f2ece9;
+            padding-bottom: 5px;
+        }
+        .manual p {
+            font-size: 14px;
+            color: #4a3e39;
+            line-height: 1.55;
+            margin: 8px 0;
+        }
+        .manual ul {
+            padding-left: 20px;
+            margin: 8px 0;
+        }
+        .manual li {
+            margin-bottom: 8px;
+            font-size: 13.5px;
+            color: #4a3e39;
+            line-height: 1.5;
+        }
+        .manual-divider {
+            border-top: 1px dashed #dcd1cc;
+            margin: 25px 0 15px 0;
+        }
+        code {
+            background-color: #f9f6f5;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: monospace;
+            font-size: 13px;
+            color: #d44917;
+            font-weight: bold;
+            border: 1px solid #f2ece9;
+        }
+        /* --- Bramka hasla (dodane; nie zmienia generatora) --- */
+        #utm-gate {
+            position: fixed;
+            inset: 0;
+            background-color: #fcfbfa;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            padding: 20px;
+        }
+        .gate-card {
+            background: #fff;
+            border: 1px solid #f2ece9;
+            box-shadow: 0 4px 15px rgba(33, 25, 21, 0.06);
+            border-radius: 8px;
+            padding: 34px 30px;
+            width: 100%;
+            max-width: 360px;
+            text-align: center;
+            box-sizing: border-box;
+        }
+        .gate-card h1 {
+            color: #211915;
+            font-size: 26px;
+            margin: 0;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+        }
+        .gate-card h1 span { color: #f15a24; }
+        .gate-card p {
+            margin: 6px 0 22px 0;
+            color: #70635c;
+            font-size: 13px;
+            font-weight: 500;
+        }
+        .gate-card input[type="password"] {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #dcd1cc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 15px;
+            color: #211915;
+            background-color: #fff;
+            font-family: inherit;
+            text-align: center;
+            letter-spacing: 1px;
+        }
+        .gate-card input[type="password"]:focus {
+            border-color: #f15a24;
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(241, 90, 36, 0.15);
+        }
+        .gate-card button {
+            background-color: #f15a24;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            font-size: 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            font-weight: bold;
+            margin-top: 14px;
+            transition: background 0.2s;
+        }
+        .gate-card button:hover { background-color: #d44917; }
+        .gate-err {
+            color: #d44917;
+            font-size: 13px;
+            font-weight: 600;
+            min-height: 18px;
+            margin-top: 12px;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Bramka hasla (client-side; tresc pod nia jest ukryta do czasu podania hasla) -->
+<div id="utm-gate">
+    <div class="gate-card">
+        <h1>Better <span>Workplace</span></h1>
+        <p>Generator UTM — dostęp chroniony hasłem</p>
+        <input type="password" id="gatePass" placeholder="Hasło" autocomplete="off" autofocus>
+        <button id="gateBtn" type="button">Wejdź</button>
+        <div class="gate-err" id="gateErr"></div>
+    </div>
+</div>
+
+<div id="utm-app" style="display: none;">
+
+<div class="header">
+    <h1>Better <span>Workplace</span></h1>
+    <p>Dedykowany Generator UTM + Manual</p>
+</div>
+
+<div class="main-layout">
+    <div class="card">
+        <div class="tabs">
+            <button class="tab-btn active" onclick="switchTab('mailerlite')">Wysyłka przez Mailerlite</button>
+            <button class="tab-btn" onclick="switchTab('socials')">Social Media (FB / LI / IG / YT)</button>
+        </div>
+
+        <div id="generator-mailerlite">
+            <h2 style="font-size: 20px; margin-top: 0; color: #211915; font-weight: bold;">Generator pod Mailerlite (Pełny UTM)</h2>
+
+            <div class="form-group" style="margin-top: 15px;">
+                <label for="mlUrl">Docelowy URL strony:</label>
+                <input type="text" id="mlUrl" placeholder="https://twojadomena.pl/strona" oninput="generateMailerliteLink()">
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="mlSource">Źródło kampanii (utm_source):</label>
+                    <input type="text" id="mlSource" value="newsletter" oninput="generateMailerliteLink()">
+                </div>
+                <div class="form-group">
+                    <label for="mlMedium">Medium kampanii (utm_medium):</label>
+                    <input type="text" id="mlMedium" value="email" oninput="generateMailerliteLink()">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="mlTerm">Data wysyłki (utm_term):</label>
+                <input type="date" id="mlTerm" onchange="generateMailerliteLink()">
+            </div>
+
+            <div class="form-group">
+                <label for="mlCampaign">Nazwa kampanii (utm_campaign):</label>
+                <input type="text" id="mlCampaign" placeholder="np. dlaczego-najtrudniej-jest-zdecydowac-betterworkplace" oninput="generateMailerliteLink()">
+            </div>
+
+            <div class="form-group">
+                <label for="mlContent">Zawartość sekcji (utm_content):</label>
+                <input type="text" id="mlContent" placeholder="np. hero-artykul lub oferta-sniadania" oninput="generateMailerliteLink()">
+            </div>
+
+            <div class="result-box">
+                <label>Wygenerowany link dla Mailerlite:</label>
+                <div class="url-display" id="mlResultUrl">Wpisz URL strony...</div>
+                <button class="btn-action" style="margin-top: 15px;" onclick="handleCopy('mailerlite')">Wygeneruj, skopiuj i zapisz dla Mailerlite</button>
+            </div>
+        </div>
+
+        <div id="generator-socials" style="display: none;">
+            <h2 style="font-size: 20px; margin-top: 0; color: #211915; font-weight: bold;">Generator pod Social Media</h2>
+
+            <div class="form-group" style="margin-top: 15px;">
+                <label for="smUrl">Docelowy URL strony:</label>
+                <input type="text" id="smUrl" placeholder="https://twojadomena.pl/strona" oninput="generateSocialLink()">
+            </div>
+
+            <div class="form-group">
+                <label for="smSource">Źródło kampanii (utm_source):</label>
+                <select id="smSource" onchange="generateSocialLink()">
+                    <option value="facebook">Facebook</option>
+                    <option value="linkedin">LinkedIn</option>
+                    <option value="instagram">Instagram</option>
+                    <option value="youtube">YouTube</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Typ ruchu (utm_medium):</label>
+                <div class="radio-group">
+                    <label class="radio-label">
+                        <input type="radio" name="smMedium" value="social" checked onclick="generateSocialLink()"> Bezpłatny (organic / social)
+                    </label>
+                    <label class="radio-label">
+                        <input type="radio" name="smMedium" value="paid" onclick="generateSocialLink()"> Płatny (paid / reklama)
+                    </label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="smCampaign">Nazwa kampanii (utm_campaign):</label>
+                <input type="text" id="smCampaign" placeholder="np. rekrutacja-lipiec" oninput="generateSocialLink()">
+            </div>
+
+            <div class="form-group">
+                <label for="smContent">Treść reklamy / sekcja (utm_content):</label>
+                <input type="text" id="smContent" placeholder="np. banner-glowny, karuzela-opinie" oninput="generateSocialLink()">
+            </div>
+
+            <div class="result-box">
+                <label>Wygenerowany link Social Media:</label>
+                <div class="url-display" id="smResultUrl">Wpisz URL strony...</div>
+                <button class="btn-action" style="margin-top: 15px;" onclick="handleCopy('socials')">Wygeneruj, skopiuj i zapisz</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="card manual">
+        <h2>Poradnik & Ściągawka wartości</h2>
+
+        <h3>Zasady tworzenia linków</h3>
+        <p><strong>Polskie znaki i spacje:</strong> Nie musisz się nimi martwić. Generator automatycznie zamieni duże litery na małe, usunie polskie znaki (np. "łą" zmieni na "la") i zastąpi spacje oraz podkreślenia myślnikami.</p>
+
+        <p><strong>Nazwa kampanii (utm_campaign):</strong> Wpisuj tu ogólną nazwę swoich działań reklamowych lub wizerunkowych, np. <code>promocja-ksiazki</code> lub <code>rekrutacja-q3</code>. Używaj spójnej nazwy we wszystkich kanałach.</p>
+
+        <p><strong>Treść reklamy (utm_content):</strong> Służy do rozróżniania poszczególnych postów, kreacji graficznych lub sekcji w newsletterze. Przykłady: <code>kafelek-artykul</code>, <code>zdjecie-zespolu</code>, <code>banner-glowny</code>.</p>
+
+        <p><strong>Wymóg GA4 dla social mediów:</strong> Aby zachować porządek w raportach kanałów Google Analytics 4, darmowe posty w social mediach posiadają medium ustawione jako <code>social</code>, a kampanie płatne jako <code>paid</code>.</p>
+
+        <div class="manual-divider"></div>
+
+        <h2>Wzorce i schematy (Ściągawka)</h2>
+
+        <h3>Sekcje Newslettera (Wpisz w utm_content):</h3>
+        <ul>
+            <li><code>hero-artykul</code> – Główny artykuł na górze</li>
+            <li><code>sekcja-druga</code> – Blok pod głównym banerem</li>
+            <li><code>lista-pozycja-1</code> do <code>4</code> – 4 kafelki w środku</li>
+            <li><code>baner-dolny</code> – Grafika z kartonem/pudełkiem</li>
+            <li><code>opinie</code> – Sekcja z feedbackiem klientów</li>
+            <li><code>stopka</code> – Linki na samym dole</li>
+        </ul>
+
+        <h3>Menu Oferty (Wpisz w utm_content):</h3>
+        <ul>
+            <li><code>oferta-owoce-i-warzywa</code></li>
+            <li><code>oferta-sniadania</code></li>
+            <li><code>oferta-kanapki-do-pracy</code></li>
+            <li><code>oferta-salatki</code></li>
+            <li><code>oferta-finger-food</code></li>
+            <li><code>oferta-napoje</code></li>
+        </ul>
+
+        <h3>Inspiracje (Wpisz w utm_content):</h3>
+        <ul>
+            <li><code>rekrutacja-q3</code> – Kampanie HR</li>
+            <li><code>banner-promocyjny</code> – Standardowe grafiki reklamowe</li>
+            <li><code>link-w-poscie</code> – Standardowe posty na socialach</li>
+        </ul>
+    </div>
+</div>
+
+</div><!-- /#utm-app -->
+
+<script>
+    // --- Bramka hasla (client-side). Haslo trzymane jako SHA-256, nie plaintext. ---
+    (function () {
+        const HASH = 'fa20c791705001688f714399839e59f0f89e31e73f41364d876bae30eb741041';
+        const gate = document.getElementById('utm-gate');
+        const app = document.getElementById('utm-app');
+        const inp = document.getElementById('gatePass');
+        const btn = document.getElementById('gateBtn');
+        const err = document.getElementById('gateErr');
+
+        async function sha256(str) {
+            const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(str));
+            return [...new Uint8Array(buf)].map(b => b.toString(16).padStart(2, '0')).join('');
+        }
+        function unlock() {
+            gate.style.display = 'none';
+            app.style.display = 'block';
+        }
+        if (sessionStorage.getItem('utmgen_ok') === '1') { unlock(); }
+
+        async function tryUnlock() {
+            const v = (inp.value || '').trim();
+            if (!v) return;
+            let h;
+            try { h = await sha256(v); }
+            catch (e) { err.textContent = 'Bramka wymaga bezpiecznego połączenia (https).'; return; }
+            if (h === HASH) {
+                sessionStorage.setItem('utmgen_ok', '1');
+                err.textContent = '';
+                unlock();
+            } else {
+                err.textContent = 'Nieprawidłowe hasło.';
+                inp.value = '';
+                inp.focus();
+            }
+        }
+        btn.addEventListener('click', tryUnlock);
+        inp.addEventListener('keydown', function (e) {
+            if (e.key === 'Enter') { e.preventDefault(); tryUnlock(); }
+        });
+    })();
+</script>
+
+<script>
+    // Aktualny, podstawiony link do Twojej aplikacji internetowej Google Apps Script
+    const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwIlUCx_mRQ81Ur3EZ2-SZH8RAF3TvT6HLsdnaXuVKzcnQy26fX8iWi5T8rT_HZykQb/exec";
+
+    // Automatyczne ustawienie dzisiejszej daty w polu kalendarza po załadowaniu strony
+    window.addEventListener('DOMContentLoaded', () => {
+        const today = new Date();
+        const yyyy = today.getFullYear();
+        const mm = String(today.getMonth() + 1).padStart(2, '0');
+        const dd = String(today.getDate()).padStart(2, '0');
+        document.getElementById('mlTerm').value = `${yyyy}-${mm}-${dd}`;
+    });
+
+    function switchTab(tabId) {
+        const buttons = document.querySelectorAll('.tab-btn');
+        const mlDiv = document.getElementById('generator-mailerlite');
+        const smDiv = document.getElementById('generator-socials');
+
+        buttons.forEach(btn => btn.classList.remove('active'));
+
+        if (tabId === 'mailerlite') {
+            event.target.classList.add('active');
+            mlDiv.style.display = 'block';
+            smDiv.style.display = 'none';
+        } else {
+            event.target.classList.add('active');
+            mlDiv.style.display = 'none';
+            smDiv.style.display = 'block';
+        }
+    }
+
+    function formatParam(text) {
+        if (!text) return '';
+        return text
+            .toLowerCase()
+            .trim()
+            .replace(/[\s_]+/g, '-')
+            .normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+            .replace(/[^a-z0-9\-]/g, '');
+    }
+
+    // Generator dla Mailerlite
+    function generateMailerliteLink() {
+        const baseUrl = document.getElementById('mlUrl').value.trim();
+        const source = formatParam(document.getElementById('mlSource').value);
+        const medium = formatParam(document.getElementById('mlMedium').value);
+        const term = formatParam(document.getElementById('mlTerm').value);
+        const campaign = formatParam(document.getElementById('mlCampaign').value);
+        const content = formatParam(document.getElementById('mlContent').value);
+
+        if (!baseUrl) {
+            document.getElementById('mlResultUrl').innerText = 'Wpisz URL strony...';
+            return '';
+        }
+
+        try {
+            const urlObj = new URL(baseUrl);
+
+            if (source) urlObj.searchParams.set('utm_source', source);
+            if (medium) urlObj.searchParams.set('utm_medium', medium);
+            if (term) urlObj.searchParams.set('utm_term', term);
+            if (campaign) urlObj.searchParams.set('utm_campaign', campaign);
+            if (content) urlObj.searchParams.set('utm_content', content);
+
+            if (!source) urlObj.searchParams.delete('utm_source');
+            if (!medium) urlObj.searchParams.delete('utm_medium');
+            if (!term) urlObj.searchParams.delete('utm_term');
+            if (!campaign) urlObj.searchParams.delete('utm_campaign');
+            if (!content) urlObj.searchParams.delete('utm_content');
+
+            const finalUrl = urlObj.toString();
+            document.getElementById('mlResultUrl').innerText = finalUrl;
+            return finalUrl;
+        } catch (e) {
+            document.getElementById('mlResultUrl').innerText = 'Błędny format adresu URL. Pamiętaj o dodaniu http:// lub https://';
+            return '';
+        }
+    }
+
+    // Generator dla Social Media
+    function generateSocialLink() {
+        const baseUrl = document.getElementById('smUrl').value.trim();
+        const source = document.getElementById('smSource').value;
+        const medium = document.querySelector('input[name="smMedium"]:checked').value;
+        const campaign = formatParam(document.getElementById('smCampaign').value);
+        const content = formatParam(document.getElementById('smContent').value);
+
+        if (!baseUrl) {
+            document.getElementById('smResultUrl').innerText = 'Wpisz URL strony...';
+            return '';
+        }
+
+        try {
+            const urlObj = new URL(baseUrl);
+            urlObj.searchParams.set('utm_source', source);
+            urlObj.searchParams.set('utm_medium', medium);
+
+            if (campaign) {
+                urlObj.searchParams.set('utm_campaign', campaign);
+            } else {
+                urlObj.searchParams.delete('utm_campaign');
+            }
+
+            if (content) {
+                urlObj.searchParams.set('utm_content', content);
+            } else {
+                urlObj.searchParams.delete('utm_content');
+            }
+
+            const finalUrl = urlObj.toString();
+            document.getElementById('smResultUrl').innerText = finalUrl;
+            return finalUrl;
+        } catch (e) {
+            document.getElementById('smResultUrl').innerText = 'Błędny format adresu URL. Pamiętaj o dodaniu http:// lub https://';
+            return '';
+        }
+    }
+
+    function handleCopy(type) {
+        let finalUrl = "";
+        let payload = {};
+
+        if (type === 'mailerlite') {
+            finalUrl = generateMailerliteLink();
+            if (!finalUrl) return;
+
+            payload = {
+                type: 'Mailerlite',
+                baseUrl: document.getElementById('mlUrl').value.trim(),
+                source: formatParam(document.getElementById('mlSource').value),
+                medium: formatParam(document.getElementById('mlMedium').value),
+                term: formatParam(document.getElementById('mlTerm').value),
+                campaign: formatParam(document.getElementById('mlCampaign').value),
+                content: formatParam(document.getElementById('mlContent').value),
+                generatedUrl: finalUrl
+            };
+        } else {
+            finalUrl = generateSocialLink();
+            if (!finalUrl) return;
+
+            payload = {
+                type: 'Social Media',
+                baseUrl: document.getElementById('smUrl').value.trim(),
+                source: document.getElementById('smSource').value,
+                medium: document.querySelector('input[name="smMedium"]:checked').value,
+                campaign: formatParam(document.getElementById('smCampaign').value),
+                content: formatParam(document.getElementById('smContent').value),
+                generatedUrl: finalUrl
+            };
+        }
+
+        // Kopiowanie do schowka komputera
+        navigator.clipboard.writeText(finalUrl).then(() => {
+            // Próba automatycznego zapisu do Arkusza Google
+            if (GOOGLE_SCRIPT_URL) {
+                fetch(GOOGLE_SCRIPT_URL, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(payload)
+                }).then(() => {
+                    alert('Skopiowano link i wysłano dane do arkusza!');
+                }).catch(err => {
+                    alert('Skopiowano link, ale wystąpił błąd przy zapisie do arkusza.');
+                    console.error(err);
+                });
+            } else {
+                alert('Skopiowano link!');
+            }
+        }).catch(err => {
+            alert('Wystąpił błąd przy kopiowaniu. Spróbuj zaznaczyć i skopiować link ręcznie.');
+        });
+    }
+</script>
+
+</body>
+</html>

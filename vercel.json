@@ -57,6 +57,12 @@
           "value": "no-store"
         }
       ]
+    },
+    {
+      "source": "/generator-utm",
+      "headers": [
+        { "key": "X-Robots-Tag", "value": "noindex, nofollow" }
+      ]
     }
   ],
   "cleanUrls": true,
