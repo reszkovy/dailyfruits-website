@@ -16,6 +16,7 @@ Disallow: /case-study-allegro
 Disallow: /council-report-*
 Disallow: /generator-utm
 Disallow: /katalog-produktow
+Disallow: /kalkulator-programu
 
 
 Sitemap: https://dailyfruits.pl/sitemap.xml
