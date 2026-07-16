@@ -15,6 +15,7 @@ Disallow: /DailyFruits-SEO-Raport
 Disallow: /case-study-allegro
 Disallow: /council-report-*
 Disallow: /generator-utm
+Disallow: /katalog-produktow
 
 
 Sitemap: https://dailyfruits.pl/sitemap.xml
