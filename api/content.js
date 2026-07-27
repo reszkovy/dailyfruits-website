@@ -230,12 +230,22 @@ function scanProducts(html) {
   return products;
 }
 
+// Ile pozycji skladu widocznych przed "Pełny skład (+N)"
+const SKLAD_SHORT = 5;
+// Buduje CALA sekcje skladu: krotka lista (pierwsze N) + <details> z reszta.
+// Jeden kanoniczny ksztalt => brak osieroconej drugiej <ul> przy edycji.
+function buildSklad(skladniki) {
+  const items = (skladniki || []).map(s => `<li>${encodeNode(s)}</li>`);
+  if (items.length <= SKLAD_SHORT) return `<ul class="skladniki">${items.join('')}</ul>`;
+  const head = items.slice(0, SKLAD_SHORT).join('');
+  const rest = items.slice(SKLAD_SHORT);
+  return `<ul class="skladniki">${head}</ul><details class="sklad-more"><summary>Pełny skład (+${rest.length})</summary><ul class="skladniki">${rest.join('')}</ul></details>`;
+}
 function buildCard(f) {
-  const lis = (f.skladniki || []).map(s => `<li>${encodeNode(s)}</li>`).join('');
   const desc = f.desc ? `<p>${encodeNode(f.desc)}</p>` : '';
   return `            <div class="product-card">
                 <div class="product-card-img"><img src="${encodeAttr(f.image || PRODUCTS.fallbackImage)}" alt="${encodeAttr(f.alt || f.name || '')}" loading="lazy" width="900" height="600"></div>
-                <div class="product-card-body"><h3>${encodeNode(f.name)}</h3>${desc}<ul class="skladniki">${lis}</ul></div>
+                <div class="product-card-body"><h3>${encodeNode(f.name)}</h3>${desc}${buildSklad(f.skladniki)}</div>
             </div>`;
 }
 
@@ -244,8 +254,12 @@ function updateCardInPlace(slice, f) {
   slice = slice.replace(/(<h3>)[\s\S]*?(<\/h3>)/, `$1${S(encodeNode(f.name))}$2`);
   slice = slice.replace(/(<img src=")[^"]*(")/, `$1${S(encodeAttr(f.image))}$2`);
   slice = slice.replace(/(<img[^>]*alt=")[^"]*(")/, `$1${S(encodeAttr(f.alt || f.name))}$2`);
-  const lis = (f.skladniki || []).map(s => `<li>${encodeNode(s)}</li>`).join('');
-  slice = slice.replace(/(<ul class="skladniki">)[\s\S]*?(<\/ul>)/, `$1${S(lis)}$2`);
+  // Podmien CALA sekcje skladu (krotka <ul> + ewentualny <details>), nie tylko pierwsza <ul>.
+  // Funkcja zastepujaca => zwracany string jest literalny (bez interpretacji $).
+  slice = slice.replace(
+    /<ul class="skladniki">[\s\S]*?<\/ul>\s*(?:<details class="sklad-more">[\s\S]*?<\/details>)?/,
+    () => buildSklad(f.skladniki)
+  );
   if (f.desc !== undefined) {
     if (/(<\/h3>)\s*<p>[\s\S]*?<\/p>/.test(slice)) {
       slice = f.desc
