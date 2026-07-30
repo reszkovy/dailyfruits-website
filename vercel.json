@@ -776,6 +776,66 @@
       "source": "/blog/dailymotywacja-2021-pobierz-planer",
       "destination": "/",
       "statusCode": 301
+    },
+    {
+      "source": "/zgoda-na-przetwarzanie-danych-osobowych-w-celach-rekrutacyjnych-nowy-adres",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/dailyfruits-home-homeoffice",
+      "destination": "/paczki-dla-pracownikow-zdalnych",
+      "statusCode": 301
+    },
+    {
+      "source": "/dni-zdrowia",
+      "destination": "/oferta/firmowy-dzien-zdrowia",
+      "statusCode": 301
+    },
+    {
+      "source": "/dostawa-owocow-w-krakowie/embed",
+      "destination": "/owoce-do-biura-krakow",
+      "statusCode": 301
+    },
+    {
+      "source": "/dostawy-jednorazowe",
+      "destination": "/oferta",
+      "statusCode": 301
+    },
+    {
+      "source": "/galeria",
+      "destination": "/o-nas",
+      "statusCode": 301
+    },
+    {
+      "source": "/media",
+      "destination": "/baza-wiedzy",
+      "statusCode": 301
+    },
+    {
+      "source": "/nasi-dostawcy",
+      "destination": "/dostawcy",
+      "statusCode": 301
+    },
+    {
+      "source": "/paczki-dla-pracownikow",
+      "destination": "/upominki-dla-pracownikow",
+      "statusCode": 301
+    },
+    {
+      "source": "/product/zestaw-batonow-dobra-kaloria-20-szt",
+      "destination": "/oferta/zestawy-batonow-i-ciastek",
+      "statusCode": 301
+    },
+    {
+      "source": "/product/zestaw-ciastek-50-g-20szt",
+      "destination": "/oferta/zestawy-batonow-i-ciastek",
+      "statusCode": 301
+    },
+    {
+      "source": "/webinar",
+      "destination": "/oferta/programy-zywieniowe-i-edukacyjne",
+      "statusCode": 301
     }
   ],
   "trailingSlash": false
