@@ -118,7 +118,7 @@ body.mn-open header{z-index:9050!important}
 footer{background:var(--green-dark);padding:60px 0 32px;color:#fff}
 .footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1.2fr;gap:40px;margin-bottom:40px}
 .footer-brand p{font-size:14px;line-height:1.7;color:rgba(255,255,255,.6);margin-top:16px}
-.footer-col h4{font-size:14px;font-weight:700;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:1px;margin-bottom:16px}
+.footer-col h3{font-size:14px;font-weight:700;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:1px;margin-bottom:16px}
 .footer-col ul{list-style:none}
 .footer-col li{margin-bottom:10px}
 .footer-col a{font-size:14px;color:rgba(255,255,255,.7);transition:color .2s}
@@ -130,7 +130,7 @@ footer{background:var(--green-dark);padding:60px 0 32px;color:#fff}
 .city-index-links a{font-size:11.5px;color:rgba(255,255,255,.35);transition:color .2s;white-space:nowrap}
 .city-index-links a:hover{color:rgba(255,255,255,.7)}
 .site-credit{text-align:center;font-size:9px;letter-spacing:.03em;color:rgba(255,255,255,.16);margin:0;padding:0 0 8px}
-.site-credit a{color:rgba(255,255,255,.32);text-decoration:none}
+.site-credit a{color:rgba(255,255,255,.5);text-decoration:underline}
 .site-credit a:hover{color:rgba(255,255,255,.6);text-decoration:underline}
 @media(max-width:1024px){.nav-links{gap:20px}.container{padding:0 24px}.nav-inner{padding:10px 24px}.footer-grid{grid-template-columns:1fr 1fr;gap:32px}}
 /* ── Utility classes ── */
