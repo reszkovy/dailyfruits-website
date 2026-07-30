@@ -701,6 +701,81 @@
       "source": "/blog/jakie-owoce-mozna-i-powinno-sie-jesc-w-ciazy-a-jakie-nie",
       "destination": "/wpis-owoce-ciaza",
       "statusCode": 301
+    },
+    {
+      "source": "/blog/ferie-zimowe-2021-na-home-office",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/powrot-o-biura-po-pandemii-covid-19",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/kiedy-koniec-pracy-zdalnej",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/benefity-w-czasach-koronakryzysu",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/czy-to-juz-czas-na-dostawy-owocow-do-biura",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/dailyfruits-praca-w-dlugi-weekend",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/szczepienia-przeciw-covid-19-dla-firm",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/bezpieczny-powrot-do-biura",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/dlugi-weekend-majowy-przerwa-w-dostawach",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/powrot-do-biura-po-pandemii",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/pracownicy-w-dobie-koronawirusa",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/webinar-jak-stymulowac-umysl-do-kreatywnego-dzialania-w-pracy",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/powrot-do-firmy-a-koronawirus",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/dnia-2-maja-2017-nie-pracujemy",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/dailymotywacja-2021-pobierz-planer",
+      "destination": "/",
+      "statusCode": 301
     }
   ],
   "trailingSlash": false
