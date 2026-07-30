@@ -3,14 +3,39 @@
 <head>
 <!--#include:gtm-head-->
 <!-- Google Tag Manager -->
-<!-- Consent Mode v2: domyslnie denied do czasu zgody (RODO/ePrivacy) -->
+<!-- Consent Mode v2: domyslnie denied do czasu zgody (RODO/ePrivacy) — MUSI byc przed tagami -->
 <script>
 window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
 gtag('consent','default',{'ad_storage':'denied','analytics_storage':'denied','ad_user_data':'denied','ad_personalization':'denied','functionality_storage':'granted','security_storage':'granted','wait_for_update':500});
+gtag('js', new Date());
+gtag('config', 'G-G9SCYSFC36');
 </script>
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-FVTBKWW');</script>
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5B7HN67B');</script>
+<!-- Lazy-start analityki (perf): GTM x2 + GA4 startuja przy PIERWSZEJ interakcji
+     uzytkownika (mousemove/scroll/touch/klawisz) albo najpozniej po 2.5 s.
+     Realny user: praktycznie natychmiast. Lab (LCP): poza oknem krytycznym.
+     Consent mode i kolejnosc zdarzen bez zmian (dataLayer kolejkuje polecenia). -->
+<script>
+(function(){
+  var done=false;
+  function loadAnalytics(){
+    if(done)return; done=true;
+    ['GTM-FVTBKWW','GTM-5B7HN67B'].forEach(function(id){
+      window.dataLayer.push({'gtm.start':new Date().getTime(),event:'gtm.js'});
+      var f=document.getElementsByTagName('script')[0],j=document.createElement('script');
+      j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+id;
+      f.parentNode.insertBefore(j,f);
+    });
+    var g=document.createElement('script');
+    g.async=true;g.src='https://www.googletagmanager.com/gtag/js?id=G-G9SCYSFC36';
+    document.head.appendChild(g);
+  }
+  ['pointerdown','keydown','touchstart','scroll','mousemove'].forEach(function(e){
+    window.addEventListener(e,loadAnalytics,{once:true,passive:true});
+  });
+  setTimeout(loadAnalytics,2500);
+})();
+</script>
 <!-- End Google Tag Manager -->
 <!-- Microsoft Clarity - blokowany do zgody przez Usercentrics.
      type="text/plain" + data-usercentrics="Microsoft Clarity": skrypt NIE wykonuje sie,
@@ -24,14 +49,6 @@ gtag('consent','default',{'ad_storage':'denied','analytics_storage':'denied','ad
     })(window, document, "clarity", "script", "xi2vatfga7");
 </script>
 <!-- End Microsoft Clarity -->
-<!-- Google Analytics 4 (gtag.js) - reuzywa gtag/dataLayer z bloku Consent Mode powyzej,
-     wiec domyslnie analytics_storage=denied (cookieless) do czasu zgody -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-G9SCYSFC36"></script>
-<script>
-  gtag('js', new Date());
-  gtag('config', 'G-G9SCYSFC36');
-</script>
-<!-- End Google Analytics 4 -->
 <!--#endinclude:gtm-head-->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
