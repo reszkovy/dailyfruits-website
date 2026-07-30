@@ -1,106 +1,106 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <!-- Core pages -->
-  <url><loc>https://www.dailyfruits.pl/</loc><lastmod>2026-04-26</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>
-  <url><loc>https://www.dailyfruits.pl/oferta</loc><lastmod>2026-04-26</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://www.dailyfruits.pl/zapytanie</loc><lastmod>2026-04-26</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://www.dailyfruits.pl/blog</loc><lastmod>2026-04-26</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://dailyfruits.pl/</loc><lastmod>2026-04-26</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://dailyfruits.pl/oferta</loc><lastmod>2026-04-26</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://dailyfruits.pl/zapytanie</loc><lastmod>2026-04-26</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://dailyfruits.pl/blog</loc><lastmod>2026-04-26</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
 
   <!-- New content pages -->
-  <url><loc>https://www.dailyfruits.pl/dostawa</loc><lastmod>2026-04-26</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://www.dailyfruits.pl/dostawcy</loc><lastmod>2026-04-29</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://www.dailyfruits.pl/pomagamy</loc><lastmod>2026-04-29</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://www.dailyfruits.pl/o-nas</loc><lastmod>2026-04-26</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://www.dailyfruits.pl/kanapki-do-biura</loc><lastmod>2026-04-26</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://www.dailyfruits.pl/catering-firmowy</loc><lastmod>2026-04-26</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://www.dailyfruits.pl/programy-zywieniowe</loc><lastmod>2026-04-26</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://dailyfruits.pl/dostawa</loc><lastmod>2026-04-26</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://dailyfruits.pl/dostawcy</loc><lastmod>2026-04-29</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://dailyfruits.pl/pomagamy</loc><lastmod>2026-04-29</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://dailyfruits.pl/o-nas</loc><lastmod>2026-04-26</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://dailyfruits.pl/kanapki-do-biura</loc><lastmod>2026-04-26</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://dailyfruits.pl/catering-firmowy</loc><lastmod>2026-04-26</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://dailyfruits.pl/programy-zywieniowe</loc><lastmod>2026-04-26</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
 
   <!-- Blog posts -->
-  <url><loc>https://www.dailyfruits.pl/wpis-hejt-owoce</loc><lastmod>2026-07-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://www.dailyfruits.pl/wpis-fakty-mity</loc><lastmod>2025-04-02</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://www.dailyfruits.pl/wpis-esg</loc><lastmod>2026-04-26</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://www.dailyfruits.pl/wpis-ile-owocow</loc><lastmod>2026-04-26</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://www.dailyfruits.pl/wpis-witamina-d</loc><lastmod>2026-04-26</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://www.dailyfruits.pl/wpis-cisnienie</loc><lastmod>2026-04-26</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://www.dailyfruits.pl/wpis-kolagen</loc><lastmod>2026-04-26</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://www.dailyfruits.pl/wpis-owoce-do-biura</loc><lastmod>2026-04-28</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://www.dailyfruits.pl/wpis-kanapki-biuro</loc><lastmod>2026-04-28</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://www.dailyfruits.pl/wpis-benefity</loc><lastmod>2026-04-28</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://www.dailyfruits.pl/wpis-wellness-biuro</loc><lastmod>2026-04-28</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://dailyfruits.pl/wpis-hejt-owoce</loc><lastmod>2026-07-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://dailyfruits.pl/wpis-fakty-mity</loc><lastmod>2025-04-02</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://dailyfruits.pl/wpis-esg</loc><lastmod>2026-04-26</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://dailyfruits.pl/wpis-ile-owocow</loc><lastmod>2026-04-26</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://dailyfruits.pl/wpis-witamina-d</loc><lastmod>2026-04-26</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://dailyfruits.pl/wpis-cisnienie</loc><lastmod>2026-04-26</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://dailyfruits.pl/wpis-kolagen</loc><lastmod>2026-04-26</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://dailyfruits.pl/wpis-owoce-do-biura</loc><lastmod>2026-04-28</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://dailyfruits.pl/wpis-kanapki-biuro</loc><lastmod>2026-04-28</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://dailyfruits.pl/wpis-benefity</loc><lastmod>2026-04-28</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://dailyfruits.pl/wpis-wellness-biuro</loc><lastmod>2026-04-28</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
 
   <!-- Migrated blog posts -->
-  <url><loc>https://www.dailyfruits.pl/wpis-sniadanie-firmowe</loc><lastmod>2026-05-02</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://www.dailyfruits.pl/wpis-lato-biuro</loc><lastmod>2026-05-02</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://www.dailyfruits.pl/wpis-bakalie-biuro</loc><lastmod>2026-05-02</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://www.dailyfruits.pl/wpis-nawyki-raport</loc><lastmod>2026-05-02</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://www.dailyfruits.pl/wpis-ile-wody</loc><lastmod>2026-05-02</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://www.dailyfruits.pl/wpis-welcome-pack</loc><lastmod>2026-05-02</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://www.dailyfruits.pl/wpis-przekaski-praca</loc><lastmod>2026-05-02</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://www.dailyfruits.pl/wpis-employer-branding</loc><lastmod>2026-05-02</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://www.dailyfruits.pl/wpis-praca-zdalna-dieta</loc><lastmod>2026-05-02</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://www.dailyfruits.pl/wpis-catering-konferencja</loc><lastmod>2026-05-02</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://dailyfruits.pl/wpis-sniadanie-firmowe</loc><lastmod>2026-05-02</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://dailyfruits.pl/wpis-lato-biuro</loc><lastmod>2026-05-02</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://dailyfruits.pl/wpis-bakalie-biuro</loc><lastmod>2026-05-02</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://dailyfruits.pl/wpis-nawyki-raport</loc><lastmod>2026-05-02</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://dailyfruits.pl/wpis-ile-wody</loc><lastmod>2026-05-02</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://dailyfruits.pl/wpis-welcome-pack</loc><lastmod>2026-05-02</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://dailyfruits.pl/wpis-przekaski-praca</loc><lastmod>2026-05-02</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://dailyfruits.pl/wpis-employer-branding</loc><lastmod>2026-05-02</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://dailyfruits.pl/wpis-praca-zdalna-dieta</loc><lastmod>2026-05-02</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://dailyfruits.pl/wpis-catering-konferencja</loc><lastmod>2026-05-02</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
 
   <!-- City landing pages -->
-  <url><loc>https://www.dailyfruits.pl/owoce-do-biura-krakow</loc><lastmod>2026-04-26</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://www.dailyfruits.pl/owoce-do-biura-warszawa</loc><lastmod>2026-04-26</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://www.dailyfruits.pl/owoce-do-biura-poznan</loc><lastmod>2026-04-26</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://www.dailyfruits.pl/owoce-do-biura-wroclaw</loc><lastmod>2026-04-26</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://www.dailyfruits.pl/owoce-do-biura-katowice</loc><lastmod>2026-04-26</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://www.dailyfruits.pl/owoce-do-biura-szczecin</loc><lastmod>2026-04-26</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://www.dailyfruits.pl/owoce-do-biura-lodz</loc><lastmod>2026-04-26</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://www.dailyfruits.pl/owoce-do-biura-trojmiasto</loc><lastmod>2026-04-26</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://www.dailyfruits.pl/owoce-do-biura-lublin</loc><lastmod>2026-04-27</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://www.dailyfruits.pl/owoce-do-biura-bydgoszcz</loc><lastmod>2026-04-27</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://www.dailyfruits.pl/owoce-do-biura-gliwice</loc><lastmod>2026-05-25</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://www.dailyfruits.pl/owoce-do-biura-bialystok</loc><lastmod>2026-04-27</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://www.dailyfruits.pl/owoce-do-biura-rzeszow</loc><lastmod>2026-04-27</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://www.dailyfruits.pl/owoce-do-biura-torun</loc><lastmod>2026-04-27</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://dailyfruits.pl/owoce-do-biura-krakow</loc><lastmod>2026-04-26</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://dailyfruits.pl/owoce-do-biura-warszawa</loc><lastmod>2026-04-26</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://dailyfruits.pl/owoce-do-biura-poznan</loc><lastmod>2026-04-26</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://dailyfruits.pl/owoce-do-biura-wroclaw</loc><lastmod>2026-04-26</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://dailyfruits.pl/owoce-do-biura-katowice</loc><lastmod>2026-04-26</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://dailyfruits.pl/owoce-do-biura-szczecin</loc><lastmod>2026-04-26</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://dailyfruits.pl/owoce-do-biura-lodz</loc><lastmod>2026-04-26</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://dailyfruits.pl/owoce-do-biura-trojmiasto</loc><lastmod>2026-04-26</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://dailyfruits.pl/owoce-do-biura-lublin</loc><lastmod>2026-04-27</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://dailyfruits.pl/owoce-do-biura-bydgoszcz</loc><lastmod>2026-04-27</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://dailyfruits.pl/owoce-do-biura-gliwice</loc><lastmod>2026-05-25</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://dailyfruits.pl/owoce-do-biura-bialystok</loc><lastmod>2026-04-27</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://dailyfruits.pl/owoce-do-biura-rzeszow</loc><lastmod>2026-04-27</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://dailyfruits.pl/owoce-do-biura-torun</loc><lastmod>2026-04-27</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <!-- Oferta podstrony (nowe SEO podstrony) -->
-  <url><loc>https://www.dailyfruits.pl/oferta/skrzynki-abonamentowe</loc><lastmod>2026-05-25</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://www.dailyfruits.pl/oferta/soki-i-syropy</loc><lastmod>2026-05-25</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://www.dailyfruits.pl/oferta/warzywa-krojone</loc><lastmod>2026-05-25</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://www.dailyfruits.pl/oferta/zestawy-indywidualne</loc><lastmod>2026-05-25</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://www.dailyfruits.pl/oferta/zestawy-sniadaniowe</loc><lastmod>2026-05-25</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://www.dailyfruits.pl/oferta/programy-zywieniowe-i-edukacyjne</loc><lastmod>2026-05-25</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://www.dailyfruits.pl/oferta/bakalie-i-owoce-suszone</loc><lastmod>2026-05-25</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://www.dailyfruits.pl/oferta/przechowywanie-i-ekspozycja</loc><lastmod>2026-05-25</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://www.dailyfruits.pl/oferta/firmowy-dzien-zdrowia</loc><lastmod>2026-05-25</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://www.dailyfruits.pl/oferta/produkty-ekologiczne</loc><lastmod>2026-05-25</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://www.dailyfruits.pl/oferta/zestawy-batonow-i-ciastek</loc><lastmod>2026-05-25</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://dailyfruits.pl/oferta/skrzynki-abonamentowe</loc><lastmod>2026-05-25</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://dailyfruits.pl/oferta/soki-i-syropy</loc><lastmod>2026-05-25</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://dailyfruits.pl/oferta/warzywa-krojone</loc><lastmod>2026-05-25</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://dailyfruits.pl/oferta/zestawy-indywidualne</loc><lastmod>2026-05-25</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://dailyfruits.pl/oferta/zestawy-sniadaniowe</loc><lastmod>2026-05-25</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://dailyfruits.pl/oferta/programy-zywieniowe-i-edukacyjne</loc><lastmod>2026-05-25</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://dailyfruits.pl/oferta/bakalie-i-owoce-suszone</loc><lastmod>2026-05-25</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://dailyfruits.pl/oferta/przechowywanie-i-ekspozycja</loc><lastmod>2026-05-25</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://dailyfruits.pl/oferta/firmowy-dzien-zdrowia</loc><lastmod>2026-05-25</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://dailyfruits.pl/oferta/produkty-ekologiczne</loc><lastmod>2026-05-25</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://dailyfruits.pl/oferta/zestawy-batonow-i-ciastek</loc><lastmod>2026-05-25</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
 
   <!-- Strony prawne -->
-  <url><loc>https://www.dailyfruits.pl/kontakt</loc><lastmod>2026-05-25</lastmod><changefreq>yearly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://dailyfruits.pl/kontakt</loc><lastmod>2026-05-25</lastmod><changefreq>yearly</changefreq><priority>0.5</priority></url>
 
 
   <!-- Migracja ze starej dailyfruits.pl -->
-  <url><loc>https://www.dailyfruits.pl/dailyfruits-welcome-pack</loc><lastmod>2026-05-25</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://www.dailyfruits.pl/paczki-dla-pracownikow-zdalnych</loc><lastmod>2026-05-25</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://www.dailyfruits.pl/paczki-dla-dzieci-pracownikow</loc><lastmod>2026-05-25</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://www.dailyfruits.pl/pracuj-z-nami</loc><lastmod>2026-05-25</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://www.dailyfruits.pl/baza-wiedzy</loc><lastmod>2026-05-25</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://www.dailyfruits.pl/polityka-jakosci</loc><lastmod>2026-05-25</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
-  <url><loc>https://www.dailyfruits.pl/dla-pracodawcy</loc><lastmod>2026-05-25</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://www.dailyfruits.pl/dla-pracownika</loc><lastmod>2026-05-25</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://www.dailyfruits.pl/upominki-dla-pracownikow</loc><lastmod>2026-05-25</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://www.dailyfruits.pl/faq</loc><lastmod>2026-05-25</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://dailyfruits.pl/dailyfruits-welcome-pack</loc><lastmod>2026-05-25</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://dailyfruits.pl/paczki-dla-pracownikow-zdalnych</loc><lastmod>2026-05-25</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://dailyfruits.pl/paczki-dla-dzieci-pracownikow</loc><lastmod>2026-05-25</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://dailyfruits.pl/pracuj-z-nami</loc><lastmod>2026-05-25</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://dailyfruits.pl/baza-wiedzy</loc><lastmod>2026-05-25</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://dailyfruits.pl/polityka-jakosci</loc><lastmod>2026-05-25</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://dailyfruits.pl/dla-pracodawcy</loc><lastmod>2026-05-25</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://dailyfruits.pl/dla-pracownika</loc><lastmod>2026-05-25</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://dailyfruits.pl/upominki-dla-pracownikow</loc><lastmod>2026-05-25</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://dailyfruits.pl/faq</loc><lastmod>2026-05-25</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
 
 
   <!-- Top 10 blog posts -->
-  <url><loc>https://www.dailyfruits.pl/wpis-owoce-histamina</loc><lastmod>2026-05-25</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://www.dailyfruits.pl/wpis-godziny-posilkow</loc><lastmod>2026-05-25</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://www.dailyfruits.pl/wpis-owoce-potas</loc><lastmod>2026-05-25</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://www.dailyfruits.pl/wpis-zdrowe-sniadania</loc><lastmod>2026-05-25</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://www.dailyfruits.pl/wpis-owoce-cynk</loc><lastmod>2026-05-25</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://www.dailyfruits.pl/wpis-cytrusy</loc><lastmod>2026-05-25</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://www.dailyfruits.pl/wpis-mrozenie-owocow</loc><lastmod>2026-05-25</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://www.dailyfruits.pl/wpis-owoce-niskokaloryczne</loc><lastmod>2026-05-25</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://www.dailyfruits.pl/wpis-owoce-ciaza</loc><lastmod>2026-05-25</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://www.dailyfruits.pl/wpis-owoce-niskoweglowodanowe</loc><lastmod>2026-05-25</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://dailyfruits.pl/wpis-owoce-histamina</loc><lastmod>2026-05-25</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://dailyfruits.pl/wpis-godziny-posilkow</loc><lastmod>2026-05-25</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://dailyfruits.pl/wpis-owoce-potas</loc><lastmod>2026-05-25</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://dailyfruits.pl/wpis-zdrowe-sniadania</loc><lastmod>2026-05-25</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://dailyfruits.pl/wpis-owoce-cynk</loc><lastmod>2026-05-25</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://dailyfruits.pl/wpis-cytrusy</loc><lastmod>2026-05-25</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://dailyfruits.pl/wpis-mrozenie-owocow</loc><lastmod>2026-05-25</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://dailyfruits.pl/wpis-owoce-niskokaloryczne</loc><lastmod>2026-05-25</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://dailyfruits.pl/wpis-owoce-ciaza</loc><lastmod>2026-05-25</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://dailyfruits.pl/wpis-owoce-niskoweglowodanowe</loc><lastmod>2026-05-25</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
 
   <url>
-    <loc>https://www.dailyfruits.pl/otwarte-innowacje</loc>
+    <loc>https://dailyfruits.pl/otwarte-innowacje</loc>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
-  <url><loc>https://www.dailyfruits.pl/kalkulator</loc><lastmod>2026-06-12</lastmod><priority>0.6</priority></url>
+  <url><loc>https://dailyfruits.pl/kalkulator</loc><lastmod>2026-06-12</lastmod><priority>0.6</priority></url>
 </urlset>
