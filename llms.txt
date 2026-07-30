@@ -9,14 +9,14 @@
 - Model: abonament (subskrypcja, nie kontrakt) z elastyczną zmianą i anulowaniem
 
 ## Najważniejsze strony
-- https://dailyfruits.pl/ — strona główna
-- https://dailyfruits.pl/oferta — pełna oferta (owoce, kanapki, śniadania, napoje, przekąski)
-- https://dailyfruits.pl/zapytanie — bezpłatna wycena (odpowiedź w 24 h)
-- https://dailyfruits.pl/dostawa — logistyka i standard dostaw
-- https://dailyfruits.pl/o-nas — o firmie
-- https://dailyfruits.pl/faq — pytania i odpowiedzi (koszty, ROI, porównanie benefitów)
-- https://dailyfruits.pl/kalkulator — kalkulator kosztów owoców do biura
-- https://dailyfruits.pl/blog — artykuły o zdrowiu w pracy
+- https://www.dailyfruits.pl/ — strona główna
+- https://www.dailyfruits.pl/oferta — pełna oferta (owoce, kanapki, śniadania, napoje, przekąski)
+- https://www.dailyfruits.pl/zapytanie — bezpłatna wycena (odpowiedź w 24 h)
+- https://www.dailyfruits.pl/dostawa — logistyka i standard dostaw
+- https://www.dailyfruits.pl/o-nas — o firmie
+- https://www.dailyfruits.pl/faq — pytania i odpowiedzi (koszty, ROI, porównanie benefitów)
+- https://www.dailyfruits.pl/kalkulator — kalkulator kosztów owoców do biura
+- https://www.dailyfruits.pl/blog — artykuły o zdrowiu w pracy
 - City pages: /owoce-do-biura-warszawa, -krakow, -wroclaw, -poznan, -katowice, -lodz, -trojmiasto, -szczecin, -lublin, -bydgoszcz, -bialystok, -rzeszow, -kielce, -gliwice
 
 ## Kontakt
