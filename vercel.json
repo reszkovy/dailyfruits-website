@@ -123,148 +123,93 @@
       "statusCode": 301
     },
     {
-      "source": "/blog/jak-przetrwac-lato-w-biurze/",
+      "source": "/blog/jak-przetrwac-lato-w-biurze",
       "destination": "/wpis-lato-biuro",
       "statusCode": 301
     },
     {
-      "source": "/blog/integracyjne-sniadanie-firmowe-zamow-dla-swojego-zespolu/",
+      "source": "/blog/integracyjne-sniadanie-firmowe-zamow-dla-swojego-zespolu",
       "destination": "/wpis-sniadanie-firmowe",
       "statusCode": 301
     },
     {
-      "source": "/blog/bakalie-w-biurze-dlaczego-warto/",
+      "source": "/blog/bakalie-w-biurze-dlaczego-warto",
       "destination": "/wpis-bakalie-biuro",
       "statusCode": 301
     },
     {
-      "source": "/blog/idealny-welcome-pack-dla-pracownika-co-powinien-zawierac/",
+      "source": "/blog/idealny-welcome-pack-dla-pracownika-co-powinien-zawierac",
       "destination": "/wpis-welcome-pack",
       "statusCode": 301
     },
     {
-      "source": "/blog/zdrowe-i-fit-przekaski-ze-sklepu-do-pracy-poznaj-nasza-liste/",
+      "source": "/blog/zdrowe-i-fit-przekaski-ze-sklepu-do-pracy-poznaj-nasza-liste",
       "destination": "/wpis-przekaski-praca",
       "statusCode": 301
     },
     {
-      "source": "/blog/zywieniowe-nawyki-raport-2023/",
+      "source": "/blog/zywieniowe-nawyki-raport-2023",
       "destination": "/wpis-nawyki-raport",
       "statusCode": 301
     },
     {
-      "source": "/blog/catering-przekaski-i-menu-na-konferencje-o-czym-musisz-pamietac/",
+      "source": "/blog/catering-przekaski-i-menu-na-konferencje-o-czym-musisz-pamietac",
       "destination": "/wpis-catering-konferencja",
       "statusCode": 301
     },
     {
-      "source": "/blog/employer-branding-2021/",
+      "source": "/blog/employer-branding-2021",
       "destination": "/wpis-employer-branding",
       "statusCode": 301
     },
     {
-      "source": "/blog/praca-zdalna-a-dieta-co-jesc-na-home-office/",
+      "source": "/blog/praca-zdalna-a-dieta-co-jesc-na-home-office",
       "destination": "/wpis-praca-zdalna-dieta",
       "statusCode": 301
     },
     {
-      "source": "/blog/ile-wody-powinno-sie-pic-dziennie/",
+      "source": "/blog/ile-wody-powinno-sie-pic-dziennie",
       "destination": "/wpis-ile-wody",
       "statusCode": 301
     },
     {
-      "source": "/dailyfruits-welcome-pack/",
-      "destination": "/dailyfruits-welcome-pack",
-      "statusCode": 301
-    },
-    {
-      "source": "/paczki-dla-pracownikow-zdalnych/",
-      "destination": "/paczki-dla-pracownikow-zdalnych",
-      "statusCode": 301
-    },
-    {
-      "source": "/paczki-dla-dzieci-pracownikow/",
-      "destination": "/paczki-dla-dzieci-pracownikow",
-      "statusCode": 301
-    },
-    {
-      "source": "/pracuj-z-nami/",
-      "destination": "/pracuj-z-nami",
-      "statusCode": 301
-    },
-    {
-      "source": "/baza-wiedzy/",
-      "destination": "/baza-wiedzy",
-      "statusCode": 301
-    },
-    {
-      "source": "/polityka-jakosci/",
-      "destination": "/polityka-jakosci",
-      "statusCode": 301
-    },
-    {
-      "source": "/dla-pracodawcy/",
-      "destination": "/dla-pracodawcy",
-      "statusCode": 301
-    },
-    {
-      "source": "/dla-pracownika/",
-      "destination": "/dla-pracownika",
-      "statusCode": 301
-    },
-    {
-      "source": "/upominki-dla-pracownikow/",
-      "destination": "/upominki-dla-pracownikow",
-      "statusCode": 301
-    },
-    {
-      "source": "/faq/",
-      "destination": "/faq",
-      "statusCode": 301
-    },
-    {
-      "source": "/dostawa-owocow-w-krakowie/",
+      "source": "/dostawa-owocow-w-krakowie",
       "destination": "/owoce-do-biura-krakow",
       "statusCode": 301
     },
     {
-      "source": "/owoce-i-warzywa-do-biura/",
+      "source": "/owoce-i-warzywa-do-biura",
       "destination": "/oferta",
       "statusCode": 301
     },
     {
-      "source": "/oferta/kanapki-dla-pracownikow/",
+      "source": "/oferta/kanapki-dla-pracownikow",
       "destination": "/kanapki-do-biura",
       "statusCode": 301
     },
     {
-      "source": "/produkty-spozywcze/",
+      "source": "/produkty-spozywcze",
       "destination": "/oferta",
       "statusCode": 301
     },
     {
-      "source": "/dlaczego-dailyfruits/",
+      "source": "/dlaczego-dailyfruits",
       "destination": "/o-nas",
       "statusCode": 301
     },
     {
-      "source": "/media-i-prasa/",
+      "source": "/media-i-prasa",
       "destination": "/baza-wiedzy",
       "statusCode": 301
     },
     {
-      "source": "/prywatnosc/",
+      "source": "/prywatnosc",
       "destination": "/polityka-prywatnosci",
       "statusCode": 301
     },
     {
-      "source": "/aktualnosci/",
+      "source": "/aktualnosci",
       "destination": "/blog",
-      "statusCode": 301
-    },
-    {
-      "source": "/katalog/",
-      "destination": "/katalog-produktow",
       "statusCode": 301
     },
     {
@@ -288,82 +233,82 @@
       "statusCode": 301
     },
     {
-      "source": "/blog/jakie-owoce-i-warzywa-podnosza-cisnienie/",
+      "source": "/blog/jakie-owoce-i-warzywa-podnosza-cisnienie",
       "destination": "/wpis-cisnienie",
       "statusCode": 301
     },
     {
-      "source": "/blog/jakie-owoce-maja-najwiecej-witaminy-d/",
+      "source": "/blog/jakie-owoce-maja-najwiecej-witaminy-d",
       "destination": "/wpis-witamina-d",
       "statusCode": 301
     },
     {
-      "source": "/blog/ile-owocow-jesc-dziennie-kiedy-i-do-ktorej-godziny-jesc-owoce/",
+      "source": "/blog/ile-owocow-jesc-dziennie-kiedy-i-do-ktorej-godziny-jesc-owoce",
       "destination": "/wpis-ile-owocow",
       "statusCode": 301
     },
     {
-      "source": "/blog/w-jakich-warzywach-i-owocach-jest-kolagen/",
+      "source": "/blog/w-jakich-warzywach-i-owocach-jest-kolagen",
       "destination": "/wpis-kolagen",
       "statusCode": 301
     },
     {
-      "source": "/blog/nowosc-w-dailyfruits-kanapki-dla-pracownikow/",
+      "source": "/blog/nowosc-w-dailyfruits-kanapki-dla-pracownikow",
       "destination": "/wpis-kanapki-biuro",
       "statusCode": 301
     },
     {
-      "source": "/blog/better-workplace-zmienia-rynek-benefitow/",
+      "source": "/blog/better-workplace-zmienia-rynek-benefitow",
       "destination": "/wpis-benefity",
       "statusCode": 301
     },
     {
-      "source": "/blog/owoce-bez-histaminy-poznaj-je/",
+      "source": "/blog/owoce-bez-histaminy-poznaj-je",
       "destination": "/wpis-owoce-histamina",
       "statusCode": 301
     },
     {
-      "source": "/blog/godziny-posilkow-czyli-kiedy-jesc-sniadanie-obiad-i-kolacje/",
+      "source": "/blog/godziny-posilkow-czyli-kiedy-jesc-sniadanie-obiad-i-kolacje",
       "destination": "/wpis-godziny-posilkow",
       "statusCode": 301
     },
     {
-      "source": "/blog/owoce-a-potas-poznaj-owoce-bez-potasu-i-te-bogate-w-tego-elektrolitu/",
+      "source": "/blog/owoce-a-potas-poznaj-owoce-bez-potasu-i-te-bogate-w-tego-elektrolitu",
       "destination": "/wpis-owoce-potas",
       "statusCode": 301
     },
     {
-      "source": "/blog/10-pomyslow-na-zdrowe-sniadanie-do-pracy/",
+      "source": "/blog/10-pomyslow-na-zdrowe-sniadanie-do-pracy",
       "destination": "/wpis-zdrowe-sniadania",
       "statusCode": 301
     },
     {
-      "source": "/blog/jakie-owoce-maja-najwiecej-cynku/",
+      "source": "/blog/jakie-owoce-maja-najwiecej-cynku",
       "destination": "/wpis-owoce-cynk",
       "statusCode": 301
     },
     {
-      "source": "/blog/jakie-owoce-zaliczamy-do-cytrusow/",
+      "source": "/blog/jakie-owoce-zaliczamy-do-cytrusow",
       "destination": "/wpis-cytrusy",
       "statusCode": 301
     },
     {
-      "source": "/blog/jakie-owoce-i-warzywa-mozna-mrozic-i-jak-to-robic/",
+      "source": "/blog/jakie-owoce-i-warzywa-mozna-mrozic-i-jak-to-robic",
       "destination": "/wpis-mrozenie-owocow",
       "statusCode": 301
     },
     {
-      "source": "/blog/ktore-owoce-maja-najmniej-kalorii/",
+      "source": "/blog/ktore-owoce-maja-najmniej-kalorii",
       "destination": "/wpis-owoce-niskokaloryczne",
       "statusCode": 301
     },
     {
-      "source": "/blog/jakie-owoce-mozna-i-powinno-sie-jesc-w-ciazy-a-jak-nie/",
+      "source": "/blog/jakie-owoce-mozna-i-powinno-sie-jesc-w-ciazy-a-jak-nie",
       "destination": "/wpis-owoce-ciaza",
       "statusCode": 301
     },
     {
-      "source": "/blog/owoce-bez-weglowodanow-i-o-ich-niskiej-zawartosci-poznaj-je/",
+      "source": "/blog/owoce-bez-weglowodanow-i-o-ich-niskiej-zawartosci-poznaj-je",
       "destination": "/wpis-owoce-niskoweglowodanowe",
       "statusCode": 301
     },
@@ -373,92 +318,87 @@
       "statusCode": 301
     },
     {
-      "source": "/blog/:path+/",
-      "destination": "/blog",
-      "statusCode": 301
-    },
-    {
-      "source": "/obowiazek-informacyjny/",
+      "source": "/obowiazek-informacyjny",
       "destination": "/polityka-prywatnosci",
       "statusCode": 301
     },
     {
-      "source": "/dostawcy-copy/",
+      "source": "/dostawcy-copy",
       "destination": "/dostawcy",
       "statusCode": 301
     },
     {
-      "source": "/kontakt-copy-2/",
+      "source": "/kontakt-copy-2",
       "destination": "/kontakt",
       "statusCode": 301
     },
     {
-      "source": "/zestawy-na-spotkania-firmowe/",
+      "source": "/zestawy-na-spotkania-firmowe",
       "destination": "/catering-firmowy",
       "statusCode": 301
     },
     {
-      "source": "/zamowienie-krakow-copy/",
+      "source": "/zamowienie-krakow-copy",
       "destination": "/zapytanie",
       "statusCode": 301
     },
     {
-      "source": "/dailyfruits-home-homeoffice-copy/",
+      "source": "/dailyfruits-home-homeoffice-copy",
       "destination": "/",
       "statusCode": 301
     },
     {
-      "source": "/checkout-copy/",
+      "source": "/checkout-copy",
       "destination": "/",
       "statusCode": 301
     },
     {
-      "source": "/planer-dailymotywacja2021/",
+      "source": "/planer-dailymotywacja2021",
       "destination": "/baza-wiedzy",
       "statusCode": 301
     },
     {
-      "source": "/ankieta/",
+      "source": "/ankieta",
       "destination": "/",
       "statusCode": 301
     },
     {
-      "source": "/ankieta-olx/",
+      "source": "/ankieta-olx",
       "destination": "/",
       "statusCode": 301
     },
     {
-      "source": "/ankieta-olx-marzec-2022/",
+      "source": "/ankieta-olx-marzec-2022",
       "destination": "/",
       "statusCode": 301
     },
     {
-      "source": "/ankieta-firma-x/",
+      "source": "/ankieta-firma-x",
       "destination": "/",
       "statusCode": 301
     },
     {
-      "source": "/ankieta-preferencji/",
+      "source": "/ankieta-preferencji",
       "destination": "/",
       "statusCode": 301
     },
     {
-      "source": "/ankieta-preferencji-grana/",
+      "source": "/ankieta-preferencji-grana",
       "destination": "/",
       "statusCode": 301
     },
     {
-      "source": "/dietetyka-ankieta-preferencji-freudenberg-sealing/",
+      "source": "/dietetyka-ankieta-preferencji-freudenberg-sealing",
       "destination": "/",
       "statusCode": 301
     },
     {
-      "source": "/edukacja-zywieniowa-ankieta-po-udziale-w-wydarzeniu/",
+      "source": "/edukacja-zywieniowa-ankieta-po-udziale-w-wydarzeniu",
       "destination": "/",
       "statusCode": 301
     },
     {
-      "source": "/oferta/zestawy-na-spotkania-firmowe/",
+      "source": "/oferta/zestawy-na-spotkania-firmowe",
       "destination": "/catering-firmowy",
       "statusCode": 301
     },
@@ -468,197 +408,137 @@
       "statusCode": 301
     },
     {
-      "source": "/oferta/soki-i-syropy/",
-      "destination": "/oferta/soki-i-syropy",
-      "statusCode": 301
-    },
-    {
-      "source": "/oferta/produkty-ekologiczne/",
-      "destination": "/oferta/produkty-ekologiczne",
-      "statusCode": 301
-    },
-    {
-      "source": "/oferta/firmowy-dzien-zdrowia/",
-      "destination": "/oferta/firmowy-dzien-zdrowia",
-      "statusCode": 301
-    },
-    {
-      "source": "/oferta/zestawy-indywidualne/",
-      "destination": "/oferta/zestawy-indywidualne",
-      "statusCode": 301
-    },
-    {
-      "source": "/oferta/programy-zywieniowe-i-edukacyjne/",
-      "destination": "/oferta/programy-zywieniowe-i-edukacyjne",
-      "statusCode": 301
-    },
-    {
-      "source": "/oferta/skrzynki-abonamentowe/",
-      "destination": "/oferta/skrzynki-abonamentowe",
-      "statusCode": 301
-    },
-    {
-      "source": "/oferta/bakalie-i-owoce-suszone/",
-      "destination": "/oferta/bakalie-i-owoce-suszone",
-      "statusCode": 301
-    },
-    {
-      "source": "/oferta/przechowywanie-i-ekspozycja/",
-      "destination": "/oferta/przechowywanie-i-ekspozycja",
-      "statusCode": 301
-    },
-    {
-      "source": "/oferta/warzywa-krojone/",
-      "destination": "/oferta/warzywa-krojone",
-      "statusCode": 301
-    },
-    {
-      "source": "/oferta/zestawy-sniadaniowe/",
-      "destination": "/oferta/zestawy-sniadaniowe",
-      "statusCode": 301
-    },
-    {
-      "source": "/owoce-do-biura-katowice/",
-      "destination": "/owoce-do-biura-katowice",
-      "statusCode": 301
-    },
-    {
-      "source": "/owoce-do-biura-wroclaw/",
-      "destination": "/owoce-do-biura-wroclaw",
-      "statusCode": 301
-    },
-    {
-      "source": "/upominki/",
+      "source": "/upominki",
       "destination": "/upominki-dla-pracownikow",
       "statusCode": 301
     },
     {
-      "source": "/zestawy-upominkowe-dla-firm/",
+      "source": "/zestawy-upominkowe-dla-firm",
       "destination": "/upominki-dla-pracownikow",
       "statusCode": 301
     },
     {
-      "source": "/prezenty-wielkanoc/",
+      "source": "/prezenty-wielkanoc",
       "destination": "/upominki-dla-pracownikow",
       "statusCode": 301
     },
     {
-      "source": "/prezenty-dla-pracownika-boze-narodzenie/",
+      "source": "/prezenty-dla-pracownika-boze-narodzenie",
       "destination": "/upominki-dla-pracownikow",
       "statusCode": 301
     },
     {
-      "source": "/easter-kits-for-your-employees/",
+      "source": "/easter-kits-for-your-employees",
       "destination": "/upominki-dla-pracownikow",
       "statusCode": 301
     },
     {
-      "source": "/pomagamy-innym/",
+      "source": "/pomagamy-innym",
       "destination": "/pomagamy",
       "statusCode": 301
     },
     {
-      "source": "/owoce-na-konferencje/",
+      "source": "/owoce-na-konferencje",
       "destination": "/catering-firmowy",
       "statusCode": 301
     },
     {
-      "source": "/live-cooking/",
+      "source": "/live-cooking",
       "destination": "/catering-firmowy",
       "statusCode": 301
     },
     {
-      "source": "/owoce-dla-pracownikow/",
+      "source": "/owoce-dla-pracownikow",
       "destination": "/oferta",
       "statusCode": 301
     },
     {
-      "source": "/wellness/",
+      "source": "/wellness",
       "destination": "/programy-zywieniowe",
       "statusCode": 301
     },
     {
-      "source": "/ekologia/",
+      "source": "/ekologia",
       "destination": "/oferta/produkty-ekologiczne",
       "statusCode": 301
     },
     {
-      "source": "/wycena/",
+      "source": "/wycena",
       "destination": "/zapytanie",
       "statusCode": 301
     },
     {
-      "source": "/zapytanie-nowe/",
+      "source": "/zapytanie-nowe",
       "destination": "/zapytanie",
       "statusCode": 301
     },
     {
-      "source": "/dziekujemy-za-zapytanie/",
+      "source": "/dziekujemy-za-zapytanie",
       "destination": "/zapytanie",
       "statusCode": 301
     },
     {
-      "source": "/zywieniowe-nawyki/",
+      "source": "/zywieniowe-nawyki",
       "destination": "/wpis-nawyki-raport",
       "statusCode": 301
     },
     {
-      "source": "/raport-wplyw-pracy-zdalnej-na-nawyki-zywieniowe-polakow/",
+      "source": "/raport-wplyw-pracy-zdalnej-na-nawyki-zywieniowe-polakow",
       "destination": "/wpis-nawyki-raport",
       "statusCode": 301
     },
     {
-      "source": "/ebook/",
+      "source": "/ebook",
       "destination": "/baza-wiedzy",
       "statusCode": 301
     },
     {
-      "source": "/plakaty-informacyjne/",
+      "source": "/plakaty-informacyjne",
       "destination": "/baza-wiedzy",
       "statusCode": 301
     },
     {
-      "source": "/kreatywnosc-w-pracy/",
+      "source": "/kreatywnosc-w-pracy",
       "destination": "/baza-wiedzy",
       "statusCode": 301
     },
     {
-      "source": "/tlusty-czwartek/",
+      "source": "/tlusty-czwartek",
       "destination": "/oferta",
       "statusCode": 301
     },
     {
-      "source": "/thank-you-page-katowice/",
+      "source": "/thank-you-page-katowice",
       "destination": "/owoce-do-biura-katowice",
       "statusCode": 301
     },
     {
-      "source": "/paczki-dla-dzieci-pracownikow2/",
+      "source": "/paczki-dla-dzieci-pracownikow2",
       "destination": "/paczki-dla-dzieci-pracownikow",
       "statusCode": 301
     },
     {
-      "source": "/cart/",
+      "source": "/cart",
       "destination": "/",
       "statusCode": 301
     },
     {
-      "source": "/checkout/",
+      "source": "/checkout",
       "destination": "/",
       "statusCode": 301
     },
     {
-      "source": "/platnosc/",
+      "source": "/platnosc",
       "destination": "/",
       "statusCode": 301
     },
     {
-      "source": "/zamowienie/",
+      "source": "/zamowienie",
       "destination": "/",
       "statusCode": 301
     },
     {
-      "source": "/pakowanie/",
+      "source": "/pakowanie",
       "destination": "/",
       "statusCode": 301
     }
