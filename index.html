@@ -47,7 +47,7 @@ gtag('consent','default',{'ad_storage':'denied','analytics_storage':'denied','ad
     <meta name="twitter:description" content="Dostawy owoców i zdrowych przekąsek do firm w największych miastach. Bezpłatna wycena.">
     <meta name="twitter:image" content="https://dailyfruits.pl/HORIZONTAL.webp">
     <link rel="icon" type="image/png" href="favicon_.png">
-    <link rel="preload" as="image" href="hero-box.webp" type="image/webp">
+    <link rel="preload" as="image" href="hero-box.webp" type="image/webp" fetchpriority="high">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700;900&display=swap">
@@ -639,7 +639,7 @@ html.pt-in body>:not(header) { animation: ptFadeIn 0.32s ease both; }
   "sameAs": []
 }
 </script>
-<script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
+<script defer src="/lenis.min.js"></script>
 </head>
 <body>
 <!--#include:gtm-noscript-->
@@ -721,7 +721,7 @@ html.pt-in body>:not(header) { animation: ptFadeIn 0.32s ease both; }
             </div>
             <div class="hero-image scale-in">
                 <a href="oferta" id="heroImgLink" class="hero-img-link" aria-label="Sprawdź pełną ofertę">
-                    <img id="hero-product-img" src="hero-box.webp" alt="Skrzynka DailyFruits pełna świeżych owoców - jabłka, ananas, banany, kiwi i cytrusy" fetchpriority="high" width="800" height="535">
+                    <img srcset="hero-box-480.webp 480w, hero-box.webp 800w" sizes="(max-width: 768px) 92vw, 520px" id="hero-product-img" src="hero-box.webp" alt="Skrzynka DailyFruits pełna świeżych owoców - jabłka, ananas, banany, kiwi i cytrusy" fetchpriority="high" width="800" height="535">
                     <span class="hero-img-cta"><span class="fun">Zobacz</span> ofertę <span class="hi-arrow" aria-hidden="true">→</span></span>
                 </a>
             </div>
@@ -806,27 +806,27 @@ html.pt-in body>:not(header) { animation: ptFadeIn 0.32s ease both; }
         </div>
         <div class="offer-grid">
             <a href="oferta/owoce" class="offer-card offer-card--tall reveal" data-delay="1">
-                <img src="packshot-owoce.webp" alt="Owoce do biura" loading="lazy" width="600" height="740">
+                <img srcset="packshot-owoce-480.webp 480w, packshot-owoce.webp 600w" sizes="(max-width: 768px) 92vw, 520px" src="packshot-owoce.webp" alt="Owoce do biura" loading="lazy" width="600" height="740">
                 <div class="offer-card-body"><h3>Owoce do biura</h3><p>Selekcjonowane owoce, zawsze świeże i&nbsp;dojrzałe. Podstawa Owocowych Czwartków.</p><span class="offer-link">Zobacz więcej →</span></div>
             </a>
             <a href="oferta/kanapki" class="offer-card reveal" data-delay="2">
-                <img src="packshot-kanapki.webp" alt="Kanapki i lunche" loading="lazy" width="600" height="486">
+                <img srcset="packshot-kanapki-480.webp 480w, packshot-kanapki.webp 600w" sizes="(max-width: 768px) 92vw, 520px" src="packshot-kanapki.webp" alt="Kanapki i lunche" loading="lazy" width="600" height="486">
                 <div class="offer-card-body"><h3>Kanapki i&nbsp;lunche</h3><p>Zdrowe zestawy z&nbsp;najlepszych składników. Kanapkowe Wtorki w&nbsp;Twoim biurze.</p><span class="offer-link">Zobacz więcej →</span></div>
             </a>
             <a href="oferta/catering" class="offer-card reveal" data-delay="3">
-                <img src="packshot-fingerfoods.webp" alt="Finger foods" loading="lazy" width="600" height="571">
+                <img srcset="packshot-fingerfoods-480.webp 480w, packshot-fingerfoods.webp 600w" sizes="(max-width: 768px) 92vw, 520px" src="packshot-fingerfoods.webp" alt="Finger foods" loading="lazy" width="600" height="571">
                 <div class="offer-card-body"><h3>Finger foods</h3><p>Eleganckie przekąski na spotkania - bruschetta, kanapeczki, koreczki. Imponuj gościom.</p><span class="offer-link">Zobacz więcej →</span></div>
             </a>
             <a href="oferta/sniadania" class="offer-card reveal" data-delay="1">
-                <img src="packshot-sniadaniowe.webp" alt="Produkty śniadaniowe" loading="lazy" width="600" height="476">
+                <img srcset="packshot-sniadaniowe-480.webp 480w, packshot-sniadaniowe.webp 600w" sizes="(max-width: 768px) 92vw, 520px" src="packshot-sniadaniowe.webp" alt="Produkty śniadaniowe" loading="lazy" width="600" height="476">
                 <div class="offer-card-body"><h3>Produkty śniadaniowe</h3><p>Musli, jogurty, granola. Poranny rytuał dla całego zespołu.</p><span class="offer-link">Zobacz więcej →</span></div>
             </a>
             <a href="oferta/pakiety" class="offer-card offer-card--tall reveal" data-delay="2">
-                <img src="packshot-bakalie.webp?v=2" alt="Bakalie i przekąski" loading="lazy" width="600" height="824">
+                <img srcset="packshot-bakalie-480.webp 480w, packshot-bakalie.webp?v=2 600w" sizes="(max-width: 768px) 92vw, 520px" src="packshot-bakalie.webp?v=2" alt="Bakalie i przekąski" loading="lazy" width="600" height="824">
                 <div class="offer-card-body"><h3>Bakalie i&nbsp;suszone owoce</h3><p>Orzechy, suszone owoce i&nbsp;zdrowe przekąski na cały tydzień.</p><span class="offer-link">Zobacz więcej →</span></div>
             </a>
             <a href="oferta/napoje" class="offer-card reveal" data-delay="3">
-                <img src="packshot-soki.webp?v=2" alt="Napoje" loading="lazy" width="600" height="610">
+                <img srcset="packshot-soki-480.webp 480w, packshot-soki.webp?v=2 510w" sizes="(max-width: 768px) 92vw, 520px" src="packshot-soki.webp?v=2" alt="Napoje" loading="lazy" width="600" height="610">
                 <div class="offer-card-body"><h3>Napoje</h3><p>Soki NFC, lemoniady, kombucha i&nbsp;napoje izotoniczne - nawodnienie na cały dzień w biurze.</p><span class="offer-link">Zobacz więcej →</span></div>
             </a>
         </div>
@@ -1082,7 +1082,7 @@ html.pt-in body>:not(header) { animation: ptFadeIn 0.32s ease both; }
         <div class="delivery-inner">
             <!-- MAP IMAGE -->
             <div class="delivery-map-wrap reveal">
-                <img src="mapa.webp" alt="Mapa dostaw DailyFruits w Polsce" loading="lazy" style="width:100%;height:auto;border-radius:12px;" width="560" height="420">
+                <img srcset="mapa-480.webp 480w, mapa.webp 1600w" sizes="(max-width: 768px) 92vw, 520px" src="mapa.webp" alt="Mapa dostaw DailyFruits w Polsce" loading="lazy" style="width:100%;height:auto;border-radius:12px;" width="560" height="420">
             </div>
 
             <!-- TEXT COLUMN -->
@@ -1727,7 +1727,7 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 })();
 </script>
-<script src="transition.js"></script>
+<script defer src="transition.js"></script>
 <script src="mn.js?v=4"></script>
 <script>
 /* ─── CURSOR GLOW (r352-inspired) ─── */

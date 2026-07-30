@@ -219,7 +219,7 @@ html.pt-in body>:not(header) { animation: ptFadeIn 0.32s ease both; }
         "mainEntity": [{"@type":"Question","name":"Czy DailyFruits dostarcza owoce do biur w całym Toruniu?","acceptedAnswer":{"@type":"Answer","text":"Tak - obsługujemy cały Toruń, w tym Stare Miasto, Bydgoskie Przedmieście, Mokre, Rubinkowo i okolice."}},{"@type":"Question","name":"Ile kosztuje dostawa owoców do biura w Toruniu?","acceptedAnswer":{"@type":"Answer","text":"Dostawa jest bezpłatna w ramach abonamentu. Wycenę otrzymasz w ciągu 24h."}},{"@type":"Question","name":"Jak szybko mogę otrzymać pierwszą dostawę w Toruniu?","acceptedAnswer":{"@type":"Answer","text":"Pierwsza dostawa jest możliwa w 24-48h od złożenia zamówienia."}},{"@type":"Question","name":"Czy obsługujecie też Police i Stargard?","acceptedAnswer":{"@type":"Answer","text":"Tak - oprócz Torunia dostarczamy do okolicznych miast w aglomeracji szczecińskiej."}},{"@type":"Question","name":"Czy mogę zamówić owoce na event firmowy w Toruniu?","acceptedAnswer":{"@type":"Answer","text":"Tak - realizujemy zarówno regularne abonamenty, jak i jednorazowe zamówienia na eventy i spotkania."}}]
     }
     </script>
-<script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
+<script defer src="/lenis.min.js"></script>
 </head>
 <body>
 <!--#include:gtm-noscript-->
@@ -515,7 +515,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 </script>
-<script src="transition.js"></script>
+<script defer src="transition.js"></script>
 <script src="mn.js?v=4"></script>
   <script defer src="/typo.js"></script>
 <!--#include:cookie-banner-->
