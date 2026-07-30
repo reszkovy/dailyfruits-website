@@ -19,7 +19,8 @@ const CHECK = process.argv.includes('--check');
 function listHtml() {
   const out = [];
   for (const e of fs.readdirSync(ROOT)) if (e.endsWith('.html')) out.push(path.join(ROOT, e));
-  const od = path.join(ROOT, 'oferta');
+  for (const sub of ['oferta', 'blog']) {
+  const od = path.join(ROOT, sub);
   if (fs.existsSync(od)) {
     const walk = d => {
       for (const e of fs.readdirSync(d, { withFileTypes: true })) {
@@ -29,6 +30,7 @@ function listHtml() {
       }
     };
     walk(od);
+  }
   }
   return out;
 }

@@ -313,11 +313,6 @@
       "statusCode": 301
     },
     {
-      "source": "/blog/:path+",
-      "destination": "/blog",
-      "statusCode": 301
-    },
-    {
       "source": "/obowiazek-informacyjny",
       "destination": "/polityka-prywatnosci",
       "statusCode": 301
@@ -540,6 +535,16 @@
     {
       "source": "/pakowanie",
       "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/page/:n",
+      "destination": "/blog",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/dlaczego-warto-jesc-owoce-i-warzywa",
+      "destination": "/blog",
       "statusCode": 301
     }
   ],
