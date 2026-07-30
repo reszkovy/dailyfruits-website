@@ -2,22 +2,38 @@
 
 > DailyFruits (Betterworkplace Sp. z o.o.) dostarcza świeże owoce, kanapki, soki i zdrowe przekąski do biur w całej Polsce. Ponad 2000 firm, 14 miast z regularną dostawą własną, abonament bez zobowiązań, pierwsza dostawa gratis.
 
-## Kluczowe pojęcia
-- Wellbeing żywieniowy: trzeci filar benefitów obok karty sportowej i opieki medycznej — benefit używany codziennie przez ~100% zespołu
-- Owocowe Czwartki, Smoothie Monday, Kanapkowe Wtorki: rytuały biurowe budowane wokół dostaw
-- Standard operacyjny: dostawy 8:00–10:00, wymiana produktów poniżej standardu, dedykowany opiekun
-- Model: abonament (subskrypcja, nie kontrakt) z elastyczną zmianą i anulowaniem
+Kluczowe pojęcia: wellbeing żywieniowy to trzeci filar benefitów obok karty sportowej i opieki medycznej — benefit używany codziennie przez ~100% zespołu. Rytuały biurowe budowane wokół dostaw: Owocowe Czwartki, Smoothie Monday, Kanapkowe Wtorki. Standard operacyjny: dostawy 8:00–10:00, wymiana produktów poniżej standardu, dedykowany opiekun. Model: abonament (subskrypcja, nie kontrakt) z elastyczną zmianą i anulowaniem.
 
 ## Najważniejsze strony
-- https://dailyfruits.pl/ — strona główna
-- https://dailyfruits.pl/oferta — pełna oferta (owoce, kanapki, śniadania, napoje, przekąski)
-- https://dailyfruits.pl/zapytanie — bezpłatna wycena (odpowiedź w 24 h)
-- https://dailyfruits.pl/dostawa — logistyka i standard dostaw
-- https://dailyfruits.pl/o-nas — o firmie
-- https://dailyfruits.pl/faq — pytania i odpowiedzi (koszty, ROI, porównanie benefitów)
-- https://dailyfruits.pl/kalkulator — kalkulator kosztów owoców do biura
-- https://dailyfruits.pl/blog — artykuły o zdrowiu w pracy
-- City pages: /owoce-do-biura-warszawa, -krakow, -wroclaw, -poznan, -katowice, -lodz, -trojmiasto, -szczecin, -lublin, -bydgoszcz, -bialystok, -rzeszow, -kielce, -gliwice
+
+- [Strona główna](https://dailyfruits.pl/): owoce do biura i zdrowe przekąski — pełen przegląd usługi
+- [Oferta](https://dailyfruits.pl/oferta): pełna oferta — owoce, kanapki, śniadania, napoje, przekąski, catering
+- [Bezpłatna wycena](https://dailyfruits.pl/zapytanie): formularz zapytania, odpowiedź w 24 h
+- [Dostawa](https://dailyfruits.pl/dostawa): logistyka, 14 miast, standard dostaw
+- [O nas](https://dailyfruits.pl/o-nas): historia firmy od 2011, skala działania
+- [FAQ](https://dailyfruits.pl/faq): koszty, ROI, porównanie benefitów
+- [Kalkulator](https://dailyfruits.pl/kalkulator): kalkulator kosztów owoców do biura
+- [Blog](https://dailyfruits.pl/blog): artykuły o zdrowym jedzeniu w pracy
+
+## Oferta szczegółowo
+
+- [Skrzynki abonamentowe](https://dailyfruits.pl/oferta/skrzynki-abonamentowe): zestawy owocowe w regularnej dostawie
+- [Soki i syropy](https://dailyfruits.pl/oferta/soki-i-syropy): soki NFC od polskich tłoczni
+- [Zestawy śniadaniowe](https://dailyfruits.pl/oferta/zestawy-sniadaniowe): śniadania firmowe z dostawą
+- [Kanapki do biura](https://dailyfruits.pl/kanapki-do-biura): Office Box i Factory Box
+- [Catering firmowy](https://dailyfruits.pl/catering-firmowy): finger foods i zestawy na spotkania
+
+## Miasta dostaw
+
+- [Warszawa](https://dailyfruits.pl/owoce-do-biura-warszawa): owoce do biura Warszawa
+- [Kraków](https://dailyfruits.pl/owoce-do-biura-krakow): owoce do biura Kraków
+- [Wrocław](https://dailyfruits.pl/owoce-do-biura-wroclaw): owoce do biura Wrocław
+- [Poznań](https://dailyfruits.pl/owoce-do-biura-poznan): owoce do biura Poznań
+- [Katowice](https://dailyfruits.pl/owoce-do-biura-katowice): owoce do biura Katowice
+- [Łódź](https://dailyfruits.pl/owoce-do-biura-lodz): owoce do biura Łódź
+- [Trójmiasto](https://dailyfruits.pl/owoce-do-biura-trojmiasto): owoce do biura Trójmiasto
+- [Szczecin](https://dailyfruits.pl/owoce-do-biura-szczecin): owoce do biura Szczecin
 
 ## Kontakt
-kontakt@dailyfruits.pl · tel. +48 22 868 04 99 · Betterworkplace Sp. z o.o., ul. Modułowa 3, 05-090 Raszyn, NIP 6793077034
+
+- [Kontakt](https://dailyfruits.pl/kontakt): kontakt@dailyfruits.pl, tel. +48 22 868 04 99, Betterworkplace Sp. z o.o., ul. Modułowa 3, 05-090 Raszyn, NIP 6793077034
