@@ -546,6 +546,171 @@
       "source": "/blog/dlaczego-warto-jesc-owoce-i-warzywa",
       "destination": "/blog",
       "statusCode": 301
+    },
+    {
+      "source": "/blog/mandarynki-nowa-odmiana",
+      "destination": "/blog",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/jak-przyspieszyc-metabolizm-co-jesc-a-czego-unikac",
+      "destination": "/blog",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/paczki-dzien-dziecka",
+      "destination": "/blog",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/owoce",
+      "destination": "/blog",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/lato-zamkniete-w-sloiczku-robimy-pyszny-dzem",
+      "destination": "/blog",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/jej-wysokosc-czeresnia",
+      "destination": "/blog",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/firmowy-live-cooking-online",
+      "destination": "/blog",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/wrzuc-na-ruszt-warzywa-i-owoce",
+      "destination": "/blog",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/mila-niespodzianka-nami-happy-mens-day",
+      "destination": "/blog",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/przywitalismy-pierwszy-dzien-wiosny",
+      "destination": "/blog",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/cytusowy-koktajl-zrodlo-witamin",
+      "destination": "/blog",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/podsumowanie-roku",
+      "destination": "/blog",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/wieczor-marzen-w-warszawskim-zoo",
+      "destination": "/blog",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/oswiadczenie-firmy-dailyfruits-w-sprawie-zagrozenia-koronawirusem",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/2025-rokiem-edukacji-zdrowotnej-i-profilaktyki",
+      "destination": "/blog",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/relacja-z-xxvii-kongresu-kadry",
+      "destination": "/blog",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/nowe-wyzwanie-od-dailyfruits",
+      "destination": "/blog",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/zmniejsz-ilosc-slodyczy-nie-rezygnujac-ze-slodyczy",
+      "destination": "/blog",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/wesolych-swiat-wielkanocnych",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/kongres-kadry-i-dailyfruits",
+      "destination": "/blog",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/5-300-biegaczy-na-mecie-krakow-business-run",
+      "destination": "/blog",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/dailyfruits-na-kongresie-kadry",
+      "destination": "/blog",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/fakty-i-mity-o-owocowych-dostawach",
+      "destination": "/wpis-fakty-mity",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/dieta-antysmogowa",
+      "destination": "/blog",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/konferencja-kultura-organizacyjna-4-0",
+      "destination": "/blog",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/rok-2021-miedzynarodowym-rokiem-warzyw-i-owocow",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/jestesmy-juz-na-instagramie",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/dailymotywacja-2021-podsumowanie",
+      "destination": "/blog",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/spotkajmy-sie-na-work-different-roadshow-2020",
+      "destination": "/blog",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/dailyfruits-wspiera-i-pomaga",
+      "destination": "/blog",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/jak-firma-moze-realizowac-polityke-esg-dzieki-ofercie-firmy-dailyfruits",
+      "destination": "/wpis-esg",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/dailyfruits-outsourcing-expo-2017",
+      "destination": "/blog",
+      "statusCode": 301
+    },
+    {
+      "source": "/blog/jakie-owoce-mozna-i-powinno-sie-jesc-w-ciazy-a-jakie-nie",
+      "destination": "/wpis-owoce-ciaza",
+      "statusCode": 301
     }
   ],
   "trailingSlash": false
