@@ -633,11 +633,6 @@
       "statusCode": 301
     },
     {
-      "source": "/blog/zmniejsz-ilosc-slodyczy-nie-rezygnujac-ze-slodyczy",
-      "destination": "/blog",
-      "statusCode": 301
-    },
-    {
       "source": "/blog/wesolych-swiat-wielkanocnych",
       "destination": "/",
       "statusCode": 301
@@ -660,11 +655,6 @@
     {
       "source": "/blog/fakty-i-mity-o-owocowych-dostawach",
       "destination": "/wpis-fakty-mity",
-      "statusCode": 301
-    },
-    {
-      "source": "/blog/dieta-antysmogowa",
-      "destination": "/blog",
       "statusCode": 301
     },
     {
