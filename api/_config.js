@@ -7,7 +7,7 @@
 //   CMS_PASSWORD  — haslo logowania do panelu /admin
 // Opcjonalnie: GITHUB_BRANCH (domyslnie "main")
 
-export const SITE_URL = 'https://dailyfruits.pl';
+export const SITE_URL = 'https://www.dailyfruits.pl';
 
 // ── Blog ──
 export const BLOG = {

@@ -19,6 +19,6 @@ Disallow: /katalog-produktow
 Disallow: /kalkulator-programu
 
 
-Sitemap: https://dailyfruits.pl/sitemap.xml
+Sitemap: https://www.dailyfruits.pl/sitemap.xml
 
 # DailyFruits - owoce i zdrowe przekąski do biura
