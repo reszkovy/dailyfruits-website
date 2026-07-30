@@ -61,27 +61,60 @@
     {
       "source": "/generator-utm",
       "headers": [
-        { "key": "X-Robots-Tag", "value": "noindex, nofollow" }
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
+        }
       ]
     },
     {
       "source": "/katalog-produktow",
       "headers": [
-        { "key": "X-Robots-Tag", "value": "noindex, nofollow" }
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
+        }
       ]
     }
   ],
   "cleanUrls": true,
   "rewrites": [
-    { "source": "/oferta/owoce", "destination": "/oferta" },
-    { "source": "/oferta/napoje", "destination": "/oferta" },
-    { "source": "/oferta/kawa", "destination": "/oferta" },
-    { "source": "/oferta/kanapki", "destination": "/oferta" },
-    { "source": "/oferta/salatki", "destination": "/oferta" },
-    { "source": "/oferta/pakiety", "destination": "/oferta" },
-    { "source": "/oferta/sniadania", "destination": "/oferta" },
-    { "source": "/oferta/catering", "destination": "/oferta" },
-    { "source": "/oferta/integracyjne", "destination": "/oferta" }
+    {
+      "source": "/oferta/owoce",
+      "destination": "/oferta"
+    },
+    {
+      "source": "/oferta/napoje",
+      "destination": "/oferta"
+    },
+    {
+      "source": "/oferta/kawa",
+      "destination": "/oferta"
+    },
+    {
+      "source": "/oferta/kanapki",
+      "destination": "/oferta"
+    },
+    {
+      "source": "/oferta/salatki",
+      "destination": "/oferta"
+    },
+    {
+      "source": "/oferta/pakiety",
+      "destination": "/oferta"
+    },
+    {
+      "source": "/oferta/sniadania",
+      "destination": "/oferta"
+    },
+    {
+      "source": "/oferta/catering",
+      "destination": "/oferta"
+    },
+    {
+      "source": "/oferta/integracyjne",
+      "destination": "/oferta"
+    }
   ],
   "redirects": [
     {
@@ -91,52 +124,52 @@
     },
     {
       "source": "/blog/jak-przetrwac-lato-w-biurze/",
-      "destination": "/wpis-lato-biuro.html",
+      "destination": "/wpis-lato-biuro",
       "statusCode": 301
     },
     {
       "source": "/blog/integracyjne-sniadanie-firmowe-zamow-dla-swojego-zespolu/",
-      "destination": "/wpis-sniadanie-firmowe.html",
+      "destination": "/wpis-sniadanie-firmowe",
       "statusCode": 301
     },
     {
       "source": "/blog/bakalie-w-biurze-dlaczego-warto/",
-      "destination": "/wpis-bakalie-biuro.html",
+      "destination": "/wpis-bakalie-biuro",
       "statusCode": 301
     },
     {
       "source": "/blog/idealny-welcome-pack-dla-pracownika-co-powinien-zawierac/",
-      "destination": "/wpis-welcome-pack.html",
+      "destination": "/wpis-welcome-pack",
       "statusCode": 301
     },
     {
       "source": "/blog/zdrowe-i-fit-przekaski-ze-sklepu-do-pracy-poznaj-nasza-liste/",
-      "destination": "/wpis-przekaski-praca.html",
+      "destination": "/wpis-przekaski-praca",
       "statusCode": 301
     },
     {
       "source": "/blog/zywieniowe-nawyki-raport-2023/",
-      "destination": "/wpis-nawyki-raport.html",
+      "destination": "/wpis-nawyki-raport",
       "statusCode": 301
     },
     {
       "source": "/blog/catering-przekaski-i-menu-na-konferencje-o-czym-musisz-pamietac/",
-      "destination": "/wpis-catering-konferencja.html",
+      "destination": "/wpis-catering-konferencja",
       "statusCode": 301
     },
     {
       "source": "/blog/employer-branding-2021/",
-      "destination": "/wpis-employer-branding.html",
+      "destination": "/wpis-employer-branding",
       "statusCode": 301
     },
     {
       "source": "/blog/praca-zdalna-a-dieta-co-jesc-na-home-office/",
-      "destination": "/wpis-praca-zdalna-dieta.html",
+      "destination": "/wpis-praca-zdalna-dieta",
       "statusCode": 301
     },
     {
       "source": "/blog/ile-wody-powinno-sie-pic-dziennie/",
-      "destination": "/wpis-ile-wody.html",
+      "destination": "/wpis-ile-wody",
       "statusCode": 301
     },
     {
@@ -344,22 +377,86 @@
       "destination": "/blog",
       "statusCode": 301
     },
-    { "source": "/obowiazek-informacyjny/", "destination": "/polityka-prywatnosci", "statusCode": 301 },
-    { "source": "/dostawcy-copy/", "destination": "/dostawcy", "statusCode": 301 },
-    { "source": "/kontakt-copy-2/", "destination": "/kontakt", "statusCode": 301 },
-    { "source": "/zestawy-na-spotkania-firmowe/", "destination": "/catering-firmowy", "statusCode": 301 },
-    { "source": "/zamowienie-krakow-copy/", "destination": "/zapytanie", "statusCode": 301 },
-    { "source": "/dailyfruits-home-homeoffice-copy/", "destination": "/", "statusCode": 301 },
-    { "source": "/checkout-copy/", "destination": "/", "statusCode": 301 },
-    { "source": "/planer-dailymotywacja2021/", "destination": "/baza-wiedzy", "statusCode": 301 },
-    { "source": "/ankieta/", "destination": "/", "statusCode": 301 },
-    { "source": "/ankieta-olx/", "destination": "/", "statusCode": 301 },
-    { "source": "/ankieta-olx-marzec-2022/", "destination": "/", "statusCode": 301 },
-    { "source": "/ankieta-firma-x/", "destination": "/", "statusCode": 301 },
-    { "source": "/ankieta-preferencji/", "destination": "/", "statusCode": 301 },
-    { "source": "/ankieta-preferencji-grana/", "destination": "/", "statusCode": 301 },
-    { "source": "/dietetyka-ankieta-preferencji-freudenberg-sealing/", "destination": "/", "statusCode": 301 },
-    { "source": "/edukacja-zywieniowa-ankieta-po-udziale-w-wydarzeniu/", "destination": "/", "statusCode": 301 },
+    {
+      "source": "/obowiazek-informacyjny/",
+      "destination": "/polityka-prywatnosci",
+      "statusCode": 301
+    },
+    {
+      "source": "/dostawcy-copy/",
+      "destination": "/dostawcy",
+      "statusCode": 301
+    },
+    {
+      "source": "/kontakt-copy-2/",
+      "destination": "/kontakt",
+      "statusCode": 301
+    },
+    {
+      "source": "/zestawy-na-spotkania-firmowe/",
+      "destination": "/catering-firmowy",
+      "statusCode": 301
+    },
+    {
+      "source": "/zamowienie-krakow-copy/",
+      "destination": "/zapytanie",
+      "statusCode": 301
+    },
+    {
+      "source": "/dailyfruits-home-homeoffice-copy/",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/checkout-copy/",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/planer-dailymotywacja2021/",
+      "destination": "/baza-wiedzy",
+      "statusCode": 301
+    },
+    {
+      "source": "/ankieta/",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/ankieta-olx/",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/ankieta-olx-marzec-2022/",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/ankieta-firma-x/",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/ankieta-preferencji/",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/ankieta-preferencji-grana/",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/dietetyka-ankieta-preferencji-freudenberg-sealing/",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/edukacja-zywieniowa-ankieta-po-udziale-w-wydarzeniu/",
+      "destination": "/",
+      "statusCode": 301
+    },
     {
       "source": "/oferta/zestawy-na-spotkania-firmowe/",
       "destination": "/catering-firmowy",
@@ -565,5 +662,6 @@
       "destination": "/",
       "statusCode": 301
     }
-  ]
+  ],
+  "trailingSlash": false
 }
