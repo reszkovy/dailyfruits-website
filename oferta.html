@@ -15,7 +15,9 @@ gtag('config', 'G-G9SCYSFC36');
 <!-- Usercentrics NATYCHMIAST (osobno od lazy-GTM): baner zgod pojawia sie od razu
      (RODO) i maluje sie wczesnie = stabilne LCP (pozny render banera psul metryke).
      Loader ma guard po id - gdy GTM tez go wstrzyknie, drugi raz sie nie zaladuje. -->
-<script id="usercentrics-cmp" src="https://web.cmp.usercentrics.eu/ui/loader.js" data-settings-id="JcLfBYv2MWoHnQ" async></script>
+<link rel="preconnect" href="https://web.cmp.usercentrics.eu" crossorigin>
+<link rel="preconnect" href="https://v1.api.service.cmp.usercentrics.eu" crossorigin>
+<script id="usercentrics-cmp" src="https://web.cmp.usercentrics.eu/ui/loader.js" data-settings-id="JcLfBYv2MWoHnQ" async fetchpriority="high"></script>
 <!-- Lazy-start analityki (perf): GTM x2 + GA4 startuja przy PIERWSZEJ interakcji
      uzytkownika (mousemove/scroll/touch/klawisz) albo najpozniej po 2.5 s.
      Realny user: praktycznie natychmiast. Lab (LCP): poza oknem krytycznym.
