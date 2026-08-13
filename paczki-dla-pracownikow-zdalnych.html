@@ -123,51 +123,122 @@ gtag('config', 'G-G9SCYSFC36');
 .cta-section h2 .fun { font-family: var(--font-fun); font-weight: 400; color: var(--lime); font-size: 1.05em; }
 .cta-section p { font-size: 17px; color: var(--gray-500); margin-bottom: 28px; max-width: 540px; margin-left: auto; margin-right: auto; }
 .cta-row { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
-/* hero split */
-.hero-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 48px; align-items: center; }
-.hero-visual { position: relative; text-align: center; }
-.hero-visual img { width: 100%; max-width: 520px; height: auto; transform: rotate(2deg); filter: drop-shadow(0 24px 44px rgba(27,94,58,0.20)); }
+/* ===== KONCEPT: paczka w drodze ===== */
+/* hero: przesylka z etykieta */
+.hero-grid { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 44px; align-items: center; }
 .hero-cta-row { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 26px; }
-/* intro lead + statystyki */
+.hero-parcel { position: relative; text-align: center; padding: 26px 8px 40px; }
+.hero-parcel > img { width: 100%; max-width: 500px; height: auto; transform: rotate(2deg); filter: drop-shadow(0 26px 40px rgba(27,94,58,0.22)); position: relative; z-index: 2; }
+.ship-label { position: absolute; z-index: 3; left: -6px; bottom: -8px; background: var(--white); border: 2px dashed rgba(27,94,58,0.35); border-radius: 12px; padding: 14px 18px; text-align: left; transform: rotate(-4deg); box-shadow: 0 14px 30px rgba(27,94,58,0.16); }
+.ship-label small { display: block; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gray-500); margin-bottom: 2px; }
+.ship-label b { display: block; font-size: 14px; color: var(--green-dark); font-weight: 800; letter-spacing: -0.01em; }
+.ship-label b + small { margin-top: 8px; }
+.hero-stamp { position: absolute; z-index: 3; right: 2px; top: 0; width: 92px; height: 92px; border: 2.5px dashed var(--red); border-radius: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center; color: var(--red); transform: rotate(8deg); background: rgba(255,255,255,0.55); }
+.hero-stamp b { font-weight: 900; font-size: 17px; letter-spacing: -0.02em; }
+.hero-stamp span { font-size: 9.5px; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 700; }
+/* trasa w tle hero */
+.hero-route { position: absolute; inset: 0; z-index: 1; pointer-events: none; overflow: visible; }
+.hero-route path { fill: none; stroke: var(--lime); stroke-width: 2.5; stroke-dasharray: 10 12; opacity: 0.5; animation: routeFlow 2.6s linear infinite; }
+@keyframes routeFlow { to { stroke-dashoffset: -44; } }
+/* intro lead + znaczki */
 .intro-section .lead { font-size: 21px; line-height: 1.6; color: var(--green-dark); font-weight: 500; }
-.stat-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 40px; }
-.stat-chip { background: var(--lime-bg); border-radius: var(--radius); padding: 22px 24px; text-align: center; }
-.stat-chip b { display: block; font-weight: 900; font-size: clamp(24px, 2.6vw, 32px); color: var(--green-dark); letter-spacing: -0.03em; margin-bottom: 6px; }
-.stat-chip span { font-size: 13.5px; line-height: 1.45; color: var(--gray-500); display: block; }
-/* karty produktowe */
-.products-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 20px; }
-.product-card { background: var(--white); border-radius: var(--radius); border: 1px solid rgba(27,94,58,0.08); overflow: hidden; transition: transform 0.3s, box-shadow 0.3s; display: flex; flex-direction: column; }
-.product-card:hover { transform: translateY(-4px); box-shadow: 0 12px 36px rgba(27,94,58,0.12); }
-.product-card .ph { background: var(--white); height: 168px; display: flex; align-items: center; justify-content: center; padding: 14px; border-bottom: 1px solid rgba(27,94,58,0.06); }
+.stat-row { display: flex; gap: 26px; justify-content: center; align-items: stretch; margin-top: 44px; flex-wrap: wrap; }
+.stamp { text-align: center; display: flex; flex-direction: column; justify-content: center; }
+.stamp b { display: block; font-weight: 900; font-size: clamp(21px, 2.4vw, 27px); color: var(--green-dark); letter-spacing: -0.03em; margin-bottom: 5px; }
+.stamp span { font-size: 12.5px; line-height: 1.45; color: var(--gray-500); display: block; }
+.stamp-post { background: var(--lime-bg); border: 2.5px dashed rgba(27,94,58,0.3); border-radius: 8px; padding: 22px 26px; transform: rotate(-2deg); position: relative; flex: 1 1 200px; max-width: 250px; }
+.stamp-post::after { content: 'PRIORYTET'; position: absolute; top: 7px; right: 10px; font-size: 8.5px; letter-spacing: 0.18em; font-weight: 800; color: rgba(27,94,58,0.4); }
+.stamp-round { width: 178px; height: 178px; border: 2.5px dashed rgba(228,48,32,0.55); border-radius: 50%; padding: 24px; transform: rotate(1.5deg); align-self: center; }
+.stamp-round b { color: var(--red); }
+.stamp-stick { background: var(--lime-light); border-radius: 14px; padding: 22px 26px; transform: rotate(1deg); box-shadow: 3px 4px 0 rgba(0,0,0,0.08); flex: 1 1 200px; max-width: 250px; }
+.stamp-stick b { color: var(--green-dark); }
+.stamp-stick span { color: rgba(27,94,58,0.75); }
+.stamp.reveal { opacity: 0; }
+.stamp.reveal.vis { animation: stampIn 0.5s cubic-bezier(0.18, 1.5, 0.4, 1) both; }
+.stamp.reveal.vis:nth-child(2) { animation-delay: 0.12s; }
+.stamp.reveal.vis:nth-child(3) { animation-delay: 0.24s; }
+@keyframes stampIn { 0% { opacity: 0; transform: scale(1.35) rotate(0deg); } 60% { opacity: 1; } 100% { opacity: 1; transform: scale(1); } }
+.stamp-post.reveal.vis { animation-name: stampInA; }
+@keyframes stampInA { 0% { opacity: 0; transform: scale(1.35) rotate(4deg); } 100% { opacity: 1; transform: scale(1) rotate(-2deg); } }
+.stamp-round.reveal.vis { animation-name: stampInB; }
+@keyframes stampInB { 0% { opacity: 0; transform: scale(1.35) rotate(-6deg); } 100% { opacity: 1; transform: scale(1) rotate(1.5deg); } }
+.stamp-stick.reveal.vis { animation-name: stampInC; }
+@keyframes stampInC { 0% { opacity: 0; transform: scale(1.35) rotate(-4deg); } 100% { opacity: 1; transform: scale(1) rotate(1deg); } }
+/* karty korzysci - lekka asymetria */
+.value-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 26px; }
+.value-card { background: var(--white); border-radius: var(--radius); padding: 32px; border: 1px solid rgba(27,94,58,0.08); transition: transform 0.35s cubic-bezier(0.16,1,0.3,1), box-shadow 0.35s; }
+.value-grid .value-card:nth-child(1) { transform: rotate(-0.7deg); }
+.value-grid .value-card:nth-child(2) { transform: rotate(0.5deg) translateY(22px); }
+.value-grid .value-card:nth-child(3) { transform: rotate(0.6deg); }
+.value-grid .value-card:nth-child(4) { transform: rotate(-0.5deg) translateY(22px); }
+.value-grid .value-card:hover { transform: rotate(0deg) translateY(-5px); box-shadow: 0 16px 40px rgba(27,94,58,0.13); }
+.value-grid .value-card:nth-child(even):hover { transform: rotate(0deg) translateY(17px); }
+/* trasa z autkiem */
+.route-strip { padding: 90px 0 34px; position: relative; overflow: hidden; }
+.route-strip .route-inner { position: relative; height: 150px; }
+.route-road { position: absolute; left: 0; right: 0; bottom: 26px; height: 3px; }
+.route-road svg { width: 100%; height: 100%; display: block; }
+.route-road line { stroke: rgba(27,94,58,0.35); stroke-width: 3; stroke-dasharray: 16 14; animation: roadFlow 1.1s linear infinite; }
+@keyframes roadFlow { to { stroke-dashoffset: 30; } }
+.route-van { position: absolute; bottom: 14px; right: 12%; width: min(300px, 44vw); animation: vanBob 2.4s ease-in-out infinite; }
+@keyframes vanBob { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }
+.route-door { position: absolute; bottom: 20px; left: 4%; width: 46px; height: 88px; background: var(--green-dark); border-radius: 10px 10px 0 0; }
+.route-door::before { content: ''; position: absolute; right: 7px; top: 42px; width: 7px; height: 7px; border-radius: 50%; background: var(--lime); }
+.route-door::after { content: 'pod same drzwi'; position: absolute; bottom: -26px; left: 50%; transform: translateX(-50%); white-space: nowrap; font-size: 12.5px; color: var(--gray-500); }
+/* karty produktowe - paczki z tasma */
+.products-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 22px; }
+.product-card { background: var(--white); border-radius: var(--radius); border: 1px solid rgba(27,94,58,0.08); overflow: visible; transition: transform 0.35s cubic-bezier(0.16,1,0.3,1), box-shadow 0.35s; display: flex; flex-direction: column; position: relative; }
+.products-grid .product-card:nth-child(odd) { transform: rotate(-1deg); }
+.products-grid .product-card:nth-child(even) { transform: rotate(1deg) translateY(10px); }
+.products-grid .product-card:hover { transform: rotate(0) translateY(-6px); box-shadow: 0 18px 44px rgba(27,94,58,0.15); z-index: 2; }
+.product-card .ph { background: var(--white); height: 168px; display: flex; align-items: center; justify-content: center; padding: 16px 14px 10px; border-bottom: 2px dashed rgba(27,94,58,0.12); border-radius: var(--radius) var(--radius) 0 0; }
 .product-card .ph img { max-width: 100%; max-height: 100%; object-fit: contain; }
+.pc-tape { position: absolute; top: -9px; left: 18px; width: 86px; height: 22px; background: rgba(141,198,63,0.6); transform: rotate(-5deg); border-radius: 2px; box-shadow: 0 2px 5px rgba(0,0,0,0.06); }
+.pc-tag { position: absolute; top: 12px; right: -8px; background: var(--red); color: #fff; font-size: 10.5px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; padding: 6px 12px; border-radius: 6px; transform: rotate(3deg); box-shadow: 2px 3px 0 rgba(0,0,0,0.12); }
 .product-card .pc-body { padding: 20px 22px 24px; }
 .product-card h3 { font-weight: 800; font-size: 17px; color: var(--green-dark); margin-bottom: 6px; letter-spacing: -0.02em; }
 .product-card p { font-size: 14.5px; line-height: 1.55; color: var(--gray-500); margin: 0; }
 /* social proof */
-.trust-strip { padding: 56px 0 8px; text-align: center; }
-.trust-strip img { display: block; width: 92px; height: auto; margin: 0 auto 10px; }
+.trust-strip { padding: 60px 0 8px; text-align: center; }
+.trust-strip img { display: block; width: 92px; height: auto; margin: 0 auto 12px; transform: rotate(-8deg); filter: drop-shadow(0 10px 18px rgba(27,94,58,0.18)); }
 .trust-strip p { font-size: 19px; color: var(--gray); }
 .trust-strip p strong { color: var(--green-dark); font-weight: 900; }
-/* CTA banner */
-.cta-banner { background: var(--green-dark); border-radius: var(--radius-lg); padding: 52px 56px; display: grid; grid-template-columns: 1fr auto; gap: 32px; align-items: center; overflow: hidden; position: relative; }
+/* CTA banner - maskotka zerka zza krawedzi */
+.cta-section { overflow: visible; }
+.cta-banner { background: var(--green-dark); border-radius: var(--radius-lg); padding: 52px 260px 52px 56px; position: relative; }
 .cta-banner h2 { color: var(--white); text-align: left; margin-bottom: 12px; }
 .cta-banner h2 .fun { color: var(--lime); }
 .cta-banner p { color: rgba(255,249,224,0.85); text-align: left; margin: 0 0 24px; max-width: 480px; }
 .cta-banner .cta-row { justify-content: flex-start; }
+.cta-banner .btn-red-solid { transform: rotate(-2deg); box-shadow: 3px 4px 0 rgba(0,0,0,0.22); }
+.cta-banner .btn-red-solid:hover { transform: rotate(0deg) translateY(-2px); }
 .cta-banner .btn-ghost-light { background: transparent; color: var(--cream); border: 2px solid rgba(255,249,224,0.45); }
 .cta-banner .btn-ghost-light:hover { background: rgba(255,249,224,0.12); }
-.cta-mascot { width: 190px; height: auto; align-self: end; margin-bottom: -52px; }
+.cta-mascot { position: absolute; right: 44px; bottom: 0; width: 200px; height: auto; transform: rotate(3deg); transform-origin: bottom center; }
+@media (prefers-reduced-motion: reduce) {
+    .hero-route path, .route-road line, .route-van { animation: none !important; }
+    .stamp.reveal.vis { animation: none !important; opacity: 1; }
+}
 @media (max-width: 900px) {
-    .hero-grid { grid-template-columns: 1fr; gap: 28px; }
-    .hero-visual img { max-width: 380px; }
-    .cta-banner { grid-template-columns: 1fr; padding: 40px 28px; }
-    .cta-mascot { display: none; }
+    .hero-grid { grid-template-columns: 1fr; gap: 30px; }
+    .hero-parcel > img { max-width: 380px; }
+    .ship-label { left: 0; }
+    .cta-banner { padding: 40px 28px 150px; }
+    .cta-mascot { right: 24px; width: 150px; }
+    .route-van { right: 6%; }
 }
 @media (max-width: 720px) {
     .container { padding: 0 20px; }
     .page-hero { padding: 120px 0 40px; }
+    .page-hero h1 { font-size: clamp(30px, 8.5vw, 40px); }
+    .hero-stamp { width: 78px; height: 78px; right: 0; }
+    .hero-stamp b { font-size: 14px; }
     .value-grid { grid-template-columns: 1fr; }
-    .stat-row { grid-template-columns: 1fr; gap: 12px; }
+    .value-grid .value-card:nth-child(n) { transform: none; }
+    .stat-row { flex-direction: column; align-items: center; gap: 18px; }
+    .stamp-post, .stamp-stick { max-width: 300px; width: 100%; }
+    .products-grid .product-card:nth-child(n) { transform: none; }
+    .route-strip { padding-top: 60px; }
 }
 html.pt-out body>:not(header) { opacity: 0 !important; transition: opacity 0.18s ease !important; }
 html.pt-in body>:not(header) { animation: ptFadeIn 0.32s ease both; }
@@ -231,15 +302,21 @@ html.pt-in body>:not(header) { animation: ptFadeIn 0.32s ease both; }
             <div>
                 <nav class="breadcrumb" aria-label="breadcrumb"><a href="/">DailyFruits</a> › Paczki dla pracowników zdalnych</nav>
                 <div class="sticker">Home office</div>
-                <h1>Paczki dla pracowników <span class="fun">zdalnych</span></h1>
+                <h1>Paczki dla pracowników <span class="fun">zdalnych</span></h1>
                 <p class="tagline">Wellbeing w home office, kultura w hybrydzie</p>
                 <div class="hero-cta-row">
                     <a href="zapytanie" class="btn btn-red-solid btn-arrow">Złóż zapytanie</a>
                     <a href="#oferta-paczek" class="btn btn-outline">Zobacz warianty</a>
                 </div>
             </div>
-            <div class="hero-visual">
+            <div class="hero-parcel">
+                <svg class="hero-route" viewBox="0 0 520 420" aria-hidden="true" preserveAspectRatio="none"><path d="M-30 400 C 120 430, 200 300, 160 220 S 320 60, 540 90"/></svg>
                 <img src="box-premium.webp" alt="Paczka DailyFruits z owocami i przekąskami dostarczana do domu pracownika" width="1200" height="800" loading="eager" fetchpriority="high">
+                <div class="ship-label">
+                    <small>Nadawca</small><b>Twoja firma</b>
+                    <small>Odbiorca</small><b>Zespół zdalny, cała Polska</b>
+                </div>
+                <div class="hero-stamp"><b>24–48 h</b><span>Świeże</span></div>
             </div>
         </div>
     </div>
@@ -249,9 +326,9 @@ html.pt-in body>:not(header) { animation: ptFadeIn 0.32s ease both; }
     <div class="container">
         <p class="lead">Zespoły hybrydowe i zdalne tracą to, co spaja kulturę firmy - wspólną kuchnię, przerwę przy owocach, drobny gest troski. Pracownik w domu sam dba o nawodnienie, śniadanie i przerwy, a firma traci codzienny kontakt z jego dobrostanem.</p><p>Paczka DailyFruits przenosi ten rytuał pod drzwi pracownika: regularna dostawa świeżych owoców, zdrowych przekąsek i kawy prosto do domu. Tygodniowo, miesięcznie albo na okazję - onboarding, jubileusz, święta. Dla pracownika to realny sygnał, że firma o nim pamięta. Dla HR - gotowy benefit wellbeingowy bez logistyki po Waszej stronie, w skali od kilku osób po rozproszone zespoły w największych miastach.</p>
         <div class="stat-row">
-            <div class="stat-chip reveal"><b>24–48 h</b><span>od spakowania pod drzwi pracownika</span></div>
-            <div class="stat-chip reveal"><b>Cała Polska</b><span>każda miejscowość z adresem pocztowym</span></div>
-            <div class="stat-chip reveal"><b>Od kilku osób</b><span>po rozproszone zespoły w największych miastach</span></div>
+            <div class="stamp stamp-post reveal"><b>24–48 h</b><span>od spakowania pod drzwi pracownika</span></div>
+            <div class="stamp stamp-round reveal"><b>Cała Polska</b><span>każda miejscowość z adresem pocztowym</span></div>
+            <div class="stamp stamp-stick reveal"><b>Od kilku osób</b><span>po rozproszone zespoły w największych miastach</span></div>
         </div>
     </div>
 </section>
@@ -285,28 +362,36 @@ html.pt-in body>:not(header) { animation: ptFadeIn 0.32s ease both; }
     </div>
 </section>
 
+<section class="route-strip" aria-hidden="true">
+    <div class="container route-inner">
+        <div class="route-road"><svg preserveAspectRatio="none" viewBox="0 0 1000 3"><line x1="0" y1="1.5" x2="1000" y2="1.5"/></svg></div>
+        <img class="route-van" src="autkonowe.webp" alt="" loading="lazy" width="1200" height="383">
+        <div class="route-door"></div>
+    </div>
+</section>
+
 <section class="products-section" id="oferta-paczek">
     <div class="container">
         <h2>Co <span class="fun">oferujemy</span></h2>
         <p class="sub">Wybierz wariant albo skomponuj własny - dopasujemy.</p>
         <div class="products-grid">
             <div class="product-card reveal">
-                <div class="ph"><img src="box-sezonowy.webp" alt="Paczka tygodniowa - box świeżych owoców sezonowych" loading="lazy" width="1200" height="800"></div>
+                <span class="pc-tape"></span><span class="pc-tag">Co tydzień</span><div class="ph"><img src="box-sezonowy.webp" alt="Paczka tygodniowa - box świeżych owoców sezonowych" loading="lazy" width="1200" height="800"></div>
                 <div class="pc-body"><h3>Paczka tygodniowa</h3>
                 <p>Box z 4-6 kg owoców, 1-2 kg przekąsek, 1 produkt kawowy. Co tydzień pod drzwi.</p></div>
             </div>
             <div class="product-card reveal">
-                <div class="ph"><img src="box-bakalie1.webp" alt="Paczka miesięczna - box z bakaliami i premium snackami" loading="lazy" width="1200" height="797"></div>
+                <span class="pc-tape"></span><span class="pc-tag">Raz na miesiąc</span><div class="ph"><img src="box-bakalie1.webp" alt="Paczka miesięczna - box z bakaliami i premium snackami" loading="lazy" width="1200" height="797"></div>
                 <div class="pc-body"><h3>Paczka miesięczna</h3>
                 <p>Mniejsza częstotliwość, większy box - owoce, bakalie, kawa, premium snacks na 4 tygodnie.</p></div>
             </div>
             <div class="product-card reveal">
-                <div class="ph"><img src="upominki-packshot.webp" alt="Paczka okolicznościowa - upominek dla pracownika" loading="lazy" width="1200" height="1166"></div>
+                <span class="pc-tape"></span><span class="pc-tag">Na okazję</span><div class="ph"><img src="upominki-packshot.webp" alt="Paczka okolicznościowa - upominek dla pracownika" loading="lazy" width="1200" height="1166"></div>
                 <div class="pc-body"><h3>Paczka okolicznościowa</h3>
                 <p>Jednorazowa - rocznica zatrudnienia, jubileusz firmy, Boże Narodzenie, Wielkanoc.</p></div>
             </div>
             <div class="product-card reveal">
-                <div class="ph"><img src="box-kawki.webp" alt="Paczka Remote Welcome - zestaw powitalny z kawą" loading="lazy" width="1200" height="797"></div>
+                <span class="pc-tape"></span><span class="pc-tag">Dzień 1.</span><div class="ph"><img src="box-kawki.webp" alt="Paczka Remote Welcome - zestaw powitalny z kawą" loading="lazy" width="1200" height="797"></div>
                 <div class="pc-body"><h3>Paczka Remote Welcome</h3>
                 <p>Pierwszy Welcome Pack dla zdalnego pracownika - pełne brand experience od dnia pierwszego.</p></div>
             </div>
