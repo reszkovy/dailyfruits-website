@@ -133,7 +133,7 @@ gtag('config', 'G-G9SCYSFC36');
 .ship-label small { display: block; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gray-500); margin-bottom: 2px; }
 .ship-label b { display: block; font-size: 14px; color: var(--green-dark); font-weight: 800; letter-spacing: -0.01em; }
 .ship-label b + small { margin-top: 8px; }
-.hero-stamp { position: absolute; z-index: 3; right: 2px; top: 0; width: 92px; height: 92px; border: 2.5px dashed var(--red); border-radius: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center; color: var(--red); transform: rotate(8deg); background: rgba(255,255,255,0.55); }
+.hero-stamp { position: absolute; z-index: 3; right: -4px; top: -6px; width: 112px; height: 112px; background: url(badge-pieczatka.webp) no-repeat center/contain; display: flex; flex-direction: column; align-items: center; justify-content: center; color: var(--red); transform: rotate(8deg); }
 .hero-stamp b { font-weight: 900; font-size: 17px; letter-spacing: -0.02em; }
 .hero-stamp span { font-size: 9.5px; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 700; }
 /* trasa w tle hero */
@@ -142,15 +142,17 @@ gtag('config', 'G-G9SCYSFC36');
 @keyframes routeFlow { to { stroke-dashoffset: -44; } }
 /* intro lead + znaczki */
 .intro-section .lead { font-size: 21px; line-height: 1.6; color: var(--green-dark); font-weight: 500; }
-.stat-row { display: flex; gap: 26px; justify-content: center; align-items: stretch; margin-top: 44px; flex-wrap: wrap; }
+.stat-row { display: flex; gap: 20px; justify-content: center; align-items: center; margin-top: 44px; flex-wrap: wrap; }
 .stamp { text-align: center; display: flex; flex-direction: column; justify-content: center; }
-.stamp b { display: block; font-weight: 900; font-size: clamp(21px, 2.4vw, 27px); color: var(--green-dark); letter-spacing: -0.03em; margin-bottom: 5px; }
+.stamp b { display: block; font-weight: 900; font-size: clamp(19px, 2.1vw, 24px); color: var(--green-dark); letter-spacing: -0.03em; margin-bottom: 5px; }
 .stamp span { font-size: 12.5px; line-height: 1.45; color: var(--gray-500); display: block; }
-.stamp-post { background: var(--lime-bg); border: 2.5px dashed rgba(27,94,58,0.3); border-radius: 8px; padding: 22px 26px; transform: rotate(-2deg); position: relative; flex: 1 1 200px; max-width: 250px; }
-.stamp-post::after { content: 'PRIORYTET'; position: absolute; top: 7px; right: 10px; font-size: 8.5px; letter-spacing: 0.18em; font-weight: 800; color: rgba(27,94,58,0.4); }
-.stamp-round { width: 178px; height: 178px; border: 2.5px dashed rgba(228,48,32,0.55); border-radius: 50%; padding: 24px; transform: rotate(1.5deg); align-self: center; }
-.stamp-round b { color: var(--red); }
-.stamp-stick { background: var(--lime-light); border-radius: 14px; padding: 22px 26px; transform: rotate(1deg); box-shadow: 3px 4px 0 rgba(0,0,0,0.08); flex: 1 1 200px; max-width: 250px; }
+.stamp-post { background: url(badge-znaczek.webp) no-repeat center/contain; width: 198px; height: 280px; padding: 0 30px 42px; justify-content: flex-end; transform: rotate(-2deg); position: relative; flex: 0 0 auto; }
+
+.stamp-round { width: 248px; height: 248px; background: url(badge-postal-green.webp) no-repeat center/contain; padding: 58px 58px 44px; transform: rotate(1.5deg); align-self: center; flex: 0 0 auto; }
+.stamp-round b { font-size: 21px; }
+.stamp-round span { font-size: 10.5px; }
+.stamp-round b { color: var(--green-dark); }
+.stamp-stick { background: var(--lime-light); border-radius: 14px; padding: 24px 24px; transform: rotate(1deg); box-shadow: 3px 4px 0 rgba(0,0,0,0.08); flex: 0 1 216px; }
 .stamp-stick b { color: var(--green-dark); }
 .stamp-stick span { color: rgba(27,94,58,0.75); }
 .stamp.reveal { opacity: 0; }
