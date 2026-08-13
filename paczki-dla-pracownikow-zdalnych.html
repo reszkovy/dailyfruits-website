@@ -98,8 +98,6 @@ gtag('config', 'G-G9SCYSFC36');
 .value-section h2 .fun { font-family: var(--font-fun); font-weight: 400; color: var(--lime); font-size: 1.05em; }
 .value-section .sub { text-align: center; font-size: 16px; color: var(--gray-500); margin-bottom: 48px; }
 .value-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
-.value-card { background: var(--white); border-radius: var(--radius); padding: 32px; border: 1px solid rgba(27,94,58,0.08); transition: transform 0.3s, box-shadow 0.3s; }
-.value-card:hover { transform: translateY(-4px); box-shadow: 0 12px 36px rgba(27,94,58,0.1); }
 .value-card img { height: 46px; width: auto; margin-bottom: 16px; display: block; }
 .value-card h3 { font-weight: 800; font-size: 18px; color: var(--green-dark); margin-bottom: 8px; letter-spacing: -0.02em; }
 .value-card p { font-size: 15px; line-height: 1.6; color: var(--gray-500); margin: 0; }
@@ -169,7 +167,7 @@ gtag('config', 'G-G9SCYSFC36');
 /* karty korzysci - lekka asymetria */
 .value-grid { display: grid; grid-template-columns: repeat(2, 1fr); column-gap: 72px; row-gap: 0; position: relative; }
 .value-grid::before { content: ''; position: absolute; top: 12px; bottom: 12px; left: 50%; width: 0; border-left: 2px dashed rgba(27,94,58,0.18); }
-.value-card { background: transparent; padding: 30px 4px; border-top: 2px dashed rgba(27,94,58,0.18); display: grid; grid-template-columns: 64px 1fr; column-gap: 18px; }
+.value-card { background: transparent; border: none; border-radius: 0; box-shadow: none; padding: 30px 4px; border-top: 2px dashed rgba(27,94,58,0.18); display: grid; grid-template-columns: 64px 1fr; column-gap: 18px; }
 .value-grid .value-card:nth-child(-n+2) { border-top: none; }
 .vc-num { font-family: var(--font-fun); font-size: 44px; line-height: 1; color: var(--lime); transform: rotate(-4deg); transition: transform 0.3s cubic-bezier(0.16,1,0.3,1); align-self: start; margin-top: 4px; }
 .value-card:hover .vc-num { transform: rotate(4deg) scale(1.12); }
