@@ -152,9 +152,9 @@ gtag('config', 'G-G9SCYSFC36');
 .stamp-round b { font-size: 19px; }
 .stamp-round span { font-size: 10.5px; }
 .stamp-round b { color: var(--green-dark); }
-.stamp-stick { background: url(badge-przywieszka.webp) no-repeat center/contain; width: 302px; height: 156px; padding: 60px 30px 16px 98px; transform: rotate(1deg); flex: 0 0 auto; justify-content: flex-start; }
-.stamp-stick b { color: var(--green-dark); font-size: 15px; margin-bottom: 2px; }
-.stamp-stick span { color: rgba(27,94,58,0.8); font-size: 9.5px; line-height: 1.32; }
+.stamp-stick { background: url(badge-znaczek-zespol.webp) no-repeat center/contain; width: 244px; height: 208px; padding: 104px 30px 24px; transform: rotate(1deg); flex: 0 0 auto; justify-content: flex-start; }
+.stamp-stick b { color: var(--green-dark); font-size: 16px; margin-bottom: 3px; }
+.stamp-stick span { color: rgba(27,94,58,0.8); font-size: 10px; line-height: 1.35; }
 .stamp.reveal { opacity: 0; }
 .stamp.reveal.vis { animation: stampIn 0.5s cubic-bezier(0.18, 1.5, 0.4, 1) both; }
 .stamp.reveal.vis:nth-child(2) { animation-delay: 0.12s; }
@@ -195,7 +195,6 @@ gtag('config', 'G-G9SCYSFC36');
 .products-grid .product-card:hover { transform: rotate(0) translateY(-6px); box-shadow: 0 18px 44px rgba(27,94,58,0.15); z-index: 2; }
 .product-card .ph { background: var(--white); height: 168px; display: flex; align-items: center; justify-content: center; padding: 16px 14px 10px; border-bottom: 2px dashed rgba(27,94,58,0.12); border-radius: var(--radius) var(--radius) 0 0; }
 .product-card .ph img { max-width: 100%; max-height: 100%; object-fit: contain; }
-.pc-tape { position: absolute; top: -9px; left: 18px; width: 86px; height: 22px; background: rgba(141,198,63,0.6); transform: rotate(-5deg); border-radius: 2px; box-shadow: 0 2px 5px rgba(0,0,0,0.06); }
 .pc-tag { position: absolute; top: 12px; right: -8px; background: var(--red); color: #fff; font-size: 10.5px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; padding: 6px 12px; border-radius: 6px; transform: rotate(3deg); box-shadow: 2px 3px 0 rgba(0,0,0,0.12); }
 .product-card .pc-body { padding: 20px 22px 24px; }
 .product-card h3 { font-weight: 800; font-size: 17px; color: var(--green-dark); margin-bottom: 6px; letter-spacing: -0.02em; }
@@ -238,7 +237,7 @@ gtag('config', 'G-G9SCYSFC36');
     .value-grid { grid-template-columns: 1fr; }
     .value-grid .value-card:nth-child(n) { transform: none; }
     .stat-row { flex-direction: column; align-items: center; gap: 18px; margin-left: 0; margin-right: 0; }
-    .stamp-post, .stamp-stick { max-width: 300px; width: 100%; }
+
     .products-grid .product-card:nth-child(n) { transform: none; }
     .route-strip { padding-top: 60px; }
 }
@@ -378,22 +377,22 @@ html.pt-in body>:not(header) { animation: ptFadeIn 0.32s ease both; }
         <p class="sub">Wybierz wariant albo skomponuj własny - dopasujemy.</p>
         <div class="products-grid">
             <div class="product-card reveal">
-                <span class="pc-tape"></span><span class="pc-tag">Co tydzień</span><div class="ph"><img src="box-sezonowy.webp" alt="Paczka tygodniowa - box świeżych owoców sezonowych" loading="lazy" width="1200" height="800"></div>
+                <span class="pc-tag">Co tydzień</span><div class="ph"><img src="box-sezonowy.webp" alt="Paczka tygodniowa - box świeżych owoców sezonowych" loading="lazy" width="1200" height="800"></div>
                 <div class="pc-body"><h3>Paczka tygodniowa</h3>
                 <p>Box z 4-6 kg owoców, 1-2 kg przekąsek, 1 produkt kawowy. Co tydzień pod drzwi.</p></div>
             </div>
             <div class="product-card reveal">
-                <span class="pc-tape"></span><span class="pc-tag">Raz na miesiąc</span><div class="ph"><img src="kat-zroznicowany.webp" alt="Paczka miesięczna - zróżnicowany box owoców i przekąsek" loading="lazy" width="900" height="484"></div>
+                <span class="pc-tag">Raz na miesiąc</span><div class="ph"><img src="kat-zroznicowany.webp" alt="Paczka miesięczna - zróżnicowany box owoców i przekąsek" loading="lazy" width="900" height="484"></div>
                 <div class="pc-body"><h3>Paczka miesięczna</h3>
                 <p>Mniejsza częstotliwość, większy box - owoce, bakalie, kawa, premium snacks na 4 tygodnie.</p></div>
             </div>
             <div class="product-card reveal">
-                <span class="pc-tape"></span><span class="pc-tag">Na okazję</span><div class="ph"><img src="upominki-packshot.webp" alt="Paczka okolicznościowa - upominek dla pracownika" loading="lazy" width="1200" height="1166"></div>
+                <span class="pc-tag">Na okazję</span><div class="ph"><img src="upominki-packshot.webp" alt="Paczka okolicznościowa - upominek dla pracownika" loading="lazy" width="1200" height="1166"></div>
                 <div class="pc-body"><h3>Paczka okolicznościowa</h3>
                 <p>Jednorazowa - rocznica zatrudnienia, jubileusz firmy, Boże Narodzenie, Wielkanoc.</p></div>
             </div>
             <div class="product-card reveal">
-                <span class="pc-tape"></span><span class="pc-tag">Dzień 1.</span><div class="ph"><img src="box-sniadaniowe.webp" alt="Paczka Remote Welcome - otwarty box produktów śniadaniowych" loading="lazy" width="1200" height="797"></div>
+                <span class="pc-tag">Dzień 1.</span><div class="ph"><img src="box-sniadaniowe.webp" alt="Paczka Remote Welcome - otwarty box produktów śniadaniowych" loading="lazy" width="1200" height="797"></div>
                 <div class="pc-body"><h3>Paczka Remote Welcome</h3>
                 <p>Pierwszy Welcome Pack dla zdalnego pracownika - pełne brand experience od dnia pierwszego.</p></div>
             </div>
