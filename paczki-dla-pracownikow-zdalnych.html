@@ -169,10 +169,13 @@ gtag('config', 'G-G9SCYSFC36');
 /* karty korzysci - lekka asymetria */
 .value-grid { display: grid; grid-template-columns: repeat(2, 1fr); column-gap: 72px; row-gap: 0; position: relative; }
 .value-grid::before { content: ''; position: absolute; top: 12px; bottom: 12px; left: 50%; width: 0; border-left: 2px dashed rgba(27,94,58,0.18); }
-.value-card { background: transparent; padding: 30px 4px; border-top: 2px dashed rgba(27,94,58,0.18); }
+.value-card { background: transparent; padding: 30px 4px; border-top: 2px dashed rgba(27,94,58,0.18); display: grid; grid-template-columns: 64px 1fr; column-gap: 18px; }
 .value-grid .value-card:nth-child(-n+2) { border-top: none; }
-.value-card:hover img { transform: rotate(-6deg) scale(1.08); }
+.vc-num { font-family: var(--font-fun); font-size: 44px; line-height: 1; color: var(--lime); transform: rotate(-4deg); transition: transform 0.3s cubic-bezier(0.16,1,0.3,1); align-self: start; margin-top: 4px; }
+.value-card:hover .vc-num { transform: rotate(4deg) scale(1.12); }
+.value-card:hover img { transform: rotate(-6deg) scale(1.1); }
 .value-card img { transition: transform 0.3s cubic-bezier(0.16,1,0.3,1); }
+.vc-body { min-width: 0; }
 /* trasa z autkiem */
 .route-strip { padding: 90px 0 34px; position: relative; overflow: hidden; }
 .route-strip .route-inner { position: relative; height: 150px; }
@@ -339,24 +342,28 @@ html.pt-in body>:not(header) { animation: ptFadeIn 0.32s ease both; }
         <p class="sub">Cztery konkretne korzyści, z liczbami i argumentami biznesowymi.</p>
         <div class="value-grid">
             <div class="value-card reveal">
-                <img src="icons/icon-apple-clean.webp" alt="" loading="lazy" width="110" height="117">
+                <span class="vc-num" aria-hidden="true">01</span>
+                <div class="vc-body"><img src="icons/icon-apple-clean.webp" alt="" loading="lazy" width="110" height="117">
                 <h3>Owoce do domu</h3>
-                <p>Świeże owoce i warzywa dostarczane bezpośrednio pod drzwi pracownika - w abonamencie albo jednorazowo.</p>
+                <p>Świeże owoce i warzywa dostarczane bezpośrednio pod drzwi pracownika - w abonamencie albo jednorazowo.</p></div>
             </div>
             <div class="value-card reveal">
-                <img src="icons/icon-handshake-clean.webp" alt="" loading="lazy" width="115" height="105">
+                <span class="vc-num" aria-hidden="true">02</span>
+                <div class="vc-body"><img src="icons/icon-handshake-clean.webp" alt="" loading="lazy" width="115" height="105">
                 <h3>Kultura w hybrydzie</h3>
-                <p>Pracownik zdalny dostaje fizyczny dowód, że firma o nim pamięta. Mocniejsza retencja zespołów rozproszonych.</p>
+                <p>Pracownik zdalny dostaje fizyczny dowód, że firma o nim pamięta. Mocniejsza retencja zespołów rozproszonych.</p></div>
             </div>
             <div class="value-card reveal">
-                <img src="icons/icon-lightning-clean.webp" alt="" loading="lazy" width="52" height="101">
+                <span class="vc-num" aria-hidden="true">03</span>
+                <div class="vc-body"><img src="icons/icon-lightning-clean.webp" alt="" loading="lazy" width="52" height="101">
                 <h3>Logistyka po naszej stronie</h3>
-                <p>Dostawa kurierska w 24-48h do każdej miejscowości w Polsce. Zerowy stres dla HR.</p>
+                <p>Dostawa kurierska w 24-48h do każdej miejscowości w Polsce. Zerowy stres dla HR.</p></div>
             </div>
             <div class="value-card reveal">
-                <img src="icons/icon-refresh-clean.webp" alt="" loading="lazy" width="68" height="68">
+                <span class="vc-num" aria-hidden="true">04</span>
+                <div class="vc-body"><img src="icons/icon-refresh-clean.webp" alt="" loading="lazy" width="68" height="68">
                 <h3>Elastyczność</h3>
-                <p>Pracownik wyjeżdża? Zmień adres dostawy jednym mailem. Nowy pracownik? Dodajemy bez problemu.</p>
+                <p>Pracownik wyjeżdża? Zmień adres dostawy jednym mailem. Nowy pracownik? Dodajemy bez problemu.</p></div>
             </div>
         </div>
     </div>
