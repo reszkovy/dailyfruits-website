@@ -123,10 +123,51 @@ gtag('config', 'G-G9SCYSFC36');
 .cta-section h2 .fun { font-family: var(--font-fun); font-weight: 400; color: var(--lime); font-size: 1.05em; }
 .cta-section p { font-size: 17px; color: var(--gray-500); margin-bottom: 28px; max-width: 540px; margin-left: auto; margin-right: auto; }
 .cta-row { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+/* hero split */
+.hero-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 48px; align-items: center; }
+.hero-visual { position: relative; text-align: center; }
+.hero-visual img { width: 100%; max-width: 520px; height: auto; transform: rotate(2deg); filter: drop-shadow(0 24px 44px rgba(27,94,58,0.20)); }
+.hero-cta-row { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 26px; }
+/* intro lead + statystyki */
+.intro-section .lead { font-size: 21px; line-height: 1.6; color: var(--green-dark); font-weight: 500; }
+.stat-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 40px; }
+.stat-chip { background: var(--lime-bg); border-radius: var(--radius); padding: 22px 24px; text-align: center; }
+.stat-chip b { display: block; font-weight: 900; font-size: clamp(24px, 2.6vw, 32px); color: var(--green-dark); letter-spacing: -0.03em; margin-bottom: 6px; }
+.stat-chip span { font-size: 13.5px; line-height: 1.45; color: var(--gray-500); display: block; }
+/* karty produktowe */
+.products-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 20px; }
+.product-card { background: var(--white); border-radius: var(--radius); border: 1px solid rgba(27,94,58,0.08); overflow: hidden; transition: transform 0.3s, box-shadow 0.3s; display: flex; flex-direction: column; }
+.product-card:hover { transform: translateY(-4px); box-shadow: 0 12px 36px rgba(27,94,58,0.12); }
+.product-card .ph { background: var(--white); height: 168px; display: flex; align-items: center; justify-content: center; padding: 14px; border-bottom: 1px solid rgba(27,94,58,0.06); }
+.product-card .ph img { max-width: 100%; max-height: 100%; object-fit: contain; }
+.product-card .pc-body { padding: 20px 22px 24px; }
+.product-card h3 { font-weight: 800; font-size: 17px; color: var(--green-dark); margin-bottom: 6px; letter-spacing: -0.02em; }
+.product-card p { font-size: 14.5px; line-height: 1.55; color: var(--gray-500); margin: 0; }
+/* social proof */
+.trust-strip { padding: 56px 0 8px; text-align: center; }
+.trust-strip img { display: block; width: 92px; height: auto; margin: 0 auto 10px; }
+.trust-strip p { font-size: 19px; color: var(--gray); }
+.trust-strip p strong { color: var(--green-dark); font-weight: 900; }
+/* CTA banner */
+.cta-banner { background: var(--green-dark); border-radius: var(--radius-lg); padding: 52px 56px; display: grid; grid-template-columns: 1fr auto; gap: 32px; align-items: center; overflow: hidden; position: relative; }
+.cta-banner h2 { color: var(--white); text-align: left; margin-bottom: 12px; }
+.cta-banner h2 .fun { color: var(--lime); }
+.cta-banner p { color: rgba(255,249,224,0.85); text-align: left; margin: 0 0 24px; max-width: 480px; }
+.cta-banner .cta-row { justify-content: flex-start; }
+.cta-banner .btn-ghost-light { background: transparent; color: var(--cream); border: 2px solid rgba(255,249,224,0.45); }
+.cta-banner .btn-ghost-light:hover { background: rgba(255,249,224,0.12); }
+.cta-mascot { width: 190px; height: auto; align-self: end; margin-bottom: -52px; }
+@media (max-width: 900px) {
+    .hero-grid { grid-template-columns: 1fr; gap: 28px; }
+    .hero-visual img { max-width: 380px; }
+    .cta-banner { grid-template-columns: 1fr; padding: 40px 28px; }
+    .cta-mascot { display: none; }
+}
 @media (max-width: 720px) {
     .container { padding: 0 20px; }
     .page-hero { padding: 120px 0 40px; }
     .value-grid { grid-template-columns: 1fr; }
+    .stat-row { grid-template-columns: 1fr; gap: 12px; }
 }
 html.pt-out body>:not(header) { opacity: 0 !important; transition: opacity 0.18s ease !important; }
 html.pt-in body>:not(header) { animation: ptFadeIn 0.32s ease both; }
@@ -186,16 +227,32 @@ html.pt-in body>:not(header) { animation: ptFadeIn 0.32s ease both; }
 
 <section class="page-hero">
     <div class="container">
-        <nav class="breadcrumb" aria-label="breadcrumb"><a href="/">DailyFruits</a> › Paczki dla pracowników zdalnych</nav>
-        <div class="sticker">Home office</div>
-        <h1>Paczki dla pracowników zdalnych</h1>
-        <p class="tagline">Wellbeing w home office, kultura w hybrydzie</p>
+        <div class="hero-grid">
+            <div>
+                <nav class="breadcrumb" aria-label="breadcrumb"><a href="/">DailyFruits</a> › Paczki dla pracowników zdalnych</nav>
+                <div class="sticker">Home office</div>
+                <h1>Paczki dla pracowników <span class="fun">zdalnych</span></h1>
+                <p class="tagline">Wellbeing w home office, kultura w hybrydzie</p>
+                <div class="hero-cta-row">
+                    <a href="zapytanie" class="btn btn-red-solid btn-arrow">Złóż zapytanie</a>
+                    <a href="#oferta-paczek" class="btn btn-outline">Zobacz warianty</a>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <img src="box-premium.webp" alt="Paczka DailyFruits z owocami i przekąskami dostarczana do domu pracownika" width="1200" height="800" loading="eager" fetchpriority="high">
+            </div>
+        </div>
     </div>
 </section>
 
 <section class="intro-section">
     <div class="container">
-        <p>Zespoły hybrydowe i zdalne tracą to, co spaja kulturę firmy - wspólną kuchnię, przerwę przy owocach, drobny gest troski. Pracownik w domu sam dba o nawodnienie, śniadanie i przerwy, a firma traci codzienny kontakt z jego dobrostanem.</p><p>Paczka DailyFruits przenosi ten rytuał pod drzwi pracownika: regularna dostawa świeżych owoców, zdrowych przekąsek i kawy prosto do domu. Tygodniowo, miesięcznie albo na okazję - onboarding, jubileusz, święta. Dla pracownika to realny sygnał, że firma o nim pamięta. Dla HR - gotowy benefit wellbeingowy bez logistyki po Waszej stronie, w skali od kilku osób po rozproszone zespoły w największych miastach.</p>
+        <p class="lead">Zespoły hybrydowe i zdalne tracą to, co spaja kulturę firmy - wspólną kuchnię, przerwę przy owocach, drobny gest troski. Pracownik w domu sam dba o nawodnienie, śniadanie i przerwy, a firma traci codzienny kontakt z jego dobrostanem.</p><p>Paczka DailyFruits przenosi ten rytuał pod drzwi pracownika: regularna dostawa świeżych owoców, zdrowych przekąsek i kawy prosto do domu. Tygodniowo, miesięcznie albo na okazję - onboarding, jubileusz, święta. Dla pracownika to realny sygnał, że firma o nim pamięta. Dla HR - gotowy benefit wellbeingowy bez logistyki po Waszej stronie, w skali od kilku osób po rozproszone zespoły w największych miastach.</p>
+        <div class="stat-row">
+            <div class="stat-chip reveal"><b>24–48 h</b><span>od spakowania pod drzwi pracownika</span></div>
+            <div class="stat-chip reveal"><b>Cała Polska</b><span>każda miejscowość z adresem pocztowym</span></div>
+            <div class="stat-chip reveal"><b>Od kilku osób</b><span>po rozproszone zespoły w największych miastach</span></div>
+        </div>
     </div>
 </section>
 
@@ -228,28 +285,39 @@ html.pt-in body>:not(header) { animation: ptFadeIn 0.32s ease both; }
     </div>
 </section>
 
-<section class="products-section">
+<section class="products-section" id="oferta-paczek">
     <div class="container">
         <h2>Co <span class="fun">oferujemy</span></h2>
         <p class="sub">Wybierz wariant albo skomponuj własny - dopasujemy.</p>
-        <div class="products-list">
-            <div class="product-item reveal">
-                <h3>Paczka tygodniowa</h3>
-                <p>Box z 4-6 kg owoców, 1-2 kg przekąsek, 1 produkt kawowy. Co tydzień pod drzwi.</p>
+        <div class="products-grid">
+            <div class="product-card reveal">
+                <div class="ph"><img src="box-sezonowy.webp" alt="Paczka tygodniowa - box świeżych owoców sezonowych" loading="lazy" width="1200" height="800"></div>
+                <div class="pc-body"><h3>Paczka tygodniowa</h3>
+                <p>Box z 4-6 kg owoców, 1-2 kg przekąsek, 1 produkt kawowy. Co tydzień pod drzwi.</p></div>
             </div>
-            <div class="product-item reveal">
-                <h3>Paczka miesięczna</h3>
-                <p>Mniejsza częstotliwość, większy box - owoce, bakalie, kawa, premium snacks na 4 tygodnie.</p>
+            <div class="product-card reveal">
+                <div class="ph"><img src="box-bakalie1.webp" alt="Paczka miesięczna - box z bakaliami i premium snackami" loading="lazy" width="1200" height="797"></div>
+                <div class="pc-body"><h3>Paczka miesięczna</h3>
+                <p>Mniejsza częstotliwość, większy box - owoce, bakalie, kawa, premium snacks na 4 tygodnie.</p></div>
             </div>
-            <div class="product-item reveal">
-                <h3>Paczka okolicznościowa</h3>
-                <p>Jednorazowa - rocznica zatrudnienia, jubileusz firmy, Boże Narodzenie, Wielkanoc.</p>
+            <div class="product-card reveal">
+                <div class="ph"><img src="upominki-packshot.webp" alt="Paczka okolicznościowa - upominek dla pracownika" loading="lazy" width="1200" height="1166"></div>
+                <div class="pc-body"><h3>Paczka okolicznościowa</h3>
+                <p>Jednorazowa - rocznica zatrudnienia, jubileusz firmy, Boże Narodzenie, Wielkanoc.</p></div>
             </div>
-            <div class="product-item reveal">
-                <h3>Paczka Remote Welcome</h3>
-                <p>Pierwszy Welcome Pack dla zdalnego pracownika - pełne brand experience od dnia pierwszego.</p>
+            <div class="product-card reveal">
+                <div class="ph"><img src="box-kawki.webp" alt="Paczka Remote Welcome - zestaw powitalny z kawą" loading="lazy" width="1200" height="797"></div>
+                <div class="pc-body"><h3>Paczka Remote Welcome</h3>
+                <p>Pierwszy Welcome Pack dla zdalnego pracownika - pełne brand experience od dnia pierwszego.</p></div>
             </div>
         </div>
+    </div>
+</section>
+
+<section class="trust-strip">
+    <div class="container">
+        <img src="ornament-jablko.webp" alt="" loading="lazy" width="1076" height="951">
+        <p>Zaufało nam ponad <strong>2 500 firm</strong> w Polsce</p>
     </div>
 </section>
 
@@ -273,11 +341,16 @@ html.pt-in body>:not(header) { animation: ptFadeIn 0.32s ease both; }
 
 <section class="cta-section">
     <div class="container">
-        <h2>Bezpłatna wycena w <span class="fun">24 godziny</span></h2>
-        <p>Wypełnij krótkie zapytanie, dopasujemy ofertę pod potrzeby Twojego zespołu. Bez zobowiązań, bez kruczków.</p>
-        <div class="cta-row">
-            <a href="zapytanie" class="btn btn-red-solid btn-arrow">Złóż zapytanie</a>
-            <a href="oferta" class="btn btn-outline">Wróć do oferty →</a>
+        <div class="cta-banner">
+            <div>
+                <h2>Bezpłatna wycena w <span class="fun">24 godziny</span></h2>
+                <p>Wypełnij krótkie zapytanie, dopasujemy ofertę pod potrzeby Twojego zespołu. Bez zobowiązań, bez kruczków.</p>
+                <div class="cta-row">
+                    <a href="zapytanie" class="btn btn-red-solid btn-arrow">Złóż zapytanie</a>
+                    <a href="oferta" class="btn btn-ghost-light">Wróć do oferty →</a>
+                </div>
+            </div>
+            <img class="cta-mascot" src="owocz.webp" alt="" loading="lazy" width="714" height="962">
         </div>
     </div>
 </section>
