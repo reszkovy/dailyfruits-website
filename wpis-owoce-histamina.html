@@ -90,7 +90,7 @@ gtag('config', 'G-G9SCYSFC36');
 .page-hero h1 .fun { font-family: var(--font-fun); font-weight: 400; color: var(--lime); }
 .page-hero .meta { font-size: 14px; color: var(--gray-500); }
 .page-hero .lead { font-size: 19px; line-height: 1.6; color: var(--gray); margin-top: 18px; max-width: 640px; font-weight: 500; }
-.article-section { padding: 56px 0 80px; background: var(--white); }
+.article-section { padding: 56px 0 80px; }
 .article-section h2 { font-weight: 800; font-size: 24px; color: var(--green-dark); margin: 40px 0 16px; letter-spacing: -0.03em; }
 .article-section h2:first-child { margin-top: 0; }
 .article-section p { font-size: 17px; line-height: 1.8; color: var(--gray-500); margin-bottom: 16px; }
@@ -120,6 +120,27 @@ html.pt-in body>:not(header) { animation: ptFadeIn 0.32s ease both; }
             .logo-sub { display: inline-block !important; border-left: 1px solid rgba(255,255,255,0.25) !important; padding-left: 8px !important; margin: 0 !important; font-size: 8px !important; align-self: center !important; opacity: 0.6 !important; }
             .nav-links, .nav-trust { display: none !important; }
         }
+.article-wrap { max-width: 780px; margin: 0 auto; }
+.article-wrap h2 { font-size: clamp(24px, 3vw, 36px); line-height: 1.2; margin-bottom: 24px; letter-spacing: -0.04em; }
+.article-wrap h3 { font-size: 22px; margin-top: 40px; margin-bottom: 16px; letter-spacing: -0.04em; }
+.article-wrap p { margin-bottom: 20px; }
+.article-wrap ul { list-style: none; padding: 0; margin: 0 0 24px 0; }
+.article-wrap ul li { position: relative; padding-left: 28px; margin-bottom: 12px; font-size: 16px; line-height: 1.7; color: var(--gray); }
+.article-wrap ul li::before { content: ''; position: absolute; left: 0; top: 10px; width: 12px; height: 12px; background: var(--lime); border-radius: 50%; }
+.related-section { padding: 60px 0 80px; }
+.related-section h2 { text-align: center; margin-bottom: 40px; }
+.related-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+.related-card { background: var(--white); overflow: hidden; transition: transform 0.3s, box-shadow 0.3s; display: flex; flex-direction: column; }
+.related-card:hover { transform: translateY(-6px); box-shadow: 0 16px 48px rgba(27,94,58,0.1); }
+.related-card-img { width: 100%; height: 180px; object-fit: cover; }
+.related-card-body { padding: 24px; flex: 1; display: flex; flex-direction: column; }
+.related-card-date { font-size: 11px; font-weight: 700; color: var(--lime); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px; }
+.related-card-body h3 { font-size: 17px; letter-spacing: -0.04em; margin-bottom: 8px; line-height: 1.3; }
+.related-card-body p { font-size: 13px; line-height: 1.6; color: var(--gray); flex: 1; }
+.related-card-link { font-weight: 700; font-size: 13px; color: var(--lime); display: inline-flex; align-items: center; gap: 4px; margin-top: 12px; transition: color 0.2s; }
+.related-card-link:hover { color: var(--green-dark); }
+@media (max-width: 1024px) { .related-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 768px) { .related-grid { grid-template-columns: 1fr; } }
 </style>
     <script type="application/ld+json">
 {
@@ -198,6 +219,7 @@ html.pt-in body>:not(header) { animation: ptFadeIn 0.32s ease both; }
 
 <section class="article-section">
     <div class="container">
+        <div class="article-wrap reveal">
         <h2>Czym jest histamina i dlaczego jej unikać</h2>
         <p>Histamina to substancja chemiczna, którą organizm produkuje naturalnie podczas reakcji odpornościowych. Występuje też w wielu produktach spożywczych - szczególnie w tych dojrzewających, fermentujących i przechowywanych przez dłuższy czas. U osób z nietolerancją histaminy spożycie produktów bogatych w nią wywołuje objawy: bóle głowy, problemy trawienne, świąd skóry, katar.</p>
             <p>Dieta niskohistaminowa eliminuje produkty wyzwalające reakcję, a zamiast nich proponuje świeże, ubogie w histaminę alternatywy. W przypadku owoców kluczem jest świeżość - im świeższy owoc, tym mniej histaminy.</p>
@@ -218,6 +240,63 @@ html.pt-in body>:not(header) { animation: ptFadeIn 0.32s ease both; }
             <p>Jeśli zauważysz reakcję po konkretnym owocu - zapisz to. Indywidualna tolerancja waha się znacznie i lista "bezpiecznych" dla Ciebie może różnić się od ogólnych zaleceń.</p>
 
         <a href="blog" class="article-back">← Wróć do wszystkich artykułów</a>
+    </div>
+    </div>
+</section>
+
+<section class="related-section">
+    <div class="container">
+        <h2 class="reveal">Przeczytaj również</h2>
+        <div class="related-grid">
+            <a href="wpis-owoce-niskoweglowodanowe" class="related-card reveal">
+                <img src="blog-owoce-niskoweglowodanowe-hero.webp" alt="Owoce bez węglowodanów - i te o niskiej zawartości" class="related-card-img" loading="lazy" width="400" height="300">
+                <div class="related-card-body">
+                    <h3>Owoce bez węglowodanów - i te o niskiej zawartości</h3>
+                    <p>Owoce niskoweglowodanowe - pełna lista dla diety low-carb, keto, dla diabetyków. Co jeść, czego...</p>
+                    <span class="related-card-link">Czytaj dalej →</span>
+                </div>
+            </a>
+            <a href="wpis-owoce-niskokaloryczne" class="related-card reveal">
+                <img src="blog-owoce-niskokaloryczne-hero.webp" alt="Które owoce mają najmniej kalorii" class="related-card-img" loading="lazy" width="400" height="300">
+                <div class="related-card-body">
+                    <h3>Które owoce mają najmniej kalorii</h3>
+                    <p>Owoce z najmniejszą ilością kalorii - idealne na diecie. Top 10 niskokalorycznych owoców z...</p>
+                    <span class="related-card-link">Czytaj dalej →</span>
+                </div>
+            </a>
+            <a href="wpis-cytrusy" class="related-card reveal">
+                <img src="blog-cytrusy-hero.webp" alt="Jakie owoce zaliczamy do cytrusów?" class="related-card-img" loading="lazy" width="400" height="300">
+                <div class="related-card-body">
+                    <h3>Jakie owoce zaliczamy do cytrusów?</h3>
+                    <p>Owoce cytrusowe - pełna lista (pomarańcze, mandarynki, cytryny, grejpfruty i mniej znane)....</p>
+                    <span class="related-card-link">Czytaj dalej →</span>
+                </div>
+            </a>
+        </div>
+    </div>
+</section>
+
+<section class="cat-index"><div class="container"><div class="cat-index-links"><span class="cat-index-label">Kategorie oferty:</span><a href="/oferta/skrzynki-abonamentowe">Skrzynki abonamentowe</a><a href="/oferta/soki-i-syropy">Soki i syropy</a><a href="/oferta/warzywa-krojone">Warzywa krojone</a><a href="/oferta/zestawy-indywidualne">Zestawy indywidualne</a><a href="/oferta/zestawy-sniadaniowe">Zestawy śniadaniowe</a><a href="/oferta/programy-zywieniowe-i-edukacyjne">Programy żywieniowe</a><a href="/oferta/bakalie-i-owoce-suszone">Bakalie i owoce suszone</a><a href="/oferta/przechowywanie-i-ekspozycja">Przechowywanie i ekspozycja</a><a href="/oferta/firmowy-dzien-zdrowia">Firmowy Dzień Zdrowia</a><a href="/oferta/produkty-ekologiczne">Produkty ekologiczne</a><a href="/oferta/zestawy-batonow-i-ciastek">Batony i ciastka</a></div></div></section>
+
+<section class="city-index">
+    <div class="container">
+        <div class="city-index-links">
+                <a href="owoce-do-biura-warszawa">Warszawa</a>
+                <a href="owoce-do-biura-krakow">Kraków</a>
+                <a href="owoce-do-biura-wroclaw">Wrocław</a>
+                <a href="owoce-do-biura-poznan">Poznań</a>
+                <a href="owoce-do-biura-katowice">Katowice</a>
+                <a href="owoce-do-biura-lodz">Łódź</a>
+                <a href="owoce-do-biura-trojmiasto">Trójmiasto</a>
+                <a href="owoce-do-biura-szczecin">Szczecin</a>
+                <a href="owoce-do-biura-lublin">Lublin</a>
+                <a href="owoce-do-biura-bydgoszcz">Bydgoszcz</a>
+                <a href="owoce-do-biura-bialystok">Białystok</a>
+                <a href="owoce-do-biura-rzeszow">Rzeszów</a>
+                <a href="owoce-do-biura-torun">Toruń</a>
+                 <a href="/owoce-do-biura-gliwice">Gliwice</a>
+        </div>
+    <p class="site-credit">brand and development by <a href="https://r352.com" target="_blank" rel="noopener">r352.com</a></p>
     </div>
 </section>
 
