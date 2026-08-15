@@ -157,7 +157,8 @@ header .btn-nav-cta { box-shadow: 0 6px 18px rgba(0,0,0,0.28); }
 
 /* ---------- CO LADUJE NA BIURKU ---------- */
 .hero-box { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 30px 44px; align-items: center; background: var(--cream); border-radius: var(--radius-lg); padding: 40px 44px 34px; border: 1px solid rgba(27,94,58,0.08); }
-.hero-box-foot { grid-column: 1 / -1; }
+.hero-box-foot { grid-column: 1 / -1; padding-top: 26px; border-top: 1px dashed rgba(27,94,58,0.18); }
+.foot-lead { font-size: 12px; font-weight: 900; letter-spacing: .14em; text-transform: uppercase; color: rgba(27,94,58,0.55); margin: 0; }
 .hero-box img { width: 100%; height: auto; display: block; filter: drop-shadow(0 20px 40px rgba(27,94,58,0.16)); }
 .hero-box .tag { display: inline-block; font-size: 11px; font-weight: 900; letter-spacing: .14em; text-transform: uppercase; color: var(--coral); margin-bottom: 12px; }
 .hero-box h3 { font-weight: 900; font-size: clamp(22px, 2.4vw, 32px); color: var(--green-dark); letter-spacing: -0.03em; line-height: 1.12; margin-bottom: 12px; }
@@ -168,7 +169,7 @@ header .btn-nav-cta { box-shadow: 0 6px 18px rgba(0,0,0,0.28); }
 .hero-box li::before { content: '✓'; position: absolute; left: 0; color: var(--lime); font-weight: 900; }
 
 .prod-sec { padding: 92px 0 96px; background: var(--white); }
-.prod-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 12px; margin-top: 30px; padding-top: 28px; border-top: 1px dashed rgba(27,94,58,0.18); }
+.prod-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 12px; margin-top: 18px; }
 .prod-card { background: transparent; border: none; padding: 6px 4px 4px; text-align: center; transition: transform .3s cubic-bezier(0.16,1,0.3,1); }
 .prod-card:hover { transform: translateY(-4px); }
 .prod-ph { height: 74px; display: flex; align-items: center; justify-content: center; margin-bottom: 10px; }
@@ -436,6 +437,7 @@ html.pt-in body>:not(header) { animation: ptFadeIn 0.32s ease both; }
                 </ul>
             </div>
             <div class="hero-box-foot">
+                <p class="foot-lead">Co może być w Twojej dostawie:</p>
         <div class="prod-grid">
             <div class="prod-card reveal"><div class="prod-ph"><img src="packshot-owoce.webp" alt="Świeże owoce sezonowe" loading="lazy" width="600" height="740"></div><h3>Owoce sezonowe</h3></div>
             <div class="prod-card reveal"><div class="prod-ph"><img src="packshot-kanapki.webp" alt="Kanapki do biura" loading="lazy" width="600" height="486"></div><h3>Kanapki i lunche</h3></div>
