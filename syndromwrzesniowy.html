@@ -140,7 +140,6 @@ header .btn-red-solid { position: relative; overflow: hidden; box-shadow: 0 8px 
 .scrub-sticky { position: relative; height: 100vh; overflow: hidden; --bar: 92px; }
 .scrub-grid { position: relative; z-index: 3; height: calc(100% - var(--bar)); display: grid; grid-template-columns: 47% 53%; align-items: center; }
 .scrub-copy { padding: 150px clamp(28px, 4vw, 72px) 0; position: relative; z-index: 3; transform: translateY(-40px); }
-.scrub-copy-par { will-change: transform; }
 .c-badge { display: inline-block; background: var(--coral); color: #fff; font-size: 12px; font-weight: 900; letter-spacing: 0.1em; text-transform: uppercase; padding: 9px 18px; border-radius: var(--radius-pill); transform: rotate(-2deg); box-shadow: 2px 3px 0 rgba(0,0,0,0.18); margin-bottom: 28px; }
 .kicker { font-size: clamp(11px, 0.95vw, 13px); font-weight: 900; letter-spacing: .18em; text-transform: uppercase; color: var(--coral); margin: 0 0 16px; }
 .scrub-copy h1 { margin: 0 0 26px; letter-spacing: -0.035em; }
@@ -159,7 +158,7 @@ header .btn-red-solid { position: relative; overflow: hidden; box-shadow: 0 8px 
 .scrub-hint { margin: 0; font-size: 13px; letter-spacing: 0.02em; color: rgba(27,94,58,0.82); display: flex; align-items: center; gap: 9px; }
 .scrub-hint i { display: block; width: 1px; height: 22px; background: linear-gradient(to bottom, rgba(27,94,58,0.5), transparent); animation: hintDrop 1.8s ease-in-out infinite; }
 @keyframes hintDrop { 0%,100% { transform: translateY(0); opacity: .8 } 50% { transform: translateY(7px); opacity: .3 } }
-.scrub-stage { position: absolute; inset: 0 0 var(--bar) 0; z-index: 1; overflow: hidden; will-change: transform; }
+.scrub-stage { position: absolute; inset: 0 0 var(--bar) 0; z-index: 1; overflow: hidden; }
 #zCanvas { position: absolute; inset: 0; width: 100%; height: 100%; background: var(--cream); object-fit: cover; object-position: 68% center; display: block; }
 .scrub-veil { position: absolute; inset: 0 0 var(--bar) 0; z-index: 2; pointer-events: none;
     background: linear-gradient(to right, var(--cream) 0%, var(--cream) 20%, rgba(255,249,224,0.92) 30%, rgba(255,249,224,0.66) 40%, rgba(255,249,224,0.32) 50%, rgba(255,249,224,0.10) 57%, transparent 64%); }
@@ -196,7 +195,7 @@ header .btn-red-solid { position: relative; overflow: hidden; box-shadow: 0 8px 
 .hero-box { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 30px 44px; align-items: center; background: var(--cream); border-radius: var(--radius-lg); padding: 40px 44px 34px; }
 .hero-box-foot { grid-column: 1 / -1; padding-top: 26px; border-top: 1px dashed rgba(27,94,58,0.18); }
 .foot-lead { font-size: 12px; font-weight: 900; letter-spacing: .14em; text-transform: uppercase; color: rgba(27,94,58,0.55); margin: 0; }
-.hero-box img { will-change: transform; width: 100%; height: auto; display: block; filter: drop-shadow(0 20px 40px rgba(27,94,58,0.16)); }
+.hero-box img { width: 100%; height: auto; display: block; filter: drop-shadow(0 20px 40px rgba(27,94,58,0.16)); }
 .hero-box .tag { display: inline-block; font-size: 11px; font-weight: 900; letter-spacing: .14em; text-transform: uppercase; color: var(--coral); margin-bottom: 12px; }
 .hero-box h3 { font-weight: 900; font-size: clamp(22px, 2.4vw, 32px); color: var(--green-dark); letter-spacing: -0.03em; line-height: 1.12; margin-bottom: 12px; }
 .hero-box h3 .fun { font-family: var(--font-fun); font-weight: 400; color: var(--lime); font-size: 1.06em; }
@@ -263,7 +262,6 @@ header .btn-red-solid::before { animation-delay: 3.4s; }
    element odpina sie po odsloneciu, pelna obsluga prefers-reduced-motion. */
 :root { --ease-anim: cubic-bezier(0.22, 1, 0.36, 1); }
 
-[data-anim] { will-change: transform, opacity; }
 
 [data-anim="up"] { opacity: 0; transform: translate3d(0, 26px, 0);
     transition: opacity .75s var(--ease-anim), transform .95s var(--ease-anim); }
@@ -928,65 +926,8 @@ html.pt-in body>:not(header) { animation: ptFadeIn 0.32s ease both; }
 
     function onScroll() { /* blokada zastapila scrub scrollem */ }
 
-    /* ---------- PARALAKSA ----------
-       Kadr zostaje w tyle za strona, tekst wyprzedza - roznica predkosci daje glebie.
-
-       UWAGA WYDAJNOSCIOWA: poprzednia wersja czytala getBoundingClientRect() skrzynki
-       w KAZDEJ klatce scrolla, tuz po zapisaniu transformow. Odczyt po zapisie wymusza
-       synchroniczny layout - zacinalo sie przez cala dlugosc strony, takze gdy hero
-       dawno zjechalo z ekranu. Teraz pozycja skrzynki jest cache'owana, a licza sie
-       tylko elementy faktycznie bedace w kadrze. */
-    (function () {
-        if (reduce) return;
-        var stage = document.querySelector('.scrub-stage');
-        var copy = document.querySelector('.scrub-copy');
-        var offer = document.querySelector('.hero-offer');
-        var box = document.querySelector('.hero-box img');
-        if (!stage) return;
-        var pending = false, boxTop = 0, boxH = 0, boxOk = false;
-
-        function zmierzSkrzynke() {
-            if (!box) return;
-            var poprzedni = box.style.transform;
-            box.style.transform = '';
-            var r = box.getBoundingClientRect();
-            boxTop = r.top + (window.pageYOffset || document.documentElement.scrollTop);
-            boxH = r.height;
-            boxOk = boxH > 0;
-            box.style.transform = poprzedni;
-        }
-
-        function paint() {
-            pending = false;
-            var y = window.pageYOffset || document.documentElement.scrollTop;
-            var vh = window.innerHeight;
-            if (y < vh * 1.2) {
-                stage.style.transform = 'translate3d(0,' + (y * 0.28).toFixed(1) + 'px,0)';
-                if (copy) copy.style.transform = 'translateY(-40px) translate3d(0,' + (y * -0.14).toFixed(1) + 'px,0)';
-                if (offer) offer.style.transform = 'translate3d(0,' + (y * -0.08).toFixed(1) + 'px,0)';
-            }
-            if (boxOk) {
-                var gora = boxTop - y;
-                if (gora + boxH > 0 && gora < vh) {
-                    var t = (gora + boxH / 2 - vh / 2) / vh;
-                    box.style.transform = 'translate3d(0,' + (t * -18).toFixed(1) + 'px,0)';
-                }
-            }
-        }
-
-        window.addEventListener('scroll', function () {
-            if (!pending) { pending = true; requestAnimationFrame(paint); }
-        }, { passive: true });
-
-        var przemiar;
-        window.addEventListener('resize', function () {
-            clearTimeout(przemiar);
-            przemiar = setTimeout(function () { zmierzSkrzynke(); paint(); }, 150);
-        }, { passive: true });
-        if (box) { if (box.complete) zmierzSkrzynke(); else box.addEventListener('load', function () { zmierzSkrzynke(); paint(); }); }
-        window.addEventListener('load', function () { zmierzSkrzynke(); paint(); });
-        paint();
-    })();
+    /* Paralaksa usunieta swiadomie: pisanie transformow na kontenerze canvasu
+       przy kazdym scrollu bylo zbyt kosztowne. Plynnosc > efekt. */
     if (reduce) {
         setIdx(TOTAL - 1);
     } else if (mobil) {
@@ -1126,9 +1067,11 @@ html.pt-in body>:not(header) { animation: ptFadeIn 0.32s ease both; }
     var io = new IntersectionObserver(function (wpisy) {
         wpisy.forEach(function (w) {
             if (!w.isIntersecting) return;
-            w.target.classList.add('w-kadrze');
-            io.unobserve(w.target);
-            setTimeout(function () { w.target.style.willChange = 'auto'; }, 1400);
+            var el = w.target;
+            el.style.willChange = 'transform, opacity';
+            requestAnimationFrame(function () { el.classList.add('w-kadrze'); });
+            io.unobserve(el);
+            setTimeout(function () { el.style.willChange = 'auto'; }, 1500);
         });
     }, { rootMargin: '0px 0px -10% 0px', threshold: 0.08 });
     wszystkie.forEach(function (e) { io.observe(e); });
