@@ -125,7 +125,7 @@ header .btn-red-solid { position: relative; overflow: hidden; box-shadow: 0 8px 
     flex-direction: column; align-items: center; justify-content: center; gap: 22px;
     transition: opacity .5s ease, visibility .5s; }
 #zLoader.gotowe { opacity: 0; visibility: hidden; pointer-events: none; }
-#zLoader .zl-napis { font-family: var(--font-fun); font-size: clamp(28px, 4vw, 46px); color: var(--green-dark); line-height: 1; }
+#zLoader .zl-napis { font-weight: 900; letter-spacing: -0.03em; font-size: clamp(24px, 3.4vw, 38px); color: var(--green-dark); line-height: 1; }
 #zLoader .zl-tor { width: min(240px, 52vw); height: 6px; border-radius: 99px; background: rgba(27,94,58,0.16); overflow: hidden; }
 #zLoader .zl-pct { font-size: 12px; font-weight: 800; letter-spacing: .12em; opacity: .55; font-variant-numeric: tabular-nums; }
 #zLoader .zl-fill { display: block; height: 100%; width: 0; border-radius: 99px; background: var(--lime); transition: width .25s ease; }
@@ -446,7 +446,7 @@ html.pt-in body>:not(header) { animation: ptFadeIn 0.32s ease both; }
 
 
 <div id="zLoader" aria-hidden="true">
-    <span class="zl-napis">Lądujemy</span>
+    <span class="zl-napis">Syndrom wrześniowy</span>
     <span class="zl-tor"><span class="zl-fill" id="zlFill"></span></span>
     <span class="zl-pct" id="zlPct">0%</span>
 </div>
