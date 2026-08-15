@@ -217,6 +217,18 @@ header .btn-red-solid::before { animation-delay: 3.4s; }
 .form-after { margin-top: 34px; padding-top: 30px; border-top: 2px dashed rgba(27,94,58,0.20); text-align: center; }
 .form-after p { font-size: 15px; color: var(--gray-500); margin: 0 0 16px; }
 
+/* Pasek logotypow jak na home, tuz pod belka z paskiem energii. */
+.logo-bar { background: var(--white); padding: 30px 0 24px; overflow: hidden; }
+.logo-bar-label { text-align: center; font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: .18em; color: var(--green-dark); opacity: .45; margin-bottom: 20px; }
+.logo-bar-track { display: flex; align-items: center; width: max-content; animation: logo-scroll 30s linear infinite; }
+.logo-bar-track:hover { animation-play-state: paused; }
+.logo-bar-item { flex-shrink: 0; padding: 0 34px; display: flex; align-items: center; justify-content: center; }
+.logo-bar-item img { height: 44px; width: auto; object-fit: contain; filter: grayscale(1) opacity(0.4); transition: filter .4s ease; }
+.logo-bar-item img:hover { filter: grayscale(0) opacity(1); }
+@keyframes logo-scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+@media (max-width: 720px) { .logo-bar { padding: 22px 0 16px; } .logo-bar-item { padding: 0 22px; } .logo-bar-item img { height: 34px; } }
+@media (prefers-reduced-motion: reduce) { .logo-bar-track { animation: none !important; } }
+
 /* ---------- SEKCJE ---------- */
 .sec { padding: 96px 0; }
 .sec-cream { background: var(--cream); }
@@ -406,6 +418,32 @@ html.pt-in body>:not(header) { animation: ptFadeIn 0.32s ease both; }
             <span class="energy-track"><span class="energy-fill" id="zProg"></span></span>
             <span class="energy-lab r">Pracownik miesiąca <img class="energy-cup" id="zCup" src="icons/icon-trophy.webp" alt=""></span>
         </div>
+    </div>
+</section>
+
+<!-- LOGO BAR: Zaufali nam -->
+<section class="logo-bar reveal">
+    <div class="logo-bar-label">Zaufali nam liderzy rynku</div>
+    <div class="logo-bar-track">
+        <div class="logo-bar-item"><img src="https://cdn.prod.website-files.com/698dfabcdd705500e5451b80/69baa3bd7f98db68c04da33f_6a2fd1c58094c992a06bbf653a23ad3f_google.avif" alt="Google" loading="lazy" width="400" height="300"></div>
+        <div class="logo-bar-item"><img src="https://cdn.prod.website-files.com/698dfabcdd705500e5451b80/69baa3bd7f98db68c04da34b_d08d4b59796ecd1651a32bc29473df6a_microsoft.avif" alt="Microsoft" loading="lazy" width="400" height="300"></div>
+        <div class="logo-bar-item"><img src="https://cdn.prod.website-files.com/698dfabcdd705500e5451b80/69baa3bd7f98db68c04da351_50235668ec856a8a108859aba91adb92_ing.avif" alt="ING Bank Śląski" loading="lazy" width="400" height="300"></div>
+        <div class="logo-bar-item"><img src="https://cdn.prod.website-files.com/698dfabcdd705500e5451b80/69baa3bd7f98db68c04da345_f5307480b7fbd6cdd2f6dfbbb6b6e8f4_jpmorgan.avif" alt="J.P. Morgan" loading="lazy" width="400" height="300"></div>
+        <div class="logo-bar-item"><img src="https://cdn.prod.website-files.com/698dfabcdd705500e5451b80/69baa3bd7f98db68c04da35b_8bdd26ad6f4645e90933e543b84e035f_abb.avif" alt="ABB" loading="lazy" width="400" height="300"></div>
+        <div class="logo-bar-item"><img src="https://cdn.prod.website-files.com/698dfabcdd705500e5451b80/69baa3bd7f98db68c04da357_ac7436c0d3de16c18e4a23b2c383317f_alstom.avif" alt="Alstom" loading="lazy" width="400" height="300"></div>
+        <div class="logo-bar-item"><img src="https://cdn.prod.website-files.com/698dfabcdd705500e5451b80/69baa3bd7f98db68c04da34f_efd6db24aa16e5a9f5cbdc183ab847e1_johnson-and-johnson.avif" alt="Johnson & Johnson" loading="lazy" width="400" height="300"></div>
+        <div class="logo-bar-item"><img src="https://cdn.prod.website-files.com/698dfabcdd705500e5451b80/69baa3bd7f98db68c04da341_275bf06a450450231ee84a3a743498eb_asseco.avif" alt="Asseco" loading="lazy" width="400" height="300"></div>
+        <div class="logo-bar-item"><img src="https://cdn.prod.website-files.com/698dfabcdd705500e5451b80/69baa3bd7f98db68c04da363_6e38ab6e10b8fd3b8f851c9e060736b1_bgk.avif" alt="BGK" loading="lazy" width="400" height="300"></div>
+        <!-- Duplicate set for seamless loop -->
+        <div class="logo-bar-item"><img src="https://cdn.prod.website-files.com/698dfabcdd705500e5451b80/69baa3bd7f98db68c04da33f_6a2fd1c58094c992a06bbf653a23ad3f_google.avif" alt="Google" loading="lazy" width="400" height="300"></div>
+        <div class="logo-bar-item"><img src="https://cdn.prod.website-files.com/698dfabcdd705500e5451b80/69baa3bd7f98db68c04da34b_d08d4b59796ecd1651a32bc29473df6a_microsoft.avif" alt="Microsoft" loading="lazy" width="400" height="300"></div>
+        <div class="logo-bar-item"><img src="https://cdn.prod.website-files.com/698dfabcdd705500e5451b80/69baa3bd7f98db68c04da351_50235668ec856a8a108859aba91adb92_ing.avif" alt="ING Bank Śląski" loading="lazy" width="400" height="300"></div>
+        <div class="logo-bar-item"><img src="https://cdn.prod.website-files.com/698dfabcdd705500e5451b80/69baa3bd7f98db68c04da345_f5307480b7fbd6cdd2f6dfbbb6b6e8f4_jpmorgan.avif" alt="J.P. Morgan" loading="lazy" width="400" height="300"></div>
+        <div class="logo-bar-item"><img src="https://cdn.prod.website-files.com/698dfabcdd705500e5451b80/69baa3bd7f98db68c04da35b_8bdd26ad6f4645e90933e543b84e035f_abb.avif" alt="ABB" loading="lazy" width="400" height="300"></div>
+        <div class="logo-bar-item"><img src="https://cdn.prod.website-files.com/698dfabcdd705500e5451b80/69baa3bd7f98db68c04da357_ac7436c0d3de16c18e4a23b2c383317f_alstom.avif" alt="Alstom" loading="lazy" width="400" height="300"></div>
+        <div class="logo-bar-item"><img src="https://cdn.prod.website-files.com/698dfabcdd705500e5451b80/69baa3bd7f98db68c04da34f_efd6db24aa16e5a9f5cbdc183ab847e1_johnson-and-johnson.avif" alt="Johnson & Johnson" loading="lazy" width="400" height="300"></div>
+        <div class="logo-bar-item"><img src="https://cdn.prod.website-files.com/698dfabcdd705500e5451b80/69baa3bd7f98db68c04da341_275bf06a450450231ee84a3a743498eb_asseco.avif" alt="Asseco" loading="lazy" width="400" height="300"></div>
+        <div class="logo-bar-item"><img src="https://cdn.prod.website-files.com/698dfabcdd705500e5451b80/69baa3bd7f98db68c04da363_6e38ab6e10b8fd3b8f851c9e060736b1_bgk.avif" alt="BGK" loading="lazy" width="400" height="300"></div>
     </div>
 </section>
 
