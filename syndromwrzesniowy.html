@@ -118,6 +118,18 @@ header .btn-red-solid { position: relative; overflow: hidden; box-shadow: 0 8px 
 
 .scrub-sticky::before { content: ''; position: absolute; left: 0; right: 0; bottom: var(--bar); height: 120px; z-index: 2; pointer-events: none; background: linear-gradient(to top, rgba(255,249,224,0.85), transparent); }
 
+
+/* Sekwencja hero wazy kilka MB. Bez tego uzytkownik scrolluje po zablokowanej
+   stronie, a kadr stoi, bo draw() milczy dla niedoczytanych klatek. */
+#zLoader { position: fixed; inset: 0; z-index: 400; background: var(--cream); display: flex;
+    flex-direction: column; align-items: center; justify-content: center; gap: 22px;
+    transition: opacity .5s ease, visibility .5s; }
+#zLoader.gotowe { opacity: 0; visibility: hidden; pointer-events: none; }
+#zLoader .zl-napis { font-family: var(--font-fun); font-size: clamp(28px, 4vw, 46px); color: var(--green-dark); line-height: 1; }
+#zLoader .zl-tor { width: min(240px, 52vw); height: 6px; border-radius: 99px; background: rgba(27,94,58,0.16); overflow: hidden; }
+#zLoader .zl-fill { display: block; height: 100%; width: 0; border-radius: 99px; background: var(--lime); transition: width .25s ease; }
+@media (prefers-reduced-motion: reduce) { #zLoader { transition: none; } #zLoader .zl-fill { transition: none; } }
+
 /* ---------- SCROLL-SCRUB HERO ---------- */
 .scrub { position: relative; height: 100vh; background: var(--cream); }
 .bez-klatek .scrub-stage, .bez-klatek .scrub-veil, .bez-klatek .energy, .bez-klatek .scrub-hint { display: none; }
@@ -399,6 +411,10 @@ html.pt-in body>:not(header) { animation: ptFadeIn 0.32s ease both; }
 </header>
 
 
+<div id="zLoader" aria-hidden="true">
+    <span class="zl-napis">Lądujemy</span>
+    <span class="zl-tor"><span class="zl-fill" id="zlFill"></span></span>
+</div>
 <!-- HERO ZE SCROLL-SCRUBEM -->
 <section class="scrub" id="scrub">
     <div class="scrub-sticky">
@@ -689,12 +705,37 @@ html.pt-in body>:not(header) { animation: ptFadeIn 0.32s ease both; }
         ctx.drawImage(f, ox, oy, w, h);
     }
 
+
+    // Loader: zwalnia po doczytaniu progu klatek, z twardym limitem czasu,
+    // zeby zaciete pobieranie nigdy nie uwiezilo uzytkownika.
+    (function () {
+        var loader = document.getElementById('zLoader');
+        var fill = document.getElementById('zlFill');
+        if (!loader) return;
+        var prog = Math.max(1, Math.ceil(TOTAL * 0.35));
+        var gotowych = 0, zwolniony = false;
+        function odswiez() {
+            if (fill) fill.style.width = Math.min(100, Math.round(gotowych / prog * 100)) + '%';
+            if (gotowych >= prog) zwolnij();
+        }
+        function zwolnij() {
+            if (zwolniony) return;
+            zwolniony = true;
+            if (fill) fill.style.width = '100%';
+            loader.classList.add('gotowe');
+        }
+        window.zlKlatkaGotowa = function () { gotowych++; odswiez(); };
+        setTimeout(zwolnij, 8000);
+        odswiez();
+    })();
+
     // pierwsza klatka natychmiast, reszta w tle
     var first = new Image();
     function boot() {
         if (ready) return;
         frames[0] = first;
         ready = true;
+        if (window.zlKlatkaGotowa) window.zlKlatkaGotowa();
         sizeCanvasGdyGotowy(0);
         loadRest();
     }
@@ -710,6 +751,7 @@ html.pt-in body>:not(header) { animation: ptFadeIn 0.32s ease both; }
             (function (idx) {
                 var img = new Image();
                 img.decoding = 'async';
+                img.onload = img.onerror = function () { if (window.zlKlatkaGotowa) window.zlKlatkaGotowa(); };
                 img.src = src(idx);
                 frames[idx] = img;
             })(i);
