@@ -295,15 +295,15 @@ header .btn-red-solid::before { animation-delay: 3.4s; }
 .sec-head h2 .fun { font-family: var(--font-fun); font-weight: 400; color: var(--lime); font-size: 1.06em; }
 .sec-head p { font-size: 16px; color: var(--gray-500); max-width: 560px; margin: 0 auto; }
 .sym-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
-.sym { background: var(--white); box-shadow: 0 1px 2px rgba(27,94,58,.05), 0 10px 30px rgba(27,94,58,.07); border-radius: var(--radius); padding: 30px 30px 32px; display: flex; flex-direction: column; transition: transform .3s cubic-bezier(0.16,1,0.3,1), box-shadow .3s; }
-.sym:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(27,94,58,0.10); }
+.sym { background: var(--green-dark); box-shadow: 0 18px 40px rgba(0,0,0,.28); border-radius: var(--radius); padding: 30px 30px 32px; display: flex; flex-direction: column; transition: transform .3s cubic-bezier(0.16,1,0.3,1), box-shadow .3s; }
+.sym:hover { transform: translateY(-4px); box-shadow: 0 24px 52px rgba(0,0,0,.38); }
 .sym-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; }
-.sym .n { font-family: var(--font-fun); font-size: 40px; line-height: 1; color: var(--coral); display: block; }
+.sym .n { font-family: var(--font-fun); font-size: 40px; line-height: 1; color: var(--yellow); display: block; }
 .sym-top img { height: 54px; width: auto; display: block; transition: transform .3s cubic-bezier(0.16,1,0.3,1); }
 .sym:hover .sym-top img { transform: rotate(-7deg) scale(1.1); }
-.sym .b { padding: 0; border-top: 2px dashed rgba(27,94,58,0.16); padding-top: 20px; }
-.sym h3 { font-weight: 800; font-size: 19px; color: var(--green-dark); margin-bottom: 9px; letter-spacing: -0.02em; line-height: 1.25; }
-.sym p { font-size: 15px; line-height: 1.62; color: var(--gray-500); margin: 0; }
+.sym .b { padding: 0; border-top: 2px dashed rgba(255,249,224,0.20); padding-top: 20px; }
+.sym h3 { font-weight: 800; font-size: 19px; color: var(--cream); margin-bottom: 9px; letter-spacing: -0.02em; line-height: 1.25; }
+.sym p { font-size: 15px; line-height: 1.62; color: rgba(255,249,224,0.80); margin: 0; }
 /* Os czasu miesiaca: linia biegnie od wezla 1 do wezla 4, nie przez cala szerokosc. */
 .cure-grid { display: grid; grid-template-columns: repeat(4, 1fr); column-gap: 34px; row-gap: 0; position: relative; }
 .cure-grid::before { content: ''; position: absolute; top: 8px; left: 9px; right: calc((100% - 102px) / 4 - 9px); height: 2px;
@@ -942,26 +942,44 @@ html.pt-in body>:not(header) { animation: ptFadeIn 0.32s ease both; }
     }
 
     function odtwarzajSam() {
-        var CZAS = 6500, start = null, gra = false, zagrane = false;
+        // Petla z przenikaniem: po dojsciu do konca kadr gasnie, wraca do klatki 0
+        // i rozjasnia sie od nowa. Chodzi tylko wtedy, gdy hero jest w kadrze.
+        var CZAS = 6500, PRZERWA = 1100, PRZENIKANIE = 420;
+        var start = null, gra = false, widoczne = false;
+
         function klatka(ts) {
+            if (!widoczne) { gra = false; return; }
             if (start === null) start = ts;
             var t = Math.min(1, (ts - start) / CZAS);
             setIdx(Math.round(t * (TOTAL - 1)));
-            if (t < 1) requestAnimationFrame(klatka);
-            else { gra = false; zagrane = true; }
+            if (t < 1) { requestAnimationFrame(klatka); return; }
+            gra = false;
+            setTimeout(odNowa, PRZERWA);
+        }
+        function odNowa() {
+            if (!widoczne) return;
+            canvas.style.transition = 'opacity ' + PRZENIKANIE + 'ms ease';
+            canvas.style.opacity = '0';
+            setTimeout(function () {
+                setIdx(0);
+                canvas.style.opacity = '1';
+                setTimeout(ruszaj, PRZENIKANIE);
+            }, PRZENIKANIE);
         }
         function ruszaj() {
-            if (gra || zagrane) return;
+            if (gra || !widoczne) return;
             gra = true; start = null;
             requestAnimationFrame(klatka);
         }
+
         var hero = document.querySelector('.scrub');
         if (hero && 'IntersectionObserver' in window) {
             new IntersectionObserver(function (en) {
-                if (en[0].isIntersecting) ruszaj();
+                widoczne = en[0].isIntersecting;
+                if (widoczne) ruszaj();
             }, { threshold: 0.35 }).observe(hero);
         } else {
-            ruszaj();
+            widoczne = true; ruszaj();
         }
     }
 })();

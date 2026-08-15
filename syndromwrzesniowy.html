@@ -942,26 +942,44 @@ html.pt-in body>:not(header) { animation: ptFadeIn 0.32s ease both; }
     }
 
     function odtwarzajSam() {
-        var CZAS = 6500, start = null, gra = false, zagrane = false;
+        // Petla z przenikaniem: po dojsciu do konca kadr gasnie, wraca do klatki 0
+        // i rozjasnia sie od nowa. Chodzi tylko wtedy, gdy hero jest w kadrze.
+        var CZAS = 6500, PRZERWA = 1100, PRZENIKANIE = 420;
+        var start = null, gra = false, widoczne = false;
+
         function klatka(ts) {
+            if (!widoczne) { gra = false; return; }
             if (start === null) start = ts;
             var t = Math.min(1, (ts - start) / CZAS);
             setIdx(Math.round(t * (TOTAL - 1)));
-            if (t < 1) requestAnimationFrame(klatka);
-            else { gra = false; zagrane = true; }
+            if (t < 1) { requestAnimationFrame(klatka); return; }
+            gra = false;
+            setTimeout(odNowa, PRZERWA);
+        }
+        function odNowa() {
+            if (!widoczne) return;
+            canvas.style.transition = 'opacity ' + PRZENIKANIE + 'ms ease';
+            canvas.style.opacity = '0';
+            setTimeout(function () {
+                setIdx(0);
+                canvas.style.opacity = '1';
+                setTimeout(ruszaj, PRZENIKANIE);
+            }, PRZENIKANIE);
         }
         function ruszaj() {
-            if (gra || zagrane) return;
+            if (gra || !widoczne) return;
             gra = true; start = null;
             requestAnimationFrame(klatka);
         }
+
         var hero = document.querySelector('.scrub');
         if (hero && 'IntersectionObserver' in window) {
             new IntersectionObserver(function (en) {
-                if (en[0].isIntersecting) ruszaj();
+                widoczne = en[0].isIntersecting;
+                if (widoczne) ruszaj();
             }, { threshold: 0.35 }).observe(hero);
         } else {
-            ruszaj();
+            widoczne = true; ruszaj();
         }
     }
 })();
