@@ -156,7 +156,8 @@ header .btn-nav-cta { box-shadow: 0 6px 18px rgba(0,0,0,0.28); }
 .slider-hint { text-align: center; margin-top: 14px; font-size: 13.5px; color: rgba(27,94,58,0.55); }
 
 /* ---------- CO LADUJE NA BIURKU ---------- */
-.hero-box { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 44px; align-items: center; background: var(--cream); border-radius: var(--radius-lg); padding: 40px 44px; margin-bottom: 34px; border: 1px solid rgba(27,94,58,0.08); }
+.hero-box { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 30px 44px; align-items: center; background: var(--cream); border-radius: var(--radius-lg); padding: 40px 44px 34px; border: 1px solid rgba(27,94,58,0.08); }
+.hero-box-foot { grid-column: 1 / -1; }
 .hero-box img { width: 100%; height: auto; display: block; filter: drop-shadow(0 20px 40px rgba(27,94,58,0.16)); }
 .hero-box .tag { display: inline-block; font-size: 11px; font-weight: 900; letter-spacing: .14em; text-transform: uppercase; color: var(--coral); margin-bottom: 12px; }
 .hero-box h3 { font-weight: 900; font-size: clamp(22px, 2.4vw, 32px); color: var(--green-dark); letter-spacing: -0.03em; line-height: 1.12; margin-bottom: 12px; }
@@ -167,13 +168,12 @@ header .btn-nav-cta { box-shadow: 0 6px 18px rgba(0,0,0,0.28); }
 .hero-box li::before { content: '✓'; position: absolute; left: 0; color: var(--lime); font-weight: 900; }
 
 .prod-sec { padding: 92px 0 96px; background: var(--white); }
-.prod-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
-.prod-card { background: var(--cream); border-radius: var(--radius); padding: 26px 24px 24px; text-align: center; border: 1px solid rgba(27,94,58,0.07); transition: transform .3s cubic-bezier(0.16,1,0.3,1), box-shadow .3s; }
-.prod-card:hover { transform: translateY(-5px); box-shadow: 0 16px 40px rgba(27,94,58,0.12); }
-.prod-ph { height: 150px; display: flex; align-items: center; justify-content: center; margin-bottom: 16px; }
+.prod-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 12px; margin-top: 30px; padding-top: 28px; border-top: 1px dashed rgba(27,94,58,0.18); }
+.prod-card { background: transparent; border: none; padding: 6px 4px 4px; text-align: center; transition: transform .3s cubic-bezier(0.16,1,0.3,1); }
+.prod-card:hover { transform: translateY(-4px); }
+.prod-ph { height: 74px; display: flex; align-items: center; justify-content: center; margin-bottom: 10px; }
 .prod-ph img { max-height: 100%; max-width: 100%; object-fit: contain; display: block; }
-.prod-card h3 { font-weight: 800; font-size: 17px; color: var(--green-dark); margin-bottom: 6px; letter-spacing: -0.02em; }
-.prod-card p { font-size: 14px; line-height: 1.55; color: var(--gray-500); margin: 0; }
+.prod-card h3 { font-weight: 800; font-size: 13px; line-height: 1.3; color: var(--green-dark); margin: 0; letter-spacing: -0.01em; }
 
 /* ---------- FORMULARZ KROKOWY ---------- */
 .form-sec { padding: 92px 0 100px; background: var(--cream); }
@@ -230,7 +230,7 @@ header .btn-nav-cta { box-shadow: 0 6px 18px rgba(0,0,0,0.28); }
     #zCanvas { object-position: center 40%; }
     .sym-grid { grid-template-columns: 1fr; }
     .cure-grid { grid-template-columns: 1fr 1fr; }
-    .prod-grid { grid-template-columns: 1fr 1fr; }
+    .prod-grid { grid-template-columns: repeat(3, 1fr); gap: 14px; }
     .hero-box { grid-template-columns: 1fr; gap: 26px; padding: 30px 26px; }
     .proof-grid { grid-template-columns: repeat(2, 1fr); gap: 34px 20px; }
 }
@@ -260,7 +260,7 @@ header .btn-nav-cta { box-shadow: 0 6px 18px rgba(0,0,0,0.28); }
 @media (max-width: 720px) {
     .container { padding: 0 20px; }
     .cure-grid { grid-template-columns: 1fr; }
-    .prod-grid { grid-template-columns: 1fr; }
+    .prod-grid { grid-template-columns: repeat(2, 1fr); }
     .scrub-copy h1 .l1 { font-size: 30px; }
     .scrub-copy h1 .l2 { font-size: 27px; }
 }
@@ -435,14 +435,16 @@ html.pt-in body>:not(header) { animation: ptFadeIn 0.32s ease both; }
                     <li>Pierwsza dostawa gratis</li>
                 </ul>
             </div>
-        </div>
+            <div class="hero-box-foot">
         <div class="prod-grid">
-            <div class="prod-card reveal"><div class="prod-ph"><img src="packshot-owoce.webp" alt="Świeże owoce sezonowe" loading="lazy" width="600" height="740"></div><h3>Owoce sezonowe</h3><p>Jabłka, banany, cytrusy, jagody. Tyle, ile zespół realnie zje w tygodniu.</p></div>
-            <div class="prod-card reveal"><div class="prod-ph"><img src="packshot-kanapki.webp" alt="Kanapki do biura" loading="lazy" width="600" height="486"></div><h3>Kanapki i lunche</h3><p>Office Box na śniadanie w biurze zamiast posiłku pominiętego w biegu.</p></div>
-            <div class="prod-card reveal"><div class="prod-ph"><img src="packshot-bakalie.webp" alt="Bakalie i orzechy" loading="lazy" width="600" height="824"></div><h3>Bakalie i orzechy</h3><p>Tam, gdzie wcześniej był automat z batonami. Popołudniowy zjazd przestaje boleć.</p></div>
-            <div class="prod-card reveal"><div class="prod-ph"><img src="packshot-sniadaniowe.webp" alt="Zestawy śniadaniowe" loading="lazy" width="600" height="476"></div><h3>Zestawy śniadaniowe</h3><p>Granola, jogurty, owoce. Start dnia bez deficytu, gotowy od rana.</p></div>
-            <div class="prod-card reveal"><div class="prod-ph"><img src="packshot-soki.webp" alt="Soki tłoczone" loading="lazy" width="510" height="518"></div><h3>Soki i napoje</h3><p>Soki NFC od polskich tłoczni. Nawodnienie, które ktoś faktycznie wypije.</p></div>
-            <div class="prod-card reveal"><div class="prod-ph"><img src="packshot-fingerfoods.webp" alt="Finger foods na spotkania" loading="lazy" width="600" height="571"></div><h3>Catering na spotkania</h3><p>Finger foods na warsztat, prezentację albo wizytę zarządu.</p></div>
+            <div class="prod-card reveal"><div class="prod-ph"><img src="packshot-owoce.webp" alt="Świeże owoce sezonowe" loading="lazy" width="600" height="740"></div><h3>Owoce sezonowe</h3></div>
+            <div class="prod-card reveal"><div class="prod-ph"><img src="packshot-kanapki.webp" alt="Kanapki do biura" loading="lazy" width="600" height="486"></div><h3>Kanapki i lunche</h3></div>
+            <div class="prod-card reveal"><div class="prod-ph"><img src="packshot-bakalie.webp" alt="Bakalie i orzechy" loading="lazy" width="600" height="824"></div><h3>Bakalie i orzechy</h3></div>
+            <div class="prod-card reveal"><div class="prod-ph"><img src="packshot-sniadaniowe.webp" alt="Zestawy śniadaniowe" loading="lazy" width="600" height="476"></div><h3>Zestawy śniadaniowe</h3></div>
+            <div class="prod-card reveal"><div class="prod-ph"><img src="packshot-soki.webp" alt="Soki tłoczone" loading="lazy" width="510" height="518"></div><h3>Soki i napoje</h3></div>
+            <div class="prod-card reveal"><div class="prod-ph"><img src="packshot-fingerfoods.webp" alt="Finger foods na spotkania" loading="lazy" width="600" height="571"></div><h3>Catering na spotkania</h3></div>
+        </div>
+            </div>
         </div>
     </div>
 </section>
