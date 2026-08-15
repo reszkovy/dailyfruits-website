@@ -63,7 +63,7 @@ gtag('config', 'G-G9SCYSFC36');
     <meta name="robots" content="noindex, nofollow">
     <link rel="canonical" href="https://dailyfruits.pl/powrot-do-zywych-2">
     <meta property="og:title" content="Powrót do biur. Powrót do żywych.">
-    <meta property="og:description" content="68% pracuje mniej efektywnie, gdy odczuwa głód. Przewiń i obudź biuro.">
+    <meta property="og:description" content="68% pracuje mniej efektywnie, gdy odczuwa głód. Przewiń, żeby obudzić biuro.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://dailyfruits.pl/powrot-do-zywych-2">
     <meta property="og:image" content="https://dailyfruits.pl/frames-zywi/z0096.webp">
@@ -84,8 +84,8 @@ gtag('config', 'G-G9SCYSFC36');
     --font: 'DM Sans', sans-serif; --font-fun: 'Achiko', 'Lobster', cursive;
 }
 /* ---------- SCROLL-SCRUB HERO ---------- */
-.scrub { position: relative; height: 460vh; background: var(--green-dark); }
-.scrub-sticky { position: sticky; top: 0; height: 100vh; overflow: hidden; }
+.scrub { position: relative; height: 100vh; background: var(--green-dark); }
+.scrub-sticky { position: relative; height: 100vh; overflow: hidden; }
 .scrub-grid { height: 100%; display: grid; grid-template-columns: 42% 58%; align-items: center; }
 .scrub-copy { padding: 0 clamp(28px, 4vw, 72px); position: relative; z-index: 3; }
 .c-badge { display: inline-block; background: var(--coral); color: #fff; font-size: 12px; font-weight: 900; letter-spacing: 0.1em; text-transform: uppercase; padding: 9px 18px; border-radius: var(--radius-pill); transform: rotate(-2deg); box-shadow: 2px 3px 0 rgba(0,0,0,0.18); margin-bottom: 22px; }
@@ -102,7 +102,10 @@ gtag('config', 'G-G9SCYSFC36');
 .scrub-stage { height: 100%; position: relative; overflow: hidden; }
 #zCanvas { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 62% center; display: block; }
 .scrub-stage::before { content: ''; position: absolute; inset: 0; z-index: 2; pointer-events: none; background: linear-gradient(to right, var(--green-dark) 0%, rgba(27,94,58,0.55) 14%, transparent 42%); }
-.scrub-prog { position: absolute; left: 0; bottom: 0; height: 3px; background: var(--lime); z-index: 4; width: 0; }
+.scrub-prog { position: absolute; left: 0; bottom: 0; height: 3px; background: var(--lime); z-index: 4; width: 0; transition: width .12s linear; }
+.scrub-skip { position: absolute; right: 22px; bottom: 20px; z-index: 6; font-size: 12.5px; letter-spacing: .06em; text-transform: uppercase; font-weight: 700; color: rgba(255,249,224,0.6); background: rgba(27,94,58,0.55); border: 1px solid rgba(255,249,224,0.25); padding: 9px 16px; border-radius: 100px; cursor: pointer; backdrop-filter: blur(4px); }
+.scrub-skip:hover { color: var(--cream); border-color: rgba(255,249,224,0.5); }
+.scrub-skip[hidden] { display: none; }
 /* ---------- SEKCJE ---------- */
 .sec { padding: 96px 0; }
 .sec-cream { background: var(--cream); }
@@ -134,7 +137,7 @@ gtag('config', 'G-G9SCYSFC36');
 .c-cta .row { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
 .c-note { margin-top: 26px; font-size: 13px; color: rgba(27,94,58,0.55); }
 @media (max-width: 1000px) {
-    .scrub { height: 380vh; }
+    .scrub { height: 100vh; }
     .scrub-grid { grid-template-columns: 1fr; grid-template-rows: 46% 54%; align-items: start; }
     .scrub-copy { padding-top: 92px; order: 2; }
     .scrub-stage { order: 1; }
@@ -218,11 +221,12 @@ html.pt-in body>:not(header) { animation: ptFadeIn 0.32s ease both; }
                 </h1>
                 <p class="lead"><b>68% pracuje mniej efektywnie, gdy odczuwa głód.</b> Wrzesień to moment, w którym widać to najmocniej.</p>
                 <a href="zapytanie" class="btn-feed">Nakarm zespół →</a>
-                <p class="scrub-hint"><i></i> Przewiń i obudź biuro</p>
+                <p class="scrub-hint"><i></i> Przewiń, żeby obudzić biuro</p>
             </div>
             <div class="scrub-stage">
                 <canvas id="zCanvas" aria-label="Biuro budzi się do życia, gdy na biurku pojawia się skrzynka owoców"></canvas>
                 <div class="scrub-prog" id="zProg"></div>
+                <button type="button" class="scrub-skip" id="zSkip" hidden>Pomiń animację</button>
             </div>
         </div>
     </div>
@@ -348,6 +352,7 @@ html.pt-in body>:not(header) { animation: ptFadeIn 0.32s ease both; }
     var canvas = document.getElementById('zCanvas');
     var sec = document.getElementById('scrub');
     var prog = document.getElementById('zProg');
+    var skip = document.getElementById('zSkip');
     if (!canvas || !sec) return;
 
     var ctx = canvas.getContext('2d', { alpha: false });
@@ -385,7 +390,6 @@ html.pt-in body>:not(header) { animation: ptFadeIn 0.32s ease both; }
         ready = true;
         draw(0);
         loadRest();
-        onScroll();
     }
     first.onload = boot;
     first.src = src(0);
@@ -403,25 +407,76 @@ html.pt-in body>:not(header) { animation: ptFadeIn 0.32s ease both; }
         }
     }
 
-    function onScroll() {
-        if (!ready) return;
-        var r = sec.getBoundingClientRect();
-        var span = sec.offsetHeight - window.innerHeight;
-        var p = span > 0 ? (-r.top) / span : 0;
-        if (p < 0) p = 0; if (p > 1) p = 1;
-        var i = Math.min(Math.round(p * (TOTAL - 1)), TOTAL - 1);
-        if (prog) prog.style.width = (p * 100).toFixed(1) + '%';
-        if (i !== cur) { cur = i; draw(i); }
+    // ─── TWARDA BLOKADA SCROLLA: strona rusza dopiero po ostatniej klatce ───
+    var idx = 0;
+    var acc = 0;
+    var locked = false;
+    var STEP = 16;            // px delty na jedna klatke
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    function setIdx(n) {
+        if (n < 0) n = 0;
+        if (n > TOTAL - 1) n = TOTAL - 1;
+        if (n === idx) return;
+        idx = n;
+        draw(idx);
+        if (prog) prog.style.width = (idx / (TOTAL - 1) * 100).toFixed(1) + '%';
+        if (idx >= TOTAL - 1) unlock();
     }
 
-    window.addEventListener('scroll', onScroll, { passive: true });
-    window.addEventListener('resize', function () {
-        if (!ready) return;
-        sizeCanvas();
-        cur = -1;
-        onScroll();
+    function lock() {
+        if (locked || reduce) return;
+        locked = true;
+        document.documentElement.style.overflow = 'hidden';
+        document.body.style.overflow = 'hidden';
+        if (skip) skip.hidden = false;
+    }
+
+    function unlock() {
+        if (!locked) return;
+        locked = false;
+        document.documentElement.style.overflow = '';
+        document.body.style.overflow = '';
+        if (skip) skip.hidden = true;
+    }
+
+    function bump(delta) {
+        acc += delta;
+        var n = Math.trunc(acc / STEP);
+        if (n) { acc -= n * STEP; setIdx(idx + n); }
+    }
+
+    window.addEventListener('wheel', function (e) {
+        if (!locked) return;
+        e.preventDefault();
+        bump(e.deltaY);
+    }, { passive: false });
+
+    var touchY = null;
+    window.addEventListener('touchstart', function (e) {
+        if (!locked) return;
+        touchY = e.touches[0].clientY;
     }, { passive: true });
-    onScroll();
+    window.addEventListener('touchmove', function (e) {
+        if (!locked) return;
+        e.preventDefault();
+        var y = e.touches[0].clientY;
+        if (touchY !== null) bump((touchY - y) * 2.2);
+        touchY = y;
+    }, { passive: false });
+
+    window.addEventListener('keydown', function (e) {
+        if (!locked) return;
+        var k = e.key;
+        if (k === 'Escape' || k === 'End') { e.preventDefault(); setIdx(TOTAL - 1); return; }
+        if (k === 'ArrowDown' || k === 'PageDown' || k === ' ') { e.preventDefault(); bump(k === ' ' || k === 'PageDown' ? 220 : 70); }
+        else if (k === 'ArrowUp' || k === 'PageUp') { e.preventDefault(); bump(k === 'PageUp' ? -220 : -70); }
+    });
+
+    if (skip) skip.addEventListener('click', function () { setIdx(TOTAL - 1); });
+
+    function onScroll() { /* blokada zastapila scrub scrollem */ }
+    if (!reduce) { window.scrollTo(0, 0); lock(); } else { setIdx(TOTAL - 1); }
 })();
 </script>
 <!--rdf-reveal-fix--><script>(function(){var els=document.querySelectorAll(".reveal");if(!els.length)return;if(!("IntersectionObserver"in window)){els.forEach(function(e){e.classList.add("vis");});return;}var io=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){x.target.classList.add("vis");io.unobserve(x.target);}});},{rootMargin:"0px 0px -8% 0px"});els.forEach(function(e){io.observe(e);});setTimeout(function(){els.forEach(function(e){e.classList.add("vis");});},1200);})();</script>
