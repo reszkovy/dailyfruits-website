@@ -270,6 +270,12 @@ header .btn-red-solid::before { animation-delay: 3.4s; }
    Nad formularzem zostaje sama sciezka procesu. */
 .proofzone { margin-top: 64px; padding-top: 44px; border-top: 2px dashed rgba(27,94,58,0.20); }
 
+/* Ocena tuz nad sciezka procesu, na szerokosc formularza. */
+.rating { display: flex; align-items: center; justify-content: center; gap: 9px; margin: 0 0 20px; }
+.rating-stars { color: #FFC107; font-size: 19px; letter-spacing: 2px; }
+.rating-score { font-size: 13.5px; font-weight: 700; color: var(--green-dark); opacity: .65; }
+@media (max-width: 560px) { .rating { flex-direction: column; gap: 5px; } }
+
 /* Bez tla i bez paddingu: pas ma dokladnie szerokosc formularza,
    a liczby ustawiaja sie w jednej linii z jego krawedziami. */
 .assure { background: transparent; padding: 0; margin: 0 auto 30px; max-width: 660px; }
@@ -565,6 +571,7 @@ html.pt-in body>:not(header) { animation: ptFadeIn 0.32s ease both; }
             <p class="slider-hint">Przeciągnij, żeby nakarmić →</p>
         </div>
         <div class="assure reveal">
+            <p class="rating"><span class="rating-stars">★★★★★</span><span class="rating-score">4.9/5 na podstawie 120+ opinii</span></p>
             <p class="assure-flow"><span>Podajesz liczbę osób</span><i></i><span>dostajesz propozycję</span><i></i><span>umawiamy pierwszą dostawę</span></p>
         </div>
         <div class="form-grid">
