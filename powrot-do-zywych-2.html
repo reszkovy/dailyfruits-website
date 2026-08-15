@@ -255,22 +255,17 @@ header .btn-red-solid::before { animation-delay: 3.4s; }
 /* Pewnosc przy decyzji tuz nad formularzem: dowod + proces w jednym pasie,
    zamiast osobnej sekcji, ktora kosztowala 424 px wysokosci. */
 /* Glosy klientow tuz przed decyzja - te same opinie co na home, bez karuzeli. */
-.voices { margin: 0 auto 34px; }
-.voices-head { display: flex; align-items: center; justify-content: center; gap: 9px; margin-bottom: 26px; }
+.voices { margin: 0 auto 40px; }
+.voices-head { display: flex; align-items: center; justify-content: center; gap: 9px; margin-bottom: 34px; }
 .voices-stars { color: #FFC107; font-size: 19px; letter-spacing: 2px; }
 .voices-score { font-size: 13.5px; font-weight: 700; color: var(--green-dark); opacity: .65; }
-.voices-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-.voice { background: var(--white); border-radius: var(--radius); padding: 24px 24px 22px; margin: 0;
-    box-shadow: 0 1px 2px rgba(27,94,58,.05), 0 10px 30px rgba(27,94,58,.07);
-    display: flex; flex-direction: column; }
-.voice blockquote { margin: 0 0 18px; font-size: 14px; line-height: 1.6; color: var(--gray-500); flex: 1; }
-.voice blockquote::before { content: '\201E'; display: block; font-family: var(--font-fun); font-size: 34px; line-height: .5; color: var(--lime); margin-bottom: 12px; }
-.voice figcaption { display: flex; align-items: center; gap: 11px; }
-.voice-av { width: 38px; height: 38px; border-radius: 50%; flex: none; display: flex; align-items: center; justify-content: center;
-    color: #fff; font-weight: 900; font-size: 13px; letter-spacing: .02em; }
-.voice figcaption span:last-child { font-size: 12px; line-height: 1.35; color: var(--gray-500); }
-.voice figcaption b { display: block; font-size: 13.5px; color: var(--green-dark); font-weight: 800; }
-@media (max-width: 900px) { .voices-grid { grid-template-columns: 1fr; gap: 14px; } .voice blockquote { margin-bottom: 14px; } }
+.voices-grid { display: grid; grid-template-columns: repeat(3, 1fr); column-gap: 44px; row-gap: 0; }
+.voice { background: transparent; padding: 0; margin: 0; display: flex; flex-direction: column; }
+.voice blockquote { margin: 0 0 20px; font-size: 14px; line-height: 1.65; color: var(--gray-500); flex: 1; }
+.voice blockquote::before { content: '\201E'; display: block; font-family: var(--font-fun); font-size: 40px; line-height: .5; color: var(--lime); margin-bottom: 16px; }
+.voice figcaption { font-size: 12px; line-height: 1.4; color: var(--gray-500); padding-top: 14px; border-top: 2px dashed rgba(27,94,58,0.18); }
+.voice figcaption b { display: block; font-size: 13.5px; color: var(--green-dark); font-weight: 800; margin-bottom: 1px; }
+@media (max-width: 900px) { .voices-grid { grid-template-columns: 1fr; row-gap: 30px; } }
 
 /* Bez tla i bez paddingu: pas ma dokladnie szerokosc formularza,
    a liczby ustawiaja sie w jednej linii z jego krawedziami. */
@@ -541,15 +536,15 @@ html.pt-in body>:not(header) { animation: ptFadeIn 0.32s ease both; }
             <div class="voices-grid">
                 <figure class="voice">
                     <blockquote>Fruit Day jako dodatkowy benefit sprawdził się u&nbsp;nas świetnie. Firma Dailyfruits od samego początku była strzałem w&nbsp;dziesiątkę.</blockquote>
-                    <figcaption><span class="voice-av" style="background:#1B5E3A">BF</span><span><b>Barbara Fitowska</b>Office Manager, OTCF</span></figcaption>
+                    <figcaption><span><b>Barbara Fitowska</b>Office Manager, OTCF</span></figcaption>
                 </figure>
                 <figure class="voice">
                     <blockquote>Pracownicy Dailyfruits wykazują się profesjonalizmem. Dostarczane owoce są zawsze najwyższej jakości.</blockquote>
-                    <figcaption><span class="voice-av" style="background:#526B08">SD</span><span><b>Szymon Demmer</b>HR Business Partner, Synevo</span></figcaption>
+                    <figcaption><span><b>Szymon Demmer</b>HR Business Partner, Synevo</span></figcaption>
                 </figure>
                 <figure class="voice">
                     <blockquote>Jestem bardzo zadowolona ze współpracy. Obietnice składane w&nbsp;czasie negocjacji sprawdzają się każdego dnia.</blockquote>
-                    <figcaption><span class="voice-av" style="background:#347550">HG</span><span><b>Hanna Gałązka</b>Dyrektor Departamentu, Enea Centrum</span></figcaption>
+                    <figcaption><span><b>Hanna Gałązka</b>Dyrektor Departamentu, Enea Centrum</span></figcaption>
                 </figure>
             </div>
         </div>
