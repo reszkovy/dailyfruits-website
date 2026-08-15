@@ -254,16 +254,19 @@ header .btn-red-solid::before { animation-delay: 3.4s; }
 .mid-cta .btn { position: relative; overflow: hidden; }
 /* Pewnosc przy decyzji tuz nad formularzem: dowod + proces w jednym pasie,
    zamiast osobnej sekcji, ktora kosztowala 424 px wysokosci. */
-.assure { background: var(--lime); border-radius: var(--radius-lg); padding: 30px 34px 24px; margin: 0 auto 26px; max-width: 660px; }
+/* Bez tla i bez paddingu: pas ma dokladnie szerokosc formularza,
+   a liczby ustawiaja sie w jednej linii z jego krawedziami. */
+.assure { background: transparent; padding: 26px 0 22px; margin: 0 auto 30px; max-width: 660px;
+    border-top: 2px dashed rgba(27,94,58,0.22); border-bottom: 2px dashed rgba(27,94,58,0.22); }
 .assure-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; text-align: center; }
-.assure-item b { display: block; font-family: var(--font-fun); font-size: clamp(24px, 2.6vw, 34px); line-height: 1; color: var(--green-dark); margin-bottom: 5px; }
-.assure-item span { font-size: 11.5px; line-height: 1.35; color: var(--green-deep); opacity: .88; display: block; }
+.assure-item b { display: block; font-family: var(--font-fun); font-size: clamp(24px, 2.6vw, 32px); line-height: 1; color: var(--green-dark); margin-bottom: 5px; }
+.assure-item span { font-size: 11.5px; line-height: 1.35; color: var(--gray-500); display: block; }
 .assure-flow { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 8px 10px;
-    margin: 22px 0 0; padding-top: 18px; border-top: 2px dashed rgba(15,42,26,0.22);
-    font-size: 12.5px; font-weight: 800; color: var(--green-deep); text-align: center; }
-.assure-flow i { display: block; width: 16px; height: 2px; background: rgba(15,42,26,0.45); flex: none; }
+    margin: 20px 0 0; padding-top: 18px; border-top: 1px dashed rgba(27,94,58,0.18);
+    font-size: 12.5px; font-weight: 800; color: var(--green-dark); text-align: center; }
+.assure-flow i { display: block; width: 16px; height: 2px; background: var(--lime); flex: none; }
 @media (max-width: 720px) {
-    .assure { padding: 24px 20px 20px; }
+    .assure { padding: 22px 0 18px; }
     .assure-grid { grid-template-columns: repeat(2, 1fr); gap: 18px 12px; }
     .assure-flow { flex-direction: column; gap: 7px; font-size: 12px; }
     .assure-flow i { width: 2px; height: 12px; } }
