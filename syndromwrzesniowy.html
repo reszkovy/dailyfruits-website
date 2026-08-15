@@ -159,7 +159,7 @@ header .btn-red-solid { position: relative; overflow: hidden; box-shadow: 0 8px 
 .scrub-hint i { display: block; width: 1px; height: 22px; background: linear-gradient(to bottom, rgba(27,94,58,0.5), transparent); animation: hintDrop 1.8s ease-in-out infinite; }
 @keyframes hintDrop { 0%,100% { transform: translateY(0); opacity: .8 } 50% { transform: translateY(7px); opacity: .3 } }
 .scrub-stage { position: absolute; inset: 0 0 var(--bar) 0; z-index: 1; overflow: hidden; will-change: transform; }
-#zCanvas { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 68% center; display: block; }
+#zCanvas { position: absolute; inset: 0; width: 100%; height: 100%; background: var(--cream); object-fit: cover; object-position: 68% center; display: block; }
 .scrub-veil { position: absolute; inset: 0 0 var(--bar) 0; z-index: 2; pointer-events: none;
     background: linear-gradient(to right, var(--cream) 0%, var(--cream) 20%, rgba(255,249,224,0.92) 30%, rgba(255,249,224,0.66) 40%, rgba(255,249,224,0.32) 50%, rgba(255,249,224,0.10) 57%, transparent 64%); }
 .energy { position: absolute; left: 0; right: 0; bottom: 0; height: var(--bar); z-index: 6; background: var(--lime); padding: 0 clamp(20px, 3vw, 44px); display: flex; align-items: center; gap: clamp(12px, 1.6vw, 22px); pointer-events: none; }
@@ -253,6 +253,38 @@ header .btn-red-solid::before { animation-delay: 3.4s; }
 @keyframes logo-scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
 @media (max-width: 720px) { .logo-bar { padding: 22px 0 16px; } .logo-bar-item { padding: 0 22px; } .logo-bar-item img { height: 34px; } }
 @media (prefers-reduced-motion: reduce) { .logo-bar-track { animation: none !important; } }
+
+
+/* ---------- SYSTEM ANIMACJI ----------
+   Wlasna przestrzen nazw (data-anim), bo globalny .reveal z shared.css ma bezpiecznik
+   zapalajacy wszystko po 1200 ms - przy dlugiej stronie reveal na scroll nigdy nie zadzialal.
+   Zasady: wylacznie transform i opacity (zero wplywu na layout), jeden obserwator,
+   element odpina sie po odsloneciu, pelna obsluga prefers-reduced-motion. */
+:root { --ease-anim: cubic-bezier(0.22, 1, 0.36, 1); }
+
+[data-anim] { will-change: transform, opacity; }
+
+[data-anim="up"] { opacity: 0; transform: translate3d(0, 26px, 0);
+    transition: opacity .75s var(--ease-anim), transform .95s var(--ease-anim); }
+[data-anim="up"].w-kadrze { opacity: 1; transform: none; }
+
+[data-anim="fade"] { opacity: 0; transition: opacity .9s var(--ease-anim); }
+[data-anim="fade"].w-kadrze { opacity: 1; }
+
+[data-anim="skala"] { opacity: 0; transform: scale(.965);
+    transition: opacity .9s var(--ease-anim), transform 1.1s var(--ease-anim); }
+[data-anim="skala"].w-kadrze { opacity: 1; transform: none; }
+
+/* Naglowek wjezdza spod wlasnej krawedzi - maska, nie fade */
+[data-anim="maska"] { display: block; overflow: hidden; padding-bottom: .12em; }
+[data-anim="maska"] > span { display: block; transform: translate3d(0, 108%, 0);
+    transition: transform 1s var(--ease-anim); }
+[data-anim="maska"].w-kadrze > span { transform: none; }
+
+@media (prefers-reduced-motion: reduce) {
+    [data-anim] { opacity: 1 !important; transform: none !important; transition: none !important; }
+    [data-anim="maska"] > span { transform: none !important; transition: none !important; }
+}
 
 /* ---------- SEKCJE ---------- */
 .sec { padding: 96px 0; }
@@ -698,6 +730,7 @@ html.pt-in body>:not(header) { animation: ptFadeIn 0.32s ease both; }
     // POS 0 = kadr do lewej (pusta strona pod tekst), 1 = do prawej (bohater).
     // Na waskim ekranie kadr jest przycinany po bokach, wiec przesuwamy go do bohatera.
     var ZOOM = mobil ? 1.02 : 1.10, POS = mobil ? 0.88 : 0.0;
+    var namalowane = false;
     function draw(i) {
         var f = frames[i];
         if (!f || !f.complete || !f.naturalWidth) return;
@@ -706,6 +739,7 @@ html.pt-in body>:not(header) { animation: ptFadeIn 0.32s ease both; }
         var w = f.naturalWidth * s, h = f.naturalHeight * s;
         var ox = (cw - w) * POS, oy = (ch - h) * 0.5;
         ctx.drawImage(f, ox, oy, w, h);
+        if (!namalowane) { namalowane = true; if (window.zlPierwszaKlatka) window.zlPierwszaKlatka(); }
     }
 
 
@@ -716,10 +750,13 @@ html.pt-in body>:not(header) { animation: ptFadeIn 0.32s ease both; }
         var fill = document.getElementById('zlFill');
         if (!loader) return;
         var prog = Math.max(1, Math.ceil(TOTAL * 0.35));
-        var gotowych = 0, zwolniony = false;
+        var gotowych = 0, zwolniony = false, kadrGotowy = false;
+        // Sam licznik pobranych plikow nie wystarczyl - loader schodzil, zanim canvas
+        // cokolwiek namalowal, i uzytkownik widzial czarna klatke.
+        window.zlPierwszaKlatka = function () { kadrGotowy = true; odswiez(); };
         function odswiez() {
             if (fill) fill.style.width = Math.min(100, Math.round(gotowych / prog * 100)) + '%';
-            if (gotowych >= prog) zwolnij();
+            if (gotowych >= prog && kadrGotowy) zwolnij();
         }
         function zwolnij() {
             if (zwolniony) return;
@@ -1027,5 +1064,61 @@ html.pt-in body>:not(header) { animation: ptFadeIn 0.32s ease both; }
 <script defer src="/typo.js"></script>
 <script defer src="transition.js"></script>
 <script defer src="mn.js?v=4"></script>
+
+<script>
+/* Odsloniecia: role przypisywane selektorem, zeby nie zasmiecac markupu.
+   Stagger liczony wzgledem rodzenstwa, wiec rzedy kart wchodza kaskada. */
+(function () {
+    var cichy = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var role = [
+        { sel: '.sec-head h2, .prod-sec .sec-head h2, #formularz .sec-head h2', typ: 'maska' },
+        { sel: '.sec-head p', typ: 'up' },
+        { sel: '.sym', typ: 'up', kaskada: 90 },
+        { sel: '.cure-card', typ: 'up', kaskada: 80 },
+        { sel: '.prod-card', typ: 'up', kaskada: 55 },
+        { sel: '.assure-item', typ: 'up', kaskada: 70 },
+        { sel: '.hero-box > div', typ: 'up', kaskada: 120 },
+        { sel: '.form-art, .form-wrap, .form-after', typ: 'up' },
+        { sel: '.assure-flow, .rating', typ: 'fade' },
+        { sel: '.mid-cta', typ: 'up' },
+        { sel: '.owocek', typ: 'up' }
+    ];
+
+    role.forEach(function (r) {
+        var el = document.querySelectorAll(r.sel);
+        el.forEach(function (e, i) {
+            if (e.hasAttribute('data-anim')) return;
+            if (r.typ === 'maska') {
+                if (e.querySelector('[data-anim]')) return;
+                var w = document.createElement('span');
+                while (e.firstChild) w.appendChild(e.firstChild);
+                e.appendChild(w);
+            }
+            e.setAttribute('data-anim', r.typ);
+            if (r.kaskada) {
+                var rodzenstwo = e.parentElement ? [].indexOf.call(e.parentElement.children, e) : i;
+                var op = Math.min(rodzenstwo, 5) * r.kaskada;
+                e.style.transitionDelay = op + 'ms';
+                if (r.typ === 'maska') e.firstElementChild.style.transitionDelay = op + 'ms';
+            }
+        });
+    });
+
+    var wszystkie = document.querySelectorAll('[data-anim]');
+    if (cichy || !('IntersectionObserver' in window)) {
+        wszystkie.forEach(function (e) { e.classList.add('w-kadrze'); });
+        return;
+    }
+    var io = new IntersectionObserver(function (wpisy) {
+        wpisy.forEach(function (w) {
+            if (!w.isIntersecting) return;
+            w.target.classList.add('w-kadrze');
+            io.unobserve(w.target);
+            setTimeout(function () { w.target.style.willChange = 'auto'; }, 1400);
+        });
+    }, { rootMargin: '0px 0px -10% 0px', threshold: 0.08 });
+    wszystkie.forEach(function (e) { io.observe(e); });
+})();
+</script>
 </body>
 </html>
