@@ -653,6 +653,19 @@ html.pt-in body>:not(header) { animation: ptFadeIn 0.32s ease both; }
         canvas.height = Math.max(1, Math.round(r.height * dpr));
     }
 
+    // Bez tego canvas zostaje z rozmiarem sprzed obrotu ekranu, a przy wczytaniu
+    // strony w karcie w tle - z rozmiarem 1x1, czyli czarny na zawsze.
+    var przeliczanie;
+    window.addEventListener('resize', function () {
+        clearTimeout(przeliczanie);
+        przeliczanie = setTimeout(function () {
+            if (!ready) return;
+            sizeCanvas();
+            cur = -1;
+            draw(idx);
+        }, 120);
+    }, { passive: true });
+
     // ZOOM daje poziomy zapas, POS ustawia kadr (0 = do lewej, 1 = do prawej).
     // Bez zapasu obraz wypelnia szerokosc co do piksela i nie da sie go przesunac.
     var ZOOM = 1.10, POS = 0.0;
