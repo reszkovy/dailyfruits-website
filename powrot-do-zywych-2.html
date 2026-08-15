@@ -128,15 +128,16 @@ header .btn-nav-cta { box-shadow: 0 6px 18px rgba(0,0,0,0.28); }
 /* CTA startuje schowany za belka (z-index nizszy, belka jest kryjaca), po zapelnieniu
    paska wysuwa sie W DOL i zatrzymuje przy dolnej krawedzi. Jest absolutny wzgledem
    .scrub, wiec po zwolnieniu blokady plynie dalej ze strona w dol. */
-/* Dziecko belki, wiec trzyma sie jej krawedzi niezaleznie od blokady scrolla.
-   Wysuwa sie w dol i zatrzymuje przy dolnej krawedzi; plynie ze strona, bo nie jest fixed. */
-.energy-cta { position: absolute; right: clamp(20px, 3vw, 44px); bottom: 14px;
-    transform: translateY(-38px); opacity: 0; pointer-events: none;
-    transition: transform .6s cubic-bezier(0.18, 1.2, 0.4, 1), opacity .32s ease; }
-.energy-cta.out { transform: translateY(0); opacity: 1; pointer-events: auto; }
+/* Zwykly przycisk jak na home, schowany ZA belka (nizszy z-index, belka jest kryjaca).
+   Po zapelnieniu paska wysuwa sie w dol i przykleja do dolnej krawedzi belki;
+   jest absolutny wzgledem .scrub, wiec plynie dalej ze strona. */
+.energy-cta { position: absolute; right: clamp(20px, 3vw, 44px); bottom: 0; z-index: 5;
+    transform: translateY(0); opacity: 0; pointer-events: none;
+    transition: transform .6s cubic-bezier(0.18, 1.2, 0.4, 1), opacity .25s ease; }
+.energy-cta.out { transform: translateY(100%); opacity: 1; pointer-events: auto; }
 .energy-cta .btn { box-shadow: 0 14px 34px rgba(0,0,0,0.34); }
 @media (prefers-reduced-motion: reduce) { .energy-cta { transition: none; } }
-@media (max-width: 700px) { .energy-cta { right: 50%; bottom: 11px; transform: translate(50%, -32px); } .energy-cta.out { transform: translate(50%, 0); } .energy-cta .btn { padding: 12px 26px; font-size: 14px; } }
+@media (max-width: 700px) { .energy-cta { right: 50%; transform: translate(50%, 0); } .energy-cta.out { transform: translate(50%, 100%); } .energy-cta .btn { padding: 12px 26px; font-size: 14px; } }
 .energy-cup { height: clamp(20px, 2vw, 28px); width: auto; display: block; opacity: 0; transform: scale(.4) rotate(-25deg); transition: none; }
 .energy-cup.pop { animation: cupPop .62s cubic-bezier(0.18, 1.5, 0.4, 1) forwards; }
 @keyframes cupPop {
@@ -364,10 +365,9 @@ html.pt-in body>:not(header) { animation: ptFadeIn 0.32s ease both; }
             <span class="energy-lab l">Biurowe zombie</span>
             <span class="energy-track"><span class="energy-fill" id="zProg"></span></span>
             <span class="energy-lab r">Pracownik miesiąca <img class="energy-cup" id="zCup" src="icons/icon-trophy.webp" alt=""></span>
-            <div class="energy-cta" id="zCta"><a href="#formularz" class="btn btn-red-solid btn-arrow">Nakarm swój zespół</a></div>
         </div>
     </div>
-
+    <div class="energy-cta" id="zCta"><a href="#formularz" class="btn btn-red-solid btn-arrow">Nakarm swój zespół</a></div>
 </section>
 
 <!-- OBJAWY -->
