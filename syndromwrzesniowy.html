@@ -165,8 +165,8 @@ header .btn-red-solid { position: relative; overflow: hidden; box-shadow: 0 8px 
   100% { opacity: 1; transform: scale(1) rotate(0deg); }
 }
 @media (prefers-reduced-motion: reduce) { .energy-cup.pop { animation: none; opacity: 1; transform: none; } }
-.energy-track { flex: 1; height: 12px; border-radius: 99px; background: rgba(15,42,26,0.18); overflow: hidden; }
-.energy-fill { display: block; height: 100%; width: 0; border-radius: 99px; background: #F06878; transition: width .1s linear, background-color .2s linear; }
+.energy-track { flex: 1; height: 12px; border-radius: 99px; background: rgba(255,255,255,0.42); overflow: hidden; }
+.energy-fill { display: block; height: 100%; width: 0; border-radius: 99px; background: #1B5E3A; transition: width .1s linear, background-color .2s linear; }
 /* ---------- SUWAK PRZED / PO (ilustracja) ---------- */
 .slider-frame { position: relative; width: 100%; margin: 0 auto; border-radius: var(--radius); overflow: hidden; box-shadow: 0 14px 40px rgba(27,94,58,0.14); aspect-ratio: 1200/670; touch-action: none; cursor: ew-resize; user-select: none; background: var(--cream); }
 .slider-frame img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; pointer-events: none; }
@@ -711,10 +711,11 @@ html.pt-in body>:not(header) { animation: ptFadeIn 0.32s ease both; }
         if (prog) {
             var t = idx / (TOTAL - 1);
             prog.style.width = (t * 100).toFixed(1) + '%';
-            // F06878 -> 1B5E3A (koral konca lata laguje w brandowa zielen)
-            var r = Math.round(240 + (27 - 240) * t);
-            var g = Math.round(104 + (94 - 104) * t);
-            var b = Math.round(120 + (58 - 120) * t);
+            // 1B5E3A -> 0F2A1A: na limonkowej belce cieple kolory daja ponizej 2.5:1,
+            // wiec postep niesie poglebiajaca sie zielen (3.8:1 -> 7.5:1)
+            var r = Math.round(27 + (15 - 27) * t);
+            var g = Math.round(94 + (42 - 94) * t);
+            var b = Math.round(58 + (26 - 58) * t);
             prog.style.backgroundColor = 'rgb(' + r + ',' + g + ',' + b + ')';
         }
         if (cup) {
