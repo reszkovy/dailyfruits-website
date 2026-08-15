@@ -164,7 +164,6 @@ header .btn-red-solid.hide { opacity: 0; transform: translateY(-18px); pointer-e
 
 /* ---------- CO LADUJE NA BIURKU ---------- */
 .hero-box { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 30px 44px; align-items: center; background: var(--cream); border-radius: var(--radius-lg); padding: 40px 44px 34px; }
-.hero-box > div:first-child { overflow: hidden; border-radius: var(--radius); }
 .hero-box-foot { grid-column: 1 / -1; padding-top: 26px; border-top: 1px dashed rgba(27,94,58,0.18); }
 .foot-lead { font-size: 12px; font-weight: 900; letter-spacing: .14em; text-transform: uppercase; color: rgba(27,94,58,0.55); margin: 0; }
 .hero-box img { will-change: transform; width: 100%; height: auto; display: block; filter: drop-shadow(0 20px 40px rgba(27,94,58,0.16)); }
@@ -741,7 +740,7 @@ html.pt-in body>:not(header) { animation: ptFadeIn 0.32s ease both; }
                 var r = box.getBoundingClientRect();
                 if (r.bottom > 0 && r.top < vh) {
                     var t = (r.top + r.height / 2 - vh / 2) / vh;
-                    box.style.transform = 'translate3d(0,' + (t * -22).toFixed(1) + 'px,0) scale(1.06)';
+                    box.style.transform = 'translate3d(0,' + (t * -18).toFixed(1) + 'px,0)';
                 }
             }
         }
