@@ -8,7 +8,7 @@
 
   function init() {
     // CTA — kliknięcia w zapytanie/wycenę i główne przyciski
-    document.querySelectorAll('a[href*="zapytanie"], .btn-red-solid, .btn-green, .cta-primary').forEach(function (el) {
+    document.querySelectorAll('a[href*="zapytanie"], a[href^="#formularz"], .btn-red-solid, .btn-green, .btn-feed, .cta-primary').forEach(function (el) {
       el.addEventListener('click', function () {
         dataLayer.push({ event: 'cta_click', cta_text: this.textContent.trim().slice(0, 50), cta_url: this.href, page: location.pathname });
       });
