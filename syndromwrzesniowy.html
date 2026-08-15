@@ -143,7 +143,7 @@ header .btn-red-solid { position: relative; overflow: hidden; box-shadow: 0 8px 
     background: linear-gradient(to right, var(--green-dark) 0%, var(--green-dark) 20%, rgba(27,94,58,0.90) 30%, rgba(27,94,58,0.58) 40%, rgba(27,94,58,0.26) 50%, rgba(27,94,58,0.08) 57%, transparent 64%); }
 .energy { position: absolute; left: 0; right: 0; bottom: 0; height: var(--bar); z-index: 6; background: var(--green-dark); padding: 0 clamp(20px, 3vw, 44px); display: flex; align-items: center; gap: clamp(12px, 1.6vw, 22px); pointer-events: none; }
 .energy-lab { font-size: clamp(10px, 0.85vw, 12.5px); font-weight: 900; letter-spacing: .12em; text-transform: uppercase; white-space: nowrap; text-shadow: 0 1px 8px rgba(0,0,0,.45); }
-.energy-lab.l { color: rgba(255,180,170,0.95); }
+.energy-lab.l { color: rgba(255,242,0,0.92); }
 .energy-lab.r { color: rgba(190,225,150,0.95); display: inline-flex; align-items: center; gap: 7px; }
 /* CTA startuje schowany za belka (z-index nizszy, belka jest kryjaca), po zapelnieniu
    paska wysuwa sie W DOL i zatrzymuje przy dolnej krawedzi. Jest absolutny wzgledem
@@ -157,7 +157,7 @@ header .btn-red-solid { position: relative; overflow: hidden; box-shadow: 0 8px 
 }
 @media (prefers-reduced-motion: reduce) { .energy-cup.pop { animation: none; opacity: 1; transform: none; } }
 .energy-track { flex: 1; height: 12px; border-radius: 99px; background: rgba(10,40,24,0.45); box-shadow: inset 0 0 0 1px rgba(255,249,224,0.18); overflow: hidden; }
-.energy-fill { display: block; height: 100%; width: 0; border-radius: 99px; background: #E43020; transition: width .1s linear, background-color .2s linear; }
+.energy-fill { display: block; height: 100%; width: 0; border-radius: 99px; background: #FFF200; transition: width .1s linear, background-color .2s linear; }
 /* ---------- SUWAK PRZED / PO (ilustracja) ---------- */
 .slider-frame { position: relative; width: 100%; margin: 0 auto; border-radius: var(--radius); overflow: hidden; box-shadow: 0 14px 40px rgba(27,94,58,0.14); aspect-ratio: 1200/670; touch-action: none; cursor: ew-resize; user-select: none; background: var(--cream); }
 .slider-frame img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; pointer-events: none; }
@@ -413,7 +413,7 @@ html.pt-in body>:not(header) { animation: ptFadeIn 0.32s ease both; }
         </div>
         <p class="hero-offer">Do końca lata pierwsze<br>zamówienie gratis</p>
         <div class="energy" aria-hidden="true">
-            <span class="energy-lab l">Głowa na wakacjach</span>
+            <span class="energy-lab l">Koniec wakacji</span>
             <span class="energy-track"><span class="energy-fill" id="zProg"></span></span>
             <span class="energy-lab r">Miękkie lądowanie <img class="energy-cup" id="zCup" src="icons/icon-trophy.webp" alt=""></span>
         </div>
@@ -702,10 +702,10 @@ html.pt-in body>:not(header) { animation: ptFadeIn 0.32s ease both; }
         if (prog) {
             var t = idx / (TOTAL - 1);
             prog.style.width = (t * 100).toFixed(1) + '%';
-            // E43020 -> 8DC63F
-            var r = Math.round(228 + (141 - 228) * t);
-            var g = Math.round(48 + (198 - 48) * t);
-            var b = Math.round(32 + (63 - 32) * t);
+            // FFF200 -> 8DC63F (slonce konca wakacji dojrzewa w zielen)
+            var r = Math.round(255 + (141 - 255) * t);
+            var g = Math.round(242 + (198 - 242) * t);
+            var b = Math.round(0 + (63 - 0) * t);
             prog.style.backgroundColor = 'rgb(' + r + ',' + g + ',' + b + ')';
         }
         if (cup) {
