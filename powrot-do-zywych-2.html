@@ -84,7 +84,7 @@ gtag('config', 'G-G9SCYSFC36');
     --font: 'DM Sans', sans-serif; --font-fun: 'Achiko', 'Lobster', cursive;
 }
 /* ---------- SCROLL-SCRUB HERO ---------- */
-.scrub { position: relative; height: 340vh; background: var(--green-dark); }
+.scrub { position: relative; height: 460vh; background: var(--green-dark); }
 .scrub-sticky { position: sticky; top: 0; height: 100vh; overflow: hidden; }
 .scrub-grid { height: 100%; display: grid; grid-template-columns: 42% 58%; align-items: center; }
 .scrub-copy { padding: 0 clamp(28px, 4vw, 72px); position: relative; z-index: 3; }
@@ -134,7 +134,7 @@ gtag('config', 'G-G9SCYSFC36');
 .c-cta .row { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
 .c-note { margin-top: 26px; font-size: 13px; color: rgba(27,94,58,0.55); }
 @media (max-width: 1000px) {
-    .scrub { height: 300vh; }
+    .scrub { height: 380vh; }
     .scrub-grid { grid-template-columns: 1fr; grid-template-rows: 46% 54%; align-items: start; }
     .scrub-copy { padding-top: 92px; order: 2; }
     .scrub-stage { order: 1; }
@@ -403,20 +403,15 @@ html.pt-in body>:not(header) { animation: ptFadeIn 0.32s ease both; }
         }
     }
 
-    var ticking = false;
     function onScroll() {
-        if (!ready || ticking) return;
-        ticking = true;
-        requestAnimationFrame(function () {
-            ticking = false;
-            var r = sec.getBoundingClientRect();
-            var span = sec.offsetHeight - window.innerHeight;
-            var p = span > 0 ? (-r.top) / span : 0;
-            if (p < 0) p = 0; if (p > 1) p = 1;
-            var i = Math.min(Math.round(p * (TOTAL - 1)), TOTAL - 1);
-            if (prog) prog.style.width = (p * 100).toFixed(1) + '%';
-            if (i !== cur) { cur = i; draw(i); }
-        });
+        if (!ready) return;
+        var r = sec.getBoundingClientRect();
+        var span = sec.offsetHeight - window.innerHeight;
+        var p = span > 0 ? (-r.top) / span : 0;
+        if (p < 0) p = 0; if (p > 1) p = 1;
+        var i = Math.min(Math.round(p * (TOTAL - 1)), TOTAL - 1);
+        if (prog) prog.style.width = (p * 100).toFixed(1) + '%';
+        if (i !== cur) { cur = i; draw(i); }
     }
 
     window.addEventListener('scroll', onScroll, { passive: true });
