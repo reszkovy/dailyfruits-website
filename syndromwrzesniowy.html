@@ -115,7 +115,7 @@ header .btn-red-solid { position: relative; overflow: hidden; box-shadow: 0 8px 
     header .nav-buttons { top: 12px; right: 12px; }
     header .nav-buttons .btn.btn-red-solid { display: inline-flex !important; padding: 12px 20px; font-size: 13px; } }
 /* delikatna poswiata u gory, zeby nawigacja czytala sie na jasnych klatkach */
-.scrub-sticky::after { content: ''; position: absolute; left: 0; right: 0; top: 0; height: 190px; z-index: 4; pointer-events: none; background: linear-gradient(to bottom, rgba(10,40,24,0.55), transparent); }
+.scrub-sticky::after { content: ''; position: absolute; left: 0; right: 0; top: 0; height: 190px; z-index: 4; pointer-events: none; background: linear-gradient(to bottom, var(--cream) 0%, rgba(255,249,224,0.72) 45%, transparent 100%); }
 .scrub-sticky::before { content: ''; position: absolute; left: 0; right: 0; bottom: var(--bar); height: 120px; z-index: 2; pointer-events: none; background: linear-gradient(to top, rgba(255,249,224,0.85), transparent); }
 
 /* ---------- SCROLL-SCRUB HERO ---------- */
@@ -314,7 +314,7 @@ header .btn-red-solid::before { animation-delay: 3.4s; }
     .scrub-grid { grid-template-columns: 1fr; grid-template-rows: 46% 54%; align-items: start; }
     .scrub-copy { padding-top: 92px; order: 2; }
     .scrub-stage { order: 1; }
-    .scrub-veil { background: linear-gradient(to bottom, transparent 40%, rgba(27,94,58,0.8) 78%, var(--green-dark) 100%); }
+    .scrub-veil { background: linear-gradient(to bottom, transparent 38%, rgba(255,249,224,0.82) 74%, var(--cream) 100%); }
     #zCanvas { object-position: center 40%; }
     .sym-grid { grid-template-columns: 1fr; }
     /* dwie kolumny: jedna ciagla os by sie rozjechala miedzy rzedami,
