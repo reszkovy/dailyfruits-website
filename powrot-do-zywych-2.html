@@ -188,7 +188,11 @@ header .btn-red-solid { position: relative; overflow: hidden; box-shadow: 0 8px 
 .prod-card h3 { font-weight: 800; font-size: 13px; line-height: 1.3; color: var(--green-dark); margin: 0; letter-spacing: -0.01em; }
 
 /* ---------- FORMULARZ KROKOWY ---------- */
-.form-sec { padding: 92px 0 100px; background: var(--cream); }
+.form-sec { padding: 92px 0 100px; background: var(--cream); position: relative; }
+/* Maskotka ze strony zapytania - siada na gornej krawedzi stopki. */
+.owocek { position: absolute; left: 50%; bottom: 0; transform: translateX(-50%); width: 132px; height: auto;
+    z-index: 3; pointer-events: none; filter: drop-shadow(0 10px 24px rgba(27,94,58,0.26)); }
+@media (max-width: 720px) { .owocek { width: 96px; } }
 .form-grid { max-width: 660px; margin: 0 auto; }
 .form-art { max-width: 620px; margin: 0 auto 40px; }
 /* Formularz wtopiony w sekcje, bez plywajacej karty. */
@@ -521,6 +525,7 @@ html.pt-in body>:not(header) { animation: ptFadeIn 0.32s ease both; }
             </div>
         </div>
     </div>
+    <img src="owocz.webp" alt="" class="owocek" width="800" height="600" loading="lazy">
 </section>
 
 <!--#include:footer-->
