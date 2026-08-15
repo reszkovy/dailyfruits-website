@@ -127,8 +127,10 @@ header .btn-red-solid { position: relative; overflow: hidden; box-shadow: 0 8px 
 #zLoader.gotowe { opacity: 0; visibility: hidden; pointer-events: none; }
 #zLoader .zl-napis { font-family: var(--font-fun); font-size: clamp(28px, 4vw, 46px); color: var(--green-dark); line-height: 1; }
 #zLoader .zl-tor { width: min(240px, 52vw); height: 6px; border-radius: 99px; background: rgba(27,94,58,0.16); overflow: hidden; }
+#zLoader .zl-pct { font-size: 12px; font-weight: 800; letter-spacing: .12em; opacity: .55; font-variant-numeric: tabular-nums; }
 #zLoader .zl-fill { display: block; height: 100%; width: 0; border-radius: 99px; background: var(--lime); transition: width .25s ease; }
-@media (prefers-reduced-motion: reduce) { #zLoader { transition: none; } #zLoader .zl-fill { transition: none; } }
+@media (prefers-reduced-motion: reduce) { #zLoader { transition: none; } #zLoader .zl-pct { font-size: 12px; font-weight: 800; letter-spacing: .12em; opacity: .55; font-variant-numeric: tabular-nums; }
+#zLoader .zl-fill { transition: none; } }
 
 /* ---------- SCROLL-SCRUB HERO ---------- */
 .scrub { position: relative; height: 100vh; background: var(--cream); }
@@ -446,6 +448,7 @@ html.pt-in body>:not(header) { animation: ptFadeIn 0.32s ease both; }
 <div id="zLoader" aria-hidden="true">
     <span class="zl-napis">Lądujemy</span>
     <span class="zl-tor"><span class="zl-fill" id="zlFill"></span></span>
+    <span class="zl-pct" id="zlPct">0%</span>
 </div>
 <!-- HERO ZE SCROLL-SCRUBEM -->
 <section class="scrub" id="scrub">
@@ -748,14 +751,17 @@ html.pt-in body>:not(header) { animation: ptFadeIn 0.32s ease both; }
     (function () {
         var loader = document.getElementById('zLoader');
         var fill = document.getElementById('zlFill');
+        var licznik = document.getElementById('zlPct');
         if (!loader) return;
-        var prog = Math.max(1, Math.ceil(TOTAL * 0.35));
+        var prog = Math.min(10, TOTAL);  // kilka pierwszych klatek wystarczy, reszta doleci w tle
         var gotowych = 0, zwolniony = false, kadrGotowy = false;
         // Sam licznik pobranych plikow nie wystarczyl - loader schodzil, zanim canvas
         // cokolwiek namalowal, i uzytkownik widzial czarna klatke.
         window.zlPierwszaKlatka = function () { kadrGotowy = true; odswiez(); };
         function odswiez() {
-            if (fill) fill.style.width = Math.min(100, Math.round(gotowych / prog * 100)) + '%';
+            var pct = Math.min(100, Math.round(gotowych / prog * 100));
+            if (fill) fill.style.width = pct + '%';
+            if (licznik) licznik.textContent = pct + '%';
             if (gotowych >= prog && kadrGotowy) zwolnij();
         }
         function zwolnij() {
@@ -765,7 +771,7 @@ html.pt-in body>:not(header) { animation: ptFadeIn 0.32s ease both; }
             loader.classList.add('gotowe');
         }
         window.zlKlatkaGotowa = function () { gotowych++; odswiez(); };
-        setTimeout(zwolnij, 8000);
+        setTimeout(zwolnij, 5000);
         odswiez();
     })();
 
@@ -786,16 +792,27 @@ html.pt-in body>:not(header) { animation: ptFadeIn 0.32s ease both; }
     // obrazek moze byc juz w cache (jest w <link rel=preload>) - wtedy onload nie odpali
     if (first.complete && first.naturalWidth) boot();
 
+    // Kolejka z ograniczona rownoleglioscia. Wczesniej szlo 96 zadan naraz i pierwsze
+    // klatki konkurowaly o lacze z ostatnimi - loader czekal na praktycznie cala sekwencje.
     function loadRest() {
-        for (var i = 1; i < TOTAL; i++) {
-            (function (idx) {
-                var img = new Image();
-                img.decoding = 'async';
-                img.onload = img.onerror = function () { if (window.zlKlatkaGotowa) window.zlKlatkaGotowa(); };
-                img.src = src(idx);
-                frames[idx] = img;
-            })(i);
+        var nast = 1, aktywne = 0, MAX = 6;
+        function pchaj() {
+            while (aktywne < MAX && nast < TOTAL) {
+                (function (n) {
+                    aktywne++;
+                    var img = new Image();
+                    img.decoding = 'async';
+                    img.onload = img.onerror = function () {
+                        aktywne--;
+                        if (window.zlKlatkaGotowa) window.zlKlatkaGotowa();
+                        pchaj();
+                    };
+                    img.src = src(n);
+                    frames[n] = img;
+                })(nast++);
+            }
         }
+        pchaj();
     }
 
     // ─── TWARDA BLOKADA SCROLLA: strona rusza dopiero po ostatniej klatce ───
