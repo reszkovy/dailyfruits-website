@@ -868,7 +868,12 @@ html.pt-in body>:not(header) { animation: ptFadeIn 0.32s ease both; }
 
     /* ---------- PARALAKSA ----------
        Kadr zostaje w tyle za strona, tekst wyprzedza - roznica predkosci daje glebie.
-       Liczone tylko dopoki hero jest w kadrze, transformem, wiec bez repaintow. */
+
+       UWAGA WYDAJNOSCIOWA: poprzednia wersja czytala getBoundingClientRect() skrzynki
+       w KAZDEJ klatce scrolla, tuz po zapisaniu transformow. Odczyt po zapisie wymusza
+       synchroniczny layout - zacinalo sie przez cala dlugosc strony, takze gdy hero
+       dawno zjechalo z ekranu. Teraz pozycja skrzynki jest cache'owana, a licza sie
+       tylko elementy faktycznie bedace w kadrze. */
     (function () {
         if (reduce) return;
         var stage = document.querySelector('.scrub-stage');
@@ -876,7 +881,18 @@ html.pt-in body>:not(header) { animation: ptFadeIn 0.32s ease both; }
         var offer = document.querySelector('.hero-offer');
         var box = document.querySelector('.hero-box img');
         if (!stage) return;
-        var pending = false;
+        var pending = false, boxTop = 0, boxH = 0, boxOk = false;
+
+        function zmierzSkrzynke() {
+            if (!box) return;
+            var poprzedni = box.style.transform;
+            box.style.transform = '';
+            var r = box.getBoundingClientRect();
+            boxTop = r.top + (window.pageYOffset || document.documentElement.scrollTop);
+            boxH = r.height;
+            boxOk = boxH > 0;
+            box.style.transform = poprzedni;
+        }
 
         function paint() {
             pending = false;
@@ -887,10 +903,10 @@ html.pt-in body>:not(header) { animation: ptFadeIn 0.32s ease both; }
                 if (copy) copy.style.transform = 'translateY(-40px) translate3d(0,' + (y * -0.14).toFixed(1) + 'px,0)';
                 if (offer) offer.style.transform = 'translate3d(0,' + (y * -0.08).toFixed(1) + 'px,0)';
             }
-            if (box) {
-                var r = box.getBoundingClientRect();
-                if (r.bottom > 0 && r.top < vh) {
-                    var t = (r.top + r.height / 2 - vh / 2) / vh;
+            if (boxOk) {
+                var gora = boxTop - y;
+                if (gora + boxH > 0 && gora < vh) {
+                    var t = (gora + boxH / 2 - vh / 2) / vh;
                     box.style.transform = 'translate3d(0,' + (t * -18).toFixed(1) + 'px,0)';
                 }
             }
@@ -899,6 +915,14 @@ html.pt-in body>:not(header) { animation: ptFadeIn 0.32s ease both; }
         window.addEventListener('scroll', function () {
             if (!pending) { pending = true; requestAnimationFrame(paint); }
         }, { passive: true });
+
+        var przemiar;
+        window.addEventListener('resize', function () {
+            clearTimeout(przemiar);
+            przemiar = setTimeout(function () { zmierzSkrzynke(); paint(); }, 150);
+        }, { passive: true });
+        if (box) { if (box.complete) zmierzSkrzynke(); else box.addEventListener('load', function () { zmierzSkrzynke(); paint(); }); }
+        window.addEventListener('load', function () { zmierzSkrzynke(); paint(); });
         paint();
     })();
     if (!reduce) { window.scrollTo(0, 0); lock(); } else { setIdx(TOTAL - 1); }
