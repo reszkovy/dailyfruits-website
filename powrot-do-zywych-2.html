@@ -97,13 +97,14 @@ header .logo-sub { text-shadow: 0 1px 8px rgba(0,0,0,0.4); }
 header .btn-red-solid { box-shadow: 0 8px 22px rgba(0,0,0,0.34); }
 /* delikatna poswiata u gory, zeby nawigacja czytala sie na jasnych klatkach */
 .scrub-sticky::after { content: ''; position: absolute; left: 0; right: 0; top: 0; height: 190px; z-index: 4; pointer-events: none; background: linear-gradient(to bottom, rgba(10,40,24,0.55), transparent); }
-.scrub-sticky::before { content: ''; position: absolute; left: 0; right: 0; bottom: var(--bar); height: 120px; z-index: 5; pointer-events: none; background: linear-gradient(to top, rgba(10,40,24,0.55), transparent); }
+.scrub-sticky::before { content: ''; position: absolute; left: 0; right: 0; bottom: var(--bar); height: 120px; z-index: 2; pointer-events: none; background: linear-gradient(to top, rgba(10,40,24,0.55), transparent); }
 
 /* ---------- SCROLL-SCRUB HERO ---------- */
 .scrub { position: relative; height: 100vh; background: var(--green-dark); }
 .scrub-sticky { position: relative; height: 100vh; overflow: hidden; --bar: 92px; }
 .scrub-grid { position: relative; z-index: 3; height: calc(100% - var(--bar)); display: grid; grid-template-columns: 47% 53%; align-items: center; }
 .scrub-copy { padding: 150px clamp(28px, 4vw, 72px) 0; position: relative; z-index: 3; transform: translateY(-40px); }
+.scrub-copy-par { will-change: transform; }
 .c-badge { display: inline-block; background: var(--coral); color: #fff; font-size: 12px; font-weight: 900; letter-spacing: 0.1em; text-transform: uppercase; padding: 9px 18px; border-radius: var(--radius-pill); transform: rotate(-2deg); box-shadow: 2px 3px 0 rgba(0,0,0,0.18); margin-bottom: 28px; }
 .kicker { font-size: clamp(11px, 0.95vw, 13px); font-weight: 900; letter-spacing: .18em; text-transform: uppercase; color: var(--lime); margin: 0 0 16px; }
 .scrub-copy h1 { margin: 0 0 26px; letter-spacing: -0.035em; }
@@ -123,7 +124,7 @@ header .btn-red-solid { box-shadow: 0 8px 22px rgba(0,0,0,0.34); }
 .scrub-hint { margin: 0; font-size: 13px; letter-spacing: 0.02em; color: rgba(255,249,224,0.6); display: flex; align-items: center; gap: 9px; }
 .scrub-hint i { display: block; width: 1px; height: 22px; background: linear-gradient(to bottom, rgba(255,249,224,0.55), transparent); animation: hintDrop 1.8s ease-in-out infinite; }
 @keyframes hintDrop { 0%,100% { transform: translateY(0); opacity: .8 } 50% { transform: translateY(7px); opacity: .3 } }
-.scrub-stage { position: absolute; inset: 0 0 var(--bar) 0; z-index: 1; overflow: hidden; }
+.scrub-stage { position: absolute; inset: 0 0 var(--bar) 0; z-index: 1; overflow: hidden; will-change: transform; }
 #zCanvas { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 68% center; display: block; }
 .scrub-veil { position: absolute; inset: 0 0 var(--bar) 0; z-index: 2; pointer-events: none;
     background: linear-gradient(to right, var(--green-dark) 0%, var(--green-dark) 20%, rgba(27,94,58,0.90) 30%, rgba(27,94,58,0.58) 40%, rgba(27,94,58,0.26) 50%, rgba(27,94,58,0.08) 57%, transparent 64%); }
@@ -158,9 +159,10 @@ header .btn-red-solid { box-shadow: 0 8px 22px rgba(0,0,0,0.34); }
 
 /* ---------- CO LADUJE NA BIURKU ---------- */
 .hero-box { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 30px 44px; align-items: center; background: var(--cream); border-radius: var(--radius-lg); padding: 40px 44px 34px; }
+.hero-box > div:first-child { overflow: hidden; border-radius: var(--radius); }
 .hero-box-foot { grid-column: 1 / -1; padding-top: 26px; border-top: 1px dashed rgba(27,94,58,0.18); }
 .foot-lead { font-size: 12px; font-weight: 900; letter-spacing: .14em; text-transform: uppercase; color: rgba(27,94,58,0.55); margin: 0; }
-.hero-box img { width: 100%; height: auto; display: block; filter: drop-shadow(0 20px 40px rgba(27,94,58,0.16)); }
+.hero-box img { will-change: transform; width: 100%; height: auto; display: block; filter: drop-shadow(0 20px 40px rgba(27,94,58,0.16)); }
 .hero-box .tag { display: inline-block; font-size: 11px; font-weight: 900; letter-spacing: .14em; text-transform: uppercase; color: var(--coral); margin-bottom: 12px; }
 .hero-box h3 { font-weight: 900; font-size: clamp(22px, 2.4vw, 32px); color: var(--green-dark); letter-spacing: -0.03em; line-height: 1.12; margin-bottom: 12px; }
 .hero-box h3 .fun { font-family: var(--font-fun); font-weight: 400; color: var(--lime); font-size: 1.06em; }
@@ -179,9 +181,10 @@ header .btn-red-solid { box-shadow: 0 8px 22px rgba(0,0,0,0.34); }
 
 /* ---------- FORMULARZ KROKOWY ---------- */
 .form-sec { padding: 92px 0 100px; background: var(--cream); }
-.form-grid { max-width: 620px; margin: 0 auto; }
+.form-grid { max-width: 660px; margin: 0 auto; }
 .form-art { max-width: 620px; margin: 0 auto 40px; }
-.form-wrap { background: var(--white); border-radius: var(--radius-lg); padding: 30px 30px 26px; box-shadow: 0 18px 50px rgba(27,94,58,0.10); }
+/* Formularz wtopiony w sekcje, bez plywajacej karty. */
+.form-wrap { background: transparent; padding: 0; }
 .form-wrap iframe { width: 100%; border: none; display: block; min-height: 420px; }
 .form-fallback { margin-top: 20px; padding: 16px 20px; background: rgba(141,198,63,0.14); border-radius: 14px; font-size: 14.5px; line-height: 1.6; text-align: center; }
 .form-fallback a { font-weight: 900; color: var(--green-dark); }
@@ -342,7 +345,7 @@ html.pt-in body>:not(header) { animation: ptFadeIn 0.32s ease both; }
             </div>
             <div></div>
         </div>
-        <p class="hero-offer"><b>Pierwsza dostawa gratis.</b><br>Zamów do końca sierpnia, żeby wrzesień ruszył z pełną kuchnią.</p>
+        <p class="hero-offer"><b>Pierwsza dostawa w sierpniu gratis.</b><br>Zamów teraz, a wrzesień ruszy z pełną kuchnią.</p>
         <div class="energy" aria-hidden="true">
             <span class="energy-lab l">Biurowe zombie</span>
             <span class="energy-track"><span class="energy-fill" id="zProg"></span></span>
@@ -468,7 +471,7 @@ html.pt-in body>:not(header) { animation: ptFadeIn 0.32s ease both; }
     <div class="container">
         <div class="sec-head">
             <h2>Pozbądź się biurowych <span class="fun">zombie</span></h2>
-            <p>Powiedz nam, ile macie osób i czego potrzebujecie. Resztę przygotujemy po naszej stronie — pierwsza dostawa gratis.</p>
+            <p>Powiedz nam, ile macie osób i czego potrzebujecie. Resztę przygotujemy po naszej stronie — pierwsza dostawa w sierpniu gratis.</p>
         </div>
         <div class="form-art">
             <div class="slider-frame" id="revive" style="--pos:50%">
@@ -676,6 +679,42 @@ html.pt-in body>:not(header) { animation: ptFadeIn 0.32s ease both; }
     }, { passive: true });
 
     function onScroll() { /* blokada zastapila scrub scrollem */ }
+
+    /* ---------- PARALAKSA ----------
+       Kadr zostaje w tyle za strona, tekst wyprzedza - roznica predkosci daje glebie.
+       Liczone tylko dopoki hero jest w kadrze, transformem, wiec bez repaintow. */
+    (function () {
+        if (reduce) return;
+        var stage = document.querySelector('.scrub-stage');
+        var copy = document.querySelector('.scrub-copy');
+        var offer = document.querySelector('.hero-offer');
+        var box = document.querySelector('.hero-box img');
+        if (!stage) return;
+        var pending = false;
+
+        function paint() {
+            pending = false;
+            var y = window.pageYOffset || document.documentElement.scrollTop;
+            var vh = window.innerHeight;
+            if (y < vh * 1.2) {
+                stage.style.transform = 'translate3d(0,' + (y * 0.28).toFixed(1) + 'px,0)';
+                if (copy) copy.style.transform = 'translateY(-40px) translate3d(0,' + (y * -0.14).toFixed(1) + 'px,0)';
+                if (offer) offer.style.transform = 'translate3d(0,' + (y * -0.08).toFixed(1) + 'px,0)';
+            }
+            if (box) {
+                var r = box.getBoundingClientRect();
+                if (r.bottom > 0 && r.top < vh) {
+                    var t = (r.top + r.height / 2 - vh / 2) / vh;
+                    box.style.transform = 'translate3d(0,' + (t * -22).toFixed(1) + 'px,0) scale(1.06)';
+                }
+            }
+        }
+
+        window.addEventListener('scroll', function () {
+            if (!pending) { pending = true; requestAnimationFrame(paint); }
+        }, { passive: true });
+        paint();
+    })();
     if (!reduce) { window.scrollTo(0, 0); lock(); } else { setIdx(TOTAL - 1); }
 })();
 </script>
