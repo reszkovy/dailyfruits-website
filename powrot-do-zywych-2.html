@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<!--#include:gtm-head-->
+<!-- Google Tag Manager -->
+<!-- Consent Mode v2: domyslnie denied do czasu zgody (RODO/ePrivacy) — MUSI byc przed tagami -->
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('consent','default',{'ad_storage':'denied','analytics_storage':'denied','ad_user_data':'denied','ad_personalization':'denied','functionality_storage':'granted','security_storage':'granted','wait_for_update':500});
+gtag('js', new Date());
+gtag('config', 'G-G9SCYSFC36');
+</script>
+<!-- Usercentrics NATYCHMIAST (osobno od lazy-GTM): baner zgod pojawia sie od razu
+     (RODO) i maluje sie wczesnie = stabilne LCP (pozny render banera psul metryke).
+     Loader ma guard po id - gdy GTM tez go wstrzyknie, drugi raz sie nie zaladuje. -->
+<link rel="preconnect" href="https://web.cmp.usercentrics.eu" crossorigin>
+<link rel="preconnect" href="https://v1.api.service.cmp.usercentrics.eu" crossorigin>
+<script id="usercentrics-cmp" src="https://web.cmp.usercentrics.eu/ui/loader.js" data-settings-id="JcLfBYv2MWoHnQ" async fetchpriority="high"></script>
+<!-- Lazy-start analityki (perf): GTM x2 + GA4 startuja przy PIERWSZEJ interakcji
+     uzytkownika (mousemove/scroll/touch/klawisz) albo najpozniej po 2.5 s.
+     Realny user: praktycznie natychmiast. Lab (LCP): poza oknem krytycznym.
+     Consent mode i kolejnosc zdarzen bez zmian (dataLayer kolejkuje polecenia). -->
+<script>
+(function(){
+  var done=false;
+  function loadAnalytics(){
+    if(done)return; done=true;
+    ['GTM-FVTBKWW','GTM-5B7HN67B'].forEach(function(id){
+      window.dataLayer.push({'gtm.start':new Date().getTime(),event:'gtm.js'});
+      var f=document.getElementsByTagName('script')[0],j=document.createElement('script');
+      j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+id;
+      f.parentNode.insertBefore(j,f);
+    });
+    var g=document.createElement('script');
+    g.async=true;g.src='https://www.googletagmanager.com/gtag/js?id=G-G9SCYSFC36';
+    document.head.appendChild(g);
+  }
+  ['pointerdown','keydown','touchstart','scroll','mousemove'].forEach(function(e){
+    window.addEventListener(e,loadAnalytics,{once:true,passive:true});
+  });
+  setTimeout(loadAnalytics,2500);
+})();
+</script>
+<!-- End Google Tag Manager -->
+<!-- Microsoft Clarity - blokowany do zgody przez Usercentrics.
+     type="text/plain" + data-usercentrics="Microsoft Clarity": skrypt NIE wykonuje sie,
+     dopoki CMP nie dostanie zgody na usluge "Microsoft Clarity" (wtedy UC przelacza typ i odpala).
+     WYMAGANE w panelu Usercentrics: usluga "Microsoft Clarity" o nazwie dokladnie zgodnej z data-usercentrics. -->
+<script type="text/plain" data-usercentrics="Microsoft Clarity">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "xi2vatfga7");
+</script>
+<!-- End Microsoft Clarity -->
+<!--#endinclude:gtm-head-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Powrót do żywych - wrzesień w biurze | DailyFruits</title>
+    <meta name="description" content="68% pracuje mniej efektywnie, gdy odczuwa głód. Zobacz, co zmienia skrzynka owoców na biurku - przewiń i obudź biuro.">
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="canonical" href="https://dailyfruits.pl/powrot-do-zywych-2">
+    <meta property="og:title" content="Powrót do biur. Powrót do żywych.">
+    <meta property="og:description" content="68% pracuje mniej efektywnie, gdy odczuwa głód. Przewiń i obudź biuro.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://dailyfruits.pl/powrot-do-zywych-2">
+    <meta property="og:image" content="https://dailyfruits.pl/frames-zywi/z0096.webp">
+    <link rel="icon" type="image/png" href="favicon_.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" as="image" href="frames-zywi/z0000.webp">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700;900&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700;900&display=swap" rel="stylesheet"></noscript>
+    <link rel="stylesheet" href="shared.css?v=13">
+<style>
+@font-face { font-family: 'Achiko'; src: url('Achiko.woff2') format('woff2'), url('Achiko.ttf') format('truetype'); font-weight: 400; font-display: swap; }
+:root {
+    --green-dark: #1B5E3A; --lime: #8DC63F; --lime-light: #A4C348; --lime-bg: #FFF9E0;
+    --yellow: #FFF200; --yellow-bg: #FFF8D8; --red: #E43020; --coral: #F06878;
+    --cream: #FFF9E0; --white: #FFFFFF; --gray: #3D5A1E; --gray-500: #555;
+    --radius: 20px; --radius-lg: 28px; --radius-pill: 100px;
+    --font: 'DM Sans', sans-serif; --font-fun: 'Achiko', 'Lobster', cursive;
+}
+/* ---------- SCROLL-SCRUB HERO ---------- */
+.scrub { position: relative; height: 340vh; background: var(--green-dark); }
+.scrub-sticky { position: sticky; top: 0; height: 100vh; overflow: hidden; }
+.scrub-grid { height: 100%; display: grid; grid-template-columns: 42% 58%; align-items: center; }
+.scrub-copy { padding: 0 clamp(28px, 4vw, 72px); position: relative; z-index: 3; }
+.c-badge { display: inline-block; background: var(--coral); color: #fff; font-size: 12px; font-weight: 900; letter-spacing: 0.1em; text-transform: uppercase; padding: 9px 18px; border-radius: var(--radius-pill); transform: rotate(-2deg); box-shadow: 2px 3px 0 rgba(0,0,0,0.18); margin-bottom: 22px; }
+.scrub-copy h1 { margin: 0 0 20px; letter-spacing: -0.035em; }
+.scrub-copy h1 .l1 { display: block; font-family: var(--font-fun); font-weight: 400; font-size: clamp(34px, 3.6vw, 62px); line-height: 1; color: var(--lime); }
+.scrub-copy h1 .l2 { display: block; font-weight: 900; font-size: clamp(30px, 3.2vw, 55px); line-height: 1.04; color: var(--cream); margin-top: 4px; }
+.scrub-copy .lead { font-size: clamp(15.5px, 1.15vw, 18px); line-height: 1.6; color: rgba(255,249,224,0.82); max-width: 30ch; margin-bottom: 26px; }
+.scrub-copy .lead b { color: var(--cream); font-weight: 900; }
+.btn-feed { background: var(--red); color: #fff; font-weight: 900; font-size: 16px; padding: 15px 30px; border-radius: var(--radius-pill); display: inline-block; transition: transform 0.25s, box-shadow 0.25s; box-shadow: 0 8px 22px rgba(228,48,32,0.32); }
+.btn-feed:hover { transform: translateY(-2px); box-shadow: 0 12px 28px rgba(228,48,32,0.42); }
+.scrub-hint { margin-top: 26px; font-size: 13px; letter-spacing: 0.02em; color: rgba(255,249,224,0.55); display: flex; align-items: center; gap: 9px; }
+.scrub-hint i { display: block; width: 1px; height: 26px; background: linear-gradient(to bottom, rgba(255,249,224,0.55), transparent); animation: hintDrop 1.8s ease-in-out infinite; }
+@keyframes hintDrop { 0%,100% { transform: translateY(0); opacity: .8 } 50% { transform: translateY(7px); opacity: .3 } }
+.scrub-stage { height: 100%; position: relative; overflow: hidden; }
+#zCanvas { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 62% center; display: block; }
+.scrub-stage::before { content: ''; position: absolute; inset: 0; z-index: 2; pointer-events: none; background: linear-gradient(to right, var(--green-dark) 0%, rgba(27,94,58,0.55) 14%, transparent 42%); }
+.scrub-prog { position: absolute; left: 0; bottom: 0; height: 3px; background: var(--lime); z-index: 4; width: 0; }
+/* ---------- SEKCJE ---------- */
+.sec { padding: 96px 0; }
+.sec-cream { background: var(--cream); }
+.sec-white { background: var(--white); }
+.sec-head { text-align: center; margin-bottom: 54px; }
+.sec-head h2 { font-weight: 900; font-size: clamp(28px, 3vw, 42px); color: var(--green-dark); letter-spacing: -0.04em; margin-bottom: 12px; }
+.sec-head h2 .fun { font-family: var(--font-fun); font-weight: 400; color: var(--lime); font-size: 1.06em; }
+.sec-head p { font-size: 16px; color: var(--gray-500); max-width: 560px; margin: 0 auto; }
+.sym-grid { display: grid; grid-template-columns: repeat(3, 1fr); column-gap: 44px; }
+.sym { position: relative; padding: 30px 0 0; border-top: 2px dashed rgba(27,94,58,0.2); }
+.sym .n { position: absolute; top: -18px; left: -14px; font-family: var(--font-fun); font-size: clamp(66px, 6vw, 96px); line-height: 0.8; color: rgba(240,104,120,0.32); z-index: 0; }
+.sym .b { position: relative; z-index: 1; padding: 26px 0 0 34px; }
+.sym h3 { font-weight: 800; font-size: 19px; color: var(--green-dark); margin-bottom: 7px; letter-spacing: -0.02em; }
+.sym p { font-size: 15px; line-height: 1.6; color: var(--gray-500); margin: 0; }
+.cure-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+.cure-card { background: var(--white); border-radius: var(--radius); padding: 28px 26px 30px; border: 1px solid rgba(27,94,58,0.08); transition: transform 0.3s cubic-bezier(0.16,1,0.3,1), box-shadow 0.3s; }
+.cure-card:hover { transform: translateY(-5px); box-shadow: 0 16px 40px rgba(27,94,58,0.12); }
+.cure-card .day { font-family: var(--font-fun); font-size: 24px; color: var(--lime); display: block; margin-bottom: 10px; }
+.cure-card h3 { font-weight: 800; font-size: 17px; color: var(--green-dark); margin-bottom: 8px; letter-spacing: -0.02em; }
+.cure-card p { font-size: 14.5px; line-height: 1.6; color: var(--gray-500); margin: 0; }
+.proof { padding: 84px 0; background: var(--green-dark); }
+.proof-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 26px; text-align: center; }
+.proof-item b { display: block; font-family: var(--font-fun); font-size: clamp(38px, 4.4vw, 58px); line-height: 1; color: var(--lime); margin-bottom: 10px; }
+.proof-item span { font-size: 14px; line-height: 1.5; color: rgba(255,249,224,0.75); display: block; }
+.c-cta { padding: 92px 0 104px; background: var(--cream); text-align: center; }
+.c-cta h2 { font-weight: 900; font-size: clamp(30px, 3.6vw, 48px); color: var(--green-dark); letter-spacing: -0.04em; margin-bottom: 14px; }
+.c-cta h2 .fun { font-family: var(--font-fun); font-weight: 400; color: var(--lime); font-size: 1.06em; }
+.c-cta p { font-size: 17px; color: var(--gray-500); max-width: 520px; margin: 0 auto 30px; line-height: 1.6; }
+.c-cta .row { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+.c-note { margin-top: 26px; font-size: 13px; color: rgba(27,94,58,0.55); }
+@media (max-width: 1000px) {
+    .scrub { height: 300vh; }
+    .scrub-grid { grid-template-columns: 1fr; grid-template-rows: 46% 54%; align-items: start; }
+    .scrub-copy { padding-top: 92px; order: 2; }
+    .scrub-stage { order: 1; }
+    .scrub-stage::before { background: linear-gradient(to bottom, transparent 45%, rgba(27,94,58,0.75) 82%, var(--green-dark) 100%); }
+    #zCanvas { object-position: center 40%; }
+    .sym-grid { grid-template-columns: 1fr; column-gap: 0; }
+    .cure-grid { grid-template-columns: 1fr 1fr; }
+    .proof-grid { grid-template-columns: repeat(2, 1fr); gap: 34px 20px; }
+}
+@media (max-width: 720px) {
+    .container { padding: 0 20px; }
+    .cure-grid { grid-template-columns: 1fr; }
+    .scrub-copy h1 .l1 { font-size: 30px; }
+    .scrub-copy h1 .l2 { font-size: 27px; }
+}
+@media (prefers-reduced-motion: reduce) { .scrub-hint i { animation: none; } .btn-feed, .cure-card { transition: none !important; } }
+html.pt-out body>:not(header) { opacity: 0 !important; transition: opacity 0.18s ease !important; }
+html.pt-in body>:not(header) { animation: ptFadeIn 0.32s ease both; }
+@keyframes ptFadeIn { from { opacity: 0; } to { opacity: 1; } }
+@media (prefers-reduced-motion: reduce) {
+    html.pt-out body>:not(header) { opacity: 1 !important; transition: none !important; }
+    html.pt-in body>:not(header) { animation: none; }
+}
+@media (max-width: 768px) {
+    .nav-inner { padding: 10px 20px !important; }
+    .logo-img { height: 38px !important; width: auto !important; }
+    .logo-wrap { flex-direction: row !important; gap: 8px !important; align-items: center !important; }
+    .logo-sub { display: inline-block !important; border-left: 1px solid rgba(255,255,255,0.25) !important; padding-left: 8px !important; margin: 0 !important; font-size: 8px !important; align-self: center !important; opacity: 0.6 !important; }
+    .nav-links, .nav-trust { display: none !important; }
+}
+</style>
+</head>
+<body>
+<!--#include:gtm-noscript-->
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-FVTBKWW" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5B7HN67B" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<!--#endinclude:gtm-noscript-->
+
+<!-- NAV -->
+<header>
+    <div class="nav-inner">
+        <div class="logo-wrap"><a href="/"><picture><source media="(max-width: 768px)" srcset="animacja_11-lime.svg"><img src="fruitttt.svg" alt="DailyFruits - owoce, kanapki, soki, przekąski i więcej do biura" class="logo-img" loading="eager" fetchpriority="high" width="64" height="64"></picture></a><span class="logo-sub">by BetterWorkplace</span></div>
+        <nav><ul class="nav-links">
+            <li><a href="oferta">Oferta</a></li>
+            <li><a href="dostawa">Dostawa</a></li>
+            <li><a href="o-nas">O nas</a></li>
+            <li><a href="blog">Blog</a></li><li><a href="kontakt">Kontakt</a></li>
+        </ul></nav>
+        <div class="nav-buttons">
+            <span class="nav-trust">Zaufało nam ponad<br>2 500 firm w Polsce</span>
+            <a href="zapytanie" class="btn btn-nav-cta">Zapytanie</a>
+            <button class="mn-burger" id="mnBurger" aria-label="Menu"><i></i><i></i><i></i></button>
+        </div>
+    </div>
+</header>
+
+<!--#include:mobile-menu-->
+<div id="mnOverlay">
+    <nav class="mn-links">
+        <a href="/oferta" class="mn-link">Oferta</a>
+        <a href="/dostawa" class="mn-link">Dostawa</a>
+        <a href="/o-nas" class="mn-link">O nas</a>
+        <a href="/blog" class="mn-link">Blog</a>
+        <a href="/kontakt" class="mn-link">Kontakt</a>
+        <a href="/zapytanie" class="mn-cta">Zapytanie →</a>
+    </nav>
+</div>
+<!--#endinclude:mobile-menu-->
+
+<!-- HERO ZE SCROLL-SCRUBEM -->
+<section class="scrub" id="scrub">
+    <div class="scrub-sticky">
+        <div class="scrub-grid">
+            <div class="scrub-copy">
+                <div class="c-badge">Wrzesień 2026</div>
+                <h1>
+                    <span class="l1">Powrót do biur.</span>
+                    <span class="l2">Powrót do żywych.</span>
+                </h1>
+                <p class="lead"><b>68% pracuje mniej efektywnie, gdy odczuwa głód.</b> Wrzesień to moment, w którym widać to najmocniej.</p>
+                <a href="zapytanie" class="btn-feed">Nakarm zespół →</a>
+                <p class="scrub-hint"><i></i> Przewiń i obudź biuro</p>
+            </div>
+            <div class="scrub-stage">
+                <canvas id="zCanvas" aria-label="Biuro budzi się do życia, gdy na biurku pojawia się skrzynka owoców"></canvas>
+                <div class="scrub-prog" id="zProg"></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- OBJAWY -->
+<section class="sec sec-cream">
+    <div class="container">
+        <div class="sec-head">
+            <h2>Znasz te <span class="fun">objawy</span></h2>
+            <p>Nie, to nie jest wina zespołu. To kwestia paliwa, które kończy się dokładnie w połowie dnia.</p>
+        </div>
+        <div class="sym-grid">
+            <div class="sym reveal">
+                <span class="n" aria-hidden="true">01</span>
+                <div class="b">
+                    <h3>Puste spojrzenie po 14:00</h3>
+                    <p>Spotkanie trwa, ale nikt nie wnosi nowego wątku. Cukier z lunchu już opadł, kolejny posiłek dopiero po pracy.</p>
+                </div>
+            </div>
+            <div class="sym reveal">
+                <span class="n" aria-hidden="true">02</span>
+                <div class="b">
+                    <h3>Czwarta kawa przed lunchem</h3>
+                    <p>Kawa nie jest problemem. Problemem jest to, że pracuje sama, bez żadnego jedzenia obok.</p>
+                </div>
+            </div>
+            <div class="sym reveal">
+                <span class="n" aria-hidden="true">03</span>
+                <div class="b">
+                    <h3>Lodówka pełna niczego</h3>
+                    <p>50% pracowników mówi, że w pracy trudno im się zdrowo odżywiać. Wybór to zwykle automat albo nic.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- KURACJA -->
+<section class="sec sec-white">
+    <div class="container">
+        <div class="sec-head">
+            <h2>Cztery tygodnie, cztery <span class="fun">rytualy</span></h2>
+            <p>Wrzesień z gotowym planem. Każdy tydzień ma swój moment, wokół którego zbiera się zespół.</p>
+        </div>
+        <div class="cure-grid">
+            <div class="cure-card reveal">
+                <span class="day">Tydzien 1</span>
+                <h3>Owocowe Czwartki</h3>
+                <p>Skrzynka ląduje w kuchni w czwartek rano. Po dwóch tygodniach ludzie sami pytają, czy już przyjechała.</p>
+            </div>
+            <div class="cure-card reveal">
+                <span class="day">Tydzien 2</span>
+                <h3>Kanapkowe Wtorki</h3>
+                <p>Śniadanie w biurze zamiast pominiętego posiłku w biegu. Najprostszy sposób na start dnia bez deficytu.</p>
+            </div>
+            <div class="cure-card reveal">
+                <span class="day">Tydzien 3</span>
+                <h3>Przekąski na popołudnie</h3>
+                <p>Bakalie i orzechy dokładnie tam, gdzie wcześniej był automat z batonami. Zjazd energii przestaje boleć.</p>
+            </div>
+            <div class="cure-card reveal">
+                <span class="day">Tydzien 4</span>
+                <h3>Firmowy Dzień Zdrowia</h3>
+                <p>Dietetyk, degustacja, rozmowa o tym, co realnie działa. Rytuał zamienia się w kulturę.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- DOWODY -->
+<section class="proof">
+    <div class="container">
+        <div class="proof-grid">
+            <div class="proof-item"><b>81%</b><span>potwierdza poprawę wellbeingu po 3 miesiącach</span></div>
+            <div class="proof-item"><b>2000+</b><span>firm w Polsce już to wdrożyło</span></div>
+            <div class="proof-item"><b>13</b><span>miast z regularną dostawą własną</span></div>
+            <div class="proof-item"><b>24 h</b><span>od zamówienia do pierwszej skrzynki</span></div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA -->
+<section class="c-cta">
+    <div class="container">
+        <h2>Obudź swoje <span class="fun">biuro</span></h2>
+        <p>Powiedz nam, ile macie osób i czego potrzebujecie. Resztę przygotujemy po naszej stronie — pierwsza dostawa gratis.</p>
+        <div class="row">
+            <a href="zapytanie" class="btn-feed">Nakarm zespół →</a>
+            <a href="oferta" class="btn btn-outline">Zobacz ofertę →</a>
+        </div>
+        <p class="c-note">Odpowiadamy w 24 godziny. Bez zobowiązań, bez kruczków.</p>
+    </div>
+</section>
+
+<!--#include:footer-->
+<footer>
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <div style="display:flex;align-items:center;gap:16px;">
+                    <img src="fruitttt.svg" alt="DailyFruits logo" style="height:56px;filter:brightness(10);" loading="lazy" width="56" height="56">
+                    <img src="dailyfoods-logo.svg" alt="DailyFoods" style="height:56px;" loading="lazy" width="64" height="64">
+                </div>
+                <p>Zdrowsze jedzenie, lepsza praca - zaczynając od kuchni. Część ekosystemu BetterWorkplace.</p>
+            </div>
+            <div class="footer-col"><h3>Nawigacja</h3><ul><li><a href="/">Start</a></li><li><a href="oferta">Oferta</a></li><li><a href="dostawa">Dostawa</a></li><li><a href="o-nas">O nas</a></li><li><a href="blog">Blog</a></li><li><a href="kontakt">Kontakt</a></li><li><a href="dostawcy">Dostawcy</a></li><li><a href="pomagamy">Pomagamy</a></li><li><a href="zapytanie">Zapytanie</a></li><li><a href="faq">FAQ</a></li></ul></div>
+            <div class="footer-col"><h3>Oferta</h3><ul><li><a href="kanapki-do-biura">Kanapki do biura</a></li><li><a href="catering-firmowy">Catering firmowy</a></li><li><a href="programy-zywieniowe">Programy żywieniowe</a></li><li><a href="oferta">DailyFruits</a></li><li><a href="oferta">DailyFoods</a></li><li><a href="upominki-dla-pracownikow">Upominki dla pracowników</a></li><li><a href="paczki-dla-pracownikow-zdalnych">Paczki - praca zdalna</a></li><li><a href="paczki-dla-dzieci-pracownikow">Paczki dla dzieci</a></li><li><a href="dailyfruits-welcome-pack">Welcome Pack</a></li></ul></div>
+            <div class="footer-col"><h3>Kontakt</h3><ul><li><a href="mailto:zapytania@betterworkplace.pl">zapytania@betterworkplace.pl</a></li><li><p>tel: <a href="tel:+48228680499">22 868 04 99</a></p></li></ul><h3 class="mt-20">Dane firmy</h3><ul><li><p>Betterworkplace Sp. z&nbsp;o.o.</p></li><li><p>ul. Modułowa 3, 05-090 Raszyn</p></li><li><p>NIP: 6793077034</p></li><li><p>REGON: 122432943</p></li></ul></div>
+        </div>
+        <div class="footer-bottom">
+            <a href="otwarte-innowacje" title="Fundusze Europejskie - projekty współfinansowane przez UE" style="display:inline-block;background:#fff;padding:10px 16px;border-radius:8px;margin-bottom:16px;"><img src="ue-pasek.webp" alt="Fundusze Europejskie, Rzeczpospolita Polska, ARP, Unia Europejska" style="max-width:320px;width:100%;height:auto;display:block;" loading="lazy" width="1400" height="190"></a><br><p style="margin-bottom:8px;"><a class="link-faint" href="polityka-prywatnosci">Polityka prywatności</a> · <a class="link-faint" href="regulamin">Regulamin</a></p>
+            <p style="color:var(--cream)">&copy; 2026 DailyFruits by BetterWorkplace Sp. z&nbsp;o.o. Wszystkie prawa zastrzeżone.</p>
+            <p style="color:var(--cream);opacity:.55;font-size:12px;margin-top:6px;">Przy tworzeniu materiałów graficznych na stronie zostały użyte narzędzia korzystające ze sztucznej inteligencji.</p>
+        </div>
+    </div>
+</footer>
+<!--#endinclude:footer-->
+
+<script>
+/* ─── SCROLL-SCRUB: biuro budzi sie wraz ze scrollem ─── */
+(function () {
+    var canvas = document.getElementById('zCanvas');
+    var sec = document.getElementById('scrub');
+    var prog = document.getElementById('zProg');
+    if (!canvas || !sec) return;
+
+    var ctx = canvas.getContext('2d', { alpha: false });
+    var TOTAL = 97;
+    var frames = new Array(TOTAL);
+    var cur = -1;
+    var ready = false;
+
+    function pad(n) { return String(n).padStart(4, '0'); }
+    function src(i) { return 'frames-zywi/z' + pad(i) + '.webp'; }
+
+    function sizeCanvas(img) {
+        var dpr = Math.min(window.devicePixelRatio || 1, 2);
+        var r = canvas.getBoundingClientRect();
+        canvas.width = Math.round(r.width * dpr);
+        canvas.height = Math.round(r.height * dpr);
+    }
+
+    function draw(i) {
+        var f = frames[i];
+        if (!f || !f.complete || !f.naturalWidth) return;
+        var cw = canvas.width, ch = canvas.height;
+        var s = Math.max(cw / f.naturalWidth, ch / f.naturalHeight);
+        var w = f.naturalWidth * s, h = f.naturalHeight * s;
+        var ox = (cw - w) * 0.62, oy = (ch - h) * 0.5;
+        ctx.drawImage(f, ox, oy, w, h);
+    }
+
+    // pierwsza klatka natychmiast, reszta w tle
+    var first = new Image();
+    first.src = src(0);
+    first.onload = function () { frames[0] = first; sizeCanvas(first); ready = true; draw(0); loadRest(); };
+
+    function loadRest() {
+        for (var i = 1; i < TOTAL; i++) {
+            (function (idx) {
+                var img = new Image();
+                img.decoding = 'async';
+                img.src = src(idx);
+                frames[idx] = img;
+            })(i);
+        }
+    }
+
+    var ticking = false;
+    function onScroll() {
+        if (!ready || ticking) return;
+        ticking = true;
+        requestAnimationFrame(function () {
+            ticking = false;
+            var r = sec.getBoundingClientRect();
+            var span = sec.offsetHeight - window.innerHeight;
+            var p = span > 0 ? (-r.top) / span : 0;
+            if (p < 0) p = 0; if (p > 1) p = 1;
+            var i = Math.min(Math.round(p * (TOTAL - 1)), TOTAL - 1);
+            if (prog) prog.style.width = (p * 100).toFixed(1) + '%';
+            if (i !== cur) { cur = i; draw(i); }
+        });
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', function () {
+        if (!ready) return;
+        sizeCanvas(frames[0]);
+        cur = -1;
+        onScroll();
+    }, { passive: true });
+    onScroll();
+})();
+</script>
+<!--rdf-reveal-fix--><script>(function(){var els=document.querySelectorAll(".reveal");if(!els.length)return;if(!("IntersectionObserver"in window)){els.forEach(function(e){e.classList.add("vis");});return;}var io=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){x.target.classList.add("vis");io.unobserve(x.target);}});},{rootMargin:"0px 0px -8% 0px"});els.forEach(function(e){io.observe(e);});setTimeout(function(){els.forEach(function(e){e.classList.add("vis");});},1200);})();</script>
+<script defer src="/typo.js"></script>
+<script defer src="transition.js"></script>
+<script defer src="mn.js?v=4"></script>
+</body>
+</html>
