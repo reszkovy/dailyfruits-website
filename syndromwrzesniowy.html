@@ -222,7 +222,8 @@ header .btn-red-solid { position: relative; overflow: hidden; box-shadow: 0 8px 
 .form-art { max-width: 620px; margin: 0 auto 40px; }
 /* Formularz wtopiony w sekcje, bez plywajacej karty. */
 .form-wrap { background: transparent; padding: 0; }
-.form-wrap iframe { width: 100%; border: none; display: block; min-height: 420px; }
+.form-wrap { overflow-anchor: none; }
+.form-wrap iframe { width: 100%; border: none; display: block; min-height: 420px; overflow-anchor: none; }
 .form-fallback { margin-top: 20px; padding: 16px 20px; background: rgba(141,198,63,0.14); border-radius: 14px; font-size: 14.5px; line-height: 1.6; text-align: center; }
 .form-fallback a { font-weight: 900; color: var(--green-dark); }
 
@@ -1043,9 +1044,16 @@ html.pt-in body>:not(header) { animation: ptFadeIn 0.32s ease both; }
         if (e.data && e.data.type === 'bwp:request-info') {
             e.source.postMessage({ type: 'bwp:info', url: window.location.href, referrer: document.referrer, brand: BRAND }, '*');
         }
+        // Formularz przysyla swoja wysokosc. Bez zabezpieczen kazda wiadomosc przepisywala
+        // wysokosc iframe'a, wiec strona ciagle zmieniala dlugosc - przegladarka korygowala
+        // wtedy pozycje scrolla i uzytkownika "wyrzucalo" w inne miejsce, a layout sie zacinal.
         if (e.data && e.data.type === 'bwp:resize') {
+            if (String(e.origin || '').indexOf('betterworkplace.pl') === -1) return;
             var f = document.getElementById('bwp-form');
-            if (f) f.style.height = e.data.height + 'px';
+            var h = parseInt(e.data.height, 10);
+            if (!f || !h || h < 200 || h > 6000) return;
+            if (Math.abs(h - (parseInt(f.style.height, 10) || 0)) < 8) return;  // ignoruj drgania
+            f.style.height = h + 'px';
         }
     });
 })();
