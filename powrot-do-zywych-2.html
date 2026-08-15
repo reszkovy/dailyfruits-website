@@ -88,7 +88,7 @@ header { position: absolute !important; background: transparent !important; box-
 header.scrolled { background: transparent !important; box-shadow: none !important; }
 /* falka spod paska jest zaprojektowana pod pelne zielone tlo - na przezroczystym pasku wisi nad zdjeciem */
 header::after { display: none !important; }
-header .nav-inner { padding-top: 64px; padding-bottom: 24px; }
+header .nav-inner { padding-top: 24px; padding-bottom: 24px; }
 header .nav-links a { color: var(--cream); text-shadow: 0 1px 10px rgba(0,0,0,0.35); }
 header .nav-links a:hover { color: var(--lime); }
 header .nav-trust { color: rgba(255,249,224,0.78); text-shadow: 0 1px 10px rgba(0,0,0,0.35); }
@@ -96,14 +96,14 @@ header .logo-img { filter: drop-shadow(0 2px 10px rgba(0,0,0,0.35)); }
 header .logo-sub { text-shadow: 0 1px 8px rgba(0,0,0,0.4); }
 header .btn-nav-cta { box-shadow: 0 6px 18px rgba(0,0,0,0.28); }
 /* delikatna poswiata u gory, zeby nawigacja czytala sie na jasnych klatkach */
-.scrub-sticky::after { content: ''; position: absolute; left: 0; right: 0; top: 0; height: 250px; z-index: 4; pointer-events: none; background: linear-gradient(to bottom, rgba(10,40,24,0.55), transparent); }
+.scrub-sticky::after { content: ''; position: absolute; left: 0; right: 0; top: 0; height: 190px; z-index: 4; pointer-events: none; background: linear-gradient(to bottom, rgba(10,40,24,0.55), transparent); }
 .scrub-sticky::before { content: ''; position: absolute; left: 0; right: 0; bottom: var(--bar); height: 120px; z-index: 5; pointer-events: none; background: linear-gradient(to top, rgba(10,40,24,0.55), transparent); }
 
 /* ---------- SCROLL-SCRUB HERO ---------- */
 .scrub { position: relative; height: 100vh; background: var(--green-dark); }
 .scrub-sticky { position: relative; height: 100vh; overflow: hidden; --bar: 92px; }
 .scrub-grid { position: relative; z-index: 3; height: calc(100% - var(--bar)); display: grid; grid-template-columns: 47% 53%; align-items: center; }
-.scrub-copy { padding: 0 clamp(28px, 4vw, 72px); position: relative; z-index: 3; }
+.scrub-copy { padding: 150px clamp(28px, 4vw, 72px) 0; position: relative; z-index: 3; }
 .c-badge { display: inline-block; background: var(--coral); color: #fff; font-size: 12px; font-weight: 900; letter-spacing: 0.1em; text-transform: uppercase; padding: 9px 18px; border-radius: var(--radius-pill); transform: rotate(-2deg); box-shadow: 2px 3px 0 rgba(0,0,0,0.18); margin-bottom: 28px; }
 .kicker { font-size: clamp(11px, 0.95vw, 13px); font-weight: 900; letter-spacing: .18em; text-transform: uppercase; color: var(--lime); margin: 0 0 16px; }
 .scrub-copy h1 { margin: 0 0 26px; letter-spacing: -0.035em; }
