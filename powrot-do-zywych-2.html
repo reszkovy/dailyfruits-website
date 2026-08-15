@@ -124,9 +124,9 @@ header .btn-red-solid { position: relative; overflow: hidden; box-shadow: 0 8px 
 .scrub-copy .lead b { color: var(--cream); font-weight: 900; }
 .btn-feed { background: var(--red); color: #fff; font-weight: 900; font-size: 16px; padding: 15px 30px; border-radius: var(--radius-pill); display: inline-block; position: relative; overflow: hidden; transition: transform 0.25s, box-shadow 0.25s; box-shadow: 0 8px 22px rgba(228,48,32,0.32); }
 .btn-feed:hover { transform: translateY(-2px); box-shadow: 0 12px 28px rgba(228,48,32,0.42); }
-/* Zachęta zostaje w hero (odjezdza ze strona), pod miejscem plywajacego przycisku. */
-.hero-offer { position: absolute; top: 72px; right: clamp(20px, 3vw, 44px); z-index: 4;
-    margin: 0; text-align: right; font-size: 12.5px; line-height: 1.35; font-weight: 800;
+/* Prawy dolny rog kadru - pod przyciskiem konkurowala z nim o uwage. */
+.hero-offer { position: absolute; bottom: calc(var(--bar) + 30px); right: clamp(20px, 3vw, 44px); z-index: 4;
+    margin: 0; text-align: right; font-size: 14px; line-height: 1.35; font-weight: 800;
     letter-spacing: .01em; color: var(--lime); padding-right: 12px; border-right: 3px solid var(--lime);
     text-shadow: 0 2px 14px rgba(0,0,0,0.7), 0 1px 4px rgba(0,0,0,0.55); }
 .cta-row { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
@@ -279,7 +279,7 @@ header .btn-red-solid::before { animation-delay: 3.4s; }
     /* niskie ekrany: CTA musi zmiescic sie w pierwszym widoku */
     .scrub-grid { grid-template-rows: 36% 64%; }
     .scrub-copy { padding-top: 74px; }
-    .hero-offer { top: 58px; right: 12px; font-size: 11px; padding-right: 9px; }
+    .hero-offer { bottom: calc(var(--bar) + 14px); right: 14px; font-size: 12px; padding-right: 10px; }
     .scrub-copy h1 .l1 { font-size: 30px; }
     .scrub-copy h1 .l2 { font-size: 26px; }
     .scrub-copy h1 { margin-bottom: 14px; }
@@ -307,7 +307,7 @@ header .btn-red-solid::before { animation-delay: 3.4s; }
     .cure-card { padding-top: 0; border-top: 0; }
     .cure-card::before { top: 1px; left: -38px; }
     .prod-grid { grid-template-columns: repeat(2, 1fr); }
-    .hero-offer { top: 58px; right: 12px; font-size: 11px; padding-right: 9px; }
+    .hero-offer { bottom: calc(var(--bar) + 14px); right: 14px; font-size: 12px; padding-right: 10px; }
     .scrub-copy h1 .l1 { font-size: 30px; }
     .scrub-copy h1 .l2 { font-size: 27px; }
 }
