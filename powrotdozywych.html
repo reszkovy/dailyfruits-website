@@ -98,7 +98,6 @@ header .logo-sub { text-shadow: 0 1px 8px rgba(0,0,0,0.4); }
    przy formularzu, zeby nie wskazywalo na cel, ktory wlasnie jest na ekranie. */
 header .nav-buttons { position: fixed; top: 22px; right: clamp(20px, 3vw, 44px); z-index: 10;
     transition: opacity .32s ease, transform .32s cubic-bezier(0.16,1,0.3,1); }
-header .nav-buttons.hide { opacity: 0; transform: translateY(-18px); pointer-events: none; }
 header .btn-red-solid { position: relative; overflow: hidden; box-shadow: 0 8px 22px rgba(0,0,0,0.34); }
 /* shared.css chowa .nav-buttons .btn ponizej 768px (normalnie zastepuje go hamburger).
    Tu hamburgera nie ma, wiec CTA musi zostac - inaczej na mobile nie da sie kliknac "Zamow". */
@@ -845,15 +844,7 @@ html.pt-in body>:not(header) { animation: ptFadeIn 0.32s ease both; }
     }
 
     // Kotwice do formularza musza najpierw zdjac blokade scrolla, inaczej skok nie zadziala.
-    // Plywajace CTA znika, gdy formularz jest na ekranie.
-    (function () {
-        var float = document.querySelector('header .nav-buttons');
-        var form = document.getElementById('formularz');
-        if (!float || !form || !('IntersectionObserver' in window)) return;
-        new IntersectionObserver(function (en) {
-            float.classList.toggle('hide', en[0].isIntersecting);
-        }, { threshold: 0.12 }).observe(form);
-    })();
+    // CTA ma byc widoczne przez cala wizyte - swiadomie bez chowania przy formularzu.
 
     document.querySelectorAll('.js-do-formularza').forEach(function (a) {
         a.addEventListener('click', function (e) {
