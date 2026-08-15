@@ -131,6 +131,16 @@ header .btn-nav-cta { box-shadow: 0 6px 18px rgba(0,0,0,0.28); }
 .slider-tag.r { right: 16px; background: rgba(255,249,224,0.92); color: var(--green-dark); }
 .slider-hint { text-align: center; margin-top: 14px; font-size: 13.5px; color: rgba(27,94,58,0.55); }
 
+/* ---------- CO LADUJE NA BIURKU (realne produkty) ---------- */
+.prod-sec { padding: 92px 0 96px; background: var(--white); }
+.prod-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+.prod-card { background: var(--cream); border-radius: var(--radius); padding: 26px 24px 24px; text-align: center; border: 1px solid rgba(27,94,58,0.07); transition: transform .3s cubic-bezier(0.16,1,0.3,1), box-shadow .3s; }
+.prod-card:hover { transform: translateY(-5px); box-shadow: 0 16px 40px rgba(27,94,58,0.12); }
+.prod-ph { height: 150px; display: flex; align-items: center; justify-content: center; margin-bottom: 16px; }
+.prod-ph img { max-height: 100%; max-width: 100%; object-fit: contain; display: block; }
+.prod-card h3 { font-weight: 800; font-size: 17px; color: var(--green-dark); margin-bottom: 6px; letter-spacing: -0.02em; }
+.prod-card p { font-size: 14px; line-height: 1.55; color: var(--gray-500); margin: 0; }
+
 /* ---------- FORMULARZ KROKOWY ---------- */
 .form-sec { padding: 92px 0 100px; background: var(--cream); }
 .form-grid { max-width: 620px; margin: 0 auto; }
@@ -186,11 +196,13 @@ header .btn-nav-cta { box-shadow: 0 6px 18px rgba(0,0,0,0.28); }
     #zCanvas { object-position: center 40%; }
     .sym-grid { grid-template-columns: 1fr; }
     .cure-grid { grid-template-columns: 1fr 1fr; }
+    .prod-grid { grid-template-columns: 1fr 1fr; }
     .proof-grid { grid-template-columns: repeat(2, 1fr); gap: 34px 20px; }
 }
 @media (max-width: 720px) {
     .container { padding: 0 20px; }
     .cure-grid { grid-template-columns: 1fr; }
+    .prod-grid { grid-template-columns: 1fr; }
     .scrub-copy h1 .l1 { font-size: 30px; }
     .scrub-copy h1 .l2 { font-size: 27px; }
 }
@@ -314,24 +326,66 @@ html.pt-in body>:not(header) { animation: ptFadeIn 0.32s ease both; }
         </div>
         <div class="cure-grid">
             <div class="cure-card reveal">
-                <div class="cure-top"><span class="day">Tydzien 1</span><img src="icons/icon-apple.webp" alt="" loading="lazy" width="46" height="46"></div>
+                <div class="cure-top"><span class="day">Tydzien 1</span><img src="icons/icon-crate-fruit.webp" alt="" loading="lazy" width="46" height="46"></div>
                 <h3>Owocowe Czwartki</h3>
                 <p>Skrzynka ląduje w kuchni w czwartek rano. Po dwóch tygodniach ludzie sami pytają, czy już przyjechała.</p>
             </div>
             <div class="cure-card reveal">
-                <div class="cure-top"><span class="day">Tydzien 2</span><img src="icons/icon-sandwich.webp" alt="" loading="lazy" width="46" height="46"></div>
+                <div class="cure-top"><span class="day">Tydzien 2</span><img src="icons/icon-sandwich-half.webp" alt="" loading="lazy" width="46" height="46"></div>
                 <h3>Kanapkowe Wtorki</h3>
                 <p>Śniadanie w biurze zamiast pominiętego posiłku w biegu. Najprostszy sposób na start dnia bez deficytu.</p>
             </div>
             <div class="cure-card reveal">
-                <div class="cure-top"><span class="day">Tydzien 3</span><img src="icons/icon-lightning.webp" alt="" loading="lazy" width="46" height="46"></div>
+                <div class="cure-top"><span class="day">Tydzien 3</span><img src="icons/icon-nuts-bowl.webp" alt="" loading="lazy" width="46" height="46"></div>
                 <h3>Przekąski na popołudnie</h3>
                 <p>Bakalie i orzechy dokładnie tam, gdzie wcześniej był automat z batonami. Zjazd energii przestaje boleć.</p>
             </div>
             <div class="cure-card reveal">
-                <div class="cure-top"><span class="day">Tydzien 4</span><img src="icons/icon-heart.webp" alt="" loading="lazy" width="46" height="46"></div>
+                <div class="cure-top"><span class="day">Tydzien 4</span><img src="icons/icon-health-day.webp" alt="" loading="lazy" width="46" height="46"></div>
                 <h3>Firmowy Dzień Zdrowia</h3>
                 <p>Dietetyk, degustacja, rozmowa o tym, co realnie działa. Rytuał zamienia się w kulturę.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CO LADUJE NA BIURKU -->
+<section class="prod-sec">
+    <div class="container">
+        <div class="sec-head">
+            <h2>Co ląduje na <span class="fun">biurku</span></h2>
+            <p>Bez katalogów i wariantów do wyboru. To po prostu przyjeżdża i stoi w kuchni.</p>
+        </div>
+        <div class="prod-grid">
+            <div class="prod-card reveal">
+                <div class="prod-ph"><img src="packshot-owoce.webp" alt="Świeże owoce sezonowe" loading="lazy" width="600" height="740"></div>
+                <h3>Owoce sezonowe</h3>
+                <p>Jabłka, banany, cytrusy, jagody. Tyle, ile zespół realnie zje w tygodniu.</p>
+            </div>
+            <div class="prod-card reveal">
+                <div class="prod-ph"><img src="packshot-kanapki.webp" alt="Kanapki do biura" loading="lazy" width="600" height="486"></div>
+                <h3>Kanapki i lunche</h3>
+                <p>Office Box na śniadanie w biurze zamiast posiłku pominiętego w biegu.</p>
+            </div>
+            <div class="prod-card reveal">
+                <div class="prod-ph"><img src="packshot-bakalie.webp" alt="Bakalie i orzechy" loading="lazy" width="600" height="824"></div>
+                <h3>Bakalie i orzechy</h3>
+                <p>Tam, gdzie wcześniej był automat z batonami. Popołudniowy zjazd przestaje boleć.</p>
+            </div>
+            <div class="prod-card reveal">
+                <div class="prod-ph"><img src="packshot-sniadaniowe.webp" alt="Zestawy śniadaniowe" loading="lazy" width="600" height="476"></div>
+                <h3>Zestawy śniadaniowe</h3>
+                <p>Granola, jogurty, owoce. Start dnia bez deficytu, gotowy od rana.</p>
+            </div>
+            <div class="prod-card reveal">
+                <div class="prod-ph"><img src="packshot-soki.webp" alt="Soki tłoczone" loading="lazy" width="510" height="518"></div>
+                <h3>Soki i napoje</h3>
+                <p>Soki NFC od polskich tłoczni. Nawodnienie, które ktoś faktycznie wypije.</p>
+            </div>
+            <div class="prod-card reveal">
+                <div class="prod-ph"><img src="packshot-fingerfoods.webp" alt="Finger foods na spotkania" loading="lazy" width="600" height="571"></div>
+                <h3>Catering na spotkania</h3>
+                <p>Finger foods na warsztat, prezentację albo wizytę zarządu.</p>
             </div>
         </div>
     </div>
