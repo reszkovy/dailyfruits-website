@@ -103,6 +103,7 @@ header .btn-nav-cta { box-shadow: 0 6px 18px rgba(0,0,0,0.28); }
 .scrub-grid { height: 100%; display: grid; grid-template-columns: 47% 53%; align-items: center; }
 .scrub-copy { padding: 0 clamp(28px, 4vw, 72px); position: relative; z-index: 3; }
 .c-badge { display: inline-block; background: var(--coral); color: #fff; font-size: 12px; font-weight: 900; letter-spacing: 0.1em; text-transform: uppercase; padding: 9px 18px; border-radius: var(--radius-pill); transform: rotate(-2deg); box-shadow: 2px 3px 0 rgba(0,0,0,0.18); margin-bottom: 28px; }
+.kicker { font-size: clamp(11px, 0.95vw, 13px); font-weight: 900; letter-spacing: .18em; text-transform: uppercase; color: var(--lime); margin: 0 0 16px; }
 .scrub-copy h1 { margin: 0 0 26px; letter-spacing: -0.035em; }
 .scrub-copy h1 .l1 { display: block; font-family: var(--font-fun); font-weight: 400; font-size: clamp(40px, 4.9vw, 86px); line-height: .96; color: var(--lime); }
 .scrub-copy h1 .l2 { display: block; font-weight: 900; font-size: clamp(34px, 4.3vw, 74px); line-height: 1.02; letter-spacing: -.04em; color: var(--cream); margin-top: 6px; }
@@ -149,15 +150,15 @@ header .btn-nav-cta { box-shadow: 0 6px 18px rgba(0,0,0,0.28); }
 .game-meter span { display: block; height: 100%; width: 0; background: var(--lime); border-radius: 99px; transition: width .45s cubic-bezier(0.16,1,0.3,1); }
 .game-step { font-size: 12px; font-weight: 900; letter-spacing: .12em; text-transform: uppercase; color: rgba(255,249,224,0.6); font-variant-numeric: tabular-nums; white-space: nowrap; }
 .game-label { font-size: 16px; color: var(--cream); font-weight: 700; min-height: 1.6em; margin-bottom: 26px; }
-.game-items { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
-.game-item { background: rgba(255,249,224,0.07); border: 1px solid rgba(255,249,224,0.18); border-radius: var(--radius); padding: 16px 12px 18px; text-align: center; cursor: pointer; font: inherit; color: inherit; transition: transform .25s cubic-bezier(0.16,1,0.3,1), background .25s, border-color .25s, opacity .25s; }
-.game-item:hover:not([disabled]) { transform: translateY(-4px); background: rgba(255,249,224,0.13); border-color: rgba(141,198,63,0.6); }
+.game-stage::after { content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 46%; background: linear-gradient(to top, rgba(10,40,24,0.72), transparent); pointer-events: none; z-index: 1; }
+.game-tray { position: absolute; left: 0; right: 0; bottom: clamp(14px, 2.4vw, 26px); z-index: 2; display: flex; justify-content: center; gap: clamp(10px, 1.6vw, 20px); padding: 0 14px; }
+.game-item { position: relative; background: rgba(255,249,224,0.10); border: 1px solid rgba(255,249,224,0.28); border-radius: 18px; padding: clamp(9px,1.2vw,13px) clamp(8px,1vw,12px) clamp(8px,1vw,11px); cursor: pointer; font: inherit; color: inherit; width: clamp(78px, 10vw, 116px); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); transition: transform .25s cubic-bezier(0.16,1,0.3,1), background .25s, border-color .25s, opacity .25s; }
+.game-item:hover:not([disabled]) { transform: translateY(-5px); background: rgba(255,249,224,0.2); border-color: rgba(141,198,63,0.75); }
 .game-item:focus-visible { outline: 2px solid var(--lime); outline-offset: 3px; }
-.game-item img { height: 74px; width: auto; max-width: 100%; object-fit: contain; display: block; margin: 0 auto 12px; }
-.game-item b { display: block; font-size: 14px; font-weight: 800; color: var(--cream); margin-bottom: 3px; letter-spacing: -0.01em; }
-.game-item span { display: block; font-size: 12px; line-height: 1.4; color: rgba(255,249,224,0.62); }
-.game-item[disabled] { opacity: .38; cursor: default; border-style: dashed; }
-.game-item[disabled]::after { content: ' ✓'; color: var(--lime); font-weight: 900; }
+.game-item img { height: clamp(34px, 4.2vw, 50px); width: auto; object-fit: contain; display: block; margin: 0 auto clamp(5px,0.7vw,8px); }
+.game-item b { display: block; font-size: clamp(10px, 1vw, 12.5px); font-weight: 800; color: var(--cream); letter-spacing: -0.01em; line-height: 1.25; }
+.game-item[disabled] { opacity: .34; cursor: default; border-style: dashed; transform: none; }
+.game-item[disabled]::after { content: '✓'; position: absolute; top: -8px; right: -6px; width: 22px; height: 22px; border-radius: 50%; background: var(--lime); color: var(--green-dark); font-size: 12px; font-weight: 900; display: flex; align-items: center; justify-content: center; box-shadow: 0 3px 8px rgba(0,0,0,.3); }
 .game-done { margin-top: 28px; text-align: center; }
 .game-done p { color: rgba(255,249,224,0.8); font-size: 16px; margin-bottom: 18px; }
 .game-done[hidden] { display: none; }
@@ -230,7 +231,7 @@ header .btn-nav-cta { box-shadow: 0 6px 18px rgba(0,0,0,0.28); }
     .sym-grid { grid-template-columns: 1fr; }
     .cure-grid { grid-template-columns: 1fr 1fr; }
     .prod-grid { grid-template-columns: 1fr 1fr; }
-    .game-items { grid-template-columns: 1fr 1fr; }
+    .game-tray { flex-wrap: wrap; gap: 8px; }
     .proof-grid { grid-template-columns: repeat(2, 1fr); gap: 34px 20px; }
 }
 @media (max-width: 720px) {
@@ -301,6 +302,7 @@ html.pt-in body>:not(header) { animation: ptFadeIn 0.32s ease both; }
     <div class="scrub-sticky">
         <div class="scrub-grid">
             <div class="scrub-copy">
+                <p class="kicker">Wrzesień po urlopach</p>
                 <h1>
                     <span class="l1">Powrót do biur.</span>
                     <span class="l2">Powrót do żywych.</span>
@@ -438,31 +440,19 @@ html.pt-in body>:not(header) { animation: ptFadeIn 0.32s ease both; }
         </div>
         <div class="game-wrap">
             <div class="game-stage">
-                <img id="gameArt" src="gra-stan-0.webp" alt="Pracownik przy biurku, stan energii zmienia się wraz z kolejnymi rytuałami" width="900" height="506">
+                <img id="gameArt" src="gra-stan-0.webp" alt="Pracowniczka przy biurku, stan energii zmienia się wraz z kolejnymi rytuałami" width="900" height="506">
+                <div class="game-tray">
+                    <button type="button" class="game-item" data-stage="1"><img src="icons/icon-crate-fruit.webp" alt=""><b>Owocowe Czwartki</b></button>
+                    <button type="button" class="game-item" data-stage="2"><img src="icons/icon-sandwich-half.webp" alt=""><b>Kanapkowe Wtorki</b></button>
+                    <button type="button" class="game-item" data-stage="3"><img src="icons/icon-nuts-bowl.webp" alt=""><b>Przekąski</b></button>
+                    <button type="button" class="game-item" data-stage="4"><img src="icons/icon-health-day.webp" alt=""><b>Dzień Zdrowia</b></button>
+                </div>
             </div>
             <div class="game-bar">
                 <div class="game-meter"><span id="gameFill"></span></div>
                 <span class="game-step" id="gameStep">0 / 4</span>
             </div>
             <p class="game-label" id="gameLabel">Poniedziałek, 14:37. Zespół pracuje na rezerwie.</p>
-            <div class="game-items">
-                <button type="button" class="game-item" data-stage="1">
-                    <img src="packshot-owoce.webp" alt="" loading="lazy">
-                    <b>Owocowe Czwartki</b><span>Owoce sezonowe</span>
-                </button>
-                <button type="button" class="game-item" data-stage="2">
-                    <img src="packshot-kanapki.webp" alt="" loading="lazy">
-                    <b>Kanapkowe Wtorki</b><span>Kanapki i lunche</span>
-                </button>
-                <button type="button" class="game-item" data-stage="3">
-                    <img src="packshot-bakalie.webp" alt="" loading="lazy">
-                    <b>Przekąski</b><span>Bakalie i orzechy</span>
-                </button>
-                <button type="button" class="game-item" data-stage="4">
-                    <img src="packshot-soki.webp" alt="" loading="lazy">
-                    <b>Dzień Zdrowia</b><span>Soki i napoje</span>
-                </button>
-            </div>
             <div class="game-done" id="gameDone" hidden>
                 <p><b>Cztery tygodnie i tyle.</b> Tak wygląda wrzesień, w którym zespół ma paliwo.</p>
                 <a href="#formularz" class="btn-feed">Nakarm swój zespół →</a>
