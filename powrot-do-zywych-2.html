@@ -84,7 +84,7 @@ gtag('config', 'G-G9SCYSFC36');
     --font: 'DM Sans', sans-serif; --font-fun: 'Achiko', 'Lobster', cursive;
 }
 /* ---------- BELKA: przezroczysta, elementy na wideo (odroznienie od home) ---------- */
-header { position: absolute !important; background: transparent !important; box-shadow: none !important; border-bottom: none !important; transition: none !important; }
+header { z-index: 300 !important; position: absolute !important; background: transparent !important; box-shadow: none !important; border-bottom: none !important; transition: none !important; }
 header.scrolled { background: transparent !important; box-shadow: none !important; }
 /* falka spod paska jest zaprojektowana pod pelne zielone tlo - na przezroczystym pasku wisi nad zdjeciem */
 header::after { display: none !important; }
@@ -96,8 +96,7 @@ header .logo-img { filter: drop-shadow(0 2px 10px rgba(0,0,0,0.35)); }
 header .logo-sub { text-shadow: 0 1px 8px rgba(0,0,0,0.4); }
 /* CTA plynie ze strona - "Zamow" klikalne z kazdego miejsca. Chowa sie dopiero
    przy formularzu, zeby nie wskazywalo na cel, ktory wlasnie jest na ekranie. */
-header .nav-buttons { position: fixed; top: 22px; right: clamp(20px, 3vw, 44px); z-index: 120;
-    flex-direction: column; align-items: flex-end; gap: 11px;
+header .nav-buttons { position: fixed; top: 22px; right: clamp(20px, 3vw, 44px); z-index: 10;
     transition: opacity .32s ease, transform .32s cubic-bezier(0.16,1,0.3,1); }
 header .nav-buttons.hide { opacity: 0; transform: translateY(-18px); pointer-events: none; }
 header .btn-red-solid { position: relative; overflow: hidden; box-shadow: 0 8px 22px rgba(0,0,0,0.34); }
@@ -125,8 +124,9 @@ header .btn-red-solid { position: relative; overflow: hidden; box-shadow: 0 8px 
 .scrub-copy .lead b { color: var(--cream); font-weight: 900; }
 .btn-feed { background: var(--red); color: #fff; font-weight: 900; font-size: 16px; padding: 15px 30px; border-radius: var(--radius-pill); display: inline-block; position: relative; overflow: hidden; transition: transform 0.25s, box-shadow 0.25s; box-shadow: 0 8px 22px rgba(228,48,32,0.32); }
 .btn-feed:hover { transform: translateY(-2px); box-shadow: 0 12px 28px rgba(228,48,32,0.42); }
-/* Zachęta pod przyciskiem, lamana na dwie rowne linie. */
-.hero-offer { margin: 0; text-align: right; font-size: 12.5px; line-height: 1.35; font-weight: 800;
+/* Zachęta zostaje w hero (odjezdza ze strona), pod miejscem plywajacego przycisku. */
+.hero-offer { position: absolute; top: 72px; right: clamp(20px, 3vw, 44px); z-index: 4;
+    margin: 0; text-align: right; font-size: 12.5px; line-height: 1.35; font-weight: 800;
     letter-spacing: .01em; color: var(--lime); padding-right: 12px; border-right: 3px solid var(--lime);
     text-shadow: 0 2px 14px rgba(0,0,0,0.7), 0 1px 4px rgba(0,0,0,0.55); }
 .cta-row { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
@@ -279,7 +279,7 @@ header .btn-red-solid::before { animation-delay: 3.4s; }
     /* niskie ekrany: CTA musi zmiescic sie w pierwszym widoku */
     .scrub-grid { grid-template-rows: 36% 64%; }
     .scrub-copy { padding-top: 74px; }
-    .hero-offer { font-size: 11px; padding-right: 9px; }
+    .hero-offer { top: 58px; right: 12px; font-size: 11px; padding-right: 9px; }
     .scrub-copy h1 .l1 { font-size: 30px; }
     .scrub-copy h1 .l2 { font-size: 26px; }
     .scrub-copy h1 { margin-bottom: 14px; }
@@ -307,7 +307,7 @@ header .btn-red-solid::before { animation-delay: 3.4s; }
     .cure-card { padding-top: 0; border-top: 0; }
     .cure-card::before { top: 1px; left: -38px; }
     .prod-grid { grid-template-columns: repeat(2, 1fr); }
-    .hero-offer { font-size: 11px; padding-right: 9px; }
+    .hero-offer { top: 58px; right: 12px; font-size: 11px; padding-right: 9px; }
     .scrub-copy h1 .l1 { font-size: 30px; }
     .scrub-copy h1 .l2 { font-size: 27px; }
 }
@@ -344,7 +344,6 @@ html.pt-in body>:not(header) { animation: ptFadeIn 0.32s ease both; }
              zeby nie wyprowadzac ruchu z lejka. -->
         <div class="nav-buttons">
             <a href="#formularz" class="btn btn-red-solid js-do-formularza">Zamów na wrzesień</a>
-            <p class="hero-offer">Pierwsza dostawa<br>w sierpniu gratis</p>
         </div>
     </div>
 </header>
@@ -371,6 +370,7 @@ html.pt-in body>:not(header) { animation: ptFadeIn 0.32s ease both; }
             </div>
             <div></div>
         </div>
+        <p class="hero-offer">Pierwsza dostawa<br>w sierpniu gratis</p>
         <div class="energy" aria-hidden="true">
             <span class="energy-lab l">Biurowe zombie</span>
             <span class="energy-track"><span class="energy-fill" id="zProg"></span></span>
