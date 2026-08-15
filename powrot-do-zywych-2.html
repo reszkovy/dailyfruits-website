@@ -155,14 +155,20 @@ header .btn-nav-cta { box-shadow: 0 6px 18px rgba(0,0,0,0.28); }
 .sym-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
 .sym { background: var(--white); border: 1px solid rgba(27,94,58,0.10); border-radius: var(--radius); padding: 30px 30px 32px; display: flex; flex-direction: column; transition: transform .3s cubic-bezier(0.16,1,0.3,1), box-shadow .3s; }
 .sym:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(27,94,58,0.10); }
-.sym .n { font-family: var(--font-fun); font-size: 40px; line-height: 1; color: var(--coral); display: block; margin-bottom: 16px; }
+.sym-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; }
+.sym .n { font-family: var(--font-fun); font-size: 40px; line-height: 1; color: var(--coral); display: block; }
+.sym-top img { height: 54px; width: auto; display: block; transition: transform .3s cubic-bezier(0.16,1,0.3,1); }
+.sym:hover .sym-top img { transform: rotate(-7deg) scale(1.1); }
 .sym .b { padding: 0; border-top: 2px dashed rgba(27,94,58,0.16); padding-top: 20px; }
 .sym h3 { font-weight: 800; font-size: 19px; color: var(--green-dark); margin-bottom: 9px; letter-spacing: -0.02em; line-height: 1.25; }
 .sym p { font-size: 15px; line-height: 1.62; color: var(--gray-500); margin: 0; }
 .cure-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
 .cure-card { background: var(--white); border-radius: var(--radius); padding: 28px 26px 30px; border: 1px solid rgba(27,94,58,0.08); transition: transform 0.3s cubic-bezier(0.16,1,0.3,1), box-shadow 0.3s; }
 .cure-card:hover { transform: translateY(-5px); box-shadow: 0 16px 40px rgba(27,94,58,0.12); }
-.cure-card .day { font-family: var(--font-fun); font-size: 24px; color: var(--lime); display: block; margin-bottom: 10px; }
+.cure-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
+.cure-card .day { font-family: var(--font-fun); font-size: 24px; color: var(--lime); display: block; }
+.cure-top img { height: 46px; width: auto; display: block; transition: transform .3s cubic-bezier(0.16,1,0.3,1); }
+.cure-card:hover .cure-top img { transform: rotate(-7deg) scale(1.1); }
 .cure-card h3 { font-weight: 800; font-size: 17px; color: var(--green-dark); margin-bottom: 8px; letter-spacing: -0.02em; }
 .cure-card p { font-size: 14.5px; line-height: 1.6; color: var(--gray-500); margin: 0; }
 .proof { padding: 84px 0; background: var(--green-dark); }
@@ -299,21 +305,21 @@ html.pt-in body>:not(header) { animation: ptFadeIn 0.32s ease both; }
         </div>
         <div class="sym-grid">
             <div class="sym reveal">
-                <span class="n" aria-hidden="true">01</span>
+                <div class="sym-top"><span class="n" aria-hidden="true">01</span><img src="icons/icon-meditation.webp" alt="" loading="lazy" width="54" height="54"></div>
                 <div class="b">
                     <h3>Puste spojrzenie po 14:00</h3>
                     <p>Spotkanie trwa, ale nikt nie wnosi nowego wątku. Cukier z lunchu już opadł, kolejny posiłek dopiero po pracy.</p>
                 </div>
             </div>
             <div class="sym reveal">
-                <span class="n" aria-hidden="true">02</span>
+                <div class="sym-top"><span class="n" aria-hidden="true">02</span><img src="icons/icon-coffee.webp" alt="" loading="lazy" width="54" height="54"></div>
                 <div class="b">
                     <h3>Czwarta kawa przed lunchem</h3>
                     <p>Kawa nie jest problemem. Problemem jest to, że pracuje sama, bez żadnego jedzenia obok.</p>
                 </div>
             </div>
             <div class="sym reveal">
-                <span class="n" aria-hidden="true">03</span>
+                <div class="sym-top"><span class="n" aria-hidden="true">03</span><img src="icons/icon-cereal-bowl.webp" alt="" loading="lazy" width="54" height="54"></div>
                 <div class="b">
                     <h3>Lodówka pełna niczego</h3>
                     <p>50% pracowników mówi, że w pracy trudno im się zdrowo odżywiać. Wybór to zwykle automat albo nic.</p>
@@ -332,22 +338,22 @@ html.pt-in body>:not(header) { animation: ptFadeIn 0.32s ease both; }
         </div>
         <div class="cure-grid">
             <div class="cure-card reveal">
-                <span class="day">Tydzien 1</span>
+                <div class="cure-top"><span class="day">Tydzien 1</span><img src="icons/icon-apple.webp" alt="" loading="lazy" width="46" height="46"></div>
                 <h3>Owocowe Czwartki</h3>
                 <p>Skrzynka ląduje w kuchni w czwartek rano. Po dwóch tygodniach ludzie sami pytają, czy już przyjechała.</p>
             </div>
             <div class="cure-card reveal">
-                <span class="day">Tydzien 2</span>
+                <div class="cure-top"><span class="day">Tydzien 2</span><img src="icons/icon-sandwich.webp" alt="" loading="lazy" width="46" height="46"></div>
                 <h3>Kanapkowe Wtorki</h3>
                 <p>Śniadanie w biurze zamiast pominiętego posiłku w biegu. Najprostszy sposób na start dnia bez deficytu.</p>
             </div>
             <div class="cure-card reveal">
-                <span class="day">Tydzien 3</span>
+                <div class="cure-top"><span class="day">Tydzien 3</span><img src="icons/icon-lightning.webp" alt="" loading="lazy" width="46" height="46"></div>
                 <h3>Przekąski na popołudnie</h3>
                 <p>Bakalie i orzechy dokładnie tam, gdzie wcześniej był automat z batonami. Zjazd energii przestaje boleć.</p>
             </div>
             <div class="cure-card reveal">
-                <span class="day">Tydzien 4</span>
+                <div class="cure-top"><span class="day">Tydzien 4</span><img src="icons/icon-heart.webp" alt="" loading="lazy" width="46" height="46"></div>
                 <h3>Firmowy Dzień Zdrowia</h3>
                 <p>Dietetyk, degustacja, rozmowa o tym, co realnie działa. Rytuał zamienia się w kulturę.</p>
             </div>
