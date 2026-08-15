@@ -147,40 +147,25 @@ header .btn-nav-cta { box-shadow: 0 6px 18px rgba(0,0,0,0.28); }
 .slider-tag.r { right: 16px; background: rgba(255,249,224,0.92); color: var(--green-dark); }
 .slider-hint { text-align: center; margin-top: 14px; font-size: 13.5px; color: rgba(27,94,58,0.55); }
 
-/* ---------- GRA: obudz pracownika ---------- */
-.game-sec { padding: 92px 0 100px; background: var(--green-dark); }
-.game-sec .sec-head h2 { color: var(--cream); }
-.game-sec .sec-head p { color: rgba(255,249,224,0.7); }
-.game-wrap { max-width: 860px; margin: 0 auto; }
-.game-stage { position: relative; border-radius: var(--radius-lg); overflow: hidden; background: #3d6b52; box-shadow: 0 20px 54px rgba(0,0,0,0.3); }
-.game-stage img { width: 100%; height: auto; display: block; transition: opacity .25s ease; }
-.game-bar { display: flex; align-items: center; gap: 14px; margin: 20px 0 8px; }
-.game-meter { flex: 1; height: 8px; border-radius: 99px; background: rgba(255,249,224,0.16); overflow: hidden; }
-.game-meter span { display: block; height: 100%; width: 0; background: var(--lime); border-radius: 99px; transition: width .45s cubic-bezier(0.16,1,0.3,1); }
-.game-step { font-size: 12px; font-weight: 900; letter-spacing: .12em; text-transform: uppercase; color: rgba(255,249,224,0.6); font-variant-numeric: tabular-nums; white-space: nowrap; }
-.game-label { font-size: 16px; color: var(--cream); font-weight: 700; min-height: 1.6em; margin-bottom: 26px; }
-.game-stage::after { content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 46%; background: linear-gradient(to top, rgba(10,40,24,0.72), transparent); pointer-events: none; z-index: 1; }
-.game-tray { position: absolute; left: 0; right: 0; bottom: clamp(14px, 2.4vw, 26px); z-index: 2; display: flex; justify-content: center; gap: clamp(10px, 1.6vw, 20px); padding: 0 14px; }
-.game-item { position: relative; background: rgba(255,249,224,0.10); border: 1px solid rgba(255,249,224,0.28); border-radius: 18px; padding: clamp(9px,1.2vw,13px) clamp(8px,1vw,12px) clamp(8px,1vw,11px); cursor: pointer; font: inherit; color: inherit; width: clamp(78px, 10vw, 116px); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); transition: transform .25s cubic-bezier(0.16,1,0.3,1), background .25s, border-color .25s, opacity .25s; }
-.game-item:hover:not([disabled]) { transform: translateY(-5px); background: rgba(255,249,224,0.2); border-color: rgba(141,198,63,0.75); }
-.game-item:focus-visible { outline: 2px solid var(--lime); outline-offset: 3px; }
-.game-item img { height: clamp(34px, 4.2vw, 50px); width: auto; object-fit: contain; display: block; margin: 0 auto clamp(5px,0.7vw,8px); }
-.game-item b { display: block; font-size: clamp(10px, 1vw, 12.5px); font-weight: 800; color: var(--cream); letter-spacing: -0.01em; line-height: 1.25; }
-.game-item[disabled] { opacity: .34; cursor: default; border-style: dashed; transform: none; }
-.game-item[disabled]::after { content: '✓'; position: absolute; top: -8px; right: -6px; width: 22px; height: 22px; border-radius: 50%; background: var(--lime); color: var(--green-dark); font-size: 12px; font-weight: 900; display: flex; align-items: center; justify-content: center; box-shadow: 0 3px 8px rgba(0,0,0,.3); }
-.loot { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-top: 26px; }
-.loot-card { background: rgba(255,249,224,0.06); border: 1px solid rgba(255,249,224,0.14); border-radius: var(--radius); padding: 18px 16px 20px; text-align: center; opacity: .32; filter: grayscale(1); transition: opacity .45s ease, filter .45s ease, transform .45s cubic-bezier(0.16,1,0.3,1), border-color .45s, background .45s; }
-.loot-card.on { opacity: 1; filter: none; transform: translateY(-4px); border-color: rgba(141,198,63,0.5); background: rgba(255,249,224,0.11); }
-.loot-ph { height: 96px; display: flex; align-items: center; justify-content: center; margin-bottom: 12px; }
-.loot-ph img { max-height: 100%; max-width: 100%; object-fit: contain; display: block; }
-.loot-card h3 { font-weight: 800; font-size: 15px; color: var(--cream); margin-bottom: 5px; letter-spacing: -0.01em; }
-.loot-card p { font-size: 13px; line-height: 1.5; color: rgba(255,249,224,0.66); margin: 0; }
-.loot-more { text-align: center; margin-top: 20px; font-size: 14px; color: rgba(255,249,224,0.55); }
-.game-done { margin-top: 28px; text-align: center; }
-.game-done p { color: rgba(255,249,224,0.8); font-size: 16px; margin-bottom: 18px; }
-.game-done[hidden] { display: none; }
-.game-reset { background: none; border: none; color: rgba(255,249,224,0.5); font: inherit; font-size: 13px; text-decoration: underline; cursor: pointer; margin-top: 14px; }
-.game-reset:hover { color: var(--cream); }
+/* ---------- CO LADUJE NA BIURKU ---------- */
+.hero-box { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 44px; align-items: center; background: var(--cream); border-radius: var(--radius-lg); padding: 40px 44px; margin-bottom: 34px; border: 1px solid rgba(27,94,58,0.08); }
+.hero-box img { width: 100%; height: auto; display: block; filter: drop-shadow(0 20px 40px rgba(27,94,58,0.16)); }
+.hero-box .tag { display: inline-block; font-size: 11px; font-weight: 900; letter-spacing: .14em; text-transform: uppercase; color: var(--coral); margin-bottom: 12px; }
+.hero-box h3 { font-weight: 900; font-size: clamp(22px, 2.4vw, 32px); color: var(--green-dark); letter-spacing: -0.03em; line-height: 1.12; margin-bottom: 12px; }
+.hero-box h3 .fun { font-family: var(--font-fun); font-weight: 400; color: var(--lime); font-size: 1.06em; }
+.hero-box p { font-size: 16px; line-height: 1.62; color: var(--gray-500); margin: 0 0 10px; }
+.hero-box ul { list-style: none; padding: 0; margin: 16px 0 0; display: grid; gap: 8px; }
+.hero-box li { font-size: 14.5px; color: var(--gray-500); padding-left: 24px; position: relative; }
+.hero-box li::before { content: '✓'; position: absolute; left: 0; color: var(--lime); font-weight: 900; }
+
+.prod-sec { padding: 92px 0 96px; background: var(--white); }
+.prod-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+.prod-card { background: var(--cream); border-radius: var(--radius); padding: 26px 24px 24px; text-align: center; border: 1px solid rgba(27,94,58,0.07); transition: transform .3s cubic-bezier(0.16,1,0.3,1), box-shadow .3s; }
+.prod-card:hover { transform: translateY(-5px); box-shadow: 0 16px 40px rgba(27,94,58,0.12); }
+.prod-ph { height: 150px; display: flex; align-items: center; justify-content: center; margin-bottom: 16px; }
+.prod-ph img { max-height: 100%; max-width: 100%; object-fit: contain; display: block; }
+.prod-card h3 { font-weight: 800; font-size: 17px; color: var(--green-dark); margin-bottom: 6px; letter-spacing: -0.02em; }
+.prod-card p { font-size: 14px; line-height: 1.55; color: var(--gray-500); margin: 0; }
 
 /* ---------- FORMULARZ KROKOWY ---------- */
 .form-sec { padding: 92px 0 100px; background: var(--cream); }
@@ -237,8 +222,8 @@ header .btn-nav-cta { box-shadow: 0 6px 18px rgba(0,0,0,0.28); }
     #zCanvas { object-position: center 40%; }
     .sym-grid { grid-template-columns: 1fr; }
     .cure-grid { grid-template-columns: 1fr 1fr; }
-    .loot { grid-template-columns: 1fr 1fr; }
-    .game-tray { flex-wrap: wrap; gap: 8px; }
+    .prod-grid { grid-template-columns: 1fr 1fr; }
+    .hero-box { grid-template-columns: 1fr; gap: 26px; padding: 30px 26px; }
     .proof-grid { grid-template-columns: repeat(2, 1fr); gap: 34px 20px; }
 }
 @media (max-width: 1000px) and (max-height: 720px) {
@@ -259,12 +244,6 @@ header .btn-nav-cta { box-shadow: 0 6px 18px rgba(0,0,0,0.28); }
     .energy-lab { flex: 0 0 auto; }
     .energy-lab.r { margin-left: auto; }
     .energy-track { flex: 1 0 100%; order: 3; height: 8px; }
-    /* taca z ikonami pod ilustracja, 2x2 - w kadrze zasłaniała cala scene */
-    .game-tray { position: static; margin-top: 14px; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; padding: 0; }
-    .game-item { width: 100%; backdrop-filter: none; -webkit-backdrop-filter: none; background: rgba(255,249,224,0.09); }
-    .game-stage::after { display: none; }
-    .game-stage { overflow: visible; background: transparent; box-shadow: none; }
-    .game-stage img { border-radius: var(--radius); box-shadow: 0 14px 40px rgba(0,0,0,.28); }
     /* hero: CTA pewnie w pierwszym ekranie takze na niskich ekranach */
     .scrub-copy h1 { margin-bottom: 18px; }
     .scrub-copy .lead { margin-bottom: 22px; font-size: 15.5px; }
@@ -273,6 +252,7 @@ header .btn-nav-cta { box-shadow: 0 6px 18px rgba(0,0,0,0.28); }
 @media (max-width: 720px) {
     .container { padding: 0 20px; }
     .cure-grid { grid-template-columns: 1fr; }
+    .prod-grid { grid-template-columns: 1fr; }
     .scrub-copy h1 .l1 { font-size: 30px; }
     .scrub-copy h1 .l2 { font-size: 27px; }
 }
@@ -426,56 +406,34 @@ html.pt-in body>:not(header) { animation: ptFadeIn 0.32s ease both; }
     </div>
 </section>
 
-<!-- GRA -->
-<section class="game-sec">
+<!-- CO LADUJE NA BIURKU -->
+<section class="prod-sec">
     <div class="container">
         <div class="sec-head">
-            <h2>Obudź swojego <span class="fun">pracownika</span></h2>
-            <p>Cztery rytuały z góry, tu w praktyce. Podaj coś z oferty, a zobaczysz, co dzieje się z zespołem i co ląduje na biurku.</p>
+            <h2>Co ląduje na Twoim <span class="fun">biurku</span></h2>
+            <p>Bez katalogów i wariantów do wyboru. To po prostu przyjeżdża i stoi w kuchni.</p>
         </div>
-        <div class="game-wrap">
-            <div class="game-stage">
-                <img id="gameArt" src="gra-stan-0.webp?v=4" alt="Stojąca pracowniczka, jej postawa i energia zmieniają się wraz z kolejnymi rytuałami" width="900" height="506">
-                <div class="game-tray">
-                    <button type="button" class="game-item" data-stage="1"><img src="icons/icon-crate-fruit.webp" alt=""><b>Owocowe Czwartki</b></button>
-                    <button type="button" class="game-item" data-stage="2"><img src="icons/icon-sandwich-half.webp" alt=""><b>Kanapkowe Wtorki</b></button>
-                    <button type="button" class="game-item" data-stage="3"><img src="icons/icon-nuts-bowl.webp" alt=""><b>Przekąski</b></button>
-                    <button type="button" class="game-item" data-stage="4"><img src="icons/icon-health-day.webp" alt=""><b>Dzień Zdrowia</b></button>
-                </div>
+        <div class="hero-box reveal">
+            <div><img src="box-premium.webp" alt="Skrzynka DailyFruits pełna świeżych owoców" width="1200" height="800" loading="lazy"></div>
+            <div>
+                <span class="tag">Serce abonamentu</span>
+                <h3>Skrzynka, która staje w <span class="fun">kuchni</span></h3>
+                <p>Jedna dostawa, zero logistyki po Waszej stronie. Skład dobieramy pod wielkość zespołu, a zawartość zmienia się razem z sezonem.</p>
+                <ul>
+                    <li>Dostawa własna w 13 miastach, kurierem w całej Polsce</li>
+                    <li>Wymiana produktów poniżej standardu, bez pytań</li>
+                    <li>Zmiana składu i częstotliwości w dowolnym momencie</li>
+                    <li>Pierwsza dostawa gratis</li>
+                </ul>
             </div>
-            <div class="game-bar">
-                <div class="game-meter"><span id="gameFill"></span></div>
-                <span class="game-step" id="gameStep">0 / 4</span>
-            </div>
-            <p class="game-label" id="gameLabel">Poniedziałek, 14:37. Zespół pracuje na rezerwie.</p>
-            <div class="loot">
-                <div class="loot-card" data-loot="1">
-                    <div class="loot-ph"><img src="packshot-owoce.webp" alt="Świeże owoce sezonowe" loading="lazy" width="600" height="740"></div>
-                    <h3>Owoce sezonowe</h3>
-                    <p>Jabłka, banany, cytrusy, jagody. Tyle, ile zespół realnie zje w tygodniu.</p>
-                </div>
-                <div class="loot-card" data-loot="2">
-                    <div class="loot-ph"><img src="packshot-kanapki.webp" alt="Kanapki do biura" loading="lazy" width="600" height="486"></div>
-                    <h3>Kanapki i lunche</h3>
-                    <p>Office Box na śniadanie w biurze zamiast posiłku w biegu.</p>
-                </div>
-                <div class="loot-card" data-loot="3">
-                    <div class="loot-ph"><img src="packshot-bakalie.webp" alt="Bakalie i orzechy" loading="lazy" width="600" height="824"></div>
-                    <h3>Bakalie i orzechy</h3>
-                    <p>Tam, gdzie wcześniej był automat z batonami.</p>
-                </div>
-                <div class="loot-card" data-loot="4">
-                    <div class="loot-ph"><img src="packshot-soki.webp" alt="Soki tłoczone" loading="lazy" width="510" height="518"></div>
-                    <h3>Soki i napoje</h3>
-                    <p>Soki NFC od polskich tłoczni. Nawodnienie, które ktoś wypije.</p>
-                </div>
-            </div>
-            <p class="loot-more">W ofercie także zestawy śniadaniowe, catering na spotkania oraz kawa i ekspresy.</p>
-            <div class="game-done" id="gameDone" hidden>
-                <p><b>Cztery tygodnie i tyle.</b> Tak wygląda wrzesień, w którym zespół ma paliwo.</p>
-                <a href="#formularz" class="btn-feed">Nakarm swój zespół →</a>
-                <br><button type="button" class="game-reset" id="gameReset">Zagraj jeszcze raz</button>
-            </div>
+        </div>
+        <div class="prod-grid">
+            <div class="prod-card reveal"><div class="prod-ph"><img src="packshot-owoce.webp" alt="Świeże owoce sezonowe" loading="lazy" width="600" height="740"></div><h3>Owoce sezonowe</h3><p>Jabłka, banany, cytrusy, jagody. Tyle, ile zespół realnie zje w tygodniu.</p></div>
+            <div class="prod-card reveal"><div class="prod-ph"><img src="packshot-kanapki.webp" alt="Kanapki do biura" loading="lazy" width="600" height="486"></div><h3>Kanapki i lunche</h3><p>Office Box na śniadanie w biurze zamiast posiłku pominiętego w biegu.</p></div>
+            <div class="prod-card reveal"><div class="prod-ph"><img src="packshot-bakalie.webp" alt="Bakalie i orzechy" loading="lazy" width="600" height="824"></div><h3>Bakalie i orzechy</h3><p>Tam, gdzie wcześniej był automat z batonami. Popołudniowy zjazd przestaje boleć.</p></div>
+            <div class="prod-card reveal"><div class="prod-ph"><img src="packshot-sniadaniowe.webp" alt="Zestawy śniadaniowe" loading="lazy" width="600" height="476"></div><h3>Zestawy śniadaniowe</h3><p>Granola, jogurty, owoce. Start dnia bez deficytu, gotowy od rana.</p></div>
+            <div class="prod-card reveal"><div class="prod-ph"><img src="packshot-soki.webp" alt="Soki tłoczone" loading="lazy" width="510" height="518"></div><h3>Soki i napoje</h3><p>Soki NFC od polskich tłoczni. Nawodnienie, które ktoś faktycznie wypije.</p></div>
+            <div class="prod-card reveal"><div class="prod-ph"><img src="packshot-fingerfoods.webp" alt="Finger foods na spotkania" loading="lazy" width="600" height="571"></div><h3>Catering na spotkania</h3><p>Finger foods na warsztat, prezentację albo wizytę zarządu.</p></div>
         </div>
     </div>
 </section>
@@ -747,63 +705,6 @@ html.pt-in body>:not(header) { animation: ptFadeIn 0.32s ease both; }
             if (f) f.style.height = e.data.height + 'px';
         }
     });
-})();
-</script>
-<script>
-/* ─── GRA: obudz pracownika ─── */
-(function () {
-    var art = document.getElementById('gameArt');
-    if (!art) return;
-    var fill = document.getElementById('gameFill');
-    var step = document.getElementById('gameStep');
-    var label = document.getElementById('gameLabel');
-    var done = document.getElementById('gameDone');
-    var reset = document.getElementById('gameReset');
-    var items = [].slice.call(document.querySelectorAll('.game-item'));
-    var TXT = [
-        'Poniedziałek, 14:37. Zespół pracuje na rezerwie.',
-        'Skrzynka stoi na biurku. Ktoś podniósł wzrok.',
-        'Wraca kolor. I ostrość widzenia.',
-        'Plecy się prostują, ręce wracają na klawiaturę.',
-        'Pełna moc. Tak wygląda wrzesień z paliwem.'
-    ];
-    var level = 0;
-
-    // wstepne wczytanie stanow, zeby nie migalo
-    for (var i = 1; i <= 4; i++) { var pre = new Image(); pre.src = 'gra-stan-' + i + '.webp?v=4'; }
-
-    function render() {
-        art.style.opacity = '0';
-        setTimeout(function () {
-            art.src = 'gra-stan-' + level + '.webp?v=4';
-            art.style.opacity = '1';
-        }, 130);
-        fill.style.width = (level / 4 * 100) + '%';
-        step.textContent = level + ' / 4';
-        label.textContent = TXT[level];
-        done.hidden = level < 4;
-    }
-
-    items.forEach(function (b) {
-        b.addEventListener('click', function () {
-            if (b.disabled || level >= 4) return;
-            b.disabled = true;
-            var card = document.querySelector('.loot-card[data-loot="' + b.getAttribute('data-stage') + '"]');
-            if (card) card.classList.add('on');
-            level++;
-            render();
-        });
-    });
-
-    if (reset) reset.addEventListener('click', function () {
-        level = 0;
-        items.forEach(function (b) { b.disabled = false; });
-        [].forEach.call(document.querySelectorAll('.loot-card'), function (c) { c.classList.remove('on'); });
-        render();
-        document.querySelector('.game-sec').scrollIntoView({ behavior: 'smooth', block: 'start' });
-    });
-
-    render();
 })();
 </script>
 <!--rdf-reveal-fix--><script>(function(){var els=document.querySelectorAll(".reveal");if(!els.length)return;if(!("IntersectionObserver"in window)){els.forEach(function(e){e.classList.add("vis");});return;}var io=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){x.target.classList.add("vis");io.unobserve(x.target);}});},{rootMargin:"0px 0px -8% 0px"});els.forEach(function(e){io.observe(e);});setTimeout(function(){els.forEach(function(e){e.classList.add("vis");});},1200);})();</script>
