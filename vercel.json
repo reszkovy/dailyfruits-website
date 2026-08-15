@@ -135,6 +135,11 @@
   ],
   "redirects": [
     {
+      "source": "/powrot-do-zywych-2",
+      "destination": "/powrotdozywych",
+      "permanent": true
+    },
+    {
       "source": "/case-study-allegro",
       "destination": "/",
       "statusCode": 301
