@@ -207,6 +207,9 @@ header .btn-red-solid::before { animation-delay: 3.4s; }
 @media (prefers-reduced-motion: reduce) {
     .btn-feed::before, .mid-cta .btn::before, header .btn-red-solid::before { animation: none; opacity: 0; } }
 
+.form-after { margin-top: 34px; padding-top: 30px; border-top: 2px dashed rgba(27,94,58,0.20); text-align: center; }
+.form-after p { font-size: 15px; color: var(--gray-500); margin: 0 0 16px; }
+
 /* ---------- SEKCJE ---------- */
 .sec { padding: 96px 0; }
 .sec-cream { background: var(--cream); }
@@ -507,6 +510,10 @@ html.pt-in body>:not(header) { animation: ptFadeIn 0.32s ease both; }
                 <iframe id="bwp-form" title="Formularz bezpłatnej wyceny DailyFruits" src="https://betterworkplace.pl/kontakt/zapytanie-dailyfruits" loading="lazy"></iframe>
                 <div class="form-fallback">
                     Wolisz krócej? <a href="tel:+48228680499">22 868 04 99</a> albo <a href="mailto:zapytania@betterworkplace.pl?subject=Kampania%20Powr%C3%B3t%20do%20%C5%BCywych">zapytania@betterworkplace.pl</a> — odpowiadamy w 24 h.
+                </div>
+                <div class="form-after">
+                    <p>Wolisz najpierw zobaczyć, co dokładnie dowozimy?</p>
+                    <a href="/oferta" class="btn btn-green btn-arrow">Sprawdź pełną ofertę</a>
                 </div>
             </div>
         </div>
