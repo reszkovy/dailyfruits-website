@@ -191,7 +191,7 @@ header .btn-red-solid { position: relative; overflow: hidden; box-shadow: 0 8px 
 .hero-box li { font-size: 14.5px; color: var(--gray-500); padding-left: 24px; position: relative; }
 .hero-box li::before { content: '✓'; position: absolute; left: 0; color: var(--lime); font-weight: 900; }
 
-.prod-sec { padding: 92px 0 96px; background: var(--white); }
+.prod-sec { padding: 92px 0 96px; background: var(--cream); }
 .prod-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 10px; margin-top: 14px; }
 .prod-card { background: transparent; border: none; padding: 6px 4px 4px; text-align: center; transition: transform .3s cubic-bezier(0.16,1,0.3,1); }
 .prod-card:hover { transform: translateY(-4px); }
@@ -280,7 +280,16 @@ header .btn-red-solid::before { animation-delay: 3.4s; }
 .sec-cream .sec-head h2 { color: var(--cream); }
 .sec-cream .sec-head h2 .fun { color: var(--lime); }
 .sec-cream .sec-head p { color: rgba(255,249,224,0.82); }
-.sec-white { background: var(--white); }
+.sec-white { background: var(--green-dark); }
+.sec-white .sec-head h2 { color: var(--cream); }
+.sec-white .sec-head h2 .fun { color: var(--lime); }
+.sec-white .sec-head p { color: rgba(255,249,224,0.80); }
+.sec-white .cure-grid::before { background: repeating-linear-gradient(to right, rgba(255,249,224,0.30) 0 7px, transparent 7px 14px); }
+.sec-white .cure-card { border-top-color: rgba(255,249,224,0.26); }
+.sec-white .cure-card::before { background: var(--lime); box-shadow: 0 0 0 6px var(--green-dark); }
+.sec-white .cure-grid .cure-card:last-child::before { background: var(--cream); }
+.sec-white .cure-card h3 { color: var(--cream); }
+.sec-white .cure-card p { color: rgba(255,249,224,0.78); }
 .sec-head { text-align: center; margin-bottom: 54px; }
 .sec-head h2 { font-weight: 900; font-size: clamp(28px, 3vw, 42px); color: var(--green-dark); letter-spacing: -0.04em; margin-bottom: 12px; }
 .sec-head h2 .fun { font-family: var(--font-fun); font-weight: 400; color: var(--lime); font-size: 1.06em; }
