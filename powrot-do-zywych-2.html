@@ -134,6 +134,13 @@ header .btn-nav-cta { box-shadow: 0 6px 18px rgba(0,0,0,0.28); }
 .slider-tag.r { right: 16px; background: rgba(255,249,224,0.92); color: var(--green-dark); }
 .slider-hint { text-align: center; margin-top: 20px; font-size: 14px; color: rgba(255,249,224,0.62); }
 
+/* ---------- FORMULARZ KROKOWY ---------- */
+.form-sec { padding: 92px 0 100px; background: var(--cream); }
+.form-wrap { max-width: 620px; margin: 0 auto; background: var(--white); border-radius: var(--radius-lg); padding: 34px 34px 30px; border: 1px solid rgba(27,94,58,0.08); box-shadow: 0 18px 50px rgba(27,94,58,0.10); }
+.form-wrap iframe { width: 100%; border: none; display: block; min-height: 420px; }
+.form-fallback { margin-top: 20px; padding: 16px 20px; background: rgba(141,198,63,0.10); border: 1px solid rgba(141,198,63,0.45); border-radius: 14px; font-size: 14.5px; line-height: 1.6; text-align: center; }
+.form-fallback a { font-weight: 900; color: var(--green-dark); }
+
 /* ---------- SEKCJE ---------- */
 .sec { padding: 96px 0; }
 .sec-cream { background: var(--cream); }
@@ -355,16 +362,19 @@ html.pt-in body>:not(header) { animation: ptFadeIn 0.32s ease both; }
     </div>
 </section>
 
-<!-- CTA -->
-<section class="c-cta">
+<!-- FORMULARZ -->
+<section class="form-sec" id="formularz">
     <div class="container">
-        <h2>Obudź swoje <span class="fun">biuro</span></h2>
-        <p>Powiedz nam, ile macie osób i czego potrzebujecie. Resztę przygotujemy po naszej stronie — pierwsza dostawa gratis.</p>
-        <div class="row">
-            <a href="zapytanie" class="btn-feed">Nakarm zespół →</a>
-            <a href="oferta" class="btn btn-outline">Zobacz ofertę →</a>
+        <div class="sec-head">
+            <h2>Obudź swoje <span class="fun">biuro</span></h2>
+            <p>Powiedz nam, ile macie osób i czego potrzebujecie. Resztę przygotujemy po naszej stronie — pierwsza dostawa gratis.</p>
         </div>
-        <p class="c-note">Odpowiadamy w 24 godziny. Bez zobowiązań, bez kruczków.</p>
+        <div class="form-wrap">
+            <iframe id="bwp-form" title="Formularz bezpłatnej wyceny DailyFruits" src="https://betterworkplace.pl/kontakt/zapytanie-embed" loading="lazy"></iframe>
+            <div class="form-fallback">
+                Wolisz krócej? <a href="tel:+48228680499">22 868 04 99</a> albo <a href="mailto:zapytania@betterworkplace.pl?subject=Kampania%20Powr%C3%B3t%20do%20%C5%BCywych">zapytania@betterworkplace.pl</a> — odpowiadamy w 24 h.
+            </div>
+        </div>
     </div>
 </section>
 
@@ -458,6 +468,7 @@ html.pt-in body>:not(header) { animation: ptFadeIn 0.32s ease both; }
     var acc = 0;
     var locked = false;
     var STEP = 16;            // px delty na jedna klatke
+    var justUnlocked = 0;
     var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     function setIdx(n) {
@@ -481,6 +492,7 @@ html.pt-in body>:not(header) { animation: ptFadeIn 0.32s ease both; }
     function unlock() {
         if (!locked) return;
         locked = false;
+        justUnlocked = Date.now();
         document.documentElement.style.overflow = '';
         document.body.style.overflow = '';
         if (skip) skip.hidden = true;
@@ -521,6 +533,13 @@ html.pt-in body>:not(header) { animation: ptFadeIn 0.32s ease both; }
 
     if (skip) skip.addEventListener('click', function () { setIdx(TOTAL - 1); });
 
+    // powrot na sama gore ponownie wlacza blokade - film da sie przewijac w obie strony
+    window.addEventListener('scroll', function () {
+        if (locked || reduce) return;
+        if (Date.now() - justUnlocked < 700) return;
+        if (window.scrollY <= 0 && idx > 0) lock();
+    }, { passive: true });
+
     function onScroll() { /* blokada zastapila scrub scrollem */ }
     if (!reduce) { window.scrollTo(0, 0); lock(); } else { setIdx(TOTAL - 1); }
 })();
@@ -559,6 +578,21 @@ html.pt-in body>:not(header) { animation: ptFadeIn 0.32s ease both; }
             });
         }, { threshold: 0.5 }).observe(f);
     }
+})();
+</script>
+<script>
+/* ─── FORMULARZ BWP: auto-wysokosc + przekazanie brandu ─── */
+(function () {
+    var BRAND = 'Daily fruits';
+    window.addEventListener('message', function (e) {
+        if (e.data && e.data.type === 'bwp:request-info') {
+            e.source.postMessage({ type: 'bwp:info', url: window.location.href, referrer: document.referrer, brand: BRAND }, '*');
+        }
+        if (e.data && e.data.type === 'bwp:resize') {
+            var f = document.getElementById('bwp-form');
+            if (f) f.style.height = e.data.height + 'px';
+        }
+    });
 })();
 </script>
 <!--rdf-reveal-fix--><script>(function(){var els=document.querySelectorAll(".reveal");if(!els.length)return;if(!("IntersectionObserver"in window)){els.forEach(function(e){e.classList.add("vis");});return;}var io=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){x.target.classList.add("vis");io.unobserve(x.target);}});},{rootMargin:"0px 0px -8% 0px"});els.forEach(function(e){io.observe(e);});setTimeout(function(){els.forEach(function(e){e.classList.add("vis");});},1200);})();</script>
