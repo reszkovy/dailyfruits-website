@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<!--#include:gtm-head-->
+<!-- Google Tag Manager -->
+<!-- Consent Mode v2: domyslnie denied do czasu zgody (RODO/ePrivacy) — MUSI byc przed tagami -->
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('consent','default',{'ad_storage':'denied','analytics_storage':'denied','ad_user_data':'denied','ad_personalization':'denied','functionality_storage':'granted','security_storage':'granted','wait_for_update':500});
+gtag('js', new Date());
+gtag('config', 'G-G9SCYSFC36');
+</script>
+<!-- Usercentrics NATYCHMIAST (osobno od lazy-GTM): baner zgod pojawia sie od razu
+     (RODO) i maluje sie wczesnie = stabilne LCP (pozny render banera psul metryke).
+     Loader ma guard po id - gdy GTM tez go wstrzyknie, drugi raz sie nie zaladuje. -->
+<link rel="preconnect" href="https://web.cmp.usercentrics.eu" crossorigin>
+<link rel="preconnect" href="https://v1.api.service.cmp.usercentrics.eu" crossorigin>
+<script id="usercentrics-cmp" src="https://web.cmp.usercentrics.eu/ui/loader.js" data-settings-id="JcLfBYv2MWoHnQ" async fetchpriority="high"></script>
+<!-- Lazy-start analityki (perf): GTM x2 + GA4 startuja przy PIERWSZEJ interakcji
+     uzytkownika (mousemove/scroll/touch/klawisz) albo najpozniej po 2.5 s.
+     Realny user: praktycznie natychmiast. Lab (LCP): poza oknem krytycznym.
+     Consent mode i kolejnosc zdarzen bez zmian (dataLayer kolejkuje polecenia). -->
+<script>
+(function(){
+  var done=false;
+  function loadAnalytics(){
+    if(done)return; done=true;
+    ['GTM-FVTBKWW','GTM-5B7HN67B'].forEach(function(id){
+      window.dataLayer.push({'gtm.start':new Date().getTime(),event:'gtm.js'});
+      var f=document.getElementsByTagName('script')[0],j=document.createElement('script');
+      j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+id;
+      f.parentNode.insertBefore(j,f);
+    });
+    var g=document.createElement('script');
+    g.async=true;g.src='https://www.googletagmanager.com/gtag/js?id=G-G9SCYSFC36';
+    document.head.appendChild(g);
+  }
+  ['pointerdown','keydown','touchstart','scroll','mousemove'].forEach(function(e){
+    window.addEventListener(e,loadAnalytics,{once:true,passive:true});
+  });
+  setTimeout(loadAnalytics,2500);
+})();
+</script>
+<!-- End Google Tag Manager -->
+<!-- Microsoft Clarity - blokowany do zgody przez Usercentrics.
+     type="text/plain" + data-usercentrics="Microsoft Clarity": skrypt NIE wykonuje sie,
+     dopoki CMP nie dostanie zgody na usluge "Microsoft Clarity" (wtedy UC przelacza typ i odpala).
+     WYMAGANE w panelu Usercentrics: usluga "Microsoft Clarity" o nazwie dokladnie zgodnej z data-usercentrics. -->
+<script type="text/plain" data-usercentrics="Microsoft Clarity">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "xi2vatfga7");
+</script>
+<!-- End Microsoft Clarity -->
+<!--#endinclude:gtm-head-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Syndrom wrześniowy - miękkie lądowanie w biurze | DailyFruits</title>
+    <meta name="description" content="68% pracuje mniej efektywnie, gdy odczuwa głód. Zobacz, co zmienia skrzynka owoców na biurku - przewiń i obudź biuro.">
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="canonical" href="https://dailyfruits.pl/syndromwrzesniowy">
+    <meta property="og:title" content="Powrót do biur. Powrót do żywych.">
+    <meta property="og:description" content="68% pracuje mniej efektywnie, gdy odczuwa głód. Przewiń, żeby obudzić biuro.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://dailyfruits.pl/syndromwrzesniowy">
+    <meta property="og:image" content="https://dailyfruits.pl/frames-syndrom/s0096.webp">
+    <link rel="icon" type="image/png" href="favicon_.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" as="image" href="frames-syndrom/s0000.webp?v=2">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700;900&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700;900&display=swap" rel="stylesheet"></noscript>
+    <link rel="stylesheet" href="shared.css?v=13">
+<style>
+@font-face { font-family: 'Achiko'; src: url('Achiko.woff2') format('woff2'), url('Achiko.ttf') format('truetype'); font-weight: 400; font-display: swap; }
+:root {
+    --green-dark: #1B5E3A; --lime: #8DC63F; --lime-light: #A4C348; --lime-bg: #FFF9E0;
+    --yellow: #FFF200; --yellow-bg: #FFF8D8; --red: #E43020; --coral: #F06878;
+    --cream: #FFF9E0; --white: #FFFFFF; --gray: #3D5A1E; --gray-500: #555;
+    --radius: 20px; --radius-lg: 28px; --radius-pill: 100px;
+    --font: 'DM Sans', sans-serif; --font-fun: 'Achiko', 'Lobster', cursive;
+}
+/* ---------- BELKA: przezroczysta, elementy na wideo (odroznienie od home) ---------- */
+header { z-index: 300 !important; position: absolute !important; background: transparent !important; box-shadow: none !important; border-bottom: none !important; transition: none !important; }
+header.scrolled { background: transparent !important; box-shadow: none !important; }
+/* falka spod paska jest zaprojektowana pod pelne zielone tlo - na przezroczystym pasku wisi nad zdjeciem */
+header::after { display: none !important; }
+header .nav-inner { padding-top: 24px; padding-bottom: 24px; }
+header .nav-links a { color: var(--cream); text-shadow: 0 1px 10px rgba(0,0,0,0.35); }
+header .nav-links a:hover { color: var(--lime); }
+header .nav-trust { color: rgba(255,249,224,0.78); text-shadow: 0 1px 10px rgba(0,0,0,0.35); }
+header .logo-img { filter: drop-shadow(0 2px 10px rgba(0,0,0,0.35)); }
+header .logo-sub { text-shadow: 0 1px 8px rgba(0,0,0,0.4); }
+/* CTA plynie ze strona - "Zamow" klikalne z kazdego miejsca. Chowa sie dopiero
+   przy formularzu, zeby nie wskazywalo na cel, ktory wlasnie jest na ekranie. */
+header .nav-buttons { position: fixed; top: 22px; right: clamp(20px, 3vw, 44px); z-index: 10;
+    transition: opacity .32s ease, transform .32s cubic-bezier(0.16,1,0.3,1); }
+header .nav-buttons.hide { opacity: 0; transform: translateY(-18px); pointer-events: none; }
+header .btn-red-solid { position: relative; overflow: hidden; box-shadow: 0 8px 22px rgba(0,0,0,0.34); }
+/* shared.css chowa .nav-buttons .btn ponizej 768px (normalnie zastepuje go hamburger).
+   Tu hamburgera nie ma, wiec CTA musi zostac - inaczej na mobile nie da sie kliknac "Zamow". */
+@media (max-width: 768px) {
+    header .nav-buttons { top: 12px; right: 12px; }
+    header .nav-buttons .btn.btn-red-solid { display: inline-flex !important; padding: 12px 20px; font-size: 13px; } }
+/* delikatna poswiata u gory, zeby nawigacja czytala sie na jasnych klatkach */
+.scrub-sticky::after { content: ''; position: absolute; left: 0; right: 0; top: 0; height: 190px; z-index: 4; pointer-events: none; background: linear-gradient(to bottom, rgba(10,40,24,0.55), transparent); }
+.scrub-sticky::before { content: ''; position: absolute; left: 0; right: 0; bottom: var(--bar); height: 120px; z-index: 2; pointer-events: none; background: linear-gradient(to top, rgba(10,40,24,0.55), transparent); }
+
+/* ---------- SCROLL-SCRUB HERO ---------- */
+.scrub { position: relative; height: 100vh; background: var(--green-dark); }
+.bez-klatek .scrub-stage, .bez-klatek .scrub-veil, .bez-klatek .energy, .bez-klatek .scrub-hint { display: none; }
+.bez-klatek .scrub-grid { height: 100%; }
+.bez-klatek .hero-offer { bottom: 40px; }
+.bez-klatek .scrub-sticky::before { display: none; }
+.scrub-sticky { position: relative; height: 100vh; overflow: hidden; --bar: 92px; }
+.scrub-grid { position: relative; z-index: 3; height: calc(100% - var(--bar)); display: grid; grid-template-columns: 47% 53%; align-items: center; }
+.scrub-copy { padding: 150px clamp(28px, 4vw, 72px) 0; position: relative; z-index: 3; transform: translateY(-40px); }
+.scrub-copy-par { will-change: transform; }
+.c-badge { display: inline-block; background: var(--coral); color: #fff; font-size: 12px; font-weight: 900; letter-spacing: 0.1em; text-transform: uppercase; padding: 9px 18px; border-radius: var(--radius-pill); transform: rotate(-2deg); box-shadow: 2px 3px 0 rgba(0,0,0,0.18); margin-bottom: 28px; }
+.kicker { font-size: clamp(11px, 0.95vw, 13px); font-weight: 900; letter-spacing: .18em; text-transform: uppercase; color: var(--lime); margin: 0 0 16px; }
+.scrub-copy h1 { margin: 0 0 26px; letter-spacing: -0.035em; }
+.scrub-copy h1 .l1 { display: block; font-family: var(--font-fun); font-weight: 400; font-size: clamp(40px, 4.9vw, 86px); line-height: .96; color: var(--lime); }
+.scrub-copy h1 .l2 { display: block; font-weight: 900; font-size: clamp(34px, 4.3vw, 74px); line-height: 1.02; letter-spacing: -.04em; color: var(--cream); margin-top: 6px; }
+.scrub-copy .lead { font-size: clamp(16px, 1.3vw, 20px); line-height: 1.55; color: rgba(255,249,224,0.85); max-width: 40ch; margin-bottom: 32px; }
+.scrub-copy .lead b { color: var(--cream); font-weight: 900; }
+.btn-feed { background: var(--red); color: #fff; font-weight: 900; font-size: 16px; padding: 15px 30px; border-radius: var(--radius-pill); display: inline-block; position: relative; overflow: hidden; transition: transform 0.25s, box-shadow 0.25s; box-shadow: 0 8px 22px rgba(228,48,32,0.32); }
+.btn-feed:hover { transform: translateY(-2px); box-shadow: 0 12px 28px rgba(228,48,32,0.42); }
+/* Prawy dolny rog kadru - pod przyciskiem konkurowala z nim o uwage. */
+.hero-offer { position: absolute; bottom: calc(var(--bar) + 30px); right: clamp(20px, 3vw, 44px); z-index: 4;
+    margin: 0; text-align: right; font-size: 14px; line-height: 1.35; font-weight: 800;
+    letter-spacing: .01em; color: var(--lime); padding-right: 12px; border-right: 3px solid var(--lime);
+    text-shadow: 0 2px 14px rgba(0,0,0,0.7), 0 1px 4px rgba(0,0,0,0.55); }
+.cta-row { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
+.scrub-hint { margin: 0; font-size: 13px; letter-spacing: 0.02em; color: rgba(255,249,224,0.6); display: flex; align-items: center; gap: 9px; }
+.scrub-hint i { display: block; width: 1px; height: 22px; background: linear-gradient(to bottom, rgba(255,249,224,0.55), transparent); animation: hintDrop 1.8s ease-in-out infinite; }
+@keyframes hintDrop { 0%,100% { transform: translateY(0); opacity: .8 } 50% { transform: translateY(7px); opacity: .3 } }
+.scrub-stage { position: absolute; inset: 0 0 var(--bar) 0; z-index: 1; overflow: hidden; will-change: transform; }
+#zCanvas { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 68% center; display: block; }
+.scrub-veil { position: absolute; inset: 0 0 var(--bar) 0; z-index: 2; pointer-events: none;
+    background: linear-gradient(to right, var(--green-dark) 0%, var(--green-dark) 20%, rgba(27,94,58,0.90) 30%, rgba(27,94,58,0.58) 40%, rgba(27,94,58,0.26) 50%, rgba(27,94,58,0.08) 57%, transparent 64%); }
+.energy { position: absolute; left: 0; right: 0; bottom: 0; height: var(--bar); z-index: 6; background: var(--green-dark); padding: 0 clamp(20px, 3vw, 44px); display: flex; align-items: center; gap: clamp(12px, 1.6vw, 22px); pointer-events: none; }
+.energy-lab { font-size: clamp(10px, 0.85vw, 12.5px); font-weight: 900; letter-spacing: .12em; text-transform: uppercase; white-space: nowrap; text-shadow: 0 1px 8px rgba(0,0,0,.45); }
+.energy-lab.l { color: rgba(255,180,170,0.95); }
+.energy-lab.r { color: rgba(190,225,150,0.95); display: inline-flex; align-items: center; gap: 7px; }
+/* CTA startuje schowany za belka (z-index nizszy, belka jest kryjaca), po zapelnieniu
+   paska wysuwa sie W DOL i zatrzymuje przy dolnej krawedzi. Jest absolutny wzgledem
+   .scrub, wiec po zwolnieniu blokady plynie dalej ze strona w dol. */
+.energy-cup { height: clamp(20px, 2vw, 28px); width: auto; display: block; opacity: 0; transform: scale(.4) rotate(-25deg); transition: none; }
+.energy-cup.pop { animation: cupPop .62s cubic-bezier(0.18, 1.5, 0.4, 1) forwards; }
+@keyframes cupPop {
+  0%   { opacity: 0; transform: scale(.4) rotate(-25deg); }
+  55%  { opacity: 1; transform: scale(1.28) rotate(8deg); }
+  100% { opacity: 1; transform: scale(1) rotate(0deg); }
+}
+@media (prefers-reduced-motion: reduce) { .energy-cup.pop { animation: none; opacity: 1; transform: none; } }
+.energy-track { flex: 1; height: 12px; border-radius: 99px; background: rgba(10,40,24,0.45); box-shadow: inset 0 0 0 1px rgba(255,249,224,0.18); overflow: hidden; }
+.energy-fill { display: block; height: 100%; width: 0; border-radius: 99px; background: #E43020; transition: width .1s linear, background-color .2s linear; }
+/* ---------- SUWAK PRZED / PO (ilustracja) ---------- */
+.slider-frame { position: relative; width: 100%; margin: 0 auto; border-radius: var(--radius); overflow: hidden; box-shadow: 0 14px 40px rgba(27,94,58,0.14); aspect-ratio: 1200/670; touch-action: none; cursor: ew-resize; user-select: none; background: var(--cream); }
+.slider-frame img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; pointer-events: none; }
+.slider-frame .top-layer { clip-path: inset(0 0 0 var(--pos, 50%)); }
+.slider-handle { position: absolute; top: 0; bottom: 0; left: var(--pos, 50%); width: 3px; background: var(--cream); z-index: 3; pointer-events: none; }
+.slider-handle::after { content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 40px; height: 40px; border-radius: 50%; background: var(--red); box-shadow: 0 6px 18px rgba(0,0,0,0.32); }
+.slider-handle::before { content: '‹ ›'; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); z-index: 4; color: #fff; font-size: 17px; font-weight: 900; letter-spacing: 2px; }
+.slider-tag { position: absolute; bottom: 11px; z-index: 4; font-size: 10px; font-weight: 900; letter-spacing: 0.14em; text-transform: uppercase; padding: 7px 14px; border-radius: var(--radius-pill); }
+.slider-tag.l { left: 14px; background: rgba(27,94,58,0.82); color: rgba(255,249,224,0.94); }
+.slider-tag.r { right: 16px; background: rgba(255,249,224,0.92); color: var(--green-dark); }
+.slider-hint { text-align: center; margin-top: 14px; font-size: 13.5px; color: rgba(27,94,58,0.55); }
+
+/* ---------- CO LADUJE NA BIURKU ---------- */
+.hero-box { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 30px 44px; align-items: center; background: var(--cream); border-radius: var(--radius-lg); padding: 40px 44px 34px; }
+.hero-box-foot { grid-column: 1 / -1; padding-top: 26px; border-top: 1px dashed rgba(27,94,58,0.18); }
+.foot-lead { font-size: 12px; font-weight: 900; letter-spacing: .14em; text-transform: uppercase; color: rgba(27,94,58,0.55); margin: 0; }
+.hero-box img { will-change: transform; width: 100%; height: auto; display: block; filter: drop-shadow(0 20px 40px rgba(27,94,58,0.16)); }
+.hero-box .tag { display: inline-block; font-size: 11px; font-weight: 900; letter-spacing: .14em; text-transform: uppercase; color: var(--coral); margin-bottom: 12px; }
+.hero-box h3 { font-weight: 900; font-size: clamp(22px, 2.4vw, 32px); color: var(--green-dark); letter-spacing: -0.03em; line-height: 1.12; margin-bottom: 12px; }
+.hero-box h3 .fun { font-family: var(--font-fun); font-weight: 400; color: var(--lime); font-size: 1.06em; }
+.hero-box p { font-size: 16px; line-height: 1.62; color: var(--gray-500); margin: 0 0 10px; }
+.hero-box ul { list-style: none; padding: 0; margin: 16px 0 0; display: grid; gap: 8px; }
+.hero-box li { font-size: 14.5px; color: var(--gray-500); padding-left: 24px; position: relative; }
+.hero-box li::before { content: '✓'; position: absolute; left: 0; color: var(--lime); font-weight: 900; }
+
+.prod-sec { padding: 92px 0 96px; background: var(--white); }
+.prod-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 10px; margin-top: 14px; }
+.prod-card { background: transparent; border: none; padding: 6px 4px 4px; text-align: center; transition: transform .3s cubic-bezier(0.16,1,0.3,1); }
+.prod-card:hover { transform: translateY(-4px); }
+.prod-ph { height: 54px; display: flex; align-items: center; justify-content: center; margin-bottom: 10px; }
+.prod-ph img { max-height: 100%; max-width: 100%; object-fit: contain; display: block; }
+.prod-card h3 { font-weight: 800; font-size: 12px; line-height: 1.3; color: var(--green-dark); margin: 0; letter-spacing: -0.01em; }
+
+/* ---------- FORMULARZ KROKOWY ---------- */
+.form-sec { padding: 92px 0 100px; background: var(--cream); position: relative; }
+/* Maskotka ze strony zapytania - siada na gornej krawedzi stopki. */
+.owocek { position: absolute; right: clamp(24px, 7vw, 96px); bottom: 0; width: 128px; height: auto;
+    z-index: 1; pointer-events: none; filter: drop-shadow(0 10px 24px rgba(27,94,58,0.26)); }
+@media (max-width: 720px) { .owocek { width: 84px; right: 16px; } }
+.form-grid { max-width: 660px; margin: 0 auto; }
+.form-art { max-width: 620px; margin: 0 auto 40px; }
+/* Formularz wtopiony w sekcje, bez plywajacej karty. */
+.form-wrap { background: transparent; padding: 0; }
+.form-wrap iframe { width: 100%; border: none; display: block; min-height: 420px; }
+.form-fallback { margin-top: 20px; padding: 16px 20px; background: rgba(141,198,63,0.14); border-radius: 14px; font-size: 14.5px; line-height: 1.6; text-align: center; }
+.form-fallback a { font-weight: 900; color: var(--green-dark); }
+
+/* Delikatny polysk przechodzacy przez CTA, bez udzialu kursora.
+   ::before, bo ::after niesie strzalke w .btn-arrow. */
+.btn-feed::before, .mid-cta .btn::before, header .btn-red-solid::before {
+    content: ''; position: absolute; top: 0; bottom: 0; left: -62%; width: 40%;
+    background: linear-gradient(105deg, transparent 0%, rgba(255,255,255,0.40) 50%, transparent 100%);
+    transform: skewX(-18deg); pointer-events: none;
+    animation: ctaPolysk 5.4s cubic-bezier(0.45, 0, 0.2, 1) infinite; }
+.mid-cta .btn::before { animation-delay: 1.8s; }
+header .btn-red-solid::before { animation-delay: 3.4s; }
+@keyframes ctaPolysk { 0% { left: -62%; } 20% { left: 122%; } 100% { left: 122%; } }
+@media (prefers-reduced-motion: reduce) {
+    .btn-feed::before, .mid-cta .btn::before, header .btn-red-solid::before { animation: none; opacity: 0; } }
+
+.form-after { margin-top: 34px; padding-top: 30px; border-top: 2px dashed rgba(27,94,58,0.20); text-align: center; }
+.form-after p { font-size: 15px; color: var(--gray-500); margin: 0 0 16px; }
+
+/* Pasek logotypow jak na home, tuz pod belka z paskiem energii. */
+.logo-bar { background: var(--white); padding: 30px 0 24px; overflow: hidden; }
+.logo-bar-label { text-align: center; font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: .18em; color: var(--green-dark); opacity: .45; margin-bottom: 20px; }
+.logo-bar-track { display: flex; align-items: center; width: max-content; animation: logo-scroll 30s linear infinite; }
+.logo-bar-track:hover { animation-play-state: paused; }
+.logo-bar-item { flex-shrink: 0; padding: 0 34px; display: flex; align-items: center; justify-content: center; }
+.logo-bar-item img { height: 44px; width: auto; object-fit: contain; filter: grayscale(1) opacity(0.4); transition: filter .4s ease; }
+.logo-bar-item img:hover { filter: grayscale(0) opacity(1); }
+@keyframes logo-scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+@media (max-width: 720px) { .logo-bar { padding: 22px 0 16px; } .logo-bar-item { padding: 0 22px; } .logo-bar-item img { height: 34px; } }
+@media (prefers-reduced-motion: reduce) { .logo-bar-track { animation: none !important; } }
+
+/* ---------- SEKCJE ---------- */
+.sec { padding: 96px 0; }
+.sec-cream { background: var(--cream); }
+.sec-white { background: var(--white); }
+.sec-head { text-align: center; margin-bottom: 54px; }
+.sec-head h2 { font-weight: 900; font-size: clamp(28px, 3vw, 42px); color: var(--green-dark); letter-spacing: -0.04em; margin-bottom: 12px; }
+.sec-head h2 .fun { font-family: var(--font-fun); font-weight: 400; color: var(--lime); font-size: 1.06em; }
+.sec-head p { font-size: 16px; color: var(--gray-500); max-width: 560px; margin: 0 auto; }
+.sym-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+.sym { background: var(--white); box-shadow: 0 1px 2px rgba(27,94,58,.05), 0 10px 30px rgba(27,94,58,.07); border-radius: var(--radius); padding: 30px 30px 32px; display: flex; flex-direction: column; transition: transform .3s cubic-bezier(0.16,1,0.3,1), box-shadow .3s; }
+.sym:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(27,94,58,0.10); }
+.sym-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; }
+.sym .n { font-family: var(--font-fun); font-size: 40px; line-height: 1; color: var(--coral); display: block; }
+.sym-top img { height: 54px; width: auto; display: block; transition: transform .3s cubic-bezier(0.16,1,0.3,1); }
+.sym:hover .sym-top img { transform: rotate(-7deg) scale(1.1); }
+.sym .b { padding: 0; border-top: 2px dashed rgba(27,94,58,0.16); padding-top: 20px; }
+.sym h3 { font-weight: 800; font-size: 19px; color: var(--green-dark); margin-bottom: 9px; letter-spacing: -0.02em; line-height: 1.25; }
+.sym p { font-size: 15px; line-height: 1.62; color: var(--gray-500); margin: 0; }
+/* Os czasu miesiaca: linia biegnie od wezla 1 do wezla 4, nie przez cala szerokosc. */
+.cure-grid { display: grid; grid-template-columns: repeat(4, 1fr); column-gap: 34px; row-gap: 0; position: relative; }
+.cure-grid::before { content: ''; position: absolute; top: 8px; left: 9px; right: calc((100% - 102px) / 4 - 9px); height: 2px;
+    background: repeating-linear-gradient(to right, rgba(27,94,58,0.30) 0 7px, transparent 7px 14px); }
+.cure-card { background: transparent; padding: 48px 0 0; position: relative; }
+.cure-card::before { content: ''; position: absolute; top: 0; left: 0; width: 18px; height: 18px; border-radius: 50%;
+    background: var(--green-dark); box-shadow: 0 0 0 6px var(--white); z-index: 1; }
+.cure-grid .cure-card:last-child::before { background: var(--lime); }
+.cure-card:hover .cure-top img { transform: rotate(-7deg) scale(1.12); }
+.cure-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
+.cure-card .day { font-family: var(--font-fun); font-size: 24px; color: var(--lime); display: block; }
+.cure-top img { height: 46px; width: auto; display: block; transition: transform .3s cubic-bezier(0.16,1,0.3,1); }
+.cure-card h3 { font-weight: 800; font-size: 17px; color: var(--green-dark); margin-bottom: 8px; letter-spacing: -0.02em; }
+.cure-card p { font-size: 14.5px; line-height: 1.6; color: var(--gray-500); margin: 0; }
+/* Odwrocone wzgledem reszty: limonka niesie tlo, ciemna zielen niesie liczby. */
+.mid-cta { text-align: center; margin: 54px 0 0; }
+.mid-cta .btn { position: relative; overflow: hidden; }
+/* Pewnosc przy decyzji tuz nad formularzem: dowod + proces w jednym pasie,
+   zamiast osobnej sekcji, ktora kosztowala 424 px wysokosci. */
+/* Dowod spolecznosciowy pod oferta produktowa, na jasnym tle: liczby + opinie razem.
+   Nad formularzem zostaje sama sciezka procesu. */
+.proofzone { margin-top: 56px; }
+
+/* Ocena tuz nad sciezka procesu, na szerokosc formularza. */
+.rating { display: flex; align-items: center; justify-content: center; gap: 9px; margin: 0 0 20px; }
+.rating-stars { color: #FFC107; font-size: 19px; letter-spacing: 2px; }
+.rating-score { font-size: 13.5px; font-weight: 700; color: var(--green-dark); opacity: .65; }
+@media (max-width: 560px) { .rating { flex-direction: column; gap: 5px; } }
+
+/* Bez tla i bez paddingu: pas ma dokladnie szerokosc formularza,
+   a liczby ustawiaja sie w jednej linii z jego krawedziami. */
+.assure { background: transparent; padding: 0; margin: 0 auto 30px; max-width: 660px; }
+.assure-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; text-align: center; }
+.assure-item b { display: block; font-family: var(--font-fun); font-size: clamp(24px, 2.6vw, 32px); line-height: 1; color: var(--green-dark); margin-bottom: 5px; }
+.assure-item span { font-size: 11.5px; line-height: 1.35; color: var(--gray-500); display: block; }
+.assure-flow { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 8px 10px;
+    margin: 0; padding: 20px 0; border-top: 2px dashed rgba(27,94,58,0.22); border-bottom: 2px dashed rgba(27,94,58,0.22);
+    font-size: 12.5px; font-weight: 800; color: var(--green-dark); text-align: center; }
+.assure-flow i { display: block; width: 16px; height: 2px; background: var(--lime); flex: none; }
+@media (max-width: 720px) {
+    .assure-grid { grid-template-columns: repeat(2, 1fr); gap: 18px 12px; }
+    .assure-flow { flex-direction: column; gap: 7px; font-size: 12px; }
+    .assure-flow i { width: 2px; height: 12px; } }
+.c-cta { padding: 92px 0 104px; background: var(--cream); text-align: center; }
+.c-cta h2 { font-weight: 900; font-size: clamp(30px, 3.6vw, 48px); color: var(--green-dark); letter-spacing: -0.04em; margin-bottom: 14px; }
+.c-cta h2 .fun { font-family: var(--font-fun); font-weight: 400; color: var(--lime); font-size: 1.06em; }
+.c-cta p { font-size: 17px; color: var(--gray-500); max-width: 520px; margin: 0 auto 30px; line-height: 1.6; }
+.c-cta .row { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+.c-note { margin-top: 26px; font-size: 13px; color: rgba(27,94,58,0.55); }
+@media (max-width: 1000px) {
+    .scrub { height: 100vh; }
+    .scrub-grid { grid-template-columns: 1fr; grid-template-rows: 46% 54%; align-items: start; }
+    .scrub-copy { padding-top: 92px; order: 2; }
+    .scrub-stage { order: 1; }
+    .scrub-veil { background: linear-gradient(to bottom, transparent 40%, rgba(27,94,58,0.8) 78%, var(--green-dark) 100%); }
+    #zCanvas { object-position: center 40%; }
+    .sym-grid { grid-template-columns: 1fr; }
+    /* dwie kolumny: jedna ciagla os by sie rozjechala miedzy rzedami,
+       wiec kazdy wezel dostaje wlasny odcinek osi */
+    .cure-grid { grid-template-columns: 1fr 1fr; row-gap: 40px; }
+    .cure-grid::before { display: none; }
+    .cure-card { border-top: 2px dashed rgba(27,94,58,0.30); }
+    .prod-grid { grid-template-columns: repeat(3, 1fr); gap: 14px; }
+    .hero-box { grid-template-columns: 1fr; gap: 26px; padding: 30px 26px; }
+}
+@media (max-width: 1000px) and (max-height: 720px) {
+    /* niskie ekrany: CTA musi zmiescic sie w pierwszym widoku */
+    .scrub-grid { grid-template-rows: 36% 64%; }
+    .scrub-copy { padding-top: 74px; }
+    .hero-offer { bottom: calc(var(--bar) + 14px); right: 14px; font-size: 12px; padding-right: 10px; }
+    .scrub-copy h1 .l1 { font-size: 30px; }
+    .scrub-copy h1 .l2 { font-size: 26px; }
+    .scrub-copy h1 { margin-bottom: 14px; }
+    .scrub-copy .lead { font-size: 14.5px; line-height: 1.45; margin-bottom: 18px; }
+    .scrub-hint { display: none; }
+    .btn-feed { padding: 13px 26px; font-size: 15px; }
+}
+@media (max-width: 700px) {
+    .scrub-sticky { --bar: 108px; }
+    /* pasek energii: etykiety nad torem, tor pelnej szerokosci (na 320 tor miał 0 px) */
+    .energy { flex-wrap: wrap; align-content: center; gap: 7px 10px; }
+    .energy-lab { flex: 0 0 auto; }
+    .energy-lab.r { margin-left: auto; }
+    .energy-track { flex: 1 0 100%; order: 3; height: 8px; }
+    /* hero: CTA pewnie w pierwszym ekranie takze na niskich ekranach */
+    .scrub-copy h1 { margin-bottom: 18px; }
+    .scrub-copy .lead { margin-bottom: 22px; font-size: 15.5px; }
+    .scrub-hint { margin-top: 18px; }
+    }
+@media (max-width: 720px) {
+    .container { padding: 0 20px; }
+    .cure-grid { grid-template-columns: 1fr; row-gap: 30px; padding-left: 38px; }
+    .cure-grid::before { top: 9px; bottom: 14px; left: 8px; right: auto; height: auto; width: 2px;
+        background: repeating-linear-gradient(to bottom, rgba(27,94,58,0.30) 0 7px, transparent 7px 14px); }
+    .cure-card { padding-top: 0; border-top: 0; }
+    .cure-card::before { top: 1px; left: -38px; }
+    .prod-grid { grid-template-columns: repeat(2, 1fr); }
+    .hero-offer { bottom: calc(var(--bar) + 14px); right: 14px; font-size: 12px; padding-right: 10px; }
+    .scrub-copy h1 .l1 { font-size: 30px; }
+    .scrub-copy h1 .l2 { font-size: 27px; }
+}
+@media (prefers-reduced-motion: reduce) { .scrub-hint i { animation: none; } .btn-feed, .cure-card { transition: none !important; } }
+html.pt-out body>:not(header) { opacity: 0 !important; transition: opacity 0.18s ease !important; }
+html.pt-in body>:not(header) { animation: ptFadeIn 0.32s ease both; }
+@keyframes ptFadeIn { from { opacity: 0; } to { opacity: 1; } }
+@media (prefers-reduced-motion: reduce) {
+    html.pt-out body>:not(header) { opacity: 1 !important; transition: none !important; }
+    html.pt-in body>:not(header) { animation: none; }
+}
+@media (max-width: 768px) {
+    .nav-inner { padding: 10px 20px !important; }
+    .logo-img { height: 38px !important; width: auto !important; }
+    .logo-wrap { flex-direction: row !important; gap: 8px !important; align-items: center !important; }
+    .logo-sub { display: inline-block !important; border-left: 1px solid rgba(255,255,255,0.25) !important; padding-left: 8px !important; margin: 0 !important; font-size: 8px !important; align-self: center !important; opacity: 0.6 !important; }
+    .nav-links, .nav-trust { display: none !important; }
+}
+</style>
+</head>
+<body>
+<!--#include:gtm-noscript-->
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-FVTBKWW" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5B7HN67B" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<!--#endinclude:gtm-noscript-->
+
+<!-- NAV -->
+<header>
+    <div class="nav-inner">
+        <div class="logo-wrap"><a href="/"><picture><source media="(max-width: 768px)" srcset="animacja_11-lime.svg"><img src="fruitttt.svg" alt="DailyFruits - owoce, kanapki, soki, przekąski i więcej do biura" class="logo-img" loading="eager" fetchpriority="high" width="64" height="64"></picture></a><span class="logo-sub">by BetterWorkplace</span></div>
+        <!-- Landing kampanijny: naglowek okrojony do logo i jednego CTA,
+             zeby nie wyprowadzac ruchu z lejka. -->
+        <div class="nav-buttons">
+            <a href="#formularz" class="btn btn-red-solid js-do-formularza">Zamów na jesień</a>
+        </div>
+    </div>
+</header>
+
+
+<!-- HERO ZE SCROLL-SCRUBEM -->
+<section class="scrub" id="scrub">
+    <div class="scrub-sticky">
+        <div class="scrub-stage">
+            <canvas id="zCanvas" aria-label="Biuro budzi się do życia, gdy na biurku pojawia się skrzynka owoców"></canvas>
+        </div>
+        <div class="scrub-veil" aria-hidden="true"></div>
+        <div class="scrub-grid">
+            <div class="scrub-copy">
+                <h1>
+                    <span class="l1">Syndrom</span>
+                    <span class="l2">wrześniowy.</span>
+                </h1>
+                <p class="lead"><b>Ciało wróciło do biura. Głowa jeszcze nie.</b><br>Pierwsze tygodnie po urlopie to najtrudniejszy moment w roku.</p>
+                <div class="cta-row">
+                    <a href="#formularz" class="btn-feed js-do-formularza">Zadbaj o powrót →</a>
+                    <p class="scrub-hint"><i></i> Przewiń, żeby wylądować</p>
+                </div>
+            </div>
+            <div></div>
+        </div>
+        <p class="hero-offer">Do końca lata pierwsze<br>zamówienie gratis</p>
+        <div class="energy" aria-hidden="true">
+            <span class="energy-lab l">Głowa na wakacjach</span>
+            <span class="energy-track"><span class="energy-fill" id="zProg"></span></span>
+            <span class="energy-lab r">Miękkie lądowanie <img class="energy-cup" id="zCup" src="icons/icon-trophy.webp" alt=""></span>
+        </div>
+    </div>
+</section>
+
+<!-- LOGO BAR: Zaufali nam -->
+<section class="logo-bar reveal">
+    <div class="logo-bar-label">Zaufali nam liderzy rynku</div>
+    <div class="logo-bar-track">
+        <div class="logo-bar-item"><img src="https://cdn.prod.website-files.com/698dfabcdd705500e5451b80/69baa3bd7f98db68c04da33f_6a2fd1c58094c992a06bbf653a23ad3f_google.avif" alt="Google" width="160" height="44" decoding="async"></div>
+        <div class="logo-bar-item"><img src="https://cdn.prod.website-files.com/698dfabcdd705500e5451b80/69baa3bd7f98db68c04da34b_d08d4b59796ecd1651a32bc29473df6a_microsoft.avif" alt="Microsoft" width="160" height="44" decoding="async"></div>
+        <div class="logo-bar-item"><img src="https://cdn.prod.website-files.com/698dfabcdd705500e5451b80/69baa3bd7f98db68c04da351_50235668ec856a8a108859aba91adb92_ing.avif" alt="ING Bank Śląski" width="160" height="44" decoding="async"></div>
+        <div class="logo-bar-item"><img src="https://cdn.prod.website-files.com/698dfabcdd705500e5451b80/69baa3bd7f98db68c04da345_f5307480b7fbd6cdd2f6dfbbb6b6e8f4_jpmorgan.avif" alt="J.P. Morgan" width="160" height="44" decoding="async"></div>
+        <div class="logo-bar-item"><img src="https://cdn.prod.website-files.com/698dfabcdd705500e5451b80/69baa3bd7f98db68c04da35b_8bdd26ad6f4645e90933e543b84e035f_abb.avif" alt="ABB" width="160" height="44" decoding="async"></div>
+        <div class="logo-bar-item"><img src="https://cdn.prod.website-files.com/698dfabcdd705500e5451b80/69baa3bd7f98db68c04da357_ac7436c0d3de16c18e4a23b2c383317f_alstom.avif" alt="Alstom" width="160" height="44" decoding="async"></div>
+        <div class="logo-bar-item"><img src="https://cdn.prod.website-files.com/698dfabcdd705500e5451b80/69baa3bd7f98db68c04da34f_efd6db24aa16e5a9f5cbdc183ab847e1_johnson-and-johnson.avif" alt="Johnson & Johnson" width="160" height="44" decoding="async"></div>
+        <div class="logo-bar-item"><img src="https://cdn.prod.website-files.com/698dfabcdd705500e5451b80/69baa3bd7f98db68c04da341_275bf06a450450231ee84a3a743498eb_asseco.avif" alt="Asseco" width="160" height="44" decoding="async"></div>
+        <div class="logo-bar-item"><img src="https://cdn.prod.website-files.com/698dfabcdd705500e5451b80/69baa3bd7f98db68c04da363_6e38ab6e10b8fd3b8f851c9e060736b1_bgk.avif" alt="BGK" width="160" height="44" decoding="async"></div>
+        <!-- Duplicate set for seamless loop -->
+        <div class="logo-bar-item"><img src="https://cdn.prod.website-files.com/698dfabcdd705500e5451b80/69baa3bd7f98db68c04da33f_6a2fd1c58094c992a06bbf653a23ad3f_google.avif" alt="Google" width="160" height="44" decoding="async"></div>
+        <div class="logo-bar-item"><img src="https://cdn.prod.website-files.com/698dfabcdd705500e5451b80/69baa3bd7f98db68c04da34b_d08d4b59796ecd1651a32bc29473df6a_microsoft.avif" alt="Microsoft" width="160" height="44" decoding="async"></div>
+        <div class="logo-bar-item"><img src="https://cdn.prod.website-files.com/698dfabcdd705500e5451b80/69baa3bd7f98db68c04da351_50235668ec856a8a108859aba91adb92_ing.avif" alt="ING Bank Śląski" width="160" height="44" decoding="async"></div>
+        <div class="logo-bar-item"><img src="https://cdn.prod.website-files.com/698dfabcdd705500e5451b80/69baa3bd7f98db68c04da345_f5307480b7fbd6cdd2f6dfbbb6b6e8f4_jpmorgan.avif" alt="J.P. Morgan" width="160" height="44" decoding="async"></div>
+        <div class="logo-bar-item"><img src="https://cdn.prod.website-files.com/698dfabcdd705500e5451b80/69baa3bd7f98db68c04da35b_8bdd26ad6f4645e90933e543b84e035f_abb.avif" alt="ABB" width="160" height="44" decoding="async"></div>
+        <div class="logo-bar-item"><img src="https://cdn.prod.website-files.com/698dfabcdd705500e5451b80/69baa3bd7f98db68c04da357_ac7436c0d3de16c18e4a23b2c383317f_alstom.avif" alt="Alstom" width="160" height="44" decoding="async"></div>
+        <div class="logo-bar-item"><img src="https://cdn.prod.website-files.com/698dfabcdd705500e5451b80/69baa3bd7f98db68c04da34f_efd6db24aa16e5a9f5cbdc183ab847e1_johnson-and-johnson.avif" alt="Johnson & Johnson" width="160" height="44" decoding="async"></div>
+        <div class="logo-bar-item"><img src="https://cdn.prod.website-files.com/698dfabcdd705500e5451b80/69baa3bd7f98db68c04da341_275bf06a450450231ee84a3a743498eb_asseco.avif" alt="Asseco" width="160" height="44" decoding="async"></div>
+        <div class="logo-bar-item"><img src="https://cdn.prod.website-files.com/698dfabcdd705500e5451b80/69baa3bd7f98db68c04da363_6e38ab6e10b8fd3b8f851c9e060736b1_bgk.avif" alt="BGK" width="160" height="44" decoding="async"></div>
+    </div>
+</section>
+
+<!-- OBJAWY -->
+<section class="sec sec-cream">
+    <div class="container">
+        <div class="sec-head">
+            <h2>Znasz te <span class="fun">objawy</span></h2>
+            <p>Nie, to nie jest wina zespołu. To kwestia paliwa, które kończy się dokładnie w połowie dnia.</p>
+        </div>
+        <div class="sym-grid">
+            <div class="sym reveal">
+                <div class="sym-top"><span class="n" aria-hidden="true">01</span><img src="icons/icon-clock-afternoon.webp" alt="" loading="lazy" width="54" height="54"></div>
+                <div class="b">
+                    <h3>Puste spojrzenie po 14:00</h3>
+                    <p>Spotkanie trwa, ale nikt nie wnosi nowego wątku. Cukier z lunchu już opadł, kolejny posiłek dopiero po pracy.</p>
+                </div>
+            </div>
+            <div class="sym reveal">
+                <div class="sym-top"><span class="n" aria-hidden="true">02</span><img src="icons/icon-coffee.webp" alt="" loading="lazy" width="54" height="54"></div>
+                <div class="b">
+                    <h3>Czwarta kawa przed lunchem</h3>
+                    <p>Kawa nie jest problemem. Problemem jest to, że pracuje sama, bez żadnego jedzenia obok.</p>
+                </div>
+            </div>
+            <div class="sym reveal">
+                <div class="sym-top"><span class="n" aria-hidden="true">03</span><img src="icons/icon-fridge-empty.webp" alt="" loading="lazy" width="54" height="54"></div>
+                <div class="b">
+                    <h3>Lodówka pełna niczego</h3>
+                    <p>50% pracowników mówi, że w pracy trudno im się zdrowo odżywiać. Wybór to zwykle automat albo nic.</p>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+</section>
+
+<!-- KURACJA -->
+<section class="sec sec-white">
+    <div class="container">
+        <div class="sec-head">
+            <h2>Cztery tygodnie, cztery <span class="fun">rytualy</span></h2>
+            <p>Wrzesień z gotowym planem. Każdy tydzień ma swój moment, wokół którego zbiera się zespół.</p>
+        </div>
+        <div class="cure-grid">
+            <div class="cure-card reveal">
+                <div class="cure-top"><span class="day">Tydzien 1</span><img src="icons/icon-crate-fruit.webp" alt="" loading="lazy" width="46" height="46"></div>
+                <h3>Owocowe Czwartki</h3>
+                <p>Skrzynka ląduje w kuchni w czwartek rano. Po dwóch tygodniach ludzie sami pytają, czy już przyjechała.</p>
+            </div>
+            <div class="cure-card reveal">
+                <div class="cure-top"><span class="day">Tydzien 2</span><img src="icons/icon-sandwich-half.webp" alt="" loading="lazy" width="46" height="46"></div>
+                <h3>Kanapkowe Wtorki</h3>
+                <p>Śniadanie w biurze zamiast pominiętego posiłku w biegu. Najprostszy sposób na start dnia bez deficytu.</p>
+            </div>
+            <div class="cure-card reveal">
+                <div class="cure-top"><span class="day">Tydzien 3</span><img src="icons/icon-nuts-bowl.webp" alt="" loading="lazy" width="46" height="46"></div>
+                <h3>Przekąski na popołudnie</h3>
+                <p>Bakalie i orzechy dokładnie tam, gdzie wcześniej był automat z batonami. Zjazd energii przestaje boleć.</p>
+            </div>
+            <div class="cure-card reveal">
+                <div class="cure-top"><span class="day">Tydzien 4</span><img src="icons/icon-health-day.webp" alt="" loading="lazy" width="46" height="46"></div>
+                <h3>Firmowy Dzień Zdrowia</h3>
+                <p>Dietetyk, degustacja, rozmowa o tym, co realnie działa. Rytuał zamienia się w kulturę.</p>
+            </div>
+        </div>
+            <p class="mid-cta"><a href="#formularz" class="btn btn-red-solid btn-arrow js-do-formularza">Zaplanuj miękkie lądowanie</a></p>
+    </div>
+</section>
+
+<!-- CO LADUJE NA BIURKU -->
+<section class="prod-sec">
+    <div class="container">
+        <div class="sec-head">
+            <h2>Co ląduje na Twoim <span class="fun">biurku</span></h2>
+            <p>Bez katalogów i wariantów do wyboru. To po prostu przyjeżdża i stoi w kuchni.</p>
+        </div>
+        <div class="hero-box reveal">
+            <div><img src="box-premium.webp" alt="Skrzynka DailyFruits pełna świeżych owoców" width="1200" height="800" loading="lazy"></div>
+            <div>
+                <span class="tag">Serce abonamentu</span>
+                <h3>Skrzynka, która staje w <span class="fun">kuchni</span></h3>
+                <p>Owoce, warzywa, kanapki, kawa, soki - wszystko w jednej dostawie, od jednego partnera. Wspólnie ustalamy zakres usługi, częstotliwość dostaw i harmonogram dopasowany do rytmu pracy zespołu.</p>
+                <ul>
+                    <li>Owoce, kawa, kanapki, soki - wszystko z jednego miejsca</li>
+                    <li>Subskrypcja, nie kontrakt. Zmień skład i częstotliwość, kiedy chcesz</li>
+                    <li>Zero kar za zmianę lub rezygnację z abonamentu</li>
+                    <li>Dostarczamy w największych miastach, także poza listą</li>
+                    <li>Jedna, wygodna faktura miesięczna za wszystkie usługi</li>
+                </ul>
+            </div>
+            <div class="hero-box-foot">
+                <p class="foot-lead">Co może być w Twojej dostawie:</p>
+        <div class="prod-grid">
+            <div class="prod-card reveal"><div class="prod-ph"><img src="packshot-owoce.webp" alt="Świeże owoce sezonowe" loading="lazy" width="600" height="740"></div><h3>Owoce sezonowe</h3></div>
+            <div class="prod-card reveal"><div class="prod-ph"><img src="packshot-kanapki.webp" alt="Kanapki do biura" loading="lazy" width="600" height="486"></div><h3>Kanapki i lunche</h3></div>
+            <div class="prod-card reveal"><div class="prod-ph"><img src="packshot-bakalie.webp" alt="Bakalie i orzechy" loading="lazy" width="600" height="824"></div><h3>Bakalie i orzechy</h3></div>
+            <div class="prod-card reveal"><div class="prod-ph"><img src="packshot-sniadaniowe.webp" alt="Zestawy śniadaniowe" loading="lazy" width="600" height="476"></div><h3>Zestawy śniadaniowe</h3></div>
+            <div class="prod-card reveal"><div class="prod-ph"><img src="packshot-soki.webp" alt="Soki tłoczone" loading="lazy" width="510" height="518"></div><h3>Soki i napoje</h3></div>
+            <div class="prod-card reveal"><div class="prod-ph"><img src="packshot-fingerfoods.webp" alt="Finger foods na spotkania" loading="lazy" width="600" height="571"></div><h3>Catering na spotkania</h3></div>
+        </div>
+            </div>
+        </div>
+        <div class="proofzone">
+            <div class="assure-grid">
+                <div class="assure-item"><b>2500+</b><span>firm w Polsce nam zaufało</span></div>
+                <div class="assure-item"><b>15+</b><span>lat dostaw do firm</span></div>
+                <div class="assure-item"><b>800 t</b><span>świeżych produktów miesięcznie</span></div>
+                <div class="assure-item"><b>24 h</b><span>od zamówienia do pierwszej skrzynki</span></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- DOWODY -->
+<!-- FORMULARZ -->
+<section class="form-sec" id="formularz">
+    <div class="container">
+        <div class="sec-head">
+            <h2>Miękkie lądowanie dla Twojego <span class="fun">zespołu</span></h2>
+            <p>Podaj liczbę osób. Skład i wycenę przygotujemy po naszej stronie — do końca lata pierwsze zamówienie gratis.</p>
+        </div>
+        <div class="form-art">
+            <div class="slider-frame" id="revive" style="--pos:50%">
+                <img src="kampania-glowa-praca.webp" alt="Ilustracja: pracownik po miękkim lądowaniu, skupiony przy biurku" width="1200" height="670" loading="lazy">
+                <img src="kampania-glowa-plaza.webp" alt="Ilustracja: pracownik przy biurku w słomkowym kapeluszu i z kołem do pływania" class="top-layer" width="1200" height="670" loading="lazy">
+                <div class="slider-handle"></div>
+                <span class="slider-tag l">Głowa na plaży</span>
+                <span class="slider-tag r">Głowa w robocie</span>
+            </div>
+            <p class="slider-hint">Przeciągnij, żeby wylądować →</p>
+        </div>
+        <div class="assure reveal">
+            <p class="rating"><span class="rating-stars">★★★★★</span><span class="rating-score">4.9/5 na podstawie 120+ opinii</span></p>
+            <p class="assure-flow"><span>Podajesz liczbę osób</span><i></i><span>dostajesz propozycję</span><i></i><span>umawiamy pierwszą dostawę</span></p>
+        </div>
+        <div class="form-grid">
+            <div class="form-wrap">
+                <iframe id="bwp-form" title="Formularz bezpłatnej wyceny DailyFruits" src="https://betterworkplace.pl/kontakt/zapytanie-dailyfruits" loading="lazy"></iframe>
+                <div class="form-fallback">
+                    Wolisz krócej? <a href="tel:+48228680499">22 868 04 99</a> albo <a href="mailto:zapytania@betterworkplace.pl?subject=Kampania%20Powr%C3%B3t%20do%20%C5%BCywych">zapytania@betterworkplace.pl</a> — odpowiadamy w 24 h.
+                </div>
+                <div class="form-after">
+                    <p>Wolisz najpierw zobaczyć, co dokładnie dowozimy?</p>
+                    <a href="/oferta" class="btn btn-green btn-arrow">Sprawdź pełną ofertę</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <img src="owocz.webp" alt="" class="owocek" width="714" height="962" loading="lazy">
+</section>
+
+<!--#include:footer-->
+<footer>
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <div style="display:flex;align-items:center;gap:16px;">
+                    <img src="fruitttt.svg" alt="DailyFruits logo" style="height:56px;filter:brightness(10);" loading="lazy" width="56" height="56">
+                    <img src="dailyfoods-logo.svg" alt="DailyFoods" style="height:56px;" loading="lazy" width="64" height="64">
+                </div>
+                <p>Zdrowsze jedzenie, lepsza praca - zaczynając od kuchni. Część ekosystemu BetterWorkplace.</p>
+            </div>
+            <div class="footer-col"><h3>Nawigacja</h3><ul><li><a href="/">Start</a></li><li><a href="oferta">Oferta</a></li><li><a href="dostawa">Dostawa</a></li><li><a href="o-nas">O nas</a></li><li><a href="blog">Blog</a></li><li><a href="kontakt">Kontakt</a></li><li><a href="dostawcy">Dostawcy</a></li><li><a href="pomagamy">Pomagamy</a></li><li><a href="zapytanie">Zapytanie</a></li><li><a href="faq">FAQ</a></li></ul></div>
+            <div class="footer-col"><h3>Oferta</h3><ul><li><a href="kanapki-do-biura">Kanapki do biura</a></li><li><a href="catering-firmowy">Catering firmowy</a></li><li><a href="programy-zywieniowe">Programy żywieniowe</a></li><li><a href="oferta">DailyFruits</a></li><li><a href="oferta">DailyFoods</a></li><li><a href="upominki-dla-pracownikow">Upominki dla pracowników</a></li><li><a href="paczki-dla-pracownikow-zdalnych">Paczki - praca zdalna</a></li><li><a href="paczki-dla-dzieci-pracownikow">Paczki dla dzieci</a></li><li><a href="dailyfruits-welcome-pack">Welcome Pack</a></li></ul></div>
+            <div class="footer-col"><h3>Kontakt</h3><ul><li><a href="mailto:zapytania@betterworkplace.pl">zapytania@betterworkplace.pl</a></li><li><p>tel: <a href="tel:+48228680499">22 868 04 99</a></p></li></ul><h3 class="mt-20">Dane firmy</h3><ul><li><p>Betterworkplace Sp. z&nbsp;o.o.</p></li><li><p>ul. Modułowa 3, 05-090 Raszyn</p></li><li><p>NIP: 6793077034</p></li><li><p>REGON: 122432943</p></li></ul></div>
+        </div>
+        <div class="footer-bottom">
+            <a href="otwarte-innowacje" title="Fundusze Europejskie - projekty współfinansowane przez UE" style="display:inline-block;background:#fff;padding:10px 16px;border-radius:8px;margin-bottom:16px;"><img src="ue-pasek.webp" alt="Fundusze Europejskie, Rzeczpospolita Polska, ARP, Unia Europejska" style="max-width:320px;width:100%;height:auto;display:block;" loading="lazy" width="1400" height="190"></a><br><p style="margin-bottom:8px;"><a class="link-faint" href="polityka-prywatnosci">Polityka prywatności</a> · <a class="link-faint" href="regulamin">Regulamin</a></p>
+            <p style="color:var(--cream)">&copy; 2026 DailyFruits by BetterWorkplace Sp. z&nbsp;o.o. Wszystkie prawa zastrzeżone.</p>
+            <p style="color:var(--cream);opacity:.55;font-size:12px;margin-top:6px;">Przy tworzeniu materiałów graficznych na stronie zostały użyte narzędzia korzystające ze sztucznej inteligencji.</p>
+        </div>
+    </div>
+</footer>
+<!--#endinclude:footer-->
+
+<script>
+/* ─── SCROLL-SCRUB: biuro budzi sie wraz ze scrollem ─── */
+(function () {
+    var canvas = document.getElementById('zCanvas');
+    var sec = document.getElementById('scrub');
+    var prog = document.getElementById('zProg');
+    var cup = document.getElementById('zCup');
+    if (!canvas || !sec) return;
+
+    var ctx = canvas.getContext('2d', { alpha: false });
+    var TOTAL = 97;
+    var frames = new Array(TOTAL);
+    var cur = -1;
+    var ready = false;
+
+    function pad(n) { return String(n).padStart(4, '0'); }
+    function src(i) { return 'frames-syndrom/s' + pad(i) + '.webp?v=1'; }
+
+    function sizeCanvas() {
+        var dpr = Math.min(window.devicePixelRatio || 1, 2);
+        var r = canvas.getBoundingClientRect();
+        canvas.width = Math.max(1, Math.round(r.width * dpr));
+        canvas.height = Math.max(1, Math.round(r.height * dpr));
+    }
+
+    // ZOOM daje poziomy zapas, POS ustawia kadr (0 = do lewej, 1 = do prawej).
+    // Bez zapasu obraz wypelnia szerokosc co do piksela i nie da sie go przesunac.
+    var ZOOM = 1.10, POS = 0.0;
+    function draw(i) {
+        var f = frames[i];
+        if (!f || !f.complete || !f.naturalWidth) return;
+        var cw = canvas.width, ch = canvas.height;
+        var s = Math.max(cw / f.naturalWidth, ch / f.naturalHeight) * ZOOM;
+        var w = f.naturalWidth * s, h = f.naturalHeight * s;
+        var ox = (cw - w) * POS, oy = (ch - h) * 0.5;
+        ctx.drawImage(f, ox, oy, w, h);
+    }
+
+    // pierwsza klatka natychmiast, reszta w tle
+    var first = new Image();
+    function boot() {
+        if (ready) return;
+        frames[0] = first;
+        sizeCanvas();
+        ready = true;
+        draw(0);
+        loadRest();
+    }
+    // Zanim sekwencja klatek trafi do repo, hero ma dzialac jako statyczny kadr.
+    first.onerror = function () { document.documentElement.classList.add('bez-klatek'); unlock(); };
+    first.onload = boot;
+    first.src = src(0);
+    // obrazek moze byc juz w cache (jest w <link rel=preload>) - wtedy onload nie odpali
+    if (first.complete && first.naturalWidth) boot();
+
+    function loadRest() {
+        for (var i = 1; i < TOTAL; i++) {
+            (function (idx) {
+                var img = new Image();
+                img.decoding = 'async';
+                img.src = src(idx);
+                frames[idx] = img;
+            })(i);
+        }
+    }
+
+    // ─── TWARDA BLOKADA SCROLLA: strona rusza dopiero po ostatniej klatce ───
+    var idx = 0;
+    var acc = 0;
+    var locked = false;
+    var STEP = 16;            // px delty na jedna klatke
+    var justUnlocked = 0;
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    function setIdx(n) {
+        if (n < 0) n = 0;
+        if (n > TOTAL - 1) n = TOTAL - 1;
+        if (n === idx) return;
+        idx = n;
+        draw(idx);
+        if (prog) {
+            var t = idx / (TOTAL - 1);
+            prog.style.width = (t * 100).toFixed(1) + '%';
+            // E43020 -> 8DC63F
+            var r = Math.round(228 + (141 - 228) * t);
+            var g = Math.round(48 + (198 - 48) * t);
+            var b = Math.round(32 + (63 - 32) * t);
+            prog.style.backgroundColor = 'rgb(' + r + ',' + g + ',' + b + ')';
+        }
+        if (cup) {
+            if (idx >= TOTAL - 1) { cup.classList.add('pop'); }
+            else { cup.classList.remove('pop'); }
+        }
+        if (idx >= TOTAL - 1) unlock();
+    }
+
+    function lock() {
+        if (locked || reduce) return;
+        locked = true;
+        document.documentElement.style.overflow = 'hidden';
+        document.body.style.overflow = 'hidden';
+    }
+
+    // Kotwice do formularza musza najpierw zdjac blokade scrolla, inaczej skok nie zadziala.
+    // Plywajace CTA znika, gdy formularz jest na ekranie.
+    (function () {
+        var float = document.querySelector('header .nav-buttons');
+        var form = document.getElementById('formularz');
+        if (!float || !form || !('IntersectionObserver' in window)) return;
+        new IntersectionObserver(function (en) {
+            float.classList.toggle('hide', en[0].isIntersecting);
+        }, { threshold: 0.12 }).observe(form);
+    })();
+
+    document.querySelectorAll('.js-do-formularza').forEach(function (a) {
+        a.addEventListener('click', function (e) {
+            e.preventDefault();
+            unlock();
+            var t = document.getElementById('formularz');
+            if (t) t.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
+        });
+    });
+
+    function unlock() {
+        if (!locked) return;
+        locked = false;
+        justUnlocked = Date.now();
+        document.documentElement.style.overflow = '';
+        document.body.style.overflow = '';
+    }
+
+    function bump(delta) {
+        acc += delta;
+        var n = Math.trunc(acc / STEP);
+        if (n) { acc -= n * STEP; setIdx(idx + n); }
+    }
+
+    window.addEventListener('wheel', function (e) {
+        if (!locked) return;
+        e.preventDefault();
+        bump(e.deltaY);
+    }, { passive: false });
+
+    var touchY = null;
+    window.addEventListener('touchstart', function (e) {
+        if (!locked) return;
+        touchY = e.touches[0].clientY;
+    }, { passive: true });
+    window.addEventListener('touchmove', function (e) {
+        if (!locked) return;
+        e.preventDefault();
+        var y = e.touches[0].clientY;
+        if (touchY !== null) bump((touchY - y) * 2.2);
+        touchY = y;
+    }, { passive: false });
+
+    window.addEventListener('keydown', function (e) {
+        if (!locked) return;
+        var k = e.key;
+        if (k === 'Escape' || k === 'End') { e.preventDefault(); setIdx(TOTAL - 1); return; }
+        if (k === 'ArrowDown' || k === 'PageDown' || k === ' ') { e.preventDefault(); bump(k === ' ' || k === 'PageDown' ? 220 : 70); }
+        else if (k === 'ArrowUp' || k === 'PageUp') { e.preventDefault(); bump(k === 'PageUp' ? -220 : -70); }
+    });
+
+
+    // powrot na sama gore ponownie wlacza blokade - film da sie przewijac w obie strony
+    window.addEventListener('scroll', function () {
+        if (locked || reduce) return;
+        if (Date.now() - justUnlocked < 700) return;
+        if (window.scrollY <= 0 && idx > 0) lock();
+    }, { passive: true });
+
+    function onScroll() { /* blokada zastapila scrub scrollem */ }
+
+    /* ---------- PARALAKSA ----------
+       Kadr zostaje w tyle za strona, tekst wyprzedza - roznica predkosci daje glebie.
+       Liczone tylko dopoki hero jest w kadrze, transformem, wiec bez repaintow. */
+    (function () {
+        if (reduce) return;
+        var stage = document.querySelector('.scrub-stage');
+        var copy = document.querySelector('.scrub-copy');
+        var offer = document.querySelector('.hero-offer');
+        var box = document.querySelector('.hero-box img');
+        if (!stage) return;
+        var pending = false;
+
+        function paint() {
+            pending = false;
+            var y = window.pageYOffset || document.documentElement.scrollTop;
+            var vh = window.innerHeight;
+            if (y < vh * 1.2) {
+                stage.style.transform = 'translate3d(0,' + (y * 0.28).toFixed(1) + 'px,0)';
+                if (copy) copy.style.transform = 'translateY(-40px) translate3d(0,' + (y * -0.14).toFixed(1) + 'px,0)';
+                if (offer) offer.style.transform = 'translate3d(0,' + (y * -0.08).toFixed(1) + 'px,0)';
+            }
+            if (box) {
+                var r = box.getBoundingClientRect();
+                if (r.bottom > 0 && r.top < vh) {
+                    var t = (r.top + r.height / 2 - vh / 2) / vh;
+                    box.style.transform = 'translate3d(0,' + (t * -18).toFixed(1) + 'px,0)';
+                }
+            }
+        }
+
+        window.addEventListener('scroll', function () {
+            if (!pending) { pending = true; requestAnimationFrame(paint); }
+        }, { passive: true });
+        paint();
+    })();
+    if (!reduce) { window.scrollTo(0, 0); lock(); } else { setIdx(TOTAL - 1); }
+})();
+</script>
+<script>
+/* ─── SUWAK PRZED / PO ─── */
+(function () {
+    var f = document.getElementById('revive');
+    if (!f) return;
+    var dragging = false;
+    function setPos(clientX) {
+        var r = f.getBoundingClientRect();
+        var p = (clientX - r.left) / r.width * 100;
+        p = Math.max(0, Math.min(100, p));
+        f.style.setProperty('--pos', p + '%');
+    }
+    f.addEventListener('pointerdown', function (e) { dragging = true; f.setPointerCapture(e.pointerId); setPos(e.clientX); });
+    f.addEventListener('pointermove', function (e) { if (dragging) setPos(e.clientX); });
+    f.addEventListener('pointerup', function () { dragging = false; });
+    f.addEventListener('pointercancel', function () { dragging = false; });
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches && 'IntersectionObserver' in window) {
+        var teased = false;
+        new IntersectionObserver(function (en) {
+            en.forEach(function (x) {
+                if (!x.isIntersecting || teased) return;
+                teased = true;
+                var t0 = null;
+                function tease(ts) {
+                    if (!t0) t0 = ts;
+                    var k = Math.min(1, (ts - t0) / 1100);
+                    var e2 = k < 0.5 ? 2 * k * k : 1 - Math.pow(-2 * k + 2, 2) / 2;
+                    f.style.setProperty('--pos', (50 + Math.sin(e2 * Math.PI) * 26) + '%');
+                    if (k < 1) requestAnimationFrame(tease);
+                }
+                requestAnimationFrame(tease);
+            });
+        }, { threshold: 0.5 }).observe(f);
+    }
+})();
+</script>
+<script>
+/* ─── FORMULARZ BWP: auto-wysokosc + przekazanie brandu ─── */
+(function () {
+    var BRAND = 'Daily fruits';
+    window.addEventListener('message', function (e) {
+        if (e.data && e.data.type === 'bwp:request-info') {
+            e.source.postMessage({ type: 'bwp:info', url: window.location.href, referrer: document.referrer, brand: BRAND }, '*');
+        }
+        if (e.data && e.data.type === 'bwp:resize') {
+            var f = document.getElementById('bwp-form');
+            if (f) f.style.height = e.data.height + 'px';
+        }
+    });
+})();
+</script>
+<!--rdf-reveal-fix--><script>(function(){var els=document.querySelectorAll(".reveal");if(!els.length)return;if(!("IntersectionObserver"in window)){els.forEach(function(e){e.classList.add("vis");});return;}var io=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){x.target.classList.add("vis");io.unobserve(x.target);}});},{rootMargin:"0px 0px -8% 0px"});els.forEach(function(e){io.observe(e);});setTimeout(function(){els.forEach(function(e){e.classList.add("vis");});},1200);})();</script>
+<script defer src="/typo.js"></script>
+<script defer src="transition.js"></script>
+<script defer src="mn.js?v=4"></script>
+</body>
+</html>

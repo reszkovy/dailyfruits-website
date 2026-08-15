@@ -135,6 +135,11 @@
   ],
   "redirects": [
     {
+      "source": "/syndrom-wrzesniowy",
+      "destination": "/syndromwrzesniowy",
+      "permanent": true
+    },
+    {
       "source": "/powrot-do-zywych-2",
       "destination": "/powrotdozywych",
       "permanent": true
