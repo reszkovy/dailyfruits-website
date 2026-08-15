@@ -94,7 +94,12 @@ header .nav-links a:hover { color: var(--lime); }
 header .nav-trust { color: rgba(255,249,224,0.78); text-shadow: 0 1px 10px rgba(0,0,0,0.35); }
 header .logo-img { filter: drop-shadow(0 2px 10px rgba(0,0,0,0.35)); }
 header .logo-sub { text-shadow: 0 1px 8px rgba(0,0,0,0.4); }
-header .btn-red-solid { box-shadow: 0 8px 22px rgba(0,0,0,0.34); }
+/* CTA plynie ze strona - "Zamow" klikalne z kazdego miejsca. Chowa sie dopiero
+   przy formularzu, zeby nie wskazywalo na cel, ktory wlasnie jest na ekranie. */
+header .btn-red-solid { position: fixed; top: 22px; right: clamp(20px, 3vw, 44px); z-index: 120;
+    box-shadow: 0 8px 22px rgba(0,0,0,0.34); transition: opacity .32s ease, transform .32s cubic-bezier(0.16,1,0.3,1); }
+header .btn-red-solid.hide { opacity: 0; transform: translateY(-18px); pointer-events: none; }
+@media (max-width: 700px) { header .btn-red-solid { top: 14px; right: 14px; padding: 10px 20px; font-size: 13.5px; } }
 /* delikatna poswiata u gory, zeby nawigacja czytala sie na jasnych klatkach */
 .scrub-sticky::after { content: ''; position: absolute; left: 0; right: 0; top: 0; height: 190px; z-index: 4; pointer-events: none; background: linear-gradient(to bottom, rgba(10,40,24,0.55), transparent); }
 .scrub-sticky::before { content: ''; position: absolute; left: 0; right: 0; bottom: var(--bar); height: 120px; z-index: 2; pointer-events: none; background: linear-gradient(to top, rgba(10,40,24,0.55), transparent); }
@@ -620,6 +625,16 @@ html.pt-in body>:not(header) { animation: ptFadeIn 0.32s ease both; }
     }
 
     // Kotwice do formularza musza najpierw zdjac blokade scrolla, inaczej skok nie zadziala.
+    // Plywajace CTA znika, gdy formularz jest na ekranie.
+    (function () {
+        var float = document.querySelector('header .btn-red-solid');
+        var form = document.getElementById('formularz');
+        if (!float || !form || !('IntersectionObserver' in window)) return;
+        new IntersectionObserver(function (en) {
+            float.classList.toggle('hide', en[0].isIntersecting);
+        }, { threshold: 0.12 }).observe(form);
+    })();
+
     document.querySelectorAll('.js-do-formularza').forEach(function (a) {
         a.addEventListener('click', function (e) {
             e.preventDefault();
