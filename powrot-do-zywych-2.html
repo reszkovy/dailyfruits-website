@@ -86,6 +86,8 @@ gtag('config', 'G-G9SCYSFC36');
 /* ---------- BELKA: przezroczysta, elementy na wideo (odroznienie od home) ---------- */
 header { position: absolute !important; background: transparent !important; box-shadow: none !important; border-bottom: none !important; transition: none !important; }
 header.scrolled { background: transparent !important; box-shadow: none !important; }
+/* falka spod paska jest zaprojektowana pod pelne zielone tlo - na przezroczystym pasku wisi nad zdjeciem */
+header::after { display: none !important; }
 header .nav-inner { padding-top: 24px; padding-bottom: 24px; }
 header .nav-links a { color: var(--cream); text-shadow: 0 1px 10px rgba(0,0,0,0.35); }
 header .nav-links a:hover { color: var(--lime); }
