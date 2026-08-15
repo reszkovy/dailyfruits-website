@@ -269,19 +269,6 @@ header .btn-red-solid::before { animation-delay: 3.4s; }
 /* Dowod spolecznosciowy pod oferta produktowa, na jasnym tle: liczby + opinie razem.
    Nad formularzem zostaje sama sciezka procesu. */
 .proofzone { margin-top: 64px; padding-top: 44px; border-top: 2px dashed rgba(27,94,58,0.20); }
-.proofzone .assure-grid { margin-bottom: 44px; }
-/* Glosy klientow - te same opinie co na home, bez karuzeli. */
-.voices { margin: 0; }
-.voices-head { display: flex; align-items: center; justify-content: center; gap: 9px; margin-bottom: 34px; }
-.voices-stars { color: #FFC107; font-size: 19px; letter-spacing: 2px; }
-.voices-score { font-size: 13.5px; font-weight: 700; color: var(--green-dark); opacity: .65; }
-.voices-grid { display: grid; grid-template-columns: repeat(3, 1fr); column-gap: 44px; row-gap: 0; }
-.voice { background: transparent; padding: 0; margin: 0; display: flex; flex-direction: column; }
-.voice blockquote { margin: 0 0 20px; font-size: 14px; line-height: 1.65; color: var(--gray-500); flex: 1; }
-.voice blockquote::before { content: '\201E'; display: block; font-family: var(--font-fun); font-size: 40px; line-height: .5; color: var(--lime); margin-bottom: 16px; }
-.voice figcaption { font-size: 12px; line-height: 1.4; color: var(--gray-500); padding-top: 14px; border-top: 2px dashed rgba(27,94,58,0.18); }
-.voice figcaption b { display: block; font-size: 13.5px; color: var(--green-dark); font-weight: 800; margin-bottom: 1px; }
-@media (max-width: 900px) { .voices-grid { grid-template-columns: 1fr; row-gap: 30px; } }
 
 /* Bez tla i bez paddingu: pas ma dokladnie szerokosc formularza,
    a liczby ustawiaja sie w jednej linii z jego krawedziami. */
@@ -554,25 +541,6 @@ html.pt-in body>:not(header) { animation: ptFadeIn 0.32s ease both; }
                 <div class="assure-item"><b>15+</b><span>lat dostaw do firm</span></div>
                 <div class="assure-item"><b>800 t</b><span>świeżych produktów miesięcznie</span></div>
                 <div class="assure-item"><b>24 h</b><span>od zamówienia do pierwszej skrzynki</span></div>
-            </div>
-            <div class="voices reveal">
-            <div class="voices-head">
-                <span class="voices-stars">★★★★★</span>
-                <span class="voices-score">4.9/5 na podstawie 120+ opinii</span>
-            </div>
-            <div class="voices-grid">
-                <figure class="voice">
-                    <blockquote>Fruit Day jako dodatkowy benefit sprawdził się u&nbsp;nas świetnie. Firma Dailyfruits od samego początku była strzałem w&nbsp;dziesiątkę.</blockquote>
-                    <figcaption><span><b>Barbara Fitowska</b>Office Manager, OTCF</span></figcaption>
-                </figure>
-                <figure class="voice">
-                    <blockquote>Pracownicy Dailyfruits wykazują się profesjonalizmem. Dostarczane owoce są zawsze najwyższej jakości.</blockquote>
-                    <figcaption><span><b>Szymon Demmer</b>HR Business Partner, Synevo</span></figcaption>
-                </figure>
-                <figure class="voice">
-                    <blockquote>Jestem bardzo zadowolona ze współpracy. Obietnice składane w&nbsp;czasie negocjacji sprawdzają się każdego dnia.</blockquote>
-                    <figcaption><span><b>Hanna Gałązka</b>Dyrektor Departamentu, Enea Centrum</span></figcaption>
-                </figure>
             </div>
         </div>
     </div>
