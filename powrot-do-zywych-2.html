@@ -131,6 +131,33 @@ header .btn-nav-cta { box-shadow: 0 6px 18px rgba(0,0,0,0.28); }
 .slider-tag.r { right: 16px; background: rgba(255,249,224,0.92); color: var(--green-dark); }
 .slider-hint { text-align: center; margin-top: 14px; font-size: 13.5px; color: rgba(27,94,58,0.55); }
 
+/* ---------- GRA: obudz pracownika ---------- */
+.game-sec { padding: 92px 0 100px; background: var(--green-dark); }
+.game-sec .sec-head h2 { color: var(--cream); }
+.game-sec .sec-head p { color: rgba(255,249,224,0.7); }
+.game-wrap { max-width: 860px; margin: 0 auto; }
+.game-stage { position: relative; border-radius: var(--radius-lg); overflow: hidden; background: #3d6b52; box-shadow: 0 20px 54px rgba(0,0,0,0.3); }
+.game-stage img { width: 100%; height: auto; display: block; transition: opacity .25s ease; }
+.game-bar { display: flex; align-items: center; gap: 14px; margin: 20px 0 8px; }
+.game-meter { flex: 1; height: 8px; border-radius: 99px; background: rgba(255,249,224,0.16); overflow: hidden; }
+.game-meter span { display: block; height: 100%; width: 0; background: var(--lime); border-radius: 99px; transition: width .45s cubic-bezier(0.16,1,0.3,1); }
+.game-step { font-size: 12px; font-weight: 900; letter-spacing: .12em; text-transform: uppercase; color: rgba(255,249,224,0.6); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.game-label { font-size: 16px; color: var(--cream); font-weight: 700; min-height: 1.6em; margin-bottom: 26px; }
+.game-items { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+.game-item { background: rgba(255,249,224,0.07); border: 1px solid rgba(255,249,224,0.18); border-radius: var(--radius); padding: 16px 12px 18px; text-align: center; cursor: pointer; font: inherit; color: inherit; transition: transform .25s cubic-bezier(0.16,1,0.3,1), background .25s, border-color .25s, opacity .25s; }
+.game-item:hover:not([disabled]) { transform: translateY(-4px); background: rgba(255,249,224,0.13); border-color: rgba(141,198,63,0.6); }
+.game-item:focus-visible { outline: 2px solid var(--lime); outline-offset: 3px; }
+.game-item img { height: 74px; width: auto; max-width: 100%; object-fit: contain; display: block; margin: 0 auto 12px; }
+.game-item b { display: block; font-size: 14px; font-weight: 800; color: var(--cream); margin-bottom: 3px; letter-spacing: -0.01em; }
+.game-item span { display: block; font-size: 12px; line-height: 1.4; color: rgba(255,249,224,0.62); }
+.game-item[disabled] { opacity: .38; cursor: default; border-style: dashed; }
+.game-item[disabled]::after { content: ' ✓'; color: var(--lime); font-weight: 900; }
+.game-done { margin-top: 28px; text-align: center; }
+.game-done p { color: rgba(255,249,224,0.8); font-size: 16px; margin-bottom: 18px; }
+.game-done[hidden] { display: none; }
+.game-reset { background: none; border: none; color: rgba(255,249,224,0.5); font: inherit; font-size: 13px; text-decoration: underline; cursor: pointer; margin-top: 14px; }
+.game-reset:hover { color: var(--cream); }
+
 /* ---------- CO LADUJE NA BIURKU (realne produkty) ---------- */
 .prod-sec { padding: 92px 0 96px; background: var(--white); }
 .prod-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
@@ -144,7 +171,7 @@ header .btn-nav-cta { box-shadow: 0 6px 18px rgba(0,0,0,0.28); }
 /* ---------- FORMULARZ KROKOWY ---------- */
 .form-sec { padding: 92px 0 100px; background: var(--cream); }
 .form-grid { max-width: 620px; margin: 0 auto; }
-.form-art { max-width: 490px; margin: 0 auto 40px; }
+.form-art { max-width: 620px; margin: 0 auto 40px; }
 .form-wrap { background: var(--white); border-radius: var(--radius-lg); padding: 30px 30px 26px; border: 1px solid rgba(27,94,58,0.08); box-shadow: 0 18px 50px rgba(27,94,58,0.10); }
 .form-wrap iframe { width: 100%; border: none; display: block; min-height: 420px; }
 .form-fallback { margin-top: 20px; padding: 16px 20px; background: rgba(141,198,63,0.10); border: 1px solid rgba(141,198,63,0.45); border-radius: 14px; font-size: 14.5px; line-height: 1.6; text-align: center; }
@@ -197,6 +224,7 @@ header .btn-nav-cta { box-shadow: 0 6px 18px rgba(0,0,0,0.28); }
     .sym-grid { grid-template-columns: 1fr; }
     .cure-grid { grid-template-columns: 1fr 1fr; }
     .prod-grid { grid-template-columns: 1fr 1fr; }
+    .game-items { grid-template-columns: 1fr 1fr; }
     .proof-grid { grid-template-columns: repeat(2, 1fr); gap: 34px 20px; }
 }
 @media (max-width: 720px) {
@@ -386,6 +414,49 @@ html.pt-in body>:not(header) { animation: ptFadeIn 0.32s ease both; }
                 <div class="prod-ph"><img src="packshot-fingerfoods.webp" alt="Finger foods na spotkania" loading="lazy" width="600" height="571"></div>
                 <h3>Catering na spotkania</h3>
                 <p>Finger foods na warsztat, prezentację albo wizytę zarządu.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- GRA -->
+<section class="game-sec">
+    <div class="container">
+        <div class="sec-head">
+            <h2>Obudź swojego <span class="fun">pracownika</span></h2>
+            <p>Cztery rytuały z góry, tu w praktyce. Podaj coś z oferty i zobacz, co się dzieje.</p>
+        </div>
+        <div class="game-wrap">
+            <div class="game-stage">
+                <img id="gameArt" src="gra-stan-0.webp" alt="Pracownik przy biurku, stan energii zmienia się wraz z kolejnymi rytuałami" width="900" height="506">
+            </div>
+            <div class="game-bar">
+                <div class="game-meter"><span id="gameFill"></span></div>
+                <span class="game-step" id="gameStep">0 / 4</span>
+            </div>
+            <p class="game-label" id="gameLabel">Poniedziałek, 14:37. Zespół pracuje na rezerwie.</p>
+            <div class="game-items">
+                <button type="button" class="game-item" data-stage="1">
+                    <img src="packshot-owoce.webp" alt="" loading="lazy">
+                    <b>Owocowe Czwartki</b><span>Owoce sezonowe</span>
+                </button>
+                <button type="button" class="game-item" data-stage="2">
+                    <img src="packshot-kanapki.webp" alt="" loading="lazy">
+                    <b>Kanapkowe Wtorki</b><span>Kanapki i lunche</span>
+                </button>
+                <button type="button" class="game-item" data-stage="3">
+                    <img src="packshot-bakalie.webp" alt="" loading="lazy">
+                    <b>Przekąski</b><span>Bakalie i orzechy</span>
+                </button>
+                <button type="button" class="game-item" data-stage="4">
+                    <img src="packshot-soki.webp" alt="" loading="lazy">
+                    <b>Dzień Zdrowia</b><span>Soki i napoje</span>
+                </button>
+            </div>
+            <div class="game-done" id="gameDone" hidden>
+                <p><b>Cztery tygodnie i tyle.</b> Tak wygląda wrzesień, w którym zespół ma paliwo.</p>
+                <a href="#formularz" class="btn-feed">Nakarm swój zespół →</a>
+                <br><button type="button" class="game-reset" id="gameReset">Zagraj jeszcze raz</button>
             </div>
         </div>
     </div>
@@ -646,6 +717,60 @@ html.pt-in body>:not(header) { animation: ptFadeIn 0.32s ease both; }
             if (f) f.style.height = e.data.height + 'px';
         }
     });
+})();
+</script>
+<script>
+/* ─── GRA: obudz pracownika ─── */
+(function () {
+    var art = document.getElementById('gameArt');
+    if (!art) return;
+    var fill = document.getElementById('gameFill');
+    var step = document.getElementById('gameStep');
+    var label = document.getElementById('gameLabel');
+    var done = document.getElementById('gameDone');
+    var reset = document.getElementById('gameReset');
+    var items = [].slice.call(document.querySelectorAll('.game-item'));
+    var TXT = [
+        'Poniedziałek, 14:37. Zespół pracuje na rezerwie.',
+        'Skrzynka stoi na biurku. Ktoś podniósł wzrok.',
+        'Wraca kolor. I ostrość widzenia.',
+        'Plecy się prostują, ręce wracają na klawiaturę.',
+        'Pełna moc. Tak wygląda wrzesień z paliwem.'
+    ];
+    var level = 0;
+
+    // wstepne wczytanie stanow, zeby nie migalo
+    for (var i = 1; i <= 4; i++) { var pre = new Image(); pre.src = 'gra-stan-' + i + '.webp'; }
+
+    function render() {
+        art.style.opacity = '0';
+        setTimeout(function () {
+            art.src = 'gra-stan-' + level + '.webp';
+            art.style.opacity = '1';
+        }, 130);
+        fill.style.width = (level / 4 * 100) + '%';
+        step.textContent = level + ' / 4';
+        label.textContent = TXT[level];
+        done.hidden = level < 4;
+    }
+
+    items.forEach(function (b) {
+        b.addEventListener('click', function () {
+            if (b.disabled || level >= 4) return;
+            b.disabled = true;
+            level++;
+            render();
+        });
+    });
+
+    if (reset) reset.addEventListener('click', function () {
+        level = 0;
+        items.forEach(function (b) { b.disabled = false; });
+        render();
+        document.querySelector('.game-sec').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+
+    render();
 })();
 </script>
 <!--rdf-reveal-fix--><script>(function(){var els=document.querySelectorAll(".reveal");if(!els.length)return;if(!("IntersectionObserver"in window)){els.forEach(function(e){e.classList.add("vis");});return;}var io=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){x.target.classList.add("vis");io.unobserve(x.target);}});},{rootMargin:"0px 0px -8% 0px"});els.forEach(function(e){io.observe(e);});setTimeout(function(){els.forEach(function(e){e.classList.add("vis");});},1200);})();</script>
