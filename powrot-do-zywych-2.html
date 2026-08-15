@@ -125,15 +125,16 @@ header .btn-nav-cta { box-shadow: 0 6px 18px rgba(0,0,0,0.28); }
 .energy-lab { font-size: clamp(10px, 0.85vw, 12.5px); font-weight: 900; letter-spacing: .12em; text-transform: uppercase; white-space: nowrap; text-shadow: 0 1px 8px rgba(0,0,0,.45); }
 .energy-lab.l { color: rgba(255,180,170,0.95); }
 .energy-lab.r { color: rgba(190,225,150,0.95); display: inline-flex; align-items: center; gap: 7px; }
-/* CTA startuje SCHOWANY POD belka (z-index nizszy, belka jest kryjaca),
-   po zapelnieniu paska wysuwa sie W DOL i przykleja do dolnej krawedzi belki. */
-.energy-cta { position: absolute; right: clamp(20px, 3vw, 44px); bottom: 0; z-index: 5;
-    transform: translateY(0); opacity: 0; pointer-events: none;
-    transition: transform .55s cubic-bezier(0.18, 1.25, 0.4, 1), opacity .25s ease .12s; }
-.energy-cta.out { transform: translateY(100%); opacity: 1; pointer-events: auto; }
-.energy-cta .btn { box-shadow: 0 12px 30px rgba(228,48,32,0.34); }
+/* CTA startuje schowany za belka (z-index nizszy, belka jest kryjaca), po zapelnieniu
+   paska wysuwa sie W DOL i zatrzymuje przy dolnej krawedzi. Jest absolutny wzgledem
+   .scrub, wiec po zwolnieniu blokady plynie dalej ze strona w dol. */
+.energy-cta { position: absolute; right: clamp(20px, 3vw, 44px); bottom: 16px; z-index: 5;
+    transform: translateY(-40px); opacity: 0; pointer-events: none;
+    transition: transform .6s cubic-bezier(0.18, 1.2, 0.4, 1), opacity .3s ease; }
+.energy-cta.out { transform: translateY(0); opacity: 1; pointer-events: auto; z-index: 7; }
+.energy-cta .btn { box-shadow: 0 14px 34px rgba(0,0,0,0.34); }
 @media (prefers-reduced-motion: reduce) { .energy-cta { transition: none; } }
-@media (max-width: 700px) { .energy-cta { right: 50%; transform: translate(50%, 0); } .energy-cta.out { transform: translate(50%, 100%); } .energy-cta .btn { padding: 12px 26px; font-size: 14px; } }
+@media (max-width: 700px) { .energy-cta { right: 50%; bottom: 13px; transform: translate(50%, -34px); } .energy-cta.out { transform: translate(50%, 0); } .energy-cta .btn { padding: 12px 26px; font-size: 14px; } }
 .energy-cup { height: clamp(20px, 2vw, 28px); width: auto; display: block; opacity: 0; transform: scale(.4) rotate(-25deg); transition: none; }
 .energy-cup.pop { animation: cupPop .62s cubic-bezier(0.18, 1.5, 0.4, 1) forwards; }
 @keyframes cupPop {
