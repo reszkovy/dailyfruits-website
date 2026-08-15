@@ -119,6 +119,21 @@ header .btn-nav-cta { box-shadow: 0 6px 18px rgba(0,0,0,0.28); }
 .scrub-skip { position: absolute; right: 22px; bottom: 20px; z-index: 7; font-size: 12.5px; letter-spacing: .06em; text-transform: uppercase; font-weight: 700; color: rgba(255,249,224,0.6); background: rgba(27,94,58,0.55); border: 1px solid rgba(255,249,224,0.25); padding: 9px 16px; border-radius: 100px; cursor: pointer; backdrop-filter: blur(4px); }
 .scrub-skip:hover { color: var(--cream); border-color: rgba(255,249,224,0.5); }
 .scrub-skip[hidden] { display: none; }
+/* ---------- SUWAK PRZED / PO (ilustracja) ---------- */
+.reveal-sec { padding: 96px 0 104px; background: var(--green-dark); }
+.reveal-sec .sec-head h2 { color: var(--cream); }
+.reveal-sec .sec-head p { color: rgba(255,249,224,0.7); }
+.slider-frame { position: relative; width: 100%; max-width: 980px; margin: 0 auto; border-radius: var(--radius-lg); overflow: hidden; box-shadow: 0 26px 60px rgba(0,0,0,0.32); aspect-ratio: 1200/670; touch-action: none; cursor: ew-resize; user-select: none; background: var(--cream); }
+.slider-frame img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; pointer-events: none; }
+.slider-frame .top-layer { clip-path: inset(0 0 0 var(--pos, 50%)); }
+.slider-handle { position: absolute; top: 0; bottom: 0; left: var(--pos, 50%); width: 3px; background: var(--cream); z-index: 3; pointer-events: none; }
+.slider-handle::after { content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 56px; height: 56px; border-radius: 50%; background: var(--red); box-shadow: 0 6px 18px rgba(0,0,0,0.32); }
+.slider-handle::before { content: '‹ ›'; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); z-index: 4; color: #fff; font-size: 21px; font-weight: 900; letter-spacing: 2px; }
+.slider-tag { position: absolute; bottom: 16px; z-index: 4; font-size: 11.5px; font-weight: 900; letter-spacing: 0.14em; text-transform: uppercase; padding: 7px 14px; border-radius: var(--radius-pill); }
+.slider-tag.l { left: 16px; background: rgba(27,94,58,0.78); color: rgba(255,249,224,0.92); }
+.slider-tag.r { right: 16px; background: rgba(255,249,224,0.92); color: var(--green-dark); }
+.slider-hint { text-align: center; margin-top: 20px; font-size: 14px; color: rgba(255,249,224,0.62); }
+
 /* ---------- SEKCJE ---------- */
 .sec { padding: 96px 0; }
 .sec-cream { background: var(--cream); }
@@ -242,6 +257,24 @@ html.pt-in body>:not(header) { animation: ptFadeIn 0.32s ease both; }
                 <button type="button" class="scrub-skip" id="zSkip" hidden>Pomiń animację</button>
             </div>
         </div>
+    </div>
+</section>
+
+<!-- SUWAK PRZED / PO -->
+<section class="reveal-sec">
+    <div class="container">
+        <div class="sec-head">
+            <h2>Ta sama osoba. To samo <span class="fun">biurko</span></h2>
+            <p>Zmienia się jedna rzecz: co leży na blacie. Przeciągnij i zobacz różnicę.</p>
+        </div>
+        <div class="slider-frame" id="revive" style="--pos:50%">
+            <img src="kampania-zywy.webp" alt="Ilustracja: pracownik pełen energii przy biurku ze skrzynką owoców" width="1200" height="670" loading="lazy">
+            <img src="kampania-zombie.webp" alt="Ilustracja: wyczerpany pracownik przy biurku z pustymi kubkami po kawie" class="top-layer" width="1200" height="670" loading="lazy">
+            <div class="slider-handle"></div>
+            <span class="slider-tag l">Bez owoców</span>
+            <span class="slider-tag r">Z owocami</span>
+        </div>
+        <p class="slider-hint">Przeciągnij, żeby nakarmić →</p>
     </div>
 </section>
 
@@ -490,6 +523,42 @@ html.pt-in body>:not(header) { animation: ptFadeIn 0.32s ease both; }
 
     function onScroll() { /* blokada zastapila scrub scrollem */ }
     if (!reduce) { window.scrollTo(0, 0); lock(); } else { setIdx(TOTAL - 1); }
+})();
+</script>
+<script>
+/* ─── SUWAK PRZED / PO ─── */
+(function () {
+    var f = document.getElementById('revive');
+    if (!f) return;
+    var dragging = false;
+    function setPos(clientX) {
+        var r = f.getBoundingClientRect();
+        var p = (clientX - r.left) / r.width * 100;
+        p = Math.max(0, Math.min(100, p));
+        f.style.setProperty('--pos', p + '%');
+    }
+    f.addEventListener('pointerdown', function (e) { dragging = true; f.setPointerCapture(e.pointerId); setPos(e.clientX); });
+    f.addEventListener('pointermove', function (e) { if (dragging) setPos(e.clientX); });
+    f.addEventListener('pointerup', function () { dragging = false; });
+    f.addEventListener('pointercancel', function () { dragging = false; });
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches && 'IntersectionObserver' in window) {
+        var teased = false;
+        new IntersectionObserver(function (en) {
+            en.forEach(function (x) {
+                if (!x.isIntersecting || teased) return;
+                teased = true;
+                var t0 = null;
+                function tease(ts) {
+                    if (!t0) t0 = ts;
+                    var k = Math.min(1, (ts - t0) / 1100);
+                    var e2 = k < 0.5 ? 2 * k * k : 1 - Math.pow(-2 * k + 2, 2) / 2;
+                    f.style.setProperty('--pos', (50 + Math.sin(e2 * Math.PI) * 26) + '%');
+                    if (k < 1) requestAnimationFrame(tease);
+                }
+                requestAnimationFrame(tease);
+            });
+        }, { threshold: 0.5 }).observe(f);
+    }
 })();
 </script>
 <!--rdf-reveal-fix--><script>(function(){var els=document.querySelectorAll(".reveal");if(!els.length)return;if(!("IntersectionObserver"in window)){els.forEach(function(e){e.classList.add("vis");});return;}var io=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){x.target.classList.add("vis");io.unobserve(x.target);}});},{rootMargin:"0px 0px -8% 0px"});els.forEach(function(e){io.observe(e);});setTimeout(function(){els.forEach(function(e){e.classList.add("vis");});},1200);})();</script>
