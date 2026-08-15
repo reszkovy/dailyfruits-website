@@ -130,8 +130,10 @@ gtag('config', 'G-G9SCYSFC36');
 /* ---------- KURACJA ---------- */
 .cure { padding: 92px 0 96px; background: var(--lime-bg); }
 .cure-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-top: 8px; }
-.cure-card { background: var(--white); border-radius: var(--radius); padding: 30px 28px 32px; border: 1px solid rgba(27,94,58,0.08); transition: transform 0.3s cubic-bezier(0.16,1,0.3,1), box-shadow 0.3s; }
-.cure-card:hover { transform: translateY(-5px); box-shadow: 0 16px 40px rgba(27,94,58,0.12); }
+.cure-card { background: transparent; padding: 30px 0 0; border-top: 2px dashed rgba(27,94,58,0.22); position: relative; }
+.cure-card::after { content: ''; position: absolute; top: 34px; bottom: 6px; right: -17px; border-right: 1px dashed rgba(27,94,58,0.16); }
+.cure-grid .cure-card:last-child::after { display: none; }
+
 .cure-card .day { font-family: var(--font-fun); font-size: 26px; color: var(--lime); display: block; margin-bottom: 10px; }
 .cure-card h3 { font-weight: 800; font-size: 18px; color: var(--green-dark); margin-bottom: 8px; letter-spacing: -0.02em; }
 .cure-card p { font-size: 14.5px; line-height: 1.6; color: var(--gray-500); margin: 0; }
