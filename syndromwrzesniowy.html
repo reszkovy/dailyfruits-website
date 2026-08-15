@@ -286,6 +286,34 @@ header .btn-red-solid::before { animation-delay: 3.4s; }
     [data-anim="maska"] > span { transform: none !important; transition: none !important; }
 }
 
+
+/* ---------- MOBILE: kwadratowy kadr, copy pod nim, jedno CTA przy dolnej krawedzi ---------- */
+@media (max-width: 720px) {
+    /* hero przestaje byc ekranem na cala wysokosc - staje sie blokiem */
+    .scrub, .scrub-sticky { height: auto; }
+    .scrub-sticky { display: flex; flex-direction: column; overflow: visible; }
+    .scrub-sticky::before { display: none; }
+
+    .hero-offer { order: 1; position: static; text-align: center; margin: 0 0 14px;
+        padding: 0; border-right: 0; border-bottom: 2px solid var(--lime); padding-bottom: 12px;
+        align-self: center; font-size: 13px; text-shadow: none; }
+    .scrub-stage { order: 2; position: relative; inset: auto; width: 100%; aspect-ratio: 1 / 1; }
+    .scrub-veil { display: none; }
+    .energy { order: 3; position: relative; inset: auto; height: auto; padding: 14px 20px; }
+    .scrub-grid { order: 4; height: auto; display: block; }
+    .scrub-copy { padding: 26px 20px 34px; transform: none; }
+    .scrub-copy h1 { margin-bottom: 18px; }
+
+    /* jedno CTA na calej stronie, przyspawane do dolu ekranu */
+    .btn-feed, .cta-row .scrub-hint, .mid-cta { display: none !important; }
+    header .nav-buttons { position: fixed; top: auto; bottom: 0; left: 0; right: 0; z-index: 200; }
+    header .nav-buttons .btn.btn-red-solid { display: flex !important; width: 100%; justify-content: center;
+        border-radius: 0; padding: 17px 20px; font-size: 15px; box-shadow: 0 -8px 24px rgba(0,0,0,0.22); }
+    body { padding-bottom: 58px; }
+    .form-after a.btn { background: transparent; color: var(--green-dark); text-decoration: underline;
+        padding: 0; box-shadow: none; font-size: 14px; }
+}
+
 /* ---------- SEKCJE ---------- */
 .sec { padding: 96px 0; }
  /* RYTM KOLORU = KONCEPT. Syndrom: opadanie z letniego swiatla ku ziemi -
@@ -737,7 +765,7 @@ html.pt-in body>:not(header) { animation: ptFadeIn 0.32s ease both; }
     var mobil = window.matchMedia('(max-width: 720px)').matches;
     // POS 0 = kadr do lewej (pusta strona pod tekst), 1 = do prawej (bohater).
     // Na waskim ekranie kadr jest przycinany po bokach, wiec przesuwamy go do bohatera.
-    var ZOOM = mobil ? 1.02 : 1.10, POS = mobil ? 0.88 : 0.0;
+    var ZOOM = mobil ? 1.0 : 1.10, POS = mobil ? 1.0 : 0.0;
     function draw(i) {
         if (i === cur) return;               // ta sama klatka juz jest na canvasie
         var f = frames[i];
