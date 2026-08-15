@@ -70,7 +70,7 @@ gtag('config', 'G-G9SCYSFC36');
     <link rel="icon" type="image/png" href="favicon_.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preload" as="image" href="frames-zywi/z0000.webp?v=5">
+    <link rel="preload" as="image" href="frames-zywi/z0000.webp?v=6">
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700;900&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
     <noscript><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700;900&display=swap" rel="stylesheet"></noscript>
     <link rel="stylesheet" href="shared.css?v=13">
@@ -679,7 +679,7 @@ html.pt-in body>:not(header) { animation: ptFadeIn 0.32s ease both; }
     var ready = false;
 
     function pad(n) { return String(n).padStart(4, '0'); }
-    function src(i) { return 'frames-zywi/z' + pad(i) + '.webp?v=5'; }
+    function src(i) { return 'frames-zywi/z' + pad(i) + '.webp?v=6'; }
 
     // Preload sprawia, ze klatka 0 bywa gotowa zanim ulozy sie layout - wtedy
     // getBoundingClientRect zwraca zero i canvas zostaje 1x1 na stale.
@@ -722,14 +722,16 @@ html.pt-in body>:not(header) { animation: ptFadeIn 0.32s ease both; }
     var mobil = window.matchMedia('(max-width: 720px)').matches;
     // POS 0 = kadr do lewej (pusta strona pod tekst), 1 = do prawej (bohater).
     // Na waskim ekranie kadr jest przycinany po bokach, wiec przesuwamy go do bohatera.
-    var ZOOM = mobil ? 1.02 : 1.10, POS = mobil ? 0.88 : 0.0;
+    // Klatki sa juz przyciete do bohatera (proporcja 1.36), wiec zoom nie jest potrzebny.
+    // POS_Y < 0.5 przesuwa kadr ku gorze, zeby przyciecie w pionie nie zabralo glowy.
+    var ZOOM = 1.0, POS = mobil ? 0.72 : 0.35, POS_Y = 0.34;
     function draw(i) {
         var f = frames[i];
         if (!f || !f.complete || !f.naturalWidth) return;
         var cw = canvas.width, ch = canvas.height;
         var s = Math.max(cw / f.naturalWidth, ch / f.naturalHeight) * ZOOM;
         var w = f.naturalWidth * s, h = f.naturalHeight * s;
-        var ox = (cw - w) * POS, oy = (ch - h) * 0.5;
+        var ox = (cw - w) * POS, oy = (ch - h) * POS_Y;
         ctx.drawImage(f, ox, oy, w, h);
     }
 
