@@ -697,8 +697,14 @@ html.pt-in body>:not(header) { animation: ptFadeIn 0.32s ease both; }
     }
 
     function sizeCanvasGdyGotowy(proby) {
-        if (sizeCanvas()) { cur = -1; draw(idx); return; }
-        if ((proby || 0) < 60) requestAnimationFrame(function () { sizeCanvasGdyGotowy((proby || 0) + 1); });
+        // UWAGA: boot() potrafi wykonac sie synchronicznie (klatka 0 jest w preloadzie,
+        // wiec first.complete jest prawdziwe juz przy parsowaniu skryptu) - a wtedy
+        // deklaracja "var idx = 0" jeszcze NIE zostala wykonana i idx jest undefined.
+        // draw(undefined) nic nie malowalo, wiec loader czekal az pierwszy scroll
+        // wywola setIdx z prawdziwym numerem. Stad "znika dopiero po scrollu".
+        var n = (typeof idx === 'number') ? idx : 0;
+        if (sizeCanvas()) { cur = -1; draw(n); return; }
+        if ((proby || 0) < 90) requestAnimationFrame(function () { sizeCanvasGdyGotowy((proby || 0) + 1); });
     }
 
     // Bez tego canvas zostaje z rozmiarem sprzed obrotu ekranu, a przy wczytaniu
