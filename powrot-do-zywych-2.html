@@ -120,7 +120,15 @@ header .btn-nav-cta { box-shadow: 0 6px 18px rgba(0,0,0,0.28); }
 .energy { position: absolute; left: 0; right: 0; bottom: 0; z-index: 6; padding: 0 clamp(20px, 3vw, 44px) clamp(18px, 2.4vw, 30px); display: flex; align-items: center; gap: clamp(12px, 1.6vw, 22px); pointer-events: none; }
 .energy-lab { font-size: clamp(10px, 0.85vw, 12.5px); font-weight: 900; letter-spacing: .12em; text-transform: uppercase; white-space: nowrap; text-shadow: 0 1px 8px rgba(0,0,0,.45); }
 .energy-lab.l { color: rgba(255,180,170,0.95); }
-.energy-lab.r { color: rgba(190,225,150,0.95); }
+.energy-lab.r { color: rgba(190,225,150,0.95); display: inline-flex; align-items: center; gap: 7px; }
+.energy-cup { height: clamp(20px, 2vw, 28px); width: auto; display: block; opacity: 0; transform: scale(.4) rotate(-25deg); transition: none; }
+.energy-cup.pop { animation: cupPop .62s cubic-bezier(0.18, 1.5, 0.4, 1) forwards; }
+@keyframes cupPop {
+  0%   { opacity: 0; transform: scale(.4) rotate(-25deg); }
+  55%  { opacity: 1; transform: scale(1.28) rotate(8deg); }
+  100% { opacity: 1; transform: scale(1) rotate(0deg); }
+}
+@media (prefers-reduced-motion: reduce) { .energy-cup.pop { animation: none; opacity: 1; transform: none; } }
 .energy-track { flex: 1; height: 10px; border-radius: 99px; background: rgba(10,40,24,0.45); box-shadow: inset 0 0 0 1px rgba(255,249,224,0.18); overflow: hidden; }
 .energy-fill { display: block; height: 100%; width: 0; border-radius: 99px; background: #E43020; transition: width .1s linear, background-color .2s linear; }
 .scrub-skip { position: absolute; right: 22px; bottom: 52px; z-index: 7; font-size: 12.5px; letter-spacing: .06em; text-transform: uppercase; font-weight: 700; color: rgba(255,249,224,0.6); background: rgba(27,94,58,0.55); border: 1px solid rgba(255,249,224,0.25); padding: 9px 16px; border-radius: 100px; cursor: pointer; backdrop-filter: blur(4px); }
@@ -318,7 +326,7 @@ html.pt-in body>:not(header) { animation: ptFadeIn 0.32s ease both; }
         <div class="energy" aria-hidden="true">
             <span class="energy-lab l">Biurowe zombie</span>
             <span class="energy-track"><span class="energy-fill" id="zProg"></span></span>
-            <span class="energy-lab r">Wydajna praca</span>
+            <span class="energy-lab r">Pracownik miesiąca <img class="energy-cup" id="zCup" src="icons/icon-trophy.webp" alt=""></span>
         </div>
     </div>
 </section>
@@ -532,6 +540,7 @@ html.pt-in body>:not(header) { animation: ptFadeIn 0.32s ease both; }
     var sec = document.getElementById('scrub');
     var prog = document.getElementById('zProg');
     var skip = document.getElementById('zSkip');
+    var cup = document.getElementById('zCup');
     if (!canvas || !sec) return;
 
     var ctx = canvas.getContext('2d', { alpha: false });
@@ -608,6 +617,10 @@ html.pt-in body>:not(header) { animation: ptFadeIn 0.32s ease both; }
             var g = Math.round(48 + (198 - 48) * t);
             var b = Math.round(32 + (63 - 32) * t);
             prog.style.backgroundColor = 'rgb(' + r + ',' + g + ',' + b + ')';
+        }
+        if (cup) {
+            if (idx >= TOTAL - 1) { cup.classList.add('pop'); }
+            else { cup.classList.remove('pop'); }
         }
         if (idx >= TOTAL - 1) unlock();
     }
