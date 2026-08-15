@@ -359,11 +359,11 @@ html.pt-in body>:not(header) { animation: ptFadeIn 0.32s ease both; }
     function pad(n) { return String(n).padStart(4, '0'); }
     function src(i) { return 'frames-zywi/z' + pad(i) + '.webp'; }
 
-    function sizeCanvas(img) {
+    function sizeCanvas() {
         var dpr = Math.min(window.devicePixelRatio || 1, 2);
         var r = canvas.getBoundingClientRect();
-        canvas.width = Math.round(r.width * dpr);
-        canvas.height = Math.round(r.height * dpr);
+        canvas.width = Math.max(1, Math.round(r.width * dpr));
+        canvas.height = Math.max(1, Math.round(r.height * dpr));
     }
 
     function draw(i) {
@@ -378,8 +378,19 @@ html.pt-in body>:not(header) { animation: ptFadeIn 0.32s ease both; }
 
     // pierwsza klatka natychmiast, reszta w tle
     var first = new Image();
+    function boot() {
+        if (ready) return;
+        frames[0] = first;
+        sizeCanvas();
+        ready = true;
+        draw(0);
+        loadRest();
+        onScroll();
+    }
+    first.onload = boot;
     first.src = src(0);
-    first.onload = function () { frames[0] = first; sizeCanvas(first); ready = true; draw(0); loadRest(); };
+    // obrazek moze byc juz w cache (jest w <link rel=preload>) - wtedy onload nie odpali
+    if (first.complete && first.naturalWidth) boot();
 
     function loadRest() {
         for (var i = 1; i < TOTAL; i++) {
@@ -411,7 +422,7 @@ html.pt-in body>:not(header) { animation: ptFadeIn 0.32s ease both; }
     window.addEventListener('scroll', onScroll, { passive: true });
     window.addEventListener('resize', function () {
         if (!ready) return;
-        sizeCanvas(frames[0]);
+        sizeCanvas();
         cur = -1;
         onScroll();
     }, { passive: true });
