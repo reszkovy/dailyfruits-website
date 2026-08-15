@@ -702,7 +702,7 @@ html.pt-in body>:not(header) { animation: ptFadeIn 0.32s ease both; }
     function sizeCanvas() {
         var r = canvas.getBoundingClientRect();
         if (!r.width || !r.height) return false;
-        var dpr = Math.min(window.devicePixelRatio || 1, 2);
+        var dpr = Math.min(window.devicePixelRatio || 1, 1.5);
         canvas.width = Math.round(r.width * dpr);
         canvas.height = Math.round(r.height * dpr);
         return true;
@@ -739,6 +739,7 @@ html.pt-in body>:not(header) { animation: ptFadeIn 0.32s ease both; }
     // Na waskim ekranie kadr jest przycinany po bokach, wiec przesuwamy go do bohatera.
     var ZOOM = mobil ? 1.02 : 1.10, POS = mobil ? 0.88 : 0.0;
     function draw(i) {
+        if (i === cur) return;               // ta sama klatka juz jest na canvasie
         var f = frames[i];
         if (!f || !f.complete || !f.naturalWidth) return;
         var cw = canvas.width, ch = canvas.height;
@@ -746,6 +747,7 @@ html.pt-in body>:not(header) { animation: ptFadeIn 0.32s ease both; }
         var w = f.naturalWidth * s, h = f.naturalHeight * s;
         var ox = (cw - w) * POS, oy = (ch - h) * 0.5;
         ctx.drawImage(f, ox, oy, w, h);
+        cur = i;
     }
 
 
@@ -828,25 +830,39 @@ html.pt-in body>:not(header) { animation: ptFadeIn 0.32s ease both; }
     var justUnlocked = 0;
     var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+    /* Zdarzenia kolka na gladziku potrafia leciec czesciej niz klatki ekranu, a kazde
+       przerysowywalo caly canvas (zrodlo 1280x940 skalowane na ~2880px). Teraz zdarzenie
+       tylko przesuwa numer klatki, a rysunek powstaje raz na klatke ekranu. */
+    var rysunekZaplanowany = false;
+    function zaplanujRysunek() {
+        if (rysunekZaplanowany) return;
+        rysunekZaplanowany = true;
+        requestAnimationFrame(function () {
+            rysunekZaplanowany = false;
+            draw(idx);
+
+        if (prog) {
+                var t = idx / (TOTAL - 1);
+                prog.style.width = (t * 100).toFixed(1) + '%';
+                // 347550 -> 1B5E3A: zielen srednia poglebia sie w brandowa ciemna
+                var r = Math.round(52 + (27 - 52) * t);
+                var g = Math.round(117 + (94 - 117) * t);
+                var b = Math.round(80 + (58 - 80) * t);
+                prog.style.backgroundColor = 'rgb(' + r + ',' + g + ',' + b + ')';
+        }
+            if (cup) {
+                if (idx >= TOTAL - 1) { cup.classList.add('pop'); }
+                else { cup.classList.remove('pop'); }
+            }
+        });
+    }
+
     function setIdx(n) {
         if (n < 0) n = 0;
         if (n > TOTAL - 1) n = TOTAL - 1;
         if (n === idx) return;
         idx = n;
-        draw(idx);
-        if (prog) {
-            var t = idx / (TOTAL - 1);
-            prog.style.width = (t * 100).toFixed(1) + '%';
-            // 347550 -> 1B5E3A: zielen srednia poglebia sie w brandowa ciemna
-            var r = Math.round(52 + (27 - 52) * t);
-            var g = Math.round(117 + (94 - 117) * t);
-            var b = Math.round(80 + (58 - 80) * t);
-            prog.style.backgroundColor = 'rgb(' + r + ',' + g + ',' + b + ')';
-        }
-        if (cup) {
-            if (idx >= TOTAL - 1) { cup.classList.add('pop'); }
-            else { cup.classList.remove('pop'); }
-        }
+        zaplanujRysunek();
         if (idx >= TOTAL - 1) unlock();
     }
 
