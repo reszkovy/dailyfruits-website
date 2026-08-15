@@ -432,7 +432,7 @@ html.pt-in body>:not(header) { animation: ptFadeIn 0.32s ease both; }
         </div>
         <div class="game-wrap">
             <div class="game-stage">
-                <img id="gameArt" src="gra-stan-0.webp?v=3" alt="Stojąca pracowniczka, jej postawa i energia zmieniają się wraz z kolejnymi rytuałami" width="900" height="506">
+                <img id="gameArt" src="gra-stan-0.webp?v=4" alt="Stojąca pracowniczka, jej postawa i energia zmieniają się wraz z kolejnymi rytuałami" width="900" height="506">
                 <div class="game-tray">
                     <button type="button" class="game-item" data-stage="1"><img src="icons/icon-crate-fruit.webp" alt=""><b>Owocowe Czwartki</b></button>
                     <button type="button" class="game-item" data-stage="2"><img src="icons/icon-sandwich-half.webp" alt=""><b>Kanapkowe Wtorki</b></button>
@@ -764,12 +764,12 @@ html.pt-in body>:not(header) { animation: ptFadeIn 0.32s ease both; }
     var level = 0;
 
     // wstepne wczytanie stanow, zeby nie migalo
-    for (var i = 1; i <= 4; i++) { var pre = new Image(); pre.src = 'gra-stan-' + i + '.webp?v=3'; }
+    for (var i = 1; i <= 4; i++) { var pre = new Image(); pre.src = 'gra-stan-' + i + '.webp?v=4'; }
 
     function render() {
         art.style.opacity = '0';
         setTimeout(function () {
-            art.src = 'gra-stan-' + level + '.webp?v=3';
+            art.src = 'gra-stan-' + level + '.webp?v=4';
             art.style.opacity = '1';
         }, 130);
         fill.style.width = (level / 4 * 100) + '%';
