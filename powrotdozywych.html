@@ -294,14 +294,18 @@ header .btn-red-solid::before { animation-delay: 3.4s; }
 .sec-head h2 { font-weight: 900; font-size: clamp(28px, 3vw, 42px); color: var(--green-dark); letter-spacing: -0.04em; margin-bottom: 12px; }
 .sec-head h2 .fun { font-family: var(--font-fun); font-weight: 400; color: var(--lime); font-size: 1.06em; }
 .sec-head p { font-size: 16px; color: var(--gray-500); max-width: 560px; margin: 0 auto; }
-.sym-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
-.sym { background: var(--green-dark); box-shadow: 0 18px 40px rgba(0,0,0,.28); border-radius: var(--radius); padding: 30px 30px 32px; display: flex; flex-direction: column; transition: transform .3s cubic-bezier(0.16,1,0.3,1), box-shadow .3s; }
-.sym:hover { transform: translateY(-4px); box-shadow: 0 24px 52px rgba(0,0,0,.38); }
+/* Bez apli: objawy stoja na dividerach, tak jak reszta sekcji w tej czesci strony. */
+.sym-grid { display: grid; grid-template-columns: repeat(3, 1fr); column-gap: 40px; row-gap: 0; }
+.sym { background: transparent; box-shadow: none; border-radius: 0; padding: 28px 0 0; display: flex; flex-direction: column; position: relative;
+    border-top: 2px dashed rgba(255,249,224,0.30); }
+.sym::after { content: ''; position: absolute; top: 32px; bottom: 4px; right: -20px; border-right: 1px dashed rgba(255,249,224,0.18); }
+.sym-grid .sym:last-child::after { display: none; }
+.sym:hover .sym-top img { transform: rotate(-7deg) scale(1.12); }
 .sym-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; }
 .sym .n { font-family: var(--font-fun); font-size: 40px; line-height: 1; color: var(--yellow); display: block; }
 .sym-top img { height: 54px; width: auto; display: block; transition: transform .3s cubic-bezier(0.16,1,0.3,1); }
 .sym:hover .sym-top img { transform: rotate(-7deg) scale(1.1); }
-.sym .b { padding: 0; border-top: 2px dashed rgba(255,249,224,0.20); padding-top: 20px; }
+.sym .b { padding: 0; }
 .sym h3 { font-weight: 800; font-size: 19px; color: var(--cream); margin-bottom: 9px; letter-spacing: -0.02em; line-height: 1.25; }
 .sym p { font-size: 15px; line-height: 1.62; color: rgba(255,249,224,0.80); margin: 0; }
 /* Os czasu miesiaca: linia biegnie od wezla 1 do wezla 4, nie przez cala szerokosc. */
@@ -360,7 +364,8 @@ header .btn-red-solid::before { animation-delay: 3.4s; }
     .scrub-stage { order: 1; }
     .scrub-veil { background: linear-gradient(to bottom, transparent 40%, rgba(27,94,58,0.8) 78%, var(--green-dark) 100%); }
     #zCanvas { object-position: center 40%; }
-    .sym-grid { grid-template-columns: 1fr; }
+    .sym-grid { grid-template-columns: 1fr; row-gap: 34px; }
+    .sym::after { display: none; }
     /* dwie kolumny: jedna ciagla os by sie rozjechala miedzy rzedami,
        wiec kazdy wezel dostaje wlasny odcinek osi */
     .cure-grid { grid-template-columns: 1fr 1fr; row-gap: 40px; }
