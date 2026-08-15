@@ -240,6 +240,17 @@ header .btn-nav-cta { box-shadow: 0 6px 18px rgba(0,0,0,0.28); }
     .game-tray { flex-wrap: wrap; gap: 8px; }
     .proof-grid { grid-template-columns: repeat(2, 1fr); gap: 34px 20px; }
 }
+@media (max-width: 1000px) and (max-height: 720px) {
+    /* niskie ekrany: CTA musi zmiescic sie w pierwszym widoku */
+    .scrub-grid { grid-template-rows: 36% 64%; }
+    .scrub-copy { padding-top: 74px; }
+    .scrub-copy h1 .l1 { font-size: 30px; }
+    .scrub-copy h1 .l2 { font-size: 26px; }
+    .scrub-copy h1 { margin-bottom: 14px; }
+    .scrub-copy .lead { font-size: 14.5px; line-height: 1.45; margin-bottom: 18px; }
+    .scrub-hint { display: none; }
+    .btn-feed { padding: 13px 26px; font-size: 15px; }
+}
 @media (max-width: 700px) {
     /* pasek energii: etykiety nad torem, tor pelnej szerokosci (na 320 tor miał 0 px) */
     .energy { flex-wrap: wrap; gap: 6px 10px; padding-bottom: 14px; }
