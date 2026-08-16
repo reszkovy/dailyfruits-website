@@ -340,6 +340,19 @@ header .btn-red-solid::before { animation-delay: 3.4s; }
         padding: 0; box-shadow: none; font-size: 14px; }
 }
 
+
+/* Kontekstowe portrety: sekcja wylacznie tej kampanii, buduje ja humor sytuacyjny.
+   Bez kafli - zdjecie niesie forme, podpis stoi pod nim na kresce. */
+.typy { padding: 88px 0 92px; background: var(--white); }
+.typy-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
+.typ { margin: 0; }
+.typ img { width: 100%; height: auto; display: block; border-radius: var(--radius); }
+.typ figcaption { margin-top: 18px; padding-top: 16px; border-top: 2px dashed rgba(27,94,58,0.20);
+    font-size: 14.5px; line-height: 1.6; color: var(--gray-500); }
+.typ figcaption b { display: block; font-size: 16px; color: var(--green-dark); font-weight: 800;
+    margin-bottom: 5px; letter-spacing: -0.01em; }
+@media (max-width: 900px) { .typy-grid { grid-template-columns: 1fr; gap: 34px; } .typy { padding: 60px 0 64px; } }
+
 /* ---------- SEKCJE ---------- */
 .sec { padding: 96px 0; }
  /* RYTM KOLORU = KONCEPT. Syndrom: opadanie z letniego swiatla ku ziemi -
@@ -592,6 +605,30 @@ html.pt-in body>:not(header) { animation: ptFadeIn 0.32s ease both; }
 </section>
 
 <!-- KURACJA -->
+<!-- TYPY: kontekstowe zdjecia postaci z atrybutami wakacyjnymi -->
+<section class="typy">
+    <div class="container">
+        <div class="sec-head">
+            <h2>Znasz kogoś <span class="fun">takiego</span>?</h2>
+            <p>Pierwszy tydzień po urlopie ma swoje typy. W każdym biurze siedzi przynajmniej jeden.</p>
+        </div>
+        <div class="typy-grid">
+            <figure class="typ reveal">
+                <img src="syndrom-typ-1.webp" alt="Pracownica przy biurku w słomkowym kapeluszu i z ręcznikiem plażowym" width="760" height="950" loading="lazy">
+                <figcaption><b>Kapelusz został w walizce</b>Głowa jeszcze nie. Patrzy w monitor, widzi morze.</figcaption>
+            </figure>
+            <figure class="typ reveal">
+                <img src="syndrom-typ-2.webp" alt="Pracownik przy biurku w masce do nurkowania i rękawkach" width="760" height="950" loading="lazy">
+                <figcaption><b>Wrócił w poniedziałek</b>Do środy nadal oddycha przez rurkę i liczy dni do następnego urlopu.</figcaption>
+            </figure>
+            <figure class="typ reveal">
+                <img src="syndrom-typ-3.webp" alt="Pracownik przy biurku w koszuli w palmy, obok koło do pływania" width="760" height="950" loading="lazy">
+                <figcaption><b>Ciało przy biurku</b>Reszta jeszcze płynie. Wieczorem odkryje, że nic nie zrobił.</figcaption>
+            </figure>
+        </div>
+    </div>
+</section>
+
 <section class="sec sec-white">
     <div class="container">
         <div class="sec-head">
