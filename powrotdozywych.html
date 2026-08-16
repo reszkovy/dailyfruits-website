@@ -541,6 +541,13 @@ html.pt-in body>:not(header) { animation: ptFadeIn 0.32s ease both; }
     .logo-sub { display: inline-block !important; border-left: 1px solid rgba(255,255,255,0.25) !important; padding-left: 8px !important; margin: 0 !important; font-size: 8px !important; align-self: center !important; opacity: 0.6 !important; }
     .nav-links, .nav-trust { display: none !important; }
 }
+
+/* AI Act: oznaczenie tresci syntetycznej, na srodku u gory strony */
+.ai-badge { position: absolute; top: 30px; left: 50%; transform: translateX(-50%); z-index: 320;
+    margin: 0; padding: 6px 15px; border-radius: 999px; white-space: nowrap;
+    font-size: 12px; line-height: 1.2; letter-spacing: 0.01em; font-weight: 500;
+    color: rgba(255,249,224,0.94); background: rgba(0,0,0,0.42); backdrop-filter: blur(7px); -webkit-backdrop-filter: blur(7px); }
+@media (max-width: 720px) { .ai-badge { top: 96px; font-size: 10.5px; padding: 5px 12px; } }
 </style>
 </head>
 <body>
@@ -550,6 +557,9 @@ html.pt-in body>:not(header) { animation: ptFadeIn 0.32s ease both; }
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5B7HN67B" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 <!--#endinclude:gtm-noscript-->
+
+<!-- Zgodnosc z AI Act (art. 50): oznaczenie tresci wygenerowanej przez AI -->
+<p class="ai-badge">Grafiki i wideo na tej stronie wygenerowane przez AI</p>
 
 <!-- NAV -->
 <header>
