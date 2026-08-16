@@ -950,7 +950,7 @@ html.pt-in body>:not(header) { animation: ptFadeIn 0.32s ease both; }
     // Kolejka z ograniczona rownoleglioscia. Wczesniej szlo 96 zadan naraz i pierwsze
     // klatki konkurowaly o lacze z ostatnimi - loader czekal na praktycznie cala sekwencje.
     function loadRest() {
-        var nast = 1, aktywne = 0, MAX = 6;
+        var nast = 1, aktywne = 0, MAX = mobil ? 2 : 6;
         function pchaj() {
             while (aktywne < MAX && nast < TOTAL) {
                 (function (n) {
