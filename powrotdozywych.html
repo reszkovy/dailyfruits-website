@@ -787,7 +787,9 @@ html.pt-in body>:not(header) { animation: ptFadeIn 0.32s ease both; }
     // Na waskim ekranie kadr jest przycinany po bokach, wiec przesuwamy go do bohatera.
     // Klatki sa juz przyciete do bohatera (proporcja 1.36), wiec zoom nie jest potrzebny.
     // POS_Y < 0.5 przesuwa kadr ku gorze, zeby przyciecie w pionie nie zabralo glowy.
-    var ZOOM = 1.0, POS = mobil ? 1.0 : 0.35, POS_Y = 0.34;
+    // Na kwadratowym kadrze mobilnym zoom 1.22 wypycha pionowa krawedz przepierzenia
+    // poza kadr i stawia bohatera na 0.50 szerokosci.
+    var ZOOM = mobil ? 1.22 : 1.0, POS = mobil ? 1.0 : 0.35, POS_Y = 0.34;
     function draw(i) {
         if (i === cur) return;               // ta sama klatka juz jest na canvasie
         var f = frames[i];
