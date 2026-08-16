@@ -98,7 +98,7 @@ header .logo-sub { text-shadow: 0 1px 8px rgba(0,0,0,0.4); }
    przy formularzu, zeby nie wskazywalo na cel, ktory wlasnie jest na ekranie. */
 header .nav-buttons { position: fixed; top: 22px; right: clamp(20px, 3vw, 44px); z-index: 10;
     transition: opacity .32s ease, transform .32s cubic-bezier(0.16,1,0.3,1); }
-header .btn-red-solid { position: relative; overflow: hidden; box-shadow: 0 8px 22px rgba(0,0,0,0.34); }
+header .btn-red-solid { white-space: nowrap; position: relative; overflow: hidden; box-shadow: 0 8px 22px rgba(0,0,0,0.34); }
 /* shared.css chowa .nav-buttons .btn ponizej 768px (normalnie zastepuje go hamburger).
    Tu hamburgera nie ma, wiec CTA musi zostac - inaczej na mobile nie da sie kliknac "Zamow". */
 @media (max-width: 768px) {
@@ -388,7 +388,7 @@ br.lam { display: none; }
 .zrodlo-sek { text-align: center; margin-top: 30px; }
 @media (max-width: 720px) { .zrodlo { font-size: 11px; margin-top: 8px; } }
 
-.cta-emo { font-family: "Apple Color Emoji","Segoe UI Emoji","Noto Color Emoji",sans-serif; font-size: 1.05em; line-height: 1; margin-left: 2px; }
+.cta-emo { white-space: nowrap; font-family: "Apple Color Emoji","Segoe UI Emoji","Noto Color Emoji",sans-serif; font-size: 1.05em; line-height: 1; margin-left: 2px; }
 
 /* ---------- SEKCJE ---------- */
 .sec { padding: 96px 0; }
