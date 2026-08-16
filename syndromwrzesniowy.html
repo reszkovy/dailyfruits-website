@@ -243,7 +243,7 @@ header .btn-red-solid::before { animation-delay: 3.4s; }
 .form-after p { font-size: 15px; color: var(--gray-500); margin: 0 0 16px; }
 
 /* Pasek logotypow jak na home, tuz pod belka z paskiem energii. */
-.logo-bar { background: var(--white); padding: 30px 0 24px; overflow: hidden; }
+.logo-bar { background: var(--cream); padding: 30px 0 24px; overflow: hidden; }
 .logo-bar-label { text-align: center; font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: .18em; color: var(--green-dark); opacity: .45; margin-bottom: 20px; }
 .logo-bar-track { display: flex; align-items: center; width: max-content; animation: logo-scroll 30s linear infinite; }
 .logo-bar-track:hover { animation-play-state: paused; }
@@ -327,8 +327,21 @@ header .btn-red-solid::before { animation-delay: 3.4s; }
     .scrub-copy h1 { position: absolute; top: calc(100vw - 18px); transform: translateY(-100%);
         left: 20px; right: 20px; margin: 0; z-index: 3; }
     .scrub-copy h1 .l1, .scrub-copy h1 .l2 { color: #fff; }
-    .scrub-copy { padding: 18px 20px 30px; transform: none; }
+    .scrub-copy { padding: 18px 20px 26px; transform: none; }
     .scrub-copy .lead { margin-bottom: 0; }
+    /* Pusty rzad po ukrytym przycisku i pusta druga kolumna siatki zostawialy
+       kilkaset pikseli martwej przestrzeni pod ledem. */
+    .cta-row { display: none !important; }
+    .scrub-grid > div:empty { display: none !important; }
+
+    /* Odstepy sekcji na telefonie - desktopowe 90+ px robilo dziury */
+    .sec { padding: 54px 0; }
+    .sec-head { margin-bottom: 32px; }
+    .prod-sec { padding: 54px 0 58px; }
+    .form-sec { padding: 54px 0 64px; }
+    .logo-bar { padding: 22px 0 18px; }
+    .proofzone { margin-top: 34px; }
+    .hero-box { padding: 24px 20px; gap: 20px; }
 
     /* jedno CTA na calej stronie, przyspawane do dolu ekranu */
     .btn-feed, .cta-row .scrub-hint, .mid-cta { display: none !important; }
@@ -827,7 +840,8 @@ html.pt-in body>:not(header) { animation: ptFadeIn 0.32s ease both; }
     // POS 0 = kadr do lewej (pusta strona pod tekst), 1 = do prawej (bohater).
     // Na waskim ekranie kadr jest przycinany po bokach, wiec przesuwamy go do bohatera.
     // Zoom 1.22 na mobile: krawedz przeszklenia wychodzi z kadru, bohaterka lada na 0.46.
-    var ZOOM = mobil ? 1.22 : 1.10, POS = mobil ? 0.48 : 0.0;
+    // Kadr mobilny musi zmiescic bohaterke I skrzynke - stad pelne okno i dosuniecie w prawo.
+    var ZOOM = mobil ? 1.0 : 1.10, POS = mobil ? 0.92 : 0.0;
     function draw(i) {
         if (i === cur) return;               // ta sama klatka juz jest na canvasie
         var f = frames[i];

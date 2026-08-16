@@ -315,8 +315,21 @@ header .btn-red-solid::before { animation-delay: 3.4s; }
     .scrub-copy h1 { position: absolute; top: calc(100vw - 18px); transform: translateY(-100%);
         left: 20px; right: 20px; margin: 0; z-index: 3; }
     .scrub-copy h1 .l1, .scrub-copy h1 .l2 { color: #fff; }
-    .scrub-copy { padding: 18px 20px 30px; transform: none; }
+    .scrub-copy { padding: 18px 20px 26px; transform: none; }
     .scrub-copy .lead { margin-bottom: 0; }
+    /* Pusty rzad po ukrytym przycisku i pusta druga kolumna siatki zostawialy
+       kilkaset pikseli martwej przestrzeni pod ledem. */
+    .cta-row { display: none !important; }
+    .scrub-grid > div:empty { display: none !important; }
+
+    /* Odstepy sekcji na telefonie - desktopowe 90+ px robilo dziury */
+    .sec { padding: 54px 0; }
+    .sec-head { margin-bottom: 32px; }
+    .prod-sec { padding: 54px 0 58px; }
+    .form-sec { padding: 54px 0 64px; }
+    .logo-bar { padding: 22px 0 18px; }
+    .proofzone { margin-top: 34px; }
+    .hero-box { padding: 24px 20px; gap: 20px; }
 
     /* jedno CTA na calej stronie, przyspawane do dolu ekranu */
     .btn-feed, .cta-row .scrub-hint, .mid-cta { display: none !important; }
@@ -839,7 +852,8 @@ html.pt-in body>:not(header) { animation: ptFadeIn 0.32s ease both; }
     // POS_Y < 0.5 przesuwa kadr ku gorze, zeby przyciecie w pionie nie zabralo glowy.
     // Na kwadratowym kadrze mobilnym zoom 1.22 wypycha pionowa krawedz przepierzenia
     // poza kadr i stawia bohatera na 0.50 szerokosci.
-    var ZOOM = mobil ? 1.22 : 1.0, POS = mobil ? 0.80 : 0.35, POS_Y = 0.34;
+    // Kadr mobilny musi zmiescic bohatera I skrzynke - stad szersze okno i dosuniecie w prawo.
+    var ZOOM = 1.0, POS = mobil ? 1.0 : 0.35, POS_Y = 0.34;
     function draw(i) {
         if (i === cur) return;               // ta sama klatka juz jest na canvasie
         var f = frames[i];
