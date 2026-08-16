@@ -281,7 +281,13 @@ header .btn-red-solid::before { animation-delay: 3.4s; }
     .scrub-sticky { display: flex; flex-direction: column; overflow: visible; }
     .scrub-sticky::before { display: none; }
 
-    .hero-offer { order: 1; position: static; text-align: center; margin: 0 0 14px;
+    /* Naglowek wraca do przeplywu. Pozostajac absolutny kladl sie na zachecie,
+       ktora po przebudowie jest pierwszym elementem hero. */
+    header { position: static !important; }
+    header .nav-inner { padding: 14px 20px 0 !important; }
+    header .logo-img { height: 42px !important; }
+
+    .hero-offer { order: 1; position: static; text-align: center; margin: 4px 0 14px;
         padding: 0; border-right: 0; border-bottom: 2px solid var(--lime); padding-bottom: 12px;
         align-self: center; font-size: 13px; text-shadow: none; }
     .scrub-stage { order: 2; position: relative; inset: auto; width: 100%; aspect-ratio: 1 / 1; }
