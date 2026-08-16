@@ -374,6 +374,11 @@ header .btn-red-solid::before { animation-delay: 3.4s; }
 br.lam { display: none; }
 @media (max-width: 720px) { br.lam { display: inline; } }
 
+/* Atrybucja danych - liczby w copy musza miec widoczne zrodlo. */
+.zrodlo { font-size: 11.5px; line-height: 1.4; color: rgba(255,249,224,0.72); margin: 10px 0 0; letter-spacing: .01em; }
+.zrodlo-sek { text-align: center; margin-top: 30px; }
+@media (max-width: 720px) { .zrodlo { font-size: 11px; margin-top: 8px; } }
+
 /* ---------- SEKCJE ---------- */
 .sec { padding: 96px 0; }
 /* RYTM KOLORU = KONCEPT. Zombie: strona rozjasnia sie razem z bohaterem,
@@ -567,6 +572,7 @@ html.pt-in body>:not(header) { animation: ptFadeIn 0.32s ease both; }
                     <span class="l2">Powrót do żywych.</span>
                 </h1>
                 <p class="lead"><b>68% pracuje mniej efektywnie,<br class="lam">gdy odczuwa głód.</b><br>Wrzesień po urlopach to moment,<br class="lam">w którym widać to najmocniej.</p>
+                <p class="zrodlo">Dane: raport „Nawyki żywieniowe Polaków w 2025 roku"</p>
                 <div class="cta-row">
                     <a href="#formularz" class="btn-feed js-do-formularza">Nakarm zespół →</a>
                     <p class="scrub-hint"><i></i> Przewiń, żeby obudzić biuro</p>
@@ -638,6 +644,7 @@ html.pt-in body>:not(header) { animation: ptFadeIn 0.32s ease both; }
                 </div>
             </div>
         </div>
+        <p class="zrodlo zrodlo-sek">Dane: raport „Nawyki żywieniowe Polaków w 2025 roku"</p>
         </div>
     </div>
 </section>
