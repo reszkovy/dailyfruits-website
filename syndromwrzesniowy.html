@@ -314,8 +314,17 @@ header .btn-red-solid::before { animation-delay: 3.4s; }
     .scrub-veil { display: none; }
     .energy { order: 2; position: relative; inset: auto; height: auto; padding: 13px 20px; }
     .scrub-grid { order: 3; height: auto; display: block; }
-    .scrub-copy { padding: 20px 20px 30px; transform: none; }
-    .scrub-copy h1 { margin-bottom: 14px; }
+    /* Glowne haslo siada na dolnej czesci kadru, na bieli, z przyciemnieniem od dolu.
+       Kadr jest kwadratem, wiec jego dolna krawedz to dokladnie 100vw od gory hero -
+       'top' liczony stad plus przesuniecie o wlasna wysokosc trzyma haslo przy krawedzi
+       niezaleznie od tego, na ile linii sie zlamie. Lead zostaje pod paskiem. */
+    .scrub-stage::before { content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 46%;
+        pointer-events: none; z-index: 2;
+        background: linear-gradient(to top, rgba(0,0,0,0.68), rgba(0,0,0,0.28) 45%, transparent); }
+    .scrub-copy h1 { position: absolute; top: calc(100vw - 18px); transform: translateY(-100%);
+        left: 20px; right: 20px; margin: 0; z-index: 3; }
+    .scrub-copy h1 .l1, .scrub-copy h1 .l2 { color: #fff; }
+    .scrub-copy { padding: 18px 20px 30px; transform: none; }
     .scrub-copy .lead { margin-bottom: 0; }
 
     /* jedno CTA na calej stronie, przyspawane do dolu ekranu */
