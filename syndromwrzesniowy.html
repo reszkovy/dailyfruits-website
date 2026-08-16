@@ -346,7 +346,15 @@ header .btn-red-solid::before { animation-delay: 3.4s; }
     .form-sec { padding: 54px 0 64px; }
     .logo-bar { padding: 22px 0 18px; }
     .proofzone { margin-top: 34px; }
-    .hero-box { padding: 24px 20px; gap: 20px; }
+    /* Ograniczenie starego bloku @media do desktopu zabralo telefonowi skladanie
+       tej sekcji w jedna kolumne - stad scisniete zdjecie. Do tego produkt
+       dostaje pelna szerokosc widoku, bo to on ma tu sprzedawac. */
+    .hero-box { grid-template-columns: 1fr; gap: 18px; padding: 0 0 24px;
+        margin-left: -20px; margin-right: -20px; border-radius: 0; }
+    .hero-box > div:first-child { margin: 0; }
+    .hero-box img { width: 100%; border-radius: 0; filter: none; }
+    .hero-box > div:nth-child(2) { padding: 0 20px; }
+    .hero-box-foot { padding: 22px 20px 0; }
 
     /* jedno CTA na calej stronie, przyspawane do dolu ekranu */
     .btn-feed, .cta-row .scrub-hint, .mid-cta { display: none !important; }
