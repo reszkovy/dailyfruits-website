@@ -318,8 +318,9 @@ header .btn-red-solid::before { animation-delay: 3.4s; }
     /* Blok pod paskiem trzyma tylko lead - zadnych rezerw po ukrytych elementach.
        H1 jest wyjety z przeplywu (lezy na kadrze), wiec nie moze zostawiac po sobie miejsca. */
     .scrub-copy { padding: 16px 20px 20px; transform: none; }
-    .scrub-copy > *:not(.lead):not(h1) { display: none !important; }
+    .scrub-copy > *:not(.lead):not(h1):not(.zrodlo) { display: none !important; }
     .scrub-copy .lead { margin: 0; }
+    .scrub-copy .zrodlo { margin: 10px 0 0; }
     .scrub-grid { display: block; }
     .scrub-grid > div:not(.scrub-copy) { display: none !important; }
     /* Pusty rzad po ukrytym przycisku i pusta druga kolumna siatki zostawialy
@@ -375,7 +376,7 @@ br.lam { display: none; }
 @media (max-width: 720px) { br.lam { display: inline; } }
 
 /* Atrybucja danych - liczby w copy musza miec widoczne zrodlo. */
-.zrodlo { font-size: 11.5px; line-height: 1.4; color: rgba(255,249,224,0.72); margin: 10px 0 0; letter-spacing: .01em; }
+.zrodlo { font-size: 11.5px; line-height: 1.4; color: rgba(255,249,224,0.72); margin: 12px 0 24px; letter-spacing: .01em; }
 .zrodlo-sek { text-align: center; margin-top: 30px; }
 @media (max-width: 720px) { .zrodlo { font-size: 11px; margin-top: 8px; } }
 
