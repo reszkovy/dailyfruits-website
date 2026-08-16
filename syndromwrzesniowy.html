@@ -293,26 +293,27 @@ header .btn-red-solid::before { animation-delay: 3.4s; }
     .scrub-sticky { display: flex; flex-direction: column; overflow: visible; }
     .scrub-sticky::before { display: none; }
 
-    /* Naglowek wraca do przeplywu, a zachęta siada obok logo w prawym gornym rogu.
-       Zeby zakotwiczyc ja do rogu STRONY, hero nie moze byc jej ukladem odniesienia. */
-    .scrub, .scrub-sticky { position: static; }
-    header { position: static !important; }
-    header .nav-inner { padding: 16px 20px 0 !important; }
+    /* Logo i zachęta leza NA kadrze. Czytelnosc daje gradient w tonacji kampanii:
+       przyciemnienie tam, gdzie napisy sa jasne, rozjasnienie tam, gdzie ciemne. */
+    .scrub { position: static; }
+    .scrub-sticky { position: relative; }
+    header { position: absolute !important; top: 0; left: 0; right: 0; z-index: 120; }
+    header .nav-inner { padding: 14px 16px 0 !important; }
     header .logo-img { height: 40px !important; }
     header .logo-sub { display: none !important; }
 
-    .hero-offer { position: absolute; top: 18px; right: 16px; left: auto; bottom: auto;
-        order: 0; max-width: 46vw; text-align: right; margin: 0;
-        padding: 0 0 0 10px; border-right: 0; border-left: 3px solid var(--lime);
-        font-size: 11.5px; line-height: 1.3; text-shadow: none; }
+    .hero-offer { position: absolute; top: 16px; right: 14px; left: auto; bottom: auto; z-index: 121; color: var(--green-dark);
+        max-width: 44vw; text-align: right; margin: 0;
+        padding: 0 0 0 9px; border-right: 0; border-left: 3px solid var(--lime);
+        font-size: 11.5px; line-height: 1.3; }
 
-    .scrub-stage { order: 2; position: relative; inset: auto; width: 100%; aspect-ratio: 1 / 1; }
-    .scrub-stage::after { content: ''; position: absolute; left: 0; right: 0; top: 0; height: 34%;
+    .scrub-stage { order: 1; position: relative; inset: auto; width: 100%; aspect-ratio: 1 / 1; }
+    .scrub-stage::after { content: ''; position: absolute; left: 0; right: 0; top: 0; height: 30%;
         pointer-events: none; z-index: 2;
-        background: linear-gradient(to bottom, rgba(255,249,224,0.80), transparent); }
+        background: linear-gradient(to bottom, rgba(255,249,224,0.88), transparent); }
     .scrub-veil { display: none; }
-    .energy { order: 3; position: relative; inset: auto; height: auto; padding: 13px 20px; }
-    .scrub-grid { order: 4; height: auto; display: block; }
+    .energy { order: 2; position: relative; inset: auto; height: auto; padding: 13px 20px; }
+    .scrub-grid { order: 3; height: auto; display: block; }
     .scrub-copy { padding: 20px 20px 30px; transform: none; }
     .scrub-copy h1 { margin-bottom: 14px; }
     .scrub-copy .lead { margin-bottom: 0; }
@@ -474,7 +475,7 @@ html.pt-in body>:not(header) { animation: ptFadeIn 0.32s ease both; }
 <!-- NAV -->
 <header>
     <div class="nav-inner">
-        <div class="logo-wrap"><a href="/"><picture><source media="(max-width: 768px)" srcset="animacja_11-lime.svg"><img src="fruitttt.svg" alt="DailyFruits - owoce, kanapki, soki, przekąski i więcej do biura" class="logo-img" loading="eager" fetchpriority="high" width="64" height="64"></picture></a><span class="logo-sub">by BetterWorkplace</span></div>
+        <div class="logo-wrap"><a href="/"><picture><img src="fruitttt.svg" alt="DailyFruits - owoce, kanapki, soki, przekąski i więcej do biura" class="logo-img" loading="eager" fetchpriority="high" width="64" height="64"></picture></a><span class="logo-sub">by BetterWorkplace</span></div>
         <!-- Landing kampanijny: naglowek okrojony do logo i jednego CTA,
              zeby nie wyprowadzac ruchu z lejka. -->
         <div class="nav-buttons">
