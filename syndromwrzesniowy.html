@@ -941,36 +941,41 @@ html.pt-in body>:not(header) { animation: ptFadeIn 0.32s ease both; }
     // obrazek moze byc juz w cache (jest w <link rel=preload>) - wtedy onload nie odpali
     if (first.complete && first.naturalWidth) boot();
 
-    // Kolejka z ograniczona rownoleglioscia. Wczesniej szlo 96 zadan naraz i pierwsze
-    // klatki konkurowaly o lacze z ostatnimi - loader czekal na praktycznie cala sekwencje.
+    /* POBIERANIE KLATEK — wzorzec z ciezkich sekwencji scrollowych.
+       1) createImageBitmap dekoduje POZA glownym watkiem, wiec drawImage nic juz nie liczy;
+          img.decode() tego nie gwarantowal i zostawialo zadania po 120-190 ms.
+       2) Dwa przebiegi: najpierw co czwarta klatka, wiec CALY zakres jest przewijalny
+          niemal od razu, potem reszta zageszcza sekwencje.
+       3) Brakujaca klatke zastepuje najblizsza dostepna, wiec nic nie stoi w miejscu. */
     function loadRest() {
-        var nast = 1, aktywne = 0, MAX = mobil ? 2 : 6;
-        function pchaj() {
-            while (aktywne < MAX && nast < TOTAL) {
-                (function (n) {
-                    aktywne++;
-                    var img = new Image();
-                    img.decoding = 'async';
-                    img.onload = function () {
-                        // drawImage na niezdekodowanym obrazku wymusza dekodowanie
-                        // synchronicznie na glownym watku - to zrodlo dlugich zadan
-                        // w trakcie scrubu. Dekodujemy z wyprzedzeniem, poza rysowaniem.
-                        var koniec = function () {
-                            aktywne--;
-                            if (window.zlKlatkaGotowa) window.zlKlatkaGotowa();
-                            pchaj();
-                        };
-                        if (img.decode) img.decode().then(koniec, koniec); else koniec();
-                    };
-                    img.onerror = function () {
-                        aktywne--;
-                        if (window.zlKlatkaGotowa) window.zlKlatkaGotowa();
-                        pchaj();
-                    };
-                    img.src = src(n);
-                    frames[n] = img;
-                })(nast++);
+        var MAX = mobil ? 3 : 6, aktywne = 0;
+        var kolejka = [];
+        for (var k = 4; k < TOTAL; k += 4) kolejka.push(k);
+        for (var m = 1; m < TOTAL; m++) if (m % 4 !== 0) kolejka.push(m);
+        var idx2 = 0;
+
+        function gotowe() {
+            aktywne--;
+            if (window.zlKlatkaGotowa) window.zlKlatkaGotowa();
+            if (cur >= 0) { var c = cur; cur = -1; draw(idx); }
+            pchaj();
+        }
+        function pobierz(n) {
+            aktywne++;
+            if (!window.createImageBitmap || !window.fetch) {
+                var img = new Image();
+                img.decoding = 'async';
+                img.onload = img.onerror = function () { frames[n] = img; gotowe(); };
+                img.src = src(n);
+                return;
             }
+            fetch(src(n), { cache: 'force-cache' })
+                .then(function (r) { return r.blob(); })
+                .then(function (b) { return createImageBitmap(b); })
+                .then(function (bm) { frames[n] = bm; gotowe(); }, gotowe);
+        }
+        function pchaj() {
+            while (aktywne < MAX && idx2 < kolejka.length) pobierz(kolejka[idx2++]);
         }
         pchaj();
     }
