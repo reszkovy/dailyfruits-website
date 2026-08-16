@@ -938,7 +938,18 @@ html.pt-in body>:not(header) { animation: ptFadeIn 0.32s ease both; }
                     aktywne++;
                     var img = new Image();
                     img.decoding = 'async';
-                    img.onload = img.onerror = function () {
+                    img.onload = function () {
+                        // drawImage na niezdekodowanym obrazku wymusza dekodowanie
+                        // synchronicznie na glownym watku - to zrodlo dlugich zadan
+                        // w trakcie scrubu. Dekodujemy z wyprzedzeniem, poza rysowaniem.
+                        var koniec = function () {
+                            aktywne--;
+                            if (window.zlKlatkaGotowa) window.zlKlatkaGotowa();
+                            pchaj();
+                        };
+                        if (img.decode) img.decode().then(koniec, koniec); else koniec();
+                    };
+                    img.onerror = function () {
                         aktywne--;
                         if (window.zlKlatkaGotowa) window.zlKlatkaGotowa();
                         pchaj();
