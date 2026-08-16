@@ -369,17 +369,19 @@ header .btn-red-solid::before { animation-delay: 3.4s; }
     transition: transform .35s cubic-bezier(0.16,1,0.3,1); }
 .typ:hover { transform: translateY(-4px); }
 .typ img { width: 100%; height: auto; display: block; }
-.typ::before { content: ''; position: absolute; left: 0; right: 0; top: 0; height: 52%; z-index: 1;
+/* Odwrotnie niz na kampanii zombie: rozjasnienie od dolu i ciemna typografia.
+   Ustawione swiadomie pod porownanie A/B obu wariantow. */
+.typ::before { content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 54%; z-index: 1;
     pointer-events: none;
-    background: linear-gradient(to bottom, rgba(0,0,0,0.76), rgba(0,0,0,0.38) 52%, transparent); }
-.typ figcaption { position: absolute; top: 0; left: 0; right: 0; z-index: 2;
-    margin: 0; padding: 20px 20px 0; border: 0;
-    font-size: 14px; line-height: 1.55; color: rgba(255,255,255,0.90); }
-.typ figcaption b { display: block; font-size: 17px; color: #fff; font-weight: 800;
+    background: linear-gradient(to top, rgba(255,249,224,0.95), rgba(255,249,224,0.62) 50%, transparent); }
+.typ figcaption { position: absolute; bottom: 0; left: 0; right: 0; z-index: 2;
+    margin: 0; padding: 0 20px 20px; border: 0;
+    font-size: 14px; line-height: 1.55; color: rgba(15,42,26,0.86); }
+.typ figcaption b { display: block; font-size: 17px; color: var(--green-dark); font-weight: 800;
     margin-bottom: 5px; letter-spacing: -0.015em; }
 @media (max-width: 900px) { .typy-grid { grid-template-columns: 1fr; gap: 22px; }
     .typ img { aspect-ratio: 1 / 1; object-fit: cover; }
-    .typ figcaption { padding: 18px 18px 0; } .typy { padding: 60px 0 64px; } }
+    .typ figcaption { padding: 0 18px 18px; } .typy { padding: 60px 0 64px; } }
 
 /* ---------- SEKCJE ---------- */
 .sec { padding: 96px 0; }
