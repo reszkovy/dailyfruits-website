@@ -315,8 +315,13 @@ header .btn-red-solid::before { animation-delay: 3.4s; }
     .scrub-copy h1 { position: absolute; top: calc(100vw - 18px); transform: translateY(-100%);
         left: 20px; right: 20px; margin: 0; z-index: 3; }
     .scrub-copy h1 .l1, .scrub-copy h1 .l2 { color: #fff; }
-    .scrub-copy { padding: 18px 20px 26px; transform: none; }
-    .scrub-copy .lead { margin-bottom: 0; }
+    /* Blok pod paskiem trzyma tylko lead - zadnych rezerw po ukrytych elementach.
+       H1 jest wyjety z przeplywu (lezy na kadrze), wiec nie moze zostawiac po sobie miejsca. */
+    .scrub-copy { padding: 16px 20px 20px; transform: none; }
+    .scrub-copy > *:not(.lead):not(h1) { display: none !important; }
+    .scrub-copy .lead { margin: 0; }
+    .scrub-grid { display: block; }
+    .scrub-grid > div:not(.scrub-copy) { display: none !important; }
     /* Pusty rzad po ukrytym przycisku i pusta druga kolumna siatki zostawialy
        kilkaset pikseli martwej przestrzeni pod ledem. */
     .cta-row { display: none !important; }
