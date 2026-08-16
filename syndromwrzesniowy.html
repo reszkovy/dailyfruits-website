@@ -867,16 +867,29 @@ html.pt-in body>:not(header) { animation: ptFadeIn 0.32s ease both; }
     // Zoom 1.22 na mobile: krawedz przeszklenia wychodzi z kadru, bohaterka lada na 0.46.
     // Kadr mobilny musi zmiescic bohaterke I skrzynke - stad pelne okno i dosuniecie w prawo.
     var ZOOM = mobil ? 1.0 : 1.10, POS = mobil ? 0.92 : 0.0;
+    function gotowa(f) {
+        if (!f) return false;
+        return f.width ? true : (f.complete && f.naturalWidth > 0);
+    }
+    // Gdy zadana klatka jeszcze nie dotarla, rysujemy NAJBLIZSZA dostepna zamiast nic.
+    function najblizsza(i) {
+        if (gotowa(frames[i])) return i;
+        for (var d = 1; d < TOTAL; d++) {
+            if (i - d >= 0 && gotowa(frames[i - d])) return i - d;
+            if (i + d < TOTAL && gotowa(frames[i + d])) return i + d;
+        }
+        return -1;
+    }
     function draw(i) {
-        if (i === cur) return;               // ta sama klatka juz jest na canvasie
-        var f = frames[i];
-        if (!f || !f.complete || !f.naturalWidth) return;
+        var n = najblizsza(i);
+        if (n < 0 || n === cur) return;
+        var f = frames[n];
+        var fw = f.width || f.naturalWidth, fh = f.height || f.naturalHeight;
         var cw = canvas.width, ch = canvas.height;
-        var s = Math.max(cw / f.naturalWidth, ch / f.naturalHeight) * ZOOM;
-        var w = f.naturalWidth * s, h = f.naturalHeight * s;
-        var ox = (cw - w) * POS, oy = (ch - h) * 0.5;
-        ctx.drawImage(f, ox, oy, w, h);
-        cur = i;
+        var s = Math.max(cw / fw, ch / fh) * ZOOM;
+        var w = fw * s, h = fh * s;
+        ctx.drawImage(f, (cw - w) * POS, (ch - h) * 0.5, w, h);
+        cur = n;
     }
 
 
