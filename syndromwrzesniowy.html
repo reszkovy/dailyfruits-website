@@ -313,7 +313,10 @@ header .btn-red-solid::before { animation-delay: 3.4s; }
         background: linear-gradient(to bottom, rgba(255,249,224,0.88), transparent); }
     .scrub-veil { display: none; }
     .energy { order: 2; position: relative; inset: auto; height: auto; padding: 13px 20px; }
-    .scrub-grid { order: 3; height: auto; display: block; }
+    /* .scrub-grid i .scrub-copy maja w bazowym CSS position: relative - dopoki je mialy,
+       haslo kotwiczylo sie do bloku z tekstem, a nie do gory kadru, i ladowalo ekran nizej. */
+    .scrub-grid { order: 3; height: auto; display: block; position: static; }
+    .scrub-copy { position: static; }
     /* Glowne haslo siada na dolnej czesci kadru, na bieli, z przyciemnieniem od dolu.
        Kadr jest kwadratem, wiec jego dolna krawedz to dokladnie 100vw od gory hero -
        'top' liczony stad plus przesuniecie o wlasna wysokosc trzyma haslo przy krawedzi
