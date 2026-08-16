@@ -362,15 +362,24 @@ header .btn-red-solid::before { animation-delay: 3.4s; }
 /* Kontekstowe portrety: sekcja wylacznie tej kampanii, buduje ja humor sytuacyjny.
    Bez kafli - zdjecie niesie forme, podpis stoi pod nim na kresce. */
 .typy { padding: 88px 0 92px; background: var(--white); }
-.typy-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
-.typ { margin: 0; }
-.typ img { width: 100%; height: auto; display: block; border-radius: var(--radius); }
-.typ figcaption { margin-top: 18px; padding-top: 16px; border-top: 2px dashed rgba(27,94,58,0.20);
-    font-size: 14.5px; line-height: 1.6; color: var(--gray-500); }
-.typ figcaption b { display: block; font-size: 16px; color: var(--green-dark); font-weight: 800;
-    margin-bottom: 5px; letter-spacing: -0.01em; }
-@media (max-width: 900px) { .typy-grid { grid-template-columns: 1fr; gap: 28px; }
-    .typ img { aspect-ratio: 1 / 1; object-fit: cover; } .typy { padding: 60px 0 64px; } }
+.typy-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px; }
+/* Karta = samo zdjecie. Opis siada na gornej, pustej czesci kadru,
+   czytelnosc daje przyciemnienie schodzace do przezroczystosci. */
+.typ { position: relative; margin: 0; border-radius: var(--radius); overflow: hidden;
+    transition: transform .35s cubic-bezier(0.16,1,0.3,1); }
+.typ:hover { transform: translateY(-4px); }
+.typ img { width: 100%; height: auto; display: block; }
+.typ::before { content: ''; position: absolute; left: 0; right: 0; top: 0; height: 52%; z-index: 1;
+    pointer-events: none;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.76), rgba(0,0,0,0.38) 52%, transparent); }
+.typ figcaption { position: absolute; top: 0; left: 0; right: 0; z-index: 2;
+    margin: 0; padding: 20px 20px 0; border: 0;
+    font-size: 14px; line-height: 1.55; color: rgba(255,255,255,0.90); }
+.typ figcaption b { display: block; font-size: 17px; color: #fff; font-weight: 800;
+    margin-bottom: 5px; letter-spacing: -0.015em; }
+@media (max-width: 900px) { .typy-grid { grid-template-columns: 1fr; gap: 22px; }
+    .typ img { aspect-ratio: 1 / 1; object-fit: cover; }
+    .typ figcaption { padding: 18px 18px 0; } .typy { padding: 60px 0 64px; } }
 
 /* ---------- SEKCJE ---------- */
 .sec { padding: 96px 0; }
