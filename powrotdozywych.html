@@ -357,6 +357,9 @@ header .btn-red-solid::before { animation-delay: 3.4s; }
 @media (max-width: 900px) { .typy-grid { grid-template-columns: 1fr; gap: 28px; }
     .typ img { aspect-ratio: 1 / 1; object-fit: cover; } .typy { padding: 56px 0 60px; } }
 
+br.lam { display: none; }
+@media (max-width: 720px) { br.lam { display: inline; } }
+
 /* ---------- SEKCJE ---------- */
 .sec { padding: 96px 0; }
 /* RYTM KOLORU = KONCEPT. Zombie: strona rozjasnia sie razem z bohaterem,
@@ -549,7 +552,7 @@ html.pt-in body>:not(header) { animation: ptFadeIn 0.32s ease both; }
                     <span class="l1">Powrót do biur.</span>
                     <span class="l2">Powrót do żywych.</span>
                 </h1>
-                <p class="lead"><b>68% pracuje mniej efektywnie, gdy odczuwa głód.</b><br>Wrzesień po urlopach to moment, w którym widać to najmocniej.</p>
+                <p class="lead"><b>68% pracuje mniej efektywnie,<br class="lam">gdy odczuwa głód.</b><br>Wrzesień po urlopach to moment,<br class="lam">w którym widać to najmocniej.</p>
                 <div class="cta-row">
                     <a href="#formularz" class="btn-feed js-do-formularza">Nakarm zespół →</a>
                     <p class="scrub-hint"><i></i> Przewiń, żeby obudzić biuro</p>
