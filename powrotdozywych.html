@@ -354,7 +354,8 @@ header .btn-red-solid::before { animation-delay: 3.4s; }
     font-size: 14.5px; line-height: 1.6; color: rgba(255,249,224,0.80); }
 .typ figcaption b { display: block; font-size: 16px; color: var(--cream); font-weight: 800;
     margin-bottom: 5px; letter-spacing: -0.01em; }
-@media (max-width: 900px) { .typy-grid { grid-template-columns: 1fr; gap: 34px; } .typy { padding: 56px 0 60px; } }
+@media (max-width: 900px) { .typy-grid { grid-template-columns: 1fr; gap: 28px; }
+    .typ img { aspect-ratio: 1 / 1; object-fit: cover; } .typy { padding: 56px 0 60px; } }
 
 /* ---------- SEKCJE ---------- */
 .sec { padding: 96px 0; }
@@ -576,15 +577,15 @@ html.pt-in body>:not(header) { animation: ptFadeIn 0.32s ease both; }
         </div>
         <div class="typy-grid">
             <figure class="typ reveal">
-                <img src="zombie-kadr-1.webp" alt="Grupa pracowników idzie przez biuro z kubkami kawy" width="760" height="950" loading="lazy">
+                <picture><source media="(max-width: 900px)" srcset="zombie-kadr-1-sq.webp"><img src="zombie-kadr-1.webp" alt="Grupa pracowników idzie przez biuro z kubkami kawy" width="760" height="950" loading="lazy"></picture>
                 <figcaption><b>Poniedziałek, 8:40</b>Wszyscy są na miejscu. Nikt jeszcze nie pracuje.</figcaption>
             </figure>
             <figure class="typ reveal">
-                <img src="zombie-kadr-2.webp" alt="Pracownik z głową na biurku obok kubków po kawie" width="760" height="950" loading="lazy">
+                <picture><source media="(max-width: 900px)" srcset="zombie-kadr-2-sq.webp"><img src="zombie-kadr-2.webp" alt="Pracownik z głową na biurku obok kubków po kawie" width="760" height="950" loading="lazy"></picture>
                 <figcaption><b>Wtorek, 14:10</b>Trzecia kawa nie zadziałała. Czwarta też nie zadziała.</figcaption>
             </figure>
             <figure class="typ reveal">
-                <img src="zombie-kadr-3.webp" alt="Pracownik wpatrzony w laptop, obok wieża kubków" width="760" height="950" loading="lazy">
+                <picture><source media="(max-width: 900px)" srcset="zombie-kadr-3-sq.webp"><img src="zombie-kadr-3.webp" alt="Pracownik wpatrzony w laptop, obok wieża kubków" width="760" height="950" loading="lazy"></picture>
                 <figcaption><b>Czwartek, 16:30</b>Kubki się zgadzają. Wyniki nie.</figcaption>
             </figure>
         </div>

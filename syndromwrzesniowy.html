@@ -364,7 +364,8 @@ header .btn-red-solid::before { animation-delay: 3.4s; }
     font-size: 14.5px; line-height: 1.6; color: var(--gray-500); }
 .typ figcaption b { display: block; font-size: 16px; color: var(--green-dark); font-weight: 800;
     margin-bottom: 5px; letter-spacing: -0.01em; }
-@media (max-width: 900px) { .typy-grid { grid-template-columns: 1fr; gap: 34px; } .typy { padding: 60px 0 64px; } }
+@media (max-width: 900px) { .typy-grid { grid-template-columns: 1fr; gap: 28px; }
+    .typ img { aspect-ratio: 1 / 1; object-fit: cover; } .typy { padding: 60px 0 64px; } }
 
 /* ---------- SEKCJE ---------- */
 .sec { padding: 96px 0; }
@@ -627,15 +628,15 @@ html.pt-in body>:not(header) { animation: ptFadeIn 0.32s ease both; }
         </div>
         <div class="typy-grid">
             <figure class="typ reveal">
-                <img src="syndrom-typ-1.webp" alt="Pracownica przy biurku w słomkowym kapeluszu i z ręcznikiem plażowym" width="760" height="950" loading="lazy">
+                <picture><source media="(max-width: 900px)" srcset="syndrom-typ-1-sq.webp"><img src="syndrom-typ-1.webp" alt="Pracownica przy biurku w słomkowym kapeluszu i z ręcznikiem plażowym" width="760" height="950" loading="lazy"></picture>
                 <figcaption><b>Kapelusz został w walizce</b>Głowa jeszcze nie. Patrzy w monitor, widzi morze.</figcaption>
             </figure>
             <figure class="typ reveal">
-                <img src="syndrom-typ-2.webp" alt="Pracownik przy biurku w masce do nurkowania i rękawkach" width="760" height="950" loading="lazy">
+                <picture><source media="(max-width: 900px)" srcset="syndrom-typ-2-sq.webp"><img src="syndrom-typ-2.webp" alt="Pracownik przy biurku w masce do nurkowania i rękawkach" width="760" height="950" loading="lazy"></picture>
                 <figcaption><b>Wrócił w poniedziałek</b>Do środy nadal oddycha przez rurkę i liczy dni do następnego urlopu.</figcaption>
             </figure>
             <figure class="typ reveal">
-                <img src="syndrom-typ-3.webp" alt="Pracownik przy biurku w koszuli w palmy, obok koło do pływania" width="760" height="950" loading="lazy">
+                <picture><source media="(max-width: 900px)" srcset="syndrom-typ-3-sq.webp"><img src="syndrom-typ-3.webp" alt="Pracownik przy biurku w koszuli w palmy, obok koło do pływania" width="760" height="950" loading="lazy"></picture>
                 <figcaption><b>Ciało przy biurku</b>Reszta jeszcze płynie. Wieczorem odkryje, że nic nie zrobił.</figcaption>
             </figure>
         </div>
