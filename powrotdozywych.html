@@ -1094,10 +1094,38 @@ html.pt-in body>:not(header) { animation: ptFadeIn 0.32s ease both; }
         a.addEventListener('click', function (e) {
             e.preventDefault();
             unlock();
-            var t = document.getElementById('formularz');
-            if (t) t.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
+            doFormularza();
         });
     });
+
+
+    // Kotwica do formularza: celujemy w ramke, nie w naglowek sekcji, i schodzimy
+    // tak nisko, zeby caly formularz miescil sie w widoku nad dolnym paskiem CTA.
+    function doFormularza(gladko) {
+        var t = document.getElementById('formularz');
+        if (!t) return;
+        var ram = t.querySelector('iframe') || t;
+        var pasek = document.querySelector('header .nav-buttons');
+        var dol = 0;
+        if (pasek) {
+            var pr = pasek.getBoundingClientRect();
+            if (getComputedStyle(pasek).position === 'fixed' && pr.top > window.innerHeight / 2) dol = pr.height;
+        }
+        var r = ram.getBoundingClientRect();
+        var gora = r.top + window.scrollY;
+        var widok = window.innerHeight - dol;
+        var luz = (r.height <= widok - 24) ? Math.max(12, (widok - r.height) / 2) : 12;
+        var cel = Math.max(0, Math.round(gora - luz));
+        window.scrollTo({ top: cel, behavior: (gladko === false || reduce) ? 'auto' : 'smooth' });
+        // ramka BW dojezdza z wysokoscia po resize, wiec raz korygujemy pozycje
+        var wysokosc = r.height;
+        setTimeout(function () {
+            var r2 = ram.getBoundingClientRect();
+            if (Math.abs(r2.height - wysokosc) < 40) return;
+            if (Math.abs(window.scrollY - cel) > 60) return;
+            doFormularza(false);
+        }, 700);
+    }
 
     function unlock() {
         if (!locked) return;
