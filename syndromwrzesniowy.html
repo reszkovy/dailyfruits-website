@@ -1097,14 +1097,21 @@ html.pt-in body>:not(header) { animation: ptFadeIn 0.32s ease both; }
         var luz = (r.height <= widok - 24) ? Math.max(12, (widok - r.height) / 2) : 12;
         var cel = Math.max(0, Math.round(gora - luz));
         window.scrollTo({ top: cel, behavior: (gladko === false || reduce) ? 'auto' : 'smooth' });
-        // ramka BW dojezdza z wysokoscia po resize, wiec raz korygujemy pozycje
-        var wysokosc = r.height;
-        setTimeout(function () {
-            var r2 = ram.getBoundingClientRect();
-            if (Math.abs(r2.height - wysokosc) < 40) return;
-            if (Math.abs(window.scrollY - cel) > 60) return;
+        // Ramka BW dojezdza z wysokoscia dopiero po postMessage, wiec pilnujemy
+        // pozycji przez chwile i korygujemy, dopoki uzytkownik sam nie przewinie.
+        if (gladko === false) return;
+        var poprzednia = r.height, tiki = 0, przerwane = false;
+        function stop() { przerwane = true; }
+        window.addEventListener('wheel', stop, { once: true, passive: true });
+        window.addEventListener('touchstart', stop, { once: true, passive: true });
+        var pilnuj = setInterval(function () {
+            tiki++;
+            if (przerwane || tiki > 10) { clearInterval(pilnuj); return; }
+            var teraz = ram.getBoundingClientRect().height;
+            if (Math.abs(teraz - poprzednia) < 24) return;
+            poprzednia = teraz;
             doFormularza(false);
-        }, 700);
+        }, 300);
     }
 
     function unlock() {
