@@ -534,6 +534,27 @@ html.pt-in body>:not(header) { animation: ptFadeIn 0.32s ease both; }
     font-size: 12px; line-height: 1.2; letter-spacing: 0.01em; font-weight: 500;
     color: #14472c; background: rgba(255,255,255,0.72); backdrop-filter: blur(7px); -webkit-backdrop-filter: blur(7px); }
 @media (max-width: 720px) { .ai-badge { top: 96px; font-size: 10.5px; padding: 5px 12px; } }
+
+/* Mobile: obie siatki jada w poziomie z przyciaganiem, zamiast sciskac trzy kolumny.
+   Wczesniej regula jednokolumnowa siedziala w bloku tabletowym (min-width:721px),
+   wiec telefon dostawal trzy kolumny bez zadnego przewijania i karty byly ucinane. */
+@media (max-width: 720px) {
+    .sym-grid, .typy-grid {
+        display: grid; grid-auto-flow: column; grid-template-columns: none;
+        grid-auto-columns: 80%; gap: 16px;
+        overflow-x: auto; overscroll-behavior-x: contain;
+        scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch;
+        scrollbar-width: none; padding: 0 20px 4px; margin: 0 -20px;
+        scroll-padding-left: 20px;
+    }
+    .sym-grid::-webkit-scrollbar, .typy-grid::-webkit-scrollbar { display: none; }
+    .sym, .typ { scroll-snap-align: start; }
+    .sym::after { display: none; }
+    .sym { padding-top: 22px; }
+    .karuzela-info { margin: 14px 0 0; font-size: 12.5px; letter-spacing: .04em;
+        text-transform: uppercase; font-weight: 700; opacity: .62; }
+}
+@media (min-width: 721px) { .karuzela-info { display: none; } }
 </style>
 </head>
 <body>
@@ -651,6 +672,7 @@ html.pt-in body>:not(header) { animation: ptFadeIn 0.32s ease both; }
                 </div>
             </div>
         </div>
+        <p class="karuzela-info">Przesuń w bok →</p>
     </div>
 </section>
 
@@ -676,6 +698,7 @@ html.pt-in body>:not(header) { animation: ptFadeIn 0.32s ease both; }
                 <figcaption><b>Ciało przy biurku, głowa w wodzie</b>Wieczorem zorientuje się, że przez cały dzień nic nie zrobił.</figcaption>
             </figure>
         </div>
+        <p class="karuzela-info">Przesuń w bok →</p>
     </div>
 </section>
 
