@@ -10,152 +10,245 @@
 /* Bez shared.css celowo: tamten arkusz stylizuje header/footer jako elementy
    serwisu i nadpisywal ten uklad. Tokeny marki przepisane wprost. */
 @font-face{font-family:'Achiko';src:url('Achiko.woff2') format('woff2');font-display:swap}
-:root{--krem:#FFF9E0;--zielen:#1B5E3A;--glebia:#0f2a1a;--limonka:#8DC63F;
-  --koral:#F06878;--czerwien:#E43020;--cichy:#5B6B60;--papier:#FFFDF4}
+:root{--krem:#FFF9E0;--zielen:#1B5E3A;--glebia:#0f2a1a;--limonka:#8DC63F;--limonka-blada:#D5E8A0;
+  --koral:#F06878;--zolty:#FFF200;--cichy:#5B6B60;--papier:#FFFDF4;--mgla:rgba(255,249,224,.72)}
 *{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
 body{margin:0;background:var(--krem);color:var(--zielen);
-  font-family:system-ui,-apple-system,"Segoe UI",sans-serif;font-size:17px;line-height:1.6}
-.w{max-width:40rem;margin:0 auto;padding:0 22px}
+  font-family:system-ui,-apple-system,"Segoe UI",sans-serif;font-size:17px;line-height:1.62;
+  -webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
 .fun{font-family:'Achiko',system-ui;font-weight:400}
 
-.hero{padding:64px 0 12px}
-.tag{display:inline-block;background:var(--koral);color:#fff;font-size:11px;font-weight:900;
-  letter-spacing:.14em;text-transform:uppercase;padding:7px 15px;border-radius:99px;margin-bottom:22px}
-h1{color:var(--zielen);font-size:clamp(32px,7.5vw,52px);line-height:1.02;letter-spacing:-.04em;
-  font-weight:900;margin:0 0 16px}
-h1 .fun{display:block;color:var(--limonka);font-size:1.08em;letter-spacing:-.01em}
-.lead{font-size:19px;line-height:1.45;margin:0;color:var(--zielen);max-width:28ch;font-weight:500}
+/* pasma i kolumny */
+.pas{padding:clamp(52px,8vw,96px) 0}
+.pas.ciemne{background:var(--glebia);color:var(--krem)}
+.pas.papier{background:var(--papier)}
+.pas.zielone{background:var(--zielen);color:var(--krem)}
+.w{width:min(100%,72rem);margin:0 auto;padding:0 clamp(20px,5vw,40px)}
+.waski{width:min(100%,44rem);margin:0 auto;padding:0 clamp(20px,5vw,40px)}
 
-section{padding:34px 0}
-h2{color:var(--zielen);font-size:24px;line-height:1.15;letter-spacing:-.03em;font-weight:900;margin:0 0 14px}
-p{margin:0 0 13px;max-width:56ch}
+/* typografia */
+.kicker{display:block;font-size:12px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--limonka);margin:0 0 18px}
+.pas:not(.ciemne):not(.zielone) .kicker{color:#6E9B3C}
+h1{margin:0 0 24px;font-size:clamp(40px,8.5vw,84px);line-height:.94;letter-spacing:-.045em;font-weight:900;
+  color:var(--krem)}
+h1 .fun{display:block;color:var(--limonka);font-size:1.06em;letter-spacing:-.01em;line-height:1}
+h2{margin:0 0 20px;font-size:clamp(26px,4.2vw,40px);line-height:1.06;letter-spacing:-.035em;font-weight:900}
+h3{margin:0 0 6px;font-size:17px;line-height:1.3;font-weight:800;letter-spacing:-.01em}
+p{margin:0 0 16px;max-width:46rem}
 p:last-child{margin-bottom:0}
-.q{font-size:15px;color:var(--cichy)}
-b,strong{font-weight:800}
+.lead{font-size:clamp(19px,2.3vw,24px);line-height:1.42;font-weight:500;max-width:34rem;color:var(--mgla)}
+.opis{color:var(--cichy)}
+.ciemne .opis,.zielone .opis{color:rgba(255,249,224,.76)}
+strong,b{font-weight:800}
+.znacznik{display:inline-block;background:var(--koral);color:#fff;font-size:11px;font-weight:900;
+  letter-spacing:.16em;text-transform:uppercase;padding:8px 16px;border-radius:99px;margin-bottom:26px}
 
-.krok{display:grid;grid-template-columns:34px 1fr;gap:14px;padding:16px 0;
-  border-top:2px dashed rgba(27,94,58,.2)}
-.krok:last-of-type{border-bottom:2px dashed rgba(27,94,58,.2)}
-.nr{font-family:'Achiko',system-ui;font-size:24px;line-height:1.1;color:var(--limonka)}
-.krok b{display:block;margin-bottom:2px;font-size:16px;color:var(--zielen)}
-.krok span{font-size:14.5px;color:var(--cichy)}
+/* hero */
+.hero{padding:clamp(72px,11vw,132px) 0 clamp(48px,7vw,84px)}
+.kv{width:100%;height:clamp(240px,42vw,560px);object-fit:cover}
 
-.przyklady{display:grid;gap:0}
-.p{padding:16px 0;border-top:2px dashed rgba(27,94,58,.2)}
-.p:last-child{border-bottom:2px dashed rgba(27,94,58,.2)}
-.p b{display:block;font-size:16px;color:var(--zielen);margin-bottom:2px}
-.p span{font-size:14.5px;color:var(--cichy)}
-.n{display:grid;grid-template-columns:42px 1fr;gap:14px;align-items:center;
-  background:var(--papier);border-radius:14px;padding:16px 18px;margin-bottom:9px}
-.n:last-of-type{margin-bottom:0}
-.n.top{background:var(--limonka)}
-.n.solo{grid-template-columns:1fr}
-.n i{font-family:'Achiko',system-ui;font-style:normal;font-size:26px;color:var(--zielen)}
-.n.top i{color:var(--glebia)}
-.n b{display:block;font-size:16px;color:var(--zielen)}
-.n.top b{color:var(--glebia)}
-.n span{font-size:14px;color:var(--cichy)}
-.n.top span{color:rgba(15,42,26,.82)}
+/* fakty */
+.fakty{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(12px,2vw,20px)}
+.fakt{background:var(--papier);border-radius:18px;padding:clamp(20px,3vw,30px)}
+.fakt em{display:block;font-family:'Achiko',system-ui;font-style:normal;font-size:clamp(28px,4.6vw,44px);
+  line-height:1;color:var(--zielen);margin-bottom:10px}
+.fakt span{display:block;font-size:14px;line-height:1.4;color:var(--cichy)}
 
-.lic{background:var(--glebia);border-radius:18px;padding:26px;text-align:center}
-.lic b{display:block;font-weight:700;font-size:clamp(26px,6vw,38px);line-height:1.15;letter-spacing:-.01em;color:var(--limonka)}
-.lic span{display:block;font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;
-  color:rgba(255,249,224,.82);margin-top:7px;font-weight:800}
+/* kroki */
+.kroki{display:grid;gap:0;margin-top:clamp(24px,4vw,44px)}
+.krok{display:grid;grid-template-columns:clamp(52px,7vw,84px) 1fr;gap:clamp(16px,3vw,32px);
+  padding:clamp(20px,3vw,30px) 0;border-top:2px dashed rgba(27,94,58,.22)}
+.krok:last-child{border-bottom:2px dashed rgba(27,94,58,.22)}
+.krok em{font-family:'Achiko',system-ui;font-style:normal;font-size:clamp(26px,4vw,40px);line-height:1;
+  color:var(--limonka)}
+.krok h3{font-size:clamp(18px,2.2vw,23px);margin-bottom:5px}
+.krok p{font-size:15.5px;color:var(--cichy);max-width:34rem}
 
-table{width:100%;border-collapse:collapse;font-size:15px}
-td{padding:12px 0;border-top:2px dashed rgba(27,94,58,.18);vertical-align:top;color:var(--cichy)}
-td:first-child{width:40%;font-weight:800;padding-right:16px;color:var(--zielen)}
-tr.k td,tr.k td:first-child{color:var(--czerwien)}
+/* cytat */
+.cytat{font-size:clamp(26px,4.6vw,46px);line-height:1.1;letter-spacing:-.035em;font-weight:900;
+  max-width:22ch;margin:0 0 26px;color:var(--krem)}
+.cytat span{color:var(--limonka)}
 
-.box{background:var(--zielen);border-radius:18px;padding:26px}
-.box h2{color:var(--krem);margin-bottom:12px}
-.box p{color:rgba(255,249,224,.92)}
-.box strong{color:#fff}
+/* ukladanka */
+.uklad{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(28px,5vw,60px);align-items:center}
+.plansza{display:grid;grid-template-columns:repeat(15,1fr);gap:3px;background:var(--glebia);
+  padding:12px;border-radius:16px}
+.plansza i{aspect-ratio:1;background:rgba(255,249,224,.055);border-radius:2px}
+.podpis{margin-top:14px;font-size:13.5px;color:var(--cichy)}
 
-.stopka{padding:34px 0 56px;font-size:13px;color:var(--cichy);line-height:1.55}
-  .kv{display:block;width:100%;height:auto;border-radius:14px;margin:8px 0 46px}
+/* powody */
+.powody{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(14px,2.2vw,22px);
+  margin-top:clamp(24px,4vw,44px)}
+.powod{background:var(--krem);border-radius:18px;padding:clamp(20px,2.8vw,28px)}
+.powod p{font-size:15px;color:var(--cichy);margin:0}
+
+/* kalendarz */
+.kal{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(14px,2.4vw,26px);
+  margin-top:clamp(24px,4vw,44px)}
+.etap{padding-top:16px;border-top:4px solid var(--limonka)}
+.etap b{display:block;font-size:14px;letter-spacing:.04em;text-transform:uppercase;margin-bottom:7px}
+.etap span{display:block;font-size:15px;color:var(--cichy)}
+.ciemne .etap span,.zielone .etap span{color:rgba(255,249,224,.76)}
+.etap.przygaszony{border-top-color:rgba(141,198,63,.35)}
+
+/* nagrody */
+.nagrody{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:clamp(14px,2.2vw,22px);
+  margin-top:clamp(24px,4vw,44px)}
+.nagroda{background:var(--papier);border-radius:18px;padding:clamp(22px,3vw,30px)}
+.nagroda.glowna{background:var(--limonka)}
+.nagroda em{display:block;font-style:normal;font-size:clamp(26px,3.4vw,38px);font-weight:900;
+  letter-spacing:-.03em;line-height:1;margin-bottom:12px;color:var(--limonka)}
+.nagroda.glowna em{color:var(--glebia)}
+.nagroda h3{font-size:16.5px}
+.nagroda.glowna h3,.nagroda.glowna p{color:var(--glebia)}
+.nagroda p{font-size:14.5px;color:var(--cichy);margin:4px 0 0}
+
+/* decyzje */
+.decyzje{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(18px,3vw,34px);
+  margin-top:clamp(24px,4vw,44px)}
+.decyzja h3{font-size:18px;color:var(--limonka);margin-bottom:7px}
+.decyzja p{font-size:15px;color:rgba(255,249,224,.78);margin:0}
+
+.stopka{padding:34px 0 46px;font-size:13.5px;color:var(--cichy)}
+
+@media (max-width:860px){
+  .uklad{grid-template-columns:1fr}
+  .kal{grid-template-columns:repeat(2,1fr)}
+  .nagrody{grid-template-columns:1fr}
+  .fakty{grid-template-columns:1fr}
+  .fakt{display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:center;padding:18px 20px}
+  .fakt em{margin-bottom:0}
+}
+@media (max-width:640px){
+  .powody{grid-template-columns:1fr}
+  .decyzje{grid-template-columns:1fr}
+}
 </style>
 </head>
 <body>
 
-<div class="w hero">
-  <span class="tag">Koncept kreatywny, listopad 2026</span>
-  <h1>Czarny tydzien.<span class="fun">Czarne skrzynki.</span></h1>
-  <p class="lead">W Black Week do części dostaw dokładamy zaplombowaną czarną skrzynkę. W środku są puzzle i nic poza nimi. Rozsypuje się je na stole w kuchni i zostają tam na tydzień. Każdy dokłada element, kiedy przechodzi. Wszystkie skrzynki razem to jedna wielka układanka, którą sto pięćdziesiąt biur składa wspólnie na naszej stronie.</p>
-</div>
-
-<div class="w"><img class="kv" src="kv-czarna-skrzynka.webp" alt="Zespol otwiera zaplombowana czarna skrzynke w kuchni biurowej" width="1400" height="787" loading="eager"></div>
-
-<section class="w">
-  <div class="lic"><b>Otwierać całym zespołem.</b><span>hasło kampanii i napis na plombie</span></div>
-</section>
-
-<section class="w">
-  <h2>Jak</h2>
-  <div class="krok"><span class="nr">01</span><div><b>Skrzynka jedzie z dostawą</b><span>Czarna, zaplombowana, bez opisu zawartości.</span></div></div>
-  <div class="krok"><span class="nr">02</span><div><b>Puzzle lądują na stole w kuchni</b><span>Rozsypane. Nie ma zbiórki, nie ma terminu w kalendarzu, nikt nie siada do nich na dwie godziny.</span></div></div>
-  <div class="krok"><span class="nr">03</span><div><b>Przez tydzień każdy dokłada, ile chce</b><span>Jeden element przy kawie, dwa po spotkaniu. Zwykle w towarzystwie kogoś, kto akurat stoi obok.</span></div></div>
-  <div class="krok"><span class="nr">04</span><div><b>Gotowy obrazek pokazuje kod</b><span>Znaki są rozrzucone po całej grafice. Widać je dopiero, kiedy wszystko jest na miejscu.</span></div></div>
-  <div class="krok"><span class="nr">05</span><div><b>Biuro wpisuje kod i wrzuca zdjęcie</b><span>Na dailyfruits.pl. Wtedy dokłada swój kawałek do wspólnej układanki i podpisuje go nazwą firmy.</span></div></div>
-</section>
-
-<section class="w">
-  <h2>To ma trwać tydzień</h2>
-  <p>Integracja w kalendarzu nie działa, bo wszyscy wiedzą, że to integracja. Puzzle na stole działają, bo nikt nie musi nic ogłaszać ani nikogo zapraszać.</p>
-  <p>Człowiek staje nad stołem na dwie minuty, dokłada element i zamienia kilka zdań z kimś, kogo mija codziennie i z kim nigdy nie rozmawia. Następnego dnia to samo. <strong>Po tygodniu tych rozmów uzbiera się więcej niż na jednym wyjeździe integracyjnym.</strong></p>
-  <p>Dlatego układanka ma być duża. Nie po to, żeby było trudno, tylko po to, żeby leżała na stole odpowiednio długo.</p>
-</section>
-
-<section class="w">
-  <h2>Jedna duża układanka</h2>
-  <p>W kuchni każde biuro układa swoje pudełko. Na stronie wszyscy układają razem jeden obraz, bo każde pudełko to jeden jego kawałek.</p>
-  <p>Ta układanka stoi na dailyfruits.pl od pierwszego dnia i na starcie jest cała czarna. Każdy poprawny kod odblokowuje jeden kawałek, a zespół sam wskakuje z nim na swoje miejsce i podpisuje go nazwą firmy. <strong>Obraz rośnie na oczach wszystkich i każdy widzi, kto już usiadł do stołu.</strong></p>
-  <p>Czego nikt nie ułoży, zostaje czarne. Nie dorysowujemy, nie uzupełniamy. Pod koniec grudnia widać dokładnie tyle, ile biura naprawdę zrobiły, i to jest wynik wspólny, a nie nasz slajd.</p>
-</section>
-
-<section class="w">
-  <h2>Dlaczego</h2>
-  <div class="przyklady">
-    <div class="p"><b>Zgłoszenie jest dowodem, nie deklaracją</b><span>Kodu nie da się zdobyć bez tygodnia przy stole. Konkurs sam się filtruje.</span></div>
-    <div class="p"><b>Nikt nie może wygrać za kogoś innego</b><span>Każdy fragment ma swój kod. Cudzy kod nie odsłania nic i nie da się go podać dalej.</span></div>
-    <div class="p"><b>Sto pięćdziesiąt biur układa jedną rzecz</b><span>Nie konkurują ze sobą o rabat, tylko składają wspólnie jeden obraz. Tego w Black Week nie robi nikt.</span></div>
-    <div class="p"><b>Nazwa robi połowę roboty</b><span>Czarny tydzień, czarne skrzynki, czarna układanka, która się odsłania. Wszystko z jednego słowa.</span></div>
-    <div class="p"><b>Puzzle to nasz nośnik</b><span>Nasza grafika leży w kuchni klienta przez tydzień albo dwa i nikomu to nie przeszkadza.</span></div>
-    <div class="p"><b>Da się powtarzać co roku</b><span>Co edycja inny obrazek. Reszta mechaniki bez zmian.</span></div>
+<section class="pas ciemne hero">
+  <div class="w">
+    <span class="znacznik">Koncept kreatywny, listopad 2026</span>
+    <h1>Czarny tydzien.<span class="fun">Czarne skrzynki.</span></h1>
+    <p class="lead">W Black Week do części dostaw dokładamy zaplombowaną czarną skrzynkę. W środku są puzzle i nic poza nimi.</p>
   </div>
 </section>
 
-<section class="w">
-  <h2>Kiedy</h2>
-  <table>
-    <tr><td>połowa października</td><td>sprzedaż i zbieranie zamówień na listopad</td></tr>
-    <tr><td>23 do 29 listopada</td><td>Black Week, skrzynki jadą z dostawami</td></tr>
-    <tr><td>do 14 grudnia</td><td>tydzień albo dwa przy stole, potem kod i zdjęcie</td></tr>
-    <tr><td>koniec grudnia</td><td>gotowa układanka, wyniki i nagrody</td></tr>
-  </table>
-</section>
+<img class="kv" src="kv-czarna-skrzynka.webp" alt="Zespol otwiera zaplombowana czarna skrzynke w kuchni biurowej" width="1400" height="787" loading="eager">
 
-<section class="w">
-  <h2>Nagrody</h2>
-  <div class="krok"><span class="nr">1×</span><div><b>Rok owocowych czwartków, śniadanie i integracja</b></div></div>
-  <div class="krok"><span class="nr">3×</span><div><b>Integracja dla zespołu</b></div></div>
-  <div class="krok"><span class="nr">10×</span><div><b>Śniadanie firmowe</b></div></div>
-  <p class="q" style="margin-top:14px">Wybiera jury na podstawie zdjęć, nie losowanie. Losowanie robi z tego loterię i wchodzą inne przepisy.</p>
-</section>
-
-<section class="w">
-  <div class="box">
-    <h2>Do decyzji</h2>
-    <p><strong>Ile elementów.</strong> Ma starczyć na tydzień przy stole, więc raczej tysiąc niż pięćset. Zbyt mała układanka znika w jedno popołudnie i cały sens się gubi.</p>
-    <p><strong>Ile skrzynek.</strong> Liczba kawałków wielkiej układanki musi być znana przed drukiem, bo od niej zależy cięcie obrazka. Decyzja do końca września.</p>
-    <p><strong>Produkcja.</strong> Sto pięćdziesiąt różnych nadruków na tym samym wykroju. Do zrobienia w druku cyfrowym, ale trzeba to wycenić i zamówić z wyprzedzeniem.</p>
-    <p><strong>Czy listopad dowozi zamówienia.</strong> Jeśli nie, przenosimy, ale wtedy koncept traci nazwę.</p>
+<section class="pas">
+  <div class="w">
+    <span class="kicker">W skrócie</span>
+    <h2>Puzzle zostają na stole<br>w kuchni na tydzień.</h2>
+    <p style="max-width:38rem;font-size:18px">Każde biuro dostaje inne, bo wszystkie skrzynki razem to jedna wielka układanka. Kto ułoży swój kawałek, odczytuje z obrazka ukryty kod i dokłada go do wspólnego obrazu na naszej stronie. To jedyny sposób, żeby wziąć udział w konkursie.</p>
+    <div class="fakty" style="margin-top:clamp(28px,4vw,48px)">
+      <div class="fakt"><em>150</em><span>biur, czyli tyle samo kawałków wspólnego obrazu</span></div>
+      <div class="fakt"><em>1000</em><span>elementów w jednym pudełku, żeby starczyło na tydzień</span></div>
+      <div class="fakt"><em>1</em><span>kod ukryty w grafice, jedyna droga do zgłoszenia</span></div>
+    </div>
   </div>
 </section>
 
-<div class="w stopka">
-  Koncept dla DailyFruits, sierpień 2026.
-</div>
+<section class="pas papier">
+  <div class="w">
+    <span class="kicker">Jak to działa</span>
+    <h2>Pięć kroków, zero zbiórek.</h2>
+    <div class="kroki">
+      <div class="krok"><em>01</em><div><h3>Skrzynka jedzie z dostawą</h3><p>Czarna, zaplombowana, bez opisu zawartości. Na plombie jedno zdanie: otwierać całym zespołem.</p></div></div>
+      <div class="krok"><em>02</em><div><h3>Puzzle lądują na stole w kuchni</h3><p>Rozsypane. Nie ma zbiórki, nie ma terminu w kalendarzu, nikt nie siada do nich na dwie godziny.</p></div></div>
+      <div class="krok"><em>03</em><div><h3>Przez tydzień każdy dokłada, ile chce</h3><p>Jeden element przy kawie, dwa po spotkaniu. Zwykle w towarzystwie kogoś, kto akurat stoi obok.</p></div></div>
+      <div class="krok"><em>04</em><div><h3>Gotowy obrazek pokazuje kod</h3><p>Znaki są rozrzucone po całej grafice. Widać je dopiero wtedy, kiedy wszystko jest na miejscu.</p></div></div>
+      <div class="krok"><em>05</em><div><h3>Biuro wpisuje kod i wrzuca zdjęcie</h3><p>Na dailyfruits.pl. Dokłada swój kawałek do wspólnego obrazu i podpisuje go nazwą firmy.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="pas zielone">
+  <div class="waski">
+    <span class="kicker">Sedno</span>
+    <p class="cytat">Integracja w kalendarzu nie działa, bo wszyscy wiedzą, <span>że to integracja.</span></p>
+    <p class="opis">Puzzle na stole działają, bo nikt nic nie ogłasza i nikogo nie zaprasza. Człowiek staje nad stołem na dwie minuty, dokłada element i zamienia kilka zdań z kimś, kogo mija codziennie i z kim nigdy nie rozmawia. Następnego dnia to samo.</p>
+    <p class="opis">Po tygodniu tych rozmów uzbiera się więcej niż na jednym wyjeździe integracyjnym. Dlatego układanka ma być duża. Nie po to, żeby było trudno, tylko po to, żeby leżała na stole odpowiednio długo.</p>
+  </div>
+</section>
+
+<section class="pas">
+  <div class="w">
+    <span class="kicker">Wspólny obraz</span>
+    <h2>Sto pięćdziesiąt biur<br>składa jedną rzecz.</h2>
+    <div class="uklad" style="margin-top:clamp(28px,4vw,48px)">
+      <div>
+        <div class="plansza" aria-hidden="true"><i style="background:#1B5E3A"></i><i></i><i></i><i style="background:#1B5E3A"></i><i></i><i></i><i></i><i></i><i style="background:#347550"></i><i style="background:#1B5E3A"></i><i style="background:#347550"></i><i></i><i></i><i style="background:#347550"></i><i></i><i style="background:#347550"></i><i style="background:#347550"></i><i></i><i></i><i></i><i></i><i></i><i></i><i style="background:#1B5E3A"></i><i style="background:#347550"></i><i style="background:#347550"></i><i></i><i></i><i></i><i style="background:#1B5E3A"></i><i style="background:#347550"></i><i></i><i style="background:#347550"></i><i></i><i></i><i style="background:#347550"></i><i style="background:#347550"></i><i style="background:#1B5E3A"></i><i></i><i></i><i style="background:#1B5E3A"></i><i style="background:#347550"></i><i></i><i></i><i></i><i></i><i></i><i style="background:#8DC63F"></i><i style="background:#8DC63F"></i><i style="background:#FFF200"></i><i></i><i style="background:#8DC63F"></i><i style="background:#8DC63F"></i><i></i><i></i><i></i><i style="background:#8DC63F"></i><i></i><i style="background:#8DC63F"></i><i style="background:#8DC63F"></i><i></i><i></i><i></i><i style="background:#FFF200"></i><i></i><i style="background:#FFF200"></i><i style="background:#FFF200"></i><i></i><i></i><i></i><i style="background:#FFF200"></i><i></i><i style="background:#FFF200"></i><i></i><i></i><i style="background:#FFF200"></i><i style="background:#8DC63F"></i><i style="background:#8DC63F"></i><i></i><i></i><i></i><i style="background:#8DC63F"></i><i></i><i style="background:#FFF200"></i><i style="background:#8DC63F"></i><i></i><i></i><i></i><i></i><i></i><i style="background:#8DC63F"></i><i></i><i></i><i></i><i></i><i></i><i></i><i style="background:#FFF9E0"></i><i></i><i style="background:#FFF9E0"></i><i style="background:#8DC63F"></i><i style="background:#FFF9E0"></i><i></i><i></i><i></i><i></i><i></i><i style="background:#FFF9E0"></i><i></i><i></i><i></i><i style="background:#FFF9E0"></i><i style="background:#8DC63F"></i><i style="background:#FFF9E0"></i><i style="background:#8DC63F"></i><i style="background:#FFF9E0"></i><i style="background:#8DC63F"></i><i></i><i></i><i style="background:#FFF9E0"></i><i></i><i style="background:#1B5E3A"></i><i style="background:#1B5E3A"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i style="background:#F06878"></i><i style="background:#1B5E3A"></i><i></i><i></i><i style="background:#1B5E3A"></i><i></i><i style="background:#1B5E3A"></i><i></i><i></i><i style="background:#1B5E3A"></i><i></i><i></i><i style="background:#1B5E3A"></i><i style="background:#1B5E3A"></i><i></i><i style="background:#F06878"></i><i style="background:#1B5E3A"></i><i></i><i style="background:#1B5E3A"></i><i style="background:#1B5E3A"></i></div>
+        <p class="podpis">Tak to wygląda w trakcie. Czarne pola to biura, które jeszcze nie usiadły do stołu.</p>
+      </div>
+      <div>
+        <p>Na dailyfruits.pl ten obraz stoi od pierwszego dnia i na starcie jest cały czarny. Każdy poprawny kod odblokowuje jeden kawałek, a zespół wskakuje z nim na swoje miejsce i podpisuje go nazwą firmy.</p>
+        <p>Czego nikt nie ułoży, zostaje czarne. Nie dorysowujemy i nie uzupełniamy. Pod koniec grudnia widać dokładnie tyle, ile biura naprawdę zrobiły.</p>
+        <p><strong>To zdejmuje z nas licznik, odliczanie i pasek postępu.</strong> Wynik jest wspólny, a nie nasz.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="pas papier">
+  <div class="w">
+    <span class="kicker">Dlaczego to ma sens</span>
+    <h2>Pięć powodów.</h2>
+    <div class="powody">
+      <div class="powod"><h3>Zgłoszenie jest dowodem, nie deklaracją</h3><p>Kodu nie da się zdobyć bez tygodnia przy stole. Konkurs sam się filtruje.</p></div>
+      <div class="powod"><h3>Nikt nie wygra za kogoś innego</h3><p>Każdy kawałek ma swój kod. Cudzy kod nie odblokowuje niczego, więc nie ma sensu go podawać dalej.</p></div>
+      <div class="powod"><h3>Nazwa robi połowę roboty</h3><p>Czarny tydzień, czarne skrzynki, czarny obraz, który się odsłania. Wszystko z jednego słowa.</p></div>
+      <div class="powod"><h3>Puzzle to nasz nośnik</h3><p>Nasza grafika leży w kuchni klienta przez tydzień albo dwa i nikomu to nie przeszkadza.</p></div>
+      <div class="powod"><h3>Kampanię piszą klienci</h3><p>Sto pięćdziesiąt zdjęć ułożonych puzzli. Tego nie da się wyprodukować.</p></div>
+      <div class="powod"><h3>Da się powtarzać co roku</h3><p>Co edycja inny obraz i inne kody. Reszta mechaniki bez zmian.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="pas">
+  <div class="w">
+    <span class="kicker">Kiedy</span>
+    <h2>Cztery daty.</h2>
+    <div class="kal">
+      <div class="etap"><b>Połowa października</b><span>Sprzedaż i zbieranie zamówień na listopad.</span></div>
+      <div class="etap"><b>23 do 29 listopada</b><span>Black Week. Skrzynki jadą razem z dostawami.</span></div>
+      <div class="etap"><b>Do 14 grudnia</b><span>Tydzień albo dwa przy stole, potem kod i zdjęcie.</span></div>
+      <div class="etap przygaszony"><b>Koniec grudnia</b><span>Gotowy obraz, wyniki i nagrody.</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="pas papier">
+  <div class="w">
+    <span class="kicker">Nagrody</span>
+    <h2>Wybiera jury, nie los.</h2>
+    <div class="nagrody">
+      <div class="nagroda glowna"><em>1×</em><h3>Rok owocowych czwartków</h3><p>Do tego śniadanie firmowe i integracja dla zespołu.</p></div>
+      <div class="nagroda"><em>3×</em><h3>Integracja dla zespołu</h3></div>
+      <div class="nagroda"><em>10×</em><h3>Śniadanie firmowe</h3></div>
+    </div>
+    <p class="opis" style="margin-top:22px;font-size:15px">Jury ocenia zdjęcia. Losowanie robi z tego loterię i wchodzą inne przepisy.</p>
+  </div>
+</section>
+
+<section class="pas ciemne">
+  <div class="w">
+    <span class="kicker">Do decyzji</span>
+    <h2>Cztery rzeczy przed startem.</h2>
+    <div class="decyzje">
+      <div class="decyzja"><h3>Ile skrzynek</h3><p>Liczba kawałków wspólnego obrazu musi być znana przed drukiem, bo od niej zależy cięcie grafiki. Do końca września.</p></div>
+      <div class="decyzja"><h3>Produkcja</h3><p>Sto pięćdziesiąt różnych nadruków na tym samym wykroju. Do zrobienia w druku cyfrowym, ale trzeba wycenić i zamówić z wyprzedzeniem.</p></div>
+      <div class="decyzja"><h3>Gdzie siedzi kod</h3><p>Znaki rozrzucone po całej grafice, nie w jednym rogu. To trzeba zaprojektować razem z ilustracją, nie dokleić później.</p></div>
+      <div class="decyzja"><h3>Czy listopad dowozi zamówienia</h3><p>Jeśli nie, przenosimy termin, ale wtedy koncept traci nazwę. W styczniu czarna skrzynka to zwykłe czarne pudło.</p></div>
+    </div>
+  </div>
+</section>
+
+<div class="w stopka">Koncept dla DailyFruits, sierpień 2026.</div>
 
 </body>
 </html>
