@@ -1114,7 +1114,7 @@ html.pt-in body>:not(header) { animation: ptFadeIn 0.32s ease both; }
         var r = ram.getBoundingClientRect();
         var gora = r.top + window.scrollY;
         var widok = window.innerHeight - dol;
-        var luz = (r.height <= widok - 24) ? Math.max(12, (widok - r.height) / 2) : 12;
+        var luz = (r.height <= widok - 24) ? Math.max(16, (widok - r.height) / 2) : 28;
         var cel = Math.max(0, Math.round(gora - luz));
         window.scrollTo({ top: cel, behavior: (gladko === false || reduce) ? 'auto' : 'smooth' });
         // Ramka BW dojezdza z wysokoscia dopiero po postMessage, wiec pilnujemy
