@@ -119,6 +119,11 @@ strong,b{font-weight:800}
   font-weight:900;color:var(--limonka)}
 .plomba span{display:block;margin-top:14px;font-size:12px;font-weight:800;letter-spacing:.2em;
   text-transform:uppercase;color:rgba(255,249,224,.7)}
+.progi{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:16px}
+.prog{background:rgba(255,249,224,.10);border-radius:14px;padding:16px 18px}
+.prog b{display:block;font-size:17px;color:var(--limonka);margin-bottom:3px}
+.prog span{display:block;font-size:13.5px;color:rgba(255,249,224,.76);line-height:1.35}
+@media (max-width:640px){.progi{grid-template-columns:1fr}}
 .stopka{padding:34px 0 46px;font-size:13.5px;color:var(--cichy)}
 
 @media (max-width:860px){
@@ -154,11 +159,11 @@ strong,b{font-weight:800}
   <div class="w">
     <span class="kicker">W skrócie</span>
     <h2>Puzzle zostają na stole<br>w kuchni na tydzień.</h2>
-    <p style="max-width:38rem;font-size:18px">Każde biuro dostaje inne, bo wszystkie skrzynki razem to jedna wielka układanka. Kto ułoży swój kawałek, odczytuje z obrazka ukryty kod i dokłada go do wspólnego obrazu na naszej stronie. To jedyny sposób, żeby wziąć udział w konkursie. A każdy odsłonięty kawałek to paczka, którą oddajemy przed świętami.</p>
+    <p style="max-width:38rem;font-size:18px">Każde biuro dostaje inne, bo wszystkie skrzynki razem to jedna wielka układanka. Kto ułoży swoje pudełko, odczytuje z obrazka ukryty kod i odsłania nim swoje pole na wspólnej planszy. To jedyny sposób, żeby wziąć udział w konkursie. A każde odsłonięte pole to wsparcie, które oddajemy przed świętami.</p>
     <div class="fakty" style="margin-top:clamp(28px,4vw,48px)">
-      <div class="fakt"><em>150</em><span>biur, czyli tyle samo kawałków wspólnego obrazu</span></div>
+      <div class="fakt"><em>150</em><span>biur, czyli tyle samo pól na wspólnej planszy</span></div>
       <div class="fakt"><em>1000</em><span>elementów w jednym pudełku, żeby starczyło na tydzień</span></div>
-      <div class="fakt"><em>2×</em><span>tyle rośnie pula świąteczna, jeśli obraz odsłoni się w całości</span></div>
+      <div class="fakt"><em>3</em><span>progi wsparcia, kolejny odblokowuje się z każdą setką odsłoniętych pól</span></div>
     </div>
   </div>
 </section>
@@ -179,7 +184,7 @@ strong,b{font-weight:800}
       <div class="krok"><em>02</em><div><h3>Puzzle lądują na stole w kuchni</h3><p>Rozsypane i tak zostają. Nie ma zbiórki, nie ma terminu w kalendarzu, nikt nie siada do nich na dwie godziny.</p></div></div>
       <div class="krok"><em>03</em><div><h3>Przez tydzień każdy dokłada, ile chce</h3><p>Jeden element przy kawie, dwa po spotkaniu. Zwykle w towarzystwie kogoś, kto akurat stoi obok.</p></div></div>
       <div class="krok"><em>04</em><div><h3>Gotowy obrazek pokazuje hasło</h3><p>Litery są wpisane w martwą naturę i rozciągnięte przez całą grafikę. Brakuje jednego elementu i hasła nie da się odczytać.</p></div></div>
-      <div class="krok"><em>05</em><div><h3>Biuro wpisuje kod i wrzuca zdjęcie</h3><p>Na dailyfruits.pl. Dokłada swój kawałek do wspólnego obrazu i podpisuje go nazwą firmy.</p></div></div>
+      <div class="krok"><em>05</em><div><h3>Biuro wpisuje kod i wrzuca zdjęcie</h3><p>Na dailyfruits.pl. Odsłania swoje pole na wspólnej planszy i podpisuje je nazwą firmy.</p></div></div>
     </div>
   </div>
 </section>
@@ -203,9 +208,10 @@ strong,b{font-weight:800}
         <p class="podpis">Tak to wygląda w trakcie. Czarne pola to biura, które jeszcze nie usiadły do stołu.</p>
       </div>
       <div>
-        <p>Na dailyfruits.pl ten obraz stoi od pierwszego dnia i na starcie jest cały czarny. Każdy poprawny kod odblokowuje jeden kawałek, a zespół wskakuje z nim na swoje miejsce i podpisuje go nazwą firmy.</p>
+        <p>Na dailyfruits.pl ta plansza stoi od pierwszego dnia i na starcie jest cała czarna. Każdy poprawny kod odsłania jedno pole, a zespół podpisuje je nazwą swojej firmy.</p>
         <p>Czego nikt nie ułoży, zostaje czarne. Nie dorysowujemy i nie uzupełniamy. Pod koniec grudnia widać dokładnie tyle, ile biura naprawdę zrobiły.</p>
         <p><strong>To zdejmuje z nas licznik, odliczanie i pasek postępu.</strong> Wynik jest wspólny, a nie nasz.</p>
+        <p>Po wpisaniu kodu biuro dostaje gotowy obrazek ze swoją nazwą i stanem planszy, do wrzucenia na LinkedIna. Bez tego biura się nie znają i nie mają jak nawzajem się popędzić.</p>
       </div>
     </div>
   </div>
@@ -217,12 +223,18 @@ strong,b{font-weight:800}
     <h2>Zamiast zniżek,<br>wsparcie.</h2>
     <div class="uklad" style="margin-top:clamp(28px,4vw,48px)">
       <div>
-        <p class="opis">W tygodniu, w którym cała kategoria tnie ceny, my nie tniemy. Każdy odsłonięty kawałek to konkretna kwota dla organizacji, która przed świętami dowozi rzeczy rodzinom w potrzebie, w rodzaju Szlachetnej Paczki. Odsłonięcie całego obrazu podwaja pulę.</p>
+        <p class="opis">W tygodniu, w którym cała kategoria tnie ceny, my nie tniemy. Każde odsłonięte pole to ustalona kwota dla organizacji, która przed świętami dowozi rzeczy rodzinom w potrzebie, w rodzaju Szlachetnej Paczki.</p>
+        <p class="opis">Pula rośnie schodkami, a nie w jednym skoku na końcu:</p>
+        <div class="progi">
+          <div class="prog"><b>100 pól</b><span>pierwszy próg, kwota bazowa</span></div>
+          <div class="prog"><b>130 pól</b><span>drugi próg</span></div>
+          <div class="prog"><b>Pełna plansza</b><span>trzeci próg, pula maksymalna</span></div>
+        </div>
         <p class="opis">Terminy składają się same. Obraz zamyka się w połowie grudnia, przekazanie wypada dokładnie wtedy, kiedy takie rzeczy się robi.</p>
         <p class="opis">Biuro nie gra więc tylko o nagrodę dla siebie. Gra o to, żeby sąsiednie biuro też usiadło do stołu, bo dopiero razem robi się z tego pełna kwota.</p>
       </div>
       <div>
-        <p class="opis"><strong>Dlaczego za kawałek, a nie wszystko albo nic.</strong> Gdyby liczyła się wyłącznie pełna plansza, wystarczyłoby jedno czarne pole i w połowie grudnia nikt nie miałby po co kończyć. Tak każde biuro wie, że jego tydzień przy stole już coś zrobił, a komplet jest premią, nie warunkiem.</p>
+        <p class="opis"><strong>Dlaczego schodkami, a nie wszystko albo nic.</strong> Gdyby liczyła się wyłącznie pełna plansza, wystarczyłoby jedno czarne pole i w połowie grudnia nikt nie miałby po co kończyć. Przy stu pięćdziesięciu biurach komplet i tak jest mało prawdopodobny, więc obiecywanie premii wyłącznie za komplet to obiecywanie czegoś, o czym z góry wiemy, że nie wejdzie.</p>
         <p class="opis"><strong>Dlaczego akurat święta.</strong> Kampania i tak kończy się w grudniu, więc nie doklejamy okazji na siłę. Rzecz zaczyna się od pudełka, które przyjeżdża do biura, i kończy pudełkiem, które jedzie dalej.</p>
       </div>
     </div>
@@ -235,11 +247,11 @@ strong,b{font-weight:800}
     <h2>Sześć powodów.</h2>
     <div class="powody">
       <div class="powod"><h3>Zgłoszenie jest dowodem, nie deklaracją</h3><p>Kodu nie da się zdobyć bez tygodnia przy stole. Konkurs sam się filtruje.</p></div>
-      <div class="powod"><h3>Nikt nie wygra za kogoś innego</h3><p>Każdy kawałek ma swój kod. Cudzy kod nie odblokowuje niczego, więc nie ma sensu go podawać dalej.</p></div>
+      <div class="powod"><h3>Nikt nie wygra za kogoś innego</h3><p>Każde pole ma swój kod. Cudzy kod nie odsłania niczego, więc nie ma sensu go podawać dalej.</p></div>
       <div class="powod"><h3>Instrukcja daje zgodę na bałagan</h3><p>Sami z siebie nie zostawią rozsypanych puzzli w kuchni. Zdanie na plombie zdejmuje z nich tę decyzję.</p></div>
       <div class="powod"><h3>Nazwa robi połowę roboty</h3><p>Czarny tydzień, czarne skrzynki, czarny obraz, który się odsłania. Wszystko z jednego słowa.</p></div>
       <div class="powod"><h3>Kampanię piszą klienci</h3><p>Sto pięćdziesiąt zdjęć ułożonych puzzli. Tego nie da się wyprodukować.</p></div>
-      <div class="powod"><h3>Wygrywa też ktoś spoza gry</h3><p>Nagrody dostaje trzynaście biur, ale paczka idzie z każdego odsłoniętego kawałka. Przegranych nie ma.</p></div>
+      <div class="powod"><h3>Wygrywa też ktoś spoza gry</h3><p>Nagrody dostaje trzynaście biur, ale wsparcie idzie z każdego odsłoniętego pola. Przegranych nie ma.</p></div>
     </div>
   </div>
 </section>
@@ -266,7 +278,7 @@ strong,b{font-weight:800}
       <div class="nagroda"><em>3×</em><h3>Integracja dla zespołu</h3></div>
       <div class="nagroda"><em>10×</em><h3>Śniadanie firmowe</h3></div>
     </div>
-    <p class="opis" style="margin-top:22px;font-size:15px">Osiągnięciem jest ułożenie, a nie zabawne zdjęcie, więc ocenianie zdjęć nagradzałoby coś innego niż to, o co prosimy. Każdy odsłonięty kawałek to jeden los.</p>
+    <p class="opis" style="margin-top:22px;font-size:15px">Osiągnięciem jest ułożenie, a nie zabawne zdjęcie, więc ocenianie zdjęć nagradzałoby coś innego niż to, o co prosimy. Każde odsłonięte pole to jeden los.</p>
   </div>
 </section>
 
@@ -275,10 +287,12 @@ strong,b{font-weight:800}
     <span class="kicker">Do decyzji</span>
     <h2>Cztery rzeczy przed startem.</h2>
     <div class="decyzje">
-      <div class="decyzja"><h3>Ile skrzynek</h3><p>Liczba kawałków wspólnego obrazu musi być znana przed drukiem, bo od niej zależy cięcie grafiki. Do końca września.</p></div>
+      <div class="decyzja"><h3>Ile skrzynek</h3><p>Liczba pól na wspólnej planszy musi być znana przed drukiem, bo od niej zależy cięcie grafiki. Do końca września.</p></div>
       <div class="decyzja"><h3>Produkcja</h3><p>Sto pięćdziesiąt różnych nadruków na tym samym wykroju. Do zrobienia w druku cyfrowym, ale trzeba wycenić i zamówić z wyprzedzeniem.</p></div>
       <div class="decyzja"><h3>Gdzie siedzi hasło</h3><p>Litery rozciągnięte przez całą grafikę, nie w jednym rogu. To trzeba zaprojektować razem z ilustracją, nie dokleić później.</p></div>
       <div class="decyzja"><h3>Losowanie wymaga zezwolenia</h3><p>Udział jest powiązany z zakupem, więc losowanie nagród to loteria promocyjna: wniosek do izby administracji skarbowej, regulamin, zabezpieczenie i podatek od gier. Wniosek trzeba złożyć z dużym wyprzedzeniem, czyli praktycznie we wrześniu. Wersja bez zezwolenia: nagrody wedle kolejności ułożenia, bo o wyniku decyduje wtedy zespół, a nie los.</p></div>
+      <div class="decyzja"><h3>Kwota za pole</h3><p>Bez liczby cała ta część jest deklaracją. Musi też wytrzymać pytanie, ile to jest w stosunku do przychodu z tego tygodnia.</p></div>
+      <div class="decyzja"><h3>Generator kafelków</h3><p>Obrazek ze stanem planszy i nazwą firmy po wpisaniu kodu. To jedyny element wymagający realnej roboty programistycznej poza samą planszą.</p></div>
       <div class="decyzja"><h3>Partner i jego kalendarz</h3><p>Ile za kawałek i z kim to robimy. Uwaga: Szlachetna Paczka ma sztywny weekend finałowy na początku grudnia, więc albo skracamy termin na układanie, albo bierzemy organizację bez sztywnej daty. To trzeba domknąć przed drukiem.</p></div>
       <div class="decyzja"><h3>Czy listopad dowozi zamówienia</h3><p>Jeśli nie, przenosimy termin, ale wtedy koncept traci nazwę. W styczniu czarna skrzynka to zwykłe czarne pudło.</p></div>
     </div>
