@@ -331,17 +331,8 @@ html.pt-in body>:not(header) { animation: ptFadeIn 0.32s ease both; }
             <div class="contact-form-card reveal" id="formularz">
                 <div style="text-align:center;margin-bottom:12px;"><span class="sticker sticker-yellow">Bezpłatna wycena</span><h2 style="font-size:23px;margin-top:10px;"><span class="fun fun-alt">Zapytaj</span></h2></div>
                 <iframe id="bwp-form" title="Formularz bezpłatnej wyceny DailyFruits" src="https://betterworkplace.pl/kontakt/zapytanie-dailyfruits" style="width:100%;border:none;display:block;min-height:320px"></iframe>
-                <script>
-                  const BRAND = 'Daily fruits';
-                  window.addEventListener('message', function (e) {
-                    if (e.data?.type === 'bwp:request-info') {
-                      e.source.postMessage({ type: 'bwp:info', url: window.location.href, referrer: document.referrer, brand: BRAND }, '*');
-                    }
-                    if (e.data?.type === 'bwp:resize') {
-                      document.getElementById('bwp-form').style.height = e.data.height + 'px';
-                    }
-                  });
-                </script>
+                <script src="bwp-form.js?v=1"></script>
+                
             </div>
         </div>
     </div>

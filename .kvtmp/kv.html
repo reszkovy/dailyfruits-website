@@ -1,0 +1,62 @@
+<!DOCTYPE html><html lang="pl"><head><meta charset="utf-8">
+<style>
+@font-face{font-family:'Achiko';src:url('../Achiko.woff2') format('woff2')}
+:root{--lime:#8DC63F;--cream:#FFF9E0;--green-dark:#1B5E3A;--green-deep:#0f2a1a;--green-mid:#347550;--red:#E43020}
+*{box-sizing:border-box;margin:0}
+html,body{height:100%}
+body{font-family:system-ui,-apple-system,"Segoe UI",sans-serif;overflow:hidden}
+.kv{position:relative;width:100vw;height:100vh;display:flex;flex-direction:column;overflow:hidden}
+.foto{position:relative;flex:0 0 46%;overflow:hidden}
+.foto img{width:100%;height:100%;object-fit:cover}
+.foto .cien{position:absolute;inset:0}
+.zombie .foto .cien{background:linear-gradient(to bottom,rgba(8,26,16,.62) 0%,rgba(8,26,16,.10) 34%,rgba(8,26,16,.15) 70%,var(--green-deep) 100%)}
+.syndrom .foto .cien{background:linear-gradient(to bottom,rgba(255,249,224,.80) 0%,rgba(255,249,224,.12) 34%,rgba(255,249,224,.18) 70%,var(--cream) 100%)}
+.belka{position:absolute;top:0;left:0;right:0;display:flex;align-items:flex-start;justify-content:space-between;
+  padding:4.4vmin 4.8vmin;gap:3vmin;z-index:3}
+.belka img{height:10vmin;width:auto;display:block}
+.oferta{font-size:2.5vmin;line-height:1.28;font-weight:800;text-align:right;padding-left:2.2vmin;
+  border-left:.55vmin solid var(--lime)}
+.zombie .oferta{color:var(--cream)}
+.syndrom .oferta{color:var(--green-dark);border-left-color:var(--green-mid)}
+
+.panel{flex:1;display:flex;flex-direction:column;justify-content:flex-start;padding:4.6vmin 4.8vmin 4.2vmin}
+.zombie .panel{background:var(--green-deep)}
+.syndrom .panel{background:var(--cream)}
+h1{letter-spacing:-.035em;margin-bottom:2.2vmin}
+h1 .l1{display:block;font-family:'Achiko',system-ui;font-weight:400;font-size:7.8vmin;line-height:.96}
+h1 .l2{display:block;font-weight:900;font-size:6.7vmin;line-height:1.02;letter-spacing:-.04em;margin-top:.8vmin}
+.zombie h1 .l1{color:var(--lime)} .zombie h1 .l2{color:var(--cream)}
+.syndrom h1 .l1{color:var(--green-mid)} .syndrom h1 .l2{color:var(--green-dark)}
+.pod{font-size:2.75vmin;line-height:1.44;font-weight:500;max-width:36ch}
+.zombie .pod{color:rgba(255,249,224,.86)} .syndrom .pod{color:rgba(27,94,58,.84)}
+.cta{align-self:flex-start;margin-top:3.2vmin;background:var(--red);color:#fff;font-weight:800;
+  font-size:2.7vmin;padding:2vmin 3.8vmin;border-radius:99vmin}
+.pasek{display:flex;align-items:center;gap:2.4vmin;margin-top:auto;padding-top:3.6vmin;font-size:1.95vmin;
+  letter-spacing:.15em;text-transform:uppercase;font-weight:800}
+.zombie .pasek{color:var(--cream)} .syndrom .pasek{color:var(--green-dark)}
+.tor{flex:1;height:1.4vmin;border-radius:99vmin;overflow:hidden}
+.zombie .tor{background:rgba(255,249,224,.20)} .syndrom .tor{background:rgba(27,94,58,.16)}
+.tor i{display:block;height:100%;width:62%;border-radius:99vmin}
+.zombie .tor i{background:var(--lime)} .syndrom .tor i{background:var(--green-mid)}
+</style></head><body>
+<div class="kv" id="kv"></div>
+<script>
+var p=new URLSearchParams(location.search), w=p.get('w')||'zombie', f=p.get('f');
+var d={
+ zombie:{klasa:'zombie',foto:'../zombie-kadr-2.webp',poz:'52% 62%',logo:'../animacja_11-lime.svg',
+  oferta:'Do końca lata<br>pierwsze zamówienie gratis',l1:'Powrót do biur.',l2:'Powrót do żywych.',
+  pod:'68% pracuje mniej efektywnie, gdy odczuwa głód. Wrzesień po urlopach to moment, w którym widać to najmocniej.',
+  cta:'Nakarm zespół',lewo:'Biurowe zombie',prawo:'Pracownik miesiąca'},
+ syndrom:{klasa:'syndrom',foto:'../syndrom-typ-1.webp',poz:'50% 16%',logo:'../animacja_11-green.svg',
+  oferta:'Do końca lata<br>pierwsze zamówienie gratis',l1:'Syndrom',l2:'wrześniowy.',
+  pod:'Ciało wróciło do biura. Głowa jeszcze nie. Pierwsze tygodnie po urlopie to najtrudniejszy moment w roku.',
+  cta:'Miękkie lądowanie',lewo:'Koniec wakacji',prawo:'Miękkie lądowanie'}
+}[w];
+if(f) d.foto='../'+f;
+var k=document.getElementById('kv'); k.className='kv '+d.klasa;
+k.innerHTML='<div class="foto"><img src="'+d.foto+'" style="object-position:'+d.poz+'"><div class="cien"></div>'+
+ '<div class="belka"><img src="'+d.logo+'" alt=""><p class="oferta">'+d.oferta+'</p></div></div>'+
+ '<div class="panel"><h1><span class="l1">'+d.l1+'</span><span class="l2">'+d.l2+'</span></h1>'+
+ '<p class="pod">'+d.pod+'</p><span class="cta">'+d.cta+' →</span>'+
+ '<div class="pasek"><span>'+d.lewo+'</span><span class="tor"><i></i></span><span>'+d.prawo+'</span></div></div>';
+</script></body></html>
