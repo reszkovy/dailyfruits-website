@@ -119,11 +119,6 @@ strong,b{font-weight:800}
   font-weight:900;color:var(--limonka)}
 .plomba span{display:block;margin-top:14px;font-size:12px;font-weight:800;letter-spacing:.2em;
   text-transform:uppercase;color:rgba(255,249,224,.7)}
-.progi{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:16px}
-.prog{background:rgba(255,249,224,.10);border-radius:14px;padding:16px 18px}
-.prog b{display:block;font-size:17px;color:var(--limonka);margin-bottom:3px}
-.prog span{display:block;font-size:13.5px;color:rgba(255,249,224,.76);line-height:1.35}
-@media (max-width:640px){.progi{grid-template-columns:1fr}}
 .stopka{padding:34px 0 46px;font-size:13.5px;color:var(--cichy)}
 
 @media (max-width:860px){
@@ -152,7 +147,7 @@ strong,b{font-weight:800}
 
 <figure class="kv-blok">
   <img class="kv" src="kv-puzzle-martwa-natura.webp" alt="Puzzle z owocowa grafika DailyFruits, w obrazku haslo OwocoweMoce, brakujace elementy zostawiaja czarne dziury" width="1800" height="1012" loading="eager">
-  <figcaption>Litery hasła są rozrzucone po całym obrazku, po jednej w różnych miejscach. Brakujący element zabiera literę, więc dopóki układanka nie jest skończona, hasła nie da się odczytać.</figcaption>
+  <figcaption>Litery kodu są rozrzucone po całym obrazku, po jednej w różnych miejscach. Brakujący element zabiera literę, więc dopóki układanka nie jest skończona, kodu nie da się odczytać.</figcaption>
 </figure>
 
 <section class="pas">
@@ -163,7 +158,7 @@ strong,b{font-weight:800}
     <div class="fakty" style="margin-top:clamp(28px,4vw,48px)">
       <div class="fakt"><em>150</em><span>biur, czyli tyle samo pól na wspólnej planszy</span></div>
       <div class="fakt"><em>1000</em><span>elementów w jednym pudełku, żeby starczyło na tydzień</span></div>
-      <div class="fakt"><em>3</em><span>progi wsparcia, kolejny odblokowuje się z każdą setką odsłoniętych pól</span></div>
+      <div class="fakt"><em>1</em><span>stała kwota wsparcia za każde odsłonięte pole</span></div>
     </div>
   </div>
 </section>
@@ -183,8 +178,8 @@ strong,b{font-weight:800}
       <div class="krok"><em>01</em><div><h3>Skrzynka jedzie z dostawą</h3><p>Czarna, zaplombowana, bez opisu zawartości. Na plombie jedno zdanie: nie sprzątać przez tydzień.</p></div></div>
       <div class="krok"><em>02</em><div><h3>Puzzle lądują na stole w kuchni</h3><p>Rozsypane i tak zostają. Nie ma zbiórki, nie ma terminu w kalendarzu, nikt nie siada do nich na dwie godziny.</p></div></div>
       <div class="krok"><em>03</em><div><h3>Przez tydzień każdy dokłada, ile chce</h3><p>Jeden element przy kawie, dwa po spotkaniu. Zwykle w towarzystwie kogoś, kto akurat stoi obok.</p></div></div>
-      <div class="krok"><em>04</em><div><h3>Gotowy obrazek pokazuje hasło</h3><p>Litery są wpisane w martwą naturę i rozciągnięte przez całą grafikę. Brakuje jednego elementu i hasła nie da się odczytać.</p></div></div>
-      <div class="krok"><em>05</em><div><h3>Biuro wpisuje kod i wrzuca zdjęcie</h3><p>Na dailyfruits.pl. Odsłania swoje pole na wspólnej planszy i podpisuje je nazwą firmy.</p></div></div>
+      <div class="krok"><em>04</em><div><h3>Gotowy obrazek pokazuje kod</h3><p>Litery kodu są wpisane w martwą naturę i rozrzucone po całej grafice. Brakuje jednego elementu i kodu nie da się odczytać.</p></div></div>
+      <div class="krok"><em>05</em><div><h3>Biuro wpisuje kod</h3><p>Na dailyfruits.pl. Odsłania swoje pole na wspólnej planszy i podpisuje je nazwą firmy. Zdjęcie można dorzucić, ale nie trzeba.</p></div></div>
     </div>
   </div>
 </section>
@@ -224,17 +219,12 @@ strong,b{font-weight:800}
     <div class="uklad" style="margin-top:clamp(28px,4vw,48px)">
       <div>
         <p class="opis">W tygodniu, w którym cała kategoria tnie ceny, my nie tniemy. Każde odsłonięte pole to ustalona kwota dla organizacji, która przed świętami dowozi rzeczy rodzinom w potrzebie, w rodzaju Szlachetnej Paczki.</p>
-        <p class="opis">Pula rośnie schodkami, a nie w jednym skoku na końcu:</p>
-        <div class="progi">
-          <div class="prog"><b>100 pól</b><span>pierwszy próg, kwota bazowa</span></div>
-          <div class="prog"><b>130 pól</b><span>drugi próg</span></div>
-          <div class="prog"><b>Pełna plansza</b><span>trzeci próg, pula maksymalna</span></div>
-        </div>
+        
         <p class="opis">Terminy składają się same. Obraz zamyka się w połowie grudnia, przekazanie wypada dokładnie wtedy, kiedy takie rzeczy się robi.</p>
         <p class="opis">Biuro nie gra więc tylko o nagrodę dla siebie. Gra o to, żeby sąsiednie biuro też usiadło do stołu, bo dopiero razem robi się z tego pełna kwota.</p>
       </div>
       <div>
-        <p class="opis"><strong>Dlaczego schodkami, a nie wszystko albo nic.</strong> Gdyby liczyła się wyłącznie pełna plansza, wystarczyłoby jedno czarne pole i w połowie grudnia nikt nie miałby po co kończyć. Przy stu pięćdziesięciu biurach komplet i tak jest mało prawdopodobny, więc obiecywanie premii wyłącznie za komplet to obiecywanie czegoś, o czym z góry wiemy, że nie wejdzie.</p>
+        <p class="opis"><strong>Dlaczego po prostu za każde pole.</strong> Bez progów, bez podwojeń i bez premii za komplet. Każde pole waży tyle samo, więc nie ma czego tłumaczyć, nie ma warunku, którego możemy nie dowieźć, i żaden tydzień przy stole nie idzie na marne.</p>
         <p class="opis"><strong>Dlaczego akurat święta.</strong> Kampania i tak kończy się w grudniu, więc nie doklejamy okazji na siłę. Rzecz zaczyna się od pudełka, które przyjeżdża do biura, i kończy pudełkiem, które jedzie dalej.</p>
       </div>
     </div>
@@ -263,7 +253,7 @@ strong,b{font-weight:800}
     <div class="kal">
       <div class="etap"><b>Połowa października</b><span>Sprzedaż i zbieranie zamówień na listopad.</span></div>
       <div class="etap"><b>23 do 29 listopada</b><span>Black Week. Skrzynki jadą razem z dostawami.</span></div>
-      <div class="etap"><b>Do 14 grudnia</b><span>Tydzień albo dwa przy stole, potem kod i zdjęcie.</span></div>
+      <div class="etap"><b>Do 14 grudnia</b><span>Tydzień albo dwa przy stole, potem kod.</span></div>
       <div class="etap przygaszony"><b>Koniec grudnia</b><span>Gotowy obraz, wyniki i nagrody.</span></div>
     </div>
   </div>
@@ -278,7 +268,7 @@ strong,b{font-weight:800}
       <div class="nagroda"><em>3×</em><h3>Integracja dla zespołu</h3></div>
       <div class="nagroda"><em>10×</em><h3>Śniadanie firmowe</h3></div>
     </div>
-    <p class="opis" style="margin-top:22px;font-size:15px">Osiągnięciem jest ułożenie, a nie zabawne zdjęcie, więc ocenianie zdjęć nagradzałoby coś innego niż to, o co prosimy. Każde odsłonięte pole to jeden los.</p>
+    <p class="opis" style="margin-top:22px;font-size:15px">Osiągnięciem jest ułożenie, a nie zabawne zdjęcie, więc nie ma czego oceniać. Każde odsłonięte pole to jeden los.</p>
   </div>
 </section>
 
@@ -289,7 +279,7 @@ strong,b{font-weight:800}
     <div class="decyzje">
       <div class="decyzja"><h3>Ile skrzynek</h3><p>Liczba pól na wspólnej planszy musi być znana przed drukiem, bo od niej zależy cięcie grafiki. Do końca września.</p></div>
       <div class="decyzja"><h3>Produkcja</h3><p>Sto pięćdziesiąt różnych nadruków na tym samym wykroju. Do zrobienia w druku cyfrowym, ale trzeba wycenić i zamówić z wyprzedzeniem.</p></div>
-      <div class="decyzja"><h3>Gdzie siedzi hasło</h3><p>Litery rozciągnięte przez całą grafikę, nie w jednym rogu. To trzeba zaprojektować razem z ilustracją, nie dokleić później.</p></div>
+      <div class="decyzja"><h3>Gdzie siedzi kod</h3><p>Litery rozrzucone po całej grafice, nie w jednym rogu. To trzeba zaprojektować razem z ilustracją, nie dokleić później.</p></div>
       <div class="decyzja"><h3>Losowanie wymaga zezwolenia</h3><p>Udział jest powiązany z zakupem, więc losowanie nagród to loteria promocyjna: wniosek do izby administracji skarbowej, regulamin, zabezpieczenie i podatek od gier. Wniosek trzeba złożyć z dużym wyprzedzeniem, czyli praktycznie we wrześniu. Wersja bez zezwolenia: nagrody wedle kolejności ułożenia, bo o wyniku decyduje wtedy zespół, a nie los.</p></div>
       <div class="decyzja"><h3>Kwota za pole</h3><p>Bez liczby cała ta część jest deklaracją. Musi też wytrzymać pytanie, ile to jest w stosunku do przychodu z tego tygodnia.</p></div>
       <div class="decyzja"><h3>Generator kafelków</h3><p>Obrazek ze stanem planszy i nazwą firmy po wpisaniu kodu. To jedyny element wymagający realnej roboty programistycznej poza samą planszą.</p></div>
