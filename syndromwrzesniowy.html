@@ -550,7 +550,8 @@ html.pt-in body>:not(header) { animation: ptFadeIn 0.32s ease both; }
 
 /* Pasek produktow jako karuzela: przewija sie sam z lewa na prawo, zatrzymuje pod kursorem.
    Lista jest w markupie dwa razy, wiec petla nie ma szwu i nie potrzeba do tego JS-a. */
-.prod-marquee { position: relative; overflow: hidden; margin-top: 22px;
+.hero-box, .hero-box-foot { min-width: 0; }
+.prod-marquee { position: relative; overflow: hidden; width: 100%; min-width: 0; max-width: 100%; margin-top: 22px;
     -webkit-mask-image: linear-gradient(to right, transparent, #000 7%, #000 93%, transparent);
     mask-image: linear-gradient(to right, transparent, #000 7%, #000 93%, transparent); }
 .prod-track { display: flex; width: max-content; animation: prodPlyn 38s linear infinite; }
