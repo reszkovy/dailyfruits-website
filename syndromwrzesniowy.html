@@ -212,7 +212,7 @@ header .btn-red-solid { white-space: nowrap; position: relative; overflow: hidde
     z-index: 1; pointer-events: none; filter: drop-shadow(0 10px 24px rgba(27,94,58,0.26)); }
 @media (max-width: 720px) { .owocek { width: 84px; right: 16px; } }
 
-.form-art { max-width: 620px; margin: 0 auto 40px; }
+.form-art { max-width: none; margin: 0 0 16px; }
 /* Formularz wtopiony w sekcje, bez plywajacej karty. */
 .form-wrap { background: transparent; padding: 0; }
 .form-wrap { overflow-anchor: none; }
@@ -571,6 +571,7 @@ html.pt-in body>:not(header) { animation: ptFadeIn 0.32s ease both; }
    kolumnie i nie odpowiadal na pytanie "co ja wlasciwie zamawiam". */
 .form-grid { max-width: 1060px; display: grid; grid-template-columns: minmax(0,3fr) minmax(0,2fr);
     gap: 30px; align-items: start; }
+.form-kolumna { display: flex; flex-direction: column; gap: 0; }
 .form-info { background: var(--green-dark); color: var(--cream); border-radius: var(--radius);
     padding: 32px 30px; position: sticky; top: 96px; }
 .form-info h3 { font-size: 20px; font-weight: 900; letter-spacing: -.02em; margin: 0 0 6px; color: var(--cream); }
@@ -837,16 +838,7 @@ html.pt-in body>:not(header) { animation: ptFadeIn 0.32s ease both; }
             <h2>Miękkie lądowanie dla Twojego <span class="fun">zespołu</span></h2>
             <p>Podaj liczbę osób. Skład i wycenę przygotujemy po naszej stronie — do końca lata pierwsze zamówienie gratis.</p>
         </div>
-        <div class="form-art">
-            <div class="slider-frame" id="revive" style="--pos:50%">
-                <img src="kampania-glowa-praca.webp" alt="Ilustracja: pracownik po miękkim lądowaniu, skupiony przy biurku" width="1200" height="670" loading="lazy">
-                <img src="kampania-glowa-plaza.webp" alt="Ilustracja: pracownik przy biurku w słomkowym kapeluszu i z kołem do pływania" class="top-layer" width="1200" height="670" loading="lazy">
-                <div class="slider-handle"></div>
-                <span class="slider-tag l">Głowa na plaży</span>
-                <span class="slider-tag r">Głowa w robocie</span>
-            </div>
-            <p class="slider-hint">Przeciągnij, żeby wylądować →</p>
-        </div>
+        
         <div class="assure reveal">
             <p class="rating"><span class="rating-stars">★★★★★</span><span class="rating-score">4.9/5 na podstawie 120+ opinii</span></p>
             <p class="assure-flow"><span>Mówisz, kiedy wracacie</span><i></i><span>dostajesz plan na wrzesień</span><i></i><span>pierwsza skrzynka czeka na start</span></p>
@@ -859,6 +851,17 @@ html.pt-in body>:not(header) { animation: ptFadeIn 0.32s ease both; }
                     <p>Wolisz najpierw zobaczyć, co dokładnie dowozimy?</p>
                     <a href="/oferta" class="btn btn-green btn-arrow">Sprawdź pełną ofertę</a>
                 </div>
+            </div>
+            <div class="form-kolumna">
+            <div class="form-art">
+                <div class="slider-frame" id="revive" style="--pos:50%">
+                    <img src="kampania-glowa-praca.webp" alt="Ilustracja: pracownik po miękkim lądowaniu, skupiony przy biurku" width="1200" height="670" loading="lazy">
+                    <img src="kampania-glowa-plaza.webp" alt="Ilustracja: pracownik przy biurku w słomkowym kapeluszu i z kołem do pływania" class="top-layer" width="1200" height="670" loading="lazy">
+                    <div class="slider-handle"></div>
+                    <span class="slider-tag l">Głowa na plaży</span>
+                    <span class="slider-tag r">Głowa w robocie</span>
+                </div>
+                <p class="slider-hint">Przeciągnij, żeby wylądować →</p>
             </div>
                 <div class="form-info reveal">
                     <h3>Co dokładnie zamawiasz</h3>
@@ -877,6 +880,7 @@ html.pt-in body>:not(header) { animation: ptFadeIn 0.32s ease both; }
                         <span>Odpowiadamy w 24 h.</span>
                     </div>
                 </div>
+            </div>
         </div>
     </div>
     <img src="owocz.webp" alt="" class="owocek" width="714" height="962" loading="lazy">
