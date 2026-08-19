@@ -589,6 +589,9 @@ html.pt-in body>:not(header) { animation: ptFadeIn 0.32s ease both; }
     gap: 30px; align-items: start; }
 .form-info { background: var(--green-dark); color: var(--cream); border-radius: var(--radius);
     padding: 32px 30px; position: sticky; top: 96px; }
+.form-info-art { display: block; width: calc(100% + 60px); margin: -32px -30px 20px; max-width: none;
+    border-radius: var(--radius) var(--radius) 0 0; background: var(--cream); }
+@media (max-width: 900px) { .form-info-art { width: calc(100% + 44px); margin: -26px -22px 18px; } }
 .form-info h3 { font-size: 20px; font-weight: 900; letter-spacing: -.02em; margin: 0 0 6px; color: var(--cream); }
 .form-info .wstep { font-size: 14.5px; line-height: 1.5; color: rgba(255,249,224,.72); margin: 0 0 22px; }
 .form-info ul { list-style: none; margin: 0; padding: 0; }
@@ -877,6 +880,7 @@ html.pt-in body>:not(header) { animation: ptFadeIn 0.32s ease both; }
                 </div>
             </div>
                 <div class="form-info reveal">
+                    <img class="form-info-art" src="zombie-eliminacja.webp" alt="Rysunek: biurowe zombie mijaja skrzynke owocow i wracaja do zycia" width="900" height="450" loading="lazy">
                     <h3>Co dokładnie zamawiasz</h3>
                     <p class="wstep">Nie jednorazowy catering na akcję. Stałą dostawę, która ma sprawić, że po 14:00 w biurze coś jeszcze się dzieje.</p>
                     <ul>
