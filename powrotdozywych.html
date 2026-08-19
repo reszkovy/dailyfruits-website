@@ -205,8 +205,6 @@ header .btn-red-solid { white-space: nowrap; position: relative; overflow: hidde
 .form-wrap { background: transparent; padding: 0; }
 .form-wrap { overflow-anchor: none; }
 .form-wrap iframe { width: 100%; border: none; display: block; min-height: 420px; overflow-anchor: none; }
-.form-fallback { margin-top: 20px; padding: 16px 20px; background: rgba(141,198,63,0.14); border-radius: 14px; font-size: 14.5px; line-height: 1.6; text-align: center; }
-.form-fallback a { font-weight: 900; color: var(--green-dark); }
 
 /* Delikatny polysk przechodzacy przez CTA, bez udzialu kursora.
    ::before, bo ::after niesie strzalke w .btn-arrow. */
@@ -601,6 +599,13 @@ html.pt-in body>:not(header) { animation: ptFadeIn 0.32s ease both; }
 .form-info li i { font-style: normal; color: var(--lime); font-weight: 900; font-size: 15px; line-height: 1.45; }
 .form-info li b { display: block; font-size: 15px; font-weight: 800; margin-bottom: 2px; }
 .form-info li span { display: block; font-size: 13.5px; line-height: 1.45; color: rgba(255,249,224,.7); }
+.form-kontakt { margin: 20px 0 0; padding: 16px 18px; background: rgba(255,249,224,.08);
+    border-radius: 14px; text-align: center; }
+.form-kontakt b { display: block; font-size: 14px; font-weight: 800; color: var(--cream); margin-bottom: 8px; }
+.form-kontakt a { display: block; font-size: 15.5px; font-weight: 900; color: var(--lime);
+    text-decoration: none; line-height: 1.5; word-break: break-word; }
+.form-kontakt a:hover { text-decoration: underline; }
+.form-kontakt span { display: block; margin-top: 8px; font-size: 13px; color: rgba(255,249,224,.62); }
 .form-info .nie { margin: 20px 0 0; padding: 14px 16px; background: rgba(255,249,224,.08);
     border-radius: 14px; font-size: 13.5px; line-height: 1.5; color: rgba(255,249,224,.82); }
 @media (max-width: 900px) {
@@ -871,9 +876,6 @@ html.pt-in body>:not(header) { animation: ptFadeIn 0.32s ease both; }
             <div class="form-wrap">
                 <iframe id="bwp-form" title="Formularz bezpłatnej wyceny DailyFruits" src="https://betterworkplace.pl/kontakt/zapytanie-dailyfruits" loading="lazy"></iframe>
                 <script src="bwp-form.js?v=1"></script>
-                <div class="form-fallback">
-                    Wolisz krócej? <a href="tel:+48228680499">22 868 04 99</a> albo <a href="mailto:zapytania@betterworkplace.pl?subject=Kampania%20Powr%C3%B3t%20do%20%C5%BCywych">zapytania@betterworkplace.pl</a> — odpowiadamy w 24 h.
-                </div>
                 <div class="form-after">
                     <p>Wolisz najpierw zobaczyć, co dokładnie dowozimy?</p>
                     <a href="/oferta" class="btn btn-green btn-arrow">Sprawdź pełną ofertę</a>
@@ -890,7 +892,12 @@ html.pt-in body>:not(header) { animation: ptFadeIn 0.32s ease both; }
                         <li><i>4</i><div><b>Jedna faktura miesięcznie</b><span>Za wszystko razem, niezależnie od liczby dostaw.</span></div></li>
                         <li><i>5</i><div><b>Pierwsza dostawa w tym roku gratis</b><span>Do końca lata. Zobaczysz jakość, zanim cokolwiek zdecydujesz.</span></div></li>
                     </ul>
-                    <p class="nie">Czego tu nie ma: umowy na rok, minimalnych zamówień i katalogu z wariantami do wyboru.</p>
+                    <div class="form-kontakt">
+                        <b>Wolisz krócej?</b>
+                        <a href="tel:+48228680499">22 868 04 99</a>
+                        <a href="mailto:zapytania@betterworkplace.pl?subject=Kampania%20Powr%C3%B3t%20do%20%C5%BCywych">zapytania@betterworkplace.pl</a>
+                        <span>Odpowiadamy w 24 h.</span>
+                    </div>
                 </div>
         </div>
     </div>
