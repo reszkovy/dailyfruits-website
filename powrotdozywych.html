@@ -199,7 +199,7 @@ header .btn-red-solid { white-space: nowrap; position: relative; overflow: hidde
 .owocek { position: absolute; right: clamp(24px, 7vw, 96px); bottom: 0; width: 128px; height: auto;
     z-index: 1; pointer-events: none; filter: drop-shadow(0 10px 24px rgba(27,94,58,0.26)); }
 @media (max-width: 720px) { .owocek { width: 84px; right: 16px; } }
-.form-grid { max-width: 660px; margin: 0 auto; }
+
 .form-art { max-width: 620px; margin: 0 auto 40px; }
 /* Formularz wtopiony w sekcje, bez plywajacej karty. */
 .form-wrap { background: transparent; padding: 0; }
@@ -582,6 +582,28 @@ html.pt-in body>:not(header) { animation: ptFadeIn 0.32s ease both; }
 .prod-card h3 { font-weight: 800; font-size: 14px; line-height: 1.3; color: var(--green-dark); margin: 0; letter-spacing: -0.01em; }
 @media (max-width: 720px) { .prod-card { width: 132px; padding: 6px 9px; } .prod-ph { height: 84px; } .prod-card h3 { font-size: 12.5px; } }
 @media (prefers-reduced-motion: reduce) { .prod-track { animation: none; flex-wrap: wrap; justify-content: center; width: 100%; } }
+
+/* Objasnienie produktu obok formularza. Na landingu formularz stal sam w jednej
+   kolumnie i nie odpowiadal na pytanie "co ja wlasciwie zamawiam". */
+.form-grid { max-width: 1060px; display: grid; grid-template-columns: minmax(0,3fr) minmax(0,2fr);
+    gap: 30px; align-items: start; }
+.form-info { background: var(--green-dark); color: var(--cream); border-radius: var(--radius);
+    padding: 32px 30px; position: sticky; top: 96px; }
+.form-info h3 { font-size: 20px; font-weight: 900; letter-spacing: -.02em; margin: 0 0 6px; color: var(--cream); }
+.form-info .wstep { font-size: 14.5px; line-height: 1.5; color: rgba(255,249,224,.72); margin: 0 0 22px; }
+.form-info ul { list-style: none; margin: 0; padding: 0; }
+.form-info li { display: grid; grid-template-columns: 22px 1fr; gap: 12px; padding: 13px 0;
+    border-top: 2px dashed rgba(255,249,224,.16); }
+.form-info li:last-child { border-bottom: 2px dashed rgba(255,249,224,.16); }
+.form-info li i { font-style: normal; color: var(--lime); font-weight: 900; font-size: 15px; line-height: 1.45; }
+.form-info li b { display: block; font-size: 15px; font-weight: 800; margin-bottom: 2px; }
+.form-info li span { display: block; font-size: 13.5px; line-height: 1.45; color: rgba(255,249,224,.7); }
+.form-info .nie { margin: 20px 0 0; padding: 14px 16px; background: rgba(255,249,224,.08);
+    border-radius: 14px; font-size: 13.5px; line-height: 1.5; color: rgba(255,249,224,.82); }
+@media (max-width: 900px) {
+    .form-grid { grid-template-columns: 1fr; max-width: 660px; }
+    .form-info { position: static; padding: 26px 22px; }
+}
 </style>
 </head>
 <body>
@@ -854,6 +876,18 @@ html.pt-in body>:not(header) { animation: ptFadeIn 0.32s ease both; }
                     <a href="/oferta" class="btn btn-green btn-arrow">Sprawdź pełną ofertę</a>
                 </div>
             </div>
+                <div class="form-info reveal">
+                    <h3>Co dokładnie zamawiasz</h3>
+                    <p class="wstep">Nie jednorazowy catering na akcję. Stałą dostawę, która ma sprawić, że po 14:00 w biurze coś jeszcze się dzieje.</p>
+                    <ul>
+                        <li><i>1</i><div><b>Skrzynka, która stoi w kuchni</b><span>Owoce, przekąski, kanapki, soki. Przyjeżdża regularnie, a nie raz na akcję.</span></div></li>
+                        <li><i>2</i><div><b>Ty podajesz liczbę osób</b><span>Skład i wielkość dobieramy my. Nie musisz nic wybierać z katalogu.</span></div></li>
+                        <li><i>3</i><div><b>Abonament, nie kontrakt</b><span>Zmiana składu, częstotliwości albo rezygnacja bez kar i okresów wypowiedzenia.</span></div></li>
+                        <li><i>4</i><div><b>Jedna faktura miesięcznie</b><span>Za wszystko razem, niezależnie od liczby dostaw.</span></div></li>
+                        <li><i>5</i><div><b>Pierwsza dostawa w tym roku gratis</b><span>Do końca lata. Zobaczysz jakość, zanim cokolwiek zdecydujesz.</span></div></li>
+                    </ul>
+                    <p class="nie">Czego tu nie ma: umowy na rok, minimalnych zamówień i katalogu z wariantami do wyboru.</p>
+                </div>
         </div>
     </div>
     <img src="owocz.webp" alt="" class="owocek" width="714" height="962" loading="lazy">
@@ -1327,7 +1361,7 @@ html.pt-in body>:not(header) { animation: ptFadeIn 0.32s ease both; }
         { sel: '.cure-card', typ: 'up', kaskada: 80 },
         { sel: '.assure-item', typ: 'up', kaskada: 70 },
         { sel: '.hero-box > div', typ: 'up', kaskada: 120 },
-        { sel: '.form-art, .form-wrap, .form-after', typ: 'up' },
+        { sel: '.form-art, .form-wrap, .form-after, .form-info', typ: 'up' },
         { sel: '.assure-flow, .rating', typ: 'fade' },
         { sel: '.mid-cta', typ: 'up' },
         { sel: '.owocek', typ: 'up' }
