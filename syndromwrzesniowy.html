@@ -204,12 +204,6 @@ header .btn-red-solid { white-space: nowrap; position: relative; overflow: hidde
 .hero-box li::before { content: '✓'; position: absolute; left: 0; color: var(--lime); font-weight: 900; }
 
 .prod-sec { padding: 92px 0 96px; background: var(--white); }
-.prod-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 10px; margin-top: 14px; }
-.prod-card { background: transparent; border: none; padding: 6px 4px 4px; text-align: center; transition: transform .3s cubic-bezier(0.16,1,0.3,1); }
-.prod-card:hover { transform: translateY(-4px); }
-.prod-ph { height: 54px; display: flex; align-items: center; justify-content: center; margin-bottom: 10px; }
-.prod-ph img { max-height: 100%; max-width: 100%; object-fit: contain; display: block; }
-.prod-card h3 { font-weight: 800; font-size: 12px; line-height: 1.3; color: var(--green-dark); margin: 0; letter-spacing: -0.01em; }
 
 /* ---------- FORMULARZ KROKOWY ---------- */
 .form-sec { padding: 92px 0 100px; background: var(--white); position: relative; }
@@ -475,8 +469,7 @@ header .btn-red-solid::before { animation-delay: 3.4s; }
     .cure-grid { grid-template-columns: 1fr 1fr; row-gap: 40px; }
     .cure-grid::before { display: none; }
     .cure-card { border-top: 2px dashed rgba(27,94,58,0.30); }
-    .prod-grid { grid-template-columns: repeat(3, 1fr); gap: 14px; }
-    .hero-box { grid-template-columns: 1fr; gap: 26px; padding: 30px 26px; }
+        .hero-box { grid-template-columns: 1fr; gap: 26px; padding: 30px 26px; }
 }
 @media (max-width: 1000px) and (min-width: 721px) and (max-height: 720px) {
     /* niskie ekrany: CTA musi zmiescic sie w pierwszym widoku */
@@ -508,8 +501,7 @@ header .btn-red-solid::before { animation-delay: 3.4s; }
         background: repeating-linear-gradient(to bottom, rgba(27,94,58,0.30) 0 7px, transparent 7px 14px); }
     .cure-card { padding-top: 0; border-top: 0; }
     .cure-card::before { top: 1px; left: -38px; }
-    .prod-grid { grid-template-columns: repeat(2, 1fr); }
-    .scrub-copy h1 .l1 { font-size: 30px; }
+        .scrub-copy h1 .l1 { font-size: 30px; }
     .scrub-copy h1 .l2 { font-size: 27px; }
 }
 @media (prefers-reduced-motion: reduce) { .scrub-hint i { animation: none; } .btn-feed, .cure-card { transition: none !important; } }
@@ -555,6 +547,23 @@ html.pt-in body>:not(header) { animation: ptFadeIn 0.32s ease both; }
         text-transform: uppercase; font-weight: 700; opacity: .62; }
 }
 @media (min-width: 721px) { .karuzela-info { display: none; } }
+
+/* Pasek produktow jako karuzela: przewija sie sam z lewa na prawo, zatrzymuje pod kursorem.
+   Lista jest w markupie dwa razy, wiec petla nie ma szwu i nie potrzeba do tego JS-a. */
+.prod-marquee { position: relative; overflow: hidden; margin-top: 22px;
+    -webkit-mask-image: linear-gradient(to right, transparent, #000 7%, #000 93%, transparent);
+    mask-image: linear-gradient(to right, transparent, #000 7%, #000 93%, transparent); }
+.prod-track { display: flex; width: max-content; animation: prodPlyn 38s linear infinite; }
+.prod-marquee:hover .prod-track { animation-play-state: paused; }
+@keyframes prodPlyn { from { transform: translateX(-50%); } to { transform: translateX(0); } }
+.prod-card { flex: 0 0 auto; width: clamp(148px, 16vw, 208px); background: transparent; border: none;
+    padding: 8px 12px; text-align: center; transition: transform .3s cubic-bezier(0.16,1,0.3,1); }
+.prod-card:hover { transform: translateY(-4px); }
+.prod-ph { height: clamp(92px, 10.5vw, 136px); display: flex; align-items: center; justify-content: center; margin-bottom: 12px; }
+.prod-ph img { max-height: 100%; max-width: 100%; object-fit: contain; display: block; }
+.prod-card h3 { font-weight: 800; font-size: 14px; line-height: 1.3; color: var(--green-dark); margin: 0; letter-spacing: -0.01em; }
+@media (max-width: 720px) { .prod-card { width: 132px; padding: 6px 9px; } .prod-ph { height: 84px; } .prod-card h3 { font-size: 12.5px; } }
+@media (prefers-reduced-motion: reduce) { .prod-track { animation: none; flex-wrap: wrap; justify-content: center; width: 100%; } }
 </style>
 </head>
 <body>
@@ -760,13 +769,21 @@ html.pt-in body>:not(header) { animation: ptFadeIn 0.32s ease both; }
             </div>
             <div class="hero-box-foot">
                 <p class="foot-lead">Co może być w Twojej dostawie:</p>
-        <div class="prod-grid">
-            <div class="prod-card reveal"><div class="prod-ph"><img src="packshot-owoce.webp" alt="Świeże owoce sezonowe" loading="lazy" width="600" height="740"></div><h3>Owoce sezonowe</h3></div>
-            <div class="prod-card reveal"><div class="prod-ph"><img src="packshot-kanapki.webp" alt="Kanapki do biura" loading="lazy" width="600" height="486"></div><h3>Kanapki i lunche</h3></div>
-            <div class="prod-card reveal"><div class="prod-ph"><img src="packshot-bakalie.webp" alt="Bakalie i orzechy" loading="lazy" width="600" height="824"></div><h3>Bakalie i orzechy</h3></div>
-            <div class="prod-card reveal"><div class="prod-ph"><img src="packshot-sniadaniowe.webp" alt="Zestawy śniadaniowe" loading="lazy" width="600" height="476"></div><h3>Zestawy śniadaniowe</h3></div>
-            <div class="prod-card reveal"><div class="prod-ph"><img src="packshot-soki.webp" alt="Soki tłoczone" loading="lazy" width="510" height="518"></div><h3>Soki i napoje</h3></div>
-            <div class="prod-card reveal"><div class="prod-ph"><img src="packshot-fingerfoods.webp" alt="Finger foods na spotkania" loading="lazy" width="600" height="571"></div><h3>Catering na spotkania</h3></div>
+        <div class="prod-marquee">
+            <div class="prod-track">
+                <div class="prod-card"><div class="prod-ph"><img src="packshot-owoce.webp" alt="Świeże owoce sezonowe" loading="lazy" width="600" height="740"></div><h3>Owoce sezonowe</h3></div>
+                <div class="prod-card"><div class="prod-ph"><img src="packshot-kanapki.webp" alt="Kanapki do biura" loading="lazy" width="600" height="486"></div><h3>Kanapki i lunche</h3></div>
+                <div class="prod-card"><div class="prod-ph"><img src="packshot-bakalie.webp" alt="Bakalie i orzechy" loading="lazy" width="600" height="824"></div><h3>Bakalie i orzechy</h3></div>
+                <div class="prod-card"><div class="prod-ph"><img src="packshot-sniadaniowe.webp" alt="Zestawy śniadaniowe" loading="lazy" width="600" height="476"></div><h3>Zestawy śniadaniowe</h3></div>
+                <div class="prod-card"><div class="prod-ph"><img src="packshot-soki.webp" alt="Soki tłoczone" loading="lazy" width="510" height="518"></div><h3>Soki i napoje</h3></div>
+                <div class="prod-card"><div class="prod-ph"><img src="packshot-fingerfoods.webp" alt="Finger foods na spotkania" loading="lazy" width="600" height="571"></div><h3>Catering na spotkania</h3></div>
+                <div class="prod-card" aria-hidden="true"><div class="prod-ph"><img src="packshot-owoce.webp" alt="Świeże owoce sezonowe" loading="lazy" width="600" height="740"></div><h3>Owoce sezonowe</h3></div>
+                <div class="prod-card" aria-hidden="true"><div class="prod-ph"><img src="packshot-kanapki.webp" alt="Kanapki do biura" loading="lazy" width="600" height="486"></div><h3>Kanapki i lunche</h3></div>
+                <div class="prod-card" aria-hidden="true"><div class="prod-ph"><img src="packshot-bakalie.webp" alt="Bakalie i orzechy" loading="lazy" width="600" height="824"></div><h3>Bakalie i orzechy</h3></div>
+                <div class="prod-card" aria-hidden="true"><div class="prod-ph"><img src="packshot-sniadaniowe.webp" alt="Zestawy śniadaniowe" loading="lazy" width="600" height="476"></div><h3>Zestawy śniadaniowe</h3></div>
+                <div class="prod-card" aria-hidden="true"><div class="prod-ph"><img src="packshot-soki.webp" alt="Soki tłoczone" loading="lazy" width="510" height="518"></div><h3>Soki i napoje</h3></div>
+                <div class="prod-card" aria-hidden="true"><div class="prod-ph"><img src="packshot-fingerfoods.webp" alt="Finger foods na spotkania" loading="lazy" width="600" height="571"></div><h3>Catering na spotkania</h3></div>
+            </div>
         </div>
             </div>
         </div>
@@ -1284,7 +1301,6 @@ html.pt-in body>:not(header) { animation: ptFadeIn 0.32s ease both; }
         { sel: '.sec-head p', typ: 'up' },
         { sel: '.sym', typ: 'up', kaskada: 90 },
         { sel: '.cure-card', typ: 'up', kaskada: 80 },
-        { sel: '.prod-card', typ: 'up', kaskada: 55 },
         { sel: '.assure-item', typ: 'up', kaskada: 70 },
         { sel: '.hero-box > div', typ: 'up', kaskada: 120 },
         { sel: '.form-art, .form-wrap, .form-after', typ: 'up' },
