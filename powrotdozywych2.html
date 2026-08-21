@@ -437,7 +437,7 @@ br.lam { display: none; }
 .mid-cta { text-align: center; margin: 54px 0 0; }
 /* Przycisk pod karuzela mial 26 px odstepu nad soba i 48 pod blokiem, przez co
    wisial przyklejony do produktow. Wyrownane do 76 nad i 56 pod. */
-.prod-sec .mid-cta { margin: 76px 0 8px; }
+.prod-sec .mid-cta { margin: 46px 0 8px; }
 .mid-cta-nota { display: block; margin-top: 12px; font-size: 13.5px; color: rgba(27,94,58,0.62); }
 .mid-cta .btn { position: relative; overflow: hidden; }
 /* Pewnosc przy decyzji tuz nad formularzem: dowod + proces w jednym pasie,
@@ -637,7 +637,7 @@ html.pt-in body>:not(header) { animation: ptFadeIn 0.32s ease both; }
         <!-- Landing kampanijny: naglowek okrojony do logo i jednego CTA,
              zeby nie wyprowadzac ruchu z lejka. -->
         <div class="nav-buttons">
-            <a href="#formularz" class="btn btn-red-solid js-do-formularza">Pozbądź się zombie <span class="cta-emo">🍏</span></a>
+            <a href="#oferta" class="btn btn-red-solid js-do-oferty">Pozbądź się zombie <span class="cta-emo">🍏</span></a>
         </div>
     </div>
 </header>
@@ -664,7 +664,7 @@ html.pt-in body>:not(header) { animation: ptFadeIn 0.32s ease both; }
                 <p class="lead"><b>68% pracuje mniej efektywnie,<br class="lam">gdy odczuwa głód.</b><br>Wrzesień po urlopach to moment,<br class="lam">w którym widać to najmocniej.</p>
                 <p class="zrodlo">Dane: raport „Nawyki żywieniowe Polaków w 2025 roku"</p>
                 <div class="cta-row">
-                    <a href="#formularz" class="btn-feed js-do-formularza">Nakarm zespół →</a>
+                    <a href="#oferta" class="btn-feed js-do-oferty">Nakarm zespół →</a>
                     <p class="scrub-hint"><i></i> Przewiń, żeby obudzić biuro</p>
                 </div>
             </div>
@@ -804,7 +804,7 @@ html.pt-in body>:not(header) { animation: ptFadeIn 0.32s ease both; }
     </div>
 </section>
 
-<section class="prod-sec">
+<section class="prod-sec" id="oferta">
     <div class="container">
         <div class="sec-head">
             <h2>Na to jest jedno <span class="fun">lekarstwo</span></h2>
@@ -1173,6 +1173,22 @@ html.pt-in body>:not(header) { animation: ptFadeIn 0.32s ease both; }
             e.preventDefault();
             unlock();
             doFormularza();
+        });
+    });
+
+    // Wariant B: kotwice z belki i z hero prowadza najpierw do oferty, a dopiero
+    // przycisk w ofercie idzie do formularza. Blokada scrolla w hero musi zostac
+    // zdjeta tak samo jak przy skoku do formularza, inaczej strona nie ruszy.
+    document.querySelectorAll('.js-do-oferty').forEach(function (a) {
+        a.addEventListener('click', function (e) {
+            e.preventDefault();
+            unlock();
+            var cel = document.getElementById('oferta');
+            if (!cel) return;
+            requestAnimationFrame(function () {
+                window.scrollTo({ top: Math.max(0, Math.round(cel.getBoundingClientRect().top + window.scrollY - 24)),
+                    behavior: reduce ? 'auto' : 'smooth' });
+            });
         });
     });
 
