@@ -1116,7 +1116,7 @@ html.pt-in body>:not(header) { animation: ptFadeIn 0.32s ease both; }
     var idx = 0;
     var acc = 0;
     var locked = false;
-    var STEP = 16;            // px delty na jedna klatke
+    var STEP = 24;            // px delty na jedna klatke (dluzszy przejazd sekwencji)
     var justUnlocked = 0;
     var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -1285,7 +1285,10 @@ html.pt-in body>:not(header) { animation: ptFadeIn 0.32s ease both; }
     function odtwarzajSam() {
         // Petla z przenikaniem: po dojsciu do konca kadr gasnie, wraca do klatki 0
         // i rozjasnia sie od nowa. Chodzi tylko wtedy, gdy hero jest w kadrze.
-        var CZAS = 6500, PRZERWA = 1100, PRZENIKANIE = 420;
+        // Cykl na telefonie ma trwac co najmniej 10 s. Ruch spowolniony do 8 s (12 kl./s),
+        // reszte dobieramy zatrzymaniem na ostatniej klatce, zeby nie schodzic z plynnoscia
+        // ponizej progu, przy ktorym sekwencja zaczyna sie klatkowac.
+        var CZAS = 8000, PRZERWA = 2600, PRZENIKANIE = 420;
         var start = null, gra = false, widoczne = false;
 
         function klatka(ts) {
