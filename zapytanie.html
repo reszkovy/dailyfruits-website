@@ -185,6 +185,22 @@ html.pt-in body>:not(header) { animation: ptFadeIn 0.32s ease both; }
             .logo-sub { display: inline-block !important; border-left: 1px solid rgba(255,255,255,0.25) !important; padding-left: 8px !important; margin: 0 !important; font-size: 8px !important; align-self: center !important; opacity: 0.6 !important; }
             .nav-links, .nav-trust { display: none !important; }
         }
+
+/* Film pod formularzem: jedyny dowod na tej stronie, ktory pokazuje realna dostawe.
+   Laduje sie dopiero po kliknieciu, zeby YouTube nie ciagnal skryptow przy kazdym wejsciu. */
+.po-formularzu { margin: clamp(44px, 5vw, 64px) 0 0; text-align: center; }
+.film { position: relative; display: block; width: 100%; max-width: 720px; margin: 0 auto;
+    aspect-ratio: 1200/688; border-radius: 20px; overflow: hidden; cursor: pointer;
+    background: var(--green-dark); border: none; padding: 0; }
+.film img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.film .graj { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; }
+.film .graj i { width: 74px; height: 74px; border-radius: 50%; background: var(--red); display: flex;
+    align-items: center; justify-content: center; box-shadow: 0 10px 30px rgba(0,0,0,.35);
+    transition: transform .3s cubic-bezier(0.16,1,0.3,1); }
+.film:hover .graj i { transform: scale(1.09); }
+.film .graj i::after { content: ''; border-left: 20px solid #fff; border-top: 12px solid transparent;
+    border-bottom: 12px solid transparent; margin-left: 5px; }
+@media (max-width: 768px) { .film .graj i { width: 58px; height: 58px; } }
 </style>
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://dailyfruits.pl/zapytanie">
@@ -280,6 +296,13 @@ html.pt-in body>:not(header) { animation: ptFadeIn 0.32s ease both; }
                     </div>
                 </div>
             </div>
+
+        <div class="po-formularzu reveal">
+            <button class="film" data-yt="hAjpVG7G8LM" type="button" aria-label="Odtwórz film o dostawach DailyFruits">
+                <img src="film-dostawy-kadr-v2.webp" alt="Kadr z filmu: pracownik DailyFruits ze skrzynka owocow" width="1200" height="688" loading="lazy">
+                <span class="graj"><i></i></span>
+            </button>
+        </div>
         </div>
     </div>
 </section>
@@ -425,6 +448,19 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 </script>
 
+<script>
+// Film laduje sie dopiero po kliknieciu.
+document.querySelectorAll('.film[data-yt]').forEach(function (kafel) {
+    kafel.addEventListener('click', function () {
+        var id = this.getAttribute('data-yt');
+        if (!id) return;
+        this.innerHTML = '<iframe src="https://www.youtube-nocookie.com/embed/' + id +
+            '?autoplay=1&rel=0" style="position:absolute;inset:0;width:100%;height:100%;border:0;" ' +
+            'allow="autoplay;encrypted-media" allowfullscreen title="Film o dostawach DailyFruits"></iframe>';
+        if (window.dataLayer) window.dataLayer.push({ event: 'video_play', video_id: id, page: location.pathname });
+    }, { once: true });
+});
+</script>
 <script defer src="transition.js"></script>
 <script src="mn.js?v=4"></script>
   <script defer src="/typo.js"></script>
