@@ -189,6 +189,13 @@ html.pt-in body>:not(header) { animation: ptFadeIn 0.32s ease both; }
 /* Film pod formularzem: jedyny dowod na tej stronie, ktory pokazuje realna dostawe.
    Laduje sie dopiero po kliknieciu, zeby YouTube nie ciagnal skryptow przy kazdym wejsciu. */
 .po-formularzu { margin: clamp(44px, 5vw, 64px) 0 0; text-align: center; grid-column: 1 / -1; }
+
+/* ══ FILM POD FORMULARZEM: WYLACZONY ══════════════════════════════════════
+   Zeby go wlaczyc, skasuj JEDNA linijke ponizej (te z display:none) i wypchnij zmiane.
+   Markup i skrypt zostaja na miejscu, wiec nie trzeba nic wklejac od nowa.
+   Wylaczone 22.08.2026 na prosbe Reszka. */
+.po-formularzu { display: none; }
+/* ═════════════════════════════════════════════════════════════════════════ */
 .film { position: relative; display: block; width: 100%; max-width: 720px; margin: 0 auto;
     aspect-ratio: 1200/688; border-radius: 20px; overflow: hidden; cursor: pointer;
     background: var(--green-dark); border: none; padding: 0; }
