@@ -140,6 +140,11 @@
       "permanent": true
     },
     {
+      "source": "/powrot-do-zywych",
+      "destination": "/powrotdozywych",
+      "permanent": true
+    },
+    {
       "source": "/powrot-do-zywych-2",
       "destination": "/powrotdozywych",
       "permanent": true
