@@ -638,8 +638,12 @@ html.pt-in body>:not(header) { animation: ptFadeIn 0.32s ease both; }
     background: linear-gradient(to top, rgba(10,40,24,.86), transparent); }
 @media (max-width: 720px) { .film .graj i { width: 58px; height: 58px; } }
 
-.sec-head-dopisek { margin-top: 14px; font-size: 15.5px; line-height: 1.6; }
-.sec-head-dopisek b { font-weight: 800; }
+
+.rozwiazanie { max-width: 60ch; margin: 22px auto 0; text-align: left; }
+.rozwiazanie p { font-size: 16.5px; line-height: 1.62; margin: 0 0 12px; }
+.rozwiazanie p:last-child { margin-bottom: 0; }
+.rozwiazanie b { font-weight: 800; }
+.rozwiazanie .mocne { font-weight: 800; color: var(--green-dark); }
 </style>
 </head>
 <body>
@@ -806,9 +810,12 @@ html.pt-in body>:not(header) { animation: ptFadeIn 0.32s ease both; }
 <section class="prod-sec">
     <div class="container">
         <div class="sec-head">
-            <h2>Energia do pracy nie bierze się <span class="fun">znikąd</span></h2>
-            <p>Kawa pomaga złapać rytm. Dobre jedzenie pozwala go utrzymać. Dlatego zamiast kolejnej jednorazowej akcji wellbeingowej zadbaj o coś, z czego zespół może korzystać każdego dnia.</p>
-            <p class="sec-head-dopisek">DailyFruits regularnie uzupełnia firmową kuchnię w <b>świeże owoce, kanapki, przekąski, soki i kawę</b>. Wszystko po to, żeby pracownicy mieli pod ręką to, czego potrzebują w ciągu dnia.<br><b>Bez dodatkowej pracy po stronie HR czy Office. Bez kilku dostawców. Regularnie i pod jednym zamówieniem.</b></p>
+            <h2><span class="fun">Energia</span> do pracy nie bierze się znikąd</h2>
+            <p>Kawa pomaga złapać rytm. Dobre jedzenie pozwala go utrzymać.</p>
+        </div>
+        <div class="rozwiazanie">
+            <p>Zamiast kolejnej jednorazowej akcji wellbeingowej zadbaj o coś, z czego zespół może korzystać każdego dnia. DailyFruits regularnie uzupełnia firmową kuchnię w <b>świeże owoce, kanapki, przekąski, soki i kawę</b>, żeby pracownicy mieli pod ręką to, czego potrzebują w ciągu dnia.</p>
+            <p class="mocne">Bez dodatkowej pracy po stronie HR czy Office. Bez kilku dostawców. Regularnie i pod jednym zamówieniem.</p>
         </div>
         <div class="hero-box reveal">
             <div><img src="box-premium.webp" alt="Skrzynka DailyFruits pełna świeżych owoców" width="1200" height="800" loading="lazy"></div>
