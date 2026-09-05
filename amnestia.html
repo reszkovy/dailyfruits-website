@@ -1112,6 +1112,67 @@ body.kamera .sym::after, body.kamera .cure-card::after, body.kamera .aparat::aft
     .cam-gora { top: 18px; }
 }
 
+
+/* ---------- CELOWNIK MONITORA (idiom ey3k0n): kursor systemowy znika,
+   za wskaznikiem jedzie celownik z opoznieniem 0.22; na CTA namierza
+   (lock) i przybiera ksztalt celu. Tylko pointer:fine i bez reduced-motion.
+   Paleta DailyFruits: kremowy pierscien, limonkowy punkt, koral przy klikniu. ---------- */
+@media (pointer:fine) and (prefers-reduced-motion:no-preference) {
+    html.ret-on, html.ret-on a, html.ret-on button, html.ret-on [role=button], html.ret-on summary, html.ret-on label { cursor: none; }
+    html.ret-on input, html.ret-on textarea, html.ret-on select { cursor: auto; }
+}
+.ret { position: fixed; left: 0; top: 0; z-index: 9994; pointer-events: none; width: 38px; height: 38px;
+    margin: -19px 0 0 -19px; border-radius: 50%; opacity: 0;
+    transition: opacity .4s var(--luk), width .32s var(--luk), height .32s var(--luk), margin .32s var(--luk), border-radius .32s var(--luk); }
+.ret.on { opacity: 1; }
+.ret::before { content: ""; position: absolute; inset: 0; border: 1px solid rgba(238,243,234,.78); border-radius: inherit;
+    box-shadow: 0 0 14px rgba(238,243,234,.3), inset 0 0 14px rgba(238,243,234,.1); }
+.ret::after { content: ""; position: absolute; left: 50%; top: 50%; width: 4px; height: 4px; margin: -2px 0 0 -2px;
+    border-radius: 50%; background: var(--lime); box-shadow: 0 0 8px rgba(141,198,63,.95); }
+.ret i { position: absolute; background: rgba(238,243,234,.78); }
+.ret i:nth-child(1) { left: 50%; top: -6px; width: 1px; height: 8px; margin-left: -.5px; }
+.ret i:nth-child(2) { left: 50%; bottom: -6px; width: 1px; height: 8px; margin-left: -.5px; }
+.ret i:nth-child(3) { top: 50%; left: -6px; height: 1px; width: 8px; margin-top: -.5px; }
+.ret i:nth-child(4) { top: 50%; right: -6px; height: 1px; width: 8px; margin-top: -.5px; }
+.ret.lock { border-radius: 14px; }
+.ret.lock::after { opacity: 0; }
+.ret.lock::before { border-color: var(--lime); box-shadow: 0 0 22px rgba(141,198,63,.4), inset 0 0 18px rgba(141,198,63,.08); }
+.ret.lock i { background: var(--lime); }
+.ret.down::before { border-color: #FF7A6B; box-shadow: 0 0 18px rgba(255,122,107,.55); }
+
+
+/* ---------- STARY MONITORING NA CALEJ STRONIE ----------
+   Skanlinie i winieta jako fixed overlay, pasmo trackingu przesuwajace sie
+   co kilka sekund, dwa rozdarcia obrazu (backdrop-filter na waskim pasku,
+   wiec to jest prawdziwe znieksztalcenie tresci, nie rysunek), migotanie.
+   Wszystko pointer-events none, pod ramka (9995) i nad trescia.
+   Reduced-motion: pasma i migotanie stoja, zostaja skanlinie i winieta. */
+body.kamera::before { content: ""; position: fixed; inset: 0; z-index: 9988; pointer-events: none;
+    background:
+        repeating-linear-gradient(to bottom, rgba(0,0,0,0) 0 2px, rgba(0,0,0,.13) 2px 3px),
+        radial-gradient(120% 90% at 50% 50%, transparent 55%, rgba(0,0,0,.55) 100%); }
+.vhs { position: fixed; inset: 0; z-index: 9989; pointer-events: none; overflow: hidden; }
+.vhs i { position: absolute; left: 0; right: 0; display: block; }
+.vhs-roll { height: 90px; top: -12%;
+    background: linear-gradient(to bottom, transparent, rgba(238,243,234,.05) 40%, rgba(238,243,234,.09) 50%, rgba(238,243,234,.05) 60%, transparent);
+    mix-blend-mode: screen; }
+.vhs-tear { height: 14px; top: 38%; opacity: 0;
+    backdrop-filter: contrast(1.5) saturate(1.6) hue-rotate(18deg); -webkit-backdrop-filter: contrast(1.5) saturate(1.6) hue-rotate(18deg);
+    transform: translateX(7px); box-shadow: 0 0 0 1px rgba(255,122,107,.12); }
+.vhs-tear.dwa { height: 6px; top: 71%; transform: translateX(-9px); }
+.vhs-flicker { inset: 0; background: rgba(0,0,0,.05); opacity: 0; }
+@media (prefers-reduced-motion: no-preference) {
+    .vhs-roll { animation: vhsRoll 9s linear infinite; }
+    .vhs-tear { animation: vhsTear 6.3s steps(1,end) infinite; }
+    .vhs-tear.dwa { animation: vhsTear2 8.9s steps(1,end) infinite; }
+    .vhs-flicker { animation: vhsFlick 4.1s steps(1,end) infinite; }
+    @keyframes vhsRoll { 0% { transform: translateY(0); } 78% { transform: translateY(0); } 100% { transform: translateY(125vh); } }
+    @keyframes vhsTear { 0%,100% { opacity: 0; } 41% { opacity: 1; top: 38%; } 43% { opacity: 0; } 77% { opacity: 1; top: 62%; } 78.5% { opacity: 0; } }
+    @keyframes vhsTear2 { 0%,100% { opacity: 0; } 23% { opacity: 1; top: 71%; } 24% { opacity: 0; } 66% { opacity: 1; top: 18%; } 66.8% { opacity: 0; } }
+    @keyframes vhsFlick { 0%,100% { opacity: 0; } 17% { opacity: 1; } 17.6% { opacity: 0; } 58% { opacity: 1; } 58.4% { opacity: 0; } 81% { opacity: .6; } 81.3% { opacity: 0; } }
+}
+@media (forced-colors: active) { body.kamera::before, .vhs { display: none; } }
+
 </style>
 </head>
 <body class="ciemna kamera">
@@ -1128,6 +1189,7 @@ body.kamera .sym::after, body.kamera .cure-card::after, body.kamera .aparat::aft
     </div>
     <span class="cam-krzyz"></span>
 </div>
+<div class="vhs" aria-hidden="true"><i class="vhs-roll"></i><i class="vhs-tear"></i><i class="vhs-tear dwa"></i><i class="vhs-flicker"></i></div>
 <div class="cam-rama" aria-hidden="true">
     <span class="cam-wpinka gora">DAILYFRUITS · PODGLĄD NA ŻYWO</span>
     <span class="cam-wpinka dol">SPRAWA DF/2026/12 · <b id="cam-zegar">--:--</b> CET</span>
@@ -1636,6 +1698,36 @@ body.kamera .sym::after, body.kamera .cure-card::after, body.kamera .aparat::aft
         if (zg) zg.textContent = p2(n.getHours()) + ":" + p2(n.getMinutes());
     }
     tick(); setInterval(tick, cicho ? 1000 : 40);
+})();
+</script>
+<script>
+/* Celownik Monitora, mechanika 1:1 z ey3k0n: lerp 0.22 za wskaznikiem,
+   lock na CTA i kartach (celownik przyjmuje rozmiar celu), scale przy
+   klikniu. Nie tworzy sie na dotyku ani przy reduced-motion. */
+(function () {
+    var fine = matchMedia('(pointer:fine)').matches, motion = !matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (!fine || !motion || document.querySelector('.ret')) return;
+    var ret = document.createElement('div'); ret.className = 'ret'; ret.innerHTML = '<i></i><i></i><i></i><i></i>';
+    document.body.appendChild(ret);
+    document.documentElement.classList.add('ret-on');
+    var tx = innerWidth / 2, ty = innerHeight / 2, x = tx, y = ty, lock = null, raf = null, shown = false;
+    function frame() {
+        if (lock) {
+            var r = lock.getBoundingClientRect(); tx = r.left + r.width / 2; ty = r.top + r.height / 2;
+            var lw = Math.min(r.width + 14, innerWidth - 24), lh = Math.min(r.height + 14, 320);
+            ret.style.width = lw + 'px'; ret.style.height = lh + 'px'; ret.style.marginLeft = -lw / 2 + 'px'; ret.style.marginTop = -lh / 2 + 'px';
+        }
+        x += (tx - x) * 0.22; y += (ty - y) * 0.22;
+        ret.style.transform = 'translate3d(' + x + 'px,' + y + 'px,0)' + (ret.classList.contains('down') ? ' scale(.86)' : '');
+        raf = requestAnimationFrame(frame);
+    }
+    addEventListener('pointermove', function (e) { tx = e.clientX; ty = e.clientY; if (!shown) { shown = true; ret.classList.add('on'); x = tx; y = ty; if (!raf) frame(); } }, { passive: true });
+    addEventListener('pointerdown', function () { ret.classList.add('down'); }, { passive: true });
+    addEventListener('pointerup', function () { ret.classList.remove('down'); }, { passive: true });
+    document.addEventListener('mouseleave', function () { ret.classList.remove('on'); shown = false; });
+    var SEL = 'a[href], .btn, .btn-feed, .cure-card, .sym, .typ, .aparat-wpis';
+    document.addEventListener('pointerover', function (e) { var t = e.target.closest(SEL); if (t && t !== lock) { lock = t; ret.classList.add('lock'); } });
+    document.addEventListener('pointerout', function (e) { var t = e.target.closest(SEL); if (t && t === lock && !t.contains(e.relatedTarget)) { lock = null; ret.classList.remove('lock'); ret.style.width = ret.style.height = ret.style.marginLeft = ret.style.marginTop = ''; } });
 })();
 </script>
 <script src="track.js?v=2" defer></script>
