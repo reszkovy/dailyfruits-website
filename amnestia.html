@@ -1100,9 +1100,34 @@ body.kamera .sym::after, body.kamera .cure-card::after, body.kamera .aparat::aft
     .hud-tag::before, .hud-tag::after { width: 14px; }
 }
 
+
+/* --- HUD przyczepiony do calego scrolla: to jest kamera, nie ozdoba hero.
+   Fixed w obrysie ramki, nad ziarnem (9990), pod ramka (9995).
+   Gorny rzad zjezdza pod belke, zeby nie wchodzic w logo i CTA. --- */
+.cam-hud { position: fixed !important; inset: var(--cam-inset) !important; height: auto !important; z-index: 9993 !important; }
+.cam-gora { top: 92px; }
+.cam-dol { bottom: 30px; }
+@media (max-width: 720px) {
+    .cam-hud { top: var(--cam-inset) !important; }
+    .cam-gora { top: 18px; }
+}
+
 </style>
 </head>
 <body class="ciemna kamera">
+<div class="cam-hud" aria-hidden="true">
+    <span class="cam-rog tl"></span><span class="cam-rog tr"></span><span class="cam-rog bl"></span><span class="cam-rog br"></span>
+    <div class="cam-gora">
+        <span class="cam-rec"><i></i>REC</span>
+        <span class="cam-kanal">CAM 02 · MAGAZYN B · WYDZIAŁ ODZYSKIWANIA BUDŻETÓW</span>
+        <span class="cam-tc"><b id="cam-tc">00:00:00:00</b><em id="cam-data">--.--.----</em></span>
+    </div>
+    <div class="cam-dol">
+        <span class="cam-stan"><i></i>STAN: BUDŻET WYGASA · <b id="cam-dni">—</b> DNI DO TERMINU</span>
+        <span class="cam-sygnal"><i></i><i></i><i></i><i></i><i></i></span>
+    </div>
+    <span class="cam-krzyz"></span>
+</div>
 <div class="cam-rama" aria-hidden="true">
     <span class="cam-wpinka gora">DAILYFRUITS · PODGLĄD NA ŻYWO</span>
     <span class="cam-wpinka dol">SPRAWA DF/2026/12 · <b id="cam-zegar">--:--</b> CET</span>
@@ -1137,19 +1162,6 @@ body.kamera .sym::after, body.kamera .cure-card::after, body.kamera .aparat::aft
             <img id="heroKadr" src="amnestia-lina.webp?v=1" alt="Postać w czerni opuszcza się na stalowej lince z sufitu ciemnego skarbca tuż nad skrzynką świeżych owoców w snopie światła" width="1600" height="900" fetchpriority="high" decoding="async">
         </div>
         <div class="scrub-veil" aria-hidden="true"></div>
-        <div class="cam-hud" aria-hidden="true">
-            <span class="cam-rog tl"></span><span class="cam-rog tr"></span><span class="cam-rog bl"></span><span class="cam-rog br"></span>
-            <div class="cam-gora">
-                <span class="cam-rec"><i></i>REC</span>
-                <span class="cam-kanal">CAM 02 · MAGAZYN B · WYDZIAŁ ODZYSKIWANIA BUDŻETÓW</span>
-                <span class="cam-tc"><b id="cam-tc">00:00:00:00</b><em id="cam-data">--.--.----</em></span>
-            </div>
-            <div class="cam-dol">
-                <span class="cam-stan"><i></i>STAN: BUDŻET WYGASA · <b id="cam-dni">—</b> DNI DO TERMINU</span>
-                <span class="cam-sygnal"><i></i><i></i><i></i><i></i><i></i></span>
-            </div>
-            <span class="cam-krzyz"></span>
-        </div>
         <div class="scrub-grid">
             <div class="scrub-copy">
                 <h1>
