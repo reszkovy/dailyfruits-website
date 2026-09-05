@@ -1284,6 +1284,39 @@ body.ciemna .ai-badge { font-size: 12px; line-height: 1.4; max-width: calc(100vw
 
 @media (max-width: 720px) { .hud-tag { max-width: 100%; letter-spacing: .12em; font-size: 9px; } .hud-tag::before, .hud-tag::after { width: 10px; } }
 
+
+/* ---------- KONSOLA OPERATORA (desktop) ----------
+   Dol-lewo, dwa rzedy: REC · CAM 02 · MAGAZYN B, pod nim stan budzetu.
+   Gora-prawo: sygnal + timecode + data.
+   Dol-prawo: przycisk "Odzyskaj budzet" jako element HUD, z narożnikami
+   i podpisem w mono. Na telefonie zostaje sticky pasek z szablonu. */
+@media (min-width: 721px) {
+    body.ciemna .cam-gora { top: auto; bottom: 62px; left: var(--f4); right: auto; }
+    body.ciemna .cam-dol { bottom: var(--f4); left: var(--f4); right: auto; }
+    body.ciemna .cam-prawy { position: fixed; top: calc(var(--cam-inset) + var(--f4)); right: calc(var(--cam-inset) + var(--f4)); margin: 0; }
+    body.ciemna header .nav-buttons { top: auto !important; bottom: calc(var(--cam-inset) + var(--f4)) !important;
+        right: calc(var(--cam-inset) + var(--f4)) !important; padding: 18px 16px 14px; }
+    body.ciemna header .nav-buttons::before { content: "WEZWIJ EKIPĘ · OPERATOR"; position: absolute; left: 16px; top: -2px;
+        font-family: var(--mono); font-size: 9.5px; letter-spacing: .24em; text-transform: uppercase; color: var(--lime); white-space: nowrap; }
+    body.ciemna header .nav-buttons::after { content: ""; position: absolute; inset: 8px 0 0 0; pointer-events: none;
+        background:
+            linear-gradient(rgba(238,243,234,.7),rgba(238,243,234,.7)) left top/14px 1.5px no-repeat,
+            linear-gradient(rgba(238,243,234,.7),rgba(238,243,234,.7)) left top/1.5px 14px no-repeat,
+            linear-gradient(rgba(238,243,234,.7),rgba(238,243,234,.7)) right bottom/14px 1.5px no-repeat,
+            linear-gradient(rgba(238,243,234,.7),rgba(238,243,234,.7)) right bottom/1.5px 14px no-repeat; }
+    body.ciemna .hero-offer { bottom: 124px; }
+}
+
+
+/* narozniki blizej rogow ramki, zeby nie zachodzily na dolne rzedy HUD i przycisk */
+@media (min-width: 721px) {
+    body.ciemna .cam-rog { width: 18px; height: 18px; }
+    body.ciemna .cam-rog.tl, body.ciemna .cam-rog.tr { top: 10px; }
+    body.ciemna .cam-rog.bl, body.ciemna .cam-rog.br { bottom: 10px; }
+    body.ciemna .cam-rog.tl, body.ciemna .cam-rog.bl { left: 10px; }
+    body.ciemna .cam-rog.tr, body.ciemna .cam-rog.br { right: 10px; }
+}
+
 </style>
 </head>
 <body class="ciemna kamera">
