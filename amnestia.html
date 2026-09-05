@@ -1555,7 +1555,8 @@ body.ciemna .ai-badge { position: fixed; top: calc(var(--cam-inset) + 10px); rig
     border: 1px solid rgba(238,243,234,.18); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
     box-sizing: border-box; white-space: normal; }
 @media (min-width: 721px) {
-    body.ciemna .ai-badge { max-width: 300px; font-size: 10.5px; padding: 5px 10px; top: calc(var(--cam-inset) + 12px); right: calc(var(--cam-inset) + 34px); }
+    /* badge przyklejony do gory strony, przewija sie z nia (absolute), nie wisi na ekranie */
+    body.ciemna .ai-badge { position: absolute; max-width: 300px; font-size: 10.5px; padding: 5px 10px; top: calc(var(--cam-inset) + 12px); right: calc(var(--cam-inset) + 34px); z-index: 9992; }
     body.ciemna .cam-prawy { top: calc(var(--cam-inset) + 48px); }
 }
 @media (max-width: 720px) {
@@ -1570,7 +1571,7 @@ body.ciemna .ai-badge { position: fixed; top: calc(var(--cam-inset) + 10px); rig
    Badge: absolute (idzie ze strona), nowrap, 9 px, w prawym gornym rogu obok logo.
    Dolne narozniki kadru siedzialy w rogach sticky CTA - na telefonie znikaja. */
 @media (max-width: 720px) {
-    body.ciemna .ai-badge { position: absolute; top: 14px; right: 12px; left: auto; z-index: 121;
+    body.ciemna .ai-badge { position: absolute; top: 14px; right: 12px; left: auto; z-index: 9992;
         white-space: nowrap; max-width: none; font-size: 9px; letter-spacing: 0; line-height: 1.2;
         padding: 4px 8px; border-radius: 5px; backdrop-filter: none; -webkit-backdrop-filter: none;
         background: rgba(7,16,12,.78); }
