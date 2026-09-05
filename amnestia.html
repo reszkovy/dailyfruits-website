@@ -1295,10 +1295,10 @@ body.ciemna .ai-badge { font-size: 12px; line-height: 1.4; max-width: calc(100vw
     body.ciemna .cam-dol { bottom: var(--f4); left: var(--f4); right: auto; }
     body.ciemna .cam-prawy { position: fixed; top: calc(var(--cam-inset) + var(--f4)); right: calc(var(--cam-inset) + var(--f4)); margin: 0; }
     body.ciemna header .nav-buttons { top: auto !important; bottom: calc(var(--cam-inset) + var(--f4)) !important;
-        right: calc(var(--cam-inset) + var(--f4)) !important; padding: 18px 16px 14px; }
-    body.ciemna header .nav-buttons::before { content: "WEZWIJ EKIPĘ · OPERATOR"; position: absolute; left: 16px; top: -2px;
+        right: calc(var(--cam-inset) + var(--f4)) !important; padding: 12px 14px; }
+    body.ciemna header .nav-buttons::before { content: none; position: absolute; left: 16px; top: -2px;
         font-family: var(--mono); font-size: 9.5px; letter-spacing: .24em; text-transform: uppercase; color: var(--lime); white-space: nowrap; }
-    body.ciemna header .nav-buttons::after { content: ""; position: absolute; inset: 8px 0 0 0; pointer-events: none;
+    body.ciemna header .nav-buttons::after { content: ""; position: absolute; inset: 0; pointer-events: none;
         background:
             linear-gradient(rgba(238,243,234,.7),rgba(238,243,234,.7)) left top/14px 1.5px no-repeat,
             linear-gradient(rgba(238,243,234,.7),rgba(238,243,234,.7)) left top/1.5px 14px no-repeat,
@@ -1424,7 +1424,7 @@ body.ciemna .sposoby .cure-top img { width: 40px; height: 40px; flex: none; }
             <div class="sym reveal">
                 <div class="sym-top"><span class="n" aria-hidden="true">01</span><img src="icons/icon-clock-afternoon.webp" alt="" loading="lazy" width="54" height="54"></div>
                 <div class="b">
-                    <h3>Godzina zero jest wcześniej</h3>
+                    <h3>Godzina zero wypada wcześniej</h3>
                     <p>Nie 31 grudnia. Faktura musi wejść przed terminem, inaczej cały ładunek przechodzi na przyszły rok.</p>
                 </div>
             </div>
@@ -1439,7 +1439,7 @@ body.ciemna .sposoby .cure-top img { width: 40px; height: 40px; flex: none; }
                 <div class="sym-top"><span class="n" aria-hidden="true">03</span><img src="icons/icon-crate-fruit.webp" alt="" loading="lazy" width="54" height="54"></div>
                 <div class="b">
                     <h3>Da się to jeszcze odzyskać</h3>
-                    <p>Cztery drogi wyjścia, każda fakturowana w tym roku. Ekipa wybiera tę, która pasuje do budżetu, nie do katalogu.</p>
+                    <p>Cztery drogi wyjścia, każda z fakturą w tym roku. Wystarczy wybrać jedną.</p>
                 </div>
             </div>
         </div>
@@ -1532,7 +1532,7 @@ body.ciemna .sposoby .cure-top img { width: 40px; height: 40px; flex: none; }
         <div class="sec-head">
             <p class="hud-tag">ODCZYT 03 · PLAN</p>
             <h2>Cztery drogi, jeden <span class="fun">termin</span></h2>
-            <p>Każdy z nich fakturujemy w tym roku. Wybieracie ten, który pasuje do budżetu, a nie do katalogu.</p>
+            <p>Każdą fakturujemy w tym roku. Wybieracie tę, która pasuje do budżetu, nie do katalogu.</p>
         </div>
         <div class="cure-grid">
             <div class="cure-card reveal wyrozniona">
@@ -1556,7 +1556,7 @@ body.ciemna .sposoby .cure-top img { width: 40px; height: 40px; flex: none; }
                 <p>Zestawy dla zespołu i dla dzieci pracowników, w brandowanych opakowaniach, do biura albo do domu.</p>
             </div>
         </div>
-        <p class="mid-cta"><a href="#formularz" class="btn btn-red-solid btn-arrow js-do-formularza">Wybierzcie drogę, resztę policzymy</a></p>
+        <p class="mid-cta"><a href="#formularz" class="btn btn-red-solid btn-arrow js-do-formularza">Wybierz drogę, resztę policzymy</a></p>
     </div>
 </section>
 
@@ -1584,14 +1584,14 @@ body.ciemna .sposoby .cure-top img { width: 40px; height: 40px; flex: none; }
                 <p>Owoce, warzywa, kanapki, kawa, soki - wszystko w jednej dostawie, od jednego partnera. Ustalamy razem, co ma przyjeżdżać, jak często i w jakie dni.</p>
                 <ul>
                     <li>Owoce, kawa, kanapki, soki - wszystko z jednego miejsca</li>
-                    <li>Subskrypcja, nie kontrakt. Zmień skład i częstotliwość, kiedy chcesz</li>
+                    <li>Subskrypcja, nie kontrakt. Skład i częstotliwość zmieniacie, kiedy chcecie</li>
                     <li>Zero kar za zmianę lub rezygnację z abonamentu</li>
                     <li>Dostarczamy w największych miastach, ale nie tylko</li>
                     <li>Jedna faktura miesięcznie za wszystko</li>
                 </ul>
             </div>
             <div class="hero-box-foot">
-                <p class="foot-lead">Co może być w Twojej dostawie:</p>
+                <p class="foot-lead">Co może być w Waszej dostawie:</p>
         <div class="prod-marquee">
             <div class="prod-track">
                 <div class="prod-card"><div class="prod-ph"><img src="packshot-owoce.webp" alt="Świeże owoce sezonowe" loading="lazy" width="600" height="740"></div><h3>Owoce sezonowe</h3></div>
@@ -1677,7 +1677,7 @@ body.ciemna .sposoby .cure-top img { width: 40px; height: 40px; flex: none; }
                     <p class="wstep">Nie jednorazowy skok na koniec roku. Stałą dostawę, opłaconą z budżetu, który i tak by zniknął.</p>
                     <ul>
                         <li><i>1</i><div><b>Skrzynka, która stoi w kuchni</b><span>Owoce, przekąski, kanapki, soki. Przyjeżdża regularnie, a nie raz na próbę.</span></div></li>
-                        <li><i>2</i><div><b>Wy podajecie liczbę osób</b><span>Skład i wielkość dobieramy my. Nie musicie nic wybierać z katalogu.</span></div></li>
+                        <li><i>2</i><div><b>Podajecie liczbę osób</b><span>Skład i wielkość dobieramy my. Nie musicie nic wybierać z katalogu.</span></div></li>
                         <li><i>3</i><div><b>Abonament, nie kontrakt</b><span>Zmiana składu, częstotliwości albo rezygnacja bez kar i okresów wypowiedzenia.</span></div></li>
                         <li><i>4</i><div><b>Jedna faktura miesięcznie</b><span>Za wszystko razem, niezależnie od liczby dostaw.</span></div></li>
                         <li><i>5</i><div><b>Jedno zamówienie zamiast kilku dostawców</b><span>Owoce, kanapki, przekąski, soki i kawa w jednej dostawie i na jednej fakturze.</span></div></li>
