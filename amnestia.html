@@ -758,6 +758,20 @@ body.ciemna .form-kontakt span { color: var(--przyciszony); }
 body.ciemna .karuzela-info { color: var(--przyciszony); }
 body.ciemna .ai-badge { background: var(--plyta2); color: var(--przyciszony); }
 
+
+/* ---------- HEADER NA CIEMNYM KADRZE ----------
+   Jak na /powrotdozywych: jasne napisy z miekkim cieniem zamiast przyciemnienia,
+   i zadnego rozjasniania kadru pod belka. */
+body.ciemna header .logo-sub { color: var(--cream) !important; opacity: .8;
+    text-shadow: 0 1px 8px rgba(0,0,0,.45) !important; }
+body.ciemna header .logo-img { filter: drop-shadow(0 2px 10px rgba(0,0,0,.4)); }
+body.ciemna header .nav-links a { color: var(--cream); text-shadow: 0 1px 10px rgba(0,0,0,.35); }
+body.ciemna header .nav-trust { color: rgba(255,249,224,.78); text-shadow: 0 1px 10px rgba(0,0,0,.35); }
+body.ciemna .scrub-sticky::before { display: none !important; }
+/* mobile: szablon rozjasnial gorne 30% kadru pod ciemna typografie.
+   U nas typografia jest jasna, wiec rozjasnienie tylko zjadalo zdjecie. */
+body.ciemna .scrub-stage::after { display: none !important; }
+
 </style>
 </head>
 <body class="ciemna">
