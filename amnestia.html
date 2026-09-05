@@ -79,7 +79,7 @@ gtag('config', 'G-G9SCYSFC36');
     <link rel="icon" type="image/png" href="favicon_.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preload" as="image" href="amnestia-lina.webp?v=1" fetchpriority="high">
+    <link rel="preload" as="image" href="frames-amnestia/a0000.webp?v=1" fetchpriority="high">
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700;900&family=Share+Tech+Mono&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
     <noscript><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700;900&display=swap" rel="stylesheet"></noscript>
     <link rel="stylesheet" href="shared.css?v=13">
@@ -1118,7 +1118,7 @@ body.kamera .sym::after, body.kamera .cure-card::after, body.kamera .aparat::aft
    (lock) i przybiera ksztalt celu. Tylko pointer:fine i bez reduced-motion.
    Paleta DailyFruits: kremowy pierscien, limonkowy punkt, koral przy klikniu. ---------- */
 @media (pointer:fine) and (prefers-reduced-motion:no-preference) {
-    html.ret-on, html.ret-on a, html.ret-on button, html.ret-on [role=button], html.ret-on summary, html.ret-on label { cursor: none; }
+    html.ret-on a, html.ret-on button, html.ret-on [role=button], html.ret-on summary, html.ret-on .cure-card, html.ret-on .sym, html.ret-on .typ { cursor: none; }
     html.ret-on input, html.ret-on textarea, html.ret-on select { cursor: auto; }
 }
 .ret { position: fixed; left: 0; top: 0; z-index: 9994; pointer-events: none; width: 38px; height: 38px;
@@ -1509,6 +1509,23 @@ body.ciemna .aparat.kalk .aparat-stopa { color: rgba(238,243,234,.45); margin-to
 
 body.ciemna .kalkulator .aparat { margin-top: 0; }
 body.ciemna .kalkulator .mid-cta { margin-top: var(--f4); }
+
+/* ---------- SCRUB: canvas nad kadrem zapasowym, loader w tonacji strony ---------- */
+#zCanvas { background: #0d120e; z-index: 2; }
+#heroKadr { z-index: 1; animation: none !important; transform: scale(1.32) translateX(11%); filter: none !important; }
+html.bez-klatek .scrub-stage { display: block !important; }
+html.bez-klatek #zCanvas { display: none; }
+#zLoader { background: #07100C; }
+#zLoader .zl-tor { background: rgba(238,243,234,.14); }
+#zLoader .zl-pct { color: rgba(238,243,234,.7); }
+#zLoader .zl-logo { filter: drop-shadow(0 0 18px rgba(141,198,63,.35)); }
+body.kamera #zLoader { z-index: 9996; }
+
+
+.kalk-klawisze { grid-template-columns: repeat(4, minmax(0,1fr)); }
+@media (max-width: 620px) { .kalk-klawisze { grid-template-columns: repeat(2, minmax(0,1fr)); } }
+body.ciemna .aparat.kalk .aparat-pola { grid-template-columns: repeat(3, minmax(0,1fr)); }
+@media (max-width: 720px) { body.ciemna .aparat.kalk .aparat-pola { grid-template-columns: 1fr; } }
 </style>
 </head>
 <body class="ciemna kamera">
@@ -1562,10 +1579,16 @@ body.ciemna .kalkulator .mid-cta { margin-top: var(--f4); }
 </header>
 
 
+<div id="zLoader" aria-hidden="true">
+    <img class="zl-logo" src="fruitttt.svg" alt="DailyFruits" width="72" height="72">
+    <span class="zl-tor"><span class="zl-fill" id="zlFill"></span></span>
+    <span class="zl-pct" id="zlPct">0%</span>
+</div>
 <!-- HERO ZE SCROLL-SCRUBEM -->
 <section class="scrub" id="scrub">
     <div class="scrub-sticky">
         <div class="scrub-stage">
+            <canvas id="zCanvas" aria-label="Postać w czerni opuszcza się na lince z sufitu ciemnego magazynu nad skrzynkę świeżych owoców"></canvas>
             <span class="cam-krzyz" aria-hidden="true"></span>
             <img id="heroKadr" src="amnestia-lina.webp?v=1" alt="Postać w czerni opuszcza się na stalowej lince z sufitu ciemnego skarbca tuż nad skrzynką świeżych owoców w snopie światła" width="1600" height="900" fetchpriority="high" decoding="async">
         </div>
@@ -1579,7 +1602,7 @@ body.ciemna .kalkulator .mid-cta { margin-top: var(--f4); }
                 <p class="lead"><b>Wasz budżet kończy się 12 grudnia, nie 31.</b><br>Co zostanie, przepadnie, a w przyszłym roku będzie go mniej.</p>
                 <p class="termin" id="hero-termin" aria-live="polite"><i></i><span>Do końca fakturowania zostało <b id="hero-dni">··</b>&nbsp;dni</span></p>
                 <div class="cta-row">
-                    <a href="#kalkulator" class="btn-feed js-do-kalkulatora">Policz, ile przepada →</a>
+                    <a href="#kalkulator" class="btn-feed js-do-kalkulatora">Policz, na ile starczy →</a>
                 </div>
             </div>
             <div></div>
@@ -1705,17 +1728,17 @@ body.ciemna .kalkulator .mid-cta { margin-top: var(--f4); }
     <div class="container">
         <div class="sec-head">
             <p class="hud-tag">03 · Policz</p>
-            <h2>Ile <span class="fun">ucieka</span> każdego dnia</h2>
-            <p>Wpiszcie kwotę i wybierzcie sposób. Zobaczycie, ile przepada dziś i ile zostaje po decyzji.</p>
+            <h2>Na ile <span class="fun">starczy</span></h2>
+            <p>Wpiszcie liczbę osób, budżet i kwotę na osobę miesięcznie. Zobaczycie, do kiedy starczy i ile to dostaw.</p>
         </div>
         <div class="aparat reveal kalk">
-            <div class="aparat-head"><span>Ile ucieka każdego dnia</span><b>W-1</b></div>
+            <div class="aparat-head"><span>Na ile starczy</span><b>W-1</b></div>
             <div class="kalk-ekran">
                 <div class="kalk-led"><i></i><span id="a-led">BUDŻET WYGASA</span></div>
-                <div class="aparat-wynik" id="a-wynik"><p class="aparat-puste">Wpisz kwotę, a&nbsp;policzymy, ile z&nbsp;tego znika każdego dnia.</p></div>
+                <div class="aparat-wynik" id="a-wynik"><p class="aparat-puste">Wpisz osoby, budżet i&nbsp;kwotę na osobę. Policzymy, na ile miesięcy starczy.</p></div>
             </div>
             <div class="kalk-legenda" aria-hidden="true">
-                <span>TRYB</span><span><b>A</b> PRZEDPŁATA</span><span><b>B</b> WELCOME</span><span><b>C</b> CATERING</span><span><b>D</b> PACZKI</span><span class="kalk-ogniwo"><i></i><i></i><i></i><i></i></span>
+                <span>DOSTAWY</span><span><b>A</b> 1× W TYG.</span><span><b>B</b> 2× W TYG.</span><span><b>C</b> 3× W TYG.</span><span class="kalk-ogniwo"><i></i><i></i><i></i><i></i></span>
             </div>
             <div class="kalk-plyta">
             <div class="aparat-pola">
@@ -1727,16 +1750,19 @@ body.ciemna .kalkulator .mid-cta { margin-top: var(--f4); }
                     <label for="a-osoby">Wielkość zespołu</label>
                     <div class="aparat-wpis"><input id="a-osoby" type="text" inputmode="numeric" placeholder="40" autocomplete="off"><span>osób</span></div>
                 </div>
+                <div>
+                    <label for="a-stawka">Kwota na osobę miesięcznie</label>
+                    <div class="aparat-wpis"><input id="a-stawka" type="text" inputmode="numeric" placeholder="60" autocomplete="off"><span>zł</span></div>
+                </div>
             </div>
-            <div class="kalk-klawisze" role="group" aria-label="Na co ma pójść budżet">
-                <button type="button" class="kalk-klawisz" aria-pressed="false" data-tryb="Przedpłata na pierwszy kwartał"><b>A</b>Przedpłata Q1</button>
-                <button type="button" class="kalk-klawisz" aria-pressed="false" data-tryb="Welcome packi na zapas"><b>B</b>Welcome packi</button>
-                <button type="button" class="kalk-klawisz" aria-pressed="false" data-tryb="Catering na spotkanie świąteczne"><b>C</b>Catering</button>
-                <button type="button" class="kalk-klawisz" aria-pressed="false" data-tryb="Paczki świąteczne"><b>D</b>Paczki</button>
+            <div class="kalk-klawisze" role="group" aria-label="Ile dostaw w tygodniu">
+                <button type="button" class="kalk-klawisz" aria-pressed="false" data-n="1"><b>A</b>1× w tygodniu</button>
+                <button type="button" class="kalk-klawisz" aria-pressed="false" data-n="2"><b>B</b>2× w tygodniu</button>
+                <button type="button" class="kalk-klawisz" aria-pressed="false" data-n="3"><b>C</b>3× w tygodniu</button>
                 <button type="button" class="kalk-klawisz kalk-ac" id="a-ac" aria-label="Wyczyść kalkulator"><b>AC</b>Wyczyść</button>
             </div>
             </div>
-            <p class="aparat-stopa" id="a-stopa">Nic nie zapisujemy. Wyliczenie jest poglądowe.</p>
+            <p class="aparat-stopa" id="a-stopa">Nic nie zapisujemy. Kwota na osobę to Wasze założenie, nie cennik.</p>
         </div>
         <p class="mid-cta"><a href="#formularz" class="btn btn-red-solid btn-arrow js-do-formularza">Odzyskaj budżet</a></p>
     </div>
@@ -1998,19 +2024,21 @@ body.ciemna .kalkulator .mid-cta { margin-top: var(--f4); }
 })();
 </script>
 <script>
-/* Kalkulator W-1. Data graniczna to jedyna zmienna do potwierdzenia przez klienta.
-   Klawisz A-D wybiera sposob: ubytek staje, wyswietlacz pokazuje kwote zabezpieczona,
-   a karta tego sposobu nizej sie podswietla. Drugie nacisniecie cofa. */
+/* Kalkulator W-1: osoby, budzet, kwota na osobe miesiecznie -> na ile miesiecy
+   starczy, do kiedy, ile dostaw. Zadnych cen DailyFruits: kwote na osobe wpisuje
+   uzytkownik. Klawisz A-C ustawia liczbe dostaw w tygodniu, AC zeruje.
+   Data graniczna (hero, HUD) to jedyna zmienna do potwierdzenia przez klienta. */
 (function () {
-    var KONIEC = new Date(2026, 11, 12);
-    var kwota = document.getElementById("a-kwota"), osoby = document.getElementById("a-osoby");
+    var KONIEC = new Date(2026, 11, 12), START = new Date(2027, 0, 1);
+    var MIES = ["stycznia","lutego","marca","kwietnia","maja","czerwca","lipca","sierpnia","września","października","listopada","grudnia"];
+    var MIES_UP = ["STYCZNIA","LUTEGO","MARCA","KWIETNIA","MAJA","CZERWCA","LIPCA","SIERPNIA","WRZEŚNIA","PAŹDZIERNIKA","LISTOPADA","GRUDNIA"];
+    var kwota = document.getElementById("a-kwota"), osoby = document.getElementById("a-osoby"), stawka = document.getElementById("a-stawka");
     var wynik = document.getElementById("a-wynik"), stopa = document.getElementById("a-stopa");
     var led = document.getElementById("a-led"), ekran = document.querySelector(".kalk-ekran");
     var heroDni = document.getElementById("hero-dni");
     var klawisze = [].slice.call(document.querySelectorAll(".kalk-klawisz:not(.kalk-ac)"));
-    var karty = [].slice.call(document.querySelectorAll(".sposoby .cure-card"));
     var cicho = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    var wybrany = -1;
+    var naTydzien = 0;
 
     function zl(n) { return Math.round(n).toLocaleString("pl-PL"); }
     function num(e) { return Number(String(e.value).replace(/[^\d]/g, "")) || 0; }
@@ -2019,65 +2047,63 @@ body.ciemna .kalkulator .mid-cta { margin-top: var(--f4); }
     if (!kwota) return;
 
     var klatka = null, biezaca = 0, cel = 0;
+    function fmtMies(m) { return (Math.round(m * 10) / 10).toLocaleString("pl-PL", { minimumFractionDigits: 1, maximumFractionDigits: 1 }); }
     function dojedz(el, c) {
         cel = c;
-        if (cicho || document.hidden) { biezaca = c; el.textContent = zl(c); return; }
+        if (cicho || document.hidden) { biezaca = c; el.textContent = fmtMies(c); return; }
         cancelAnimationFrame(klatka);
         var od = biezaca, t0 = performance.now(), czas = 650;
         (function krok(t) {
             var p = Math.min(1, (t - t0) / czas), e = 1 - Math.pow(1 - p, 4);
-            biezaca = od + (c - od) * e; el.textContent = zl(biezaca);
+            biezaca = od + (c - od) * e; el.textContent = fmtMies(biezaca);
             if (p < 1) klatka = requestAnimationFrame(krok);
         })(t0);
     }
     document.addEventListener("visibilitychange", function () {
-        var el = document.getElementById("a-duza"); if (document.hidden && el) { cancelAnimationFrame(klatka); biezaca = cel; el.textContent = zl(cel); }
+        var el = document.getElementById("a-duza"); if (document.hidden && el) { cancelAnimationFrame(klatka); biezaca = cel; el.textContent = fmtMies(cel); }
     });
-
+    function koniec(m) { return new Date(START.getTime() + m * 30.4375 * 86400000); }
     function policz() {
-        var k = num(kwota), o = num(osoby), d = dni();
-        if (!k) {
+        var k = num(kwota), o = num(osoby), s = num(stawka);
+        if (!k || !o || !s) {
             biezaca = 0;
-            wynik.innerHTML = '<p class="aparat-puste">Wpisz kwotę, a&nbsp;policzymy, ile z&nbsp;tego znika każdego dnia.</p>';
-            stopa.textContent = "Nic nie zapisujemy. Wyliczenie jest poglądowe.";
+            wynik.innerHTML = '<p class="aparat-puste">Wpisz osoby, budżet i&nbsp;kwotę na osobę. Policzymy, na ile miesięcy starczy.</p>';
+            stopa.textContent = "Nic nie zapisujemy. Kwota na osobę to Wasze założenie, nie cennik.";
             ekran.classList.remove("zabezpieczone"); led.textContent = "BUDŻET WYGASA";
             return;
         }
+        var m = k / (o * s);
         if (!wynik.querySelector(".aparat-duza")) {
-            wynik.innerHTML = '<p class="aparat-linia"><span class="aparat-duza" id="a-duza">0</span><span class="aparat-jedn" id="a-jedn"></span></p><p class="aparat-reszta" id="a-reszta"></p>';
+            wynik.innerHTML = '<p class="aparat-linia"><span class="aparat-duza" id="a-duza">0,0</span><span class="aparat-jedn" id="a-jedn"></span></p><p class="aparat-reszta" id="a-reszta"></p>';
         }
         var duza = document.getElementById("a-duza"), jedn = document.getElementById("a-jedn"), reszta = document.getElementById("a-reszta");
-        if (wybrany >= 0) {
-            dojedz(duza, k);
-            jedn.textContent = "zł zabezpieczone";
-            reszta.innerHTML = "Nic już nie przepada. " + klawisze[wybrany].dataset.tryb + "." + (o ? " Na&nbsp;osobę " + zl(k / o) + "&nbsp;zł." : "");
-            ekran.classList.add("zabezpieczone"); led.textContent = "BUDŻET ZABEZPIECZONY";
-        } else {
-            dojedz(duza, k / Math.max(d, 1));
-            jedn.textContent = "zł dziennie przepada";
-            reszta.innerHTML = "Do terminu zostało <b>" + d + "&nbsp;dni</b>." + (o ? " Na&nbsp;osobę wychodzi <b>" + zl(k / o) + "&nbsp;zł</b>." : "");
-            ekran.classList.remove("zabezpieczone"); led.textContent = "BUDŻET WYGASA";
-        }
-        stopa.textContent = "Termin fakturowania: 12\u00a0grudnia 2026. Kwota wpisana: " + zl(k) + "\u00a0zł.";
+        dojedz(duza, m);
+        jedn.textContent = "miesięcy dostaw od stycznia";
+        var kd = koniec(m);
+        var doKiedy = m >= 12 ? "na cały rok" : "do " + kd.getDate() + "\u00a0" + MIES[kd.getMonth()];
+        var r = "Starczy <b>" + doKiedy + "</b>.";
+        if (naTydzien) r += " To&nbsp;<b>" + Math.round(m * 4.33 * naTydzien) + "&nbsp;dostaw</b>.";
+        r += " Miesięcznie <b>" + zl(o * s) + "&nbsp;zł</b> na cały zespół.";
+        reszta.innerHTML = r;
+        ekran.classList.add("zabezpieczone");
+        led.textContent = m >= 12 ? "STARCZY NA CAŁY ROK" : "STARCZY DO " + kd.getDate() + " " + MIES_UP[kd.getMonth()];
+        stopa.textContent = "Termin fakturowania: 12\u00a0grudnia 2026. Budżet: " + zl(k) + "\u00a0zł, " + o + " osób, " + zl(s) + "\u00a0zł na osobę.";
     }
-    klawisze.forEach(function (b, i) {
+    klawisze.forEach(function (b) {
         b.addEventListener("click", function () {
-            wybrany = (wybrany === i) ? -1 : i;
-            klawisze.forEach(function (x, j) { x.setAttribute("aria-pressed", String(j === wybrany)); });
-            karty.forEach(function (c, j) { c.classList.toggle("wybrana", j === wybrany); });
-            if (!num(kwota)) { kwota.focus(); }
+            var n = Number(b.dataset.n);
+            naTydzien = (naTydzien === n) ? 0 : n;
+            klawisze.forEach(function (x) { x.setAttribute("aria-pressed", String(Number(x.dataset.n) === naTydzien)); });
             policz();
         });
     });
     var ac = document.getElementById("a-ac");
     if (ac) ac.addEventListener("click", function () {
-        kwota.value = ""; osoby.value = ""; wybrany = -1;
+        kwota.value = ""; osoby.value = ""; stawka.value = ""; naTydzien = 0;
         klawisze.forEach(function (x) { x.setAttribute("aria-pressed", "false"); });
-        karty.forEach(function (c) { c.classList.remove("wybrana"); });
         policz(); kwota.focus();
     });
-    kwota.addEventListener("input", policz);
-    osoby.addEventListener("input", policz);
+    [kwota, osoby, stawka].forEach(function (e) { e.addEventListener("input", policz); });
     policz();
 })();
 </script>
@@ -2123,13 +2149,13 @@ body.ciemna .kalkulator .mid-cta { margin-top: var(--f4); }
         ret.style.transform = 'translate3d(' + x + 'px,' + y + 'px,0)' + (ret.classList.contains('down') ? ' scale(.86)' : '');
         raf = requestAnimationFrame(frame);
     }
-    addEventListener('pointermove', function (e) { tx = e.clientX; ty = e.clientY; if (!shown) { shown = true; ret.classList.add('on'); x = tx; y = ty; if (!raf) frame(); } }, { passive: true });
+    addEventListener('pointermove', function (e) { tx = e.clientX; ty = e.clientY; if (!shown) { shown = true; x = tx; y = ty; if (!raf) frame(); } }, { passive: true });
     addEventListener('pointerdown', function () { ret.classList.add('down'); }, { passive: true });
     addEventListener('pointerup', function () { ret.classList.remove('down'); }, { passive: true });
     document.addEventListener('mouseleave', function () { ret.classList.remove('on'); shown = false; });
-    var SEL = 'a[href], .btn, .btn-feed, .cure-card, .sym, .typ, .aparat-wpis';
-    document.addEventListener('pointerover', function (e) { var t = e.target.closest(SEL); if (t && t !== lock) { lock = t; ret.classList.add('lock'); } });
-    document.addEventListener('pointerout', function (e) { var t = e.target.closest(SEL); if (t && t === lock && !t.contains(e.relatedTarget)) { lock = null; ret.classList.remove('lock'); ret.style.width = ret.style.height = ret.style.marginLeft = ret.style.marginTop = ''; } });
+    var SEL = 'a[href], button, .btn, .btn-feed, .cure-card, .sym, .typ';
+    document.addEventListener('pointerover', function (e) { var t = e.target.closest(SEL); if (t && t !== lock) { lock = t; ret.classList.add('lock'); ret.classList.add('on'); } });
+    document.addEventListener('pointerout', function (e) { var t = e.target.closest(SEL); if (t && t === lock && !t.contains(e.relatedTarget)) { lock = null; ret.classList.remove('lock'); ret.classList.remove('on'); ret.style.width = ret.style.height = ret.style.marginLeft = ret.style.marginTop = ''; } });
 })();
 </script>
 <script>
@@ -2184,12 +2210,419 @@ body.ciemna .kalkulator .mid-cta { margin-top: var(--f4); }
     document.querySelectorAll(".js-do-kalkulatora").forEach(function (a) {
         a.addEventListener("click", function (e) {
             e.preventDefault();
+            if (window.zUnlock) window.zUnlock();
             var y = cel.getBoundingClientRect().top + window.scrollY - 24;
             window.scrollTo({ top: y, behavior: "smooth" });
             var pole = document.getElementById("a-kwota");
             if (pole) setTimeout(function () { pole.focus({ preventScroll: true }); }, 700);
         });
     });
+})();
+</script>
+<script>
+/* ─── SCROLL-SCRUB (mechanika z /syndromwrzesniowy): postac schodzi na lince wraz ze scrollem ─── */
+(function () {
+    var canvas = document.getElementById('zCanvas');
+    var sec = document.getElementById('scrub');
+    var prog = document.getElementById('zProg');
+    var cup = document.getElementById('zCup');
+    if (!canvas || !sec) return;
+
+    var ctx = canvas.getContext('2d', { alpha: false });
+    var TOTAL = 97;
+    var frames = new Array(TOTAL);
+    var cur = -1;
+    var ready = false;
+
+    function pad(n) { return String(n).padStart(4, '0'); }
+    function src(i) { return 'frames-amnestia/a' + pad(i) + '.webp?v=1'; }
+
+    // Preload sprawia, ze klatka 0 bywa gotowa zanim ulozy sie layout - wtedy
+    // getBoundingClientRect zwraca zero i canvas zostaje 1x1 na stale.
+    // Dlatego czekamy na pierwszy niezerowy pomiar.
+    function sizeCanvas() {
+        var r = canvas.getBoundingClientRect();
+        if (!r.width || !r.height) return false;
+        var dpr = Math.min(window.devicePixelRatio || 1, 1.5);
+        canvas.width = Math.round(r.width * dpr);
+        canvas.height = Math.round(r.height * dpr);
+        return true;
+    }
+
+    function sizeCanvasGdyGotowy(proby) {
+        // UWAGA: boot() potrafi wykonac sie synchronicznie (klatka 0 jest w preloadzie,
+        // wiec first.complete jest prawdziwe juz przy parsowaniu skryptu) - a wtedy
+        // deklaracja "var idx = 0" jeszcze NIE zostala wykonana i idx jest undefined.
+        // draw(undefined) nic nie malowalo, wiec loader czekal az pierwszy scroll
+        // wywola setIdx z prawdziwym numerem. Stad "znika dopiero po scrollu".
+        var n = (typeof idx === 'number') ? idx : 0;
+        if (sizeCanvas()) { cur = -1; draw(n); return; }
+        if ((proby || 0) < 90) requestAnimationFrame(function () { sizeCanvasGdyGotowy((proby || 0) + 1); });
+    }
+
+    // Bez tego canvas zostaje z rozmiarem sprzed obrotu ekranu, a przy wczytaniu
+    // strony w karcie w tle - z rozmiarem 1x1, czyli czarny na zawsze.
+    var przeliczanie;
+    window.addEventListener('resize', function () {
+        clearTimeout(przeliczanie);
+        przeliczanie = setTimeout(function () {
+            if (!ready) return;
+            sizeCanvas();
+            cur = -1;
+            draw(idx);
+        }, 120);
+    }, { passive: true });
+
+    // ZOOM daje poziomy zapas, POS ustawia kadr (0 = do lewej, 1 = do prawej).
+    // Bez zapasu obraz wypelnia szerokosc co do piksela i nie da sie go przesunac.
+    var mobil = window.matchMedia('(max-width: 720px)').matches;
+    // POS 0 = kadr do lewej (pusta strona pod tekst), 1 = do prawej (bohater).
+    // Na waskim ekranie kadr jest przycinany po bokach, wiec przesuwamy go do bohatera.
+    // Zoom 1.22 na mobile: krawedz przeszklenia wychodzi z kadru, bohaterka lada na 0.46.
+    // Kadr mobilny musi zmiescic bohaterke I skrzynke - stad pelne okno i dosuniecie w prawo.
+    var ZOOM = mobil ? 1.0 : 1.32, POS = mobil ? 0.62 : 1.0;
+    function gotowa(f) {
+        if (!f) return false;
+        return f.width ? true : (f.complete && f.naturalWidth > 0);
+    }
+    // Gdy zadana klatka jeszcze nie dotarla, rysujemy NAJBLIZSZA dostepna zamiast nic.
+    function najblizsza(i) {
+        if (gotowa(frames[i])) return i;
+        for (var d = 1; d < TOTAL; d++) {
+            if (i - d >= 0 && gotowa(frames[i - d])) return i - d;
+            if (i + d < TOTAL && gotowa(frames[i + d])) return i + d;
+        }
+        return -1;
+    }
+    function draw(i) {
+        var n = najblizsza(i);
+        if (n < 0 || n === cur) return;
+        var f = frames[n];
+        var fw = f.width || f.naturalWidth, fh = f.height || f.naturalHeight;
+        var cw = canvas.width, ch = canvas.height;
+        var s = Math.max(cw / fw, ch / fh) * ZOOM;
+        var w = fw * s, h = fh * s;
+        ctx.drawImage(f, (cw - w) * POS, (ch - h) * 0.5, w, h);
+        cur = n;
+    }
+
+
+    /* LOADER — jedno zadanie: przykryc pusty kadr na czas pobierania.
+       Znika na PIERWSZYM z trzech niezaleznych zdarzen: komplet pierwszych klatek,
+       zdarzenie load okna, albo twardy limit czasu. Zadnego sprzezenia z rysowaniem
+       canvasu - to wlasnie ono potrafilo zatrzymac loader do pierwszego scrolla.
+       Warstwa nie lapie kliknec, wiec nawet gdyby zostala, nie zablokuje strony. */
+    (function () {
+        var warstwa = document.getElementById('zLoader');
+        if (!warstwa) return;
+        var pasek = document.getElementById('zlFill');
+        var licznik = document.getElementById('zlPct');
+        var CEL = Math.min(8, TOTAL), mam = 0, zeszlo = false;
+
+        function pokaz(p) {
+            if (pasek) pasek.style.width = p + '%';
+            if (licznik) licznik.textContent = p + '%';
+        }
+        function schowaj() {
+            if (zeszlo) return;
+            zeszlo = true;
+            pokaz(100);
+            warstwa.classList.add('gotowe');
+        }
+        window.zlKlatkaGotowa = function () {
+            mam++;
+            pokaz(Math.min(100, Math.round(mam / CEL * 100)));
+            if (mam >= CEL) schowaj();
+        };
+        window.addEventListener('load', schowaj);
+        setTimeout(schowaj, 2500);
+    })();
+
+    // pierwsza klatka natychmiast, reszta w tle
+    var first = new Image();
+    function boot() {
+        if (ready) return;
+        frames[0] = first;
+        ready = true;
+        if (window.zlKlatkaGotowa) window.zlKlatkaGotowa();
+        sizeCanvasGdyGotowy(0);
+        loadRest();
+    }
+    // Zanim sekwencja klatek trafi do repo, hero ma dzialac jako statyczny kadr.
+    first.onerror = function () { document.documentElement.classList.add('bez-klatek'); unlock(); };
+    first.onload = boot;
+    first.src = src(0);
+    // obrazek moze byc juz w cache (jest w <link rel=preload>) - wtedy onload nie odpali
+    if (first.complete && first.naturalWidth) boot();
+
+    /* POBIERANIE KLATEK — wzorzec z ciezkich sekwencji scrollowych.
+       1) createImageBitmap dekoduje POZA glownym watkiem, wiec drawImage nic juz nie liczy;
+          img.decode() tego nie gwarantowal i zostawialo zadania po 120-190 ms.
+       2) Dwa przebiegi: najpierw co czwarta klatka, wiec CALY zakres jest przewijalny
+          niemal od razu, potem reszta zageszcza sekwencje.
+       3) Brakujaca klatke zastepuje najblizsza dostepna, wiec nic nie stoi w miejscu. */
+    function loadRest() {
+        var MAX = mobil ? 3 : 6, aktywne = 0;
+        var kolejka = [];
+        for (var k = 4; k < TOTAL; k += 4) kolejka.push(k);
+        for (var m = 1; m < TOTAL; m++) if (m % 4 !== 0) kolejka.push(m);
+        var idx2 = 0;
+
+        function gotowe() {
+            aktywne--;
+            if (window.zlKlatkaGotowa) window.zlKlatkaGotowa();
+            if (cur >= 0) { var c = cur; cur = -1; draw(idx); }
+            pchaj();
+        }
+        function pobierz(n) {
+            aktywne++;
+            if (!window.createImageBitmap || !window.fetch) {
+                var img = new Image();
+                img.decoding = 'async';
+                img.onload = img.onerror = function () { frames[n] = img; gotowe(); };
+                img.src = src(n);
+                return;
+            }
+            fetch(src(n), { cache: 'force-cache' })
+                .then(function (r) { return r.blob(); })
+                .then(function (b) { return createImageBitmap(b); })
+                .then(function (bm) { frames[n] = bm; gotowe(); }, gotowe);
+        }
+        function pchaj() {
+            while (aktywne < MAX && idx2 < kolejka.length) pobierz(kolejka[idx2++]);
+        }
+        pchaj();
+    }
+
+    // ─── TWARDA BLOKADA SCROLLA: strona rusza dopiero po ostatniej klatce ───
+    var idx = 0;
+    var acc = 0;
+    var locked = false;
+    var STEP = 24;            // px delty na jedna klatke (dluzszy przejazd sekwencji)
+    var justUnlocked = 0;
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    /* Zdarzenia kolka na gladziku potrafia leciec czesciej niz klatki ekranu, a kazde
+       przerysowywalo caly canvas (zrodlo 1280x940 skalowane na ~2880px). Teraz zdarzenie
+       tylko przesuwa numer klatki, a rysunek powstaje raz na klatke ekranu. */
+    var rysunekZaplanowany = false;
+    function zaplanujRysunek() {
+        if (rysunekZaplanowany) return;
+        rysunekZaplanowany = true;
+        requestAnimationFrame(function () {
+            rysunekZaplanowany = false;
+            draw(idx);
+
+        if (prog) {
+                var t = idx / (TOTAL - 1);
+                prog.style.width = (t * 100).toFixed(1) + '%';
+                // 347550 -> 1B5E3A: zielen srednia poglebia sie w brandowa ciemna
+                var r = Math.round(52 + (27 - 52) * t);
+                var g = Math.round(117 + (94 - 117) * t);
+                var b = Math.round(80 + (58 - 80) * t);
+                prog.style.backgroundColor = 'rgb(' + r + ',' + g + ',' + b + ')';
+        }
+            if (cup) {
+                if (idx >= TOTAL - 1) { cup.classList.add('pop'); }
+                else { cup.classList.remove('pop'); }
+            }
+        });
+    }
+
+    function setIdx(n) {
+        if (n < 0) n = 0;
+        if (n > TOTAL - 1) n = TOTAL - 1;
+        if (n === idx) return;
+        idx = n;
+        zaplanujRysunek();
+        if (idx >= TOTAL - 1) unlock();
+    }
+
+    function lock() {
+        if (locked || reduce) return;
+        locked = true;
+        document.documentElement.style.overflow = 'hidden';
+        document.body.style.overflow = 'hidden';
+        podepnijScrub();
+    }
+
+    // Kotwice do formularza musza najpierw zdjac blokade scrolla, inaczej skok nie zadziala.
+    // CTA ma byc widoczne przez cala wizyte - swiadomie bez chowania przy formularzu.
+
+    document.querySelectorAll('.js-do-formularza').forEach(function (a) {
+        a.addEventListener('click', function (e) {
+            e.preventDefault();
+            unlock();
+            doFormularza();
+        });
+    });
+
+
+    // Kotwica do formularza: celujemy w ramke, nie w naglowek sekcji, i schodzimy
+    // tak nisko, zeby caly formularz miescil sie w widoku nad dolnym paskiem CTA.
+    function doFormularza(gladko) {
+        var t = document.getElementById('formularz');
+        if (!t) return;
+        var ram = t.querySelector('iframe') || t;
+        var pasek = document.querySelector('header .nav-buttons');
+        var dol = 0;
+        if (pasek) {
+            var pr = pasek.getBoundingClientRect();
+            if (getComputedStyle(pasek).position === 'fixed' && pr.top > window.innerHeight / 2) dol = pr.height;
+        }
+        var r = ram.getBoundingClientRect();
+        var gora = r.top + window.scrollY;
+        var widok = window.innerHeight - dol;
+        var luz = (r.height <= widok - 24) ? Math.max(16, (widok - r.height) / 2) : 28;
+        var cel = Math.max(0, Math.round(gora - luz));
+        window.scrollTo({ top: cel, behavior: (gladko === false || reduce) ? 'auto' : 'smooth' });
+        // Ramka BW dojezdza z wysokoscia dopiero po postMessage, wiec pilnujemy
+        // pozycji przez chwile i korygujemy, dopoki uzytkownik sam nie przewinie.
+        if (gladko === false) return;
+        var poprzednia = r.height, tiki = 0, przerwane = false;
+        function stop() { przerwane = true; }
+        window.addEventListener('wheel', stop, { once: true, passive: true });
+        window.addEventListener('touchstart', stop, { once: true, passive: true });
+        var pilnuj = setInterval(function () {
+            tiki++;
+            if (przerwane || tiki > 10) { clearInterval(pilnuj); return; }
+            var teraz = ram.getBoundingClientRect().height;
+            if (Math.abs(teraz - poprzednia) < 24) return;
+            poprzednia = teraz;
+            doFormularza(false);
+        }, 300);
+    }
+
+
+
+    // Film laduje sie dopiero po kliknieciu, zeby nie ciagnac skryptow YouTube na starcie.
+    document.querySelectorAll('.film[data-yt]').forEach(function (kafel) {
+        kafel.addEventListener('click', function () {
+            var id = this.getAttribute('data-yt');
+            if (!id) return;
+            this.innerHTML = '<iframe src="https://www.youtube-nocookie.com/embed/' + id +
+                '?autoplay=1&rel=0" style="position:absolute;inset:0;width:100%;height:100%;border:0;" ' +
+                'allow="autoplay;encrypted-media" allowfullscreen title="Film o dostawach DailyFruits"></iframe>';
+            if (window.dataLayer) window.dataLayer.push({ event: 'video_play', video_id: id, page: location.pathname });
+        }, { once: true });
+    });
+
+    window.zUnlock = function () { unlock(); };
+    function unlock() {
+        if (!locked) return;
+        locked = false;
+        justUnlocked = Date.now();
+        odepnijScrub();
+        document.documentElement.style.overflow = '';
+        document.body.style.overflow = '';
+    }
+
+    function bump(delta) {
+        acc += delta;
+        var n = Math.trunc(acc / STEP);
+        if (n) { acc -= n * STEP; setIdx(idx + n); }
+    }
+
+    /* Nasluchy scrubu istnieja TYLKO na czas blokady.
+       Nie-pasywny listener 'wheel'/'touchmove' na window wylacza przegladarce
+       szybka sciezke scrollowania na calej stronie, nawet gdy sam nic nie robi -
+       to bylo zrodlo zacinania dlugo po opuszczeniu hero. */
+    function naKolko(e) { e.preventDefault(); bump(e.deltaY); }
+    var touchY = null;
+    function naDotykStart(e) { touchY = e.touches[0].clientY; }
+    function naDotykRuch(e) {
+        e.preventDefault();
+        var y = e.touches[0].clientY;
+        if (touchY !== null) bump((touchY - y) * 2.2);
+        touchY = y;
+    }
+    function naKlawisz(e) {
+        var k = e.key;
+        if (k === 'Escape' || k === 'End') { e.preventDefault(); setIdx(TOTAL - 1); return; }
+        if (k === 'ArrowDown' || k === 'PageDown' || k === ' ') { e.preventDefault(); bump(k === ' ' || k === 'PageDown' ? 220 : 70); }
+        else if (k === 'ArrowUp' || k === 'PageUp') { e.preventDefault(); bump(k === 'PageUp' ? -220 : -70); }
+    }
+
+    function podepnijScrub() {
+        window.addEventListener('wheel', naKolko, { passive: false });
+        window.addEventListener('touchstart', naDotykStart, { passive: true });
+        window.addEventListener('touchmove', naDotykRuch, { passive: false });
+        window.addEventListener('keydown', naKlawisz);
+    }
+    function odepnijScrub() {
+        window.removeEventListener('wheel', naKolko, { passive: false });
+        window.removeEventListener('touchstart', naDotykStart, { passive: true });
+        window.removeEventListener('touchmove', naDotykRuch, { passive: false });
+        window.removeEventListener('keydown', naKlawisz);
+        touchY = null;
+    }
+
+    // powrot na sama gore ponownie wlacza blokade - film da sie przewijac w obie strony
+    window.addEventListener('scroll', function () {
+        if (locked || reduce || mobil) return;
+        if (Date.now() - justUnlocked < 700) return;
+        if (window.scrollY <= 0 && idx > 0) lock();
+    }, { passive: true });
+
+    function onScroll() { /* blokada zastapila scrub scrollem */ }
+
+    /* Paralaksa usunieta swiadomie: pisanie transformow na kontenerze canvasu
+       przy kazdym scrollu bylo zbyt kosztowne. Plynnosc > efekt. */
+    if (reduce) {
+        setIdx(TOTAL - 1);
+    } else if (mobil) {
+        // Na telefonie blokada scrolla jest wroga - sekwencja odtwarza sie sama,
+        // pasek postepu jedzie razem z nia, strona przewija sie normalnie.
+        odtwarzajSam();
+    } else {
+        window.scrollTo(0, 0);
+        lock();
+    }
+
+    function odtwarzajSam() {
+        // Petla z przenikaniem: po dojsciu do konca kadr gasnie, wraca do klatki 0
+        // i rozjasnia sie od nowa. Chodzi tylko wtedy, gdy hero jest w kadrze.
+        // Cykl na telefonie ma trwac co najmniej 10 s. Ruch spowolniony do 8 s (12 kl./s),
+        // reszte dobieramy zatrzymaniem na ostatniej klatce, zeby nie schodzic z plynnoscia
+        // ponizej progu, przy ktorym sekwencja zaczyna sie klatkowac.
+        var CZAS = 8000, PRZERWA = 2600, PRZENIKANIE = 420;
+        var start = null, gra = false, widoczne = false;
+
+        function klatka(ts) {
+            if (!widoczne) { gra = false; return; }
+            if (start === null) start = ts;
+            var t = Math.min(1, (ts - start) / CZAS);
+            setIdx(Math.round(t * (TOTAL - 1)));
+            if (t < 1) { requestAnimationFrame(klatka); return; }
+            gra = false;
+            setTimeout(odNowa, PRZERWA);
+        }
+        function odNowa() {
+            if (!widoczne) return;
+            canvas.style.transition = 'opacity ' + PRZENIKANIE + 'ms ease';
+            canvas.style.opacity = '0';
+            setTimeout(function () {
+                setIdx(0);
+                canvas.style.opacity = '1';
+                setTimeout(ruszaj, PRZENIKANIE);
+            }, PRZENIKANIE);
+        }
+        function ruszaj() {
+            if (gra || !widoczne) return;
+            gra = true; start = null;
+            requestAnimationFrame(klatka);
+        }
+
+        var hero = document.querySelector('.scrub');
+        if (hero && 'IntersectionObserver' in window) {
+            new IntersectionObserver(function (en) {
+                widoczne = en[0].isIntersecting;
+                if (widoczne) ruszaj();
+            }, { threshold: 0.35 }).observe(hero);
+        } else {
+            widoczne = true; ruszaj();
+        }
+    }
 })();
 </script>
 <script src="track.js?v=2" defer></script>
