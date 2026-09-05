@@ -884,9 +884,229 @@ body.ciemna .sposoby .mid-cta { margin-top: 34px; }
 .aparat-reszta { margin: 14px 0 0; font-size: clamp(16px,2vw,19px); color: var(--przyciszony); }
 .aparat-reszta b { color: var(--tekst); }
 
+
+/* =====================================================================
+   SKORA: jedna ciagla powierzchnia, szklo zamiast kafelkow, cienkie
+   swietlne linie, spokojne liczby, duzo powietrza. Ruch tylko tlumiony.
+   Wszystko pod body.ciemna i ZA poprzednimi regulami, wiec wygrywa.
+   ===================================================================== */
+body.ciemna {
+    --szklo: rgba(255,255,255,.035);
+    --szklo2: rgba(255,255,255,.055);
+    --linia: rgba(255,255,255,.08);
+    --linia2: rgba(255,255,255,.14);
+    --swiatlo: rgba(141,198,63,.55);
+    --tekst: #EEF3EA;
+    --przyciszony: rgba(238,243,234,.66);
+    --r: 26px;
+    --luk: cubic-bezier(.22,1,.36,1);
+    background: #07100C;
+    background-image:
+        radial-gradient(70% 50% at 100% 0%, rgba(141,198,63,.08), transparent 60%),
+        linear-gradient(180deg, #0B1510 0%, #07100C 45%, #08120D 100%);
+    background-attachment: fixed;
+}
+
+/* --- wspolny rytm sekcji: jednolite tlo, powietrze, hairline miedzy sekcjami --- */
+body.ciemna .sec-cream, body.ciemna .sec-white, body.ciemna .typy,
+body.ciemna .prod-sec, body.ciemna .form-sec, body.ciemna .sposoby {
+    background: transparent; padding-top: clamp(72px,9vw,120px); padding-bottom: clamp(72px,9vw,120px);
+    position: relative; }
+body.ciemna .typy::before, body.ciemna .sposoby::before, body.ciemna .prod-sec::before,
+body.ciemna .form-sec::before {
+    content: ""; position: absolute; left: 50%; top: 0; width: min(1120px, 92%); height: 1px;
+    transform: translateX(-50%);
+    background: linear-gradient(90deg, transparent, var(--linia2) 30%, var(--linia2) 70%, transparent); }
+body.ciemna .scrub { position: relative; }
+body.ciemna .scrub::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 160px;
+    z-index: 2; pointer-events: none; background: linear-gradient(to top, #07100C, transparent); }
+@media (max-width: 720px) { body.ciemna .scrub::after { display: none; } }
+
+/* --- typografia: spokojniej, wiecej swiatla miedzy literami --- */
+body.ciemna .sec-head { margin-bottom: clamp(36px,5vw,60px); }
+body.ciemna .sec-head h2 { font-weight: 700; letter-spacing: -.028em; font-size: clamp(30px,4.2vw,50px); line-height: 1.04; }
+body.ciemna .sec-head p { font-size: clamp(16px,1.7vw,18.5px); line-height: 1.6; max-width: 56ch; margin-left: auto; margin-right: auto; }
+body.ciemna h3 { font-weight: 600; letter-spacing: -.015em; }
+body.ciemna p, body.ciemna li { line-height: 1.65; }
+
+/* --- szklo: jedna definicja karty dla wszystkich komponentow szablonu --- */
+body.ciemna .sym, body.ciemna .cure-card, body.ciemna .aparat, body.ciemna .hero-box,
+body.ciemna .form-info, body.ciemna .form-wrap, body.ciemna .mocne li {
+    background: linear-gradient(180deg, var(--szklo2), var(--szklo)); border: 1px solid var(--linia);
+    border-radius: var(--r); box-shadow: inset 0 1px 0 rgba(255,255,255,.06);
+    backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+    transition: border-color .5s var(--luk), transform .5s var(--luk), background .5s var(--luk); }
+body.ciemna .sym:hover, body.ciemna .cure-card:hover { border-color: var(--linia2); transform: translateY(-3px); }
+body.ciemna .sym, body.ciemna .cure-card { padding: clamp(24px,3vw,34px); }
+body.ciemna .sym-top, body.ciemna .cure-top { border-bottom: 1px solid var(--linia); padding-bottom: 16px; margin-bottom: 18px; }
+body.ciemna .sym .n { font-weight: 500; color: rgba(238,243,234,.28); letter-spacing: .08em; }
+body.ciemna .sym img, body.ciemna .cure-top img { filter: drop-shadow(0 0 14px rgba(141,198,63,.25)); }
+body.ciemna .cure-card .day { background: transparent; border: 1px solid rgba(141,198,63,.35); color: var(--lime);
+    font-weight: 600; letter-spacing: .12em; text-transform: uppercase; font-size: 10.5px; }
+body.ciemna .cure-card.wyrozniona { box-shadow: inset 0 1px 0 rgba(255,255,255,.06), 0 0 0 1px rgba(141,198,63,.45), 0 0 60px rgba(141,198,63,.10); }
+
+/* --- aparat W-1: instrument, nie formularz --- */
+body.ciemna .aparat { padding: clamp(26px,3.6vw,44px); border-radius: 30px; }
+body.ciemna .aparat-head { border-bottom-color: var(--linia); font-weight: 600; letter-spacing: .18em; color: var(--przyciszony); }
+body.ciemna .aparat-head b { color: rgba(238,243,234,.4); }
+body.ciemna .aparat-pola label { font-weight: 600; letter-spacing: .16em; color: rgba(238,243,234,.5); }
+body.ciemna .aparat-wpis { border-bottom: 1px solid var(--linia2); }
+body.ciemna .aparat-wpis:focus-within { border-bottom-color: var(--lime); box-shadow: 0 1px 0 0 var(--lime); }
+body.ciemna .aparat-wpis input { font-weight: 600; letter-spacing: -.03em; }
+body.ciemna .aparat-wpis span { font-weight: 600; color: rgba(238,243,234,.45); }
+body.ciemna .aparat-wynik { position: relative; margin-top: 30px; padding-top: 28px; border-top: 0; }
+body.ciemna .aparat-wynik::before { content: ""; position: absolute; left: 0; top: 0; width: 100%; height: 1px;
+    background: linear-gradient(90deg, var(--lime), rgba(141,198,63,.15) 60%, transparent); box-shadow: 0 0 18px var(--swiatlo); }
+body.ciemna .aparat-duza { font-weight: 700; letter-spacing: -.05em; text-shadow: 0 0 34px rgba(141,198,63,.35); }
+body.ciemna .aparat-jedn { font-weight: 600; color: rgba(238,243,234,.5); }
+body.ciemna .aparat-puste { font-weight: 500; color: rgba(238,243,234,.5); }
+body.ciemna .aparat-reszta b { font-weight: 600; }
+body.ciemna .aparat-stopa { color: rgba(238,243,234,.4); }
+
+/* --- hero: termin jako szklana pastylka --- */
+body.ciemna .termin { background: rgba(255,255,255,.06); border-color: var(--linia2); font-weight: 500;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.08); }
+body.ciemna .termin b { font-weight: 700; }
+body.ciemna .hero-offer { font-weight: 600; letter-spacing: .02em; border-right-width: 2px; }
+
+/* --- rzad zdjec: kadry jak ekrany, podpis pod hairline --- */
+body.ciemna .typ img { border-radius: var(--r); box-shadow: 0 30px 80px rgba(0,0,0,.5); }
+body.ciemna .typ figcaption { padding: 20px 4px 0; font-size: 14.5px; }
+body.ciemna .typ figcaption b { font-weight: 600; font-size: 16px; }
+body.ciemna .typ:hover { transform: translateY(-4px); }
+
+/* --- sekcja produktowa --- */
+body.ciemna .hero-box { padding: 0; overflow: hidden; }
+body.ciemna .hero-box img { border-radius: 0; }
+body.ciemna .hero-box .tag { background: transparent; border: 1px solid rgba(141,198,63,.35); font-weight: 600; letter-spacing: .12em; }
+body.ciemna .hero-box li b { font-weight: 600; }
+body.ciemna .assure-item b { font-weight: 700; letter-spacing: -.04em; font-size: clamp(30px,4vw,44px); text-shadow: 0 0 30px rgba(141,198,63,.3); }
+body.ciemna .assure-item span { font-weight: 500; }
+
+/* --- pasek logotypow: cichy --- */
+body.ciemna .logo-bar { background: transparent; border-top: 1px solid var(--linia); border-bottom: 1px solid var(--linia); }
+body.ciemna .logo-bar-item img { opacity: .5; }
+
+/* --- formularz --- */
+body.ciemna .form-info li i { background: transparent; border: 1px solid rgba(141,198,63,.4); color: var(--lime); font-weight: 600; }
+body.ciemna .form-info h3 { font-weight: 600; }
+body.ciemna .rating-stars { color: var(--lime); text-shadow: 0 0 14px rgba(141,198,63,.5); }
+body.ciemna .form-after .btn-green { background: transparent; color: var(--lime); border: 1px solid rgba(141,198,63,.5); }
+body.ciemna .form-after .btn-green:hover { background: rgba(141,198,63,.12); color: var(--lime); }
+
+/* --- przyciski: miekkie swiatlo zamiast twardego cienia --- */
+body.ciemna .btn-red-solid, body.ciemna .btn-feed { box-shadow: 0 12px 40px rgba(228,48,32,.35), inset 0 1px 0 rgba(255,255,255,.18); }
+
+/* --- odsloniecia: dluzsze, bez skoku --- */
+body.ciemna [data-anim] { transition-duration: .9s !important; transition-timing-function: var(--luk) !important; }
+body.ciemna .reveal { transition: opacity .9s var(--luk), transform .9s var(--luk); }
+
+
+/* =====================================================================
+   KAMERA: strona jako podglad z monitoringu. Idiom z r352/1c0n/pledgers:
+   ramka 1px z czarna obudowa (box-shadow 100vmax), wpinki tekstowe,
+   HUD w mono z prawdziwym stanem, ziarno skaczace steps(1), skanlinie.
+   HUD i ramka maja pointer-events none. Nic nie przesuwa ukladu.
+   ===================================================================== */
+body.kamera { --mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace; --cam-inset: 10px; --alarm: #FF5A4A; }
+@media (max-width: 720px) { body.kamera { --cam-inset: 6px; } }
+
+/* --- ziarno: klatki SKACZA (klisza), screen na ciemnym, kompozytor nie repaint --- */
+body.kamera::after { content: ""; position: fixed; inset: -140px; z-index: 9990; pointer-events: none;
+    opacity: .11; mix-blend-mode: screen;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.52' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-size: 200px 200px; will-change: transform; }
+/* --- skanlinie: bardzo cicho, tylko na kadrze hero --- */
+body.kamera .scrub-stage::after { content: ""; position: absolute; inset: 0; z-index: 2; pointer-events: none; display: block !important;
+    background: repeating-linear-gradient(to bottom, rgba(0,0,0,0) 0 2px, rgba(0,0,0,.16) 2px 3px); mix-blend-mode: multiply; opacity: .55; }
+@media (prefers-reduced-motion: no-preference) {
+    body.kamera::after { animation: ziarno .88s steps(1,end) infinite; }
+    @keyframes ziarno { 0%{transform:translate(0,0)} 20%{transform:translate(-60px,40px)} 40%{transform:translate(30px,-70px)} 60%{transform:translate(-90px,-20px)} 80%{transform:translate(50px,60px)} 100%{transform:translate(-20px,90px)} }
+}
+@media (prefers-reduced-motion: reduce) { body.kamera::after { animation: none; } }
+@media (forced-colors: active) { body.kamera::after, .cam-rama, .cam-hud { display: none; } }
+
+/* --- ramka: ekran osadzony w czarnej obudowie --- */
+.cam-rama { position: fixed; inset: var(--cam-inset); z-index: 9995; pointer-events: none; border-radius: 14px;
+    border: 1px solid rgba(238,243,234,.22); box-shadow: 0 0 0 100vmax #000; }
+.cam-wpinka { position: absolute; left: 50%; transform: translateX(-50%); padding: 0 12px; background: #000;
+    font-family: var(--mono); font-size: 10px; letter-spacing: .28em; text-transform: uppercase; color: rgba(238,243,234,.7); white-space: nowrap; }
+.cam-wpinka.gora { top: -7px; } .cam-wpinka.dol { bottom: -7px; }
+.cam-wpinka b { color: var(--lime); font-weight: 500; }
+@media (max-width: 720px) { .cam-wpinka { font-size: 9px; letter-spacing: .2em; } .cam-wpinka.dol { display: none; } }
+
+/* --- HUD na kadrze --- */
+.cam-hud { position: absolute; inset: 0; z-index: 2; pointer-events: none; font-family: var(--mono);
+    font-size: 11px; letter-spacing: .2em; text-transform: uppercase; color: rgba(238,243,234,.82);
+    text-shadow: 0 1px 6px rgba(0,0,0,.8); }
+.cam-rog { position: absolute; width: 26px; height: 26px; border: 1.5px solid rgba(238,243,234,.7); }
+.cam-rog.tl { top: 22px; left: 22px; border-right: 0; border-bottom: 0; }
+.cam-rog.tr { top: 22px; right: 22px; border-left: 0; border-bottom: 0; }
+.cam-rog.bl { bottom: 22px; left: 22px; border-right: 0; border-top: 0; }
+.cam-rog.br { bottom: 22px; right: 22px; border-left: 0; border-top: 0; }
+.cam-gora, .cam-dol { position: absolute; left: 62px; right: 62px; display: flex; align-items: center; gap: 22px; }
+.cam-gora { top: 26px; } .cam-dol { bottom: 26px; }
+.cam-kanal { flex: 1; text-align: center; color: rgba(238,243,234,.55); }
+.cam-rec { display: inline-flex; align-items: center; gap: 8px; color: var(--alarm); font-weight: 600; }
+.cam-rec i, .cam-stan i { width: 9px; height: 9px; border-radius: 50%; background: currentColor; box-shadow: 0 0 10px currentColor; }
+.cam-stan { display: inline-flex; align-items: center; gap: 10px; color: var(--alarm); }
+.cam-stan b { color: #fff; font-weight: 600; }
+.cam-tc { display: inline-flex; flex-direction: column; align-items: flex-end; gap: 3px; }
+.cam-tc b { font-weight: 500; font-size: 13px; letter-spacing: .18em; color: #fff; font-variant-numeric: tabular-nums; }
+.cam-tc em { font-style: normal; color: rgba(238,243,234,.55); }
+.cam-sygnal { margin-left: auto; display: inline-flex; align-items: flex-end; gap: 3px; height: 14px; }
+.cam-sygnal i { width: 4px; background: rgba(238,243,234,.8); }
+.cam-sygnal i:nth-child(1){height:4px} .cam-sygnal i:nth-child(2){height:6px} .cam-sygnal i:nth-child(3){height:8px}
+.cam-sygnal i:nth-child(4){height:11px} .cam-sygnal i:nth-child(5){height:14px; background: var(--lime); box-shadow: 0 0 8px var(--lime);}
+.cam-krzyz { position: absolute; left: 50%; top: 50%; width: 34px; height: 34px; transform: translate(-50%,-50%);
+    background:
+        linear-gradient(rgba(238,243,234,.35),rgba(238,243,234,.35)) center/100% 1px no-repeat,
+        linear-gradient(rgba(238,243,234,.35),rgba(238,243,234,.35)) center/1px 100% no-repeat; }
+@media (prefers-reduced-motion: no-preference) {
+    .cam-rec i { animation: recPuls 1.1s steps(1,end) infinite; }
+    @keyframes recPuls { 0%,100% { opacity: 1; } 50% { opacity: .15; } }
+}
+@media (max-width: 720px) {
+    .cam-hud { font-size: 9px; letter-spacing: .14em; }
+    .cam-gora, .cam-dol { left: 40px; right: 40px; gap: 12px; }
+    .cam-gora { top: 16px; } .cam-dol { bottom: 16px; }
+    .cam-rog { width: 16px; height: 16px; } .cam-rog.tl, .cam-rog.tr { top: 12px; } .cam-rog.bl, .cam-rog.br { bottom: 12px; }
+    .cam-rog.tl, .cam-rog.bl { left: 12px; } .cam-rog.tr, .cam-rog.br { right: 12px; }
+    .cam-kanal, .cam-krzyz, .cam-tc em { display: none; }
+    .cam-stan { font-size: 9px; }
+}
+/* HUD na telefonie lezy na kwadratowym kadrze, ktory jest pierwszym dzieckiem - zawezamy do stage */
+@media (max-width: 720px) { .cam-hud { inset: auto; top: 0; left: 0; right: 0; height: 100vw; } }
+
+/* --- etykiety HUD nad naglowkami sekcji --- */
+.hud-tag { margin: 0 0 14px; font-family: var(--mono); font-size: 10.5px; letter-spacing: .28em; text-transform: uppercase;
+    color: var(--lime); display: inline-flex; align-items: center; gap: 12px; }
+.hud-tag::before, .hud-tag::after { content: ""; width: 22px; height: 1px; background: rgba(141,198,63,.5); }
+
+/* --- narozniki na kartach: cichy znacznik kadru --- */
+body.kamera .sym, body.kamera .cure-card, body.kamera .aparat { position: relative; }
+body.kamera .sym::after, body.kamera .cure-card::after, body.kamera .aparat::after {
+    content: ""; position: absolute; top: 14px; left: 14px; width: 14px; height: 14px; pointer-events: none;
+    border-top: 1.5px solid rgba(141,198,63,.55); border-left: 1.5px solid rgba(141,198,63,.55); }
+
+
+/* --- mobile: HUD nie moze wchodzic w logo (gora-lewo) ani w haslo (dol kadru).
+   Zostaje REC w prawym gornym rogu, narozniki i nic wiecej. --- */
+@media (max-width: 720px) {
+    .cam-gora { left: auto; right: 40px; top: 18px; gap: 0; }
+    .cam-kanal, .cam-tc, .cam-dol, .cam-krzyz { display: none !important; }
+    .cam-rec { font-size: 10px; letter-spacing: .22em; }
+    .hud-tag { font-size: 9.5px; letter-spacing: .18em; white-space: nowrap; gap: 8px; }
+    .hud-tag::before, .hud-tag::after { width: 14px; }
+}
+
 </style>
 </head>
-<body class="ciemna">
+<body class="ciemna kamera">
+<div class="cam-rama" aria-hidden="true">
+    <span class="cam-wpinka gora">DAILYFRUITS · PODGLĄD NA ŻYWO</span>
+    <span class="cam-wpinka dol">SPRAWA DF/2026/12 · <b id="cam-zegar">--:--</b> CET</span>
+</div>
 <!--#include:gtm-noscript-->
 <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-FVTBKWW" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -917,6 +1137,19 @@ body.ciemna .sposoby .mid-cta { margin-top: 34px; }
             <img id="heroKadr" src="amnestia-lina.webp?v=1" alt="Postać w czerni opuszcza się na stalowej lince z sufitu ciemnego skarbca tuż nad skrzynką świeżych owoców w snopie światła" width="1600" height="900" fetchpriority="high" decoding="async">
         </div>
         <div class="scrub-veil" aria-hidden="true"></div>
+        <div class="cam-hud" aria-hidden="true">
+            <span class="cam-rog tl"></span><span class="cam-rog tr"></span><span class="cam-rog bl"></span><span class="cam-rog br"></span>
+            <div class="cam-gora">
+                <span class="cam-rec"><i></i>REC</span>
+                <span class="cam-kanal">CAM 02 · MAGAZYN B · WYDZIAŁ ODZYSKIWANIA BUDŻETÓW</span>
+                <span class="cam-tc"><b id="cam-tc">00:00:00:00</b><em id="cam-data">--.--.----</em></span>
+            </div>
+            <div class="cam-dol">
+                <span class="cam-stan"><i></i>STAN: BUDŻET WYGASA · <b id="cam-dni">—</b> DNI DO TERMINU</span>
+                <span class="cam-sygnal"><i></i><i></i><i></i><i></i><i></i></span>
+            </div>
+            <span class="cam-krzyz"></span>
+        </div>
         <div class="scrub-grid">
             <div class="scrub-copy">
                 <h1>
@@ -941,6 +1174,7 @@ body.ciemna .sposoby .mid-cta { margin-top: 34px; }
 <section class="sec sec-cream">
     <div class="container">
         <div class="sec-head">
+            <p class="hud-tag">ODCZYT 01 · DIAGNOZA</p>
             <h2>Budżet, który <span class="fun">znika</span></h2>
             <p>Niewykorzystany budżet nie zostaje w firmie. Znika, a przy planowaniu na kolejny rok staje się argumentem za jego obcięciem.</p>
         </div>
@@ -992,6 +1226,7 @@ body.ciemna .sposoby .mid-cta { margin-top: 34px; }
 <section class="typy">
     <div class="container">
         <div class="sec-head">
+            <p class="hud-tag">ODCZYT 02 · PRZEBIEG AKCJI</p>
             <h2>Akcja odzyskiwania <span class="fun">rusza</span></h2>
             <p>Zgłoszenie idzie do nas, propozycja wraca tego samego dnia, faktura zdąży w tym roku.</p>
         </div>
@@ -1053,6 +1288,7 @@ body.ciemna .sposoby .mid-cta { margin-top: 34px; }
 <section class="sec sec-white sposoby">
     <div class="container">
         <div class="sec-head">
+            <p class="hud-tag">ODCZYT 03 · CELE</p>
             <h2>Cztery sposoby, jeden <span class="fun">termin</span></h2>
             <p>Każdy z nich fakturujemy w tym roku. Wybieracie ten, który pasuje do budżetu, a nie do katalogu.</p>
         </div>
@@ -1086,6 +1322,7 @@ body.ciemna .sposoby .mid-cta { margin-top: 34px; }
 <section class="prod-sec">
     <div class="container">
         <div class="sec-head">
+            <p class="hud-tag">ODCZYT 04 · ŁADUNEK</p>
             <h2>Co za to <span class="fun">dostajecie</span></h2>
             <p>Nie bon, nie voucher, nie obietnica na przyszły rok. Dostawy, które ruszają od stycznia.</p>
         </div>
@@ -1173,6 +1410,7 @@ body.ciemna .sposoby .mid-cta { margin-top: 34px; }
 <section class="form-sec" id="formularz">
     <div class="container">
         <div class="sec-head">
+            <p class="hud-tag">ODCZYT 05 · ZGŁOSZENIE</p>
             <h2>Zróbmy to <span class="fun">dzisiaj</span></h2>
             <p>Podajcie liczbę osób i kwotę, która zostaje. Resztę policzymy po naszej stronie.</p>
         </div>
@@ -1365,6 +1603,27 @@ body.ciemna .sposoby .mid-cta { margin-top: 34px; }
     kwota.addEventListener("input", policz);
     osoby.addEventListener("input", policz);
     policz();
+})();
+</script>
+<script>
+/* HUD kamery: prawdziwy stan, nie dekoracja. Timecode = zegar + licznik klatek,
+   data = dzis, dni = do terminu fakturowania, zegar w ramce = CET. */
+(function () {
+    var KONIEC = new Date(2026, 11, 12);
+    var tc = document.getElementById("cam-tc"), dt = document.getElementById("cam-data"),
+        dn = document.getElementById("cam-dni"), zg = document.getElementById("cam-zegar");
+    var p2 = function (n) { return String(n).padStart(2, "0"); };
+    var d0 = new Date(); d0.setHours(0,0,0,0);
+    if (dn) dn.textContent = Math.max(0, Math.round((KONIEC - d0) / 86400000));
+    if (dt) dt.textContent = p2(d0.getDate()) + "." + p2(d0.getMonth()+1) + "." + d0.getFullYear();
+    var klatka = 0, cicho = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    function tick() {
+        var n = new Date();
+        klatka = (klatka + 1) % 25;
+        if (tc) tc.textContent = p2(n.getHours()) + ":" + p2(n.getMinutes()) + ":" + p2(n.getSeconds()) + ":" + p2(cicho ? 0 : klatka);
+        if (zg) zg.textContent = p2(n.getHours()) + ":" + p2(n.getMinutes());
+    }
+    tick(); setInterval(tick, cicho ? 1000 : 40);
 })();
 </script>
 <script src="track.js?v=2" defer></script>
