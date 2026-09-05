@@ -2280,7 +2280,9 @@ body.ciemna .aparat.kalk .aparat-pola { grid-template-columns: repeat(3, minmax(
     // Na waskim ekranie kadr jest przycinany po bokach, wiec przesuwamy go do bohatera.
     // Zoom 1.22 na mobile: krawedz przeszklenia wychodzi z kadru, bohaterka lada na 0.46.
     // Kadr mobilny musi zmiescic bohaterke I skrzynke - stad pelne okno i dosuniecie w prawo.
-    var ZOOM = mobil ? 1.0 : 1.32, POS = mobil ? 0.62 : 1.0;
+    // POS 0 = obraz dosuniety do lewej krawedzi (widac jego lewa czesc, bohater idzie w prawo).
+    // 0.05 odtwarza kompozycje kadru statycznego: scale 1.32 + translateX 11%.
+    var ZOOM = mobil ? 1.0 : 1.32, POS = mobil ? 0.62 : 0.05;
     function gotowa(f) {
         if (!f) return false;
         return f.width ? true : (f.complete && f.naturalWidth > 0);
