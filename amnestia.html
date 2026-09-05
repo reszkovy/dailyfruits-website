@@ -688,9 +688,79 @@ html.pt-in body>:not(header) { animation: ptFadeIn 0.32s ease both; }
 .aparat-wynik s { text-decoration: none; color: var(--red); }
 .aparat-stopa { margin: 12px 0 0; font-size: 13px; color: var(--gray-500); }
 
+
+/* ===================== TONACJA CIEMNA =====================
+   Wszystko pod body.ciemna, zeby nie wycieklo do stopki ani do innych stron.
+   Zielen glęboka jako plyta, kremowy jako tekst, limonka zostaje akcentem. */
+body.ciemna { --noc: #0A1410; --plyta: #101C15; --plyta2: #16241B;
+    --kresk: rgba(234,240,230,.12); --kresk2: rgba(234,240,230,.22);
+    --tekst: #EAF0E6; --przyciszony: #94A493;
+    background: var(--noc); }
+
+body.ciemna .sec-cream,
+body.ciemna .sec-white,
+body.ciemna .typy,
+body.ciemna .prod-sec,
+body.ciemna .form-sec { background: var(--noc); }
+
+body.ciemna .sec-head h2,
+body.ciemna .prod-sec h2,
+body.ciemna .form-sec h2,
+body.ciemna h3 { color: var(--tekst); }
+body.ciemna .sec-head p,
+body.ciemna .rozwiazanie p,
+body.ciemna .aparat-stopa { color: var(--przyciszony); }
+body.ciemna .rozwiazanie p b { color: var(--tekst); }
+
+/* karty */
+body.ciemna .sym,
+body.ciemna .aparat,
+body.ciemna .hero-box,
+body.ciemna .form-info,
+body.ciemna .cure-card { background: var(--plyta); border: 1px solid var(--kresk); box-shadow: none; }
+body.ciemna .sym p,
+body.ciemna .form-info p,
+body.ciemna .form-info span { color: var(--przyciszony); }
+body.ciemna .sym .n { color: rgba(234,240,230,.2); }
+body.ciemna .mocne li { background: var(--plyta); border: 1px solid var(--kresk); color: var(--przyciszony); }
+
+/* aparat W-1 */
+body.ciemna .aparat-head { color: var(--tekst); border-bottom-color: var(--kresk2); }
+body.ciemna .aparat-head b { color: var(--przyciszony); }
+body.ciemna .aparat-pola label { color: var(--przyciszony); }
+body.ciemna .aparat-wpis { border-bottom-color: var(--kresk2); }
+body.ciemna .aparat-wpis input { color: var(--tekst); }
+body.ciemna .aparat-wpis input::placeholder { color: rgba(234,240,230,.2); }
+body.ciemna .aparat-wpis span { color: var(--przyciszony); }
+body.ciemna .aparat-wynik { color: var(--tekst); border-top-color: var(--kresk2); }
+body.ciemna .aparat-wynik u { background: var(--lime); color: #0A1410; }
+
+/* rzad zdjec: podpis pod kadrem, nie na nim */
+body.ciemna .typ::before { display: none; }
+body.ciemna .typ { overflow: visible; }
+body.ciemna .typ img { border-radius: var(--radius); }
+body.ciemna .typ figcaption { position: static; padding: 16px 2px 0; color: var(--przyciszony); }
+body.ciemna .typ figcaption b { color: var(--tekst); }
+
+/* pasek logotypow */
+body.ciemna .logo-bar { background: var(--plyta); border-top: 1px solid var(--kresk); border-bottom: 1px solid var(--kresk); }
+body.ciemna .logo-bar-label { color: var(--przyciszony); }
+body.ciemna .logo-bar-item img { filter: grayscale(1) brightness(3) contrast(.6); opacity: .7; }
+
+/* formularz */
+body.ciemna .assure { color: var(--przyciszony); }
+body.ciemna .rating-score { color: var(--przyciszony); }
+body.ciemna .assure-flow span { color: var(--przyciszony); }
+body.ciemna .form-wrap { background: var(--plyta); border: 1px solid var(--kresk); border-radius: var(--radius-lg); }
+body.ciemna .form-after p { color: var(--przyciszony); }
+body.ciemna .form-kontakt b { color: var(--tekst); }
+body.ciemna .form-kontakt span { color: var(--przyciszony); }
+body.ciemna .karuzela-info { color: var(--przyciszony); }
+body.ciemna .ai-badge { background: var(--plyta2); color: var(--przyciszony); }
+
 </style>
 </head>
-<body>
+<body class="ciemna">
 <!--#include:gtm-noscript-->
 <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-FVTBKWW" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
