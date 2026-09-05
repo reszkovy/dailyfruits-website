@@ -818,6 +818,20 @@ body.ciemna .form-after .btn-green:hover { background: var(--lime-light); color:
 .aparat-wpis input { min-height: 44px; }
 .aparat-wpis { min-height: 48px; }
 
+
+/* ---------- ATF: zero kremowej mgly na kadrze ----------
+   Szablon naklada .scrub-veil (krem od lewej i od dolu) pod ciemna typografie.
+   U nas typografia jest jasna, wiec mgla ja wygaszala. Veil znika na kazdej
+   szerokosci, czytelnosc daje ciemny gradient na .scrub-stage::before. */
+body.ciemna .scrub-veil { display: none !important; }
+body.ciemna .scrub-stage::before {
+    background: linear-gradient(90deg, rgba(8,12,9,.92) 0%, rgba(8,12,9,.8) 34%, rgba(8,12,9,.45) 58%, rgba(8,12,9,.18) 100%); }
+body.ciemna .scrub-copy h1 .l1, body.ciemna .scrub-copy h1 .l2,
+body.ciemna .scrub-copy .lead { text-shadow: 0 2px 18px rgba(0,0,0,.55); }
+@media (max-width: 1000px) and (min-width: 721px) {
+    body.ciemna .scrub-stage::before { background: linear-gradient(to bottom, rgba(8,12,9,.2) 0%, rgba(8,12,9,.55) 45%, rgba(8,12,9,.94) 100%); }
+}
+
 </style>
 </head>
 <body class="ciemna">
