@@ -772,6 +772,52 @@ body.ciemna .scrub-sticky::before { display: none !important; }
    U nas typografia jest jasna, wiec rozjasnienie tylko zjadalo zdjecie. */
 body.ciemna .scrub-stage::after { display: none !important; }
 
+
+/* ---------- CZYTELNOSC: pomiar kontrastu wykazal szary tekst szablonu (#555)
+   i ciemna zielen (#1B5E3A) na ciemnych kartach. Wszystko ponizej 4.5:1 idzie
+   na kremowy albo przyciszony kremowy. ---------- */
+body.ciemna .scrub { background: var(--noc); }
+body.ciemna .hero-box p,
+body.ciemna .hero-box li,
+body.ciemna .hero-box .foot-lead,
+body.ciemna .hero-box-foot span,
+body.ciemna .prod-sec p { color: var(--przyciszony); }
+body.ciemna .hero-box h3,
+body.ciemna .hero-box li b,
+body.ciemna .hero-box-foot b,
+body.ciemna .prod-sec b { color: var(--tekst); }
+body.ciemna .hero-box-foot b { color: var(--lime); }
+body.ciemna .hero-box .tag { background: rgba(141,198,63,.16); color: var(--lime); }
+body.ciemna .hero-box li::before,
+body.ciemna .mocne li::before { color: var(--lime); }
+body.ciemna .form-info li b { color: var(--tekst); }
+body.ciemna .form-info li i { background: rgba(141,198,63,.18); color: var(--lime); }
+body.ciemna .form-info h3 { color: var(--tekst); }
+body.ciemna .form-kontakt a { color: var(--lime); }
+body.ciemna .sym h3 { color: var(--tekst); }
+body.ciemna .karuzela-info { color: var(--przyciszony); }
+body.ciemna .form-after { background: transparent; }
+body.ciemna .aparat-wynik s { color: #FF7A6B; }
+
+
+body.ciemna .assure-item span { color: var(--przyciszony); }
+body.ciemna .assure-item b { color: var(--lime); }
+body.ciemna .proofzone { background: transparent; }
+
+
+/* mobile: lead lezy na ciemnym tle, nie na kremie jak w szablonie */
+@media (max-width: 720px) {
+    body.ciemna .scrub-copy .lead { color: var(--przyciszony); }
+    body.ciemna .scrub-copy .lead b { color: var(--tekst); }
+}
+body.ciemna .form-after .btn-green { background: var(--lime); color: #0A1410; border-color: var(--lime); }
+body.ciemna .form-after .btn-green:hover { background: var(--lime-light); color: #0A1410; }
+
+
+/* cel dotykowy: pola kalkulatora nie moga byc nizsze niz 44 px */
+.aparat-wpis input { min-height: 44px; }
+.aparat-wpis { min-height: 48px; }
+
 </style>
 </head>
 <body class="ciemna">
@@ -828,7 +874,7 @@ body.ciemna .scrub-stage::after { display: none !important; }
 <section class="sec sec-cream">
     <div class="container">
         <div class="sec-head">
-            <h2>To nie jest <span class="fun">oszczednosc</span></h2>
+            <h2>Budżet, który <span class="fun">znika</span></h2>
             <p>Niewykorzystany budżet nie zostaje w firmie. Znika, a przy planowaniu na kolejny rok staje się argumentem za jego obcięciem.</p>
         </div>
         <div class="sym-grid">
@@ -939,7 +985,7 @@ body.ciemna .scrub-stage::after { display: none !important; }
 <section class="prod-sec">
     <div class="container">
         <div class="sec-head">
-            <h2>Co dostaniecie za te <span class="fun">pieniadze</span></h2>
+            <h2>Co za to <span class="fun">dostajecie</span></h2>
             <p>Nie bon, nie voucher, nie obietnica na przyszły rok. Dostawy, które ruszają od stycznia.</p>
         </div>
         <div class="rozwiazanie">
@@ -982,7 +1028,7 @@ body.ciemna .scrub-stage::after { display: none !important; }
                 <div class="prod-card" aria-hidden="true"><div class="prod-ph"><img src="packshot-fingerfoods.webp" alt="Finger foods na spotkania" loading="lazy" width="600" height="571"></div><h3>Catering na spotkania</h3></div>
             </div>
         </div>
-        <p class="mid-cta"><a href="#formularz" class="btn btn-red-solid btn-arrow js-do-formularza">Zaplanuj miękkie lądowanie</a></p>
+        <p class="mid-cta"><a href="#formularz" class="btn btn-red-solid btn-arrow js-do-formularza">Odzyskaj budżet</a></p>
             </div>
         </div>
         <div class="proofzone">
