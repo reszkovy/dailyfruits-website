@@ -1317,6 +1317,22 @@ body.ciemna .ai-badge { font-size: 12px; line-height: 1.4; max-width: calc(100vw
     body.ciemna .cam-rog.tr, body.ciemna .cam-rog.br { right: 10px; }
 }
 
+
+/* ---------- CZTERY DROGI: siatka po rowno, bez pinezki z szablonu ----------
+   Szablon dzielil kolumny wedlug tresci (268/244/316/285), wiec tekst
+   w karcie mial 199 px i lamal sie co dwa slowa. Rowne kolumny, wezszy
+   padding boczny, tekst lamany "pretty". ::before z sekcji kuracji
+   (zielone kolko w rogu) wylaczone. */
+body.ciemna .sposoby .cure-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--f3); align-items: stretch; }
+@media (max-width: 1100px) { body.ciemna .sposoby .cure-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 560px)  { body.ciemna .sposoby .cure-grid { grid-template-columns: minmax(0, 1fr); } }
+body.ciemna .sposoby .cure-card { padding: var(--f4) var(--f3) var(--f4); margin: 0; min-width: 0; }
+body.ciemna .sposoby .cure-card::before { display: none !important; }
+body.ciemna .sposoby .cure-card p, body.ciemna .sposoby .cure-card h3 { text-wrap: pretty; overflow-wrap: anywhere; }
+body.ciemna .sposoby .cure-card h3 { font-size: 20px; line-height: 1.25; }
+body.ciemna .sposoby .cure-top { display: flex; align-items: center; justify-content: space-between; gap: var(--f2); }
+body.ciemna .sposoby .cure-top img { width: 40px; height: 40px; flex: none; }
+
 </style>
 </head>
 <body class="ciemna kamera">
