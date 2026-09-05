@@ -847,6 +847,43 @@ body.ciemna .scrub-copy .lead { text-shadow: 0 1px 4px rgba(0,0,0,.75), 0 4px 18
     #heroKadr { transform: scale(1.32) translateX(11%); transform-origin: center 46%; object-position: 62% 46%; }
 }
 
+
+/* ---------- HERO: zywy termin + powolny ruch kadru ----------
+   Ruch jest namiastka filmu, ktory tu wejdzie: jedno ujecie, bardzo wolne
+   zblizenie, zero odbic. Pod reduced-motion kadr stoi. */
+.termin { display: inline-flex; align-items: center; gap: 10px; margin: 0 0 22px; padding: 9px 14px 9px 11px;
+    border-radius: 999px; background: rgba(8,12,9,.55); border: 1px solid rgba(255,249,224,.18);
+    font-size: 13.5px; font-weight: 600; color: var(--cream); letter-spacing: .01em; backdrop-filter: blur(6px); }
+.termin i { width: 8px; height: 8px; border-radius: 50%; background: #FF7A6B; flex: none; }
+.termin b { color: var(--lime); font-weight: 900; font-variant-numeric: tabular-nums; }
+@media (prefers-reduced-motion: no-preference) {
+    .termin i { animation: terminPuls 2.4s cubic-bezier(.22,1,.36,1) infinite; }
+    @keyframes terminPuls { 0%,100% { opacity: 1; } 50% { opacity: .35; } }
+    @media (min-width: 721px) {
+        #heroKadr { animation: kadrRuch 26s cubic-bezier(.22,1,.36,1) both; }
+        @keyframes kadrRuch { from { transform: scale(1.32) translateX(11%); } to { transform: scale(1.4) translateX(9%); } }
+    }
+}
+@media (max-width: 720px) { .termin { display: none; } }
+
+/* ---------- CZTERY SPOSOBY ---------- */
+body.ciemna .sposoby { background: var(--noc); }
+body.ciemna .cure-card h3 { color: var(--tekst); }
+body.ciemna .cure-card p { color: var(--przyciszony); }
+body.ciemna .cure-card .day { background: rgba(141,198,63,.14); color: var(--lime); }
+body.ciemna .cure-card.wyrozniona { box-shadow: inset 0 0 0 1.5px var(--lime); }
+body.ciemna .sposoby .mid-cta { margin-top: 34px; }
+
+/* ---------- KALKULATOR: wynik jako instrument ---------- */
+.aparat-wynik { font-weight: 400; }
+.aparat-puste { margin: 0; font-size: clamp(17px,2.2vw,22px); font-weight: 700; color: var(--przyciszony); }
+.aparat-linia { margin: 0; display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap; }
+.aparat-duza { font-size: clamp(44px,7vw,76px); font-weight: 900; line-height: .95; letter-spacing: -.045em;
+    color: var(--lime); font-variant-numeric: tabular-nums; }
+.aparat-jedn { font-size: 13px; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; color: var(--przyciszony); }
+.aparat-reszta { margin: 14px 0 0; font-size: clamp(16px,2vw,19px); color: var(--przyciszony); }
+.aparat-reszta b { color: var(--tekst); }
+
 </style>
 </head>
 <body class="ciemna">
@@ -887,6 +924,7 @@ body.ciemna .scrub-copy .lead { text-shadow: 0 1px 4px rgba(0,0,0,.75), 0 4px 18
                     <span class="l2">budżetowa.</span>
                 </h1>
                 <p class="lead"><b>Wasz budżet kończy się 12 grudnia, nie 31.</b><br>Żeby zamówienie weszło w tegoroczny budżet, musi zostać zafakturowane wcześniej.</p>
+                <p class="termin" id="hero-termin" aria-live="polite"><i></i><span>Do końca fakturowania zostało <b id="hero-dni">—</b> dni</span></p>
                 <div class="cta-row">
                     <a href="#formularz" class="btn-feed js-do-formularza">Odzyskaj budżet →</a>
                 </div>
@@ -943,7 +981,7 @@ body.ciemna .scrub-copy .lead { text-shadow: 0 1px 4px rgba(0,0,0,.75), 0 4px 18
                     <div class="aparat-wpis"><input id="a-osoby" type="text" inputmode="numeric" placeholder="40" autocomplete="off"><span>osób</span></div>
                 </div>
             </div>
-            <p class="aparat-wynik" id="a-wynik">Wpisz kwotę, a policzymy, ile z tego znika każdego dnia.</p>
+            <div class="aparat-wynik" id="a-wynik"><p class="aparat-puste">Wpisz kwotę, a policzymy, ile z tego znika każdego dnia.</p></div>
             <p class="aparat-stopa" id="a-stopa">Nic nie zapisujemy. Wyliczenie jest poglądowe.</p>
         </div>
     </div>
@@ -1010,6 +1048,40 @@ body.ciemna .scrub-copy .lead { text-shadow: 0 1px 4px rgba(0,0,0,.75), 0 4px 18
 </section>
 -->
 
+
+<!-- CZTERY SPOSOBY: komponent cure-grid z szablonu (tam wylaczony), tu jako oferta -->
+<section class="sec sec-white sposoby">
+    <div class="container">
+        <div class="sec-head">
+            <h2>Cztery sposoby, jeden <span class="fun">termin</span></h2>
+            <p>Każdy z nich fakturujemy w tym roku. Wybieracie ten, który pasuje do budżetu, a nie do katalogu.</p>
+        </div>
+        <div class="cure-grid">
+            <div class="cure-card reveal wyrozniona">
+                <div class="cure-top"><span class="day">Najczęściej</span><img src="icons/icon-crate-fruit.webp" alt="" loading="lazy" width="46" height="46"></div>
+                <h3>Przedpłata na pierwszy kwartał</h3>
+                <p>Płacicie z tegorocznego budżetu za dostawy, które i tak zamówicie w styczniu. Pieniądze, które miały przepaść, zamieniają się w trzy miesiące skrzynek.</p>
+            </div>
+            <div class="cure-card reveal">
+                <div class="cure-top"><span class="day">Na zapas</span><img src="icons/icon-health-day.webp" alt="" loading="lazy" width="46" height="46"></div>
+                <h3>Welcome packi dla nowych osób</h3>
+                <p>Kupione teraz, wydawane przez cały rok w miarę rekrutacji. Rzecz, o której nikt nie pomyśli sam, a każdy HR ma na nią miejsce.</p>
+            </div>
+            <div class="cure-card reveal">
+                <div class="cure-top"><span class="day">Inna kieszeń</span><img src="icons/icon-sandwich-half.webp" alt="" loading="lazy" width="46" height="46"></div>
+                <h3>Catering na spotkanie świąteczne</h3>
+                <p>Zwykle idzie z budżetu na integrację, nie na benefity, więc nie rusza tego, co macie na owoce.</p>
+            </div>
+            <div class="cure-card reveal">
+                <div class="cure-top"><span class="day">Dla zespołu</span><img src="icons/icon-nuts-bowl.webp" alt="" loading="lazy" width="46" height="46"></div>
+                <h3>Paczki świąteczne</h3>
+                <p>Zestawy dla pracowników i dla ich dzieci, w brandowanych opakowaniach, z dostawą do biura albo do domu.</p>
+            </div>
+        </div>
+        <p class="mid-cta"><a href="#formularz" class="btn btn-red-solid btn-arrow js-do-formularza">Wybierzcie sposób, resztę policzymy</a></p>
+    </div>
+</section>
+
 <!-- CO LADUJE NA BIURKU -->
 <section class="prod-sec">
     <div class="container">
@@ -1026,7 +1098,7 @@ body.ciemna .scrub-copy .lead { text-shadow: 0 1px 4px rgba(0,0,0,.75), 0 4px 18
             </ul>
         </div>
         <div class="hero-box reveal">
-            <div><img src="box-premium.webp" alt="Skrzynka DailyFruits pełna świeżych owoców" width="1200" height="800" loading="lazy"></div>
+            <div><img src="amnestia-pudelko.webp?v=1" alt="Pudełko DailyFruits pełne owoców na blacie w firmowej kuchni, w porannym świetle" width="1200" height="800" loading="lazy"></div>
             <div>
                 <span class="tag">Podstawa abonamentu</span>
                 <h3>Skrzynka, która staje w <span class="fun">kuchni</span></h3>
@@ -1240,14 +1312,15 @@ body.ciemna .scrub-copy .lead { text-shadow: 0 1px 4px rgba(0,0,0,.75), 0 4px 18
 </script>
 <script>
 /* Licznik utraconego budzetu. Data graniczna to jedyna zmienna do potwierdzenia
-   przez klienta - od niej zalezy caly odczyt. */
+   przez klienta - od niej zalezy caly odczyt, takze ten w hero. */
 (function () {
     var KONIEC = new Date(2026, 11, 12);
     var kwota = document.getElementById("a-kwota");
     var osoby = document.getElementById("a-osoby");
     var wynik = document.getElementById("a-wynik");
     var stopa = document.getElementById("a-stopa");
-    if (!kwota) return;
+    var heroDni = document.getElementById("hero-dni");
+    var cicho = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
     function zl(n) { return Math.round(n).toLocaleString("pl-PL"); }
     function num(e) { return Number(String(e.value).replace(/[^\d]/g, "")) || 0; }
@@ -1255,16 +1328,38 @@ body.ciemna .scrub-copy .lead { text-shadow: 0 1px 4px rgba(0,0,0,.75), 0 4px 18
         var d = new Date(); d.setHours(0, 0, 0, 0);
         return Math.max(0, Math.round((KONIEC - d) / 86400000));
     }
+    if (heroDni) heroDni.textContent = dni();
+    if (!kwota) return;
+
+    var klatka = null, biezaca = 0;
+    function dojedz(el, cel) {
+        if (cicho || document.hidden) { biezaca = cel; el.textContent = zl(cel); return; }
+        cancelAnimationFrame(klatka);
+        var od = biezaca, t0 = performance.now(), czas = 650;
+        (function krok(t) {
+            var p = Math.min(1, (t - t0) / czas), e = 1 - Math.pow(1 - p, 4);
+            biezaca = od + (cel - od) * e;
+            el.textContent = zl(biezaca);
+            if (p < 1) klatka = requestAnimationFrame(krok);
+        })(t0);
+    }
     function policz() {
         var k = num(kwota), o = num(osoby), d = dni();
         if (!k) {
-            wynik.textContent = "Wpisz kwotę, a policzymy, ile z tego znika każdego dnia.";
+            biezaca = 0;
+            wynik.innerHTML = '<p class="aparat-puste">Wpisz kwotę, a policzymy, ile z tego znika każdego dnia.</p>';
             stopa.textContent = "Nic nie zapisujemy. Wyliczenie jest poglądowe.";
             return;
         }
-        var txt = "Każdego dnia przepada <u>" + zl(k / Math.max(d, 1)) + " zł</u>. Do terminu zostało <s>" + d + " dni</s>.";
-        if (o) txt += " Na osobę wychodzi " + zl(k / o) + " zł.";
-        wynik.innerHTML = txt;
+        var naDzien = k / Math.max(d, 1);
+        if (!wynik.querySelector(".aparat-duza")) {
+            wynik.innerHTML = '<p class="aparat-linia"><span class="aparat-duza" id="a-duza">0</span><span class="aparat-jedn">zł dziennie przepada</span></p>' +
+                              '<p class="aparat-reszta" id="a-reszta"></p>';
+        }
+        dojedz(document.getElementById("a-duza"), naDzien);
+        var reszta = "Do terminu zostało <b>" + d + " dni</b>.";
+        if (o) reszta += " Na osobę wychodzi <b>" + zl(k / o) + " zł</b>.";
+        document.getElementById("a-reszta").innerHTML = reszta;
         stopa.textContent = "Termin fakturowania: 12 grudnia 2026. Kwota wpisana: " + zl(k) + " zł.";
     }
     kwota.addEventListener("input", policz);
