@@ -1565,6 +1565,20 @@ body.ciemna .ai-badge { position: fixed; top: calc(var(--cam-inset) + 10px); rig
     body.ciemna header .nav-buttons .btn.btn-red-solid { border-radius: 0 0 12px 12px; }
 }
 
+
+/* ---------- MOBILE: badge w jednej linii i przewijany ze strona, nic nad CTA ----------
+   Badge: absolute (idzie ze strona), nowrap, 9 px, w prawym gornym rogu obok logo.
+   Dolne narozniki kadru siedzialy w rogach sticky CTA - na telefonie znikaja. */
+@media (max-width: 720px) {
+    body.ciemna .ai-badge { position: absolute; top: 14px; right: 12px; left: auto; z-index: 121;
+        white-space: nowrap; max-width: none; font-size: 9px; letter-spacing: 0; line-height: 1.2;
+        padding: 4px 8px; border-radius: 5px; backdrop-filter: none; -webkit-backdrop-filter: none;
+        background: rgba(7,16,12,.78); }
+    body.ciemna .cam-gora { top: 42px; right: 12px; }
+    body.ciemna .cam-rog.bl, body.ciemna .cam-rog.br { display: none !important; }
+    body.ciemna .cam-hud { bottom: 70px !important; }
+}
+
 </style>
 </head>
 <body class="ciemna kamera">
