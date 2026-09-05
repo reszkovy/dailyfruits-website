@@ -71,76 +71,150 @@ gtag('config', 'G-G9SCYSFC36');
     <link rel="icon" type="image/png" href="favicon_.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700;900&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700;900&display=swap" rel="stylesheet" media="print" onload="this.media=\'all\'">
     <noscript><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700;900&display=swap" rel="stylesheet"></noscript>
     <link rel="stylesheet" href="shared.css?v=13">
 <style>
-@font-face { font-family: 'Achiko'; src: url('Achiko.woff2') format('woff2'), url('Achiko.ttf') format('truetype'); font-weight: 400; font-display: swap; }
+@font-face { font-family: \'Achiko\'; src: url(\'Achiko.woff2\') format(\'woff2\'), url(\'Achiko.ttf\') format(\'truetype\'); font-weight: 400; font-display: swap; }
 :root {
     --green-dark: #1B5E3A; --lime: #8DC63F; --lime-light: #A4C348; --lime-bg: #FFF9E0;
     --yellow: #FFF200; --yellow-bg: #FFF8D8; --red: #E43020; --coral: #F06878;
     --cream: #FFF9E0; --white: #FFFFFF; --gray: #3D5A1E; --gray-500: #555;
     --radius: 20px; --radius-lg: 28px; --radius-pill: 100px;
-    --font: 'DM Sans', sans-serif; --font-fun: 'Achiko', 'Lobster', cursive;
-    --noc: #0C0F0C; --mgla: #93A093; --linia: rgba(255,249,224,.15);
+    --font: \'DM Sans\', sans-serif; --font-fun: \'Achiko\', \'Lobster\', cursive;
+
+    /* kokpit */
+    --k-tlo:#080A08; --k-plyta:#0E120E; --k-plyta2:#131813; --k-szyba:rgba(255,249,224,.06);
+    --k-linia:rgba(255,249,224,.11); --k-linia2:rgba(255,249,224,.2);
+    --k-tekst:#EFF2EA; --k-mgla:#7E8A7C; --k-alarm:#FF6A5C;
+    --k-luk: cubic-bezier(.22,1,.36,1);
 }
 
-/* Landing kampanijny: naglowek okrojony, CTA plynie ze strona.
-   Wszystkie reguly tej strony maja prefiks .am- zeby nie wyciekly do shared.css. */
-header { z-index: 300 !important; position: absolute !important; background: transparent !important; box-shadow: none !important; border-bottom: none !important; }
+/* ============ RAMA ============ */
+/* Wszystko prefiksowane .am- albo .k-, zeby nic nie wyciekalo do shared.css */
+body.am-body { background: var(--k-tlo); }
+header { z-index: 300 !important; position: absolute !important; background: transparent !important;
+    box-shadow: none !important; border-bottom: none !important; }
 header::after { display: none !important; }
-header .nav-inner { padding-top: 24px; padding-bottom: 24px; }
-header .logo-sub { color: var(--cream) !important; opacity: .55; }
-header .nav-buttons { position: fixed; top: 22px; right: clamp(20px, 3vw, 44px); z-index: 10;
-    transition: opacity .32s ease, transform .32s cubic-bezier(0.16,1,0.3,1); }
-header .nav-buttons.schowane { opacity: 0; transform: translateY(-14px); pointer-events: none; }
-header .btn-red-solid { white-space: nowrap; box-shadow: 0 8px 22px rgba(0,0,0,0.34); }
+header .nav-inner { padding-top: 20px; padding-bottom: 20px; }
+header .logo-sub { color: var(--k-mgla) !important; opacity: .9; text-shadow: none; }
+header .nav-buttons { position: fixed; top: 20px; right: clamp(16px,3vw,40px); z-index: 10;
+    transition: opacity .4s var(--k-luk), transform .4s var(--k-luk); }
+header .nav-buttons.schowane { opacity: 0; transform: translateY(-12px); pointer-events: none; }
+header .btn-red-solid { white-space: nowrap; box-shadow: 0 10px 26px rgba(0,0,0,.45); }
+body.am-body .ai-badge { background: var(--k-plyta); color: var(--k-mgla); }
 
-/* ---------- HERO ---------- */
-.am-hero { background: var(--noc); color: var(--cream); padding: clamp(120px,17vw,200px) 0 clamp(56px,8vw,96px); }
-.am-syg { font-size: 12px; letter-spacing: .2em; text-transform: uppercase; color: var(--mgla); margin: 0 0 22px; }
-.am-hero h1 { font-size: clamp(38px,7.6vw,84px); line-height: .96; letter-spacing: -.035em;
-    margin: 0; text-transform: uppercase; font-weight: 900; color: var(--cream); }
-.am-hero h1 em { color: #FF6A5C; }
-.am-hero h1 em { font-style: normal; }
-.am-lead { margin: 26px 0 0; max-width: 50ch; color: var(--mgla); font-size: clamp(16px,1.9vw,19px); }
+/* ============ KOKPIT ============ */
+.k-scena { position: relative; background: var(--k-tlo); color: var(--k-tekst);
+    padding: clamp(96px,13vw,150px) 0 clamp(40px,6vw,72px); overflow: hidden; }
+.k-swiatlo { position: absolute; inset: -30% -10% auto -10%; height: 90%; pointer-events: none;
+    background: radial-gradient(60% 55% at 50% 0%, rgba(141,198,63,.13), transparent 70%); }
+.k-ziarno { position: absolute; inset: 0; pointer-events: none; opacity: .5;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='.05'/%3E%3C/svg%3E"); }
+.k-scena > .container { position: relative; z-index: 1; }
 
-/* ---------- APARAT (kalkulator) ---------- */
-.am-aparat { background: var(--cream); color: var(--green-dark); border-radius: var(--radius);
-    margin: clamp(30px,4.6vw,48px) 0 0; padding: clamp(22px,3.6vw,38px);
-    box-shadow: 0 26px 60px rgba(0,0,0,.42); }
-.am-aparat-head { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap;
-    padding-bottom: 15px; margin-bottom: 22px; border-bottom: 2px solid rgba(27,94,58,.18);
-    font-size: 11.5px; letter-spacing: .14em; text-transform: uppercase; font-weight: 700; }
-.am-aparat-head b { font-weight: 500; color: rgba(27,94,58,.6); }
-.am-pola { display: grid; grid-template-columns: repeat(auto-fit,minmax(190px,1fr)); gap: 18px; }
-.am-pola label { display: block; font-size: 11px; letter-spacing: .13em; text-transform: uppercase;
-    color: rgba(27,94,58,.65); margin-bottom: 7px; font-weight: 700; }
-.am-pola input { width: 100%; border: 0; border-bottom: 2px solid rgba(27,94,58,.3);
-    background: transparent; color: var(--green-dark); font-family: var(--font);
-    font-weight: 900; font-size: clamp(26px,4vw,40px); line-height: 1.1; padding: 2px 0 8px;
-    font-variant-numeric: tabular-nums; border-radius: 0; }
-.am-pola input:focus { outline: none; border-bottom-color: var(--green-dark); }
-.am-pola input::placeholder { color: rgba(27,94,58,.22); }
-.am-wynik { margin-top: 26px; padding-top: 22px; border-top: 2px solid rgba(27,94,58,.18); }
-.am-zdanie { font-size: clamp(19px,2.7vw,28px); line-height: 1.25; font-weight: 700;
-    letter-spacing: -.015em; margin: 0; }
-.am-zdanie u { text-decoration: none; background: var(--lime); padding: 0 .2em; border-radius: 4px; }
-.am-zdanie s { text-decoration: none; color: var(--red); }
-.am-stopa { margin: 15px 0 0; font-size: 13px; color: rgba(27,94,58,.62); }
+.k-etykieta { font-size: 10.5px; font-weight: 700; letter-spacing: .22em; text-transform: uppercase;
+    color: var(--k-mgla); margin: 0; }
 
-/* ---------- OPCJE ---------- */
-.am-opcje { display: grid; grid-template-columns: repeat(auto-fit,minmax(228px,1fr));
-    gap: 1px; background: var(--linia); border: 1px solid var(--linia); border-radius: var(--radius);
-    overflow: hidden; margin: clamp(30px,4.6vw,52px) 0 0; }
-.am-opcja { background: #141814; padding: 26px 24px; display: flex; flex-direction: column; gap: 9px; }
-.am-opcja .am-nr { font-size: 11.5px; letter-spacing: .15em; color: var(--mgla); font-weight: 700; }
-.am-opcja h3 { margin: 0; font-size: 19px; line-height: 1.18; letter-spacing: -.01em; color: var(--cream); }
-.am-opcja p { margin: 0; font-size: 14.5px; color: var(--mgla); }
-.am-opcja.am-pierwsza { background: #172016; box-shadow: inset 4px 0 0 var(--lime); }
-.am-opcja.am-pierwsza h3 { color: var(--lime); }
+.k-belka { display: flex; flex-wrap: wrap; gap: 10px 26px; align-items: center;
+    padding-bottom: 14px; border-bottom: 1px solid var(--k-linia); margin-bottom: clamp(26px,4vw,44px); }
+.k-belka .k-sep { flex: 1; }
+.k-dioda { display: inline-flex; align-items: center; gap: 8px; color: var(--k-alarm); }
+.k-dioda i { width: 7px; height: 7px; border-radius: 50%; background: currentColor; flex: none;
+    box-shadow: 0 0 0 0 currentColor; }
+@media (prefers-reduced-motion: no-preference) {
+    .k-dioda i { animation: kpuls 2.6s var(--k-luk) infinite; }
+    @keyframes kpuls { 0%,100%{opacity:1} 50%{opacity:.28} }
+}
+.k-dioda.k-ok { color: var(--lime); }
 
-/* ---------- SEKCJA JASNA ---------- */
+.k-tytul { font-size: clamp(30px,5.6vw,58px); line-height: 1.02; letter-spacing: -.035em;
+    font-weight: 900; margin: 0 0 14px; color: var(--k-tekst); text-transform: none; }
+.k-tytul em { font-style: normal; color: var(--k-alarm); }
+.k-lead { margin: 0; max-width: 46ch; color: var(--k-mgla); font-size: clamp(15px,1.7vw,17.5px); }
+
+/* --- pulpit --- */
+.k-pulpit { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1.1fr);
+    gap: clamp(14px,2vw,22px); margin-top: clamp(28px,4vw,44px); align-items: stretch; }
+@media (max-width: 900px) { .k-pulpit { grid-template-columns: 1fr; } }
+
+.k-panel { background: linear-gradient(180deg, var(--k-plyta2), var(--k-plyta));
+    border: 1px solid var(--k-linia); border-radius: 18px; padding: clamp(20px,2.6vw,28px);
+    display: flex; flex-direction: column; gap: 18px; }
+.k-panel-head { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+
+.k-pole label { display: block; margin-bottom: 8px; font-size: 10.5px; font-weight: 700;
+    letter-spacing: .16em; text-transform: uppercase; color: var(--k-mgla); }
+.k-wpis { display: flex; align-items: baseline; gap: 10px; border-bottom: 1px solid var(--k-linia2);
+    padding-bottom: 10px; transition: border-color .25s var(--k-luk); }
+.k-wpis:focus-within { border-bottom-color: var(--lime); }
+.k-wpis input { flex: 1; min-width: 0; border: 0; background: transparent; color: var(--k-tekst);
+    font-family: var(--font); font-weight: 900; font-size: clamp(28px,4.4vw,42px); line-height: 1;
+    letter-spacing: -.03em; padding: 0; font-variant-numeric: tabular-nums; border-radius: 0; }
+.k-wpis input:focus { outline: none; }
+.k-wpis input::placeholder { color: rgba(239,242,234,.18); }
+.k-wpis .k-jedn { font-size: 13px; font-weight: 700; color: var(--k-mgla); letter-spacing: .1em;
+    text-transform: uppercase; flex: none; }
+
+/* --- instrument --- */
+.k-instrument { align-items: center; justify-content: center; text-align: center; gap: 0;
+    position: relative; min-height: 300px; }
+.k-tarcza { position: relative; width: min(100%, 320px); aspect-ratio: 1; margin: 0 auto; }
+.k-tarcza svg { width: 100%; height: 100%; display: block; transform: rotate(-90deg); }
+.k-tarcza circle { fill: none; stroke-linecap: round; }
+.k-tor { stroke: var(--k-szyba); stroke-width: 10; }
+.k-fill { stroke: var(--k-alarm); stroke-width: 10;
+    transition: stroke-dashoffset .9s var(--k-luk), stroke .5s var(--k-luk); }
+.k-tarcza.k-zabezpieczone .k-fill { stroke: var(--lime); }
+.k-odczyt { position: absolute; inset: 0; display: flex; flex-direction: column;
+    align-items: center; justify-content: center; gap: 4px; padding: 0 14%; }
+.k-liczba { font-size: clamp(38px,7vw,58px); font-weight: 900; line-height: .96; letter-spacing: -.045em;
+    font-variant-numeric: tabular-nums; color: var(--k-tekst); }
+.k-jedn-duza { font-size: 12px; font-weight: 700; letter-spacing: .2em; text-transform: uppercase;
+    color: var(--k-mgla); }
+.k-podpis { margin: 18px 0 0; font-size: 14px; color: var(--k-mgla); max-width: 30ch; }
+.k-podpis b { color: var(--k-tekst); font-weight: 700; }
+
+/* --- odczyty boczne --- */
+.k-rzad { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 1px;
+    background: var(--k-linia); border: 1px solid var(--k-linia); border-radius: 14px; overflow: hidden; }
+.k-cela { background: var(--k-plyta); padding: 16px 14px; display: flex; flex-direction: column; gap: 6px; }
+.k-cela .k-w { font-size: clamp(19px,2.6vw,26px); font-weight: 900; letter-spacing: -.03em;
+    font-variant-numeric: tabular-nums; }
+.k-cela .k-o { font-size: 10px; font-weight: 700; letter-spacing: .15em; text-transform: uppercase;
+    color: var(--k-mgla); }
+
+/* --- os roku --- */
+.k-os { margin-top: 18px; }
+.k-tor-os { position: relative; height: 6px; border-radius: 99px; background: var(--k-szyba); overflow: hidden; }
+.k-tor-os i { position: absolute; inset: 0 auto 0 0; background: linear-gradient(90deg, var(--lime), var(--k-alarm));
+    border-radius: 99px; transition: width .9s var(--k-luk); }
+.k-os-opis { display: flex; justify-content: space-between; margin-top: 9px;
+    font-size: 10.5px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--k-mgla); }
+
+/* ============ TRYBY ============ */
+.k-tryby { background: var(--k-tlo); padding: clamp(20px,4vw,40px) 0 clamp(56px,8vw,96px); }
+.k-tryby-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end;
+    gap: 14px; margin-bottom: 20px; }
+.k-tryby-head h2 { margin: 0; font-size: clamp(21px,2.9vw,30px); letter-spacing: -.025em;
+    color: var(--k-tekst); font-weight: 900; }
+.k-siatka { display: grid; grid-template-columns: repeat(auto-fit,minmax(226px,1fr)); gap: 12px; }
+.k-tryb { position: relative; text-align: left; cursor: pointer; border: 1px solid var(--k-linia);
+    background: var(--k-plyta); border-radius: 16px; padding: 22px 20px; color: var(--k-tekst);
+    font-family: var(--font); display: flex; flex-direction: column; gap: 8px;
+    transition: border-color .3s var(--k-luk), background .3s var(--k-luk), transform .3s var(--k-luk); }
+.k-tryb:hover { border-color: var(--k-linia2); transform: translateY(-2px); }
+.k-tryb:focus-visible { outline: 2px solid var(--lime); outline-offset: 3px; }
+.k-tryb[aria-pressed="true"] { border-color: var(--lime); background: #131A11; }
+.k-tryb .k-nr { font-size: 10.5px; font-weight: 700; letter-spacing: .18em; color: var(--k-mgla); }
+.k-tryb h3 { margin: 0; font-size: 18px; line-height: 1.2; letter-spacing: -.01em; }
+.k-tryb p { margin: 0; font-size: 14px; color: var(--k-mgla); }
+.k-tryb[aria-pressed="true"] h3 { color: var(--lime); }
+.k-tryb .k-znacznik { position: absolute; top: 16px; right: 16px; width: 8px; height: 8px;
+    border-radius: 50%; background: var(--k-szyba); transition: background .3s var(--k-luk); }
+.k-tryb[aria-pressed="true"] .k-znacznik { background: var(--lime); }
+
+/* ============ SEKCJA JASNA ============ */
 .am-jasna { background: var(--cream); padding: clamp(56px,7vw,92px) 0; }
 .am-jasna h2 { font-size: clamp(26px,4vw,42px); line-height: 1.05; letter-spacing: -.025em;
     margin: 0 0 20px; color: var(--green-dark); max-width: 18ch; }
@@ -155,12 +229,16 @@ header .btn-red-solid { white-space: nowrap; box-shadow: 0 8px 22px rgba(0,0,0,0
     color: var(--lime-light); margin-bottom: 9px; }
 
 @media (max-width: 700px) {
-    .am-hero { padding-top: 104px; }
-    .am-aparat { padding: 20px; }
+    .k-scena { padding-top: 92px; }
+    .k-rzad { grid-template-columns: 1fr 1fr; }
+    .k-rzad .k-cela:last-child { grid-column: 1 / -1; }
+}
+@media (prefers-reduced-motion: reduce) {
+    .k-fill, .k-tor-os i, .k-tryb { transition: none !important; }
 }
 </style>
 </head>
-<body>
+<body class="am-body">
 <!--#include:gtm-noscript-->
 <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-FVTBKWW" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -181,58 +259,114 @@ header .btn-red-solid { white-space: nowrap; box-shadow: 0 8px 22px rgba(0,0,0,0
     </div>
 </header>
 
-<section class="am-hero">
+<section class="k-scena">
+    <div class="k-swiatlo" aria-hidden="true"></div>
+    <div class="k-ziarno" aria-hidden="true"></div>
     <div class="container">
-        <p class="am-syg">Wydział Odzyskiwania Budżetów · sprawa DF/2026/12</p>
-        <h1>Wasz budżet<br>kończy się<br><em>12 grudnia</em></h1>
-        <p class="am-lead">Nie 31. Żeby zamówienie weszło w tegoroczny budżet, musi zostać zafakturowane wcześniej. Po tej dacie wszystko przechodzi na przyszły rok.</p>
 
-        <div class="am-aparat">
-            <div class="am-aparat-head"><span>Formularz W-1</span><b>Ustalenie wartości utraconej</b></div>
-            <div class="am-pola">
-                <div>
-                    <label for="am-kwota">Budżet pozostały na ten rok, w złotych</label>
-                    <input id="am-kwota" type="text" inputmode="numeric" placeholder="8 000" autocomplete="off">
-                </div>
-                <div>
-                    <label for="am-osoby">Liczba osób w zespole</label>
-                    <input id="am-osoby" type="text" inputmode="numeric" placeholder="40" autocomplete="off">
-                </div>
-            </div>
-            <div class="am-wynik">
-                <p class="am-zdanie" id="am-zdanie">Wpisz kwotę, żeby zobaczyć, ile tracicie każdego dnia.</p>
-                <p class="am-stopa" id="am-stopa">Nic nie zapisujemy. Wyliczenie jest poglądowe.</p>
-            </div>
+        <div class="k-belka">
+            <p class="k-etykieta">Wydział Odzyskiwania Budżetów</p>
+            <span class="k-sep"></span>
+            <p class="k-etykieta">Sprawa DF/2026/12</p>
+            <p class="k-etykieta k-dioda" id="k-stan"><i></i> <span>Budżet wygasa</span></p>
         </div>
 
-        <div class="am-opcje">
-            <div class="am-opcja am-pierwsza">
-                <span class="am-nr">01</span>
-                <h3>Przedpłata na pierwszy kwartał</h3>
-                <p>Płacicie z tegorocznego budżetu za dostawy, które i tak zamówicie w styczniu. Te pieniądze inaczej przepadną.</p>
+        <h1 class="k-tytul">Wasz budżet kończy się <em>12 grudnia</em>, nie 31.</h1>
+        <p class="k-lead">Żeby zamówienie weszło w tegoroczny budżet, musi zostać zafakturowane wcześniej. Po tej dacie wszystko przechodzi na przyszły rok.</p>
+
+        <div class="k-pulpit">
+
+            <div class="k-panel">
+                <div class="k-panel-head">
+                    <p class="k-etykieta">Odczyt wejściowy</p>
+                    <p class="k-etykieta">W-1</p>
+                </div>
+
+                <div class="k-pole">
+                    <label for="k-kwota">Budżet, który zostaje na ten rok</label>
+                    <div class="k-wpis">
+                        <input id="k-kwota" type="text" inputmode="numeric" placeholder="8 000" autocomplete="off">
+                        <span class="k-jedn">zł</span>
+                    </div>
+                </div>
+
+                <div class="k-pole">
+                    <label for="k-osoby">Wielkość zespołu</label>
+                    <div class="k-wpis">
+                        <input id="k-osoby" type="text" inputmode="numeric" placeholder="40" autocomplete="off">
+                        <span class="k-jedn">osób</span>
+                    </div>
+                </div>
+
+                <div class="k-rzad">
+                    <div class="k-cela"><span class="k-w" id="k-dni">—</span><span class="k-o">Dni do terminu</span></div>
+                    <div class="k-cela"><span class="k-w" id="k-osoba">—</span><span class="k-o">Na osobę</span></div>
+                    <div class="k-cela"><span class="k-w" id="k-tydzien">—</span><span class="k-o">Tygodniowo</span></div>
+                </div>
+
+                <div class="k-os">
+                    <div class="k-tor-os"><i id="k-postep" style="width:0%"></i></div>
+                    <div class="k-os-opis"><span>1 stycznia</span><span>12 grudnia</span></div>
+                </div>
             </div>
-            <div class="am-opcja">
-                <span class="am-nr">02</span>
+
+            <div class="k-panel k-instrument">
+                <div class="k-tarcza" id="k-tarcza">
+                    <svg viewBox="0 0 200 200" aria-hidden="true">
+                        <circle class="k-tor" cx="100" cy="100" r="86"></circle>
+                        <circle class="k-fill" id="k-luk" cx="100" cy="100" r="86"
+                                stroke-dasharray="540.4" stroke-dashoffset="540.4"></circle>
+                    </svg>
+                    <div class="k-odczyt">
+                        <span class="k-liczba" id="k-dziennie">0</span>
+                        <span class="k-jedn-duza" id="k-jedn-duza">zł dziennie przepada</span>
+                    </div>
+                </div>
+                <p class="k-podpis" id="k-podpis">Podaj kwotę, a policzymy, ile z tego znika każdego dnia.</p>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<section class="k-tryby">
+    <div class="container">
+        <div class="k-tryby-head">
+            <h2>Wybierz, na co ma pójść</h2>
+            <p class="k-etykieta">Cztery tryby wykorzystania</p>
+        </div>
+        <div class="k-siatka">
+            <button type="button" class="k-tryb" aria-pressed="false" data-tryb="Przedpłata na pierwszy kwartał">
+                <span class="k-znacznik"></span>
+                <span class="k-nr">01</span>
+                <h3>Przedpłata na pierwszy kwartał</h3>
+                <p>Płacicie z tegorocznego budżetu za dostawy, które i tak zamówicie w styczniu.</p>
+            </button>
+            <button type="button" class="k-tryb" aria-pressed="false" data-tryb="Welcome packi na zapas">
+                <span class="k-znacznik"></span>
+                <span class="k-nr">02</span>
                 <h3>Welcome packi na zapas</h3>
                 <p>Kupione teraz, wydawane przez cały rok, w miarę rekrutacji.</p>
-            </div>
-            <div class="am-opcja">
-                <span class="am-nr">03</span>
+            </button>
+            <button type="button" class="k-tryb" aria-pressed="false" data-tryb="Catering na spotkanie świąteczne">
+                <span class="k-znacznik"></span>
+                <span class="k-nr">03</span>
                 <h3>Catering na spotkanie świąteczne</h3>
                 <p>Zwykle inna linia budżetowa niż benefity, więc nie rusza tego, co macie na owoce.</p>
-            </div>
-            <div class="am-opcja">
-                <span class="am-nr">04</span>
+            </button>
+            <button type="button" class="k-tryb" aria-pressed="false" data-tryb="Paczki dla zespołu">
+                <span class="k-znacznik"></span>
+                <span class="k-nr">04</span>
                 <h3>Paczki dla zespołu</h3>
                 <p>Zestawy świąteczne dla pracowników i dla ich dzieci.</p>
-            </div>
+            </button>
         </div>
     </div>
 </section>
 
 <section class="am-jasna">
     <div class="container">
-        <h2>To nie jest <span class="fun">oszczednosc</span></h2>
+        <h2>To nie jest oszczędność</h2>
         <div class="am-tresc">
             <p>Niewykorzystany budżet nie zostaje w firmie. <b>Znika, a przy planowaniu na kolejny rok staje się argumentem za jego obcięciem.</b></p>
             <p>Osoba, która za niego odpowiada, traci więc nie raz, tylko na stałe. Dlatego nie namawiamy nikogo do wydawania pieniędzy. Pomagamy ich nie stracić.</p>
@@ -248,15 +382,13 @@ header .btn-red-solid { white-space: nowrap; box-shadow: 0 8px 22px rgba(0,0,0,0
 <section class="form-sec" id="formularz">
     <div class="container">
         <div class="sec-head">
-            <h2>Odzyskajmy ten <span class="fun">budzet</span></h2>
+            <h2>Zróbmy to <span class="fun">dzisiaj</span></h2>
             <p>Podajcie liczbę osób i kwotę, która zostaje. Resztę policzymy po naszej stronie.</p>
         </div>
-
         <div class="assure reveal">
             <p class="rating"><span class="rating-stars">★★★★★</span><span class="rating-score">4.9/5 na podstawie 120+ opinii</span></p>
             <p class="assure-flow"><span>Mówicie, ile zostaje</span><i></i><span>dostajecie propozycję tego samego dnia</span><i></i><span>faktura idzie w tym roku</span></p>
         </div>
-
         <div class="form-grid">
             <div class="form-wrap">
                 <iframe id="bwp-form" title="Formularz bezpłatnej wyceny DailyFruits" src="https://betterworkplace.pl/kontakt/zapytanie-dailyfruits" loading="lazy"></iframe>
@@ -296,34 +428,118 @@ header .btn-red-solid { white-space: nowrap; box-shadow: 0 8px 22px rgba(0,0,0,0
 
 <script>
 (function(){
-    var kwota = document.getElementById("am-kwota");
-    var osoby = document.getElementById("am-osoby");
-    var zdanie = document.getElementById("am-zdanie");
-    var stopa  = document.getElementById("am-stopa");
     var KONIEC = new Date(2026, 11, 12);
+    var START  = new Date(2026, 0, 1);
+    var OBWOD  = 2 * Math.PI * 86;
 
-    function zl(n){ return n.toLocaleString("pl-PL", {maximumFractionDigits: 0}); }
-    function num(el){ return Number(String(el.value).replace(/[^\d]/g, "")) || 0; }
+    var kwota = document.getElementById("k-kwota");
+    var osoby = document.getElementById("k-osoby");
+    var luk = document.getElementById("k-luk");
+    var tarcza = document.getElementById("k-tarcza");
+    var stan = document.getElementById("k-stan");
+    var wybrany = null;
+
+    var el = {
+        dziennie: document.getElementById("k-dziennie"),
+        jedn: document.getElementById("k-jedn-duza"),
+        podpis: document.getElementById("k-podpis"),
+        dni: document.getElementById("k-dni"),
+        osoba: document.getElementById("k-osoba"),
+        tydzien: document.getElementById("k-tydzien"),
+        postep: document.getElementById("k-postep")
+    };
+
+    function zl(n){ return Math.round(n).toLocaleString("pl-PL"); }
+    function num(e){ return Number(String(e.value).replace(/[^\d]/g, "")) || 0; }
     function dni(){
         var d = new Date(); d.setHours(0,0,0,0);
         return Math.max(0, Math.round((KONIEC - d) / 86400000));
     }
-    function policz(){
+    function zuzycieRoku(){
+        var d = new Date(); d.setHours(0,0,0,0);
+        return Math.min(1, Math.max(0, (d - START) / (KONIEC - START)));
+    }
+
+    /* licznik dochodzi do wartosci, nie przeskakuje. Ruch powsciagliwy, bez odbicia. */
+    var klatka = null, biezaca = 0, celGlobalny = 0;
+    function dojedz(cel){
+        celGlobalny = cel;
+        /* rAF jest wstrzymywany w karcie w tle - wtedy ustawiamy wartosc od razu,
+           inaczej licznik zamarza na starej liczbie do powrotu uzytkownika. */
+        if (document.hidden || window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+            cancelAnimationFrame(klatka);
+            biezaca = cel; el.dziennie.textContent = zl(cel); return;
+        }
+        cancelAnimationFrame(klatka);
+        var od = biezaca, t0 = performance.now(), czas = 700;
+        (function krok(t){
+            var p = Math.min(1, (t - t0) / czas);
+            var e = 1 - Math.pow(1 - p, 4);
+            biezaca = od + (cel - od) * e;
+            el.dziennie.textContent = zl(biezaca);
+            if (p < 1) klatka = requestAnimationFrame(krok);
+        })(t0);
+    }
+
+    function odswiez(){
         var k = num(kwota), o = num(osoby), d = dni();
+        el.dni.textContent = d;
+        el.postep.style.width = (zuzycieRoku() * 100).toFixed(1) + "%";
+
         if (!k) {
-            zdanie.textContent = "Wpisz kwotę, żeby zobaczyć, ile tracicie każdego dnia.";
-            stopa.textContent = "Nic nie zapisujemy. Wyliczenie jest poglądowe.";
+            dojedz(0);
+            el.jedn.textContent = "zł dziennie przepada";
+            el.podpis.textContent = "Podaj kwotę, a policzymy, ile z tego znika każdego dnia.";
+            el.osoba.textContent = "—";
+            el.tydzien.textContent = "—";
+            luk.style.strokeDashoffset = OBWOD;
             return;
         }
-        var t = "Zostało <s>" + d + " dni</s>. To <u>" + zl(Math.round(k / Math.max(d,1))) + " zł dziennie</u>, które przepadają.";
-        if (o) t += " Na osobę wychodzi " + zl(Math.round(k / o)) + " zł.";
-        zdanie.innerHTML = t;
-        stopa.textContent = "Termin fakturowania: 12 grudnia 2026. Kwota wpisana: " + zl(k) + " zł.";
-    }
-    [kwota, osoby].forEach(function(el){ el.addEventListener("input", policz); });
-    policz();
 
-    // CTA chowa sie przy formularzu, zeby nie wskazywalo na cel, ktory jest na ekranie
+        var naDzien = k / Math.max(d, 1);
+        el.osoba.textContent = o ? zl(k / o) + " zł" : "—";
+
+        if (wybrany) {
+            dojedz(k);
+            el.jedn.textContent = "zł zabezpieczone";
+            el.tydzien.textContent = "0 zł";
+            el.podpis.innerHTML = "Tryb: <b>" + wybrany + "</b>. Nic już nie przepada. Wyślijcie zgłoszenie, a propozycja wróci tego samego dnia.";
+            luk.style.strokeDashoffset = 0;
+            tarcza.classList.add("k-zabezpieczone");
+            stan.classList.add("k-ok");
+            stan.querySelector("span").textContent = "Budżet zabezpieczony";
+        } else {
+            dojedz(naDzien);
+            el.jedn.textContent = "zł dziennie przepada";
+            el.tydzien.textContent = zl(naDzien * 7) + " zł";
+            el.podpis.innerHTML = "Tyle przepada każdego dnia, w którym nic się nie dzieje. Do terminu zostało <b>" + d + " dni</b>.";
+            luk.style.strokeDashoffset = OBWOD * (1 - zuzycieRoku());
+            tarcza.classList.remove("k-zabezpieczone");
+            stan.classList.remove("k-ok");
+            stan.querySelector("span").textContent = "Budżet wygasa";
+        }
+    }
+
+    document.addEventListener("visibilitychange", function(){
+        if (document.hidden) { cancelAnimationFrame(klatka); biezaca = celGlobalny;
+            el.dziennie.textContent = zl(celGlobalny); }
+    });
+
+    [kwota, osoby].forEach(function(e){ e.addEventListener("input", odswiez); });
+
+    document.querySelectorAll(".k-tryb").forEach(function(b){
+        b.addEventListener("click", function(){
+            var juz = b.getAttribute("aria-pressed") === "true";
+            document.querySelectorAll(".k-tryb").forEach(function(x){ x.setAttribute("aria-pressed","false"); });
+            if (juz) { wybrany = null; }
+            else { b.setAttribute("aria-pressed","true"); wybrany = b.dataset.tryb; }
+            odswiez();
+        });
+    });
+
+    odswiez();
+
+    /* CTA chowa sie, gdy formularz jest na ekranie */
     var pas = document.querySelector("header .nav-buttons");
     var form = document.getElementById("formularz");
     if (pas && form && "IntersectionObserver" in window) {
@@ -331,13 +547,10 @@ header .btn-red-solid { white-space: nowrap; box-shadow: 0 8px 22px rgba(0,0,0,0
             pas.classList.toggle("schowane", w[0].isIntersecting);
         }, {threshold: 0.12}).observe(form);
     }
-
-    // Kotwica przesuwa tak, zeby caly formularz byl widoczny
     document.querySelectorAll(".js-do-formularza").forEach(function(a){
         a.addEventListener("click", function(e){
             e.preventDefault();
-            var y = form.getBoundingClientRect().top + window.scrollY - 12;
-            window.scrollTo({top: y, behavior: "smooth"});
+            window.scrollTo({top: form.getBoundingClientRect().top + window.scrollY - 12, behavior: "smooth"});
         });
     });
 })();
