@@ -1328,7 +1328,7 @@ body.ciemna .sposoby .cure-grid { display: grid; grid-template-columns: repeat(4
 @media (max-width: 560px)  { body.ciemna .sposoby .cure-grid { grid-template-columns: minmax(0, 1fr); } }
 body.ciemna .sposoby .cure-card { padding: var(--f4) var(--f3) var(--f4); margin: 0; min-width: 0; }
 body.ciemna .sposoby .cure-card::before { display: none !important; }
-body.ciemna .sposoby .cure-card p, body.ciemna .sposoby .cure-card h3 { text-wrap: pretty; overflow-wrap: anywhere; }
+body.ciemna .sposoby .cure-card p { text-wrap: pretty; } body.ciemna .sposoby .cure-card h3 { text-wrap: balance; }
 body.ciemna .sposoby .cure-card h3 { font-size: 20px; line-height: 1.25; }
 body.ciemna .sposoby .cure-top { display: flex; align-items: center; justify-content: space-between; gap: var(--f2); }
 body.ciemna .sposoby .cure-top img { width: 40px; height: 40px; flex: none; }
@@ -1344,6 +1344,14 @@ body.ciemna .form-info li { align-items: start; }
 body.ciemna .form-info li i { width: 26px; height: 26px; align-self: start; display: grid; place-items: center;
     border-radius: 7px; font-size: 11.5px; line-height: 1; font-style: normal; margin-top: 1px; }
 body.ciemna .form-info li b { display: block; margin-bottom: 4px; }
+
+
+/* ---------- LAMANIE TEKSTU ----------
+   pretty: przegladarka unika samotnego slowa w ostatnim wierszu; balance na
+   naglowkach wyrownuje dlugosc wierszy; hyphens manual, zero lamania w slowie. */
+body.ciemna p, body.ciemna li, body.ciemna figcaption, body.ciemna .form-info span,
+body.ciemna .aparat-reszta, body.ciemna .aparat-puste { text-wrap: pretty; hyphens: manual; overflow-wrap: normal; }
+body.ciemna h1, body.ciemna h2, body.ciemna h3 { text-wrap: balance; hyphens: manual; }
 
 </style>
 </head>
@@ -1411,7 +1419,7 @@ body.ciemna .form-info li b { display: block; margin-bottom: 4px; }
                     <span class="l2">budżetowa.</span>
                 </h1>
                 <p class="lead"><b>Wasz budżet kończy się 12 grudnia, nie 31.</b><br>Żeby zamówienie weszło w tegoroczny budżet, musi zostać zafakturowane wcześniej.</p>
-                <p class="termin" id="hero-termin" aria-live="polite"><i></i><span>Do końca fakturowania zostało <b id="hero-dni">··</b> dni</span></p>
+                <p class="termin" id="hero-termin" aria-live="polite"><i></i><span>Do końca fakturowania zostało <b id="hero-dni">··</b>&nbsp;dni</span></p>
                 <div class="cta-row">
                     <a href="#formularz" class="btn-feed js-do-formularza">Odzyskaj budżet →</a>
                 </div>
@@ -1469,7 +1477,7 @@ body.ciemna .form-info li b { display: block; margin-bottom: 4px; }
                     <div class="aparat-wpis"><input id="a-osoby" type="text" inputmode="numeric" placeholder="40" autocomplete="off"><span>osób</span></div>
                 </div>
             </div>
-            <div class="aparat-wynik" id="a-wynik"><p class="aparat-puste">Wpisz kwotę, a policzymy, ile z tego znika każdego dnia.</p></div>
+            <div class="aparat-wynik" id="a-wynik"><p class="aparat-puste">Wpisz kwotę, a&nbsp;policzymy, ile z&nbsp;tego znika każdego dnia.</p></div>
             <p class="aparat-stopa" id="a-stopa">Nic nie zapisujemy. Wyliczenie jest poglądowe.</p>
         </div>
     </div>
@@ -1595,10 +1603,10 @@ body.ciemna .form-info li b { display: block; margin-bottom: 4px; }
                 <h3>Skrzynka, która staje w <span class="fun">kuchni</span></h3>
                 <p>Owoce, warzywa, kanapki, kawa, soki - wszystko w jednej dostawie, od jednego partnera. Ustalamy razem, co ma przyjeżdżać, jak często i w jakie dni.</p>
                 <ul>
-                    <li>Owoce, kawa, kanapki, soki - wszystko z jednego miejsca</li>
+                    <li>Owoce, kawa, kanapki i soki z jednego miejsca</li>
                     <li>Subskrypcja, nie kontrakt. Skład i częstotliwość zmieniacie, kiedy chcecie</li>
-                    <li>Zero kar za zmianę lub rezygnację z abonamentu</li>
-                    <li>Dostarczamy w największych miastach, ale nie tylko</li>
+                    <li>Bez kar za zmianę albo rezygnację</li>
+                    <li>Dowozimy w 13 miastach i poza nimi</li>
                     <li>Jedna faktura miesięcznie za wszystko</li>
                 </ul>
             </div>
@@ -1839,20 +1847,20 @@ body.ciemna .form-info li b { display: block; margin-bottom: 4px; }
         var k = num(kwota), o = num(osoby), d = dni();
         if (!k) {
             biezaca = 0;
-            wynik.innerHTML = '<p class="aparat-puste">Wpisz kwotę, a policzymy, ile z tego znika każdego dnia.</p>';
+            wynik.innerHTML = '<p class="aparat-puste">Wpisz kwotę, a&nbsp;policzymy, ile z&nbsp;tego znika każdego dnia.</p>';
             stopa.textContent = "Nic nie zapisujemy. Wyliczenie jest poglądowe.";
             return;
         }
         var naDzien = k / Math.max(d, 1);
         if (!wynik.querySelector(".aparat-duza")) {
-            wynik.innerHTML = '<p class="aparat-linia"><span class="aparat-duza" id="a-duza">0</span><span class="aparat-jedn">zł dziennie przepada</span></p>' +
+            wynik.innerHTML = '<p class="aparat-linia"><span class="aparat-duza" id="a-duza">0</span><span class="aparat-jedn">zł&nbsp;dziennie przepada</span></p>' +
                               '<p class="aparat-reszta" id="a-reszta"></p>';
         }
         dojedz(document.getElementById("a-duza"), naDzien);
-        var reszta = "Do terminu zostało <b>" + d + " dni</b>.";
-        if (o) reszta += " Na osobę wychodzi <b>" + zl(k / o) + " zł</b>.";
+        var reszta = "Do terminu zostało <b>" + d + "&nbsp;dni</b>.";
+        if (o) reszta += " Na&nbsp;osobę wychodzi <b>" + zl(k / o) + "&nbsp;zł</b>.";
         document.getElementById("a-reszta").innerHTML = reszta;
-        stopa.textContent = "Termin fakturowania: 12 grudnia 2026. Kwota wpisana: " + zl(k) + " zł.";
+        stopa.textContent = "Termin fakturowania: 12\u00a0grudnia 2026. Kwota wpisana: " + zl(k) + "\u00a0zł.";
     }
     kwota.addEventListener("input", policz);
     osoby.addEventListener("input", policz);
