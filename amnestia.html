@@ -257,10 +257,6 @@ body.am-body .ai-badge { background: var(--k-plyta); color: var(--k-mgla); }
 .k-tag { align-self: flex-start; font-size: 10.5px; font-weight: 700; letter-spacing: .16em;
     text-transform: uppercase; color: var(--lime); border: 1px solid var(--k-linia2);
     border-radius: 99px; padding: 6px 12px; }
-body.am-body .logo-bar { background: var(--k-plyta); border-top: 1px solid var(--k-linia);
-    border-bottom: 1px solid var(--k-linia); }
-body.am-body .logo-bar-label { color: var(--k-mgla); }
-body.am-body .logo-bar-item img { filter: grayscale(1) brightness(2.4) contrast(.7); opacity: .72; }
 
 /* ============ SEKCJA JASNA ============ */
 .am-jasna { background: var(--cream); padding: clamp(56px,7vw,92px) 0; }
@@ -283,6 +279,94 @@ body.am-body .logo-bar-item img { filter: grayscale(1) brightness(2.4) contrast(
 }
 @media (prefers-reduced-motion: reduce) {
     .k-fill, .k-tor-os i, .k-tryb { transition: none !important; }
+}
+
+/* ===== REGULY ZE WZORCA /powrotdozywych i /syndromwrzesniowy ===== */
+.hero-box h3 .fun { font-family: var(--font-fun); font-weight: 400; color: var(--lime); font-size: 1.06em; }
+/* ---------- FORMULARZ KROKOWY ---------- */
+.form-sec { padding: 92px 0 100px; background: var(--white); position: relative; }
+/* Formularz wtopiony w sekcje, bez plywajacej karty. */
+.form-wrap { background: transparent; padding: 0; }
+.form-wrap { overflow-anchor: none; }
+.form-wrap iframe { width: 100%; border: none; display: block; min-height: 420px; overflow-anchor: none; }
+/* Delikatny polysk przechodzacy przez CTA, bez udzialu kursora.
+   ::before, bo ::after niesie strzalke w .btn-arrow. */
+.btn-feed::before, .mid-cta .btn::before, header .btn-red-solid::before {
+    content: ''; position: absolute; top: 0; bottom: 0; left: -62%; width: 40%;
+    background: linear-gradient(105deg, transparent 0%, rgba(255,255,255,0.40) 50%, transparent 100%);
+    transform: skewX(-18deg); pointer-events: none;
+    animation: ctaPolysk 5.4s cubic-bezier(0.45, 0, 0.2, 1) infinite; }
+.form-after { margin-top: 34px; padding-top: 30px; border-top: 2px dashed rgba(27,94,58,0.20); text-align: center; }
+.form-after p { font-size: 15px; color: var(--gray-500); margin: 0 0 16px; }
+/* Pasek logotypow jak na home, tuz pod belka z paskiem energii. */
+.logo-bar { background: var(--cream); padding: 30px 0 24px; overflow: hidden; }
+.logo-bar-label { text-align: center; font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: .18em; color: var(--green-dark); opacity: .45; margin-bottom: 20px; }
+.logo-bar-track { display: flex; align-items: center; width: max-content; animation: logo-scroll 30s linear infinite; }
+.logo-bar-track:hover { animation-play-state: paused; }
+.logo-bar-item { flex-shrink: 0; padding: 0 34px; display: flex; align-items: center; justify-content: center; }
+.logo-bar-item img { height: 44px; width: auto; object-fit: contain; filter: grayscale(1) opacity(0.4); transition: filter .4s ease; }
+.logo-bar-item img:hover { filter: grayscale(0) opacity(1); }
+/* ---------- SYSTEM ANIMACJI ----------
+   Wlasna przestrzen nazw (data-anim), bo globalny .reveal z shared.css ma bezpiecznik
+   zapalajacy wszystko po 1200 ms - przy dlugiej stronie reveal na scroll nigdy nie zadzialal.
+   Zasady: wylacznie transform i opacity (zero wplywu na layout), jeden obserwator,
+   element odpina sie po odsloneciu, pelna obsluga prefers-reduced-motion. */
+:root { --ease-anim: cubic-bezier(0.22, 1, 0.36, 1); }
+.sec-head { text-align: center; margin-bottom: 54px; }
+.sec-head h2 { font-weight: 900; font-size: clamp(28px, 3vw, 42px); color: var(--green-dark); letter-spacing: -0.04em; margin-bottom: 12px; }
+.sec-head h2 .fun { font-family: var(--font-fun); font-weight: 400; color: var(--lime); font-size: 1.06em; }
+.sec-head p { font-size: 16px; color: var(--gray-500); max-width: 560px; margin: 0 auto; }
+/* Ocena tuz nad sciezka procesu, na szerokosc formularza. */
+.rating { display: flex; align-items: center; justify-content: center; gap: 9px; margin: 0 0 20px; }
+.rating-stars { color: #FFC107; font-size: 19px; letter-spacing: 2px; }
+.rating-score { font-size: 13.5px; font-weight: 700; color: var(--green-dark); opacity: .65; }
+/* Bez tla i bez paddingu: pas ma dokladnie szerokosc formularza,
+   a liczby ustawiaja sie w jednej linii z jego krawedziami. */
+.assure { background: transparent; padding: 0; margin: 0 auto 30px; max-width: 660px; }
+.assure-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; text-align: center; }
+.assure-item b { display: block; font-family: var(--font-fun); font-size: clamp(24px, 2.6vw, 32px); line-height: 1; color: var(--green-dark); margin-bottom: 5px; }
+.assure-item span { font-size: 11.5px; line-height: 1.35; color: var(--gray-500); display: block; }
+.assure-flow { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 8px 10px;
+    margin: 0; padding: 20px 0; border-top: 2px dashed rgba(27,94,58,0.22); border-bottom: 2px dashed rgba(27,94,58,0.22);
+    font-size: 12.5px; font-weight: 800; color: var(--green-dark); text-align: center; }
+.assure-flow i { display: block; width: 16px; height: 2px; background: var(--lime); flex: none; }
+.c-cta h2 .fun { font-family: var(--font-fun); font-weight: 400; color: var(--lime); font-size: 1.06em; }
+/* AI Act: oznaczenie tresci syntetycznej, na srodku u gory strony */
+.ai-badge { position: absolute; top: 30px; left: 50%; transform: translateX(-50%); z-index: 320;
+    margin: 0; padding: 6px 15px; border-radius: 999px; white-space: nowrap;
+    font-size: 12px; line-height: 1.2; letter-spacing: 0.01em; font-weight: 500;
+    color: #14472c; background: rgba(255,255,255,0.72); backdrop-filter: blur(7px); -webkit-backdrop-filter: blur(7px); }
+/* Objasnienie produktu obok formularza. Na landingu formularz stal sam w jednej
+   kolumnie i nie odpowiadal na pytanie "co ja wlasciwie zamawiam". */
+.form-grid { max-width: 1060px; display: grid; grid-template-columns: minmax(0,3fr) minmax(0,2fr);
+    gap: 30px; align-items: start; }
+/* Blok wyjasniajacy: jedna kolumna tekstu i trzy obietnice na dividerach.
+   Wczesniej wszystko bylo wysrodkowane i rozjezdzalo sie na siedem poszarpanych linii. */
+.prod-sec .sec-head { margin-bottom: 26px; }
+
+/* ===== SYSTEM ODSLONIEC ZE WZORCA ===== */
+----- SYSTEM ANIMACJI ----------
+   Wlasna przestrzen nazw (data-anim), bo globalny .reveal z shared.css ma bezpiecznik
+   zapalajacy wszystko po 1200 ms - przy dlugiej stronie reveal na scroll nigdy nie zadzialal.
+   Zasady: wylacznie transform i opacity (zero wplywu na layout), jeden obserwator,
+   element odpina sie po odsloneciu, pelna obsluga prefers-reduced-motion. */
+:root { --ease-anim: cubic-bezier(0.22, 1, 0.36, 1); }
+[data-anim="up"] { opacity: 0; transform: translate3d(0, 26px, 0);
+    transition: opacity .75s var(--ease-anim), transform .95s var(--ease-anim); }
+[data-anim="up"].w-kadrze { opacity: 1; transform: none; }
+[data-anim="fade"] { opacity: 0; transition: opacity .9s var(--ease-anim); }
+[data-anim="fade"].w-kadrze { opacity: 1; }
+[data-anim="skala"] { opacity: 0; transform: scale(.965);
+    transition: opacity .9s var(--ease-anim), transform 1.1s var(--ease-anim); }
+[data-anim="skala"].w-kadrze { opacity: 1; transform: none; }
+/* Naglowek wjezdza spod wlasnej krawedzi - maska, nie fade */
+[data-anim="maska"] { display: block; overflow: hidden; padding-bottom: .12em; }
+[data-anim="maska"] > span { display: block; transform: translate3d(0, 108%, 0);
+    transition: transform 1s var(--ease-anim); }
+[data-anim="maska"].w-kadrze > span { transform: none; }
+@media (prefers-reduced-motion: reduce) {
+    [data-anim] { opacity: 1 !important; transform: none !important; transition: none !important; }
+    [data-anim="maska"] > span { transform: none !important; transition: none !important; }
 }
 </style>
 </head>
@@ -429,7 +513,7 @@ body.am-body .logo-bar-item img { filter: grayscale(1) brightness(2.4) contrast(
             <li>Bez kilku dostawców i kilku faktur.</li>
             <li>Regularnie, pod jednym zamówieniem.</li>
         </ul>
-        <div class="k-skrzynka reveal">
+        <div class="k-skrzynka">
             <img src="box-premium.webp" alt="Skrzynka DailyFruits pełna świeżych owoców" width="1200" height="800" loading="lazy" decoding="async">
             <div class="k-skrzynka-tresc">
                 <span class="k-tag">Podstawa abonamentu</span>
@@ -441,7 +525,7 @@ body.am-body .logo-bar-item img { filter: grayscale(1) brightness(2.4) contrast(
     </div>
 </section>
 
-<section class="logo-bar reveal">
+<section class="logo-bar">
     <div class="logo-bar-label">Zaufali nam liderzy rynku</div>
     <div class="logo-bar-track">
         <div class="logo-bar-item"><img src="https://cdn.prod.website-files.com/698dfabcdd705500e5451b80/69baa3bd7f98db68c04da33f_6a2fd1c58094c992a06bbf653a23ad3f_google.avif" alt="Google" width="160" height="44" decoding="async"></div>
@@ -487,7 +571,7 @@ body.am-body .logo-bar-item img { filter: grayscale(1) brightness(2.4) contrast(
             <h2>Zróbmy to <span class="fun">dzisiaj</span></h2>
             <p>Podajcie liczbę osób i kwotę, która zostaje. Resztę policzymy po naszej stronie.</p>
         </div>
-        <div class="assure reveal">
+        <div class="assure">
             <p class="rating"><span class="rating-stars">★★★★★</span><span class="rating-score">4.9/5 na podstawie 120+ opinii</span></p>
             <p class="assure-flow"><span>Mówicie, ile zostaje</span><i></i><span>dostajecie propozycję tego samego dnia</span><i></i><span>faktura idzie w tym roku</span></p>
         </div>
@@ -656,6 +740,74 @@ body.am-body .logo-bar-item img { filter: grayscale(1) brightness(2.4) contrast(
         });
     });
 })();
+</script>
+<script>
+
+/* Odsloniecia: role przypisywane selektorem, zeby nie zasmiecac markupu.
+   Stagger liczony wzgledem rodzenstwa, wiec rzedy kart wchodza kaskada. */
+(function () {
+    var cichy = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var role = [
+        { sel: '.sec-head h2, .prod-sec .sec-head h2, #formularz .sec-head h2', typ: 'maska' },
+        { sel: '.sec-head p', typ: 'up' },
+        { sel: '.k-tryb', typ: 'up', kaskada: 70 },
+        { sel: '.k-mocne li', typ: 'up', kaskada: 60 },
+        { sel: '.assure-item', typ: 'up', kaskada: 70 },
+        { sel: '.k-skrzynka > *', typ: 'up', kaskada: 110 },
+        { sel: '.form-art, .form-wrap, .form-after, .form-info', typ: 'up' },
+        { sel: '.assure-flow, .rating', typ: 'fade' },
+        { sel: '.mid-cta', typ: 'up' },
+        { sel: '.k-pas-podpis', typ: 'fade' }
+    ];
+
+    role.forEach(function (r) {
+        var el = document.querySelectorAll(r.sel);
+        el.forEach(function (e, i) {
+            if (e.hasAttribute('data-anim')) return;
+            if (r.typ === 'maska') {
+                if (e.querySelector('[data-anim]')) return;
+                var w = document.createElement('span');
+                while (e.firstChild) w.appendChild(e.firstChild);
+                e.appendChild(w);
+            }
+            e.setAttribute('data-anim', r.typ);
+            if (r.kaskada) {
+                var rodzenstwo = e.parentElement ? [].indexOf.call(e.parentElement.children, e) : i;
+                var op = Math.min(rodzenstwo, 5) * r.kaskada;
+                e.style.transitionDelay = op + 'ms';
+                if (r.typ === 'maska') e.firstElementChild.style.transitionDelay = op + 'ms';
+            }
+        });
+    });
+
+    var wszystkie = document.querySelectorAll('[data-anim]');
+    if (cichy || !('IntersectionObserver' in window)) {
+        wszystkie.forEach(function (e) { e.classList.add('w-kadrze'); });
+        return;
+    }
+    var io = new IntersectionObserver(function (wpisy) {
+        wpisy.forEach(function (w) {
+            if (!w.isIntersecting) return;
+            var el = w.target;
+            el.style.willChange = 'transform, opacity';
+            requestAnimationFrame(function () { el.classList.add('w-kadrze'); });
+            io.unobserve(el);
+            setTimeout(function () { el.style.willChange = 'auto'; }, 1500);
+        });
+    }, { rootMargin: '0px 0px -10% 0px', threshold: 0.08 });
+    wszystkie.forEach(function (e) { io.observe(e); });
+})();
+
+</script>
+<script>
+/* Bezpiecznik odsloniec: jesli obserwator z jakiegokolwiek powodu nie odpali
+   (nietypowa przegladarka, wstrzymany render, blad JS wyzej), po 1,2 s
+   zapalamy wszystko recznie. Tresc nigdy nie moze zostac niewidoczna. */
+setTimeout(function () {
+    document.querySelectorAll('[data-anim]:not(.w-kadrze)').forEach(function (e) {
+        e.classList.add('w-kadrze');
+    });
+}, 1200);
 </script>
 <script src="track.js?v=2"></script>
 </body>
