@@ -908,12 +908,12 @@ body.ciemna {
 }
 
 /* --- wspolny rytm sekcji: jednolite tlo, powietrze, hairline miedzy sekcjami --- */
-body.ciemna .sec-cream, body.ciemna .sec-white, body.ciemna .typy,
+body.ciemna .sec-cream, body.ciemna .sec-white, body.ciemna .typy, body.ciemna .kalkulator,
 body.ciemna .prod-sec, body.ciemna .form-sec, body.ciemna .sposoby {
     background: transparent; padding-top: clamp(72px,9vw,120px); padding-bottom: clamp(72px,9vw,120px);
     position: relative; }
 body.ciemna .typy::before, body.ciemna .sposoby::before, body.ciemna .prod-sec::before,
-body.ciemna .form-sec::before {
+body.ciemna .kalkulator::before, body.ciemna .form-sec::before {
     content: ""; position: absolute; left: 50%; top: 0; width: min(1120px, 92%); height: 1px;
     transform: translateX(-50%);
     background: linear-gradient(90deg, transparent, var(--linia2) 30%, var(--linia2) 70%, transparent); }
@@ -1506,6 +1506,9 @@ body.ciemna .aparat.kalk .aparat-wpis span { color: rgba(22,27,23,.55); }
 .kalk-klawisz.kalk-ac:active { box-shadow: 0 0 0 #5c0f09; }
 body.ciemna .aparat.kalk .aparat-stopa { color: rgba(238,243,234,.45); margin-top: 12px; padding-left: 8px; }
 
+
+body.ciemna .kalkulator .aparat { margin-top: 0; }
+body.ciemna .kalkulator .mid-cta { margin-top: var(--f4); }
 </style>
 </head>
 <body class="ciemna kamera">
@@ -1573,10 +1576,10 @@ body.ciemna .aparat.kalk .aparat-stopa { color: rgba(238,243,234,.45); margin-to
                     <span class="l1">Amnestia</span>
                     <span class="l2">budżetowa.</span>
                 </h1>
-                <p class="lead"><b>Wasz budżet kończy się 12 grudnia, nie 31.</b><br>Żeby zamówienie weszło w tegoroczny budżet, musi zostać zafakturowane wcześniej.</p>
+                <p class="lead"><b>Wasz budżet kończy się 12 grudnia, nie 31.</b><br>Co zostanie, przepadnie, a w przyszłym roku będzie go mniej.</p>
                 <p class="termin" id="hero-termin" aria-live="polite"><i></i><span>Do końca fakturowania zostało <b id="hero-dni">··</b>&nbsp;dni</span></p>
                 <div class="cta-row">
-                    <a href="#formularz" class="btn-feed js-do-formularza">Odzyskaj budżet →</a>
+                    <a href="#kalkulator" class="btn-feed js-do-kalkulatora">Policz, ile przepada →</a>
                 </div>
             </div>
             <div></div>
@@ -1620,65 +1623,11 @@ body.ciemna .aparat.kalk .aparat-stopa { color: rgba(238,243,234,.45); margin-to
         </div>
         <p class="karuzela-info">Przesuń w bok →</p>
 
-        <div class="aparat reveal kalk">
-            <div class="aparat-head"><span>Ile ucieka każdego dnia</span><b>W-1</b></div>
-            <div class="kalk-ekran">
-                <div class="kalk-led"><i></i><span id="a-led">BUDŻET WYGASA</span></div>
-                <div class="aparat-wynik" id="a-wynik"><p class="aparat-puste">Wpisz kwotę, a&nbsp;policzymy, ile z&nbsp;tego znika każdego dnia.</p></div>
-            </div>
-            <div class="kalk-legenda" aria-hidden="true">
-                <span>TRYB</span><span><b>A</b> PRZEDPŁATA</span><span><b>B</b> WELCOME</span><span><b>C</b> CATERING</span><span><b>D</b> PACZKI</span><span class="kalk-ogniwo"><i></i><i></i><i></i><i></i></span>
-            </div>
-            <div class="kalk-plyta">
-            <div class="aparat-pola">
-                <div>
-                    <label for="a-kwota">Budżet, który zostaje na ten rok</label>
-                    <div class="aparat-wpis"><input id="a-kwota" type="text" inputmode="numeric" placeholder="8 000" autocomplete="off"><span>zł</span></div>
-                </div>
-                <div>
-                    <label for="a-osoby">Wielkość zespołu</label>
-                    <div class="aparat-wpis"><input id="a-osoby" type="text" inputmode="numeric" placeholder="40" autocomplete="off"><span>osób</span></div>
-                </div>
-            </div>
-            <div class="kalk-klawisze" role="group" aria-label="Na co ma pójść budżet">
-                <button type="button" class="kalk-klawisz" aria-pressed="false" data-tryb="Przedpłata na pierwszy kwartał"><b>A</b>Przedpłata Q1</button>
-                <button type="button" class="kalk-klawisz" aria-pressed="false" data-tryb="Welcome packi na zapas"><b>B</b>Welcome packi</button>
-                <button type="button" class="kalk-klawisz" aria-pressed="false" data-tryb="Catering na spotkanie świąteczne"><b>C</b>Catering</button>
-                <button type="button" class="kalk-klawisz" aria-pressed="false" data-tryb="Paczki świąteczne"><b>D</b>Paczki</button>
-                <button type="button" class="kalk-klawisz kalk-ac" id="a-ac" aria-label="Wyczyść kalkulator"><b>AC</b>Wyczyść</button>
-            </div>
-            </div>
-            <p class="aparat-stopa" id="a-stopa">Nic nie zapisujemy. Wyliczenie jest poglądowe.</p>
-        </div>
     </div>
 </section>
 
 <!-- KURACJA -->
 <!-- TYPY: kontekstowe zdjecia postaci z atrybutami wakacyjnymi -->
-<section class="typy">
-    <div class="container">
-        <div class="sec-head">
-            <p class="hud-tag">02 · Jak to działa</p>
-            <h2>Jak to <span class="fun">działa</span></h2>
-            <p>Trzy kroki. Zgłoszenie, propozycja, dostawa.</p>
-        </div>
-        <div class="typy-grid">
-            <figure class="typ reveal">
-                <img src="amnestia-korytarz.webp?v=1" alt="Dwóch pracowników w garniturach niesie nocnym korytarzem biurowym skrzynkę owoców" width="1600" height="893" loading="lazy">
-                <figcaption><b>Zgłoszenie</b>Piszecie, ile osób i jaka kwota zostaje do wykorzystania.</figcaption>
-            </figure>
-            <figure class="typ reveal">
-                <img src="amnestia-sala.webp?v=1" alt="Skrzynka świeżych owoców postawiona na stole w zaciemnionej sali konferencyjnej" width="1600" height="893" loading="lazy">
-                <figcaption><b>Propozycja</b>Skład i wycena wracają tego samego dnia. Bez katalogu do przeglądania.</figcaption>
-            </figure>
-            <figure class="typ reveal">
-                <img src="amnestia-garaz.webp?v=1" alt="Nocny garaż, otwarta furgonetka ze skrzynkami owoców i dwie sylwetki pod światło" width="1600" height="893" loading="lazy">
-                <figcaption><b>Dostawa</b>Faktura wychodzi w tym roku. Skrzynki jadą od stycznia.</figcaption>
-            </figure>
-        </div>
-        <p class="karuzela-info">Przesuń w bok →</p>
-    </div>
-</section>
 
 <!-- WYLACZONE 18.08.2026: sekcja "gdzie to widac" / kuracja tygodniowa.
      Zostaje w kodzie, zeby dalo sie ja wrocic jedna zmiana.
@@ -1720,7 +1669,7 @@ body.ciemna .aparat.kalk .aparat-stopa { color: rgba(238,243,234,.45); margin-to
 <section class="sec sec-white sposoby">
     <div class="container">
         <div class="sec-head">
-            <p class="hud-tag">03 · Cztery sposoby</p>
+            <p class="hud-tag">02 · Cztery sposoby</p>
             <h2>Cztery sposoby, jeden <span class="fun">termin</span></h2>
             <p>Każdy fakturujemy w tym roku. Wybieracie ten, który pasuje do budżetu, nie do katalogu.</p>
         </div>
@@ -1746,7 +1695,50 @@ body.ciemna .aparat.kalk .aparat-stopa { color: rgba(238,243,234,.45); margin-to
                 <p>Zestawy dla zespołu i dla dzieci pracowników, w brandowanych opakowaniach, do biura albo do domu.</p>
             </div>
         </div>
-        <p class="mid-cta"><a href="#formularz" class="btn btn-red-solid btn-arrow js-do-formularza">Wybierz sposób, resztę policzymy</a></p>
+        <p class="mid-cta"><a href="#kalkulator" class="btn btn-red-solid btn-arrow js-do-kalkulatora">Wybierz sposób i policz</a></p>
+    </div>
+</section>
+
+
+<!-- POLICZ: kalkulator jako wlasny krok lejka, po czterech sposobach -->
+<section class="sec sec-cream kalkulator" id="kalkulator">
+    <div class="container">
+        <div class="sec-head">
+            <p class="hud-tag">03 · Policz</p>
+            <h2>Ile <span class="fun">ucieka</span> każdego dnia</h2>
+            <p>Wpiszcie kwotę i wybierzcie sposób. Zobaczycie, ile przepada dziś i ile zostaje po decyzji.</p>
+        </div>
+        <div class="aparat reveal kalk">
+            <div class="aparat-head"><span>Ile ucieka każdego dnia</span><b>W-1</b></div>
+            <div class="kalk-ekran">
+                <div class="kalk-led"><i></i><span id="a-led">BUDŻET WYGASA</span></div>
+                <div class="aparat-wynik" id="a-wynik"><p class="aparat-puste">Wpisz kwotę, a&nbsp;policzymy, ile z&nbsp;tego znika każdego dnia.</p></div>
+            </div>
+            <div class="kalk-legenda" aria-hidden="true">
+                <span>TRYB</span><span><b>A</b> PRZEDPŁATA</span><span><b>B</b> WELCOME</span><span><b>C</b> CATERING</span><span><b>D</b> PACZKI</span><span class="kalk-ogniwo"><i></i><i></i><i></i><i></i></span>
+            </div>
+            <div class="kalk-plyta">
+            <div class="aparat-pola">
+                <div>
+                    <label for="a-kwota">Budżet, który zostaje na ten rok</label>
+                    <div class="aparat-wpis"><input id="a-kwota" type="text" inputmode="numeric" placeholder="8 000" autocomplete="off"><span>zł</span></div>
+                </div>
+                <div>
+                    <label for="a-osoby">Wielkość zespołu</label>
+                    <div class="aparat-wpis"><input id="a-osoby" type="text" inputmode="numeric" placeholder="40" autocomplete="off"><span>osób</span></div>
+                </div>
+            </div>
+            <div class="kalk-klawisze" role="group" aria-label="Na co ma pójść budżet">
+                <button type="button" class="kalk-klawisz" aria-pressed="false" data-tryb="Przedpłata na pierwszy kwartał"><b>A</b>Przedpłata Q1</button>
+                <button type="button" class="kalk-klawisz" aria-pressed="false" data-tryb="Welcome packi na zapas"><b>B</b>Welcome packi</button>
+                <button type="button" class="kalk-klawisz" aria-pressed="false" data-tryb="Catering na spotkanie świąteczne"><b>C</b>Catering</button>
+                <button type="button" class="kalk-klawisz" aria-pressed="false" data-tryb="Paczki świąteczne"><b>D</b>Paczki</button>
+                <button type="button" class="kalk-klawisz kalk-ac" id="a-ac" aria-label="Wyczyść kalkulator"><b>AC</b>Wyczyść</button>
+            </div>
+            </div>
+            <p class="aparat-stopa" id="a-stopa">Nic nie zapisujemy. Wyliczenie jest poglądowe.</p>
+        </div>
+        <p class="mid-cta"><a href="#formularz" class="btn btn-red-solid btn-arrow js-do-formularza">Odzyskaj budżet</a></p>
     </div>
 </section>
 
@@ -1839,10 +1831,35 @@ body.ciemna .aparat.kalk .aparat-stopa { color: rgba(238,243,234,.45); margin-to
     </div>
 </section>
 
+<section class="typy">
+    <div class="container">
+        <div class="sec-head">
+            <p class="hud-tag">05 · Jak to działa</p>
+            <h2>Jak to <span class="fun">działa</span></h2>
+            <p>Trzy kroki. Zgłoszenie, propozycja, dostawa.</p>
+        </div>
+        <div class="typy-grid">
+            <figure class="typ reveal">
+                <img src="amnestia-korytarz.webp?v=1" alt="Dwóch pracowników w garniturach niesie nocnym korytarzem biurowym skrzynkę owoców" width="1600" height="893" loading="lazy">
+                <figcaption><b>Zgłoszenie</b>Piszecie, ile osób i jaka kwota zostaje do wykorzystania.</figcaption>
+            </figure>
+            <figure class="typ reveal">
+                <img src="amnestia-sala.webp?v=1" alt="Skrzynka świeżych owoców postawiona na stole w zaciemnionej sali konferencyjnej" width="1600" height="893" loading="lazy">
+                <figcaption><b>Propozycja</b>Skład i wycena wracają tego samego dnia. Bez katalogu do przeglądania.</figcaption>
+            </figure>
+            <figure class="typ reveal">
+                <img src="amnestia-garaz.webp?v=1" alt="Nocny garaż, otwarta furgonetka ze skrzynkami owoców i dwie sylwetki pod światło" width="1600" height="893" loading="lazy">
+                <figcaption><b>Dostawa</b>Faktura wychodzi w tym roku. Skrzynki jadą od stycznia.</figcaption>
+            </figure>
+        </div>
+        <p class="karuzela-info">Przesuń w bok →</p>
+    </div>
+</section>
+
 <section class="form-sec" id="formularz">
     <div class="container">
         <div class="sec-head">
-            <p class="hud-tag">05 · Zgłoszenie</p>
+            <p class="hud-tag">06 · Zgłoszenie</p>
             <h2>Zróbmy to <span class="fun">dzisiaj</span></h2>
             <p>Podajcie liczbę osób i kwotę, która zostaje. Propozycja wraca tego samego dnia.</p>
         </div>
@@ -2158,6 +2175,21 @@ body.ciemna .aparat.kalk .aparat-stopa { color: rgba(238,243,234,.45); margin-to
     addEventListener("load", zmierz);
     document.addEventListener("visibilitychange", zmierz);
     zmierz();
+})();
+</script>
+<script>
+/* CTA pierwszego stopnia: do kalkulatora, z odsunieciem na belke. */
+(function () {
+    var cel = document.getElementById("kalkulator"); if (!cel) return;
+    document.querySelectorAll(".js-do-kalkulatora").forEach(function (a) {
+        a.addEventListener("click", function (e) {
+            e.preventDefault();
+            var y = cel.getBoundingClientRect().top + window.scrollY - 24;
+            window.scrollTo({ top: y, behavior: "smooth" });
+            var pole = document.getElementById("a-kwota");
+            if (pole) setTimeout(function () { pole.focus({ preventScroll: true }); }, 700);
+        });
+    });
 })();
 </script>
 <script src="track.js?v=2" defer></script>
