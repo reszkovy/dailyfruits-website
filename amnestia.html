@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<!--#include:gtm-head-->
+<!-- Google Tag Manager -->
+<!-- Consent Mode v2: domyslnie denied do czasu zgody (RODO/ePrivacy) — MUSI byc przed tagami -->
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('consent','default',{'ad_storage':'denied','analytics_storage':'denied','ad_user_data':'denied','ad_personalization':'denied','functionality_storage':'granted','security_storage':'granted','wait_for_update':500});
+gtag('js', new Date());
+gtag('config', 'G-G9SCYSFC36');
+</script>
+<!-- Usercentrics NATYCHMIAST (osobno od lazy-GTM): baner zgod pojawia sie od razu
+     (RODO) i maluje sie wczesnie = stabilne LCP (pozny render banera psul metryke).
+     Loader ma guard po id - gdy GTM tez go wstrzyknie, drugi raz sie nie zaladuje. -->
+<link rel="preconnect" href="https://web.cmp.usercentrics.eu" crossorigin>
+<link rel="preconnect" href="https://v1.api.service.cmp.usercentrics.eu" crossorigin>
+<script id="usercentrics-cmp" src="https://web.cmp.usercentrics.eu/ui/loader.js" data-settings-id="JcLfBYv2MWoHnQ" async fetchpriority="high"></script>
+<!-- Lazy-start analityki (perf): GTM x2 + GA4 startuja przy PIERWSZEJ interakcji
+     uzytkownika (mousemove/scroll/touch/klawisz) albo najpozniej po 2.5 s.
+     Realny user: praktycznie natychmiast. Lab (LCP): poza oknem krytycznym.
+     Consent mode i kolejnosc zdarzen bez zmian (dataLayer kolejkuje polecenia). -->
+<script>
+(function(){
+  var done=false;
+  function loadAnalytics(){
+    if(done)return; done=true;
+    ['GTM-FVTBKWW','GTM-5B7HN67B'].forEach(function(id){
+      window.dataLayer.push({'gtm.start':new Date().getTime(),event:'gtm.js'});
+      var f=document.getElementsByTagName('script')[0],j=document.createElement('script');
+      j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+id;
+      f.parentNode.insertBefore(j,f);
+    });
+    var g=document.createElement('script');
+    g.async=true;g.src='https://www.googletagmanager.com/gtag/js?id=G-G9SCYSFC36';
+    document.head.appendChild(g);
+  }
+  ['pointerdown','keydown','touchstart','scroll','mousemove'].forEach(function(e){
+    window.addEventListener(e,loadAnalytics,{once:true,passive:true});
+  });
+  setTimeout(loadAnalytics,2500);
+})();
+</script>
+<!-- End Google Tag Manager -->
+<!-- Microsoft Clarity - blokowany do zgody przez Usercentrics.
+     type="text/plain" + data-usercentrics="Microsoft Clarity": skrypt NIE wykonuje sie,
+     dopoki CMP nie dostanie zgody na usluge "Microsoft Clarity" (wtedy UC przelacza typ i odpala).
+     WYMAGANE w panelu Usercentrics: usluga "Microsoft Clarity" o nazwie dokladnie zgodnej z data-usercentrics. -->
+<script type="text/plain" data-usercentrics="Microsoft Clarity">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "xi2vatfga7");
+</script>
+<!-- End Microsoft Clarity -->
+<!--#endinclude:gtm-head-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amnestia budżetowa - wykorzystaj budżet, zanim przepadnie | DailyFruits</title>
+    <meta name="description" content="Budżet, którego nie wydacie w tym roku, przepada, a w przyszłym zostanie obcięty. Sprawdźcie, ile tracicie każdego dnia i na co można go jeszcze wykorzystać.">
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="canonical" href="https://dailyfruits.pl/amnestia">
+    <meta property="og:title" content="Wasz budżet kończy się wcześniej, niż myślicie.">
+    <meta property="og:description" content="Żeby zamówienie weszło w tegoroczny budżet, musi zostać zafakturowane przed terminem. Potem wszystko przechodzi na przyszły rok.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://dailyfruits.pl/amnestia">
+    <meta property="og:locale" content="pl_PL">
+    <meta property="og:site_name" content="DailyFruits">
+    <link rel="icon" type="image/png" href="favicon_.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700;900&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700;900&display=swap" rel="stylesheet"></noscript>
+    <link rel="stylesheet" href="shared.css?v=13">
+<style>
+@font-face { font-family: 'Achiko'; src: url('Achiko.woff2') format('woff2'), url('Achiko.ttf') format('truetype'); font-weight: 400; font-display: swap; }
+:root {
+    --green-dark: #1B5E3A; --lime: #8DC63F; --lime-light: #A4C348; --lime-bg: #FFF9E0;
+    --yellow: #FFF200; --yellow-bg: #FFF8D8; --red: #E43020; --coral: #F06878;
+    --cream: #FFF9E0; --white: #FFFFFF; --gray: #3D5A1E; --gray-500: #555;
+    --radius: 20px; --radius-lg: 28px; --radius-pill: 100px;
+    --font: 'DM Sans', sans-serif; --font-fun: 'Achiko', 'Lobster', cursive;
+    --noc: #0C0F0C; --mgla: #93A093; --linia: rgba(255,249,224,.15);
+}
+
+/* Landing kampanijny: naglowek okrojony, CTA plynie ze strona.
+   Wszystkie reguly tej strony maja prefiks .am- zeby nie wyciekly do shared.css. */
+header { z-index: 300 !important; position: absolute !important; background: transparent !important; box-shadow: none !important; border-bottom: none !important; }
+header::after { display: none !important; }
+header .nav-inner { padding-top: 24px; padding-bottom: 24px; }
+header .logo-sub { color: var(--cream) !important; opacity: .55; }
+header .nav-buttons { position: fixed; top: 22px; right: clamp(20px, 3vw, 44px); z-index: 10;
+    transition: opacity .32s ease, transform .32s cubic-bezier(0.16,1,0.3,1); }
+header .nav-buttons.schowane { opacity: 0; transform: translateY(-14px); pointer-events: none; }
+header .btn-red-solid { white-space: nowrap; box-shadow: 0 8px 22px rgba(0,0,0,0.34); }
+
+/* ---------- HERO ---------- */
+.am-hero { background: var(--noc); color: var(--cream); padding: clamp(120px,17vw,200px) 0 clamp(56px,8vw,96px); }
+.am-syg { font-size: 12px; letter-spacing: .2em; text-transform: uppercase; color: var(--mgla); margin: 0 0 22px; }
+.am-hero h1 { font-size: clamp(38px,7.6vw,84px); line-height: .96; letter-spacing: -.035em;
+    margin: 0; text-transform: uppercase; font-weight: 900; color: var(--cream); }
+.am-hero h1 em { color: #FF6A5C; }
+.am-hero h1 em { font-style: normal; }
+.am-lead { margin: 26px 0 0; max-width: 50ch; color: var(--mgla); font-size: clamp(16px,1.9vw,19px); }
+
+/* ---------- APARAT (kalkulator) ---------- */
+.am-aparat { background: var(--cream); color: var(--green-dark); border-radius: var(--radius);
+    margin: clamp(30px,4.6vw,48px) 0 0; padding: clamp(22px,3.6vw,38px);
+    box-shadow: 0 26px 60px rgba(0,0,0,.42); }
+.am-aparat-head { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap;
+    padding-bottom: 15px; margin-bottom: 22px; border-bottom: 2px solid rgba(27,94,58,.18);
+    font-size: 11.5px; letter-spacing: .14em; text-transform: uppercase; font-weight: 700; }
+.am-aparat-head b { font-weight: 500; color: rgba(27,94,58,.6); }
+.am-pola { display: grid; grid-template-columns: repeat(auto-fit,minmax(190px,1fr)); gap: 18px; }
+.am-pola label { display: block; font-size: 11px; letter-spacing: .13em; text-transform: uppercase;
+    color: rgba(27,94,58,.65); margin-bottom: 7px; font-weight: 700; }
+.am-pola input { width: 100%; border: 0; border-bottom: 2px solid rgba(27,94,58,.3);
+    background: transparent; color: var(--green-dark); font-family: var(--font);
+    font-weight: 900; font-size: clamp(26px,4vw,40px); line-height: 1.1; padding: 2px 0 8px;
+    font-variant-numeric: tabular-nums; border-radius: 0; }
+.am-pola input:focus { outline: none; border-bottom-color: var(--green-dark); }
+.am-pola input::placeholder { color: rgba(27,94,58,.22); }
+.am-wynik { margin-top: 26px; padding-top: 22px; border-top: 2px solid rgba(27,94,58,.18); }
+.am-zdanie { font-size: clamp(19px,2.7vw,28px); line-height: 1.25; font-weight: 700;
+    letter-spacing: -.015em; margin: 0; }
+.am-zdanie u { text-decoration: none; background: var(--lime); padding: 0 .2em; border-radius: 4px; }
+.am-zdanie s { text-decoration: none; color: var(--red); }
+.am-stopa { margin: 15px 0 0; font-size: 13px; color: rgba(27,94,58,.62); }
+
+/* ---------- OPCJE ---------- */
+.am-opcje { display: grid; grid-template-columns: repeat(auto-fit,minmax(228px,1fr));
+    gap: 1px; background: var(--linia); border: 1px solid var(--linia); border-radius: var(--radius);
+    overflow: hidden; margin: clamp(30px,4.6vw,52px) 0 0; }
+.am-opcja { background: #141814; padding: 26px 24px; display: flex; flex-direction: column; gap: 9px; }
+.am-opcja .am-nr { font-size: 11.5px; letter-spacing: .15em; color: var(--mgla); font-weight: 700; }
+.am-opcja h3 { margin: 0; font-size: 19px; line-height: 1.18; letter-spacing: -.01em; color: var(--cream); }
+.am-opcja p { margin: 0; font-size: 14.5px; color: var(--mgla); }
+.am-opcja.am-pierwsza { background: #172016; box-shadow: inset 4px 0 0 var(--lime); }
+.am-opcja.am-pierwsza h3 { color: var(--lime); }
+
+/* ---------- SEKCJA JASNA ---------- */
+.am-jasna { background: var(--cream); padding: clamp(56px,7vw,92px) 0; }
+.am-jasna h2 { font-size: clamp(26px,4vw,42px); line-height: 1.05; letter-spacing: -.025em;
+    margin: 0 0 20px; color: var(--green-dark); max-width: 18ch; }
+.am-jasna .fun { font-family: var(--font-fun); font-weight: 400; color: var(--lime); }
+.am-tresc { max-width: 58ch; display: flex; flex-direction: column; gap: 14px; color: var(--gray-500); font-size: 17px; }
+.am-tresc b { color: var(--green-dark); }
+.am-kroki { list-style: none; padding: 0; margin: 34px 0 0; display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(215px,1fr)); gap: 14px; }
+.am-kroki li { background: var(--white); border-radius: var(--radius); padding: 22px 24px;
+    font-size: 15px; color: var(--gray-500); }
+.am-kroki b { display: block; font-size: 11.5px; letter-spacing: .14em; text-transform: uppercase;
+    color: var(--lime-light); margin-bottom: 9px; }
+
+@media (max-width: 700px) {
+    .am-hero { padding-top: 104px; }
+    .am-aparat { padding: 20px; }
+}
+</style>
+</head>
+<body>
+<!--#include:gtm-noscript-->
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-FVTBKWW" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5B7HN67B" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<!--#endinclude:gtm-noscript-->
+
+<!-- Zgodnosc z AI Act (art. 50): oznaczenie tresci wygenerowanej przez AI -->
+<p class="ai-badge">Strona zawiera elementy wygenerowane przez AI</p>
+
+<!-- NAV -->
+<header>
+    <div class="nav-inner">
+        <div class="logo-wrap"><a href="/"><picture><source media="(max-width: 768px)" srcset="animacja_11-green.svg"><img src="fruitttt.svg" alt="DailyFruits - owoce, kanapki, soki, przekąski i więcej do biura" class="logo-img" loading="eager" fetchpriority="high" width="64" height="64"></picture></a><span class="logo-sub">by BetterWorkplace</span></div>
+        <div class="nav-buttons">
+            <a href="#formularz" class="btn btn-red-solid js-do-formularza">Odzyskaj budżet <span class="cta-emo">🍏</span></a>
+        </div>
+    </div>
+</header>
+
+<section class="am-hero">
+    <div class="container">
+        <p class="am-syg">Wydział Odzyskiwania Budżetów · sprawa DF/2026/12</p>
+        <h1>Wasz budżet<br>kończy się<br><em>12 grudnia</em></h1>
+        <p class="am-lead">Nie 31. Żeby zamówienie weszło w tegoroczny budżet, musi zostać zafakturowane wcześniej. Po tej dacie wszystko przechodzi na przyszły rok.</p>
+
+        <div class="am-aparat">
+            <div class="am-aparat-head"><span>Formularz W-1</span><b>Ustalenie wartości utraconej</b></div>
+            <div class="am-pola">
+                <div>
+                    <label for="am-kwota">Budżet pozostały na ten rok, w złotych</label>
+                    <input id="am-kwota" type="text" inputmode="numeric" placeholder="8 000" autocomplete="off">
+                </div>
+                <div>
+                    <label for="am-osoby">Liczba osób w zespole</label>
+                    <input id="am-osoby" type="text" inputmode="numeric" placeholder="40" autocomplete="off">
+                </div>
+            </div>
+            <div class="am-wynik">
+                <p class="am-zdanie" id="am-zdanie">Wpisz kwotę, żeby zobaczyć, ile tracicie każdego dnia.</p>
+                <p class="am-stopa" id="am-stopa">Nic nie zapisujemy. Wyliczenie jest poglądowe.</p>
+            </div>
+        </div>
+
+        <div class="am-opcje">
+            <div class="am-opcja am-pierwsza">
+                <span class="am-nr">01</span>
+                <h3>Przedpłata na pierwszy kwartał</h3>
+                <p>Płacicie z tegorocznego budżetu za dostawy, które i tak zamówicie w styczniu. Te pieniądze inaczej przepadną.</p>
+            </div>
+            <div class="am-opcja">
+                <span class="am-nr">02</span>
+                <h3>Welcome packi na zapas</h3>
+                <p>Kupione teraz, wydawane przez cały rok, w miarę rekrutacji.</p>
+            </div>
+            <div class="am-opcja">
+                <span class="am-nr">03</span>
+                <h3>Catering na spotkanie świąteczne</h3>
+                <p>Zwykle inna linia budżetowa niż benefity, więc nie rusza tego, co macie na owoce.</p>
+            </div>
+            <div class="am-opcja">
+                <span class="am-nr">04</span>
+                <h3>Paczki dla zespołu</h3>
+                <p>Zestawy świąteczne dla pracowników i dla ich dzieci.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="am-jasna">
+    <div class="container">
+        <h2>To nie jest <span class="fun">oszczednosc</span></h2>
+        <div class="am-tresc">
+            <p>Niewykorzystany budżet nie zostaje w firmie. <b>Znika, a przy planowaniu na kolejny rok staje się argumentem za jego obcięciem.</b></p>
+            <p>Osoba, która za niego odpowiada, traci więc nie raz, tylko na stałe. Dlatego nie namawiamy nikogo do wydawania pieniędzy. Pomagamy ich nie stracić.</p>
+        </div>
+        <ul class="am-kroki">
+            <li><b>Krok 1</b>Piszecie, ile osób i jaka kwota zostaje.</li>
+            <li><b>Krok 2</b>Odsyłamy propozycję tego samego dnia.</li>
+            <li><b>Krok 3</b>Fakturujemy przed 12 grudnia.</li>
+        </ul>
+    </div>
+</section>
+
+<section class="form-sec" id="formularz">
+    <div class="container">
+        <div class="sec-head">
+            <h2>Odzyskajmy ten <span class="fun">budzet</span></h2>
+            <p>Podajcie liczbę osób i kwotę, która zostaje. Resztę policzymy po naszej stronie.</p>
+        </div>
+
+        <div class="assure reveal">
+            <p class="rating"><span class="rating-stars">★★★★★</span><span class="rating-score">4.9/5 na podstawie 120+ opinii</span></p>
+            <p class="assure-flow"><span>Mówicie, ile zostaje</span><i></i><span>dostajecie propozycję tego samego dnia</span><i></i><span>faktura idzie w tym roku</span></p>
+        </div>
+
+        <div class="form-grid">
+            <div class="form-wrap">
+                <iframe id="bwp-form" title="Formularz bezpłatnej wyceny DailyFruits" src="https://betterworkplace.pl/kontakt/zapytanie-dailyfruits" loading="lazy"></iframe>
+                <script src="bwp-form.js?v=1"></script>
+                <div class="form-after">
+                    <p>Wolicie najpierw zobaczyć, co dokładnie dowozimy?</p>
+                    <a href="/oferta" class="btn btn-green btn-arrow">Sprawdź pełną ofertę</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!--#include:footer-->
+<footer>
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <div style="display:flex;align-items:center;gap:16px;">
+                    <img src="fruitttt.svg" alt="DailyFruits logo" style="height:56px;filter:brightness(10);" loading="lazy" width="56" height="56">
+                    <img src="dailyfoods-logo.svg" alt="DailyFoods" style="height:56px;" loading="lazy" width="64" height="64">
+                </div>
+                <p>Zdrowsze jedzenie, lepsza praca - zaczynając od kuchni. Część ekosystemu BetterWorkplace.</p>
+            </div>
+            <div class="footer-col"><h3>Nawigacja</h3><ul><li><a href="/">Start</a></li><li><a href="oferta">Oferta</a></li><li><a href="dostawa">Dostawa</a></li><li><a href="o-nas">O nas</a></li><li><a href="blog">Blog</a></li><li><a href="kontakt">Kontakt</a></li><li><a href="dostawcy">Dostawcy</a></li><li><a href="pomagamy">Pomagamy</a></li><li><a href="zapytanie">Zapytanie</a></li><li><a href="faq">FAQ</a></li></ul></div>
+            <div class="footer-col"><h3>Oferta</h3><ul><li><a href="kanapki-do-biura">Kanapki do biura</a></li><li><a href="catering-firmowy">Catering firmowy</a></li><li><a href="programy-zywieniowe">Programy żywieniowe</a></li><li><a href="oferta">DailyFruits</a></li><li><a href="oferta">DailyFoods</a></li><li><a href="upominki-dla-pracownikow">Upominki dla pracowników</a></li><li><a href="paczki-dla-pracownikow-zdalnych">Paczki - praca zdalna</a></li><li><a href="paczki-dla-dzieci-pracownikow">Paczki dla dzieci</a></li><li><a href="dailyfruits-welcome-pack">Welcome Pack</a></li></ul></div>
+            <div class="footer-col"><h3>Kontakt</h3><ul><li><a href="mailto:zapytania@betterworkplace.pl">zapytania@betterworkplace.pl</a></li><li><p>tel: <a href="tel:+48228680499">22 868 04 99</a></p></li></ul><h3 class="mt-20">Dane firmy</h3><ul><li><p>Betterworkplace Sp. z&nbsp;o.o.</p></li><li><p>ul. Modułowa 3, 05-090 Raszyn</p></li><li><p>NIP: 6793077034</p></li><li><p>REGON: 122432943</p></li></ul></div>
+        </div>
+        <div class="footer-bottom">
+            <a href="otwarte-innowacje" title="Fundusze Europejskie - projekty współfinansowane przez UE" style="display:inline-block;background:#fff;padding:10px 16px;border-radius:8px;margin-bottom:16px;"><img src="ue-pasek.webp" alt="Fundusze Europejskie, Rzeczpospolita Polska, ARP, Unia Europejska" style="max-width:320px;width:100%;height:auto;display:block;" loading="lazy" width="1400" height="190"></a><br><p style="margin-bottom:8px;"><a class="link-faint" href="polityka-prywatnosci">Polityka prywatności</a> · <a class="link-faint" href="regulamin">Regulamin</a></p>
+            <p style="color:var(--cream)">&copy; 2026 DailyFruits by BetterWorkplace Sp. z&nbsp;o.o. Wszystkie prawa zastrzeżone.</p>
+            <p style="color:var(--cream);opacity:.55;font-size:12px;margin-top:6px;">Przy tworzeniu materiałów graficznych na stronie zostały użyte narzędzia korzystające ze sztucznej inteligencji.</p>
+        </div>
+    </div>
+</footer>
+<!--#endinclude:footer-->
+
+<script>
+(function(){
+    var kwota = document.getElementById("am-kwota");
+    var osoby = document.getElementById("am-osoby");
+    var zdanie = document.getElementById("am-zdanie");
+    var stopa  = document.getElementById("am-stopa");
+    var KONIEC = new Date(2026, 11, 12);
+
+    function zl(n){ return n.toLocaleString("pl-PL", {maximumFractionDigits: 0}); }
+    function num(el){ return Number(String(el.value).replace(/[^\d]/g, "")) || 0; }
+    function dni(){
+        var d = new Date(); d.setHours(0,0,0,0);
+        return Math.max(0, Math.round((KONIEC - d) / 86400000));
+    }
+    function policz(){
+        var k = num(kwota), o = num(osoby), d = dni();
+        if (!k) {
+            zdanie.textContent = "Wpisz kwotę, żeby zobaczyć, ile tracicie każdego dnia.";
+            stopa.textContent = "Nic nie zapisujemy. Wyliczenie jest poglądowe.";
+            return;
+        }
+        var t = "Zostało <s>" + d + " dni</s>. To <u>" + zl(Math.round(k / Math.max(d,1))) + " zł dziennie</u>, które przepadają.";
+        if (o) t += " Na osobę wychodzi " + zl(Math.round(k / o)) + " zł.";
+        zdanie.innerHTML = t;
+        stopa.textContent = "Termin fakturowania: 12 grudnia 2026. Kwota wpisana: " + zl(k) + " zł.";
+    }
+    [kwota, osoby].forEach(function(el){ el.addEventListener("input", policz); });
+    policz();
+
+    // CTA chowa sie przy formularzu, zeby nie wskazywalo na cel, ktory jest na ekranie
+    var pas = document.querySelector("header .nav-buttons");
+    var form = document.getElementById("formularz");
+    if (pas && form && "IntersectionObserver" in window) {
+        new IntersectionObserver(function(w){
+            pas.classList.toggle("schowane", w[0].isIntersecting);
+        }, {threshold: 0.12}).observe(form);
+    }
+
+    // Kotwica przesuwa tak, zeby caly formularz byl widoczny
+    document.querySelectorAll(".js-do-formularza").forEach(function(a){
+        a.addEventListener("click", function(e){
+            e.preventDefault();
+            var y = form.getBoundingClientRect().top + window.scrollY - 12;
+            window.scrollTo({top: y, behavior: "smooth"});
+        });
+    });
+})();
+</script>
+</body>
+</html>
