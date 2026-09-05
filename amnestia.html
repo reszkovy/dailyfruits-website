@@ -1209,6 +1209,81 @@ body.kamera::before { background:
         radial-gradient(60% 60% at 100% 0%, rgba(70,255,170,.05), transparent 60%),
         radial-gradient(60% 60% at 0% 100%, rgba(255,70,140,.05), transparent 60%); }
 
+
+/* =====================================================================
+   SIATKA: zloty podzial i Fibonacci. Jedna skala odstepow (8 13 21 34 55
+   89 144) i jedna skala typografii (13 17 21 34 55). Wszystko na 8 px
+   sie domyka, hairline'y 1 px na calych pikselach. Kolumna tekstu w hero
+   = 38.2% szerokosci, kadr = 61.8%.
+   ===================================================================== */
+body.ciemna { --f1: 8px; --f2: 13px; --f3: 21px; --f4: 34px; --f5: 55px; --f6: 89px; --f7: 144px;
+    --t0: 13px; --t1: 17px; --t2: 21px; --t3: 34px; --t4: 55px; }
+body.ciemna .sec-cream, body.ciemna .sec-white, body.ciemna .typy,
+body.ciemna .prod-sec, body.ciemna .form-sec, body.ciemna .sposoby { padding-top: var(--f6); padding-bottom: var(--f6); }
+@media (max-width: 720px) {
+    body.ciemna .sec-cream, body.ciemna .sec-white, body.ciemna .typy,
+    body.ciemna .prod-sec, body.ciemna .form-sec, body.ciemna .sposoby { padding-top: var(--f5); padding-bottom: var(--f5); } }
+body.ciemna .sec-head { margin-bottom: var(--f5); }
+body.ciemna .sec-head h2 { font-size: clamp(var(--t3), 4.2vw, var(--t4)); line-height: 1.05; margin-bottom: var(--f2); }
+body.ciemna .sec-head p { font-size: var(--t1); line-height: 1.618; }
+body.ciemna .hud-tag { margin-bottom: var(--f2); }
+body.ciemna p, body.ciemna li { font-size: var(--t1); line-height: 1.618; }
+body.ciemna .sym p, body.ciemna .cure-card p, body.ciemna .typ figcaption, body.ciemna .form-info span { font-size: 15px; line-height: 1.618; }
+body.ciemna h3 { font-size: var(--t2); line-height: 1.3; }
+body.ciemna .sym-grid, body.ciemna .typy-grid, body.ciemna .cure-grid { gap: var(--f3); }
+body.ciemna .sym, body.ciemna .cure-card { padding: var(--f4); }
+body.ciemna .sym-top, body.ciemna .cure-top { padding-bottom: var(--f2); margin-bottom: var(--f3); }
+body.ciemna .aparat { margin-top: var(--f5); padding: var(--f4); }
+body.ciemna .aparat-head { padding-bottom: var(--f2); margin-bottom: var(--f3); }
+body.ciemna .aparat-pola { gap: var(--f3); }
+body.ciemna .aparat-wynik { margin-top: var(--f4); padding-top: var(--f3); }
+body.ciemna .aparat-reszta { margin-top: var(--f2); }
+body.ciemna .hero-box { margin-top: var(--f5); }
+body.ciemna .mocne { gap: var(--f2); margin-top: var(--f3); }
+body.ciemna .sposoby .mid-cta { margin-top: var(--f4); }
+body.ciemna .typ figcaption { padding-top: var(--f3); }
+body.ciemna .form-grid { gap: var(--f4); }
+body.ciemna .assure { margin-bottom: var(--f4); }
+body.ciemna .termin { margin-bottom: var(--f3); font-size: var(--t0); }
+body.ciemna .scrub-copy .lead { margin-bottom: var(--f3); }
+body.ciemna .scrub-copy h1 { margin-bottom: var(--f3); }
+@media (min-width: 1001px) {
+    body.ciemna .scrub-grid { grid-template-columns: 38.2% 61.8%; }
+    body.ciemna .scrub-copy { padding-right: 0; }
+}
+@media (min-width: 721px) {
+    body.ciemna .cam-gora { top: 104px; left: var(--f4); }
+    body.ciemna .cam-dol { left: var(--f4); right: var(--f4); bottom: var(--f4); }
+    body.ciemna .cam-rog { width: var(--f3); height: var(--f3); }
+    body.ciemna .cam-rog.tl, body.ciemna .cam-rog.tr { top: var(--f3); }
+    body.ciemna .cam-rog.bl, body.ciemna .cam-rog.br { bottom: var(--f3); }
+    body.ciemna .cam-rog.tl, body.ciemna .cam-rog.bl { left: var(--f3); }
+    body.ciemna .cam-rog.tr, body.ciemna .cam-rog.br { right: var(--f3); }
+}
+@media (max-width: 720px) {
+    body.ciemna .cam-gora { left: auto; right: 40px; top: 18px; }
+    body.ciemna .cam-hud, body.ciemna .vhs, body.ciemna .cam-rama { max-width: 100vw; }
+}
+
+/* ---------- CTA I FORMULARZ PONAD EFEKTAMI ----------
+   Podglad z kamery glitchuje, ale interfejs operatora jest ostry: warstwa
+   tekstu w hero, przycisk w belce, srodkowe CTA i cala sekcja formularza
+   ida nad skanlinie (9988), pasma (9989) i ziarno (9990), pod celownik
+   (9994) i ramke (9995). */
+body.ciemna .scrub-grid { z-index: 9991 !important; }
+body.ciemna .scrub-copy { z-index: 9991 !important; }
+body.ciemna header .nav-buttons { z-index: 9991 !important; }
+body.ciemna .sposoby .mid-cta, body.ciemna .prod-sec .mid-cta { position: relative; z-index: 9991; }
+body.ciemna .form-sec { z-index: 9991; }
+body.ciemna .form-sec .owocek { z-index: 0; }
+
+
+/* badge AI jest <p>, wiec dostal skale typografii i na 375 px wyrosl do 421 px */
+body.ciemna .ai-badge { font-size: 12px; line-height: 1.4; max-width: calc(100vw - 32px); box-sizing: border-box; white-space: normal; text-align: center; }
+
+
+@media (max-width: 720px) { .hud-tag { max-width: 100%; letter-spacing: .12em; font-size: 9px; } .hud-tag::before, .hud-tag::after { width: 10px; } }
+
 </style>
 </head>
 <body class="ciemna kamera">
@@ -1219,7 +1294,7 @@ body.kamera::before { background:
 <span class="cam-kanal">CAM 02 · MAGAZYN B</span>
 </div>
 <div class="cam-dol">
-<span class="cam-stan"><i></i>BUDŻET WYGASA · <b id="cam-dni">—</b> DNI DO TERMINU</span>
+<span class="cam-stan"><i></i>BUDŻET WYGASA · <b id="cam-dni">··</b> DNI DO TERMINU</span>
 <span class="cam-prawy">
 <span class="cam-sygnal"><i></i><i></i><i></i><i></i><i></i></span>
 <span class="cam-tc"><b id="cam-tc">00:00:00:00</b><em id="cam-data">--.--.----</em></span>
@@ -1274,15 +1349,15 @@ body.kamera::before { background:
                     <span class="l1">Amnestia</span>
                     <span class="l2">budżetowa.</span>
                 </h1>
-                <p class="lead"><b>Wasz budżet kończy się 12 grudnia, nie 31.</b><br>Żeby zamówienie weszło w tegoroczny budżet, musi zostać zafakturowane wcześniej.</p>
-                <p class="termin" id="hero-termin" aria-live="polite"><i></i><span>Do końca fakturowania zostało <b id="hero-dni">—</b> dni</span></p>
+                <p class="lead"><b>Wasz budżet kończy się 12 grudnia, nie 31.</b><br>Ekipa jest już w drodze, żeby go odzyskać, zanim zniknie.</p>
+                <p class="termin" id="hero-termin" aria-live="polite"><i></i><span>Do końca fakturowania zostało <b id="hero-dni">··</b> dni</span></p>
                 <div class="cta-row">
                     <a href="#formularz" class="btn-feed js-do-formularza">Odzyskaj budżet →</a>
                 </div>
             </div>
             <div></div>
         </div>
-        <p class="hero-offer">Owoce, kanapki i kawa<br>pod jednym zamówieniem</p>
+        <p class="hero-offer">Ładunek: owoce, kanapki, kawa<br>jedno zamówienie</p>
         </div>
 </section>
 
@@ -1292,37 +1367,37 @@ body.kamera::before { background:
 <section class="sec sec-cream">
     <div class="container">
         <div class="sec-head">
-            <p class="hud-tag">ODCZYT 01 · DIAGNOZA</p>
-            <h2>Budżet, który <span class="fun">znika</span></h2>
-            <p>Niewykorzystany budżet nie zostaje w firmie. Znika, a przy planowaniu na kolejny rok staje się argumentem za jego obcięciem.</p>
+            <p class="hud-tag">ODCZYT 01 · CEL</p>
+            <h2>Cel: budżet, który <span class="fun">znika</span></h2>
+            <p>Co roku ta sama scena. Pieniądze leżą na koncie do grudnia, a potem znikają bez śladu. Nikt ich nie ukradł. Nikt ich nie wydał.</p>
         </div>
         <div class="sym-grid">
             <div class="sym reveal">
                 <div class="sym-top"><span class="n" aria-hidden="true">01</span><img src="icons/icon-clock-afternoon.webp" alt="" loading="lazy" width="54" height="54"></div>
                 <div class="b">
-                    <h3>Termin jest wcześniejszy</h3>
-                    <p>Nie 31 grudnia. Żeby zamówienie weszło w tegoroczny budżet, faktura musi zdążyć. Po tej dacie wszystko przechodzi na przyszły rok.</p>
+                    <h3>Godzina zero jest wcześniej</h3>
+                    <p>Nie 31 grudnia. Faktura musi wejść przed terminem, inaczej cały ładunek przechodzi na przyszły rok.</p>
                 </div>
             </div>
             <div class="sym reveal">
                 <div class="sym-top"><span class="n" aria-hidden="true">02</span><img src="icons/icon-battery-low.webp" alt="" loading="lazy" width="54" height="54"></div>
                 <div class="b">
                     <h3>Strata jest podwójna</h3>
-                    <p>Pieniądze przepadają raz, a obcięty budżet na kolejny rok zostaje na stałe. Osoba odpowiedzialna tłumaczy się z obu rzeczy.</p>
+                    <p>Znikają pieniądze, a razem z nimi argument o budżet na kolejny rok. Osoba, która za niego odpowiada, tłumaczy się z obu rzeczy.</p>
                 </div>
             </div>
             <div class="sym reveal">
                 <div class="sym-top"><span class="n" aria-hidden="true">03</span><img src="icons/icon-crate-fruit.webp" alt="" loading="lazy" width="54" height="54"></div>
                 <div class="b">
-                    <h3>Da się to wykorzystać dziś</h3>
-                    <p>Przedpłata na pierwszy kwartał, welcome packi na zapas, catering świąteczny albo paczki dla zespołu. Faktura w tym roku, dostawy w przyszłym.</p>
+                    <h3>Da się to jeszcze odzyskać</h3>
+                    <p>Cztery drogi wyjścia, każda fakturowana w tym roku. Ekipa wybiera tę, która pasuje do budżetu, nie do katalogu.</p>
                 </div>
             </div>
         </div>
         <p class="karuzela-info">Przesuń w bok →</p>
 
         <div class="aparat reveal">
-            <div class="aparat-head"><span>Ile tracicie każdego dnia</span><b>Formularz W-1</b></div>
+            <div class="aparat-head"><span>Ile ucieka każdego dnia</span><b>Formularz W-1</b></div>
             <div class="aparat-pola">
                 <div>
                     <label for="a-kwota">Budżet, który zostaje na ten rok</label>
@@ -1346,20 +1421,20 @@ body.kamera::before { background:
         <div class="sec-head">
             <p class="hud-tag">ODCZYT 02 · PRZEBIEG AKCJI</p>
             <h2>Akcja odzyskiwania <span class="fun">rusza</span></h2>
-            <p>Zgłoszenie idzie do nas, propozycja wraca tego samego dnia, faktura zdąży w tym roku.</p>
+            <p>Trzy kamery, trzy etapy. Zgłoszenie, plan, ekstrakcja.</p>
         </div>
         <div class="typy-grid">
             <figure class="typ reveal">
                 <img src="amnestia-korytarz.webp?v=1" alt="Dwóch pracowników w garniturach niesie nocnym korytarzem biurowym skrzynkę owoców" width="1600" height="893" loading="lazy">
-                <figcaption><b>Zgłoszenie</b>Piszecie, ile osób i jaka kwota zostaje do wykorzystania.</figcaption>
+                <figcaption><b>Kamera 01 · Zgłoszenie</b>Piszecie, ile osób i jaka kwota zostaje. Ekipa dostaje namiary.</figcaption>
             </figure>
             <figure class="typ reveal">
                 <img src="amnestia-sala.webp?v=1" alt="Skrzynka świeżych owoców postawiona na stole w zaciemnionej sali konferencyjnej" width="1600" height="893" loading="lazy">
-                <figcaption><b>Propozycja</b>Odsyłamy skład i wycenę tego samego dnia, bez katalogu do przeglądania.</figcaption>
+                <figcaption><b>Kamera 02 · Plan</b>Skład i wycena wracają tego samego dnia. Bez katalogu, bez narady.</figcaption>
             </figure>
             <figure class="typ reveal">
                 <img src="amnestia-garaz.webp?v=1" alt="Nocny garaż, otwarta furgonetka ze skrzynkami owoców i dwie sylwetki pod światło" width="1600" height="893" loading="lazy">
-                <figcaption><b>Dostawa</b>Faktura idzie w tym roku, skrzynki jadą od stycznia.</figcaption>
+                <figcaption><b>Kamera 03 · Ekstrakcja</b>Faktura wychodzi w tym roku. Skrzynki jadą od stycznia.</figcaption>
             </figure>
         </div>
         <p class="karuzela-info">Przesuń w bok →</p>
@@ -1406,33 +1481,33 @@ body.kamera::before { background:
 <section class="sec sec-white sposoby">
     <div class="container">
         <div class="sec-head">
-            <p class="hud-tag">ODCZYT 03 · CELE</p>
-            <h2>Cztery sposoby, jeden <span class="fun">termin</span></h2>
+            <p class="hud-tag">ODCZYT 03 · PLAN</p>
+            <h2>Cztery drogi, jeden <span class="fun">termin</span></h2>
             <p>Każdy z nich fakturujemy w tym roku. Wybieracie ten, który pasuje do budżetu, a nie do katalogu.</p>
         </div>
         <div class="cure-grid">
             <div class="cure-card reveal wyrozniona">
-                <div class="cure-top"><span class="day">Najczęściej</span><img src="icons/icon-crate-fruit.webp" alt="" loading="lazy" width="46" height="46"></div>
+                <div class="cure-top"><span class="day">Droga A · najczęściej</span><img src="icons/icon-crate-fruit.webp" alt="" loading="lazy" width="46" height="46"></div>
                 <h3>Przedpłata na pierwszy kwartał</h3>
-                <p>Płacicie z tegorocznego budżetu za dostawy, które i tak zamówicie w styczniu. Pieniądze, które miały przepaść, zamieniają się w trzy miesiące skrzynek.</p>
+                <p>Płacicie z tegorocznego budżetu za dostawy, które i tak zamówicie w styczniu. Pieniądze, które miały zniknąć, zamieniają się w trzy miesiące skrzynek.</p>
             </div>
             <div class="cure-card reveal">
-                <div class="cure-top"><span class="day">Na zapas</span><img src="icons/icon-health-day.webp" alt="" loading="lazy" width="46" height="46"></div>
+                <div class="cure-top"><span class="day">Droga B</span><img src="icons/icon-health-day.webp" alt="" loading="lazy" width="46" height="46"></div>
                 <h3>Welcome packi dla nowych osób</h3>
-                <p>Kupione teraz, wydawane przez cały rok w miarę rekrutacji. Rzecz, o której nikt nie pomyśli sam, a każdy HR ma na nią miejsce.</p>
+                <p>Kupione teraz, wydawane przez cały rok w miarę rekrutacji. Zapas na akcje, o których dziś jeszcze nie wiecie.</p>
             </div>
             <div class="cure-card reveal">
-                <div class="cure-top"><span class="day">Inna kieszeń</span><img src="icons/icon-sandwich-half.webp" alt="" loading="lazy" width="46" height="46"></div>
+                <div class="cure-top"><span class="day">Droga C</span><img src="icons/icon-sandwich-half.webp" alt="" loading="lazy" width="46" height="46"></div>
                 <h3>Catering na spotkanie świąteczne</h3>
-                <p>Zwykle idzie z budżetu na integrację, nie na benefity, więc nie rusza tego, co macie na owoce.</p>
+                <p>Idzie z innej kieszeni, z budżetu na integrację, więc nie rusza tego, co macie na owoce.</p>
             </div>
             <div class="cure-card reveal">
-                <div class="cure-top"><span class="day">Dla zespołu</span><img src="icons/icon-nuts-bowl.webp" alt="" loading="lazy" width="46" height="46"></div>
+                <div class="cure-top"><span class="day">Droga D</span><img src="icons/icon-nuts-bowl.webp" alt="" loading="lazy" width="46" height="46"></div>
                 <h3>Paczki świąteczne</h3>
-                <p>Zestawy dla pracowników i dla ich dzieci, w brandowanych opakowaniach, z dostawą do biura albo do domu.</p>
+                <p>Zestawy dla zespołu i dla dzieci pracowników, w brandowanych opakowaniach, do biura albo do domu.</p>
             </div>
         </div>
-        <p class="mid-cta"><a href="#formularz" class="btn btn-red-solid btn-arrow js-do-formularza">Wybierzcie sposób, resztę policzymy</a></p>
+        <p class="mid-cta"><a href="#formularz" class="btn btn-red-solid btn-arrow js-do-formularza">Wybierzcie drogę, resztę policzymy</a></p>
     </div>
 </section>
 
@@ -1442,7 +1517,7 @@ body.kamera::before { background:
         <div class="sec-head">
             <p class="hud-tag">ODCZYT 04 · ŁADUNEK</p>
             <h2>Co za to <span class="fun">dostajecie</span></h2>
-            <p>Nie bon, nie voucher, nie obietnica na przyszły rok. Dostawy, które ruszają od stycznia.</p>
+            <p>Nie bon, nie voucher, nie obietnica. Ładunek, który wjeżdża do kuchni od stycznia.</p>
         </div>
         <div class="rozwiazanie">
             <p>Przedpłata z tegorocznego budżetu zabezpiecza pierwszy kwartał. DailyFruits regularnie uzupełnia firmową kuchnię w <b>świeże owoce, kanapki, przekąski, soki i kawę</b>, a faktura zostaje w tym roku.</p>
@@ -1455,7 +1530,7 @@ body.kamera::before { background:
         <div class="hero-box reveal">
             <div><img src="amnestia-pudelko.webp?v=1" alt="Pudełko DailyFruits pełne owoców na blacie w firmowej kuchni, w porannym świetle" width="1200" height="800" loading="lazy"></div>
             <div>
-                <span class="tag">Podstawa abonamentu</span>
+                <span class="tag">Ładunek podstawowy</span>
                 <h3>Skrzynka, która staje w <span class="fun">kuchni</span></h3>
                 <p>Owoce, warzywa, kanapki, kawa, soki - wszystko w jednej dostawie, od jednego partnera. Ustalamy razem, co ma przyjeżdżać, jak często i w jakie dni.</p>
                 <ul>
@@ -1530,12 +1605,12 @@ body.kamera::before { background:
         <div class="sec-head">
             <p class="hud-tag">ODCZYT 05 · ZGŁOSZENIE</p>
             <h2>Zróbmy to <span class="fun">dzisiaj</span></h2>
-            <p>Podajcie liczbę osób i kwotę, która zostaje. Resztę policzymy po naszej stronie.</p>
+            <p>Podajcie liczbę osób i kwotę, która zostaje. Ekipa odzywa się tego samego dnia.</p>
         </div>
         
         <div class="assure reveal">
             <p class="rating"><span class="rating-stars">★★★★★</span><span class="rating-score">4.9/5 na podstawie 120+ opinii</span></p>
-            <p class="assure-flow"><span>Mówicie, ile zostaje</span><i></i><span>propozycja wraca tego samego dnia</span><i></i><span>faktura idzie w tym roku</span></p>
+            <p class="assure-flow"><span>Mówicie, ile zostaje</span><i></i><span>ekipa wraca z planem tego samego dnia</span><i></i><span>faktura idzie w tym roku</span></p>
         </div>
         <div class="form-grid">
             <div class="form-wrap">
@@ -1550,7 +1625,7 @@ body.kamera::before { background:
             
                 <div class="form-info reveal">
                     <h3>Co dokładnie zamawiacie</h3>
-                    <p class="wstep">Nie jednorazowy zakup na koniec roku. Stałą dostawę, opłaconą z budżetu, który i tak by przepadł.</p>
+                    <p class="wstep">Nie jednorazowy skok na koniec roku. Stałą dostawę, opłaconą z budżetu, który i tak by zniknął.</p>
                     <ul>
                         <li><i>1</i><div><b>Skrzynka, która stoi w kuchni</b><span>Owoce, przekąski, kanapki, soki. Przyjeżdża regularnie, a nie raz na próbę.</span></div></li>
                         <li><i>2</i><div><b>Wy podajecie liczbę osób</b><span>Skład i wielkość dobieramy my. Nie musicie nic wybierać z katalogu.</span></div></li>
@@ -1559,7 +1634,7 @@ body.kamera::before { background:
                         <li><i>5</i><div><b>Jedno zamówienie zamiast kilku dostawców</b><span>Owoce, kanapki, przekąski, soki i kawa w jednej dostawie i na jednej fakturze.</span></div></li>
                     </ul>
                     <div class="form-kontakt">
-                        <b>Wolisz krócej?</b>
+                        <b>Wolicie krócej?</b>
                         <a href="tel:+48228680499">22 868 04 99</a>
                         <a href="mailto:zapytania@betterworkplace.pl?subject=Amnestia%20bud%C5%BCetowa">zapytania@betterworkplace.pl</a>
                         <span>Odpowiadamy w 24 h.</span>
