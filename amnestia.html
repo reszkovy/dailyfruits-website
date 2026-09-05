@@ -1353,17 +1353,45 @@ body.ciemna p, body.ciemna li, body.ciemna figcaption, body.ciemna .form-info sp
 body.ciemna .aparat-reszta, body.ciemna .aparat-puste { text-wrap: pretty; hyphens: manual; overflow-wrap: normal; }
 body.ciemna h1, body.ciemna h2, body.ciemna h3 { text-wrap: balance; hyphens: manual; }
 
+
+/* ---------- SCROLL W KONTEKSCIE KAMERY ----------
+   1. Natywny pasek: cienki, ciemny, bez strzalek. Zostaje, bo chowanie paska
+      psuje uzytecznosc.
+   2. Postep zapisu w HUD: nic na prawej krawedzi ramki z limonkowym odcinkiem
+      i znacznikiem, plus procent w dolnym rzedzie. Idiom r352 DeckFrame. */
+html { scrollbar-width: thin; scrollbar-color: rgba(238,243,234,.28) transparent; }
+html::-webkit-scrollbar { width: 6px; height: 6px; }
+html::-webkit-scrollbar-track { background: #000; }
+html::-webkit-scrollbar-thumb { background: rgba(238,243,234,.28); border-radius: 0; }
+html::-webkit-scrollbar-thumb:hover { background: rgba(141,198,63,.7); }
+html::-webkit-scrollbar-button { display: none; height: 0; }
+
+.cam-nic { --postep: 0; position: absolute; right: 18px; top: 44px; bottom: 44px; width: 1px;
+    background: rgba(238,243,234,.16); pointer-events: none; }
+.cam-nic::before { content: ""; position: absolute; left: -3px; right: -3px; top: 0; bottom: 0;
+    background:
+        repeating-linear-gradient(to bottom, transparent 0 calc(25% - 1px), rgba(238,243,234,.35) calc(25% - 1px) 25%); }
+.cam-nic i { position: absolute; left: 0; top: 0; width: 1px; height: calc(var(--postep) * 100%);
+    background: var(--lime); box-shadow: 0 0 10px rgba(141,198,63,.7); }
+.cam-nic em { position: absolute; left: -4px; top: calc(var(--postep) * 100%); width: 9px; height: 9px;
+    margin-top: -4px; border-radius: 50%; background: var(--lime); box-shadow: 0 0 12px rgba(141,198,63,.9); }
+.cam-postep { margin-left: 22px; color: rgba(238,243,234,.6); }
+.cam-postep b { color: var(--lime); font-weight: 600; font-variant-numeric: tabular-nums; }
+@media (max-width: 720px) { .cam-nic, .cam-postep { display: none !important; } }
+
 </style>
 </head>
 <body class="ciemna kamera">
 <div class="cam-hud" aria-hidden="true">
 <span class="cam-rog tl"></span><span class="cam-rog tr"></span><span class="cam-rog bl"></span><span class="cam-rog br"></span>
+<span class="cam-nic" aria-hidden="true"><i></i><em></em></span>
 <div class="cam-gora">
 <span class="cam-rec"><i></i>REC</span>
 <span class="cam-kanal">CAM 02 · MAGAZYN B</span>
 </div>
 <div class="cam-dol">
 <span class="cam-stan"><i></i>BUDŻET WYGASA · <b id="cam-dni">··</b> DNI DO TERMINU</span>
+<span class="cam-postep"><b id="cam-proc">0%</b> ZAPISU</span>
 <span class="cam-prawy">
 <span class="cam-sygnal"><i></i><i></i><i></i><i></i><i></i></span>
 <span class="cam-tc"><b id="cam-tc">00:00:00:00</b><em id="cam-data">--.--.----</em></span>
@@ -1939,6 +1967,28 @@ body.ciemna h1, body.ciemna h2, body.ciemna h3 { text-wrap: balance; hyphens: ma
         mapa.setAttribute("href", c.toDataURL());
         img.classList.add("rybie");
     } catch (e) { /* bez rybiego oka */ }
+})();
+</script>
+<script>
+/* Postep zapisu: liczony synchronicznie na scroll (rAF bywa wstrzymywany
+   w karcie w tle i licznik zamiera). Wysokosc strony zapamietana przy
+   zmianie rozmiaru, wiec na scrollu nie ma odczytu wymuszajacego layout. */
+(function () {
+    var nic = document.querySelector(".cam-nic"), proc = document.getElementById("cam-proc");
+    if (!nic || !proc) return;
+    var max = 1, ostatni = -1;
+    function zmierz() { max = Math.max(1, document.documentElement.scrollHeight - innerHeight); licz(); }
+    function licz() {
+        var p = Math.min(1, Math.max(0, (window.scrollY || document.documentElement.scrollTop) / max));
+        var r = Math.round(p * 100);
+        nic.style.setProperty("--postep", p.toFixed(4));
+        if (r !== ostatni) { ostatni = r; proc.textContent = r + "%"; }
+    }
+    addEventListener("scroll", licz, { passive: true });
+    addEventListener("resize", zmierz, { passive: true });
+    addEventListener("load", zmierz);
+    document.addEventListener("visibilitychange", zmierz);
+    zmierz();
 })();
 </script>
 <script src="track.js?v=2" defer></script>
