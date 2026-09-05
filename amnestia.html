@@ -1579,6 +1579,23 @@ body.ciemna .ai-badge { position: fixed; top: calc(var(--cam-inset) + 10px); rig
     body.ciemna .cam-hud { bottom: 70px !important; }
 }
 
+
+/* ---------- sciezki do zapytania, pasek tematu, zapasowy kontakt ---------- */
+.karta-link { display: inline-block; margin-top: 12px; font-size: 13.5px; font-weight: 700; color: var(--lime); text-decoration: none;
+    border-bottom: 1px solid rgba(141,198,63,.4); padding-bottom: 2px; }
+.karta-link:hover { border-bottom-color: var(--lime); }
+.temat-pasek { margin: 0 0 var(--f3); padding: 12px 16px; border-radius: 12px; background: rgba(141,198,63,.1);
+    border: 1px solid rgba(141,198,63,.35); font-size: 14.5px; color: var(--tekst); display: flex; flex-wrap: wrap; gap: 6px 10px; align-items: center; }
+.temat-etykieta { font-family: var(--mono); font-size: 10.5px; letter-spacing: .18em; text-transform: uppercase; color: rgba(238,243,234,.6); }
+.temat-pasek b { color: var(--lime); font-weight: 700; }
+.temat-dane { color: rgba(238,243,234,.65); font-size: 13.5px; }
+.temat-zmien { margin-left: auto; background: none; border: 0; color: rgba(238,243,234,.6); font: inherit; font-size: 13px; text-decoration: underline; cursor: pointer; }
+.form-zapas { margin-top: 14px; padding: 16px 18px; border-radius: 12px; background: rgba(255,122,107,.08); border: 1px solid rgba(255,122,107,.3); }
+.form-zapas p { margin: 0 0 12px; color: var(--tekst); font-size: 15px; }
+.form-zapas .btn { display: inline-block; margin-right: 14px; }
+.form-zapas-tel { color: var(--tekst); font-weight: 700; text-decoration: none; white-space: nowrap; }
+.form-uwaga { margin: 10px 0 0; font-size: 12.5px; color: rgba(238,243,234,.5); }
+
 </style>
 </head>
 <body class="ciemna kamera">
@@ -1672,7 +1689,7 @@ body.ciemna .ai-badge { position: fixed; top: calc(var(--cam-inset) + 10px); rig
         <div class="sec-head">
             <p class="hud-tag">01 · Termin</p>
             <h2>Budżet, który <span class="fun">znika</span></h2>
-            <p>Co roku ta sama scena. Pieniądze leżą na koncie do grudnia, a potem znikają bez śladu. Nikt ich nie ukradł. Nikt ich nie wydał.</p>
+            <p>Co roku ta sama scena. Pieniądze leżą na koncie do grudnia, a potem znikają bez śladu. Nikt ich nie ukradł. Nikt ich nie wydał. Pomożemy je wykorzystać, zanim to się stanie.</p>
         </div>
         <div class="sym-grid">
             <div class="sym reveal">
@@ -1686,7 +1703,7 @@ body.ciemna .ai-badge { position: fixed; top: calc(var(--cam-inset) + 10px); rig
                 <div class="sym-top"><span class="n" aria-hidden="true">02</span><img src="icons/icon-battery-low.webp" alt="" loading="lazy" width="54" height="54"></div>
                 <div class="b">
                     <h3>Strata jest podwójna</h3>
-                    <p>Znikają pieniądze, a razem z nimi argument o budżet na kolejny rok. Osoba, która za niego odpowiada, tłumaczy się z obu rzeczy.</p>
+                    <p>Znikają pieniądze, a razem z nimi argument o budżet na kolejny rok. To nie jest niczyja wina, tylko mechanika planowania. Da się ją ograć.</p>
                 </div>
             </div>
             <div class="sym reveal">
@@ -1753,22 +1770,26 @@ body.ciemna .ai-badge { position: fixed; top: calc(var(--cam-inset) + 10px); rig
             <div class="cure-card reveal wyrozniona">
                 <div class="cure-top"><span class="day">Najczęściej</span><img src="icons/icon-crate-fruit.webp" alt="" loading="lazy" width="46" height="46"></div>
                 <h3>Przedpłata na pierwszy kwartał</h3>
-                <p>Płacicie z tegorocznego budżetu za dostawy, które i tak zamówicie w styczniu. Pieniądze, które miały zniknąć, zamieniają się w trzy miesiące skrzynek.</p>
+                <p>Płacicie teraz jedną fakturę za pierwszy kwartał, wystawioną jeszcze w tym roku. Dostawy ruszają w styczniu. Po kwartale wracacie do jednej faktury miesięcznie.</p>
+                <a href="#kalkulator" class="karta-link js-do-kalkulatora">Policz przedpłatę →</a>
             </div>
             <div class="cure-card reveal">
                 <div class="cure-top"><span class="day">Na zapas</span><img src="icons/icon-health-day.webp" alt="" loading="lazy" width="46" height="46"></div>
                 <h3>Welcome packi dla nowych osób</h3>
                 <p>Kupione teraz, wydawane przez cały rok w miarę rekrutacji. Zapas na rekrutacje, o których dziś jeszcze nie wiecie.</p>
+                <a href="#formularz" class="karta-link js-temat" data-temat="welcome" data-nazwa="Welcome packi">Zapytaj o welcome packi →</a>
             </div>
             <div class="cure-card reveal">
                 <div class="cure-top"><span class="day">Inna kieszeń</span><img src="icons/icon-sandwich-half.webp" alt="" loading="lazy" width="46" height="46"></div>
                 <h3>Catering na spotkanie świąteczne</h3>
                 <p>Idzie z innej kieszeni, z budżetu na integrację, więc nie rusza tego, co macie na owoce.</p>
+                <a href="#formularz" class="karta-link js-temat" data-temat="catering" data-nazwa="Catering świąteczny">Zapytaj o catering świąteczny →</a>
             </div>
             <div class="cure-card reveal">
                 <div class="cure-top"><span class="day">Dla zespołu</span><img src="icons/icon-nuts-bowl.webp" alt="" loading="lazy" width="46" height="46"></div>
                 <h3>Paczki świąteczne</h3>
                 <p>Zestawy dla zespołu i dla dzieci pracowników, w brandowanych opakowaniach, do biura albo do domu.</p>
+                <a href="#formularz" class="karta-link js-temat" data-temat="paczki" data-nazwa="Paczki świąteczne">Zapytaj o paczki świąteczne →</a>
             </div>
         </div>
         <p class="mid-cta"><a href="#kalkulator" class="btn btn-red-solid btn-arrow js-do-kalkulatora">Wybierz sposób i policz</a></p>
@@ -1830,7 +1851,7 @@ body.ciemna .ai-badge { position: fixed; top: calc(var(--cam-inset) + 10px); rig
             <p>Nie bon, nie voucher, nie obietnica. Dostawy, które ruszają od stycznia.</p>
         </div>
         <div class="rozwiazanie">
-            <p>Przedpłata z tegorocznego budżetu zabezpiecza pierwszy kwartał. DailyFruits regularnie uzupełnia firmową kuchnię w <b>świeże owoce, kanapki, przekąski, soki i kawę</b>, a faktura zostaje w tym roku.</p>
+            <p>Przedpłata to jedna faktura za pierwszy kwartał, wystawiona w tym roku. Od stycznia DailyFruits regularnie uzupełnia firmową kuchnię w <b>świeże owoce, kanapki, przekąski, soki i kawę</b>, a od kwietnia rozliczacie się jak zwykle, jedną fakturą miesięcznie.</p>
             <ul class="mocne">
                 <li>Bez dodatkowej pracy po stronie HR czy Office.</li>
                 <li>Bez kilku dostawców i kilku faktur.</li>
@@ -1848,7 +1869,7 @@ body.ciemna .ai-badge { position: fixed; top: calc(var(--cam-inset) + 10px); rig
                     <li>Subskrypcja, nie kontrakt. Skład i częstotliwość zmieniacie, kiedy chcecie</li>
                     <li>Bez kar za zmianę albo rezygnację</li>
                     <li>Dowozimy w 13 miastach i poza nimi</li>
-                    <li>Jedna faktura miesięcznie za wszystko</li>
+                    <li>Jedna faktura miesięcznie, a przy przedpłacie jedna za cały kwartał</li>
                 </ul>
             </div>
             <div class="hero-box-foot">
@@ -1924,7 +1945,7 @@ body.ciemna .ai-badge { position: fixed; top: calc(var(--cam-inset) + 10px); rig
             </figure>
             <figure class="typ reveal">
                 <img src="amnestia-sala.webp?v=1" alt="Skrzynka świeżych owoców postawiona na stole w zaciemnionej sali konferencyjnej" width="1600" height="893" loading="lazy">
-                <figcaption><b>Propozycja</b>Skład i wycena wracają tego samego dnia. Bez katalogu do przeglądania.</figcaption>
+                <figcaption><b>Propozycja</b>Skład i wycena wracają w 24 h. Bez katalogu do przeglądania.</figcaption>
             </figure>
             <figure class="typ reveal">
                 <img src="amnestia-garaz.webp?v=1" alt="Nocny garaż, otwarta furgonetka ze skrzynkami owoców i dwie sylwetki pod światło" width="1600" height="893" loading="lazy">
@@ -1940,17 +1961,24 @@ body.ciemna .ai-badge { position: fixed; top: calc(var(--cam-inset) + 10px); rig
         <div class="sec-head">
             <p class="hud-tag">06 · Zgłoszenie</p>
             <h2>Zróbmy to <span class="fun">dzisiaj</span></h2>
-            <p>Podajcie liczbę osób i kwotę, która zostaje. Propozycja wraca tego samego dnia.</p>
+            <p>Podajcie liczbę osób i kwotę, która zostaje. Propozycja wraca w 24 h.</p>
         </div>
         
         <div class="assure reveal">
             <p class="rating"><span class="rating-stars">★★★★★</span><span class="rating-score">4.9/5 na podstawie 120+ opinii</span></p>
-            <p class="assure-flow"><span>Mówicie, ile zostaje</span><i></i><span>propozycja wraca tego samego dnia</span><i></i><span>faktura idzie w tym roku</span></p>
+            <p class="assure-flow"><span>Mówicie, ile zostaje</span><i></i><span>propozycja wraca w 24 h</span><i></i><span>faktura idzie w tym roku</span></p>
         </div>
+        <p class="temat-pasek" id="temat-pasek" hidden><span class="temat-etykieta">Zapytanie o:</span> <b id="temat-nazwa"></b> <span id="temat-dane" class="temat-dane"></span> <button type="button" class="temat-zmien" id="temat-zmien">zmień</button></p>
         <div class="form-grid">
             <div class="form-wrap">
                 <iframe id="bwp-form" title="Formularz bezpłatnej wyceny DailyFruits" src="https://betterworkplace.pl/kontakt/zapytanie-dailyfruits" loading="lazy"></iframe>
                 <script src="bwp-form.js?v=1"></script>
+                <div class="form-zapas" id="form-zapas" hidden>
+                    <p>Formularz się nie wczytał? Napiszcie do nas bezpośrednio, odpowiadamy w 24 h.</p>
+                    <a class="btn btn-red-solid" id="form-mail" href="mailto:zapytania@betterworkplace.pl?subject=Amnestia%20bud%C5%BCetowa">zapytania@betterworkplace.pl</a>
+                    <a class="form-zapas-tel" href="tel:+48228680499">22 868 04 99</a>
+                </div>
+                <p class="form-uwaga">Dane z kalkulatora i wybrany temat trafiają do wiadomości e-mail. Przekazanie ich do formularza Better Workplace: do potwierdzenia.</p>
                 <div class="form-after">
                     <p>Wolicie najpierw zobaczyć, co dokładnie dowozimy?</p>
                     <a href="/oferta" class="btn btn-green btn-arrow">Sprawdź pełną ofertę</a>
@@ -1965,7 +1993,7 @@ body.ciemna .ai-badge { position: fixed; top: calc(var(--cam-inset) + 10px); rig
                         <li><i>1</i><div><b>Skrzynka, która stoi w kuchni</b><span>Owoce, przekąski, kanapki, soki. Przyjeżdża regularnie, a nie raz na próbę.</span></div></li>
                         <li><i>2</i><div><b>Podajecie liczbę osób</b><span>Skład i wielkość dobieramy my. Nie musicie nic wybierać z katalogu.</span></div></li>
                         <li><i>3</i><div><b>Abonament, nie kontrakt</b><span>Zmiana składu, częstotliwości albo rezygnacja bez kar i okresów wypowiedzenia.</span></div></li>
-                        <li><i>4</i><div><b>Jedna faktura miesięcznie</b><span>Za wszystko razem, niezależnie od liczby dostaw.</span></div></li>
+                        <li><i>4</i><div><b>Jedna faktura miesięcznie</b><span>Za wszystko razem, niezależnie od liczby dostaw. Przy przedpłacie: jedna faktura za pierwszy kwartał w tym roku, dostawy od stycznia, potem znów miesięcznie.</span></div></li>
                         <li><i>5</i><div><b>Jedno zamówienie zamiast kilku dostawców</b><span>Owoce, kanapki, przekąski, soki i kawa w jednej dostawie i na jednej fakturze.</span></div></li>
                     </ul>
                     <div class="form-kontakt">
@@ -2140,7 +2168,8 @@ body.ciemna .ai-badge { position: fixed; top: calc(var(--cam-inset) + 10px); rig
         reszta.innerHTML = r;
         ekran.classList.add("zabezpieczone");
         led.textContent = m >= 12 ? "STARCZY NA CAŁY ROK" : "STARCZY DO " + kd.getDate() + " " + MIES_UP[kd.getMonth()];
-        stopa.textContent = "Termin fakturowania: 12\u00a0grudnia 2026. Budżet: " + zl(k) + "\u00a0zł, " + o + " osób, " + zl(s) + "\u00a0zł na osobę.";
+        stopa.textContent = "Szacunek na podstawie kwoty na osobę, którą podaliście, nie wycena DailyFruits. Budżet " + zl(k) + "\u00a0zł, " + o + " osób, " + zl(s) + "\u00a0zł na osobę. Termin fakturowania 12\u00a0grudnia: do potwierdzenia.";
+        window.__w1 = { osoby: o, budzet: k, stawka: s, miesiace: Math.round(m * 10) / 10, dostawy: naTydzien };
     }
     klawisze.forEach(function (b) {
         b.addEventListener("click", function () {
@@ -2678,6 +2707,64 @@ body.ciemna .ai-badge { position: fixed; top: calc(var(--cam-inset) + 10px); rig
             widoczne = true; ruszaj();
         }
     }
+})();
+</script>
+<script>
+/* Sciezka do zapytania: karta ustawia temat, kalkulator dolacza swoje dane, oba
+   trafiaja do paska nad formularzem i do mailto. Do ramki Better Workplace
+   idzie tylko hash w adresie - czy BW go odczytuje: DO POTWIERDZENIA.
+   Zapas: jesli ramka nie odezwie sie (bwp:resize) w 7 s, pokazujemy kontakt. */
+(function () {
+    var pasek = document.getElementById("temat-pasek"), nazwaEl = document.getElementById("temat-nazwa"),
+        daneEl = document.getElementById("temat-dane"), zmien = document.getElementById("temat-zmien"),
+        ramka = document.getElementById("bwp-form"), mail = document.getElementById("form-mail"),
+        zapas = document.getElementById("form-zapas");
+    var temat = null;
+    var NAZWY = { welcome: "Welcome packi", catering: "Catering świąteczny", paczki: "Paczki świąteczne", przedplata: "Przedpłata na pierwszy kwartał" };
+
+    function daneTekst() {
+        var w = window.__w1; if (!w || !w.budzet) return "";
+        return w.osoby + " osób, budżet " + w.budzet.toLocaleString("pl-PL") + " zł, " + w.stawka + " zł na osobę, ok. " + String(w.miesiace).replace(".", ",") + " mies." + (w.dostawy ? ", " + w.dostawy + "× w tyg." : "");
+    }
+    function odswiez() {
+        var d = daneTekst();
+        if (!temat && !d) { pasek.hidden = true; }
+        else {
+            pasek.hidden = false;
+            nazwaEl.textContent = temat ? NAZWY[temat] : "Przedpłata na pierwszy kwartał";
+            daneEl.textContent = d ? "· " + d : "";
+        }
+        var subject = "Amnestia budżetowa" + (temat ? " · " + NAZWY[temat] : "");
+        var body = (temat ? "Interesuje nas: " + NAZWY[temat] + "\n" : "") + (d ? "Nasze dane: " + d + "\n" : "") + "\nFirma:\nLiczba osób:\nTelefon:\n";
+        if (mail) mail.href = "mailto:zapytania@betterworkplace.pl?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
+        if (ramka && ramka.dataset.base) {
+            var hash = "#temat=" + (temat || "przedplata") + (d ? "&dane=" + encodeURIComponent(d) : "");
+            if (ramka.src.indexOf(hash) < 0) ramka.src = ramka.dataset.base + hash;
+        }
+        if (window.dataLayer) window.dataLayer.push({ event: "temat_zapytania", temat: temat || "przedplata" });
+    }
+    if (ramka) ramka.dataset.base = ramka.getAttribute("src");
+    document.querySelectorAll(".js-temat").forEach(function (a) {
+        a.addEventListener("click", function () { temat = a.dataset.temat; odswiez(); if (window.zUnlock) window.zUnlock(); });
+    });
+    ["a-kwota", "a-osoby", "a-stawka"].forEach(function (id) { var e = document.getElementById(id); if (e) e.addEventListener("input", function () { setTimeout(odswiez, 0); }); });
+    document.querySelectorAll(".kalk-klawisz").forEach(function (b) { b.addEventListener("click", function () { setTimeout(odswiez, 0); }); });
+    if (zmien) zmien.addEventListener("click", function () { temat = null; odswiez(); });
+
+    /* zapas: ramka BW mowi bwp:resize, gdy sie wczyta; brak sygnalu = pokaz kontakt */
+    var odezwala = false;
+    window.addEventListener("message", function (e) { if (e.data && e.data.type && String(e.data.type).indexOf("bwp:") === 0) { odezwala = true; if (zapas) zapas.hidden = true; } });
+    function pilnuj() {
+        if (!ramka || !zapas) return;
+        var io = new IntersectionObserver(function (en) {
+            if (!en[0].isIntersecting) return;
+            io.disconnect();
+            setTimeout(function () { if (!odezwala) zapas.hidden = false; }, 7000);
+        }, { threshold: 0.1 });
+        io.observe(ramka);
+    }
+    if ("IntersectionObserver" in window) pilnuj(); else setTimeout(function () { if (!odezwala && zapas) zapas.hidden = false; }, 9000);
+    odswiez();
 })();
 </script>
 <script src="track.js?v=2" defer></script>
