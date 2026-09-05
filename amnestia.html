@@ -1079,7 +1079,7 @@ body.kamera .scrub-stage::after { content: ""; position: absolute; inset: 0; z-i
 @media (max-width: 720px) { .cam-hud { inset: auto; top: 0; left: 0; right: 0; height: 100vw; } }
 
 /* --- etykiety HUD nad naglowkami sekcji --- */
-.hud-tag { margin: 0 0 14px; font-family: var(--mono); font-size: 10.5px; letter-spacing: .28em; text-transform: uppercase;
+.hud-tag { margin: 0 0 14px; font-family: var(--mono); font-size: 10.5px; letter-spacing: .22em; text-transform: uppercase;
     color: var(--lime); display: inline-flex; align-items: center; gap: 12px; }
 .hud-tag::before, .hud-tag::after { content: ""; width: 22px; height: 1px; background: rgba(141,198,63,.5); }
 
@@ -1401,7 +1401,7 @@ body.ciemna .hero-offer { display: none !important; }
                     <span class="l1">Amnestia</span>
                     <span class="l2">budżetowa.</span>
                 </h1>
-                <p class="lead"><b>Wasz budżet kończy się 12 grudnia, nie 31.</b><br>Ekipa jest już w drodze, żeby go odzyskać, zanim zniknie.</p>
+                <p class="lead"><b>Wasz budżet kończy się 12 grudnia, nie 31.</b><br>Żeby zamówienie weszło w tegoroczny budżet, musi zostać zafakturowane wcześniej.</p>
                 <p class="termin" id="hero-termin" aria-live="polite"><i></i><span>Do końca fakturowania zostało <b id="hero-dni">··</b> dni</span></p>
                 <div class="cta-row">
                     <a href="#formularz" class="btn-feed js-do-formularza">Odzyskaj budżet →</a>
@@ -1419,16 +1419,16 @@ body.ciemna .hero-offer { display: none !important; }
 <section class="sec sec-cream">
     <div class="container">
         <div class="sec-head">
-            <p class="hud-tag">ODCZYT 01 · CEL</p>
-            <h2>Cel: budżet, który <span class="fun">znika</span></h2>
+            <p class="hud-tag">01 · Termin</p>
+            <h2>Budżet, który <span class="fun">znika</span></h2>
             <p>Co roku ta sama scena. Pieniądze leżą na koncie do grudnia, a potem znikają bez śladu. Nikt ich nie ukradł. Nikt ich nie wydał.</p>
         </div>
         <div class="sym-grid">
             <div class="sym reveal">
                 <div class="sym-top"><span class="n" aria-hidden="true">01</span><img src="icons/icon-clock-afternoon.webp" alt="" loading="lazy" width="54" height="54"></div>
                 <div class="b">
-                    <h3>Godzina zero wypada wcześniej</h3>
-                    <p>Nie 31 grudnia. Faktura musi wejść przed terminem, inaczej cały ładunek przechodzi na przyszły rok.</p>
+                    <h3>Termin jest wcześniejszy</h3>
+                    <p>Nie 31 grudnia. Faktura musi wejść przed terminem, inaczej wszystko przechodzi na przyszły rok.</p>
                 </div>
             </div>
             <div class="sym reveal">
@@ -1442,7 +1442,7 @@ body.ciemna .hero-offer { display: none !important; }
                 <div class="sym-top"><span class="n" aria-hidden="true">03</span><img src="icons/icon-crate-fruit.webp" alt="" loading="lazy" width="54" height="54"></div>
                 <div class="b">
                     <h3>Da się to jeszcze odzyskać</h3>
-                    <p>Cztery drogi wyjścia, każda z fakturą w tym roku. Wystarczy wybrać jedną.</p>
+                    <p>Cztery sposoby, każdy z fakturą w tym roku. Wystarczy wybrać jeden.</p>
                 </div>
             </div>
         </div>
@@ -1471,22 +1471,22 @@ body.ciemna .hero-offer { display: none !important; }
 <section class="typy">
     <div class="container">
         <div class="sec-head">
-            <p class="hud-tag">ODCZYT 02 · PRZEBIEG AKCJI</p>
-            <h2>Akcja odzyskiwania <span class="fun">rusza</span></h2>
-            <p>Trzy kamery, trzy etapy. Zgłoszenie, plan, ekstrakcja.</p>
+            <p class="hud-tag">02 · Jak to działa</p>
+            <h2>Jak to <span class="fun">działa</span></h2>
+            <p>Trzy kroki. Zgłoszenie, propozycja, dostawa.</p>
         </div>
         <div class="typy-grid">
             <figure class="typ reveal">
                 <img src="amnestia-korytarz.webp?v=1" alt="Dwóch pracowników w garniturach niesie nocnym korytarzem biurowym skrzynkę owoców" width="1600" height="893" loading="lazy">
-                <figcaption><b>Kamera 01 · Zgłoszenie</b>Piszecie, ile osób i jaka kwota zostaje. Ekipa dostaje namiary.</figcaption>
+                <figcaption><b>Zgłoszenie</b>Piszecie, ile osób i jaka kwota zostaje do wykorzystania.</figcaption>
             </figure>
             <figure class="typ reveal">
                 <img src="amnestia-sala.webp?v=1" alt="Skrzynka świeżych owoców postawiona na stole w zaciemnionej sali konferencyjnej" width="1600" height="893" loading="lazy">
-                <figcaption><b>Kamera 02 · Plan</b>Skład i wycena wracają tego samego dnia. Bez katalogu, bez narady.</figcaption>
+                <figcaption><b>Propozycja</b>Skład i wycena wracają tego samego dnia. Bez katalogu do przeglądania.</figcaption>
             </figure>
             <figure class="typ reveal">
                 <img src="amnestia-garaz.webp?v=1" alt="Nocny garaż, otwarta furgonetka ze skrzynkami owoców i dwie sylwetki pod światło" width="1600" height="893" loading="lazy">
-                <figcaption><b>Kamera 03 · Ekstrakcja</b>Faktura wychodzi w tym roku. Skrzynki jadą od stycznia.</figcaption>
+                <figcaption><b>Dostawa</b>Faktura wychodzi w tym roku. Skrzynki jadą od stycznia.</figcaption>
             </figure>
         </div>
         <p class="karuzela-info">Przesuń w bok →</p>
@@ -1533,33 +1533,33 @@ body.ciemna .hero-offer { display: none !important; }
 <section class="sec sec-white sposoby">
     <div class="container">
         <div class="sec-head">
-            <p class="hud-tag">ODCZYT 03 · PLAN</p>
-            <h2>Cztery drogi, jeden <span class="fun">termin</span></h2>
-            <p>Każdą fakturujemy w tym roku. Wybieracie tę, która pasuje do budżetu, nie do katalogu.</p>
+            <p class="hud-tag">03 · Cztery sposoby</p>
+            <h2>Cztery sposoby, jeden <span class="fun">termin</span></h2>
+            <p>Każdy fakturujemy w tym roku. Wybieracie ten, który pasuje do budżetu, nie do katalogu.</p>
         </div>
         <div class="cure-grid">
             <div class="cure-card reveal wyrozniona">
-                <div class="cure-top"><span class="day">Droga A · najczęściej</span><img src="icons/icon-crate-fruit.webp" alt="" loading="lazy" width="46" height="46"></div>
+                <div class="cure-top"><span class="day">Najczęściej</span><img src="icons/icon-crate-fruit.webp" alt="" loading="lazy" width="46" height="46"></div>
                 <h3>Przedpłata na pierwszy kwartał</h3>
                 <p>Płacicie z tegorocznego budżetu za dostawy, które i tak zamówicie w styczniu. Pieniądze, które miały zniknąć, zamieniają się w trzy miesiące skrzynek.</p>
             </div>
             <div class="cure-card reveal">
-                <div class="cure-top"><span class="day">Droga B</span><img src="icons/icon-health-day.webp" alt="" loading="lazy" width="46" height="46"></div>
+                <div class="cure-top"><span class="day">Na zapas</span><img src="icons/icon-health-day.webp" alt="" loading="lazy" width="46" height="46"></div>
                 <h3>Welcome packi dla nowych osób</h3>
-                <p>Kupione teraz, wydawane przez cały rok w miarę rekrutacji. Zapas na akcje, o których dziś jeszcze nie wiecie.</p>
+                <p>Kupione teraz, wydawane przez cały rok w miarę rekrutacji. Zapas na rekrutacje, o których dziś jeszcze nie wiecie.</p>
             </div>
             <div class="cure-card reveal">
-                <div class="cure-top"><span class="day">Droga C</span><img src="icons/icon-sandwich-half.webp" alt="" loading="lazy" width="46" height="46"></div>
+                <div class="cure-top"><span class="day">Inna kieszeń</span><img src="icons/icon-sandwich-half.webp" alt="" loading="lazy" width="46" height="46"></div>
                 <h3>Catering na spotkanie świąteczne</h3>
                 <p>Idzie z innej kieszeni, z budżetu na integrację, więc nie rusza tego, co macie na owoce.</p>
             </div>
             <div class="cure-card reveal">
-                <div class="cure-top"><span class="day">Droga D</span><img src="icons/icon-nuts-bowl.webp" alt="" loading="lazy" width="46" height="46"></div>
+                <div class="cure-top"><span class="day">Dla zespołu</span><img src="icons/icon-nuts-bowl.webp" alt="" loading="lazy" width="46" height="46"></div>
                 <h3>Paczki świąteczne</h3>
                 <p>Zestawy dla zespołu i dla dzieci pracowników, w brandowanych opakowaniach, do biura albo do domu.</p>
             </div>
         </div>
-        <p class="mid-cta"><a href="#formularz" class="btn btn-red-solid btn-arrow js-do-formularza">Wybierz drogę, resztę policzymy</a></p>
+        <p class="mid-cta"><a href="#formularz" class="btn btn-red-solid btn-arrow js-do-formularza">Wybierz sposób, resztę policzymy</a></p>
     </div>
 </section>
 
@@ -1567,9 +1567,9 @@ body.ciemna .hero-offer { display: none !important; }
 <section class="prod-sec">
     <div class="container">
         <div class="sec-head">
-            <p class="hud-tag">ODCZYT 04 · ŁADUNEK</p>
+            <p class="hud-tag">04 · Co dostajecie</p>
             <h2>Co za to <span class="fun">dostajecie</span></h2>
-            <p>Nie bon, nie voucher, nie obietnica. Ładunek, który wjeżdża do kuchni od stycznia.</p>
+            <p>Nie bon, nie voucher, nie obietnica. Dostawy, które ruszają od stycznia.</p>
         </div>
         <div class="rozwiazanie">
             <p>Przedpłata z tegorocznego budżetu zabezpiecza pierwszy kwartał. DailyFruits regularnie uzupełnia firmową kuchnię w <b>świeże owoce, kanapki, przekąski, soki i kawę</b>, a faktura zostaje w tym roku.</p>
@@ -1582,7 +1582,7 @@ body.ciemna .hero-offer { display: none !important; }
         <div class="hero-box reveal">
             <div><img src="amnestia-pudelko.webp?v=1" alt="Pudełko DailyFruits pełne owoców na blacie w firmowej kuchni, w porannym świetle" width="1200" height="800" loading="lazy"></div>
             <div>
-                <span class="tag">Ładunek podstawowy</span>
+                <span class="tag">Podstawa abonamentu</span>
                 <h3>Skrzynka, która staje w <span class="fun">kuchni</span></h3>
                 <p>Owoce, warzywa, kanapki, kawa, soki - wszystko w jednej dostawie, od jednego partnera. Ustalamy razem, co ma przyjeżdżać, jak często i w jakie dni.</p>
                 <ul>
@@ -1655,14 +1655,14 @@ body.ciemna .hero-offer { display: none !important; }
 <section class="form-sec" id="formularz">
     <div class="container">
         <div class="sec-head">
-            <p class="hud-tag">ODCZYT 05 · ZGŁOSZENIE</p>
+            <p class="hud-tag">05 · Zgłoszenie</p>
             <h2>Zróbmy to <span class="fun">dzisiaj</span></h2>
-            <p>Podajcie liczbę osób i kwotę, która zostaje. Ekipa odzywa się tego samego dnia.</p>
+            <p>Podajcie liczbę osób i kwotę, która zostaje. Propozycja wraca tego samego dnia.</p>
         </div>
         
         <div class="assure reveal">
             <p class="rating"><span class="rating-stars">★★★★★</span><span class="rating-score">4.9/5 na podstawie 120+ opinii</span></p>
-            <p class="assure-flow"><span>Mówicie, ile zostaje</span><i></i><span>ekipa wraca z planem tego samego dnia</span><i></i><span>faktura idzie w tym roku</span></p>
+            <p class="assure-flow"><span>Mówicie, ile zostaje</span><i></i><span>propozycja wraca tego samego dnia</span><i></i><span>faktura idzie w tym roku</span></p>
         </div>
         <div class="form-grid">
             <div class="form-wrap">
@@ -1677,7 +1677,7 @@ body.ciemna .hero-offer { display: none !important; }
             
                 <div class="form-info reveal">
                     <h3>Co dokładnie zamawiacie</h3>
-                    <p class="wstep">Nie jednorazowy skok na koniec roku. Stałą dostawę, opłaconą z budżetu, który i tak by zniknął.</p>
+                    <p class="wstep">Nie jednorazowy zakup na koniec roku. Stałą dostawę, opłaconą z budżetu, który i tak by przepadł.</p>
                     <ul>
                         <li><i>1</i><div><b>Skrzynka, która stoi w kuchni</b><span>Owoce, przekąski, kanapki, soki. Przyjeżdża regularnie, a nie raz na próbę.</span></div></li>
                         <li><i>2</i><div><b>Podajecie liczbę osób</b><span>Skład i wielkość dobieramy my. Nie musicie nic wybierać z katalogu.</span></div></li>
