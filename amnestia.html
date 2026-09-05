@@ -80,7 +80,7 @@ gtag('config', 'G-G9SCYSFC36');
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preload" as="image" href="amnestia-lina.webp?v=1" fetchpriority="high">
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700;900&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700;900&family=Share+Tech+Mono&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
     <noscript><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700;900&display=swap" rel="stylesheet"></noscript>
     <link rel="stylesheet" href="shared.css?v=13">
 <style>
@@ -1379,6 +1379,133 @@ html::-webkit-scrollbar-button { display: none; height: 0; }
 .cam-postep b { color: var(--lime); font-weight: 600; font-variant-numeric: tabular-nums; }
 @media (max-width: 720px) { .cam-nic, .cam-postep { display: none !important; } }
 
+
+/* ---------- KALKULATOR W-1: stare biurkowe urzadzenie ----------
+   Obudowa z fazowaniem, zielony wyswietlacz z poswiata (VFD), cyfry
+   z Share Tech Mono wyrownane do prawej, pola jako male wyswietlacze,
+   cztery klawisze z klikiem. Klawisz A-D zatrzymuje ubytek: ekran
+   przechodzi w stan "zabezpieczone". */
+body.ciemna .aparat.kalk { --vfd: #071309; --cyfra: #B8F05A; --cyfraCien: rgba(141,198,63,.55);
+    background: linear-gradient(180deg, #1A221B 0%, #0F1611 100%);
+    border: 1px solid rgba(255,255,255,.1); border-radius: 22px;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.08), inset 0 -2px 0 rgba(0,0,0,.5), 0 34px 70px rgba(0,0,0,.5);
+    padding: var(--f3) var(--f3) var(--f3); backdrop-filter: none; -webkit-backdrop-filter: none; }
+body.ciemna .aparat.kalk::after { display: none; }
+body.ciemna .aparat.kalk .aparat-head { border-bottom: 0; margin-bottom: var(--f2); padding: 4px 6px 0; }
+body.ciemna .aparat.kalk .aparat-head b { font-family: var(--mono); letter-spacing: .3em; }
+
+.kalk-ekran { position: relative; overflow: hidden; background: var(--vfd); border-radius: 12px;
+    padding: 16px 20px 18px; min-height: 150px;
+    box-shadow: inset 0 3px 14px rgba(0,0,0,.85), inset 0 0 0 1px rgba(141,198,63,.14), 0 1px 0 rgba(255,255,255,.05); }
+.kalk-ekran::before { content: ""; position: absolute; inset: 0; pointer-events: none; opacity: .5;
+    background: repeating-linear-gradient(to bottom, transparent 0 2px, rgba(0,0,0,.25) 2px 3px); }
+.kalk-ekran::after { content: ""; position: absolute; inset: 0; pointer-events: none;
+    background: radial-gradient(90% 60% at 50% 0%, rgba(141,198,63,.10), transparent 70%); }
+.kalk-led { position: relative; z-index: 1; display: inline-flex; align-items: center; gap: 8px;
+    font-family: var(--mono); font-size: 10px; letter-spacing: .24em; text-transform: uppercase; color: #FF7A6B; }
+.kalk-led i { width: 7px; height: 7px; border-radius: 50%; background: currentColor; box-shadow: 0 0 8px currentColor; }
+.kalk-ekran.zabezpieczone .kalk-led { color: var(--cyfra); }
+@media (prefers-reduced-motion: no-preference) { .kalk-led i { animation: kpuls 1.2s steps(1,end) infinite; } @keyframes kpuls { 50% { opacity: .2; } } .kalk-ekran.zabezpieczone .kalk-led i { animation: none; } }
+
+body.ciemna .aparat.kalk .aparat-wynik { position: relative; z-index: 1; margin: 6px 0 0; padding: 0; border: 0; }
+body.ciemna .aparat.kalk .aparat-wynik::before { display: none; }
+body.ciemna .aparat.kalk .aparat-linia { flex-direction: column; align-items: flex-end; gap: 4px; }
+body.ciemna .aparat.kalk .aparat-duza { font-family: "Share Tech Mono", var(--mono); font-weight: 400;
+    font-size: clamp(52px, 8.5vw, 92px); line-height: 1; letter-spacing: .04em; color: var(--cyfra);
+    text-shadow: 0 0 6px var(--cyfraCien), 0 0 28px rgba(141,198,63,.35); }
+body.ciemna .aparat.kalk .aparat-jedn { font-family: var(--mono); font-size: 10.5px; letter-spacing: .22em; color: rgba(184,240,90,.75); }
+body.ciemna .aparat.kalk .aparat-reszta { font-family: var(--mono); font-size: 12.5px; letter-spacing: .04em; text-align: right;
+    color: rgba(238,243,234,.62); margin-top: 12px; }
+body.ciemna .aparat.kalk .aparat-reszta b { color: var(--cyfra); font-weight: 400; }
+body.ciemna .aparat.kalk .aparat-puste { font-family: var(--mono); font-size: 13.5px; letter-spacing: .04em; line-height: 1.6;
+    color: rgba(184,240,90,.7); margin-top: 36px; text-align: right; }
+
+body.ciemna .aparat.kalk .aparat-pola { margin-top: var(--f3); gap: var(--f2); }
+body.ciemna .aparat.kalk .aparat-pola label { padding-left: 4px; }
+body.ciemna .aparat.kalk .aparat-wpis { background: var(--vfd); border: 1px solid rgba(255,255,255,.08); border-bottom-color: rgba(255,255,255,.08);
+    border-radius: 10px; padding: 8px 12px; box-shadow: inset 0 2px 8px rgba(0,0,0,.8), inset 0 0 0 1px rgba(141,198,63,.1); }
+body.ciemna .aparat.kalk .aparat-wpis:focus-within { box-shadow: inset 0 2px 8px rgba(0,0,0,.8), inset 0 0 0 1px rgba(141,198,63,.6), 0 0 18px rgba(141,198,63,.18); }
+body.ciemna .aparat.kalk .aparat-wpis input { font-family: "Share Tech Mono", var(--mono); font-weight: 400; font-size: clamp(26px,3.6vw,34px);
+    letter-spacing: .04em; color: var(--cyfra); text-align: right; text-shadow: 0 0 6px var(--cyfraCien); min-height: 44px; }
+body.ciemna .aparat.kalk .aparat-wpis input::placeholder { color: rgba(184,240,90,.22); text-shadow: none; }
+body.ciemna .aparat.kalk .aparat-wpis span { font-family: var(--mono); color: rgba(184,240,90,.55); }
+
+.kalk-klawisze { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 8px; margin-top: var(--f3); }
+@media (max-width: 620px) { .kalk-klawisze { grid-template-columns: repeat(2, minmax(0,1fr)); } }
+.kalk-klawisz { appearance: none; cursor: pointer; text-align: left; font-family: var(--font); font-weight: 700; font-size: 12.5px;
+    line-height: 1.2; color: var(--tekst); min-height: 56px; padding: 10px 12px; border-radius: 10px;
+    background: linear-gradient(180deg, #232D25, #151C17); border: 1px solid rgba(255,255,255,.1); border-bottom: 3px solid #05090600;
+    box-shadow: 0 3px 0 #050906, inset 0 1px 0 rgba(255,255,255,.08);
+    transition: transform .08s ease, box-shadow .08s ease, background .2s ease, color .2s ease; }
+.kalk-klawisz b { display: block; font-family: var(--mono); font-weight: 400; font-size: 10px; letter-spacing: .24em; color: rgba(238,243,234,.5); margin-bottom: 4px; }
+.kalk-klawisz:hover { background: linear-gradient(180deg, #2A362C, #182019); }
+.kalk-klawisz:active { transform: translateY(3px); box-shadow: 0 0 0 #050906, inset 0 1px 0 rgba(255,255,255,.05); }
+.kalk-klawisz:focus-visible { outline: 2px solid var(--lime); outline-offset: 2px; }
+.kalk-klawisz[aria-pressed="true"] { background: linear-gradient(180deg, #A8DC5C, #8DC63F); color: #0A1410; box-shadow: 0 3px 0 #4f7a1f, 0 0 22px rgba(141,198,63,.35); }
+.kalk-klawisz[aria-pressed="true"] b { color: rgba(10,20,16,.6); }
+body.ciemna .aparat.kalk .aparat-stopa { margin-top: var(--f2); padding-left: 4px; font-family: var(--mono); font-size: 11px; letter-spacing: .04em; color: rgba(238,243,234,.42); }
+body.ciemna .sposoby .cure-card.wybrana { box-shadow: inset 0 1px 0 rgba(255,255,255,.06), 0 0 0 1.5px var(--lime), 0 0 60px rgba(141,198,63,.14); }
+
+
+/* ---------- KALKULATOR W-1: skora jak Casio fx z lat 80. ----------
+   Ciemna obudowa, jasny szarozielony LCD z ciemnymi cyframi, pasek trybow
+   i ogniwo pod wyswietlaczem, metaliczna plyta klawiatury, czarne klawisze
+   z bialymi napisami, czerwony AC. Limonka tylko na stanie "zabezpieczone". */
+body.ciemna .aparat.kalk { --lcd: #C9D1C3; --lcd2: #B9C2B4; --cyfra: #161B17; --cyfraCien: rgba(22,27,23,.25);
+    --plyta: #D9DBD6; --plyta2: #BFC2BC; --klawisz: #1C1E1C; --klawisz2: #101210;
+    background: linear-gradient(180deg, #2A2C2A 0%, #161816 100%); border: 1px solid rgba(255,255,255,.12); border-radius: 18px;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.1), inset 0 -3px 0 rgba(0,0,0,.6), 0 34px 70px rgba(0,0,0,.55); padding: 14px 14px 16px; }
+body.ciemna .aparat.kalk .aparat-head { padding: 6px 8px 10px; margin: 0; color: rgba(238,243,234,.72); }
+body.ciemna .aparat.kalk .aparat-head span { font-weight: 800; letter-spacing: .12em; }
+body.ciemna .aparat.kalk .aparat-head b { color: rgba(238,243,234,.45); }
+
+.kalk-ekran { background: linear-gradient(180deg, var(--lcd) 0%, var(--lcd2) 100%); border-radius: 6px; padding: 14px 18px 16px; min-height: 140px;
+    box-shadow: inset 0 3px 10px rgba(0,0,0,.35), inset 0 0 0 1px rgba(0,0,0,.35), 0 0 0 4px #0B0D0B, 0 0 0 5px rgba(255,255,255,.06); }
+.kalk-ekran::before { opacity: .18; background: repeating-linear-gradient(to bottom, transparent 0 3px, rgba(0,0,0,.35) 3px 4px); }
+.kalk-ekran::after { background: linear-gradient(180deg, rgba(255,255,255,.28), transparent 45%); }
+.kalk-led { color: #7A2E27; }
+.kalk-led i { box-shadow: none; }
+.kalk-ekran.zabezpieczone .kalk-led { color: #2F6B2A; }
+body.ciemna .aparat.kalk .aparat-duza { color: var(--cyfra); text-shadow: 0 1px 0 rgba(255,255,255,.35), 0 0 2px var(--cyfraCien); letter-spacing: .06em; }
+body.ciemna .aparat.kalk .aparat-jedn { color: rgba(22,27,23,.6); }
+body.ciemna .aparat.kalk .aparat-reszta { color: rgba(22,27,23,.72); }
+body.ciemna .aparat.kalk .aparat-reszta b { color: var(--cyfra); font-weight: 400; }
+body.ciemna .aparat.kalk .aparat-puste { color: rgba(22,27,23,.6); }
+
+.kalk-legenda { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 16px; margin: 12px 6px 0;
+    font-family: var(--mono); font-size: 9.5px; letter-spacing: .2em; text-transform: uppercase; color: rgba(238,243,234,.55); }
+.kalk-legenda b { font-weight: 400; color: rgba(238,243,234,.9); border: 1px solid rgba(238,243,234,.35); padding: 1px 4px; border-radius: 3px; margin-right: 2px; }
+.kalk-ogniwo { margin-left: auto; display: inline-flex; gap: 2px; padding: 3px; background: #0A0A0A; border-radius: 3px; }
+.kalk-ogniwo i { width: 22px; height: 12px; background: repeating-linear-gradient(to right, #3A1F14 0 3px, #5A2E1D 3px 4px); border-radius: 1px; }
+
+body.ciemna .aparat.kalk .aparat-pola, .kalk-klawisze { position: relative; }
+body.ciemna .aparat.kalk .kalk-plyta { margin-top: 14px; padding: 14px 12px 12px; border-radius: 10px;
+    background: linear-gradient(180deg, var(--plyta) 0%, var(--plyta2) 100%);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.8), inset 0 -1px 0 rgba(0,0,0,.25), 0 1px 0 rgba(255,255,255,.05); }
+body.ciemna .aparat.kalk .aparat-pola { margin-top: 0; gap: 10px; }
+body.ciemna .aparat.kalk .aparat-pola label { color: rgba(22,27,23,.7); font-weight: 800; }
+body.ciemna .aparat.kalk .aparat-wpis { background: linear-gradient(180deg, var(--lcd), var(--lcd2)); border: 0; border-radius: 4px; padding: 6px 10px;
+    box-shadow: inset 0 2px 6px rgba(0,0,0,.35), inset 0 0 0 1px rgba(0,0,0,.35), 0 0 0 3px #0B0D0B; }
+body.ciemna .aparat.kalk .aparat-wpis:focus-within { box-shadow: inset 0 2px 6px rgba(0,0,0,.35), inset 0 0 0 1px rgba(0,0,0,.35), 0 0 0 3px #0B0D0B, 0 0 0 5px var(--lime); }
+body.ciemna .aparat.kalk .aparat-wpis input { color: var(--cyfra); text-shadow: 0 1px 0 rgba(255,255,255,.35); }
+body.ciemna .aparat.kalk .aparat-wpis input::placeholder { color: rgba(22,27,23,.25); }
+body.ciemna .aparat.kalk .aparat-wpis span { color: rgba(22,27,23,.55); }
+
+.kalk-klawisze { grid-template-columns: repeat(5, minmax(0,1fr)); gap: 8px; margin-top: 12px; }
+@media (max-width: 620px) { .kalk-klawisze { grid-template-columns: repeat(2, minmax(0,1fr)); } .kalk-klawisze .kalk-ac { grid-column: 1 / -1; } }
+.kalk-klawisz { color: #FFFFFF; background: linear-gradient(180deg, #2A2C2A, var(--klawisz) 55%, var(--klawisz2)); border: 1px solid #000;
+    border-radius: 7px; box-shadow: 0 3px 0 #000, inset 0 1px 0 rgba(255,255,255,.14); min-height: 54px; }
+.kalk-klawisz b { color: rgba(255,255,255,.55); }
+.kalk-klawisz:hover { background: linear-gradient(180deg, #343634, #202220 55%, #141614); }
+.kalk-klawisz:active { transform: translateY(3px); box-shadow: 0 0 0 #000, inset 0 1px 0 rgba(255,255,255,.08); }
+.kalk-klawisz[aria-pressed="true"] { background: linear-gradient(180deg, #A8DC5C, #8DC63F); color: #0A1410; border-color: #4f7a1f; box-shadow: 0 3px 0 #4f7a1f; }
+.kalk-klawisz[aria-pressed="true"] b { color: rgba(10,20,16,.6); }
+.kalk-klawisz.kalk-ac { background: linear-gradient(180deg, #D9483B, #B4271C 55%, #8E1E15); border-color: #5c0f09; box-shadow: 0 3px 0 #5c0f09, inset 0 1px 0 rgba(255,255,255,.18); }
+.kalk-klawisz.kalk-ac b { color: rgba(255,255,255,.75); }
+.kalk-klawisz.kalk-ac:hover { background: linear-gradient(180deg, #E35A4D, #C22E22 55%, #9A2218); }
+.kalk-klawisz.kalk-ac:active { box-shadow: 0 0 0 #5c0f09; }
+body.ciemna .aparat.kalk .aparat-stopa { color: rgba(238,243,234,.45); margin-top: 12px; padding-left: 8px; }
+
 </style>
 </head>
 <body class="ciemna kamera">
@@ -1493,8 +1620,16 @@ html::-webkit-scrollbar-button { display: none; height: 0; }
         </div>
         <p class="karuzela-info">Przesuń w bok →</p>
 
-        <div class="aparat reveal">
-            <div class="aparat-head"><span>Ile ucieka każdego dnia</span><b>Formularz W-1</b></div>
+        <div class="aparat reveal kalk">
+            <div class="aparat-head"><span>Ile ucieka każdego dnia</span><b>W-1</b></div>
+            <div class="kalk-ekran">
+                <div class="kalk-led"><i></i><span id="a-led">BUDŻET WYGASA</span></div>
+                <div class="aparat-wynik" id="a-wynik"><p class="aparat-puste">Wpisz kwotę, a&nbsp;policzymy, ile z&nbsp;tego znika każdego dnia.</p></div>
+            </div>
+            <div class="kalk-legenda" aria-hidden="true">
+                <span>TRYB</span><span><b>A</b> PRZEDPŁATA</span><span><b>B</b> WELCOME</span><span><b>C</b> CATERING</span><span><b>D</b> PACZKI</span><span class="kalk-ogniwo"><i></i><i></i><i></i><i></i></span>
+            </div>
+            <div class="kalk-plyta">
             <div class="aparat-pola">
                 <div>
                     <label for="a-kwota">Budżet, który zostaje na ten rok</label>
@@ -1505,7 +1640,14 @@ html::-webkit-scrollbar-button { display: none; height: 0; }
                     <div class="aparat-wpis"><input id="a-osoby" type="text" inputmode="numeric" placeholder="40" autocomplete="off"><span>osób</span></div>
                 </div>
             </div>
-            <div class="aparat-wynik" id="a-wynik"><p class="aparat-puste">Wpisz kwotę, a&nbsp;policzymy, ile z&nbsp;tego znika każdego dnia.</p></div>
+            <div class="kalk-klawisze" role="group" aria-label="Na co ma pójść budżet">
+                <button type="button" class="kalk-klawisz" aria-pressed="false" data-tryb="Przedpłata na pierwszy kwartał"><b>A</b>Przedpłata Q1</button>
+                <button type="button" class="kalk-klawisz" aria-pressed="false" data-tryb="Welcome packi na zapas"><b>B</b>Welcome packi</button>
+                <button type="button" class="kalk-klawisz" aria-pressed="false" data-tryb="Catering na spotkanie świąteczne"><b>C</b>Catering</button>
+                <button type="button" class="kalk-klawisz" aria-pressed="false" data-tryb="Paczki świąteczne"><b>D</b>Paczki</button>
+                <button type="button" class="kalk-klawisz kalk-ac" id="a-ac" aria-label="Wyczyść kalkulator"><b>AC</b>Wyczyść</button>
+            </div>
+            </div>
             <p class="aparat-stopa" id="a-stopa">Nic nie zapisujemy. Wyliczenie jest poglądowe.</p>
         </div>
     </div>
@@ -1839,57 +1981,84 @@ html::-webkit-scrollbar-button { display: none; height: 0; }
 })();
 </script>
 <script>
-/* Licznik utraconego budzetu. Data graniczna to jedyna zmienna do potwierdzenia
-   przez klienta - od niej zalezy caly odczyt, takze ten w hero. */
+/* Kalkulator W-1. Data graniczna to jedyna zmienna do potwierdzenia przez klienta.
+   Klawisz A-D wybiera sposob: ubytek staje, wyswietlacz pokazuje kwote zabezpieczona,
+   a karta tego sposobu nizej sie podswietla. Drugie nacisniecie cofa. */
 (function () {
     var KONIEC = new Date(2026, 11, 12);
-    var kwota = document.getElementById("a-kwota");
-    var osoby = document.getElementById("a-osoby");
-    var wynik = document.getElementById("a-wynik");
-    var stopa = document.getElementById("a-stopa");
+    var kwota = document.getElementById("a-kwota"), osoby = document.getElementById("a-osoby");
+    var wynik = document.getElementById("a-wynik"), stopa = document.getElementById("a-stopa");
+    var led = document.getElementById("a-led"), ekran = document.querySelector(".kalk-ekran");
     var heroDni = document.getElementById("hero-dni");
+    var klawisze = [].slice.call(document.querySelectorAll(".kalk-klawisz:not(.kalk-ac)"));
+    var karty = [].slice.call(document.querySelectorAll(".sposoby .cure-card"));
     var cicho = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    var wybrany = -1;
 
     function zl(n) { return Math.round(n).toLocaleString("pl-PL"); }
     function num(e) { return Number(String(e.value).replace(/[^\d]/g, "")) || 0; }
-    function dni() {
-        var d = new Date(); d.setHours(0, 0, 0, 0);
-        return Math.max(0, Math.round((KONIEC - d) / 86400000));
-    }
+    function dni() { var d = new Date(); d.setHours(0, 0, 0, 0); return Math.max(0, Math.round((KONIEC - d) / 86400000)); }
     if (heroDni) heroDni.textContent = dni();
     if (!kwota) return;
 
-    var klatka = null, biezaca = 0;
-    function dojedz(el, cel) {
-        if (cicho || document.hidden) { biezaca = cel; el.textContent = zl(cel); return; }
+    var klatka = null, biezaca = 0, cel = 0;
+    function dojedz(el, c) {
+        cel = c;
+        if (cicho || document.hidden) { biezaca = c; el.textContent = zl(c); return; }
         cancelAnimationFrame(klatka);
         var od = biezaca, t0 = performance.now(), czas = 650;
         (function krok(t) {
             var p = Math.min(1, (t - t0) / czas), e = 1 - Math.pow(1 - p, 4);
-            biezaca = od + (cel - od) * e;
-            el.textContent = zl(biezaca);
+            biezaca = od + (c - od) * e; el.textContent = zl(biezaca);
             if (p < 1) klatka = requestAnimationFrame(krok);
         })(t0);
     }
+    document.addEventListener("visibilitychange", function () {
+        var el = document.getElementById("a-duza"); if (document.hidden && el) { cancelAnimationFrame(klatka); biezaca = cel; el.textContent = zl(cel); }
+    });
+
     function policz() {
         var k = num(kwota), o = num(osoby), d = dni();
         if (!k) {
             biezaca = 0;
             wynik.innerHTML = '<p class="aparat-puste">Wpisz kwotę, a&nbsp;policzymy, ile z&nbsp;tego znika każdego dnia.</p>';
             stopa.textContent = "Nic nie zapisujemy. Wyliczenie jest poglądowe.";
+            ekran.classList.remove("zabezpieczone"); led.textContent = "BUDŻET WYGASA";
             return;
         }
-        var naDzien = k / Math.max(d, 1);
         if (!wynik.querySelector(".aparat-duza")) {
-            wynik.innerHTML = '<p class="aparat-linia"><span class="aparat-duza" id="a-duza">0</span><span class="aparat-jedn">zł&nbsp;dziennie przepada</span></p>' +
-                              '<p class="aparat-reszta" id="a-reszta"></p>';
+            wynik.innerHTML = '<p class="aparat-linia"><span class="aparat-duza" id="a-duza">0</span><span class="aparat-jedn" id="a-jedn"></span></p><p class="aparat-reszta" id="a-reszta"></p>';
         }
-        dojedz(document.getElementById("a-duza"), naDzien);
-        var reszta = "Do terminu zostało <b>" + d + "&nbsp;dni</b>.";
-        if (o) reszta += " Na&nbsp;osobę wychodzi <b>" + zl(k / o) + "&nbsp;zł</b>.";
-        document.getElementById("a-reszta").innerHTML = reszta;
+        var duza = document.getElementById("a-duza"), jedn = document.getElementById("a-jedn"), reszta = document.getElementById("a-reszta");
+        if (wybrany >= 0) {
+            dojedz(duza, k);
+            jedn.textContent = "zł zabezpieczone";
+            reszta.innerHTML = "Nic już nie przepada. " + klawisze[wybrany].dataset.tryb + "." + (o ? " Na&nbsp;osobę " + zl(k / o) + "&nbsp;zł." : "");
+            ekran.classList.add("zabezpieczone"); led.textContent = "BUDŻET ZABEZPIECZONY";
+        } else {
+            dojedz(duza, k / Math.max(d, 1));
+            jedn.textContent = "zł dziennie przepada";
+            reszta.innerHTML = "Do terminu zostało <b>" + d + "&nbsp;dni</b>." + (o ? " Na&nbsp;osobę wychodzi <b>" + zl(k / o) + "&nbsp;zł</b>." : "");
+            ekran.classList.remove("zabezpieczone"); led.textContent = "BUDŻET WYGASA";
+        }
         stopa.textContent = "Termin fakturowania: 12\u00a0grudnia 2026. Kwota wpisana: " + zl(k) + "\u00a0zł.";
     }
+    klawisze.forEach(function (b, i) {
+        b.addEventListener("click", function () {
+            wybrany = (wybrany === i) ? -1 : i;
+            klawisze.forEach(function (x, j) { x.setAttribute("aria-pressed", String(j === wybrany)); });
+            karty.forEach(function (c, j) { c.classList.toggle("wybrana", j === wybrany); });
+            if (!num(kwota)) { kwota.focus(); }
+            policz();
+        });
+    });
+    var ac = document.getElementById("a-ac");
+    if (ac) ac.addEventListener("click", function () {
+        kwota.value = ""; osoby.value = ""; wybrany = -1;
+        klawisze.forEach(function (x) { x.setAttribute("aria-pressed", "false"); });
+        karty.forEach(function (c) { c.classList.remove("wybrana"); });
+        policz(); kwota.focus();
+    });
     kwota.addEventListener("input", policz);
     osoby.addEventListener("input", policz);
     policz();
