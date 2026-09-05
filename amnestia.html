@@ -1173,22 +1173,65 @@ body.kamera::before { content: ""; position: fixed; inset: 0; z-index: 9988; poi
 }
 @media (forced-colors: active) { body.kamera::before, .vhs { display: none; } }
 
+
+/* ---------- HUD: rozklad jak na nagrywarce ----------
+   gora-lewo pod logo: REC + kamera; dol-lewo: stan; dol-prawo: sygnal + timecode + data.
+   Celownik tylko na kadrze hero (w .scrub-stage), nie nad trescia. */
+.cam-gora { left: 40px; right: auto; top: 104px; gap: 18px; }
+.cam-kanal { flex: none; text-align: left; color: rgba(238,243,234,.62); }
+.cam-dol { left: 40px; right: 40px; bottom: 34px; align-items: flex-end; }
+.cam-prawy { margin-left: auto; display: inline-flex; align-items: flex-end; gap: 18px; }
+.cam-sygnal { margin-left: 0; margin-bottom: 3px; }
+.cam-tc { align-items: flex-end; }
+.cam-krzyz { position: absolute; left: 50%; top: 50%; z-index: 3; width: 42px; height: 42px; transform: translate(-50%,-50%);
+    pointer-events: none; opacity: .5;
+    background:
+        linear-gradient(rgba(238,243,234,.8),rgba(238,243,234,.8)) center/100% 1px no-repeat,
+        linear-gradient(rgba(238,243,234,.8),rgba(238,243,234,.8)) center/1px 100% no-repeat; }
+.cam-krzyz::before { content: ""; position: absolute; inset: 10px; border: 1px solid rgba(238,243,234,.55); border-radius: 50%; }
+.hero-offer { bottom: 92px; }
+@media (max-width: 720px) {
+    .cam-gora { left: auto; right: 40px; top: 18px; }
+    .cam-kanal, .cam-dol { display: none !important; }
+    .cam-krzyz { width: 28px; height: 28px; }
+}
+
+/* ---------- STARY OBIEKTYW: rybie oko na kadrze + rozszczepienie na rogach ----------
+   Deformacja przez feDisplacementMap z mapa radialna liczona w JS; scale 26
+   przy 1600 px daje kilkanascie px na brzegu, czyli "delikatnie". Rozszczepienie
+   to dwa radialne gradienty w rogach, ledwo widoczne, ale obiektyw przestaje byc idealny. */
+@media (min-width: 721px) { #heroKadr.rybie { filter: url(#rybie); } }
+body.kamera::before { background:
+        repeating-linear-gradient(to bottom, rgba(0,0,0,0) 0 2px, rgba(0,0,0,.13) 2px 3px),
+        radial-gradient(120% 90% at 50% 50%, transparent 55%, rgba(0,0,0,.6) 100%),
+        radial-gradient(60% 60% at 0% 0%, rgba(255,70,140,.07), transparent 60%),
+        radial-gradient(60% 60% at 100% 100%, rgba(70,255,170,.07), transparent 60%),
+        radial-gradient(60% 60% at 100% 0%, rgba(70,255,170,.05), transparent 60%),
+        radial-gradient(60% 60% at 0% 100%, rgba(255,70,140,.05), transparent 60%); }
+
 </style>
 </head>
 <body class="ciemna kamera">
 <div class="cam-hud" aria-hidden="true">
-    <span class="cam-rog tl"></span><span class="cam-rog tr"></span><span class="cam-rog bl"></span><span class="cam-rog br"></span>
-    <div class="cam-gora">
-        <span class="cam-rec"><i></i>REC</span>
-        <span class="cam-kanal">CAM 02 · MAGAZYN B · WYDZIAŁ ODZYSKIWANIA BUDŻETÓW</span>
-        <span class="cam-tc"><b id="cam-tc">00:00:00:00</b><em id="cam-data">--.--.----</em></span>
-    </div>
-    <div class="cam-dol">
-        <span class="cam-stan"><i></i>STAN: BUDŻET WYGASA · <b id="cam-dni">—</b> DNI DO TERMINU</span>
-        <span class="cam-sygnal"><i></i><i></i><i></i><i></i><i></i></span>
-    </div>
-    <span class="cam-krzyz"></span>
+<span class="cam-rog tl"></span><span class="cam-rog tr"></span><span class="cam-rog bl"></span><span class="cam-rog br"></span>
+<div class="cam-gora">
+<span class="cam-rec"><i></i>REC</span>
+<span class="cam-kanal">CAM 02 · MAGAZYN B</span>
 </div>
+<div class="cam-dol">
+<span class="cam-stan"><i></i>BUDŻET WYGASA · <b id="cam-dni">—</b> DNI DO TERMINU</span>
+<span class="cam-prawy">
+<span class="cam-sygnal"><i></i><i></i><i></i><i></i><i></i></span>
+<span class="cam-tc"><b id="cam-tc">00:00:00:00</b><em id="cam-data">--.--.----</em></span>
+</span>
+</div>
+</div>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <filter id="rybie" x="-5%" y="-5%" width="110%" height="110%" color-interpolation-filters="sRGB">
+    <feImage id="rybie-mapa" preserveAspectRatio="none" result="mapa"/>
+    <feDisplacementMap in="SourceGraphic" in2="mapa" scale="26" xChannelSelector="R" yChannelSelector="G"/>
+  </filter>
+</svg>
 <div class="vhs" aria-hidden="true"><i class="vhs-roll"></i><i class="vhs-tear"></i><i class="vhs-tear dwa"></i><i class="vhs-flicker"></i></div>
 <div class="cam-rama" aria-hidden="true">
     <span class="cam-wpinka gora">DAILYFRUITS · PODGLĄD NA ŻYWO</span>
@@ -1221,6 +1264,7 @@ body.kamera::before { content: ""; position: fixed; inset: 0; z-index: 9988; poi
 <section class="scrub" id="scrub">
     <div class="scrub-sticky">
         <div class="scrub-stage">
+            <span class="cam-krzyz" aria-hidden="true"></span>
             <img id="heroKadr" src="amnestia-lina.webp?v=1" alt="Postać w czerni opuszcza się na stalowej lince z sufitu ciemnego skarbca tuż nad skrzynką świeżych owoców w snopie światła" width="1600" height="900" fetchpriority="high" decoding="async">
         </div>
         <div class="scrub-veil" aria-hidden="true"></div>
@@ -1728,6 +1772,29 @@ body.kamera::before { content: ""; position: fixed; inset: 0; z-index: 9988; poi
     var SEL = 'a[href], .btn, .btn-feed, .cure-card, .sym, .typ, .aparat-wpis';
     document.addEventListener('pointerover', function (e) { var t = e.target.closest(SEL); if (t && t !== lock) { lock = t; ret.classList.add('lock'); } });
     document.addEventListener('pointerout', function (e) { var t = e.target.closest(SEL); if (t && t === lock && !t.contains(e.relatedTarget)) { lock = null; ret.classList.remove('lock'); ret.style.width = ret.style.height = ret.style.marginLeft = ret.style.marginTop = ''; } });
+})();
+</script>
+<script>
+/* Rybie oko: mapa przemieszczen liczona na canvasie (R = przesuniecie X,
+   G = przesuniecie Y, 128 = zero), beczkowo od srodka. Filtr wchodzi tylko
+   gdy przegladarka obsluguje feImage z data URI; inaczej kadr zostaje plaski. */
+(function () {
+    var img = document.getElementById("heroKadr"), mapa = document.getElementById("rybie-mapa");
+    if (!img || !mapa || !window.matchMedia("(min-width: 721px)").matches) return;
+    try {
+        var N = 256, c = document.createElement("canvas"); c.width = c.height = N;
+        var g = c.getContext("2d"), d = g.createImageData(N, N), px = d.data, i = 0;
+        for (var y = 0; y < N; y++) for (var x = 0; x < N; x++) {
+            var nx = (x / (N - 1)) * 2 - 1, ny = (y / (N - 1)) * 2 - 1, r = Math.sqrt(nx*nx + ny*ny);
+            var k = Math.pow(Math.min(1, r), 2.2);           /* beczka: rosnie ku brzegom */
+            var dx = -nx * k, dy = -ny * k;                     /* brzegi ida do srodka */
+            px[i++] = 128 + dx * 127; px[i++] = 128 + dy * 127; px[i++] = 128; px[i++] = 255;
+        }
+        g.putImageData(d, 0, 0);
+        mapa.setAttributeNS("http://www.w3.org/1999/xlink", "href", c.toDataURL());
+        mapa.setAttribute("href", c.toDataURL());
+        img.classList.add("rybie");
+    } catch (e) { /* bez rybiego oka */ }
 })();
 </script>
 <script src="track.js?v=2" defer></script>
