@@ -1623,6 +1623,13 @@ body.ciemna .sposoby .cure-card p { margin: 0 var(--f3); }
 body.ciemna .sposoby .cure-card .karta-link { margin: auto var(--f3) var(--f3); padding-top: var(--f2); align-self: flex-start; }
 body.ciemna .sposoby .cure-card .karta-link { margin-top: auto; }
 
+
+/* sekcja produktowa (skompresowana) */
+body.ciemna .dowozimy .sec-head { margin-bottom: var(--f3); }
+body.ciemna .dowozimy .prod-marquee { margin-top: 0; }
+body.ciemna .dowozimy .prod-card h3 { color: var(--tekst); }
+body.ciemna .dowozimy .prod-ph { background: rgba(255,255,255,.03); border-radius: 12px; padding: 12px; }
+body.ciemna .dowozimy .prod-ph img { filter: drop-shadow(0 10px 18px rgba(0,0,0,.45)); }
 </style>
 </head>
 <body class="ciemna kamera">
@@ -1766,19 +1773,19 @@ body.ciemna .sposoby .cure-card .karta-link { margin-top: auto; }
                 <a href="#formularz" class="karta-link js-do-formularza">Policz na osobę →</a>
             </div>
             <div class="cure-card reveal">
-                <div class="karta-foto"><img src="amnestia-pudelko.webp?v=1" alt="Pudełko DailyFruits pełne owoców na blacie w firmowej kuchni" width="1200" height="1200" loading="lazy" decoding="async"></div>
+                <div class="karta-foto"><img src="amnestia-welcome.webp?v=1" alt="Agent stawia pudełko owoców na nowym, jeszcze pustym biurku" width="1600" height="893" loading="lazy" decoding="async"></div>
                 <h3>Welcome packi dla nowych osób</h3>
                 <p>Kupione teraz, wydawane przez cały rok w miarę rekrutacji. Zapas na rekrutacje, o których dziś jeszcze nie wiecie.</p>
                 <a href="#formularz" class="karta-link js-temat" data-temat="welcome" data-nazwa="Welcome packi">Zapytaj o welcome packi →</a>
             </div>
             <div class="cure-card reveal">
-                <div class="karta-foto"><img src="amnestia-korytarz.webp?v=1" alt="Dwóch pracowników niesie korytarzem biurowym skrzynkę owoców" width="1600" height="893" loading="lazy" decoding="async"></div>
+                <div class="karta-foto"><img src="amnestia-catering.webp?v=1" alt="Dwóch agentów rozkłada catering na stole w sali ze świątecznymi światełkami" width="1600" height="893" loading="lazy" decoding="async"></div>
                 <h3>Catering na spotkanie świąteczne</h3>
                 <p>Idzie z innej kieszeni, z budżetu na integrację, więc nie rusza tego, co macie na owoce.</p>
                 <a href="#formularz" class="karta-link js-temat" data-temat="catering" data-nazwa="Catering świąteczny">Zapytaj o catering świąteczny →</a>
             </div>
             <div class="cure-card reveal">
-                <div class="karta-foto"><img src="amnestia-garaz.webp?v=1" alt="Otwarta furgonetka ze skrzynkami owoców w nocnym garażu" width="1600" height="893" loading="lazy" decoding="async"></div>
+                <div class="karta-foto"><img src="amnestia-paczki.webp?v=1" alt="Nocna dostawa paczek z furgonetki pod wejście do biura, pada śnieg" width="1600" height="893" loading="lazy" decoding="async"></div>
                 <h3>Paczki świąteczne</h3>
                 <p>Zestawy dla zespołu i dla dzieci pracowników, w brandowanych opakowaniach, do biura albo do domu.</p>
                 <a href="#formularz" class="karta-link js-temat" data-temat="paczki" data-nazwa="Paczki świąteczne">Zapytaj o paczki świąteczne →</a>
@@ -1795,10 +1802,36 @@ body.ciemna .sposoby .cure-card .karta-link { margin-top: auto; }
 <!-- FORMULARZ -->
 
 <!-- DOWOD: cytat opublikowany na dailyfruits.pl, liczby ze strony glownej i guide'u -->
+<section class="prod-sec dowozimy">
+    <div class="container">
+        <div class="sec-head">
+            <p class="hud-tag">02 · Co dowozimy</p>
+            <h2>Jedna dostawa, cała <span class="fun">kuchnia</span></h2>
+            <p>Owoce, kanapki, bakalie, soki i catering na spotkania. Wszystko od jednego partnera, na jednej fakturze. Ustalamy razem, co przyjeżdża i jak często.</p>
+        </div>
+        <div class="prod-marquee">
+            <div class="prod-track">
+<div class="prod-card"><div class="prod-ph"><img src="packshot-owoce.webp" alt="Świeże owoce sezonowe" loading="lazy" width="600" height="740"></div><h3>Owoce sezonowe</h3></div>
+<div class="prod-card"><div class="prod-ph"><img src="packshot-kanapki.webp" alt="Kanapki do biura" loading="lazy" width="600" height="486"></div><h3>Kanapki i lunche</h3></div>
+<div class="prod-card"><div class="prod-ph"><img src="packshot-bakalie.webp" alt="Bakalie i orzechy" loading="lazy" width="600" height="824"></div><h3>Bakalie i orzechy</h3></div>
+<div class="prod-card"><div class="prod-ph"><img src="packshot-sniadaniowe.webp" alt="Zestawy śniadaniowe" loading="lazy" width="600" height="476"></div><h3>Zestawy śniadaniowe</h3></div>
+<div class="prod-card"><div class="prod-ph"><img src="packshot-soki.webp" alt="Soki tłoczone" loading="lazy" width="510" height="518"></div><h3>Soki i napoje</h3></div>
+<div class="prod-card"><div class="prod-ph"><img src="packshot-fingerfoods.webp" alt="Finger foods na spotkania" loading="lazy" width="600" height="571"></div><h3>Catering na spotkania</h3></div>
+<div class="prod-card" aria-hidden="true"><div class="prod-ph"><img src="packshot-owoce.webp" alt="Świeże owoce sezonowe" loading="lazy" width="600" height="740"></div><h3>Owoce sezonowe</h3></div>
+<div class="prod-card" aria-hidden="true"><div class="prod-ph"><img src="packshot-kanapki.webp" alt="Kanapki do biura" loading="lazy" width="600" height="486"></div><h3>Kanapki i lunche</h3></div>
+<div class="prod-card" aria-hidden="true"><div class="prod-ph"><img src="packshot-bakalie.webp" alt="Bakalie i orzechy" loading="lazy" width="600" height="824"></div><h3>Bakalie i orzechy</h3></div>
+<div class="prod-card" aria-hidden="true"><div class="prod-ph"><img src="packshot-sniadaniowe.webp" alt="Zestawy śniadaniowe" loading="lazy" width="600" height="476"></div><h3>Zestawy śniadaniowe</h3></div>
+<div class="prod-card" aria-hidden="true"><div class="prod-ph"><img src="packshot-soki.webp" alt="Soki tłoczone" loading="lazy" width="510" height="518"></div><h3>Soki i napoje</h3></div>
+<div class="prod-card" aria-hidden="true"><div class="prod-ph"><img src="packshot-fingerfoods.webp" alt="Finger foods na spotkania" loading="lazy" width="600" height="571"></div><h3>Catering na spotkania</h3></div>
+            </div>
+        </div>
+    </div>
+</section>
+
 <section class="sec sec-cream dowod">
     <div class="container">
         <div class="sec-head">
-            <p class="hud-tag">02 · Dowód</p>
+            <p class="hud-tag">03 · Dowód</p>
             <h2>Owoce w tej samej <span class="fun">kuchni</span> od lat</h2>
         </div>
         <figure class="cytat">
@@ -1843,7 +1876,7 @@ body.ciemna .sposoby .cure-card .karta-link { margin-top: auto; }
 <section class="form-sec" id="formularz">
     <div class="container">
         <div class="sec-head">
-            <p class="hud-tag">03 · Zgłoszenie</p>
+            <p class="hud-tag">04 · Zgłoszenie</p>
             <h2>Zróbmy to <span class="fun">dzisiaj</span></h2>
             <p>Wpiszcie budżet i liczbę osób. Zobaczycie, ile to na osobę miesięcznie przez pierwszy kwartał, a my w 24 h powiemy, co za to dowozimy.</p>
         </div>
