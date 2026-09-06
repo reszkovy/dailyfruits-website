@@ -1612,6 +1612,17 @@ body.ciemna .aparat.kalk#kalkulator .aparat-duza { font-size: clamp(40px, 6vw, 6
 body.ciemna .aparat.kalk#kalkulator .aparat-puste { margin-top: 10px; }
 @media (max-width: 720px) { body.ciemna .aparat.kalk#kalkulator .aparat-pola { grid-template-columns: 1fr; } }
 
+
+/* ---------- CZTERY SPOSOBY: zdjecie zamiast ikony, CTA wyrownane do dolu ---------- */
+body.ciemna .sposoby .cure-card { display: flex; flex-direction: column; padding: 0; overflow: hidden; }
+body.ciemna .sposoby .cure-card::after { top: 12px; left: 12px; z-index: 2; }
+body.ciemna .sposoby .karta-foto { aspect-ratio: 16 / 10; overflow: hidden; background: #0d120e; }
+body.ciemna .sposoby .karta-foto img { width: 100%; height: 100%; object-fit: cover; display: block; filter: saturate(.85); }
+body.ciemna .sposoby .cure-card h3 { margin: var(--f3) var(--f3) 8px; }
+body.ciemna .sposoby .cure-card p { margin: 0 var(--f3); }
+body.ciemna .sposoby .cure-card .karta-link { margin: auto var(--f3) var(--f3); padding-top: var(--f2); align-self: flex-start; }
+body.ciemna .sposoby .cure-card .karta-link { margin-top: auto; }
+
 </style>
 </head>
 <body class="ciemna kamera">
@@ -1749,25 +1760,25 @@ body.ciemna .aparat.kalk#kalkulator .aparat-puste { margin-top: 10px; }
         </div>
         <div class="cure-grid">
             <div class="cure-card reveal wyrozniona">
-                <div class="cure-top"><span class="day">Najczęściej</span><img src="icons/icon-crate-fruit.webp" alt="" loading="lazy" width="46" height="46"></div>
+                <div class="karta-foto"><img src="amnestia-sala.webp?v=1" alt="Skrzynka owoców na stole w sali konferencyjnej" width="1600" height="893" loading="lazy" decoding="async"></div>
                 <h3>Przedpłata na pierwszy kwartał</h3>
                 <p>Płacicie teraz jedną fakturę za pierwszy kwartał, wystawioną jeszcze w tym roku. Dostawy ruszają w styczniu. Po kwartale wracacie do jednej faktury miesięcznie.</p>
                 <a href="#formularz" class="karta-link js-do-formularza">Policz na osobę →</a>
             </div>
             <div class="cure-card reveal">
-                <div class="cure-top"><span class="day">Na zapas</span><img src="icons/icon-health-day.webp" alt="" loading="lazy" width="46" height="46"></div>
+                <div class="karta-foto"><img src="amnestia-pudelko.webp?v=1" alt="Pudełko DailyFruits pełne owoców na blacie w firmowej kuchni" width="1200" height="1200" loading="lazy" decoding="async"></div>
                 <h3>Welcome packi dla nowych osób</h3>
                 <p>Kupione teraz, wydawane przez cały rok w miarę rekrutacji. Zapas na rekrutacje, o których dziś jeszcze nie wiecie.</p>
                 <a href="#formularz" class="karta-link js-temat" data-temat="welcome" data-nazwa="Welcome packi">Zapytaj o welcome packi →</a>
             </div>
             <div class="cure-card reveal">
-                <div class="cure-top"><span class="day">Inna kieszeń</span><img src="icons/icon-sandwich-half.webp" alt="" loading="lazy" width="46" height="46"></div>
+                <div class="karta-foto"><img src="amnestia-korytarz.webp?v=1" alt="Dwóch pracowników niesie korytarzem biurowym skrzynkę owoców" width="1600" height="893" loading="lazy" decoding="async"></div>
                 <h3>Catering na spotkanie świąteczne</h3>
                 <p>Idzie z innej kieszeni, z budżetu na integrację, więc nie rusza tego, co macie na owoce.</p>
                 <a href="#formularz" class="karta-link js-temat" data-temat="catering" data-nazwa="Catering świąteczny">Zapytaj o catering świąteczny →</a>
             </div>
             <div class="cure-card reveal">
-                <div class="cure-top"><span class="day">Dla zespołu</span><img src="icons/icon-nuts-bowl.webp" alt="" loading="lazy" width="46" height="46"></div>
+                <div class="karta-foto"><img src="amnestia-garaz.webp?v=1" alt="Otwarta furgonetka ze skrzynkami owoców w nocnym garażu" width="1600" height="893" loading="lazy" decoding="async"></div>
                 <h3>Paczki świąteczne</h3>
                 <p>Zestawy dla zespołu i dla dzieci pracowników, w brandowanych opakowaniach, do biura albo do domu.</p>
                 <a href="#formularz" class="karta-link js-temat" data-temat="paczki" data-nazwa="Paczki świąteczne">Zapytaj o paczki świąteczne →</a>
