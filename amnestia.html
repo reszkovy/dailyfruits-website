@@ -1691,6 +1691,31 @@ body.ciemna .odl-pod b { color: var(--tekst); font-weight: 600; }
 @media (max-width: 720px) { .opinia { width: 78vw; padding: var(--f2) var(--f3); } .opinia blockquote { font-size: 15px; } }
 /* licznik widoczny tez na mobile, pod leadem */
 @media (max-width: 720px) { body.ciemna .scrub-copy > .odl { display: inline-flex !important; } }
+
+/* ---------- Zgloszenie: dwie kolumny na jednej siatce ---------- */
+body.ciemna .form-grid { gap: var(--f3); align-items: stretch; }
+body.ciemna .form-lewa { display: flex; flex-direction: column; background: linear-gradient(180deg, var(--szklo2), var(--szklo));
+    border: 1px solid var(--linia); border-radius: var(--r); overflow: hidden; box-shadow: inset 0 1px 0 rgba(255,255,255,.06); }
+body.ciemna .form-wrap { background: transparent; border: 0; border-radius: 0; box-shadow: none; padding: 0; margin: 0; }
+body.ciemna .form-dol { margin-top: auto; padding: var(--f3); border-top: 1px solid var(--linia); }
+body.ciemna .form-uwaga { margin: 0 0 var(--f2); }
+body.ciemna .form-after { margin: 0; padding: 0; border: 0; text-align: left; display: flex; align-items: center; justify-content: space-between; gap: var(--f2); flex-wrap: wrap; }
+body.ciemna .form-after p { margin: 0; }
+body.ciemna .form-kolumna { display: flex; flex-direction: column; gap: var(--f2); }
+body.ciemna .form-foto { aspect-ratio: 16 / 10; border-radius: var(--r); overflow: hidden; background: #0d120e; border: 1px solid var(--linia); flex: none; }
+body.ciemna .form-foto img { width: 100%; height: 100%; object-fit: cover; display: block; filter: saturate(.85); }
+body.ciemna .form-info { margin: 0; padding: var(--f3); position: static; }
+body.ciemna .form-info .wstep { margin-bottom: var(--f2); }
+body.ciemna .form-info li:last-child { border-bottom: 0; padding-bottom: 0; }
+body.ciemna .form-kontakt { margin: auto 0 0; padding: var(--f3); background: linear-gradient(180deg, var(--szklo2), var(--szklo));
+    border: 1px solid var(--linia); border-radius: var(--r); box-shadow: inset 0 1px 0 rgba(255,255,255,.06); }
+@media (max-width: 720px) { body.ciemna .form-grid { gap: var(--f2); } body.ciemna .form-dol, body.ciemna .form-info, body.ciemna .form-kontakt { padding: var(--f2) var(--f3); } }
+
+/* CTA w headerze ma byc klikalne takze w ATF: siatka hero (z 9991) nie moze go zaslaniac.
+   Siatka przepuszcza klikniecia, elementy z tresci je lapia; sam przycisk idzie nad ramke. */
+body.ciemna .scrub-grid { pointer-events: none; }
+body.ciemna .scrub-copy > * { pointer-events: auto; }
+body.kamera header .nav-buttons { z-index: 9997 !important; }
 </style>
 </head>
 <body class="ciemna kamera">
@@ -1738,7 +1763,7 @@ body.ciemna .odl-pod b { color: var(--tekst); font-weight: 600; }
         <!-- Landing kampanijny: naglowek okrojony do logo i jednego CTA,
              zeby nie wyprowadzac ruchu z lejka. -->
         <div class="nav-buttons">
-            <a href="#formularz" class="btn btn-red-solid js-do-formularza">Odzyskaj budżet <span class="cta-emo">🍏</span></a>
+            <a href="#formularz" class="btn btn-red-solid js-do-formularza">Odzyskaj budżet</a>
         </div>
     </div>
 </header>
@@ -1987,6 +2012,7 @@ body.ciemna .odl-pod b { color: var(--tekst); font-weight: 600; }
         </div>
         <p class="temat-pasek" id="temat-pasek" hidden><span class="temat-etykieta">Zapytanie o:</span> <b id="temat-nazwa"></b> <span id="temat-dane" class="temat-dane"></span> <button type="button" class="temat-zmien" id="temat-zmien">zmień</button></p>
         <div class="form-grid">
+            <div class="form-lewa">
             <div class="form-wrap">
                 <iframe id="bwp-form" title="Formularz bezpłatnej wyceny DailyFruits" src="https://betterworkplace.pl/kontakt/zapytanie-dailyfruits" loading="lazy"></iframe>
                 <script src="bwp-form.js?v=1"></script>
@@ -1995,13 +2021,17 @@ body.ciemna .odl-pod b { color: var(--tekst); font-weight: 600; }
                     <a class="btn btn-red-solid" id="form-mail" href="mailto:zapytania@betterworkplace.pl?subject=Amnestia%20bud%C5%BCetowa">zapytania@betterworkplace.pl</a>
                     <a class="form-zapas-tel" href="tel:+48228680499">22 868 04 99</a>
                 </div>
+                </div>
+                <div class="form-dol">
                 <p class="form-uwaga">Dane z kalkulatora i wybrany temat trafiają do wiadomości e-mail. Przekazanie ich do formularza Better Workplace: do potwierdzenia.</p>
                 <div class="form-after">
                     <p>Wolicie najpierw zobaczyć, co dokładnie dowozimy?</p>
                     <a href="/oferta" class="btn btn-green btn-arrow">Sprawdź pełną ofertę</a>
                 </div>
             </div>
+            </div>
             <div class="form-kolumna">
+                <div class="form-foto reveal"><img src="amnestia-korytarz.webp?v=1" alt="Dwóch agentów niesie korytarzem biurowym skrzynkę owoców" width="1600" height="893" loading="lazy" decoding="async"></div>
             
                 <div class="form-info reveal">
                     <h3>Co dokładnie zamawiacie</h3>
@@ -2013,13 +2043,13 @@ body.ciemna .odl-pod b { color: var(--tekst); font-weight: 600; }
                         <li><i>4</i><div><b>Jedna faktura miesięcznie</b><span>Za wszystko razem, niezależnie od liczby dostaw. Przy przedpłacie: jedna faktura za pierwszy kwartał w tym roku, dostawy od stycznia, potem znów miesięcznie.</span></div></li>
                         <li><i>5</i><div><b>Jedno zamówienie zamiast kilku dostawców</b><span>Owoce, kanapki, przekąski, soki i kawa w jednej dostawie i na jednej fakturze.</span></div></li>
                     </ul>
-                    <div class="form-kontakt">
+                </div>
+                <div class="form-kontakt">
                         <b>Wolicie krócej?</b>
                         <a href="tel:+48228680499">22 868 04 99</a>
                         <a href="mailto:zapytania@betterworkplace.pl?subject=Amnestia%20bud%C5%BCetowa">zapytania@betterworkplace.pl</a>
                         <span>Odpowiadamy w 24 h.</span>
                     </div>
-                </div>
             </div>
         </div>
         <div class="po-formularzu reveal">
