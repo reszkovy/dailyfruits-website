@@ -1715,7 +1715,17 @@ body.ciemna .form-kontakt { margin: auto 0 0; padding: var(--f3); background: li
    Siatka przepuszcza klikniecia, elementy z tresci je lapia; sam przycisk idzie nad ramke. */
 body.ciemna .scrub-grid { pointer-events: none; }
 body.ciemna .scrub-copy > * { pointer-events: auto; }
+body.kamera header { z-index: 9997 !important; }
 body.kamera header .nav-buttons { z-index: 9997 !important; }
+
+/* Kalkulator: etykiety czytelne na ciemnej obudowie, pasek tematu w obudowie */
+body.ciemna .aparat.kalk .aparat-pola label { color: rgba(238,243,234,.62); font-weight: 700; }
+body.ciemna .aparat.kalk .temat-pasek { margin: var(--f2) 0 0; border: 1px solid rgba(141,198,63,.28); border-radius: 10px; background: rgba(141,198,63,.08); }
+
+/* Logo: naturalne proporcje (SVG jest pionowy), lewa krawedz rowna z tekstem hero */
+body.ciemna header .logo-img { width: auto !important; height: 64px !important; object-fit: contain; }
+body.ciemna header .nav-inner { padding-left: clamp(28px, 4vw, 72px) !important; }
+@media (max-width: 720px) { body.ciemna header .nav-inner { padding-left: 20px !important; } body.ciemna header .logo-img { height: 56px !important; } }
 </style>
 </head>
 <body class="ciemna kamera">
@@ -2009,8 +2019,8 @@ body.kamera header .nav-buttons { z-index: 9997 !important; }
                 <div class="aparat-wynik" id="a-wynik"><p class="aparat-puste">Wpisz budżet i&nbsp;liczbę osób.</p></div>
             </div>
             <p class="aparat-stopa" id="a-stopa">Prosty podział budżetu na osoby i trzy miesiące. Co za to dowozimy, mówimy w odpowiedzi.</p>
+            <p class="temat-pasek" id="temat-pasek" hidden><span class="temat-etykieta">Zapytanie o:</span> <b id="temat-nazwa"></b> <span id="temat-dane" class="temat-dane"></span> <button type="button" class="temat-zmien" id="temat-zmien">zmień</button></p>
         </div>
-        <p class="temat-pasek" id="temat-pasek" hidden><span class="temat-etykieta">Zapytanie o:</span> <b id="temat-nazwa"></b> <span id="temat-dane" class="temat-dane"></span> <button type="button" class="temat-zmien" id="temat-zmien">zmień</button></p>
         <div class="form-grid">
             <div class="form-lewa">
             <div class="form-wrap">
