@@ -1597,6 +1597,21 @@ body.ciemna .ai-badge { position: fixed; top: calc(var(--cam-inset) + 10px); rig
 .form-zapas-tel { color: var(--tekst); font-weight: 700; text-decoration: none; white-space: nowrap; }
 .form-uwaga { margin: 10px 0 0; font-size: 12.5px; color: rgba(238,243,234,.5); }
 
+
+/* ---------- WERSJA PROSTA: cztery sekcje ---------- */
+body.ciemna .dowod { background: transparent; }
+.cytat { margin: 0 auto var(--f4); max-width: 62ch; text-align: center; }
+.cytat blockquote { margin: 0 0 var(--f2); font-size: clamp(19px, 2.4vw, 26px); line-height: 1.45; letter-spacing: -.01em; color: var(--tekst); font-weight: 500; }
+.cytat figcaption { font-size: 14px; color: rgba(238,243,234,.6); }
+.cytat figcaption b { display: block; color: var(--tekst); font-weight: 700; }
+.dowod-liczby { max-width: 900px; margin: 0 auto; }
+body.ciemna .aparat.kalk#kalkulator { margin: 0 auto var(--f3); max-width: 760px; padding: var(--f3); }
+body.ciemna .aparat.kalk#kalkulator .aparat-pola { grid-template-columns: repeat(2, minmax(0,1fr)); margin-top: 0; }
+body.ciemna .aparat.kalk#kalkulator .kalk-ekran { margin-top: var(--f2); min-height: 0; padding: 14px 18px 16px; }
+body.ciemna .aparat.kalk#kalkulator .aparat-duza { font-size: clamp(40px, 6vw, 64px); }
+body.ciemna .aparat.kalk#kalkulator .aparat-puste { margin-top: 10px; }
+@media (max-width: 720px) { body.ciemna .aparat.kalk#kalkulator .aparat-pola { grid-template-columns: 1fr; } }
+
 </style>
 </head>
 <body class="ciemna kamera">
@@ -1673,7 +1688,7 @@ body.ciemna .ai-badge { position: fixed; top: calc(var(--cam-inset) + 10px); rig
                 <p class="lead"><b>Wasz budżet kończy się 12 grudnia, nie 31.</b><br>Co zostanie, przepadnie, a w przyszłym roku będzie go mniej.</p>
                 <p class="termin" id="hero-termin" aria-live="polite"><i></i><span>Do końca fakturowania zostało <b id="hero-dni">··</b>&nbsp;dni</span></p>
                 <div class="cta-row">
-                    <a href="#kalkulator" class="btn-feed js-do-kalkulatora">Policz, na ile starczy →</a>
+                    <a href="#formularz" class="btn-feed js-do-formularza">Odzyskaj budżet →</a>
                 </div>
             </div>
             <div></div>
@@ -1684,41 +1699,6 @@ body.ciemna .ai-badge { position: fixed; top: calc(var(--cam-inset) + 10px); rig
 
 <!-- LOGO BAR: Zaufali nam -->
 
-<!-- OBJAWY -->
-<section class="sec sec-cream">
-    <div class="container">
-        <div class="sec-head">
-            <p class="hud-tag">01 · Termin</p>
-            <h2>Budżet, który <span class="fun">znika</span></h2>
-            <p>Co roku ta sama scena. Pieniądze leżą na koncie do grudnia, a potem znikają bez śladu. Nikt ich nie ukradł. Nikt ich nie wydał. Pomożemy je wykorzystać, zanim to się stanie.</p>
-        </div>
-        <div class="sym-grid">
-            <div class="sym reveal">
-                <div class="sym-top"><span class="n" aria-hidden="true">01</span><img src="icons/icon-clock-afternoon.webp" alt="" loading="lazy" width="54" height="54"></div>
-                <div class="b">
-                    <h3>Termin jest wcześniejszy</h3>
-                    <p>Nie 31 grudnia. Faktura musi wejść przed terminem, inaczej wszystko przechodzi na przyszły rok.</p>
-                </div>
-            </div>
-            <div class="sym reveal">
-                <div class="sym-top"><span class="n" aria-hidden="true">02</span><img src="icons/icon-battery-low.webp" alt="" loading="lazy" width="54" height="54"></div>
-                <div class="b">
-                    <h3>Strata jest podwójna</h3>
-                    <p>Znikają pieniądze, a razem z nimi argument o budżet na kolejny rok. To nie jest niczyja wina, tylko mechanika planowania. Da się ją ograć.</p>
-                </div>
-            </div>
-            <div class="sym reveal">
-                <div class="sym-top"><span class="n" aria-hidden="true">03</span><img src="icons/icon-crate-fruit.webp" alt="" loading="lazy" width="54" height="54"></div>
-                <div class="b">
-                    <h3>Da się to jeszcze odzyskać</h3>
-                    <p>Cztery sposoby, każdy z fakturą w tym roku. Wystarczy wybrać jeden.</p>
-                </div>
-            </div>
-        </div>
-        <p class="karuzela-info">Przesuń w bok →</p>
-
-    </div>
-</section>
 
 <!-- KURACJA -->
 <!-- TYPY: kontekstowe zdjecia postaci z atrybutami wakacyjnymi -->
@@ -1763,16 +1743,16 @@ body.ciemna .ai-badge { position: fixed; top: calc(var(--cam-inset) + 10px); rig
 <section class="sec sec-white sposoby">
     <div class="container">
         <div class="sec-head">
-            <p class="hud-tag">02 · Cztery sposoby</p>
+            <p class="hud-tag">01 · Cztery sposoby</p>
             <h2>Cztery sposoby, jeden <span class="fun">termin</span></h2>
-            <p>Każdy fakturujemy w tym roku. Wybieracie ten, który pasuje do budżetu, nie do katalogu.</p>
+            <p>Nie 31 grudnia, tylko 12: faktura musi wejść przed terminem. Każdy z czterech sposobów fakturujemy jeszcze w tym roku. Wybieracie ten, który pasuje do budżetu, nie do katalogu.</p>
         </div>
         <div class="cure-grid">
             <div class="cure-card reveal wyrozniona">
                 <div class="cure-top"><span class="day">Najczęściej</span><img src="icons/icon-crate-fruit.webp" alt="" loading="lazy" width="46" height="46"></div>
                 <h3>Przedpłata na pierwszy kwartał</h3>
                 <p>Płacicie teraz jedną fakturę za pierwszy kwartał, wystawioną jeszcze w tym roku. Dostawy ruszają w styczniu. Po kwartale wracacie do jednej faktury miesięcznie.</p>
-                <a href="#kalkulator" class="karta-link js-do-kalkulatora">Policz przedpłatę →</a>
+                <a href="#formularz" class="karta-link js-do-formularza">Policz na osobę →</a>
             </div>
             <div class="cure-card reveal">
                 <div class="cure-top"><span class="day">Na zapas</span><img src="icons/icon-health-day.webp" alt="" loading="lazy" width="46" height="46"></div>
@@ -1793,120 +1773,36 @@ body.ciemna .ai-badge { position: fixed; top: calc(var(--cam-inset) + 10px); rig
                 <a href="#formularz" class="karta-link js-temat" data-temat="paczki" data-nazwa="Paczki świąteczne">Zapytaj o paczki świąteczne →</a>
             </div>
         </div>
-        <p class="mid-cta"><a href="#kalkulator" class="btn btn-red-solid btn-arrow js-do-kalkulatora">Wybierz sposób i policz</a></p>
-    </div>
-</section>
-
-
-<!-- POLICZ: kalkulator jako wlasny krok lejka, po czterech sposobach -->
-<section class="sec sec-cream kalkulator" id="kalkulator">
-    <div class="container">
-        <div class="sec-head">
-            <p class="hud-tag">03 · Policz</p>
-            <h2>Na ile <span class="fun">starczy</span></h2>
-            <p>Wpiszcie liczbę osób, budżet i kwotę na osobę miesięcznie. Zobaczycie, do kiedy starczy i ile to dostaw.</p>
-        </div>
-        <div class="aparat reveal kalk">
-            <div class="aparat-head"><span>Na ile starczy</span><b>W-1</b></div>
-            <div class="kalk-ekran">
-                <div class="kalk-led"><i></i><span id="a-led">BUDŻET WYGASA</span></div>
-                <div class="aparat-wynik" id="a-wynik"><p class="aparat-puste">Wpisz osoby, budżet i&nbsp;kwotę na osobę. Policzymy, na ile miesięcy starczy.</p></div>
-            </div>
-            <div class="kalk-legenda" aria-hidden="true">
-                <span>DOSTAWY</span><span><b>A</b> 1× W TYG.</span><span><b>B</b> 2× W TYG.</span><span><b>C</b> 3× W TYG.</span><span class="kalk-ogniwo"><i></i><i></i><i></i><i></i></span>
-            </div>
-            <div class="kalk-plyta">
-            <div class="aparat-pola">
-                <div>
-                    <label for="a-kwota">Budżet, który zostaje na ten rok</label>
-                    <div class="aparat-wpis"><input id="a-kwota" type="text" inputmode="numeric" placeholder="8 000" autocomplete="off"><span>zł</span></div>
-                </div>
-                <div>
-                    <label for="a-osoby">Wielkość zespołu</label>
-                    <div class="aparat-wpis"><input id="a-osoby" type="text" inputmode="numeric" placeholder="40" autocomplete="off"><span>osób</span></div>
-                </div>
-                <div>
-                    <label for="a-stawka">Kwota na osobę miesięcznie</label>
-                    <div class="aparat-wpis"><input id="a-stawka" type="text" inputmode="numeric" placeholder="60" autocomplete="off"><span>zł</span></div>
-                </div>
-            </div>
-            <div class="kalk-klawisze" role="group" aria-label="Ile dostaw w tygodniu">
-                <button type="button" class="kalk-klawisz" aria-pressed="false" data-n="1"><b>A</b>1× w tygodniu</button>
-                <button type="button" class="kalk-klawisz" aria-pressed="false" data-n="2"><b>B</b>2× w tygodniu</button>
-                <button type="button" class="kalk-klawisz" aria-pressed="false" data-n="3"><b>C</b>3× w tygodniu</button>
-                <button type="button" class="kalk-klawisz kalk-ac" id="a-ac" aria-label="Wyczyść kalkulator"><b>AC</b>Wyczyść</button>
-            </div>
-            </div>
-            <p class="aparat-stopa" id="a-stopa">Nic nie zapisujemy. Kwota na osobę to Wasze założenie, nie cennik.</p>
-        </div>
         <p class="mid-cta"><a href="#formularz" class="btn btn-red-solid btn-arrow js-do-formularza">Odzyskaj budżet</a></p>
     </div>
 </section>
 
-<!-- CO LADUJE NA BIURKU -->
-<section class="prod-sec">
-    <div class="container">
-        <div class="sec-head">
-            <p class="hud-tag">04 · Co dostajecie</p>
-            <h2>Co za to <span class="fun">dostajecie</span></h2>
-            <p>Nie bon, nie voucher, nie obietnica. Dostawy, które ruszają od stycznia.</p>
-        </div>
-        <div class="rozwiazanie">
-            <p>Przedpłata to jedna faktura za pierwszy kwartał, wystawiona w tym roku. Od stycznia DailyFruits regularnie uzupełnia firmową kuchnię w <b>świeże owoce, kanapki, przekąski, soki i kawę</b>, a od kwietnia rozliczacie się jak zwykle, jedną fakturą miesięcznie.</p>
-            <ul class="mocne">
-                <li>Bez dodatkowej pracy po stronie HR czy Office.</li>
-                <li>Bez kilku dostawców i kilku faktur.</li>
-                <li>Regularnie i pod jednym zamówieniem.</li>
-            </ul>
-        </div>
-        <div class="hero-box reveal">
-            <div><img src="amnestia-pudelko.webp?v=1" alt="Pudełko DailyFruits pełne owoców na blacie w firmowej kuchni, w porannym świetle" width="1200" height="800" loading="lazy"></div>
-            <div>
-                <span class="tag">Podstawa abonamentu</span>
-                <h3>Skrzynka, która staje w <span class="fun">kuchni</span></h3>
-                <p>Owoce, warzywa, kanapki, kawa, soki - wszystko w jednej dostawie, od jednego partnera. Ustalamy razem, co ma przyjeżdżać, jak często i w jakie dni.</p>
-                <ul>
-                    <li>Owoce, kawa, kanapki i soki z jednego miejsca</li>
-                    <li>Subskrypcja, nie kontrakt. Skład i częstotliwość zmieniacie, kiedy chcecie</li>
-                    <li>Bez kar za zmianę albo rezygnację</li>
-                    <li>Dowozimy w 13 miastach i poza nimi</li>
-                    <li>Jedna faktura miesięcznie, a przy przedpłacie jedna za cały kwartał</li>
-                </ul>
-            </div>
-            <div class="hero-box-foot">
-                <p class="foot-lead">Co może być w Waszej dostawie:</p>
-        <div class="prod-marquee">
-            <div class="prod-track">
-                <div class="prod-card"><div class="prod-ph"><img src="packshot-owoce.webp" alt="Świeże owoce sezonowe" loading="lazy" width="600" height="740"></div><h3>Owoce sezonowe</h3></div>
-                <div class="prod-card"><div class="prod-ph"><img src="packshot-kanapki.webp" alt="Kanapki do biura" loading="lazy" width="600" height="486"></div><h3>Kanapki i lunche</h3></div>
-                <div class="prod-card"><div class="prod-ph"><img src="packshot-bakalie.webp" alt="Bakalie i orzechy" loading="lazy" width="600" height="824"></div><h3>Bakalie i orzechy</h3></div>
-                <div class="prod-card"><div class="prod-ph"><img src="packshot-sniadaniowe.webp" alt="Zestawy śniadaniowe" loading="lazy" width="600" height="476"></div><h3>Zestawy śniadaniowe</h3></div>
-                <div class="prod-card"><div class="prod-ph"><img src="packshot-soki.webp" alt="Soki tłoczone" loading="lazy" width="510" height="518"></div><h3>Soki i napoje</h3></div>
-                <div class="prod-card"><div class="prod-ph"><img src="packshot-fingerfoods.webp" alt="Finger foods na spotkania" loading="lazy" width="600" height="571"></div><h3>Catering na spotkania</h3></div>
-                <div class="prod-card" aria-hidden="true"><div class="prod-ph"><img src="packshot-owoce.webp" alt="Świeże owoce sezonowe" loading="lazy" width="600" height="740"></div><h3>Owoce sezonowe</h3></div>
-                <div class="prod-card" aria-hidden="true"><div class="prod-ph"><img src="packshot-kanapki.webp" alt="Kanapki do biura" loading="lazy" width="600" height="486"></div><h3>Kanapki i lunche</h3></div>
-                <div class="prod-card" aria-hidden="true"><div class="prod-ph"><img src="packshot-bakalie.webp" alt="Bakalie i orzechy" loading="lazy" width="600" height="824"></div><h3>Bakalie i orzechy</h3></div>
-                <div class="prod-card" aria-hidden="true"><div class="prod-ph"><img src="packshot-sniadaniowe.webp" alt="Zestawy śniadaniowe" loading="lazy" width="600" height="476"></div><h3>Zestawy śniadaniowe</h3></div>
-                <div class="prod-card" aria-hidden="true"><div class="prod-ph"><img src="packshot-soki.webp" alt="Soki tłoczone" loading="lazy" width="510" height="518"></div><h3>Soki i napoje</h3></div>
-                <div class="prod-card" aria-hidden="true"><div class="prod-ph"><img src="packshot-fingerfoods.webp" alt="Finger foods na spotkania" loading="lazy" width="600" height="571"></div><h3>Catering na spotkania</h3></div>
-            </div>
-        </div>
-        <p class="mid-cta"><a href="#formularz" class="btn btn-red-solid btn-arrow js-do-formularza">Odzyskaj budżet</a></p>
-            </div>
-        </div>
-        <div class="proofzone">
-            <div class="assure-grid">
-                <div class="assure-item"><b>2500+</b><span>firm w Polsce nam zaufało</span></div>
-                <div class="assure-item"><b>15+</b><span>lat dostaw do firm</span></div>
-                <div class="assure-item"><b>800 t</b><span>świeżych produktów miesięcznie</span></div>
-                <div class="assure-item"><b>24 h</b><span>od zamówienia do pierwszej skrzynki</span></div>
-            </div>
-        </div>
-    </div>
-</section>
+
+
 
 <!-- DOWODY -->
 <!-- FORMULARZ -->
+
+<!-- DOWOD: cytat opublikowany na dailyfruits.pl, liczby ze strony glownej i guide'u -->
+<section class="sec sec-cream dowod">
+    <div class="container">
+        <div class="sec-head">
+            <p class="hud-tag">02 · Dowód</p>
+            <h2>Owoce w tej samej <span class="fun">kuchni</span> od lat</h2>
+        </div>
+        <figure class="cytat">
+            <blockquote>Od ponad trzech lat pracujemy z firmą Dailyfruits. Dzisiaj owoce w charakterystycznej drewnianej skrzynce to nieodłączny element naszego biurowego krajobrazu. Jakość? Niezmiennie wysoka.</blockquote>
+            <figcaption><b>Stathis Karaplios</b><span>Managing Director, EMBS</span></figcaption>
+        </figure>
+        <div class="assure-grid dowod-liczby">
+            <div class="assure-item"><b>2500+</b><span>firm w Polsce nam zaufało</span></div>
+            <div class="assure-item"><b>4,9/5</b><span>na podstawie 120+ opinii</span></div>
+            <div class="assure-item"><b>13</b><span>miast z regularnymi dostawami</span></div>
+            <div class="assure-item"><b>24 h</b><span>od zamówienia do pierwszej skrzynki</span></div>
+        </div>
+    </div>
+</section>
+
 <section class="logo-bar reveal">
     <div class="logo-bar-label">Zaufali nam liderzy rynku</div>
     <div class="logo-bar-track">
@@ -1932,42 +1828,36 @@ body.ciemna .ai-badge { position: fixed; top: calc(var(--cam-inset) + 10px); rig
     </div>
 </section>
 
-<section class="typy">
-    <div class="container">
-        <div class="sec-head">
-            <p class="hud-tag">05 · Jak to działa</p>
-            <h2>Jak to <span class="fun">działa</span></h2>
-            <p>Trzy kroki. Zgłoszenie, propozycja, dostawa.</p>
-        </div>
-        <div class="typy-grid">
-            <figure class="typ reveal">
-                <img src="amnestia-korytarz.webp?v=1" alt="Dwóch pracowników w garniturach niesie nocnym korytarzem biurowym skrzynkę owoców" width="1600" height="893" loading="lazy">
-                <figcaption><b>Zgłoszenie</b>Piszecie, ile osób i jaka kwota zostaje do wykorzystania.</figcaption>
-            </figure>
-            <figure class="typ reveal">
-                <img src="amnestia-sala.webp?v=1" alt="Skrzynka świeżych owoców postawiona na stole w zaciemnionej sali konferencyjnej" width="1600" height="893" loading="lazy">
-                <figcaption><b>Propozycja</b>Skład i wycena wracają w 24 h. Bez katalogu do przeglądania.</figcaption>
-            </figure>
-            <figure class="typ reveal">
-                <img src="amnestia-garaz.webp?v=1" alt="Nocny garaż, otwarta furgonetka ze skrzynkami owoców i dwie sylwetki pod światło" width="1600" height="893" loading="lazy">
-                <figcaption><b>Dostawa</b>Faktura wychodzi w tym roku. Skrzynki jadą od stycznia.</figcaption>
-            </figure>
-        </div>
-        <p class="karuzela-info">Przesuń w bok →</p>
-    </div>
-</section>
 
 <section class="form-sec" id="formularz">
     <div class="container">
         <div class="sec-head">
-            <p class="hud-tag">06 · Zgłoszenie</p>
+            <p class="hud-tag">03 · Zgłoszenie</p>
             <h2>Zróbmy to <span class="fun">dzisiaj</span></h2>
-            <p>Podajcie liczbę osób i kwotę, która zostaje. Propozycja wraca w 24 h.</p>
+            <p>Wpiszcie budżet i liczbę osób. Zobaczycie, ile to na osobę miesięcznie przez pierwszy kwartał, a my w 24 h powiemy, co za to dowozimy.</p>
         </div>
         
         <div class="assure reveal">
             <p class="rating"><span class="rating-stars">★★★★★</span><span class="rating-score">4.9/5 na podstawie 120+ opinii</span></p>
             <p class="assure-flow"><span>Mówicie, ile zostaje</span><i></i><span>propozycja wraca w 24 h</span><i></i><span>faktura idzie w tym roku</span></p>
+        </div>
+        <div class="aparat reveal kalk" id="kalkulator">
+            <div class="aparat-head"><span>Ile to na osobę</span><b>W-1</b></div>
+            <div class="aparat-pola">
+                <div>
+                    <label for="a-kwota">Budżet, który zostaje na ten rok</label>
+                    <div class="aparat-wpis"><input id="a-kwota" type="text" inputmode="numeric" placeholder="8 000" autocomplete="off"><span>zł</span></div>
+                </div>
+                <div>
+                    <label for="a-osoby">Wielkość zespołu</label>
+                    <div class="aparat-wpis"><input id="a-osoby" type="text" inputmode="numeric" placeholder="40" autocomplete="off"><span>osób</span></div>
+                </div>
+            </div>
+            <div class="kalk-ekran">
+                <div class="kalk-led"><i></i><span id="a-led">PRZEDPŁATA NA PIERWSZY KWARTAŁ</span></div>
+                <div class="aparat-wynik" id="a-wynik"><p class="aparat-puste">Wpisz budżet i&nbsp;liczbę osób.</p></div>
+            </div>
+            <p class="aparat-stopa" id="a-stopa">Prosty podział budżetu na osoby i trzy miesiące. Co za to dowozimy, mówimy w odpowiedzi.</p>
         </div>
         <p class="temat-pasek" id="temat-pasek" hidden><span class="temat-etykieta">Zapytanie o:</span> <b id="temat-nazwa"></b> <span id="temat-dane" class="temat-dane"></span> <button type="button" class="temat-zmien" id="temat-zmien">zmień</button></p>
         <div class="form-grid">
@@ -2106,87 +1996,47 @@ body.ciemna .ai-badge { position: fixed; top: calc(var(--cam-inset) + 10px); rig
 })();
 </script>
 <script>
-/* Kalkulator W-1: osoby, budzet, kwota na osobe miesiecznie -> na ile miesiecy
-   starczy, do kiedy, ile dostaw. Zadnych cen DailyFruits: kwote na osobe wpisuje
-   uzytkownik. Klawisz A-C ustawia liczbe dostaw w tygodniu, AC zeruje.
-   Data graniczna (hero, HUD) to jedyna zmienna do potwierdzenia przez klienta. */
+/* Kalkulator W-1, wersja prosta: budzet / osoby / 3 miesiace. Zero zalozen o cenach.
+   Wynik idzie do paska tematu i do mailto. Data graniczna w hero i HUD: do potwierdzenia. */
 (function () {
-    var KONIEC = new Date(2026, 11, 12), START = new Date(2027, 0, 1);
-    var MIES = ["stycznia","lutego","marca","kwietnia","maja","czerwca","lipca","sierpnia","września","października","listopada","grudnia"];
-    var MIES_UP = ["STYCZNIA","LUTEGO","MARCA","KWIETNIA","MAJA","CZERWCA","LIPCA","SIERPNIA","WRZEŚNIA","PAŹDZIERNIKA","LISTOPADA","GRUDNIA"];
-    var kwota = document.getElementById("a-kwota"), osoby = document.getElementById("a-osoby"), stawka = document.getElementById("a-stawka");
-    var wynik = document.getElementById("a-wynik"), stopa = document.getElementById("a-stopa");
-    var led = document.getElementById("a-led"), ekran = document.querySelector(".kalk-ekran");
+    var KONIEC = new Date(2026, 11, 12);
+    var kwota = document.getElementById("a-kwota"), osoby = document.getElementById("a-osoby");
+    var wynik = document.getElementById("a-wynik"), ekran = document.querySelector(".kalk-ekran");
     var heroDni = document.getElementById("hero-dni");
-    var klawisze = [].slice.call(document.querySelectorAll(".kalk-klawisz:not(.kalk-ac)"));
     var cicho = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    var naTydzien = 0;
-
     function zl(n) { return Math.round(n).toLocaleString("pl-PL"); }
     function num(e) { return Number(String(e.value).replace(/[^\d]/g, "")) || 0; }
     function dni() { var d = new Date(); d.setHours(0, 0, 0, 0); return Math.max(0, Math.round((KONIEC - d) / 86400000)); }
     if (heroDni) heroDni.textContent = dni();
     if (!kwota) return;
-
     var klatka = null, biezaca = 0, cel = 0;
-    function fmtMies(m) { return (Math.round(m * 10) / 10).toLocaleString("pl-PL", { minimumFractionDigits: 1, maximumFractionDigits: 1 }); }
     function dojedz(el, c) {
         cel = c;
-        if (cicho || document.hidden) { biezaca = c; el.textContent = fmtMies(c); return; }
+        if (cicho || document.hidden) { biezaca = c; el.textContent = zl(c); return; }
         cancelAnimationFrame(klatka);
-        var od = biezaca, t0 = performance.now(), czas = 650;
-        (function krok(t) {
-            var p = Math.min(1, (t - t0) / czas), e = 1 - Math.pow(1 - p, 4);
-            biezaca = od + (c - od) * e; el.textContent = fmtMies(biezaca);
-            if (p < 1) klatka = requestAnimationFrame(krok);
-        })(t0);
+        var od = biezaca, t0 = performance.now(), czas = 600;
+        (function krok(t) { var p = Math.min(1, (t - t0) / czas), e = 1 - Math.pow(1 - p, 4); biezaca = od + (c - od) * e; el.textContent = zl(biezaca); if (p < 1) klatka = requestAnimationFrame(krok); })(t0);
     }
-    document.addEventListener("visibilitychange", function () {
-        var el = document.getElementById("a-duza"); if (document.hidden && el) { cancelAnimationFrame(klatka); biezaca = cel; el.textContent = fmtMies(cel); }
-    });
-    function koniec(m) { return new Date(START.getTime() + m * 30.4375 * 86400000); }
+    document.addEventListener("visibilitychange", function () { var el = document.getElementById("a-duza"); if (document.hidden && el) { cancelAnimationFrame(klatka); biezaca = cel; el.textContent = zl(cel); } });
     function policz() {
-        var k = num(kwota), o = num(osoby), s = num(stawka);
-        if (!k || !o || !s) {
-            biezaca = 0;
-            wynik.innerHTML = '<p class="aparat-puste">Wpisz osoby, budżet i&nbsp;kwotę na osobę. Policzymy, na ile miesięcy starczy.</p>';
-            stopa.textContent = "Nic nie zapisujemy. Kwota na osobę to Wasze założenie, nie cennik.";
-            ekran.classList.remove("zabezpieczone"); led.textContent = "BUDŻET WYGASA";
+        var k = num(kwota), o = num(osoby);
+        if (!k || !o) {
+            biezaca = 0; window.__w1 = null;
+            wynik.innerHTML = '<p class="aparat-puste">Wpisz budżet i&nbsp;liczbę osób.</p>';
+            ekran.classList.remove("zabezpieczone");
             return;
         }
-        var m = k / (o * s);
+        var naOsobe = k / (o * 3);
         if (!wynik.querySelector(".aparat-duza")) {
-            wynik.innerHTML = '<p class="aparat-linia"><span class="aparat-duza" id="a-duza">0,0</span><span class="aparat-jedn" id="a-jedn"></span></p><p class="aparat-reszta" id="a-reszta"></p>';
+            wynik.innerHTML = '<p class="aparat-linia"><span class="aparat-duza" id="a-duza">0</span><span class="aparat-jedn">zł na osobę miesięcznie</span></p><p class="aparat-reszta" id="a-reszta"></p>';
         }
-        var duza = document.getElementById("a-duza"), jedn = document.getElementById("a-jedn"), reszta = document.getElementById("a-reszta");
-        dojedz(duza, m);
-        jedn.textContent = "miesięcy dostaw od stycznia";
-        var kd = koniec(m);
-        var doKiedy = m >= 12 ? "na cały rok" : "do " + kd.getDate() + "\u00a0" + MIES[kd.getMonth()];
-        var r = "Starczy <b>" + doKiedy + "</b>.";
-        if (naTydzien) r += " To&nbsp;<b>" + Math.round(m * 4.33 * naTydzien) + "&nbsp;dostaw</b>.";
-        r += " Miesięcznie <b>" + zl(o * s) + "&nbsp;zł</b> na cały zespół.";
-        reszta.innerHTML = r;
+        dojedz(document.getElementById("a-duza"), naOsobe);
+        document.getElementById("a-reszta").innerHTML = zl(k) + "&nbsp;zł na " + o + " osób przez <b>trzy miesiące</b> od stycznia. W&nbsp;24&nbsp;h powiemy, co za to dowozimy.";
         ekran.classList.add("zabezpieczone");
-        led.textContent = m >= 12 ? "STARCZY NA CAŁY ROK" : "STARCZY DO " + kd.getDate() + " " + MIES_UP[kd.getMonth()];
-        stopa.textContent = "Szacunek na podstawie kwoty na osobę, którą podaliście, nie wycena DailyFruits. Budżet " + zl(k) + "\u00a0zł, " + o + " osób, " + zl(s) + "\u00a0zł na osobę. Termin fakturowania 12\u00a0grudnia: do potwierdzenia.";
-        window.__w1 = { osoby: o, budzet: k, stawka: s, miesiace: Math.round(m * 10) / 10, dostawy: naTydzien };
+        window.__w1 = { osoby: o, budzet: k, naOsobe: Math.round(naOsobe) };
     }
-    klawisze.forEach(function (b) {
-        b.addEventListener("click", function () {
-            var n = Number(b.dataset.n);
-            naTydzien = (naTydzien === n) ? 0 : n;
-            klawisze.forEach(function (x) { x.setAttribute("aria-pressed", String(Number(x.dataset.n) === naTydzien)); });
-            policz();
-        });
-    });
-    var ac = document.getElementById("a-ac");
-    if (ac) ac.addEventListener("click", function () {
-        kwota.value = ""; osoby.value = ""; stawka.value = ""; naTydzien = 0;
-        klawisze.forEach(function (x) { x.setAttribute("aria-pressed", "false"); });
-        policz(); kwota.focus();
-    });
-    [kwota, osoby, stawka].forEach(function (e) { e.addEventListener("input", policz); });
+    kwota.addEventListener("input", policz);
+    osoby.addEventListener("input", policz);
     policz();
 })();
 </script>
@@ -2284,22 +2134,6 @@ body.ciemna .ai-badge { position: fixed; top: calc(var(--cam-inset) + 10px); rig
     addEventListener("load", zmierz);
     document.addEventListener("visibilitychange", zmierz);
     zmierz();
-})();
-</script>
-<script>
-/* CTA pierwszego stopnia: do kalkulatora, z odsunieciem na belke. */
-(function () {
-    var cel = document.getElementById("kalkulator"); if (!cel) return;
-    document.querySelectorAll(".js-do-kalkulatora").forEach(function (a) {
-        a.addEventListener("click", function (e) {
-            e.preventDefault();
-            if (window.zUnlock) window.zUnlock();
-            var y = cel.getBoundingClientRect().top + window.scrollY - 24;
-            window.scrollTo({ top: y, behavior: "smooth" });
-            var pole = document.getElementById("a-kwota");
-            if (pole) setTimeout(function () { pole.focus({ preventScroll: true }); }, 700);
-        });
-    });
 })();
 </script>
 <script>
@@ -2725,7 +2559,7 @@ body.ciemna .ai-badge { position: fixed; top: calc(var(--cam-inset) + 10px); rig
 
     function daneTekst() {
         var w = window.__w1; if (!w || !w.budzet) return "";
-        return w.osoby + " osób, budżet " + w.budzet.toLocaleString("pl-PL") + " zł, " + w.stawka + " zł na osobę, ok. " + String(w.miesiace).replace(".", ",") + " mies." + (w.dostawy ? ", " + w.dostawy + "× w tyg." : "");
+        return w.osoby + " osób, budżet " + w.budzet.toLocaleString("pl-PL") + " zł, ok. " + w.naOsobe + " zł na osobę miesięcznie przez kwartał";
     }
     function odswiez() {
         var d = daneTekst();
@@ -2748,8 +2582,7 @@ body.ciemna .ai-badge { position: fixed; top: calc(var(--cam-inset) + 10px); rig
     document.querySelectorAll(".js-temat").forEach(function (a) {
         a.addEventListener("click", function () { temat = a.dataset.temat; odswiez(); if (window.zUnlock) window.zUnlock(); });
     });
-    ["a-kwota", "a-osoby", "a-stawka"].forEach(function (id) { var e = document.getElementById(id); if (e) e.addEventListener("input", function () { setTimeout(odswiez, 0); }); });
-    document.querySelectorAll(".kalk-klawisz").forEach(function (b) { b.addEventListener("click", function () { setTimeout(odswiez, 0); }); });
+    ["a-kwota", "a-osoby"].forEach(function (id) { var e = document.getElementById(id); if (e) e.addEventListener("input", function () { setTimeout(odswiez, 0); }); });
     if (zmien) zmien.addEventListener("click", function () { temat = null; odswiez(); });
 
     /* zapas: ramka BW mowi bwp:resize, gdy sie wczyta; brak sygnalu = pokaz kontakt */
