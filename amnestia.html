@@ -1635,7 +1635,62 @@ body.ciemna .dowozimy .prod-card { width: clamp(168px, 17vw, 232px); }
 
 /* Formularz BW: iframe z innej domeny, wiec CSS tam nie wchodzi. Inwersja z obrotem barwy
    daje ciemny motyw bez dotykania ich kodu; zielen przycisku wraca po hue-rotate. */
-body.ciemna #bwp-form { filter: invert(1) hue-rotate(180deg) contrast(.92) saturate(.85); background: #fff; }
+body.ciemna #bwp-form { filter: invert(1) hue-rotate(180deg) contrast(.95) saturate(1.1) brightness(1.05); background: #fff; }
+/* Apla: warstwa w trybie "color" nadaje ramce odcien zieleni marki, jasnosc zostaje z formularza. */
+body.ciemna .form-wrap { position: relative; isolation: isolate; overflow: hidden; }
+body.ciemna .form-wrap::after { content: ""; position: absolute; inset: 0; background: #1B5E3A; mix-blend-mode: color; pointer-events: none; z-index: 2; }
+
+/* ---------- Licznik do terminu: cyfry na bebnach, ruch jak w zegarze auta ---------- */
+body.ciemna .odl { display: inline-flex; flex-direction: column; gap: var(--f2); margin: 0 0 var(--f3); padding: var(--f2) var(--f3);
+    border-radius: 22px; background: rgba(255,255,255,.06); border: 1px solid var(--linia2);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.08); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
+body.ciemna .odl-rz { display: flex; align-items: flex-end; gap: var(--f2); }
+body.ciemna .odl-gr { display: flex; flex-direction: column; align-items: center; }
+body.ciemna .odl-cyf { display: flex; font-family: var(--mono); font-size: var(--t3); line-height: 1; font-weight: 600;
+    color: var(--tekst); font-variant-numeric: tabular-nums; letter-spacing: .02em; }
+body.ciemna .odl-gr > span { margin-top: 7px; font-family: var(--mono); font-size: 9.5px; letter-spacing: .22em; text-transform: uppercase; color: var(--przyciszony); }
+body.ciemna .rol { position: relative; height: 1em; width: .64em; overflow: hidden; }
+body.ciemna .rol-t { display: flex; flex-direction: column; will-change: transform; transition: transform .7s cubic-bezier(.22,1,.36,1); }
+body.ciemna .rol-t b { display: block; height: 1em; text-align: center; font-weight: inherit; }
+body.ciemna .odl-sep { font-family: var(--mono); font-size: var(--t3); line-height: 1; font-style: normal; color: var(--lime); padding-bottom: 22px; }
+body.ciemna .odl-tor { height: 2px; border-radius: 2px; background: rgba(255,255,255,.1); overflow: hidden; }
+body.ciemna .odl-tor i { display: block; height: 100%; width: 0; background: var(--lime); transition: width 1.4s cubic-bezier(.22,1,.36,1); }
+body.ciemna .odl-pod { margin: 0; font-family: var(--mono); font-size: 10px; letter-spacing: .2em; text-transform: uppercase; color: var(--przyciszony); }
+body.ciemna .odl-pod b { color: var(--tekst); font-weight: 600; }
+@media (prefers-reduced-motion: no-preference) {
+    body.ciemna .odl-sep { animation: odlOddech 2s cubic-bezier(.45,0,.55,1) infinite; }
+    @keyframes odlOddech { 0%,100% { opacity: .9; } 50% { opacity: .3; } }
+}
+@media (prefers-reduced-motion: reduce) { body.ciemna .rol-t, body.ciemna .odl-tor i { transition: none; } }
+@media (max-width: 720px) {
+    body.ciemna .odl { display: inline-flex; gap: 9px; padding: 10px 14px; border-radius: 16px; margin-bottom: var(--f2); }
+    body.ciemna .odl-rz { gap: 9px; }
+    body.ciemna .odl-cyf, body.ciemna .odl-sep { font-size: 24px; }
+    body.ciemna .odl-sep { padding-bottom: 17px; }
+    body.ciemna .odl-gr > span { font-size: 8.5px; letter-spacing: .16em; margin-top: 5px; }
+    body.ciemna .odl-pod { display: none; }
+}
+
+/* ---------- Dowod: opinie plynace w bok, do zlapania reka ---------- */
+.opinie { overflow-x: auto; overflow-y: hidden; scrollbar-width: none; cursor: grab; touch-action: pan-x pan-y;
+    margin: 0 calc(-1 * var(--f3)) var(--f4); padding: 4px var(--f3);
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent); mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent); }
+.opinie::-webkit-scrollbar { display: none; }
+.opinie:active { cursor: grabbing; }
+.opinie:focus-visible { outline: 2px solid var(--lime); outline-offset: 4px; }
+.opinie-tor { display: flex; gap: var(--f2); width: max-content; }
+.opinia { flex: 0 0 auto; width: clamp(280px, 30vw, 400px); margin: 0; padding: var(--f3); border-radius: 20px;
+    background: var(--plyta); border: 1px solid var(--kresk); display: flex; flex-direction: column; gap: var(--f2);
+    user-select: none; -webkit-user-select: none; box-shadow: inset 0 1px 0 rgba(255,255,255,.05); }
+.opinia blockquote { margin: 0; font-size: var(--t1); line-height: 1.5; color: var(--tekst); font-weight: 500; letter-spacing: -.005em; }
+.opinia blockquote::before { content: "\201C"; display: block; font-family: var(--mono); font-size: 30px; line-height: .55; color: var(--lime); margin-bottom: 12px; }
+.opinia figcaption { display: flex; align-items: center; gap: 12px; margin-top: auto; font-size: 13px; line-height: 1.35; color: var(--przyciszony); }
+.opinia figcaption i { flex: none; width: 36px; height: 36px; border-radius: 50%; display: grid; place-items: center;
+    background: rgba(141,198,63,.14); color: var(--lime); font: 700 12px/1 var(--mono); letter-spacing: .04em; }
+.opinia figcaption b { display: block; color: var(--tekst); font-weight: 700; }
+@media (max-width: 720px) { .opinia { width: 78vw; padding: var(--f2) var(--f3); } .opinia blockquote { font-size: 15px; } }
+/* licznik widoczny tez na mobile, pod leadem */
+@media (max-width: 720px) { body.ciemna .scrub-copy > .odl { display: inline-flex !important; } }
 </style>
 </head>
 <body class="ciemna kamera">
@@ -1710,7 +1765,16 @@ body.ciemna #bwp-form { filter: invert(1) hue-rotate(180deg) contrast(.92) satur
                     <span class="l2">budżetowa.</span>
                 </h1>
                 <p class="lead"><b>Wasz budżet kończy się 12 grudnia, nie 31.</b><br>Co zostanie, przepadnie, a w przyszłym roku będzie go mniej.</p>
-                <p class="termin" id="hero-termin" aria-live="polite"><i></i><span>Do końca fakturowania zostało <b id="hero-dni">··</b>&nbsp;dni</span></p>
+                <div class="odl" id="odl" role="timer" aria-label="Czas do końca fakturowania">
+                    <div class="odl-rz">
+                        <div class="odl-gr"><div class="odl-cyf" data-odl="d" data-min="2"></div><span>dni</span></div><i class="odl-sep" aria-hidden="true">:</i>
+                        <div class="odl-gr"><div class="odl-cyf" data-odl="h" data-min="2"></div><span>godz</span></div><i class="odl-sep" aria-hidden="true">:</i>
+                        <div class="odl-gr"><div class="odl-cyf" data-odl="m" data-min="2"></div><span>min</span></div><i class="odl-sep" aria-hidden="true">:</i>
+                        <div class="odl-gr"><div class="odl-cyf" data-odl="s" data-min="2"></div><span>sek</span></div>
+                    </div>
+                    <div class="odl-tor" aria-hidden="true"><i id="odl-post"></i></div>
+                    <p class="odl-pod">Do końca fakturowania · <b>12 grudnia</b></p>
+                </div>
                 <div class="cta-row">
                     <a href="#formularz" class="btn-feed js-do-formularza">Odzyskaj budżet →</a>
                 </div>
@@ -1840,10 +1904,22 @@ body.ciemna #bwp-form { filter: invert(1) hue-rotate(180deg) contrast(.92) satur
             <p class="hud-tag">03 · Dowód</p>
             <h2>Owoce w tej samej <span class="fun">kuchni</span> od lat</h2>
         </div>
-        <figure class="cytat">
-            <blockquote>Od ponad trzech lat pracujemy z firmą Dailyfruits. Dzisiaj owoce w charakterystycznej drewnianej skrzynce to nieodłączny element naszego biurowego krajobrazu. Jakość? Niezmiennie wysoka.</blockquote>
-            <figcaption><b>Stathis Karaplios</b><span>Managing Director, EMBS</span></figcaption>
-        </figure>
+        <div class="opinie" id="opinie" tabindex="0" aria-label="Opinie klientów, przesuwaj w bok">
+                <div class="opinie-tor">
+<figure class="opinia"><blockquote>Od ponad trzech lat pracujemy z firmą Dailyfruits. Dzisiaj owoce w charakterystycznej drewnianej skrzynce to nieodłączny element naszego biurowego krajobrazu. Jakość? Niezmiennie wysoka.</blockquote><figcaption><i>SK</i><span><b>Stathis Karaplios</b>Managing Director, EMBS</span></figcaption></figure>
+<figure class="opinia"><blockquote>Fruit Day jako dodatkowy benefit sprawdził się u nas świetnie. Firma Dailyfruits od samego początku była strzałem w dziesiątkę. Świeże owoce dostarczane o umówionych porach.</blockquote><figcaption><i>BF</i><span><b>Barbara Fitowska</b>Office Manager, OTCF</span></figcaption></figure>
+<figure class="opinia"><blockquote>Jestem bardzo zadowolona ze współpracy z firmą Dailyfruits. Od samego początku miałam bardzo dobry kontakt z Przedstawicielem Firmy. Zawsze mogę liczyć na elastyczność.</blockquote><figcaption><i>HG</i><span><b>Hanna Gałązka</b>Dyrektor Departamentu, Enea Centrum</span></figcaption></figure>
+<figure class="opinia"><blockquote>Pracownicy Dailyfruits wykazują się profesjonalizmem. Dostarczane owoce są zawsze najwyższej jakości. To nie tylko zdrowa przekąska, ale sposób dbania o komfort pracowników.</blockquote><figcaption><i>SD</i><span><b>Szymon Demmer</b>HR Business Partner, Synevo</span></figcaption></figure>
+<figure class="opinia"><blockquote>Gorąco polecam współpracę z firmą Dailyfruits. To godny zaufania partner, który dostarcza świeże produkty wysokiej jakości na terenie całego kraju.</blockquote><figcaption><i>SF</i><span><b>Samanta Folwaczny</b>HR Specialist, SMS API</span></figcaption></figure>
+<figure class="opinia"><blockquote>Firma Dailyfruits wyszła naprzeciw oczekiwaniom i przygotowała pięknie wyglądające, zdrowe paczki świąteczne, które dostarczyła do domów pracowników.</blockquote><figcaption><i>SS</i><span><b>Stanisław Sennik</b>Dyrektor, Lasy Państwowe</span></figcaption></figure>
+<figure class="opinia" aria-hidden="true"><blockquote>Od ponad trzech lat pracujemy z firmą Dailyfruits. Dzisiaj owoce w charakterystycznej drewnianej skrzynce to nieodłączny element naszego biurowego krajobrazu. Jakość? Niezmiennie wysoka.</blockquote><figcaption><i>SK</i><span><b>Stathis Karaplios</b>Managing Director, EMBS</span></figcaption></figure>
+<figure class="opinia" aria-hidden="true"><blockquote>Fruit Day jako dodatkowy benefit sprawdził się u nas świetnie. Firma Dailyfruits od samego początku była strzałem w dziesiątkę. Świeże owoce dostarczane o umówionych porach.</blockquote><figcaption><i>BF</i><span><b>Barbara Fitowska</b>Office Manager, OTCF</span></figcaption></figure>
+<figure class="opinia" aria-hidden="true"><blockquote>Jestem bardzo zadowolona ze współpracy z firmą Dailyfruits. Od samego początku miałam bardzo dobry kontakt z Przedstawicielem Firmy. Zawsze mogę liczyć na elastyczność.</blockquote><figcaption><i>HG</i><span><b>Hanna Gałązka</b>Dyrektor Departamentu, Enea Centrum</span></figcaption></figure>
+<figure class="opinia" aria-hidden="true"><blockquote>Pracownicy Dailyfruits wykazują się profesjonalizmem. Dostarczane owoce są zawsze najwyższej jakości. To nie tylko zdrowa przekąska, ale sposób dbania o komfort pracowników.</blockquote><figcaption><i>SD</i><span><b>Szymon Demmer</b>HR Business Partner, Synevo</span></figcaption></figure>
+<figure class="opinia" aria-hidden="true"><blockquote>Gorąco polecam współpracę z firmą Dailyfruits. To godny zaufania partner, który dostarcza świeże produkty wysokiej jakości na terenie całego kraju.</blockquote><figcaption><i>SF</i><span><b>Samanta Folwaczny</b>HR Specialist, SMS API</span></figcaption></figure>
+<figure class="opinia" aria-hidden="true"><blockquote>Firma Dailyfruits wyszła naprzeciw oczekiwaniom i przygotowała pięknie wyglądające, zdrowe paczki świąteczne, które dostarczyła do domów pracowników.</blockquote><figcaption><i>SS</i><span><b>Stanisław Sennik</b>Dyrektor, Lasy Państwowe</span></figcaption></figure>
+                </div>
+            </div>
         <div class="assure-grid dowod-liczby">
             <div class="assure-item"><b>2500+</b><span>firm w Polsce nam zaufało</span></div>
             <div class="assure-item"><b>4,9/5</b><span>na podstawie 120+ opinii</span></div>
@@ -2649,6 +2725,70 @@ body.ciemna #bwp-form { filter: invert(1) hue-rotate(180deg) contrast(.92) satur
     }
     if ("IntersectionObserver" in window) pilnuj(); else setTimeout(function () { if (!odezwala && zapas) zapas.hidden = false; }, 9000);
     odswiez();
+})();
+</script>
+
+<script>
+/* Licznik do terminu. Cyfry na bebnach: kazda kolumna to pasek 0-9 przesuwany transformem,
+   wiec zmiana sekundy jest ruchem, nie mrugnieciem. Pod reduced-motion pasek skacze bez przejscia. */
+(function () {
+    var KONIEC = new Date(2026, 11, 12), START = new Date(2026, 8, 1);
+    var root = document.getElementById("odl"); if (!root) return;
+    var post = document.getElementById("odl-post");
+    var grupy = {};
+    Array.prototype.forEach.call(root.querySelectorAll(".odl-cyf"), function (el) { grupy[el.getAttribute("data-odl")] = { el: el, min: +el.getAttribute("data-min") || 2, kol: [] }; });
+    function beben() {
+        var r = document.createElement("span"); r.className = "rol";
+        var t = document.createElement("span"); t.className = "rol-t";
+        for (var i = 0; i < 10; i++) { var b = document.createElement("b"); b.textContent = i; t.appendChild(b); }
+        r.appendChild(t); return { r: r, t: t, v: -1 };
+    }
+    function ustaw(g, n) {
+        var str = String(Math.max(0, n)); while (str.length < g.min) str = "0" + str;
+        while (g.kol.length < str.length) { var k = beben(); g.kol.push(k); g.el.appendChild(k.r); }
+        while (g.kol.length > str.length) { var z = g.kol.pop(); g.el.removeChild(z.r); }
+        for (var i = 0; i < str.length; i++) { var d = +str[i]; if (g.kol[i].v !== d) { g.kol[i].v = d; g.kol[i].t.style.transform = "translateY(" + (-d) + "em)"; } }
+    }
+    function tik() {
+        var teraz = new Date(), ms = Math.max(0, KONIEC - teraz), s = Math.floor(ms / 1000);
+        ustaw(grupy.d, Math.floor(s / 86400)); ustaw(grupy.h, Math.floor(s / 3600) % 24);
+        ustaw(grupy.m, Math.floor(s / 60) % 60); ustaw(grupy.s, s % 60);
+        if (post) { var f = Math.min(1, Math.max(0, (teraz - START) / (KONIEC - START))); post.style.width = (f * 100).toFixed(2) + "%"; }
+        root.setAttribute("aria-label", "Do końca fakturowania: " + Math.floor(s / 86400) + " dni");
+    }
+    tik();
+    var zegar = null;
+    function start() { if (zegar) return; zegar = setInterval(function () { if (!document.hidden) tik(); }, 1000); }
+    start();
+    document.addEventListener("visibilitychange", function () { if (!document.hidden) tik(); });
+})();
+</script>
+
+<script>
+/* Opinie: tor plynie sam (rAF, scrollLeft), staje pod kursorem, palcem i fokusem, daje sie ciagnac.
+   Zestaw jest zdublowany, wiec petla to skok o polowe szerokosci, niewidoczny. Reduced-motion: bez dryfu. */
+(function () {
+    var box = document.getElementById("opinie"); if (!box) return;
+    var tor = box.querySelector(".opinie-tor"), cicho = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    var pauza = false, ostatni = null, V = 0.6, x0 = null, s0 = 0, ciag = false;
+    function polowa() { return tor.scrollWidth / 2; }
+    function petla() { var p = polowa(); if (p > 0) { if (box.scrollLeft >= p) box.scrollLeft -= p; else if (box.scrollLeft <= 0) box.scrollLeft += p; } }
+    function krok(t) {
+        if (ostatni === null) ostatni = t; var dt = Math.min(64, t - ostatni); ostatni = t;
+        if (!pauza && !document.hidden) { box.scrollLeft += V * dt / 16.7; petla(); }
+        requestAnimationFrame(krok);
+    }
+    box.scrollLeft = 1; if (!cicho) requestAnimationFrame(krok);
+    var stoj = function () { pauza = true; }, jedz = function () { setTimeout(function () { if (!ciag) pauza = false; }, 1400); };
+    box.addEventListener("pointerenter", stoj); box.addEventListener("pointerleave", jedz);
+    box.addEventListener("focusin", stoj); box.addEventListener("focusout", jedz);
+    box.addEventListener("touchstart", stoj, { passive: true }); box.addEventListener("touchend", jedz, { passive: true });
+    box.addEventListener("pointerdown", function (e) { if (e.pointerType === "touch") return; x0 = e.clientX; s0 = box.scrollLeft; ciag = true; pauza = true; box.setPointerCapture(e.pointerId); });
+    box.addEventListener("pointermove", function (e) { if (x0 === null) return; box.scrollLeft = s0 - (e.clientX - x0); petla(); });
+    function pusc() { x0 = null; ciag = false; jedz(); }
+    box.addEventListener("pointerup", pusc); box.addEventListener("pointercancel", pusc);
+    box.addEventListener("scroll", petla, { passive: true });
+    box.addEventListener("keydown", function (e) { if (e.key === "ArrowRight") { box.scrollBy({ left: 320, behavior: "smooth" }); e.preventDefault(); } if (e.key === "ArrowLeft") { box.scrollBy({ left: -320, behavior: "smooth" }); e.preventDefault(); } });
 })();
 </script>
 <script src="track.js?v=2" defer></script>
