@@ -655,6 +655,13 @@ html.pt-in body>:not(header) { animation: ptFadeIn 0.32s ease both; }
     font-size: 17px; font-weight: 900; }
 .prod-sec .hero-box { margin-top: clamp(34px, 4vw, 52px); }
 @media (max-width: 720px) { .mocne li { font-size: 15px; padding-left: 30px; } }
+
+/* Logo: plik jest pionowy (356x437), a atrybut wymuszal kwadrat, wiec znak byl sciesniony.
+   Naglowek przestaje byc wysrodkowany na 1440 px, dzieki czemu lewa krawedz logo trzyma
+   sie tekstu hero na kazdej szerokosci ekranu, nie tylko na 1280. */
+header .logo-img { width: auto !important; object-fit: contain; }
+header .nav-inner { max-width: none !important; margin: 0 !important; padding-left: clamp(28px, 4vw, 72px) !important; }
+@media (max-width: 720px) { header .nav-inner { padding-left: 20px !important; } }
 </style>
 </head>
 <body>
@@ -671,7 +678,7 @@ html.pt-in body>:not(header) { animation: ptFadeIn 0.32s ease both; }
 <!-- NAV -->
 <header>
     <div class="nav-inner">
-        <div class="logo-wrap"><a href="/"><picture><source media="(max-width: 768px)" srcset="animacja_11-lime.svg"><img src="fruitttt.svg" alt="DailyFruits - owoce, kanapki, soki, przekąski i więcej do biura" class="logo-img" loading="eager" fetchpriority="high" width="64" height="64"></picture></a><span class="logo-sub">by BetterWorkplace</span></div>
+        <div class="logo-wrap"><a href="/"><picture><source media="(max-width: 768px)" srcset="animacja_11-lime.svg"><img src="fruitttt.svg" alt="DailyFruits - owoce, kanapki, soki, przekąski i więcej do biura" class="logo-img" loading="eager" fetchpriority="high" width="52" height="64"></picture></a><span class="logo-sub">by BetterWorkplace</span></div>
         <!-- Landing kampanijny: naglowek okrojony do logo i jednego CTA,
              zeby nie wyprowadzac ruchu z lejka. -->
         <div class="nav-buttons">
