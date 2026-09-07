@@ -1635,7 +1635,7 @@ body.ciemna .dowozimy .prod-card { width: clamp(168px, 17vw, 232px); }
 
 /* Formularz BW: iframe z innej domeny, wiec CSS tam nie wchodzi. Inwersja z obrotem barwy
    daje ciemny motyw bez dotykania ich kodu; zielen przycisku wraca po hue-rotate. */
-body.ciemna #bwp-form { filter: invert(1) hue-rotate(180deg) contrast(.95) saturate(1.1) brightness(1.05); background: #fff; }
+body.ciemna #bwp-form { filter: invert(1) hue-rotate(180deg) contrast(.95) saturate(1.1) brightness(.78); background: #fff; }
 /* Apla: warstwa w trybie "color" nadaje ramce odcien zieleni marki, jasnosc zostaje z formularza. */
 body.ciemna .form-wrap { position: relative; isolation: isolate; overflow: hidden; }
 body.ciemna .form-wrap::after { content: ""; position: absolute; inset: 0; background: #1B5E3A; mix-blend-mode: color; pointer-events: none; z-index: 2; }
@@ -1732,6 +1732,12 @@ body.ciemna #deszcz { position: fixed; inset: 0; z-index: -1; pointer-events: no
 body.ciemna .dowod, body.ciemna .sec-cream { background: transparent; position: relative; }
 @media (max-width: 720px) { body.ciemna #deszcz { opacity: .10; } }
 @media (prefers-reduced-motion: reduce) { body.ciemna #deszcz { display: none; } }
+
+/* Napisy kamery chowaja sie, gdy formularz wchodzi w dolny pas ekranu: HUD jest ozdoba,
+   formularz jest miejscem decyzji, wiec to HUD ustepuje, nie odwrotnie. */
+body.ciemna .cam-gora, body.ciemna .cam-dol { transition: opacity .5s cubic-bezier(.22,1,.36,1); }
+body.ciemna.przy-formularzu .cam-gora, body.ciemna.przy-formularzu .cam-dol { opacity: 0; }
+@media (prefers-reduced-motion: reduce) { body.ciemna .cam-gora, body.ciemna .cam-dol { transition: none; } }
 </style>
 </head>
 <body class="ciemna kamera">
@@ -2875,6 +2881,23 @@ body.ciemna .dowod, body.ciemna .sec-cream { background: transparent; position: 
         }
     }
     rozmiar(); window.addEventListener("resize", rozmiar); requestAnimationFrame(klatka);
+})();
+</script>
+
+<script>
+/* HUD ustepuje formularzowi. Sprawdzamy, czy sekcja zgloszenia zachodzi na dolne 28% ekranu,
+   czyli dokladnie na pas, w ktorym leza napisy REC i BUDZET WYGASA. Zwykly pasywny nasluch,
+   jeden pomiar na zdarzenie, bez rAF - dziala tak samo w karcie w tle. */
+(function () {
+    var sek = document.getElementById("formularz"); if (!sek) return;
+    function sprawdz() {
+        var r = sek.getBoundingClientRect(), h = window.innerHeight;
+        document.body.classList.toggle("przy-formularzu", r.top < h && r.bottom > h * 0.72);
+    }
+    window.sprawdzHud = sprawdz;
+    sprawdz();
+    window.addEventListener("scroll", sprawdz, { passive: true });
+    window.addEventListener("resize", sprawdz, { passive: true });
 })();
 </script>
 <script src="track.js?v=2" defer></script>
